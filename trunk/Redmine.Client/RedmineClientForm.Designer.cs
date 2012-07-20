@@ -202,14 +202,17 @@ namespace Redmine.Client
             // 
             this.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem";
             this.RestoreToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.RestoreToolStripMenuItem.Text = "Hide";
+            if (this.MinimizeToSystemTray)
+                this.RestoreToolStripMenuItem.Text = "&Hide";
+            else
+                this.RestoreToolStripMenuItem.Text = "Mi&nimize";
             this.RestoreToolStripMenuItem.Click += new System.EventHandler(this.RestoreToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
             this.ExitToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.ExitToolStripMenuItem.Text = "Exit";
+            this.ExitToolStripMenuItem.Text = "&Close";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // DataGridViewIssues
