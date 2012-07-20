@@ -50,6 +50,7 @@ namespace Redmine.Client
                 config.AppSettings.Settings.Add("CheckForUpdates", CheckForUpdatesCheckBox.Checked.ToString());
                 config.AppSettings.Settings.Add("MinimizeToSystemTray", MinimizeToSystemTrayCheckBox.Checked.ToString());
                 config.AppSettings.Settings.Add("MinimizeOnStartTimer", MinimizeOnStartTimerCheckBox.Checked.ToString());
+                config.AppSettings.Settings.Add("PopupInterval", PopupTime.Value.ToString());
                 config.AppSettings.Settings.Add("CacheLifetime", CacheLifetime.Value.ToString());
                 config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
@@ -75,6 +76,7 @@ namespace Redmine.Client
                 conf.AppSettings.Settings.Add("CheckForUpdates", ConfigurationManager.AppSettings["CheckForUpdates"]);
                 conf.AppSettings.Settings.Add("MinimizeToSystemTray", ConfigurationManager.AppSettings["MinimizeToSystemTray"]);
                 conf.AppSettings.Settings.Add("MinimizeOnStartTimer", ConfigurationManager.AppSettings["MinimizeOnStartTimer"]);
+                conf.AppSettings.Settings.Add("PopupInterval", ConfigurationManager.AppSettings["PopupInterval"]);
                 conf.AppSettings.Settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
                 conf.Save(ConfigurationSaveMode.Modified);
             }
@@ -120,6 +122,14 @@ namespace Redmine.Client
             catch (Exception)
             {
                 CacheLifetime.Value = 0;
+            }
+            try
+            {
+                PopupTime.Value = Convert.ToInt32(conf.AppSettings.Settings["PopupInterval"].Value);
+            }
+            catch (Exception)
+            {
+                PopupTime.Value = 0;
             }
         }
 

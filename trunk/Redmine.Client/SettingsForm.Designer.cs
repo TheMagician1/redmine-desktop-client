@@ -44,7 +44,10 @@
             this.redmineKey = new System.Windows.Forms.TextBox();
             this.MinimizeToSystemTrayCheckBox = new System.Windows.Forms.CheckBox();
             this.MinimizeOnStartTimerCheckBox = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.PopupTime = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PopupTime)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -220,6 +223,34 @@
             this.MinimizeOnStartTimerCheckBox.UseVisualStyleBackColor = true;
             this.MinimizeOnStartTimerCheckBox.CheckedChanged += new System.EventHandler(this.AuthenticationCheckBox_CheckedChanged);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(221, 140);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(154, 39);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Popup window when minimized\r\nor Request attention every\r\n(minutes, 0 = never)";
+            // 
+            // PopupTime
+            // 
+            this.PopupTime.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.PopupTime.Location = new System.Drawing.Point(224, 182);
+            this.PopupTime.Margin = new System.Windows.Forms.Padding(2);
+            this.PopupTime.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.PopupTime.Name = "PopupTime";
+            this.PopupTime.Size = new System.Drawing.Size(70, 20);
+            this.PopupTime.TabIndex = 12;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.BtnSaveButton;
@@ -227,6 +258,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
             this.ClientSize = new System.Drawing.Size(435, 283);
+            this.Controls.Add(this.PopupTime);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.CacheLifetime);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.CheckForUpdatesCheckBox);
@@ -248,6 +281,7 @@
             this.Name = "SettingsForm";
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PopupTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +305,7 @@
         private System.Windows.Forms.TextBox redmineKey;
         private System.Windows.Forms.CheckBox MinimizeToSystemTrayCheckBox;
         private System.Windows.Forms.CheckBox MinimizeOnStartTimerCheckBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown PopupTime;
     }
 }
