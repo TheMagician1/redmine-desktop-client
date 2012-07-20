@@ -47,6 +47,11 @@ namespace Redmine.Client
 				this.DataGridViewIssues.Click += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
 			}
             LoadConfig();
+            if (this.MinimizeToSystemTray)
+                this.RestoreToolStripMenuItem.Text = "&Hide";
+            else
+                this.RestoreToolStripMenuItem.Text = "Mi&nimize";
+
             if (RedmineAuthentication)
                 redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword);
             else
