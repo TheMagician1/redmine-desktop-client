@@ -237,11 +237,7 @@ namespace Redmine.Client
         {
             if (WindowState == FormWindowState.Normal)
             {
-                WindowState = FormWindowState.Minimized;
-                NormalSize = this.RestoreBounds;
-                if (MinimizeToSystemTray)
-                    Hide();
-                RestoreToolStripMenuItem.Text = "Restore";
+                Minimize();
             }
             else
             {
@@ -249,17 +245,34 @@ namespace Redmine.Client
                     Show();
                 Bounds = NormalSize;
                 WindowState = FormWindowState.Normal;
-                RestoreToolStripMenuItem.Text = "Hide";
+                if (MinimizeToSystemTray)
+                    RestoreToolStripMenuItem.Text = "&Hide";
+                else
+                    RestoreToolStripMenuItem.Text = "Mi&nimize";
             }
+        }
+
+        private void Minimize()
+        {
+            WindowState = FormWindowState.Minimized;
+            NormalSize = this.RestoreBounds;
+            if (MinimizeToSystemTray)
+                Hide();
+            RestoreToolStripMenuItem.Text = "&Restore";
         }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
             {
-                NormalSize = this.RestoreBounds;
+                Minimize();
+            }
+            else
+            {
                 if (MinimizeToSystemTray)
-                    Hide();
+                    RestoreToolStripMenuItem.Text = "&Hide";
+                else
+                    RestoreToolStripMenuItem.Text = "Mi&nimize";
             }
         }
 
