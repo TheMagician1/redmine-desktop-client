@@ -75,10 +75,24 @@ namespace Redmine.Client
                 conf.Save(ConfigurationSaveMode.Modified);
             }
             RedmineBaseUrlTextBox.Text = conf.AppSettings.Settings["RedmineURL"].Value;
-            AuthenticationCheckBox.Checked = Convert.ToBoolean(conf.AppSettings.Settings["RedmineAuthentication"].Value);
+            try
+            {
+                AuthenticationCheckBox.Checked = Convert.ToBoolean(conf.AppSettings.Settings["RedmineAuthentication"].Value);
+            }
+            catch (Exception)
+            {
+                AuthenticationCheckBox.Checked = true;
+            }
             RedmineUsernameTextBox.Text = conf.AppSettings.Settings["RedmineUser"].Value;
             RedminePasswordTextBox.Text = conf.AppSettings.Settings["RedminePassword"].Value;
-            CheckForUpdatesCheckBox.Checked = Convert.ToBoolean(conf.AppSettings.Settings["CheckForUpdates"].Value);
+            try
+            {
+                CheckForUpdatesCheckBox.Checked = Convert.ToBoolean(conf.AppSettings.Settings["CheckForUpdates"].Value);
+            }
+            catch (Exception)
+            {
+                CheckForUpdatesCheckBox.Checked = true;
+            }
             try
             {
                 CacheLifetime.Value = Convert.ToInt32(conf.AppSettings.Settings["CacheLifetime"].Value);
