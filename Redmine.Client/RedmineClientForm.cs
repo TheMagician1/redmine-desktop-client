@@ -28,11 +28,13 @@ namespace Redmine.Client
         private string RedminePassword;
         private bool MinimizeToSystemTray;
         private bool MinimizeOnStartTimer;
+        private int PopupInterval;
 
         private bool CheckForUpdates;
         private int CacheLifetime;
 
         private Rectangle NormalSize;
+        private DateTime MinimizeTime;
 
         public RedmineClientForm()
         {
@@ -194,6 +196,7 @@ namespace Redmine.Client
                 conf.AppSettings.Settings.Add("CheckForUpdates", ConfigurationManager.AppSettings["CheckForUpdates"]);
                 conf.AppSettings.Settings.Add("MinimizeToSystemTray", ConfigurationManager.AppSettings["MinimizeToSystemTray"]);
                 conf.AppSettings.Settings.Add("MinimizeOnStartTimer", ConfigurationManager.AppSettings["MinimizeOnStartTimer"]);
+                conf.AppSettings.Settings.Add("PopupInterval", ConfigurationManager.AppSettings["PopupInterval"]);
                 conf.AppSettings.Settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
                 conf.Save(ConfigurationSaveMode.Modified);
             }
@@ -206,6 +209,8 @@ namespace Redmine.Client
             {
                 RedmineAuthentication = true;
             }
+            RedmineUser = conf.AppSettings.Settings["RedmineUser"].Value;
+            RedminePassword = conf.AppSettings.Settings["RedminePassword"].Value;
             try
             {
                 MinimizeToSystemTray = Convert.ToBoolean(conf.AppSettings.Settings["MinimizeToSystemTray"].Value);
@@ -223,8 +228,6 @@ namespace Redmine.Client
                 MinimizeOnStartTimer = true;
             }
 
-            RedmineUser = conf.AppSettings.Settings["RedmineUser"].Value;
-            RedminePassword = conf.AppSettings.Settings["RedminePassword"].Value;
             try
             {
                 CheckForUpdates = Convert.ToBoolean(conf.AppSettings.Settings["CheckForUpdates"].Value);
@@ -241,6 +244,14 @@ namespace Redmine.Client
             {
                 CacheLifetime = 0;
             }
+            try
+            {
+                PopupInterval = Convert.ToInt32(conf.AppSettings.Settings["PopupInterval"].Value);
+            }
+            catch (Exception)
+            {
+                PopupInterval = 0;
+            }
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -256,14 +267,7 @@ namespace Redmine.Client
             }
             else
             {
-                if (MinimizeToSystemTray)
-                    Show();
-                Bounds = NormalSize;
-                WindowState = FormWindowState.Normal;
-                if (MinimizeToSystemTray)
-                    RestoreToolStripMenuItem.Text = "&Hide";
-                else
-                    RestoreToolStripMenuItem.Text = "Mi&nimize";
+                Restore();
             }
         }
 
@@ -274,7 +278,21 @@ namespace Redmine.Client
             if (MinimizeToSystemTray)
                 Hide();
             RestoreToolStripMenuItem.Text = "&Restore";
+            MinimizeTime = DateTime.Now;
         }
+
+        private void Restore()
+        {
+            if (MinimizeToSystemTray)
+                Show();
+            Bounds = NormalSize;
+            WindowState = FormWindowState.Normal;
+            if (MinimizeToSystemTray)
+                RestoreToolStripMenuItem.Text = "&Hide";
+            else
+                RestoreToolStripMenuItem.Text = "Mi&nimize";
+            Activate();
+         }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
@@ -330,6 +348,14 @@ namespace Redmine.Client
         {
             this.ticks++;
             this.UpdateTime();
+            AlertIfMinimized();
+        }
+
+        private void AlertIfMinimized()
+        {
+            if (WindowState == FormWindowState.Minimized && PopupInterval > 0)
+                if ((DateTime.Now-MinimizeTime).TotalMinutes >= PopupInterval)
+                    Restore();
         }
 
         private void ResetForm()
