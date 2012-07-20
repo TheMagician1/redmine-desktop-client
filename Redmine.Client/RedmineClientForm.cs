@@ -26,9 +26,12 @@ namespace Redmine.Client
         private bool RedmineAuthentication;
         private string RedmineUser;
         private string RedminePassword;
+        private bool MinimizeToSystemTray;
 
         private bool CheckForUpdates;
         private int CacheLifetime;
+
+        private Rectangle NormalSize;
 
         public RedmineClientForm()
         {
@@ -183,6 +186,7 @@ namespace Redmine.Client
                 conf.AppSettings.Settings.Add("RedmineUser", ConfigurationManager.AppSettings["RedmineUser"]);
                 conf.AppSettings.Settings.Add("RedminePassword", ConfigurationManager.AppSettings["RedminePassword"]);
                 conf.AppSettings.Settings.Add("CheckForUpdates", ConfigurationManager.AppSettings["CheckForUpdates"]);
+                conf.AppSettings.Settings.Add("MinimizeToSystemTray", ConfigurationManager.AppSettings["MinimizeToSystemTray"]);
                 conf.AppSettings.Settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
                 conf.Save(ConfigurationSaveMode.Modified);
             }
@@ -194,6 +198,14 @@ namespace Redmine.Client
             catch (Exception)
             {
                 RedmineAuthentication = true;
+            }
+            try
+            {
+                MinimizeToSystemTray = Convert.ToBoolean(conf.AppSettings.Settings["MinimizeToSystemTray"].Value);
+            }
+            catch (Exception)
+            {
+                MinimizeToSystemTray = true;
             }
 
             RedmineUser = conf.AppSettings.Settings["RedmineUser"].Value;
@@ -226,13 +238,17 @@ namespace Redmine.Client
             if (WindowState == FormWindowState.Normal)
             {
                 WindowState = FormWindowState.Minimized;
-                Hide();
+                NormalSize = this.RestoreBounds;
+                if (MinimizeToSystemTray)
+                    Hide();
                 RestoreToolStripMenuItem.Text = "Restore";
             }
             else
             {
+                if (MinimizeToSystemTray)
+                    Show();
+                Bounds = NormalSize;
                 WindowState = FormWindowState.Normal;
-                Show();
                 RestoreToolStripMenuItem.Text = "Hide";
             }
         }
@@ -240,7 +256,11 @@ namespace Redmine.Client
         private void Form1_Resize(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
-                HideRestore();
+            {
+                NormalSize = this.RestoreBounds;
+                if (MinimizeToSystemTray)
+                    Hide();
+            }
         }
 
         private void RestoreToolStripMenuItem_Click(object sender, EventArgs e)

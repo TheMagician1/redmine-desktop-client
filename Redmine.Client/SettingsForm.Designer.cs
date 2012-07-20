@@ -42,6 +42,7 @@
             this.CacheLifetime = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.redmineKey = new System.Windows.Forms.TextBox();
+            this.MinimizeToSystemTrayCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelButton.Location = new System.Drawing.Point(370, 254);
-            this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(56, 19);
             this.BtnCancelButton.TabIndex = 1;
@@ -70,7 +71,7 @@
             // BtnSaveButton
             // 
             this.BtnSaveButton.Location = new System.Drawing.Point(309, 254);
-            this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(56, 19);
             this.BtnSaveButton.TabIndex = 2;
@@ -82,7 +83,7 @@
             // 
             this.AuthenticationCheckBox.AutoSize = true;
             this.AuthenticationCheckBox.Location = new System.Drawing.Point(11, 46);
-            this.AuthenticationCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AuthenticationCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.AuthenticationCheckBox.Name = "AuthenticationCheckBox";
             this.AuthenticationCheckBox.Size = new System.Drawing.Size(138, 17);
             this.AuthenticationCheckBox.TabIndex = 3;
@@ -93,7 +94,7 @@
             // RedmineBaseUrlTextBox
             // 
             this.RedmineBaseUrlTextBox.Location = new System.Drawing.Point(11, 24);
-            this.RedmineBaseUrlTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RedmineBaseUrlTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RedmineBaseUrlTextBox.Name = "RedmineBaseUrlTextBox";
             this.RedmineBaseUrlTextBox.Size = new System.Drawing.Size(416, 20);
             this.RedmineBaseUrlTextBox.TabIndex = 4;
@@ -101,7 +102,7 @@
             // RedmineUsernameTextBox
             // 
             this.RedmineUsernameTextBox.Location = new System.Drawing.Point(11, 82);
-            this.RedmineUsernameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RedmineUsernameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RedmineUsernameTextBox.Name = "RedmineUsernameTextBox";
             this.RedmineUsernameTextBox.Size = new System.Drawing.Size(204, 20);
             this.RedmineUsernameTextBox.TabIndex = 6;
@@ -119,7 +120,7 @@
             // RedminePasswordTextBox
             // 
             this.RedminePasswordTextBox.Location = new System.Drawing.Point(224, 82);
-            this.RedminePasswordTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RedminePasswordTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RedminePasswordTextBox.Name = "RedminePasswordTextBox";
             this.RedminePasswordTextBox.PasswordChar = '*';
             this.RedminePasswordTextBox.Size = new System.Drawing.Size(204, 20);
@@ -139,7 +140,7 @@
             // 
             this.CheckForUpdatesCheckBox.AutoSize = true;
             this.CheckForUpdatesCheckBox.Location = new System.Drawing.Point(11, 141);
-            this.CheckForUpdatesCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CheckForUpdatesCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.CheckForUpdatesCheckBox.Name = "CheckForUpdatesCheckBox";
             this.CheckForUpdatesCheckBox.Size = new System.Drawing.Size(163, 17);
             this.CheckForUpdatesCheckBox.TabIndex = 9;
@@ -164,7 +165,7 @@
             0,
             0});
             this.CacheLifetime.Location = new System.Drawing.Point(11, 119);
-            this.CacheLifetime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CacheLifetime.Margin = new System.Windows.Forms.Padding(2);
             this.CacheLifetime.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -177,20 +178,34 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 163);
+            this.label5.Location = new System.Drawing.Point(8, 182);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Your Redmine Key";
+            this.label5.Visible = false;
             // 
             // redmineKey
             // 
-            this.redmineKey.Location = new System.Drawing.Point(12, 180);
+            this.redmineKey.Location = new System.Drawing.Point(10, 199);
             this.redmineKey.Margin = new System.Windows.Forms.Padding(2);
             this.redmineKey.Name = "redmineKey";
             this.redmineKey.Size = new System.Drawing.Size(416, 20);
             this.redmineKey.TabIndex = 4;
+            this.redmineKey.Visible = false;
+            // 
+            // MinimizeToSystemTrayCheckBox
+            // 
+            this.MinimizeToSystemTrayCheckBox.AutoSize = true;
+            this.MinimizeToSystemTrayCheckBox.Location = new System.Drawing.Point(10, 163);
+            this.MinimizeToSystemTrayCheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimizeToSystemTrayCheckBox.Name = "MinimizeToSystemTrayCheckBox";
+            this.MinimizeToSystemTrayCheckBox.Size = new System.Drawing.Size(132, 17);
+            this.MinimizeToSystemTrayCheckBox.TabIndex = 3;
+            this.MinimizeToSystemTrayCheckBox.Text = "Minimize to Systemtray";
+            this.MinimizeToSystemTrayCheckBox.UseVisualStyleBackColor = true;
+            this.MinimizeToSystemTrayCheckBox.CheckedChanged += new System.EventHandler(this.AuthenticationCheckBox_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -208,13 +223,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.redmineKey);
             this.Controls.Add(this.RedmineBaseUrlTextBox);
+            this.Controls.Add(this.MinimizeToSystemTrayCheckBox);
             this.Controls.Add(this.AuthenticationCheckBox);
             this.Controls.Add(this.BtnSaveButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.BtnCancelButton);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SettingsForm";
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).EndInit();
@@ -239,5 +255,6 @@
         private System.Windows.Forms.NumericUpDown CacheLifetime;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox redmineKey;
+        private System.Windows.Forms.CheckBox MinimizeToSystemTrayCheckBox;
     }
 }
