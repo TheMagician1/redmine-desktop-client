@@ -187,10 +187,25 @@ namespace Redmine.Client
                 conf.Save(ConfigurationSaveMode.Modified);
             }
             RedmineURL = conf.AppSettings.Settings["RedmineURL"].Value;
-            RedmineAuthentication = Convert.ToBoolean(conf.AppSettings.Settings["RedmineAuthentication"].Value);
+            try
+            {
+                RedmineAuthentication = Convert.ToBoolean(conf.AppSettings.Settings["RedmineAuthentication"].Value);
+            }
+            catch (Exception)
+            {
+                RedmineAuthentication = true;
+            }
+
             RedmineUser = conf.AppSettings.Settings["RedmineUser"].Value;
             RedminePassword = conf.AppSettings.Settings["RedminePassword"].Value;
-            CheckForUpdates = Convert.ToBoolean(conf.AppSettings.Settings["CheckForUpdates"].Value);
+            try
+            {
+                CheckForUpdates = Convert.ToBoolean(conf.AppSettings.Settings["CheckForUpdates"].Value);
+            }
+            catch (Exception)
+            {
+                CheckForUpdates = true;
+            }
             try
             {
                 CacheLifetime = Convert.ToInt32(conf.AppSettings.Settings["CacheLifetime"].Value);
