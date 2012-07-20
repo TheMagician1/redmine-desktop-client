@@ -27,6 +27,7 @@ namespace Redmine.Client
         private string RedmineUser;
         private string RedminePassword;
         private bool MinimizeToSystemTray;
+        private bool MinimizeOnStartTimer;
 
         private bool CheckForUpdates;
         private int CacheLifetime;
@@ -192,6 +193,7 @@ namespace Redmine.Client
                 conf.AppSettings.Settings.Add("RedminePassword", ConfigurationManager.AppSettings["RedminePassword"]);
                 conf.AppSettings.Settings.Add("CheckForUpdates", ConfigurationManager.AppSettings["CheckForUpdates"]);
                 conf.AppSettings.Settings.Add("MinimizeToSystemTray", ConfigurationManager.AppSettings["MinimizeToSystemTray"]);
+                conf.AppSettings.Settings.Add("MinimizeOnStartTimer", ConfigurationManager.AppSettings["MinimizeOnStartTimer"]);
                 conf.AppSettings.Settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
                 conf.Save(ConfigurationSaveMode.Modified);
             }
@@ -211,6 +213,14 @@ namespace Redmine.Client
             catch (Exception)
             {
                 MinimizeToSystemTray = true;
+            }
+            try
+            {
+                MinimizeOnStartTimer = Convert.ToBoolean(conf.AppSettings.Settings["MinimizeOnStartTimer"].Value);
+            }
+            catch (Exception)
+            {
+                MinimizeOnStartTimer = true;
             }
 
             RedmineUser = conf.AppSettings.Settings["RedmineUser"].Value;
@@ -310,6 +320,8 @@ namespace Redmine.Client
             {
                 timer1.Start();
                 BtnPauseButton.Text = "Pause";
+                if (MinimizeOnStartTimer)
+                    Minimize();
             }
             ticking = !ticking;
         }

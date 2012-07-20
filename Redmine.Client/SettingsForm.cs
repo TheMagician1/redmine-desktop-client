@@ -49,6 +49,7 @@ namespace Redmine.Client
                 config.AppSettings.Settings.Add("RedmineAuthentication", AuthenticationCheckBox.Checked.ToString());
                 config.AppSettings.Settings.Add("CheckForUpdates", CheckForUpdatesCheckBox.Checked.ToString());
                 config.AppSettings.Settings.Add("MinimizeToSystemTray", MinimizeToSystemTrayCheckBox.Checked.ToString());
+                config.AppSettings.Settings.Add("MinimizeOnStartTimer", MinimizeOnStartTimerCheckBox.Checked.ToString());
                 config.AppSettings.Settings.Add("CacheLifetime", CacheLifetime.Value.ToString());
                 config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
@@ -73,6 +74,7 @@ namespace Redmine.Client
                 conf.AppSettings.Settings.Add("RedminePassword", ConfigurationManager.AppSettings["RedminePassword"]);
                 conf.AppSettings.Settings.Add("CheckForUpdates", ConfigurationManager.AppSettings["CheckForUpdates"]);
                 conf.AppSettings.Settings.Add("MinimizeToSystemTray", ConfigurationManager.AppSettings["MinimizeToSystemTray"]);
+                conf.AppSettings.Settings.Add("MinimizeOnStartTimer", ConfigurationManager.AppSettings["MinimizeOnStartTimer"]);
                 conf.AppSettings.Settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
                 conf.Save(ConfigurationSaveMode.Modified);
             }
@@ -92,6 +94,14 @@ namespace Redmine.Client
             catch (Exception)
             {
                 MinimizeToSystemTrayCheckBox.Checked = true;
+            }
+            try
+            {
+                MinimizeOnStartTimerCheckBox.Checked = Convert.ToBoolean(conf.AppSettings.Settings["MinimizeOnStartTimer"].Value);
+            }
+            catch (Exception)
+            {
+                MinimizeOnStartTimerCheckBox.Checked = true;
             }
             RedmineUsernameTextBox.Text = conf.AppSettings.Settings["RedmineUser"].Value;
             RedminePasswordTextBox.Text = conf.AppSettings.Settings["RedminePassword"].Value;

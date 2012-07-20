@@ -43,6 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.redmineKey = new System.Windows.Forms.TextBox();
             this.MinimizeToSystemTrayCheckBox = new System.Windows.Forms.CheckBox();
+            this.MinimizeOnStartTimerCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,7 +83,7 @@
             // AuthenticationCheckBox
             // 
             this.AuthenticationCheckBox.AutoSize = true;
-            this.AuthenticationCheckBox.Location = new System.Drawing.Point(11, 46);
+            this.AuthenticationCheckBox.Location = new System.Drawing.Point(12, 48);
             this.AuthenticationCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.AuthenticationCheckBox.Name = "AuthenticationCheckBox";
             this.AuthenticationCheckBox.Size = new System.Drawing.Size(138, 17);
@@ -139,7 +140,7 @@
             // CheckForUpdatesCheckBox
             // 
             this.CheckForUpdatesCheckBox.AutoSize = true;
-            this.CheckForUpdatesCheckBox.Location = new System.Drawing.Point(11, 141);
+            this.CheckForUpdatesCheckBox.Location = new System.Drawing.Point(12, 141);
             this.CheckForUpdatesCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.CheckForUpdatesCheckBox.Name = "CheckForUpdatesCheckBox";
             this.CheckForUpdatesCheckBox.Size = new System.Drawing.Size(163, 17);
@@ -178,7 +179,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 182);
+            this.label5.Location = new System.Drawing.Point(9, 213);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 13);
@@ -188,7 +189,7 @@
             // 
             // redmineKey
             // 
-            this.redmineKey.Location = new System.Drawing.Point(10, 199);
+            this.redmineKey.Location = new System.Drawing.Point(11, 230);
             this.redmineKey.Margin = new System.Windows.Forms.Padding(2);
             this.redmineKey.Name = "redmineKey";
             this.redmineKey.Size = new System.Drawing.Size(416, 20);
@@ -198,7 +199,7 @@
             // MinimizeToSystemTrayCheckBox
             // 
             this.MinimizeToSystemTrayCheckBox.AutoSize = true;
-            this.MinimizeToSystemTrayCheckBox.Location = new System.Drawing.Point(10, 163);
+            this.MinimizeToSystemTrayCheckBox.Location = new System.Drawing.Point(12, 162);
             this.MinimizeToSystemTrayCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.MinimizeToSystemTrayCheckBox.Name = "MinimizeToSystemTrayCheckBox";
             this.MinimizeToSystemTrayCheckBox.Size = new System.Drawing.Size(132, 17);
@@ -206,6 +207,18 @@
             this.MinimizeToSystemTrayCheckBox.Text = "Minimize to Systemtray";
             this.MinimizeToSystemTrayCheckBox.UseVisualStyleBackColor = true;
             this.MinimizeToSystemTrayCheckBox.CheckedChanged += new System.EventHandler(this.AuthenticationCheckBox_CheckedChanged);
+            // 
+            // MinimizeOnStartTimerCheckBox
+            // 
+            this.MinimizeOnStartTimerCheckBox.AutoSize = true;
+            this.MinimizeOnStartTimerCheckBox.Location = new System.Drawing.Point(12, 183);
+            this.MinimizeOnStartTimerCheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimizeOnStartTimerCheckBox.Name = "MinimizeOnStartTimerCheckBox";
+            this.MinimizeOnStartTimerCheckBox.Size = new System.Drawing.Size(129, 17);
+            this.MinimizeOnStartTimerCheckBox.TabIndex = 3;
+            this.MinimizeOnStartTimerCheckBox.Text = "Minimize on start timer";
+            this.MinimizeOnStartTimerCheckBox.UseVisualStyleBackColor = true;
+            this.MinimizeOnStartTimerCheckBox.CheckedChanged += new System.EventHandler(this.AuthenticationCheckBox_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -223,6 +236,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.redmineKey);
             this.Controls.Add(this.RedmineBaseUrlTextBox);
+            this.Controls.Add(this.MinimizeOnStartTimerCheckBox);
             this.Controls.Add(this.MinimizeToSystemTrayCheckBox);
             this.Controls.Add(this.AuthenticationCheckBox);
             this.Controls.Add(this.BtnSaveButton);
@@ -256,5 +270,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox redmineKey;
         private System.Windows.Forms.CheckBox MinimizeToSystemTrayCheckBox;
+        private System.Windows.Forms.CheckBox MinimizeOnStartTimerCheckBox;
     }
 }
