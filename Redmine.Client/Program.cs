@@ -15,7 +15,14 @@ namespace Redmine.Client
                 UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RedmineClientForm());
+            try
+            {
+                Application.Run(new RedmineClientForm());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Start Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
