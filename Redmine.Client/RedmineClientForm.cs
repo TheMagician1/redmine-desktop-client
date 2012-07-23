@@ -95,7 +95,7 @@ namespace Redmine.Client
             throw new Exception("No projects found in Redmine.");
         }
 
-         private void FillForm(MainFormData data, Enumerations enums)
+        private void FillForm(MainFormData data, Enumerations enums)
         {
             updating = true;
             if (data.Projects.Count == 0 || data.Issues.Count == 0)
