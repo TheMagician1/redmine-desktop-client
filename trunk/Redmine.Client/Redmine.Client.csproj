@@ -75,7 +75,6 @@
     </Compile>
     <Compile Include="Assignees.cs" />
     <Compile Include="Enumerations.cs" />
-    <Compile Include="IIssue.cs" />
     <Compile Include="IssueFormData.cs" />
     <Compile Include="MainFormData.cs" />
     <Compile Include="NewIssueForm.cs">
