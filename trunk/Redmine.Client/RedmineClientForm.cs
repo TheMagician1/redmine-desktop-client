@@ -622,7 +622,7 @@ namespace Redmine.Client
 
         private void BtnNewIssueButton_Click(object sender, EventArgs e)
         {
-            NewIssueForm dlg = new NewIssueForm();
+            IssueForm dlg = new IssueForm();
             dlg.ProjectId = projectId;
             if (dlg.ShowDialog(this) == DialogResult.OK)
             {
