@@ -459,13 +459,14 @@
 
 Desktop tool for reporting time spent on issues in Redmine project management system.
 
-You can download it, report bugs, get the source or post feature requests on http://redmineclient.sourceforge.net
+You can download it, report bugs, get the source or post feature requests on http://code.google.com/p/redmine-desktop-client
 
 You are free to use this code as much as you wish, but if you make any improvemens, please share them with the community.
 
 Icons from the excellent Nuvola theme drawn by David Vignoni.
 
 Copyright (c) 2009, Pavel Kalian
+Copyright (c) 2012, Bas van Leeuwen
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
