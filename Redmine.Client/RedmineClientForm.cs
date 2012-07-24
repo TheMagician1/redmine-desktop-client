@@ -77,6 +77,8 @@ namespace Redmine.Client
             catch (System.Net.WebException e)
             {
                 MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                this.Cursor = Cursors.Default;
+
             }
        }
 
