@@ -55,6 +55,7 @@
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.cbStartDate = new System.Windows.Forms.CheckBox();
             this.cbDueDate = new System.Windows.Forms.CheckBox();
+            this.BtnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -331,6 +332,17 @@
             this.cbDueDate.UseVisualStyleBackColor = true;
             this.cbDueDate.CheckedChanged += new System.EventHandler(this.cbDueDate_CheckedChanged);
             // 
+            // BtnClose
+            // 
+            this.BtnClose.Location = new System.Drawing.Point(194, 253);
+            this.BtnClose.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnClose.Name = "BtnClose";
+            this.BtnClose.Size = new System.Drawing.Size(72, 19);
+            this.BtnClose.TabIndex = 4;
+            this.BtnClose.Text = "Close Issue";
+            this.BtnClose.UseVisualStyleBackColor = true;
+            this.BtnClose.Click += new System.EventHandler(this.BtnCloseButton_Click);
+            // 
             // IssueForm
             // 
             this.AcceptButton = this.BtnSaveButton;
@@ -362,6 +374,7 @@
             this.Controls.Add(this.TextBoxSubject);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ComboBoxTracker);
+            this.Controls.Add(this.BtnClose);
             this.Controls.Add(this.BtnSaveButton);
             this.Controls.Add(this.BtnCancelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -404,5 +417,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.CheckBox cbStartDate;
         private System.Windows.Forms.CheckBox cbDueDate;
+        private System.Windows.Forms.Button BtnClose;
     }
 }
