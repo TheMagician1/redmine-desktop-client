@@ -1,1 +1,5 @@
-<LatestVersion>2.0.0.0</LatestVersion>
+<?xml version="1.0" encoding="utf-8"?>  
+<redmineclient>  
+  <version>2.0.0.0</version>  
+  <url>http://code.google.com/p/redmine-desktop-client/downloads/detail?name=RedmineClient_V2.0.0.0.zip</url>  
+</redmineclient>
