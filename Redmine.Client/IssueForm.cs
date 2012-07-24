@@ -24,6 +24,7 @@ namespace Redmine.Client
             this.type = DialogType.New;
             InitializeComponent();
             this.Text = "Create New Issue for project " + project.Name;
+            BtnClose.Visible = false;
         }
 
         public IssueForm(Issue issue)
@@ -190,6 +191,15 @@ namespace Redmine.Client
         private void cbDueDate_CheckedChanged(object sender, EventArgs e)
         {
             DateDue.Enabled = cbDueDate.Checked;
+        }
+
+        private void BtnCloseButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to close issue " + issue.Id + "?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                ComboBoxStatus.SelectedIndex = ComboBoxStatus.FindStringExact("Closed");
+                BtnSaveButton_Click(null, null);
+            }
         }
 
 
