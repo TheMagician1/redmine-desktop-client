@@ -86,12 +86,10 @@ namespace Redmine.Client
 
         private void FillForm()
         {
-            Enumerations enums = new Enumerations();
-            
             this.ComboBoxAssignedTo.DataSource = RedmineClientForm.DataCache.Assignees;
             this.ComboBoxAssignedTo.DisplayMember = "Name";
             this.ComboBoxAssignedTo.ValueMember = "Id";
-            this.ComboBoxPriority.DataSource = enums.IssuePriorities;
+            this.ComboBoxPriority.DataSource = Enumerations.IssuePriorities;
             this.ComboBoxPriority.DisplayMember = "Name";
             this.ComboBoxPriority.ValueMember = "Id";
             this.ComboBoxStatus.DataSource = RedmineClientForm.DataCache.Statuses;
