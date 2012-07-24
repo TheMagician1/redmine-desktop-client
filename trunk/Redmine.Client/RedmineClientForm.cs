@@ -129,7 +129,7 @@ namespace Redmine.Client
             ComboBoxActivity.DisplayMember = "Name";
             ComboBoxActivity.ValueMember = "Id";
 
-            DataGridViewIssues.DataSource = data.Issues;//.ConvertAll(new Converter<Issue, IIssue>(IssueToIIssue));
+            DataGridViewIssues.DataSource = data.Issues;
             foreach (DataGridViewColumn column in DataGridViewIssues.Columns)
             {
                 if (column.Name != "Id" && column.Name != "Subject")
@@ -146,6 +146,9 @@ namespace Redmine.Client
             {
                 DataGridViewIssues.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;    
             }
+            DataGridViewIssues.RowHeadersWidth = 20;
+            DataGridViewIssues.Columns["Id"].DisplayIndex = 0;
+            DataGridViewIssues.Columns["Subject"].DisplayIndex = 1;
 
             if (ComboBoxProject.Items.Count > 0)
             {
