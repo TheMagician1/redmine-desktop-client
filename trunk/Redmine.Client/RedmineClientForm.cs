@@ -36,6 +36,8 @@ namespace Redmine.Client
         private Rectangle NormalSize;
         private DateTime MinimizeTime;
 
+        private Dictionary<int, Project> Projects;
+
         public RedmineClientForm()
         {
             InitializeComponent();
@@ -89,6 +91,7 @@ namespace Redmine.Client
                     projectId = projects[0].Id;
                 }
                 this.projectId = projectId;
+                Projects = MainFormData.ToDictionaryName(projects);
                 NameValueCollection curProject = new NameValueCollection { { "project_id", projectId.ToString() } };
                 return new MainFormData() { Issues = redmine.GetObjectList<Issue>(curProject), Members = redmine.GetObjectList<ProjectMembership>(curProject), Projects = projects };
             }
@@ -457,21 +460,25 @@ namespace Redmine.Client
             }
         }
 
+        private void EnsureSelectedIssue()
+        {
+            if (DataGridViewIssues.SelectedRows.Count == 1)
+                Int32.TryParse(DataGridViewIssues.SelectedRows[0].Cells["Id"].Value.ToString(), out issueId);
+        }
+
         private void BtnCommitButton_Click(object sender, EventArgs e)
         {
             bool shouldIRestart = ticking;
             if (issueId == 0)
-            {
-                if (DataGridViewIssues.SelectedRows.Count == 1)
-                    Int32.TryParse(DataGridViewIssues.SelectedRows[0].Cells["Id"].Value.ToString(), out issueId);
-            }
-            if (projectId != 0 && issueId != 0 && activityId != 0 && ticks != 0 )
+                EnsureSelectedIssue();
+
+            if (projectId != 0 && issueId != 0 && activityId != 0 && ticks != 0)
             {
                 ticking = false;
                 timer1.Stop();
                 BtnPauseButton.Text = "Start";
                 if (MessageBox.Show(String.Format("Do you really want to commit the following entry: {6} Project: {0}, Activity: {1}, Issue: {2}, Date: {3}, Comment: {4}, Time: {5}", 
-                    projectId, activityId, issueId, dateTimePicker1.Value.ToString("yyyy-MM-dd"), TextBoxComment.Text, String.Format("{0:0.##}", (double)ticks / 3600), Environment.NewLine), 
+                    Projects[projectId].Name, activityId, issueId, dateTimePicker1.Value.ToString("yyyy-MM-dd"), TextBoxComment.Text, String.Format("{0:0.##}", (double)ticks / 3600), Environment.NewLine), 
                     "Ready to commit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
                     TimeEntry entry = new TimeEntry();
@@ -622,8 +629,7 @@ namespace Redmine.Client
 
         private void BtnNewIssueButton_Click(object sender, EventArgs e)
         {
-            IssueForm dlg = new IssueForm();
-            dlg.ProjectId = projectId;
+            IssueForm dlg = new IssueForm(Projects[projectId]);
             if (dlg.ShowDialog(this) == DialogResult.OK)
             {
                 BtnRefreshButton_Click(null, null);
@@ -641,6 +647,24 @@ namespace Redmine.Client
                 {
                     System.Diagnostics.Process.Start(latestVersionUrl);
                 }
+            }
+        }
+
+        private void DataGridViewIssues_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EnsureSelectedIssue();
+            Issue issue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
+            try
+            {
+                IssueForm dlg = new IssueForm(issue);
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    BtnRefreshButton_Click(null, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
             }
         }
     }

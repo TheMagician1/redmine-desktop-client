@@ -12,7 +12,7 @@ namespace Redmine.Client
         public IList<IssueStatus> Statuses { get; set; }
 //        public List<IdentifiableName> Priorities { get; set; }
         public List<Redmine.Net.Api.Types.Version> Versions { get; set; }
-//        public IList<User> Watchers { get; set; }
+//        public List<Assignee> Watchers { get; set; }
         public List<Assignee> Assignees { get; set; }
 
     }
