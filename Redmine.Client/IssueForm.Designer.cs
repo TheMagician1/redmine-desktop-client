@@ -61,7 +61,7 @@
             // BtnSaveButton
             // 
             this.BtnSaveButton.Location = new System.Drawing.Point(308, 253);
-            this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(56, 19);
             this.BtnSaveButton.TabIndex = 4;
@@ -73,7 +73,7 @@
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelButton.Location = new System.Drawing.Point(368, 253);
-            this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(56, 19);
             this.BtnCancelButton.TabIndex = 3;
@@ -96,7 +96,7 @@
             this.ComboBoxTracker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxTracker.FormattingEnabled = true;
             this.ComboBoxTracker.Location = new System.Drawing.Point(9, 23);
-            this.ComboBoxTracker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ComboBoxTracker.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTracker.Name = "ComboBoxTracker";
             this.ComboBoxTracker.Size = new System.Drawing.Size(136, 21);
             this.ComboBoxTracker.TabIndex = 11;
@@ -105,7 +105,7 @@
             // 
             this.DateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DateStart.Location = new System.Drawing.Point(11, 179);
-            this.DateStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DateStart.Margin = new System.Windows.Forms.Padding(2);
             this.DateStart.Name = "DateStart";
             this.DateStart.Size = new System.Drawing.Size(86, 20);
             this.DateStart.TabIndex = 13;
@@ -123,7 +123,7 @@
             // TextBoxSubject
             // 
             this.TextBoxSubject.Location = new System.Drawing.Point(11, 61);
-            this.TextBoxSubject.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TextBoxSubject.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxSubject.Name = "TextBoxSubject";
             this.TextBoxSubject.Size = new System.Drawing.Size(414, 20);
             this.TextBoxSubject.TabIndex = 14;
@@ -143,7 +143,7 @@
             this.TextBoxDescription.AcceptsReturn = true;
             this.TextBoxDescription.AcceptsTab = true;
             this.TextBoxDescription.Location = new System.Drawing.Point(11, 98);
-            this.TextBoxDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TextBoxDescription.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxDescription.Multiline = true;
             this.TextBoxDescription.Name = "TextBoxDescription";
             this.TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -165,7 +165,7 @@
             this.ComboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxStatus.FormattingEnabled = true;
             this.ComboBoxStatus.Location = new System.Drawing.Point(148, 23);
-            this.ComboBoxStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ComboBoxStatus.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxStatus.Name = "ComboBoxStatus";
             this.ComboBoxStatus.Size = new System.Drawing.Size(136, 21);
             this.ComboBoxStatus.TabIndex = 18;
@@ -185,7 +185,7 @@
             this.ComboBoxPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxPriority.FormattingEnabled = true;
             this.ComboBoxPriority.Location = new System.Drawing.Point(290, 23);
-            this.ComboBoxPriority.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ComboBoxPriority.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxPriority.Name = "ComboBoxPriority";
             this.ComboBoxPriority.Size = new System.Drawing.Size(136, 21);
             this.ComboBoxPriority.TabIndex = 20;
@@ -194,7 +194,7 @@
             // 
             this.DateDue.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DateDue.Location = new System.Drawing.Point(101, 179);
-            this.DateDue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DateDue.Margin = new System.Windows.Forms.Padding(2);
             this.DateDue.Name = "DateDue";
             this.DateDue.Size = new System.Drawing.Size(86, 20);
             this.DateDue.TabIndex = 23;
@@ -212,7 +212,7 @@
             // TextBoxEstimatedTime
             // 
             this.TextBoxEstimatedTime.Location = new System.Drawing.Point(194, 179);
-            this.TextBoxEstimatedTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TextBoxEstimatedTime.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxEstimatedTime.Name = "TextBoxEstimatedTime";
             this.TextBoxEstimatedTime.Size = new System.Drawing.Size(89, 20);
             this.TextBoxEstimatedTime.TabIndex = 25;
@@ -232,7 +232,7 @@
             this.ComboBoxAssignedTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxAssignedTo.FormattingEnabled = true;
             this.ComboBoxAssignedTo.Location = new System.Drawing.Point(290, 179);
-            this.ComboBoxAssignedTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ComboBoxAssignedTo.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxAssignedTo.Name = "ComboBoxAssignedTo";
             this.ComboBoxAssignedTo.Size = new System.Drawing.Size(136, 21);
             this.ComboBoxAssignedTo.TabIndex = 27;
@@ -252,7 +252,7 @@
             this.ComboBoxTargetVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxTargetVersion.FormattingEnabled = true;
             this.ComboBoxTargetVersion.Location = new System.Drawing.Point(290, 217);
-            this.ComboBoxTargetVersion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ComboBoxTargetVersion.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTargetVersion.Name = "ComboBoxTargetVersion";
             this.ComboBoxTargetVersion.Size = new System.Drawing.Size(136, 21);
             this.ComboBoxTargetVersion.TabIndex = 29;
@@ -265,7 +265,7 @@
             0,
             0});
             this.numericUpDown1.Location = new System.Drawing.Point(194, 218);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(90, 20);
             this.numericUpDown1.TabIndex = 31;
@@ -284,11 +284,12 @@
             // 
             this.ListBoxWatchers.FormattingEnabled = true;
             this.ListBoxWatchers.Location = new System.Drawing.Point(11, 218);
-            this.ListBoxWatchers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ListBoxWatchers.Margin = new System.Windows.Forms.Padding(2);
             this.ListBoxWatchers.Name = "ListBoxWatchers";
             this.ListBoxWatchers.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListBoxWatchers.Size = new System.Drawing.Size(176, 56);
             this.ListBoxWatchers.TabIndex = 33;
+            this.ListBoxWatchers.Visible = false;
             // 
             // label12
             // 
@@ -299,6 +300,7 @@
             this.label12.Size = new System.Drawing.Size(53, 13);
             this.label12.TabIndex = 34;
             this.label12.Text = "Watchers";
+            this.label12.Visible = false;
             // 
             // backgroundWorker2
             // 
@@ -309,7 +311,7 @@
             // 
             this.cbStartDate.AutoSize = true;
             this.cbStartDate.Location = new System.Drawing.Point(11, 162);
-            this.cbStartDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.cbStartDate.Name = "cbStartDate";
             this.cbStartDate.Size = new System.Drawing.Size(72, 17);
             this.cbStartDate.TabIndex = 35;
@@ -321,7 +323,7 @@
             // 
             this.cbDueDate.AutoSize = true;
             this.cbDueDate.Location = new System.Drawing.Point(101, 162);
-            this.cbDueDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbDueDate.Margin = new System.Windows.Forms.Padding(2);
             this.cbDueDate.Name = "cbDueDate";
             this.cbDueDate.Size = new System.Drawing.Size(70, 17);
             this.cbDueDate.TabIndex = 36;
@@ -329,7 +331,7 @@
             this.cbDueDate.UseVisualStyleBackColor = true;
             this.cbDueDate.CheckedChanged += new System.EventHandler(this.cbDueDate_CheckedChanged);
             // 
-            // NewIssueForm
+            // IssueForm
             // 
             this.AcceptButton = this.BtnSaveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,8 +365,8 @@
             this.Controls.Add(this.BtnSaveButton);
             this.Controls.Add(this.BtnCancelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "NewIssueForm";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "IssueForm";
             this.Text = "Create new issue";
             this.Load += new System.EventHandler(this.NewIssueForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

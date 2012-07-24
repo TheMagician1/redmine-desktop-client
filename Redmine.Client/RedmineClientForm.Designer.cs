@@ -225,6 +225,7 @@ namespace Redmine.Client
             this.DataGridViewIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewIssues.Size = new System.Drawing.Size(391, 304);
             this.DataGridViewIssues.TabIndex = 16;
+            this.DataGridViewIssues.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewIssues_CellContentDoubleClick);
             this.DataGridViewIssues.SelectionChanged += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
             // 
             // timer1

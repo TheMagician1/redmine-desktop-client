@@ -13,23 +13,34 @@ namespace Redmine.Client
             New,
             Edit,
         };
-        internal int ProjectId;
+        private Project project;
+        private Issue issue;
+        private int ProjectId { get { if (this.type == DialogType.New) return project.Id; else return issue.Project.Id; } }
         private DialogType type;
 
-        public IssueForm(DialogType type = DialogType.New)
+        public IssueForm(Project project)
         {
-            this.type = type;
+            this.project = project;
+            this.type = DialogType.New;
             InitializeComponent();
-            if (this.type == DialogType.New)
-                this.Text = "Create New Issue";
-            else
-                this.Text = "Edit Issue";
+            this.Text = "Create New Issue for project " + project.Name;
+        }
+
+        public IssueForm(Issue issue)
+        {
+            this.issue = issue;
+            this.type = DialogType.Edit;
+            InitializeComponent();
+
+            this.Text = "Edit Issue " + issue.Id.ToString() + " for project " + issue.Project.Name;
         }
 
         private void BtnSaveButton_Click(object sender, EventArgs e)
         {
             Issue issue = new Issue();
-            issue.Project = new IdentifiableName { Id = this.ProjectId };
+            if (type == DialogType.Edit)
+                issue.Id = this.issue.Id;
+            issue.Project = new IdentifiableName { Id = ProjectId };
             issue.AssignedTo = new IdentifiableName { Id = Convert.ToInt32(ComboBoxAssignedTo.SelectedValue) };
             issue.Description = TextBoxDescription.Text;
             
@@ -53,7 +64,10 @@ namespace Redmine.Client
             {
                 if (issue.Subject != String.Empty)
                 {
-                    RedmineClientForm.redmine.CreateObject<Issue>(issue);
+                    if (type == DialogType.New)
+                        RedmineClientForm.redmine.CreateObject<Issue>(issue);
+                    else
+                        RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -65,7 +79,11 @@ namespace Redmine.Client
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("Creating the issue failed, the server responded: {0}", ex.Message),
+                if (type == DialogType.New)
+                    MessageBox.Show(String.Format("Creating the issue failed, the server responded: {0}", ex.Message),
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(String.Format("Updating the issue failed, the server responded: {0}", ex.Message),
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -111,9 +129,29 @@ namespace Redmine.Client
             this.ComboBoxTracker.DataSource = RedmineClientForm.DataCache.Trackers;
             this.ComboBoxTracker.DisplayMember = "Name";
             this.ComboBoxTracker.ValueMember = "Id";
-            this.ListBoxWatchers.DataSource = RedmineClientForm.DataCache.Assignees;
-            this.ListBoxWatchers.DisplayMember = "Name";
-            this.ListBoxWatchers.ClearSelected();
+            //this.ListBoxWatchers.DataSource = RedmineClientForm.DataCache.Watchers;
+            //this.ListBoxWatchers.DisplayMember = "Name";
+            //this.ListBoxWatchers.ClearSelected();
+
+            if (this.type == DialogType.Edit)
+            {
+                if (issue.AssignedTo != null)
+                    ComboBoxAssignedTo.SelectedIndex = ComboBoxAssignedTo.FindStringExact(issue.AssignedTo.Name);
+                if (issue.Description != null)
+                    TextBoxDescription.Text = issue.Description;
+                TextBoxEstimatedTime.Text = issue.EstimatedHours.ToString();
+                numericUpDown1.Value = Convert.ToDecimal(issue.DoneRatio);
+                ComboBoxPriority.SelectedIndex = ComboBoxPriority.FindStringExact(issue.Priority.Name);
+                if (issue.StartDate.HasValue)
+                    DateStart.Value = issue.StartDate.Value;
+                if (issue.DueDate.HasValue)
+                    DateDue.Value = issue.DueDate.Value;
+                ComboBoxStatus.SelectedIndex = ComboBoxStatus.FindStringExact(issue.Status.Name);
+                TextBoxSubject.Text = issue.Subject;
+                if (issue.FixedVersion != null)
+                    ComboBoxTargetVersion.SelectedIndex = ComboBoxTargetVersion.FindStringExact(issue.FixedVersion.Name);
+                ComboBoxTracker.SelectedIndex = ComboBoxTracker.FindStringExact(issue.Tracker.Name);
+            }
         }
 
         private static Assignee MemberToAssignee(ProjectMembership projectMember)
@@ -125,7 +163,6 @@ namespace Redmine.Client
         {
             RedmineClientForm.DataCache = new IssueFormData();
             int projectId = (int)e.Argument;
-//            RedmineClientForm.DataCache.Priorities = RedmineClientForm.redmine.GetObjectList<Priorities(projectId);
             NameValueCollection parameters = new NameValueCollection { { "project_id", projectId.ToString() } };
 
             RedmineClientForm.DataCache.Statuses = RedmineClientForm.redmine.GetObjectList<IssueStatus>(parameters);
@@ -133,7 +170,9 @@ namespace Redmine.Client
             RedmineClientForm.DataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetObjectList<Redmine.Net.Api.Types.Version>(parameters);
             RedmineClientForm.DataCache.Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
             List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetObjectList<ProjectMembership>(parameters);
+            //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
             RedmineClientForm.DataCache.Assignees = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
+            RedmineClientForm.DataCache.Assignees.Insert(0, new Assignee(new ProjectMembership { Id = 0, User = new IdentifiableName { Id = 0, Name = "" } }));
         }
 
         private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
