@@ -25,6 +25,7 @@ namespace Redmine.Client
             InitializeComponent();
             this.Text = "Create New Issue for project " + project.Name;
             BtnClose.Visible = false;
+            linkEditInRedmine.Visible = false;
         }
 
         public IssueForm(Issue issue)
@@ -200,6 +201,14 @@ namespace Redmine.Client
                 ComboBoxStatus.SelectedIndex = ComboBoxStatus.FindStringExact("Closed");
                 BtnSaveButton_Click(null, null);
             }
+        }
+
+        private void linkEditInRedmine_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.linkEditInRedmine.LinkVisited = true;
+
+            // Navigate to a URL.
+            System.Diagnostics.Process.Start(RedmineClientForm.RedmineURL + "/issues/" + issue.Id.ToString());
         }
 
 
