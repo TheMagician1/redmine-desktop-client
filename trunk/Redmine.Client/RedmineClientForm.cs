@@ -95,7 +95,7 @@ namespace Redmine.Client
             throw new Exception("No projects found in Redmine.");
         }
 
-        private void FillForm(MainFormData data, Enumerations enums)
+        private void FillForm(MainFormData data)
         {
             updating = true;
             if (data.Projects.Count == 0 || data.Issues.Count == 0)
@@ -122,7 +122,7 @@ namespace Redmine.Client
             ComboBoxProject.ValueMember = "Id";
             ComboBoxProject.DisplayMember = "Name";
             
-            ComboBoxActivity.DataSource = enums.Activities;
+            ComboBoxActivity.DataSource = Enumerations.Activities;
             ComboBoxActivity.DisplayMember = "Name";
             ComboBoxActivity.ValueMember = "Id";
 
@@ -178,6 +178,8 @@ namespace Redmine.Client
 
         private void LoadConfig()
         {
+            Enumerations.LoadAll();
+
             Configuration roamingConf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
             ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
             configFileMap.ExeConfigFilename = roamingConf.FilePath;
@@ -527,7 +529,7 @@ namespace Redmine.Client
                 else
                     projectId = (int)ComboBoxProject.SelectedValue;
 
-                FillForm(PrepareFormData(projectId), new Enumerations());
+                FillForm(PrepareFormData(projectId));
                 updating = true;
                 ComboBoxProject.SelectedIndex = reselect;
                 updating = false;
@@ -557,7 +559,7 @@ namespace Redmine.Client
             }
             try
             {
-                FillForm(PrepareFormData(projectId), new Enumerations());
+                FillForm(PrepareFormData(projectId));
                 ComboBoxProject.SelectedIndex = reselect;
             }
             catch(Exception ex)
@@ -581,7 +583,7 @@ namespace Redmine.Client
                 try
                 {
                     currentUser = redmine.GetCurrentUser();
-                    FillForm(PrepareFormData(0), new Enumerations());
+                    FillForm(PrepareFormData(0));
                 }
                 catch (Exception ex)
                 {
@@ -613,7 +615,7 @@ namespace Redmine.Client
             }
             else
             {
-				FillForm((MainFormData)e.Result, new Enumerations());
+				FillForm((MainFormData)e.Result);
             }
             this.Cursor = Cursors.Default;
         }

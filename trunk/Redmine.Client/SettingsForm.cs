@@ -54,6 +54,7 @@ namespace Redmine.Client
                 config.AppSettings.Settings.Add("CacheLifetime", CacheLifetime.Value.ToString());
                 config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
+                Enumerations.SaveAll();
             }
             catch (Exception ex)
             {
