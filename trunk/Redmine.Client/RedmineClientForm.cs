@@ -477,29 +477,36 @@ namespace Redmine.Client
             if (issueId == 0)
                 EnsureSelectedIssue();
 
-            if (projectId != 0 && issueId != 0 && activityId != 0 && ticks != 0)
+            if (DataGridViewIssues.SelectedRows.Count == 1 && activityId != 0 && ticks != 0)
             {
+                Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
+
                 ticking = false;
                 timer1.Stop();
                 BtnPauseButton.Text = "Start";
                 if (MessageBox.Show(String.Format("Do you really want to commit the following entry: {6} Project: {0}, Activity: {1}, Issue: {2}, Date: {3}, Comment: {4}, Time: {5}", 
-                    Projects[projectId].Name, activityId, issueId, dateTimePicker1.Value.ToString("yyyy-MM-dd"), TextBoxComment.Text, String.Format("{0:0.##}", (double)ticks / 3600), Environment.NewLine), 
+                    selectedIssue.Project.Name, activityId, selectedIssue.Id, dateTimePicker1.Value.ToString("yyyy-MM-dd"), TextBoxComment.Text, String.Format("{0:0.##}", (double)ticks / 3600), Environment.NewLine), 
                     "Ready to commit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
                     TimeEntry entry = new TimeEntry();
                     entry.Activity = new IdentifiableName { Id = activityId };
                     entry.Comments = TextBoxComment.Text;
                     entry.Hours = (decimal)ticks/3600;
-                    entry.Issue = new IdentifiableName { Id = issueId };
-                    entry.Project = new IdentifiableName { Id = projectId };
+                    entry.Issue = new IdentifiableName { Id = selectedIssue.Id };
+                    entry.Project = new IdentifiableName { Id = selectedIssue.Project.Id };
                     entry.SpentOn = dateTimePicker1.Value;
                     entry.User = new IdentifiableName { Id = currentUser.Id };
-
-                    redmine.CreateObject(entry);
-
-                    ResetForm();
-                    MessageBox.Show("Work logged successfully ", "Work logged", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
+                    try
+                    {
+                        redmine.CreateObject(entry);
+                        ResetForm();
+                        MessageBox.Show("Work logged successfully ", "Work logged", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
                 }
                 else if (shouldIRestart)
                 {
