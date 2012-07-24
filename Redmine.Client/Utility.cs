@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.Diagnostics;
 
 namespace Redmine.Client
 {
@@ -14,7 +15,7 @@ namespace Redmine.Client
         /// <summary>
         /// URL of the current version XML file
         /// </summary>
-        private const string currentVersionXmlUrl = "http://redmineclient.sourceforge.net/currentversion.xml";
+        private const string currentVersionXmlUrl = "https://redmine-desktop-client.googlecode.com/svn/tags/releases/latestversion.xml";
 
         /// <summary>
         /// checks for updates
@@ -26,10 +27,10 @@ namespace Redmine.Client
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(new XmlTextReader(currentVersionXmlUrl));
-                System.Version latestVersion = new System.Version(doc.SelectSingleNode("//redmineclient/version").InnerText);
+                Version latestVersion = new Version(doc.SelectSingleNode("//redmineclient/version").InnerText);
                 string latestVersionUrl = doc.SelectSingleNode("//redmineclient/url").InnerText;
-
-                if (System.Reflection.Assembly.GetExecutingAssembly().GetName().Version < latestVersion)
+                Version myVersion = new Version(FileVersionInfo.GetVersionInfo(System.Windows.Forms.Application.ExecutablePath).FileVersion);
+                if (myVersion < latestVersion)
                 {
                     return latestVersionUrl;
                 }
