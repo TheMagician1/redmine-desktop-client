@@ -22,7 +22,7 @@ namespace Redmine.Client
         private bool updating = false;
         private User currentUser = null;
 
-        private string RedmineURL;
+        public static string RedmineURL;
         private bool RedmineAuthentication;
         private string RedmineUser;
         private string RedminePassword;

@@ -56,6 +56,7 @@
             this.cbStartDate = new System.Windows.Forms.CheckBox();
             this.cbDueDate = new System.Windows.Forms.CheckBox();
             this.BtnClose = new System.Windows.Forms.Button();
+            this.linkEditInRedmine = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -284,11 +285,11 @@
             // ListBoxWatchers
             // 
             this.ListBoxWatchers.FormattingEnabled = true;
-            this.ListBoxWatchers.Location = new System.Drawing.Point(11, 218);
+            this.ListBoxWatchers.Location = new System.Drawing.Point(11, 244);
             this.ListBoxWatchers.Margin = new System.Windows.Forms.Padding(2);
             this.ListBoxWatchers.Name = "ListBoxWatchers";
             this.ListBoxWatchers.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.ListBoxWatchers.Size = new System.Drawing.Size(176, 56);
+            this.ListBoxWatchers.Size = new System.Drawing.Size(176, 30);
             this.ListBoxWatchers.TabIndex = 33;
             this.ListBoxWatchers.Visible = false;
             // 
@@ -343,6 +344,17 @@
             this.BtnClose.UseVisualStyleBackColor = true;
             this.BtnClose.Click += new System.EventHandler(this.BtnCloseButton_Click);
             // 
+            // linkEditInRedmine
+            // 
+            this.linkEditInRedmine.AutoSize = true;
+            this.linkEditInRedmine.Location = new System.Drawing.Point(8, 220);
+            this.linkEditInRedmine.Name = "linkEditInRedmine";
+            this.linkEditInRedmine.Size = new System.Drawing.Size(127, 13);
+            this.linkEditInRedmine.TabIndex = 37;
+            this.linkEditInRedmine.TabStop = true;
+            this.linkEditInRedmine.Text = "Edit this issue in Redmine";
+            this.linkEditInRedmine.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEditInRedmine_LinkClicked);
+            // 
             // IssueForm
             // 
             this.AcceptButton = this.BtnSaveButton;
@@ -350,6 +362,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
             this.ClientSize = new System.Drawing.Size(434, 281);
+            this.Controls.Add(this.linkEditInRedmine);
             this.Controls.Add(this.DateDue);
             this.Controls.Add(this.DateStart);
             this.Controls.Add(this.cbDueDate);
@@ -418,5 +431,6 @@
         private System.Windows.Forms.CheckBox cbStartDate;
         private System.Windows.Forms.CheckBox cbDueDate;
         private System.Windows.Forms.Button BtnClose;
+        private System.Windows.Forms.LinkLabel linkEditInRedmine;
     }
 }
