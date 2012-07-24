@@ -1,6 +1,6 @@
 ﻿namespace Redmine.Client
 {
-    partial class NewIssueForm
+    partial class IssueForm
     {
         /// <summary>
         /// Required designer variable.

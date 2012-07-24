@@ -7,13 +7,23 @@ using Redmine.Net.Api.Types;
 
 namespace Redmine.Client
 {
-    public partial class NewIssueForm : Form
+    public partial class IssueForm : Form
     {
+        public enum DialogType {
+            New,
+            Edit,
+        };
         internal int ProjectId;
+        private DialogType type;
 
-        public NewIssueForm()
+        public IssueForm(DialogType type = DialogType.New)
         {
+            this.type = type;
             InitializeComponent();
+            if (this.type == DialogType.New)
+                this.Text = "Create New Issue";
+            else
+                this.Text = "Edit Issue";
         }
 
         private void BtnSaveButton_Click(object sender, EventArgs e)
