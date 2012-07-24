@@ -454,7 +454,7 @@
 </value>
   </data>
   <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>Redmine Client
+    <value>Redmine Desktop Client
 =========
 
 Desktop tool for reporting time spent on issues in Redmine project management system.
