@@ -52,34 +52,49 @@ namespace Redmine.Client
 				this.DataGridViewIssues.Click += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
 			}
             LoadConfig();
-            if (this.MinimizeToSystemTray)
-                this.RestoreToolStripMenuItem.Text = "&Hide";
-            else
-                this.RestoreToolStripMenuItem.Text = "Mi&nimize";
 
-            if (RedmineAuthentication)
-                redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword);
-            else
-                redmine = new RedmineManager(RedmineURL);
-            this.Cursor = Cursors.AppStarting;
-            this.BtnCommitButton.Enabled = false;
-            this.BtnRefreshButton.Enabled = false;
-            this.BtnNewIssueButton.Enabled = false;
-            try
+            bool bRetry = false;
+            do
             {
-                currentUser = redmine.GetCurrentUser();
-                if (this.CheckForUpdates)
+                try
                 {
-                    backgroundWorker2.RunWorkerAsync();
-                }
-                backgroundWorker1.RunWorkerAsync(0);
-            }
-            catch (System.Net.WebException e)
-            {
-                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                this.Cursor = Cursors.Default;
+                    if (this.MinimizeToSystemTray)
+                        this.RestoreToolStripMenuItem.Text = "&Hide";
+                    else
+                        this.RestoreToolStripMenuItem.Text = "Mi&nimize";
 
-            }
+                    if (RedmineAuthentication)
+                        redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword);
+                    else
+                        redmine = new RedmineManager(RedmineURL);
+                    this.Cursor = Cursors.AppStarting;
+                    this.BtnCommitButton.Enabled = false;
+                    this.BtnRefreshButton.Enabled = false;
+                    this.BtnNewIssueButton.Enabled = false;
+                    try
+                    {
+                        currentUser = redmine.GetCurrentUser();
+                        if (this.CheckForUpdates)
+                        {
+                            backgroundWorker2.RunWorkerAsync();
+                        }
+                        backgroundWorker1.RunWorkerAsync(0);
+                    }
+                    catch (System.Net.WebException e)
+                    {
+                        MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        this.Cursor = Cursors.Default;
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (MessageBox.Show(e.Message, "Startup error. Check configuration.", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.Cancel)
+                        return;
+                    if (!ShowSettingsForm())
+                        return;
+                    bRetry = true;
+                }
+            } while (bRetry);
        }
 
         private MainFormData PrepareFormData(int projectId)
@@ -594,26 +609,32 @@ namespace Redmine.Client
 
         private void BtnSettingsButton_Click(object sender, EventArgs e)
         {
+            ShowSettingsForm();
+        }
+
+        private bool ShowSettingsForm()
+        {
             SettingsForm dlg = new SettingsForm();
-            if (dlg.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            if(dlg.ShowDialog(this) != System.Windows.Forms.DialogResult.OK)
+                return false;
+
+            LoadConfig();
+            this.Cursor = Cursors.AppStarting;
+            if (RedmineAuthentication)
+                redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword);
+            else
+                redmine = new RedmineManager(RedmineURL);
+            try
             {
-                LoadConfig();
-                this.Cursor = Cursors.AppStarting;
-                if (RedmineAuthentication)
-                    redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword);
-                else
-                    redmine = new RedmineManager(RedmineURL);
-                try
-                {
-                    currentUser = redmine.GetCurrentUser();
-                    FillForm(PrepareFormData(0));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
-                this.Cursor = Cursors.Default;
+                currentUser = redmine.GetCurrentUser();
+                FillForm(PrepareFormData(0));
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            this.Cursor = Cursors.Default;
+            return true;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
