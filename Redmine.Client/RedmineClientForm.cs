@@ -347,6 +347,7 @@ namespace Redmine.Client
                     Minimize();
             }
             ticking = !ticking;
+            UpdateNotifyIconText();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -369,6 +370,31 @@ namespace Redmine.Client
             this.UpdateTime();
             this.dateTimePicker1.Value = DateTime.Now;
             this.TextBoxComment.Text = String.Empty;
+        }
+
+        private void UpdateNotifyIconText()
+        {
+            if (ticking)
+            {
+                string issueText = "";
+                string activityText = "";
+                if (DataGridViewIssues.SelectedRows.Count == 1)
+                {
+                    Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
+                    issueText = String.Format("({0}) {1}", selectedIssue.Id, selectedIssue.Subject);
+                }
+                if (activityId != 0)
+                {
+                    IdentifiableName selectedActivity = (IdentifiableName)ComboBoxActivity.SelectedItem;
+                    activityText = selectedActivity.Name;
+                }
+                string finalText = String.Format("Redmine Client - {2}{0}{1}", Environment.NewLine, issueText, activityText);
+                if (finalText.Length>63)
+                    finalText = String.Format("{0}...", finalText.Substring(0,60));
+                this.notifyIcon1.Text = finalText;
+            }
+            else
+                this.notifyIcon1.Text = "Redmine Client";
         }
 
         private void BtnResetButton_Click(object sender, EventArgs e)
@@ -463,6 +489,7 @@ namespace Redmine.Client
             {
                 issueId = 0;
             }
+            UpdateNotifyIconText();
         }
 
         private void EnsureSelectedIssue()
@@ -480,16 +507,17 @@ namespace Redmine.Client
             if (DataGridViewIssues.SelectedRows.Count == 1 && activityId != 0 && ticks != 0)
             {
                 Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
+                IdentifiableName selectedActivity = (IdentifiableName)ComboBoxActivity.SelectedItem;
 
                 ticking = false;
                 timer1.Stop();
                 BtnPauseButton.Text = "Start";
-                if (MessageBox.Show(String.Format("Do you really want to commit the following entry: {6} Project: {0}, Activity: {1}, Issue: {2}, Date: {3}, Comment: {4}, Time: {5}", 
-                    selectedIssue.Project.Name, activityId, selectedIssue.Id, dateTimePicker1.Value.ToString("yyyy-MM-dd"), TextBoxComment.Text, String.Format("{0:0.##}", (double)ticks / 3600), Environment.NewLine), 
+                if (MessageBox.Show(String.Format("Do you really want to commit the following entry: {6} Project: {0}, Activity: {1}, Issue: {2}, Date: {3}, Comment: {4}, Time: {5}",
+                    selectedIssue.Project.Name, selectedActivity.Name, selectedIssue.Id, dateTimePicker1.Value.ToString("yyyy-MM-dd"), TextBoxComment.Text, String.Format("{0:0.##}", (double)ticks / 3600), Environment.NewLine), 
                     "Ready to commit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
                     TimeEntry entry = new TimeEntry();
-                    entry.Activity = new IdentifiableName { Id = activityId };
+                    entry.Activity = new IdentifiableName { Id = selectedActivity.Id };
                     entry.Comments = TextBoxComment.Text;
                     entry.Hours = (decimal)ticks/3600;
                     entry.Issue = new IdentifiableName { Id = selectedIssue.Id };
@@ -534,6 +562,7 @@ namespace Redmine.Client
             {
                 activityId = 0;
             }
+            UpdateNotifyIconText();
         }
 
         private void ComboBoxProject_SelectedIndexChanged(object sender, EventArgs e)
