@@ -184,6 +184,23 @@ namespace Redmine.Client
             this.Cursor = Cursors.Default;
         }
 
+
+        String GetSetting(KeyValueConfigurationCollection coll, String name, String defaultVal)
+        {
+            KeyValueConfigurationElement val = coll[name];
+            if (val == null)
+                return defaultVal;
+            return val.Value;
+        }
+        Boolean GetSetting(KeyValueConfigurationCollection coll, String name, Boolean defaultVal)
+        {
+            return Convert.ToBoolean(GetSetting(coll, name, Convert.ToString(defaultVal)));
+        }
+        Int32 GetSetting(KeyValueConfigurationCollection coll, String name, Int32 defaultVal)
+        {
+            return Convert.ToInt32(GetSetting(coll, name, Convert.ToString(defaultVal)));
+        }
+
         private void LoadConfig()
         {
             Enumerations.LoadAll();
@@ -192,71 +209,29 @@ namespace Redmine.Client
             ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
             configFileMap.ExeConfigFilename = roamingConf.FilePath;
             Configuration conf = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-            if (conf.AppSettings.Settings.Count == 0)
+            KeyValueConfigurationCollection settings = conf.AppSettings.Settings;
+            if (settings.Count == 0)
             {
-                conf.AppSettings.Settings.Add("RedmineURL", ConfigurationManager.AppSettings["RedmineURL"]);
-                conf.AppSettings.Settings.Add("RedmineAuthentication", ConfigurationManager.AppSettings["RedmineAuthentication"]);
-                conf.AppSettings.Settings.Add("RedmineUser", ConfigurationManager.AppSettings["RedmineUser"]);
-                conf.AppSettings.Settings.Add("RedminePassword", ConfigurationManager.AppSettings["RedminePassword"]);
-                conf.AppSettings.Settings.Add("CheckForUpdates", ConfigurationManager.AppSettings["CheckForUpdates"]);
-                conf.AppSettings.Settings.Add("MinimizeToSystemTray", ConfigurationManager.AppSettings["MinimizeToSystemTray"]);
-                conf.AppSettings.Settings.Add("MinimizeOnStartTimer", ConfigurationManager.AppSettings["MinimizeOnStartTimer"]);
-                conf.AppSettings.Settings.Add("PopupInterval", ConfigurationManager.AppSettings["PopupInterval"]);
-                conf.AppSettings.Settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
+                settings.Add("RedmineURL", ConfigurationManager.AppSettings["RedmineURL"]);
+                settings.Add("RedmineAuthentication", ConfigurationManager.AppSettings["RedmineAuthentication"]);
+                settings.Add("RedmineUser", ConfigurationManager.AppSettings["RedmineUser"]);
+                settings.Add("RedminePassword", ConfigurationManager.AppSettings["RedminePassword"]);
+                settings.Add("CheckForUpdates", ConfigurationManager.AppSettings["CheckForUpdates"]);
+                settings.Add("MinimizeToSystemTray", ConfigurationManager.AppSettings["MinimizeToSystemTray"]);
+                settings.Add("MinimizeOnStartTimer", ConfigurationManager.AppSettings["MinimizeOnStartTimer"]);
+                settings.Add("PopupInterval", ConfigurationManager.AppSettings["PopupInterval"]);
+                settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
                 conf.Save(ConfigurationSaveMode.Modified);
             }
-            RedmineURL = conf.AppSettings.Settings["RedmineURL"].Value;
-            try
-            {
-                RedmineAuthentication = Convert.ToBoolean(conf.AppSettings.Settings["RedmineAuthentication"].Value);
-            }
-            catch (Exception)
-            {
-                RedmineAuthentication = true;
-            }
-            RedmineUser = conf.AppSettings.Settings["RedmineUser"].Value;
-            RedminePassword = conf.AppSettings.Settings["RedminePassword"].Value;
-            try
-            {
-                MinimizeToSystemTray = Convert.ToBoolean(conf.AppSettings.Settings["MinimizeToSystemTray"].Value);
-            }
-            catch (Exception)
-            {
-                MinimizeToSystemTray = true;
-            }
-            try
-            {
-                MinimizeOnStartTimer = Convert.ToBoolean(conf.AppSettings.Settings["MinimizeOnStartTimer"].Value);
-            }
-            catch (Exception)
-            {
-                MinimizeOnStartTimer = true;
-            }
-
-            try
-            {
-                CheckForUpdates = Convert.ToBoolean(conf.AppSettings.Settings["CheckForUpdates"].Value);
-            }
-            catch (Exception)
-            {
-                CheckForUpdates = true;
-            }
-            try
-            {
-                CacheLifetime = Convert.ToInt32(conf.AppSettings.Settings["CacheLifetime"].Value);
-            }
-            catch (Exception)
-            {
-                CacheLifetime = 0;
-            }
-            try
-            {
-                PopupInterval = Convert.ToInt32(conf.AppSettings.Settings["PopupInterval"].Value);
-            }
-            catch (Exception)
-            {
-                PopupInterval = 0;
-            }
+            RedmineURL              = GetSetting(settings, "RedmineURL", "");
+            RedmineAuthentication   = GetSetting(settings, "RedmineAuthentication", true);
+            RedmineUser             = GetSetting(settings, "RedmineUser", "");
+            RedminePassword         = GetSetting(settings, "RedminePassword", "");
+            MinimizeToSystemTray    = GetSetting(settings, "MinimizeToSystemTray", true);
+            MinimizeOnStartTimer    = GetSetting(settings, "MinimizeOnStartTimer", true);
+            CheckForUpdates         = GetSetting(settings, "CheckForUpdates", true);
+            CacheLifetime           = GetSetting(settings, "CacheLifetime", 0);
+            PopupInterval           = GetSetting(settings, "PopupInterval", 0);
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
