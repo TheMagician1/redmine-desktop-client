@@ -51,13 +51,13 @@ namespace Redmine.Client
 			{
 				this.DataGridViewIssues.Click += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
 			}
-            LoadConfig();
 
             bool bRetry = false;
             do
             {
                 try
                 {
+                    LoadConfig();
                     if (this.MinimizeToSystemTray)
                         this.RestoreToolStripMenuItem.Text = "&Hide";
                     else
@@ -71,24 +71,18 @@ namespace Redmine.Client
                     this.BtnCommitButton.Enabled = false;
                     this.BtnRefreshButton.Enabled = false;
                     this.BtnNewIssueButton.Enabled = false;
-                    try
+
+                    currentUser = redmine.GetCurrentUser();
+                    if (this.CheckForUpdates)
                     {
-                        currentUser = redmine.GetCurrentUser();
-                        if (this.CheckForUpdates)
-                        {
-                            backgroundWorker2.RunWorkerAsync();
-                        }
-                        backgroundWorker1.RunWorkerAsync(0);
+                        backgroundWorker2.RunWorkerAsync();
                     }
-                    catch (System.Net.WebException e)
-                    {
-                        MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        this.Cursor = Cursors.Default;
-                    }
+                    backgroundWorker1.RunWorkerAsync(0);
                 }
                 catch (Exception e)
                 {
-                    if (MessageBox.Show(e.Message, "Startup error. Check configuration.", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.Cancel)
+                    this.Cursor = Cursors.Default;
+                    if (MessageBox.Show(e.Message, "Startup error. Check configuration.", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) != DialogResult.OK)
                         return;
                     if (!ShowSettingsForm())
                         return;
@@ -607,16 +601,16 @@ namespace Redmine.Client
             this.Cursor = Cursors.Default;
         }
 
-        private void BtnSettingsButton_Click(object sender, EventArgs e)
-        {
-            ShowSettingsForm();
-        }
-
         private bool ShowSettingsForm()
         {
             SettingsForm dlg = new SettingsForm();
-            if(dlg.ShowDialog(this) != System.Windows.Forms.DialogResult.OK)
-                return false;
+            return dlg.ShowDialog(this) == System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void BtnSettingsButton_Click(object sender, EventArgs e)
+        {
+            if (!ShowSettingsForm())
+                return; //User canceled.
 
             LoadConfig();
             this.Cursor = Cursors.AppStarting;
@@ -634,7 +628,6 @@ namespace Redmine.Client
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             this.Cursor = Cursors.Default;
-            return true;
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
