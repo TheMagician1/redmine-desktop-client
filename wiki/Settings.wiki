@@ -1,6 +1,4 @@
 #labels Phase-Deploy
-# How to configure the RedmineClient
-
 = Settings =
 
 This is a brief explanation of the Settings Dialog.
