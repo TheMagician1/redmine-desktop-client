@@ -74,6 +74,11 @@
     <Compile Include="ClientExtensionMethods.cs" />
     <Compile Include="Enumerations.cs" />
     <Compile Include="IssueFormData.cs" />
+    <Compile Include="Languages\Lang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lang.resx</DependentUpon>
+    </Compile>
     <Compile Include="MainFormData.cs" />
     <Compile Include="IssueForm.cs">
       <SubType>Form</SubType>
@@ -104,6 +109,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IssueForm.resx">
       <DependentUpon>IssueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.nl.resx" />
+    <EmbeddedResource Include="Languages\Lang.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RedmineClientForm.resx">
       <DependentUpon>RedmineClientForm.cs</DependentUpon>
@@ -159,6 +169,7 @@
       <Name>Api</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

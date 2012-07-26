@@ -9,8 +9,18 @@ namespace Redmine.Client
         public SettingsForm()
         {
             InitializeComponent();
+            LoadLanguage();
             LoadConfig();
             EnableDisableAuthenticationFields();
+        }
+
+        private void LoadLanguage()
+        {
+            //Languages.Lang.Culture = new System.Globalization.CultureInfo("nl-NL");
+            labelRedmineURL.Text = Languages.Lang.RedmineURL;
+            AuthenticationCheckBox.Text = Languages.Lang.RequiresAuthentication;
+            labelRedmineUsername.Text = Languages.Lang.RedmineUsername;
+            labelRedminePassword.Text = Languages.Lang.RedminePassword;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
