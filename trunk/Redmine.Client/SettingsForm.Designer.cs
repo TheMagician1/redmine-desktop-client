@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelRedmineURL = new System.Windows.Forms.Label();
             this.BtnCancelButton = new System.Windows.Forms.Button();
             this.BtnSaveButton = new System.Windows.Forms.Button();
             this.AuthenticationCheckBox = new System.Windows.Forms.CheckBox();
             this.RedmineBaseUrlTextBox = new System.Windows.Forms.TextBox();
             this.RedmineUsernameTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelRedmineUsername = new System.Windows.Forms.Label();
             this.RedminePasswordTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelRedminePassword = new System.Windows.Forms.Label();
             this.CheckForUpdatesCheckBox = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.CacheLifetime = new System.Windows.Forms.NumericUpDown();
@@ -50,15 +50,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.PopupTime)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // labelRedmineURL
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 7);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Redmine URL";
+            this.labelRedmineURL.AutoSize = true;
+            this.labelRedmineURL.Location = new System.Drawing.Point(9, 7);
+            this.labelRedmineURL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelRedmineURL.Name = "labelRedmineURL";
+            this.labelRedmineURL.Size = new System.Drawing.Size(74, 13);
+            this.labelRedmineURL.TabIndex = 0;
+            this.labelRedmineURL.Text = "Redmine URL";
             // 
             // BtnCancelButton
             // 
@@ -111,15 +111,15 @@
             this.RedmineUsernameTextBox.Size = new System.Drawing.Size(204, 20);
             this.RedmineUsernameTextBox.TabIndex = 6;
             // 
-            // label2
+            // labelRedmineUsername
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 66);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Redmine username";
+            this.labelRedmineUsername.AutoSize = true;
+            this.labelRedmineUsername.Location = new System.Drawing.Point(9, 66);
+            this.labelRedmineUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelRedmineUsername.Name = "labelRedmineUsername";
+            this.labelRedmineUsername.Size = new System.Drawing.Size(98, 13);
+            this.labelRedmineUsername.TabIndex = 5;
+            this.labelRedmineUsername.Text = "Redmine username";
             // 
             // RedminePasswordTextBox
             // 
@@ -130,15 +130,15 @@
             this.RedminePasswordTextBox.Size = new System.Drawing.Size(204, 20);
             this.RedminePasswordTextBox.TabIndex = 8;
             // 
-            // label3
+            // labelRedminePassword
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(221, 66);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Redmine password";
+            this.labelRedminePassword.AutoSize = true;
+            this.labelRedminePassword.Location = new System.Drawing.Point(221, 66);
+            this.labelRedminePassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelRedminePassword.Name = "labelRedminePassword";
+            this.labelRedminePassword.Size = new System.Drawing.Size(97, 13);
+            this.labelRedminePassword.TabIndex = 7;
+            this.labelRedminePassword.Text = "Redmine password";
             // 
             // CheckForUpdatesCheckBox
             // 
@@ -264,9 +264,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.CheckForUpdatesCheckBox);
             this.Controls.Add(this.RedminePasswordTextBox);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelRedminePassword);
             this.Controls.Add(this.RedmineUsernameTextBox);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelRedmineUsername);
             this.Controls.Add(this.redmineKey);
             this.Controls.Add(this.RedmineBaseUrlTextBox);
             this.Controls.Add(this.MinimizeOnStartTimerCheckBox);
@@ -275,7 +275,7 @@
             this.Controls.Add(this.BtnSaveButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.BtnCancelButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelRedmineURL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SettingsForm";
@@ -289,15 +289,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelRedmineURL;
         private System.Windows.Forms.Button BtnCancelButton;
         private System.Windows.Forms.Button BtnSaveButton;
         private System.Windows.Forms.CheckBox AuthenticationCheckBox;
         private System.Windows.Forms.TextBox RedmineBaseUrlTextBox;
         private System.Windows.Forms.TextBox RedmineUsernameTextBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelRedmineUsername;
         private System.Windows.Forms.TextBox RedminePasswordTextBox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelRedminePassword;
         private System.Windows.Forms.CheckBox CheckForUpdatesCheckBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown CacheLifetime;
