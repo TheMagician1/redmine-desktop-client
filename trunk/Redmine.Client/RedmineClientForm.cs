@@ -210,6 +210,27 @@ namespace Redmine.Client
             return Convert.ToInt32(GetSetting(coll, name, Convert.ToString(defaultVal)));
         }
 
+        private void SaveConfig()
+        {
+            //Load config file
+            Enumerations.LoadAll();
+
+            Configuration roamingConf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
+            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
+            configFileMap.ExeConfigFilename = roamingConf.FilePath;
+            Configuration conf = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+            KeyValueConfigurationCollection settings = conf.AppSettings.Settings;
+
+            //Change some values
+            settings.Remove("MainWindowSizeX");
+            settings.Remove("MainWindowSizeY");
+            settings.Add("MainWindowSizeX", Convert.ToString(Size.Width));
+            settings.Add("MainWindowSizeY", Convert.ToString(Size.Height));
+
+            //Save it
+            conf.Save(ConfigurationSaveMode.Modified);
+        }
+
         private void LoadConfig()
         {
             Enumerations.LoadAll();
@@ -241,6 +262,11 @@ namespace Redmine.Client
             CheckForUpdates         = GetSetting(settings, "CheckForUpdates", true);
             CacheLifetime           = GetSetting(settings, "CacheLifetime", 0);
             PopupInterval           = GetSetting(settings, "PopupInterval", 0);
+            Size FormSize           = new Size(
+                                      GetSetting(settings, "MainWindowSizeX", 0),
+                                      GetSetting(settings, "MainWindowSizeY", 0));
+            if (FormSize.Height > 0 && FormSize.Width > 0)
+                Size = FormSize;
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -696,6 +722,11 @@ namespace Redmine.Client
             {
                 MessageBox.Show(ex.Message, "Error");
             }
+        }
+
+        private void OnClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveConfig();
         }
     }
 }
