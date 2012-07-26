@@ -1,0 +1,20 @@
+#labels Phase-Deploy
+#How to configure the RedmineClient
+
+= Settings =
+
+This is a brief explanation of the Settings Dialog.
+
+[http://redmine-desktop-client.googlecode.com/svn/images/screenshots/redmineclient.settings.png]
+<br>_the settings dialog_
+<br>
+|| *Setting* || *Explanation* ||
+|| _Redmine URL_ || This is the url to the root page of your redmine server. If you use redmine as a sub-uri, also include this sub-uri. ||
+|| _Requires authentication_ || If you need authentication to view and edit the issues and to connect to redmine. ||
+|| _Redmine username_ || Your username to authenticate to redmine. ||
+|| _Redmine password_ || The password corresponding to your username. ||
+|| _Catche lifetime_ || Not actively used at the moment. ||
+|| _Check for updates on startup_ || Check the this project if a newer version is available. ||
+|| _Minimize to Systemtray_ || When the application is minimized, hide it from the taskbar. ||
+|| _Minimize on start timer_ || When you start the timer to measure your spent time, minimize the window. When _minimize to systemtray_ is enabled, the application will also be hidden from the taskbar. ||
+|| _Popup window when minimized_ || Popup the application again after N minutes to trigger the user to check he is still working on the same issue or to commit the current time and start a new working period.<br>The popup timer will start when the window is minimized, so the application will popup N minutes after minimization. ||
