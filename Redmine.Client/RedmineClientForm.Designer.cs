@@ -201,19 +201,19 @@ namespace Redmine.Client
             this.RestoreToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.NotifyIconMenuStrip.Name = "NotifyIconMenuStrip";
-            this.NotifyIconMenuStrip.Size = new System.Drawing.Size(153, 70);
+            this.NotifyIconMenuStrip.Size = new System.Drawing.Size(104, 48);
             // 
             // RestoreToolStripMenuItem
             // 
             this.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem";
-            this.RestoreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.RestoreToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.RestoreToolStripMenuItem.Text = "&Hide";
             this.RestoreToolStripMenuItem.Click += new System.EventHandler(this.RestoreToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.ExitToolStripMenuItem.Text = "&Close";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -349,6 +349,7 @@ namespace Redmine.Client
             this.MaximizeBox = false;
             this.Name = "RedmineClientForm";
             this.Text = "Redmine Client";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.NotifyIconMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).EndInit();
