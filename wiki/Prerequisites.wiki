@@ -1,0 +1,4 @@
+#labels Phase-Requirements
+= Prerequisites =
+
+To be able to run the RedmineClient application, you need to install .Net framework 4 ([http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&id=17851 Download])
