@@ -1,0 +1,31 @@
+= Custom Activities and Priorities =
+
+Because the redmine Rest API does not provide the enumerations used in issues and time management for activities and priorities, you have to add them yourself.
+
+After you have set the correct settings to connect to redmine, three new files have been created in the same directory as the executable (the start directory).
+
+ * Activities.xml
+ * DocumentCategories.xml
+ * IssuePriorities.xml
+
+=== Activities ===
+In the _Activities.xml_ you can find the activities you can use for time recording. The application needs the _Id_ of the activities that are available in redmine. You should ask your redmine administrator for the _Ids_ of the activities. Then you can edit the xml-file to contain the new Id's.<br>
+<br>
+The default content of the xml file is:<br>
+{{{<Activities><IdentifiableName id="8" name="Design" /><IdentifiableName id="9" name="Development" /></Activities>}}}<br>
+<br>
+To add the new activities, you need to add the following string for each additional activity:<br>
+{{{<IdentifiableName id="<ID>" name="<NAME>" />}}}<br>
+where _<ID>_ is the Id of the activity and _<NAME>_ is the name of the activity as shown in the activity dropdownbox.
+
+So for example, if you want to add the activity testing with id 11 the content of the file would be:<br>
+{{{<Activities><IdentifiableName id="8" name="Design" /><IdentifiableName id="9" name="Development" /><IdentifiableName id="11" name="Testing" /></Activities>}}}<br>
+
+
+=== Document Categories ===
+The _DocumentCategories.xml_ is not actively used, but still created.
+
+=== Issue Priorities ===
+In the _IssuePriorities.xml_ you can find the priorities that can be assigned to issues. The application needs the _Id_ of the priorities that are available in redmine. You should ask your redmine administrator for the _Ids_ of the priorities. Then you can edit the xml-file to contain the new Id's.
+
+For an explanation on how to add the new priorities, please check the Activities.
