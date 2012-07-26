@@ -1,5 +1,5 @@
 #labels Phase-Deploy
-#How to configure the RedmineClient
+# How to configure the RedmineClient
 
 = Settings =
 
