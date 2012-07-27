@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using Redmine.Client.Languages;
 
 namespace Redmine.Client
 {
@@ -26,7 +27,8 @@ namespace Redmine.Client
 
         private void LoadLanguage()
         {
-            Languages.LangTools.UpdateControlsForLanguage(this.Controls);
+            LangTools.UpdateControlsForLanguage(this.Controls);
+            this.Text = Lang.DlgSettingsTitle;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -40,7 +42,7 @@ namespace Redmine.Client
             Uri uri;
             if (!Uri.TryCreate(RedmineBaseUrlTextBox.Text, UriKind.Absolute, out uri))
             {
-                MessageBox.Show("Invalid URL of Redmine installation.", "Error", MessageBoxButtons.OK,
+                MessageBox.Show(Lang.Error_InvalidUrl, Lang.Error, MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 this.RedmineBaseUrlTextBox.Focus();
                 return;
@@ -71,7 +73,7 @@ namespace Redmine.Client
                 config.AppSettings.Settings.Add("CheckForUpdates", CheckForUpdatesCheckBox.Checked.ToString());
                 config.AppSettings.Settings.Add("MinimizeToSystemTray", MinimizeToSystemTrayCheckBox.Checked.ToString());
                 config.AppSettings.Settings.Add("MinimizeOnStartTimer", MinimizeOnStartTimerCheckBox.Checked.ToString());
-                config.AppSettings.Settings.Add("PopupInterval", PopupTime.Value.ToString());
+                config.AppSettings.Settings.Add("PopupInterval", PopupTimout.Value.ToString());
                 config.AppSettings.Settings.Add("CacheLifetime", CacheLifetime.Value.ToString());
                 config.AppSettings.Settings.Add("LanguageCode", Languages.Lang.Culture.Name);
                 config.Save(ConfigurationSaveMode.Modified);
@@ -149,11 +151,11 @@ namespace Redmine.Client
             }
             try
             {
-                PopupTime.Value = Convert.ToInt32(conf.AppSettings.Settings["PopupInterval"].Value);
+                PopupTimout.Value = Convert.ToInt32(conf.AppSettings.Settings["PopupInterval"].Value);
             }
             catch (Exception)
             {
-                PopupTime.Value = 0;
+                PopupTimout.Value = 0;
             }
             try
             {

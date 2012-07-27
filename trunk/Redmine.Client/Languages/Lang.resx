@@ -155,16 +155,16 @@
     <comment>{0} ProjectName; {1} ActivityName; {2} IssueId; {3} Date; {4} Comment; {5} Time(Hours) {6} newline</comment>
   </data>
   <data name="CommitNoActivitySelected" xml:space="preserve">
-    <value>There is no activity selected</value>
+    <value>There is no activity selected.</value>
   </data>
   <data name="CommitNoIssueSelected" xml:space="preserve">
-    <value>There is no issue selected</value>
+    <value>There is no issue selected.</value>
   </data>
   <data name="CommitNoTime" xml:space="preserve">
     <value>There is no time to log...</value>
   </data>
   <data name="CommitSuccessfullText" xml:space="preserve">
-    <value>Work logged successfully</value>
+    <value>Work logged successfully.</value>
   </data>
   <data name="CommitSuccessfullTitle" xml:space="preserve">
     <value>Work logged</value>
@@ -177,7 +177,7 @@
     <comment>{0} exception message</comment>
   </data>
   <data name="Error_NoProjectsFound" xml:space="preserve">
-    <value>No projects found in Redmine</value>
+    <value>No projects found in Redmine.</value>
   </data>
   <data name="Error_Startup" xml:space="preserve">
     <value>Startup error. Check Configuration.</value>
@@ -224,6 +224,38 @@
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Warning</value>
+  </data>
+  <data name="BtnCancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="BtnSaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CheckForUpdatesCheckBox" xml:space="preserve">
+    <value>Check for updates on startup</value>
+  </data>
+  <data name="DlgSettingsTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Error_InvalidUrl" xml:space="preserve">
+    <value>Invalid URL of Redmine installation.</value>
+  </data>
+  <data name="labelCacheLifetime" xml:space="preserve">
+    <value>Cache lifetime (minutes, 0 = infinite)</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="labelPopupTimout" xml:space="preserve">
+    <value>Popup window when minimized
+or Request attention every
+(minutes, 0 = never)</value>
+  </data>
+  <data name="MinimizeOnStartTimerCheckBox" xml:space="preserve">
+    <value>Minimize on start timer</value>
+  </data>
+  <data name="MinimizeToSystemTrayCheckBox" xml:space="preserve">
+    <value>Minimize to systemtry</value>
   </data>
   <data name="RedmineClientTitle_NoUser" xml:space="preserve">
     <value>Redmine Client</value>

@@ -38,16 +38,16 @@
             this.RedminePasswordTextBox = new System.Windows.Forms.TextBox();
             this.labelRedminePassword = new System.Windows.Forms.Label();
             this.CheckForUpdatesCheckBox = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelCacheLifetime = new System.Windows.Forms.Label();
             this.CacheLifetime = new System.Windows.Forms.NumericUpDown();
             this.labelLanguage = new System.Windows.Forms.Label();
             this.MinimizeToSystemTrayCheckBox = new System.Windows.Forms.CheckBox();
             this.MinimizeOnStartTimerCheckBox = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.PopupTime = new System.Windows.Forms.NumericUpDown();
+            this.labelPopupTimout = new System.Windows.Forms.Label();
+            this.PopupTimout = new System.Windows.Forms.NumericUpDown();
             this.LanguageComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PopupTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).BeginInit();
             this.SuspendLayout();
             // 
             // labelRedmineURL
@@ -151,15 +151,15 @@
             this.CheckForUpdatesCheckBox.Text = "Check for updates on startup";
             this.CheckForUpdatesCheckBox.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // labelCacheLifetime
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 102);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Cache lifetime (minutes, 0 = infinite)";
+            this.labelCacheLifetime.AutoSize = true;
+            this.labelCacheLifetime.Location = new System.Drawing.Point(9, 102);
+            this.labelCacheLifetime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCacheLifetime.Name = "labelCacheLifetime";
+            this.labelCacheLifetime.Size = new System.Drawing.Size(172, 13);
+            this.labelCacheLifetime.TabIndex = 11;
+            this.labelCacheLifetime.Text = "Cache lifetime (minutes, 0 = infinite)";
             // 
             // CacheLifetime
             // 
@@ -213,33 +213,33 @@
             this.MinimizeOnStartTimerCheckBox.UseVisualStyleBackColor = true;
             this.MinimizeOnStartTimerCheckBox.CheckedChanged += new System.EventHandler(this.AuthenticationCheckBox_CheckedChanged);
             // 
-            // label6
+            // labelPopupTimout
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(221, 140);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(154, 39);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Popup window when minimized\r\nor Request attention every\r\n(minutes, 0 = never)";
+            this.labelPopupTimout.AutoSize = true;
+            this.labelPopupTimout.Location = new System.Drawing.Point(221, 140);
+            this.labelPopupTimout.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelPopupTimout.Name = "labelPopupTimout";
+            this.labelPopupTimout.Size = new System.Drawing.Size(154, 39);
+            this.labelPopupTimout.TabIndex = 11;
+            this.labelPopupTimout.Text = "Popup window when minimized\r\nor Request attention every\r\n(minutes, 0 = never)";
             // 
-            // PopupTime
+            // PopupTimout
             // 
-            this.PopupTime.Increment = new decimal(new int[] {
+            this.PopupTimout.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.PopupTime.Location = new System.Drawing.Point(224, 182);
-            this.PopupTime.Margin = new System.Windows.Forms.Padding(2);
-            this.PopupTime.Maximum = new decimal(new int[] {
+            this.PopupTimout.Location = new System.Drawing.Point(224, 182);
+            this.PopupTimout.Margin = new System.Windows.Forms.Padding(2);
+            this.PopupTimout.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.PopupTime.Name = "PopupTime";
-            this.PopupTime.Size = new System.Drawing.Size(70, 20);
-            this.PopupTime.TabIndex = 12;
+            this.PopupTimout.Name = "PopupTimout";
+            this.PopupTimout.Size = new System.Drawing.Size(70, 20);
+            this.PopupTimout.TabIndex = 12;
             // 
             // LanguageComboBox
             // 
@@ -258,10 +258,10 @@
             this.CancelButton = this.BtnCancelButton;
             this.ClientSize = new System.Drawing.Size(435, 283);
             this.Controls.Add(this.LanguageComboBox);
-            this.Controls.Add(this.PopupTime);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.PopupTimout);
+            this.Controls.Add(this.labelPopupTimout);
             this.Controls.Add(this.CacheLifetime);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelCacheLifetime);
             this.Controls.Add(this.CheckForUpdatesCheckBox);
             this.Controls.Add(this.RedminePasswordTextBox);
             this.Controls.Add(this.labelRedminePassword);
@@ -280,7 +280,7 @@
             this.Name = "SettingsForm";
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PopupTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,13 +298,13 @@
         private System.Windows.Forms.TextBox RedminePasswordTextBox;
         private System.Windows.Forms.Label labelRedminePassword;
         private System.Windows.Forms.CheckBox CheckForUpdatesCheckBox;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelCacheLifetime;
         private System.Windows.Forms.NumericUpDown CacheLifetime;
         private System.Windows.Forms.Label labelLanguage;
         private System.Windows.Forms.CheckBox MinimizeToSystemTrayCheckBox;
         private System.Windows.Forms.CheckBox MinimizeOnStartTimerCheckBox;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown PopupTime;
+        private System.Windows.Forms.Label labelPopupTimout;
+        private System.Windows.Forms.NumericUpDown PopupTimout;
         private System.Windows.Forms.ComboBox LanguageComboBox;
     }
 }
