@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Redmine.Net.Api.Types;
+using Redmine.Client.Languages;
 
 namespace Redmine.Client
 {
@@ -23,9 +24,10 @@ namespace Redmine.Client
             this.project = project;
             this.type = DialogType.New;
             InitializeComponent();
-            this.Text = "Create New Issue for project " + project.Name;
-            BtnClose.Visible = false;
+            this.Text = String.Format(Lang.DlgIssueTitleNew, project.Name);
+            BtnCloseButton.Visible = false;
             linkEditInRedmine.Visible = false;
+            LangTools.UpdateControlsForLanguage(this.Controls);
         }
 
         public IssueForm(Issue issue)
@@ -34,7 +36,8 @@ namespace Redmine.Client
             this.type = DialogType.Edit;
             InitializeComponent();
 
-            this.Text = "Edit Issue " + issue.Id.ToString() + " for project " + issue.Project.Name;
+            this.Text = String.Format(Lang.DlgIssueTitleEdit, issue.Id, issue.Project.Name);
+            LangTools.UpdateControlsForLanguage(this.Controls);
         }
 
         private void BtnSaveButton_Click(object sender, EventArgs e)
@@ -75,18 +78,19 @@ namespace Redmine.Client
                 }
                 else
                 {
-                    MessageBox.Show("The issue subject is mandatory.",
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(Lang.Error_IssueSubjectMandatory,
+                                Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    TextBoxSubject.Focus();
                 }
             }
             catch (Exception ex)
             {
                 if (type == DialogType.New)
-                    MessageBox.Show(String.Format("Creating the issue failed, the server responded: {0}", ex.Message),
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(String.Format(Lang.Error_CreateIssueFailed, ex.Message),
+                                Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                    MessageBox.Show(String.Format("Updating the issue failed, the server responded: {0}", ex.Message),
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(String.Format(Lang.Error_UpdateIssueFailed, ex.Message),
+                                Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -196,7 +200,7 @@ namespace Redmine.Client
 
         private void BtnCloseButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to close issue " + issue.Id + "?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show(String.Format(Lang.CloseIssueText, issue.Id), Lang.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
                 ComboBoxStatus.SelectedIndex = ComboBoxStatus.FindStringExact("Closed");
                 BtnSaveButton_Click(null, null);
