@@ -1,3 +1,4 @@
+#summary How to add custom Activities and Priorities
 = Custom Activities and Priorities =
 
 Because the redmine Rest API does not provide the enumerations used in issues and time management for activities and priorities, you have to add them yourself.
