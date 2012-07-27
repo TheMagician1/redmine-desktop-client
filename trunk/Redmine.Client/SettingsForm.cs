@@ -1,15 +1,25 @@
 ﻿using System;
 using System.Configuration;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Redmine.Client
 {
     public partial class SettingsForm : Form
     {
+        private List<System.Globalization.CultureInfo> supportedLang = new List<System.Globalization.CultureInfo> {
+            new System.Globalization.CultureInfo("nl-NL"),
+            new System.Globalization.CultureInfo("en-US")
+        };
+
         public SettingsForm()
         {
             InitializeComponent();
             LoadLanguage();
+            LanguageComboBox.DataSource = supportedLang;
+            LanguageComboBox.ValueMember = "Name";
+            LanguageComboBox.DisplayMember = "DisplayName";
+
             LoadConfig();
             EnableDisableAuthenticationFields();
         }
@@ -42,6 +52,11 @@ namespace Redmine.Client
 
         private void SaveConfig()
         {
+            try
+            {
+                Languages.Lang.Culture = (System.Globalization.CultureInfo)LanguageComboBox.SelectedItem;
+            }
+            catch (Exception) { }
             try
             {
                 System.Configuration.Configuration roamingConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
@@ -148,6 +163,7 @@ namespace Redmine.Client
             {
                 Languages.Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
             }
+            LanguageComboBox.SelectedIndex = LanguageComboBox.FindStringExact(Languages.Lang.Culture.DisplayName);
 
         }
 

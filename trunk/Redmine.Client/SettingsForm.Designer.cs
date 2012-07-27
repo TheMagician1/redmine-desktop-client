@@ -40,12 +40,12 @@
             this.CheckForUpdatesCheckBox = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.CacheLifetime = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.redmineKey = new System.Windows.Forms.TextBox();
+            this.labelLanguage = new System.Windows.Forms.Label();
             this.MinimizeToSystemTrayCheckBox = new System.Windows.Forms.CheckBox();
             this.MinimizeOnStartTimerCheckBox = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.PopupTime = new System.Windows.Forms.NumericUpDown();
+            this.LanguageComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopupTime)).BeginInit();
             this.SuspendLayout();
@@ -179,25 +179,15 @@
             this.CacheLifetime.Size = new System.Drawing.Size(70, 20);
             this.CacheLifetime.TabIndex = 12;
             // 
-            // label5
+            // labelLanguage
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 213);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Your Redmine Key";
-            this.label5.Visible = false;
-            // 
-            // redmineKey
-            // 
-            this.redmineKey.Location = new System.Drawing.Point(11, 230);
-            this.redmineKey.Margin = new System.Windows.Forms.Padding(2);
-            this.redmineKey.Name = "redmineKey";
-            this.redmineKey.Size = new System.Drawing.Size(416, 20);
-            this.redmineKey.TabIndex = 4;
-            this.redmineKey.Visible = false;
+            this.labelLanguage.AutoSize = true;
+            this.labelLanguage.Location = new System.Drawing.Point(9, 213);
+            this.labelLanguage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelLanguage.Name = "labelLanguage";
+            this.labelLanguage.Size = new System.Drawing.Size(55, 13);
+            this.labelLanguage.TabIndex = 0;
+            this.labelLanguage.Text = "Language";
             // 
             // MinimizeToSystemTrayCheckBox
             // 
@@ -251,6 +241,15 @@
             this.PopupTime.Size = new System.Drawing.Size(70, 20);
             this.PopupTime.TabIndex = 12;
             // 
+            // LanguageComboBox
+            // 
+            this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LanguageComboBox.FormattingEnabled = true;
+            this.LanguageComboBox.Location = new System.Drawing.Point(69, 210);
+            this.LanguageComboBox.Name = "LanguageComboBox";
+            this.LanguageComboBox.Size = new System.Drawing.Size(146, 21);
+            this.LanguageComboBox.TabIndex = 13;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.BtnSaveButton;
@@ -258,6 +257,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
             this.ClientSize = new System.Drawing.Size(435, 283);
+            this.Controls.Add(this.LanguageComboBox);
             this.Controls.Add(this.PopupTime);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.CacheLifetime);
@@ -267,13 +267,12 @@
             this.Controls.Add(this.labelRedminePassword);
             this.Controls.Add(this.RedmineUsernameTextBox);
             this.Controls.Add(this.labelRedmineUsername);
-            this.Controls.Add(this.redmineKey);
             this.Controls.Add(this.RedmineBaseUrlTextBox);
             this.Controls.Add(this.MinimizeOnStartTimerCheckBox);
             this.Controls.Add(this.MinimizeToSystemTrayCheckBox);
             this.Controls.Add(this.AuthenticationCheckBox);
             this.Controls.Add(this.BtnSaveButton);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelLanguage);
             this.Controls.Add(this.BtnCancelButton);
             this.Controls.Add(this.labelRedmineURL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -301,11 +300,11 @@
         private System.Windows.Forms.CheckBox CheckForUpdatesCheckBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown CacheLifetime;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox redmineKey;
+        private System.Windows.Forms.Label labelLanguage;
         private System.Windows.Forms.CheckBox MinimizeToSystemTrayCheckBox;
         private System.Windows.Forms.CheckBox MinimizeOnStartTimerCheckBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown PopupTime;
+        private System.Windows.Forms.ComboBox LanguageComboBox;
     }
 }
