@@ -14,6 +14,17 @@ namespace Redmine.Client
     delegate void OnDone();
     delegate OnDone RunAsync();
 
+    class BgWork
+    {
+        public BgWork(String name, RunAsync work)
+        {
+            m_name = name;
+            m_work = work;
+        }
+        public String m_name;
+        public RunAsync m_work;
+    };
+
     public partial class RedmineClientForm : Form
     {
         internal static IssueFormData DataCache = null;
@@ -61,7 +72,7 @@ namespace Redmine.Client
             //At last add check-for-updates work...
             if (this.CheckForUpdates)
             {
-                AddBgWork(() =>
+                AddBgWork("Checking for updates", () =>
                 {
                     AsyncCheckForUpdates();
                     return null;
@@ -688,7 +699,7 @@ namespace Redmine.Client
 
         private void AsyncGetRestOfFormData(int projectId)
         {
-            AddBgWork(() =>
+            AddBgWork("Getting form data", () =>
             {
                 try
                 {
@@ -720,7 +731,7 @@ namespace Redmine.Client
         {
             this.Cursor = Cursors.WaitCursor;
             //Retrieve current user asynchroneous...
-            AddBgWork(() =>
+            AddBgWork("Getting user name", () =>
             {
                 try
                 {
@@ -729,9 +740,9 @@ namespace Redmine.Client
                     {
                         currentUser = newCurrentUser;
                         if (currentUser != null)
-                            this.Text = String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName);
+                            SetTitle(String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName));
                         else
-                            this.Text = Lang.RedmineClientTitle_NoUser;
+                            SetTitle(Lang.RedmineClientTitle_NoUser);
                         //When done, get the rest of the form data...
                         AsyncGetRestOfFormData(projectId);
                     };
@@ -741,7 +752,7 @@ namespace Redmine.Client
                     return () =>
                     {
                         currentUser = null;
-                        this.Text = Lang.RedmineClientTitle_NoUser;
+                        SetTitle(Lang.RedmineClientTitle_NoUser);
                         if (OnInitFailed(e))
                             Reinit();
                     };
@@ -759,11 +770,27 @@ namespace Redmine.Client
             }
         }
 
-        Queue<RunAsync> m_WorkQueue = new Queue<RunAsync>();
+        String m_Title = "Redmine Client";
 
-        private void AddBgWork(RunAsync work)
+        void SetTitle(String title)
         {
-            m_WorkQueue.Enqueue(work);
+            m_Title = title;
+            UpdateTitle();
+        }
+
+        void UpdateTitle()
+        {
+            String title = m_Title;
+            if (m_WorkQueue.Count > 0)
+                title += " - " + m_WorkQueue.Peek().m_name + "...";
+            this.Text = title;
+        }
+
+        Queue<BgWork> m_WorkQueue = new Queue<BgWork>();
+
+        private void AddBgWork(String name, RunAsync work)
+        {
+            m_WorkQueue.Enqueue(new BgWork(name, work));
             TriggerWork();
         }
 
@@ -774,7 +801,8 @@ namespace Redmine.Client
             if(!bForce && m_WorkQueue.Count != 1)
                 return; //Already busy...
 
-            backgroundWorker2.RunWorkerAsync(m_WorkQueue.Peek());
+            backgroundWorker2.RunWorkerAsync(m_WorkQueue.Peek().m_work);
+            UpdateTitle();
         }
 
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
@@ -788,6 +816,7 @@ namespace Redmine.Client
             if (e.Result != null)
                 ((OnDone)e.Result)();
             m_WorkQueue.Dequeue();
+            UpdateTitle();
             TriggerWork(true);
         }
 
