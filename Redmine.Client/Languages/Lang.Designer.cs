@@ -79,6 +79,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string BtnCancelButton {
+            get {
+                return ResourceManager.GetString("BtnCancelButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Commit.
         /// </summary>
         internal static string BtnCommitButton {
@@ -124,6 +133,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string BtnSaveButton {
+            get {
+                return ResourceManager.GetString("BtnSaveButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string BtnSettingsButton {
@@ -151,6 +169,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for updates on startup.
+        /// </summary>
+        internal static string CheckForUpdatesCheckBox {
+            get {
+                return ResourceManager.GetString("CheckForUpdatesCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ready to commit?.
         /// </summary>
         internal static string CommitConfirmQuestion {
@@ -169,7 +196,7 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is no activity selected.
+        ///   Looks up a localized string similar to There is no activity selected..
         /// </summary>
         internal static string CommitNoActivitySelected {
             get {
@@ -178,7 +205,7 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is no issue selected.
+        ///   Looks up a localized string similar to There is no issue selected..
         /// </summary>
         internal static string CommitNoIssueSelected {
             get {
@@ -196,7 +223,7 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Work logged successfully.
+        ///   Looks up a localized string similar to Work logged successfully..
         /// </summary>
         internal static string CommitSuccessfullText {
             get {
@@ -210,6 +237,15 @@ namespace Redmine.Client.Languages {
         internal static string CommitSuccessfullTitle {
             get {
                 return ResourceManager.GetString("CommitSuccessfullTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string DlgSettingsTitle {
+            get {
+                return ResourceManager.GetString("DlgSettingsTitle", resourceCulture);
             }
         }
         
@@ -232,7 +268,16 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No projects found in Redmine.
+        ///   Looks up a localized string similar to Invalid URL of Redmine installation..
+        /// </summary>
+        internal static string Error_InvalidUrl {
+            get {
+                return ResourceManager.GetString("Error_InvalidUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No projects found in Redmine..
         /// </summary>
         internal static string Error_NoProjectsFound {
             get {
@@ -268,11 +313,40 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cache lifetime (minutes, 0 = infinite).
+        /// </summary>
+        internal static string labelCacheLifetime {
+            get {
+                return ResourceManager.GetString("labelCacheLifetime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         internal static string labelComment {
             get {
                 return ResourceManager.GetString("labelComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string labelLanguage {
+            get {
+                return ResourceManager.GetString("labelLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Popup window when minimized
+        ///or Request attention every
+        ///(minutes, 0 = never).
+        /// </summary>
+        internal static string labelPopupTimout {
+            get {
+                return ResourceManager.GetString("labelPopupTimout", resourceCulture);
             }
         }
         
@@ -309,6 +383,24 @@ namespace Redmine.Client.Languages {
         internal static string labelRedmineUsername {
             get {
                 return ResourceManager.GetString("labelRedmineUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimize on start timer.
+        /// </summary>
+        internal static string MinimizeOnStartTimerCheckBox {
+            get {
+                return ResourceManager.GetString("MinimizeOnStartTimerCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimize to systemtry.
+        /// </summary>
+        internal static string MinimizeToSystemTrayCheckBox {
+            get {
+                return ResourceManager.GetString("MinimizeToSystemTrayCheckBox", resourceCulture);
             }
         }
         
