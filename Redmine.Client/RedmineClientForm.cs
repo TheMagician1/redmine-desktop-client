@@ -195,20 +195,22 @@ namespace Redmine.Client
         }
 
 
-        String GetSetting(KeyValueConfigurationCollection coll, String name, String defaultVal)
+        String GetSetting(KeyValueConfigurationCollection coll, String name, String defaultVal, bool bEmptyIsDefault = false)
         {
             KeyValueConfigurationElement val = coll[name];
             if (val == null)
+                return defaultVal;
+            if (bEmptyIsDefault && String.IsNullOrEmpty(val.Value))
                 return defaultVal;
             return val.Value;
         }
         Boolean GetSetting(KeyValueConfigurationCollection coll, String name, Boolean defaultVal)
         {
-            return Convert.ToBoolean(GetSetting(coll, name, Convert.ToString(defaultVal)));
+            return Convert.ToBoolean(GetSetting(coll, name, Convert.ToString(defaultVal), true));
         }
         Int32 GetSetting(KeyValueConfigurationCollection coll, String name, Int32 defaultVal)
         {
-            return Convert.ToInt32(GetSetting(coll, name, Convert.ToString(defaultVal)));
+            return Convert.ToInt32(GetSetting(coll, name, Convert.ToString(defaultVal), true));
         }
 
         private void SaveConfig()
