@@ -56,6 +56,31 @@ namespace Redmine.Client
 				this.DataGridViewIssues.Click += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
 			}
 
+            Reinit();
+ 
+            //At last add check-for-updates work...
+            if (this.CheckForUpdates)
+            {
+                AddBgWork(() =>
+                {
+                    AsyncCheckForUpdates();
+                    return null;
+                });
+            }
+        }
+
+        bool OnInitFailed(Exception e)
+        {
+            this.Cursor = Cursors.Default;
+            if (MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error_Startup, MessageBoxButtons.OKCancel, MessageBoxIcon.Error) != DialogResult.OK)
+                return false;
+            if (!ShowSettingsForm())
+                return false;
+            return true;
+        }
+
+        void Reinit()
+        {
             bool bRetry = false;
             do
             {
@@ -72,33 +97,40 @@ namespace Redmine.Client
                     this.BtnRefreshButton.Enabled = false;
                     this.BtnNewIssueButton.Enabled = false;
 
-                    currentUser = redmine.GetCurrentUser();
+                    //Retrieve current user asynchroneous...
+                    AddBgWork(() =>
+                    {
+                        try
+                        {
+                            User newCurrentUser = redmine.GetCurrentUser();
+                            return () =>
+                            {
+                                currentUser = newCurrentUser;
+                                if (currentUser != null)
+                                    this.Text = String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName);
+                                else
+                                    this.Text = Lang.RedmineClientTitle_NoUser;
+                            };
+                        }
+                        catch(Exception e)
+                        {
+                            return ()=>
+                            {
+                                currentUser = null;
+                                this.Text = Lang.RedmineClientTitle_NoUser;
+                                if (OnInitFailed(e))
+                                    Reinit();
+                            };
+                        }
+                    });
                     AsyncGetFormData(0);
                 }
                 catch (Exception e)
                 {
-                    this.Cursor = Cursors.Default;
-                    if (MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error_Startup, MessageBoxButtons.OKCancel, MessageBoxIcon.Error) != DialogResult.OK)
-                        return;
-                    if (!ShowSettingsForm())
-                        return;
-                    bRetry = true;
+                    if (OnInitFailed(e))
+                        bRetry = true;
                 }
             } while (bRetry);
-
-            if (this.CheckForUpdates)
-            {
-                AddBgWork(() =>
-                {
-                    AsyncCheckForUpdates();
-                    return null;
-                });
-            }
-
-            if (currentUser != null)
-                this.Text = String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName);
-            else
-                this.Text = Lang.RedmineClientTitle_NoUser;
         }
 
         private MainFormData PrepareFormData(int projectId)
@@ -677,7 +709,10 @@ namespace Redmine.Client
             if (!ShowSettingsForm())
                 return; //User canceled.
 
+            Reinit();
+            /*
             LoadConfig();
+
             this.Cursor = Cursors.AppStarting;
             if (RedmineAuthentication)
                 redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword);
@@ -697,6 +732,7 @@ namespace Redmine.Client
             else
                 this.Text = Lang.RedmineClientTitle_NoUser;
             this.Cursor = Cursors.Default;
+            */
         }
 
         private void AsyncGetFormData(int projectId)
@@ -720,8 +756,10 @@ namespace Redmine.Client
                     //Show the exception in the main thread
                     return () =>
                     {
-                        this.Cursor = Cursors.Default;
-                        MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        //this.Cursor = Cursors.Default;
+                        //MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        if (OnInitFailed(e))
+                            Reinit();
                     };
                 }
             });
