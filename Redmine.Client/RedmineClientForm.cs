@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Redmine.Net.Api;
 using Redmine.Net.Api.Types;
+using Redmine.Client.Languages;
 
 namespace Redmine.Client
 {
@@ -58,12 +59,6 @@ namespace Redmine.Client
                 try
                 {
                     LoadConfig();
-                    //Languages.Lang.Culture = new System.Globalization.CultureInfo("nl-NL");
-                    Languages.LangTools.UpdateControlsForLanguage(this.Controls);
-                    if (this.MinimizeToSystemTray)
-                        this.RestoreToolStripMenuItem.Text = "&Hide";
-                    else
-                        this.RestoreToolStripMenuItem.Text = "Mi&nimize";
 
                     if (RedmineAuthentication)
                         redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword);
@@ -84,13 +79,17 @@ namespace Redmine.Client
                 catch (Exception e)
                 {
                     this.Cursor = Cursors.Default;
-                    if (MessageBox.Show(e.Message, "Startup error. Check configuration.", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) != DialogResult.OK)
+                    if (MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error_Startup, MessageBoxButtons.OKCancel, MessageBoxIcon.Error) != DialogResult.OK)
                         return;
                     if (!ShowSettingsForm())
                         return;
                     bRetry = true;
                 }
             } while (bRetry);
+            if (currentUser != null)
+                this.Text = String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName);
+            else
+                this.Text = Lang.RedmineClientTitle_NoUser;
        }
 
         private MainFormData PrepareFormData(int projectId)
@@ -108,7 +107,7 @@ namespace Redmine.Client
                 NameValueCollection curProject = new NameValueCollection { { "project_id", projectId.ToString() } };
                 return new MainFormData() { Issues = redmine.GetObjectList<Issue>(curProject), Members = redmine.GetObjectList<ProjectMembership>(curProject), Projects = projects };
             }
-            throw new Exception("No projects found in Redmine.");
+            throw new Exception(Lang.Error_NoProjectsFound);
         }
 
         private void FillForm(MainFormData data)
@@ -279,6 +278,22 @@ namespace Redmine.Client
             {
                 Languages.Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
             }
+
+            Languages.LangTools.UpdateControlsForLanguage(this.Controls);
+            SetRestoreToolStripMenuItem();
+        }
+
+        private void SetRestoreToolStripMenuItem()
+        {
+            if (WindowState == FormWindowState.Minimized)
+                RestoreToolStripMenuItem.Text = Languages.Lang.RestoreToolStrip_Restore;
+            else
+            {
+                if (MinimizeToSystemTray)
+                    RestoreToolStripMenuItem.Text = Languages.Lang.RestoreToolStrip_Hide;
+                else
+                    RestoreToolStripMenuItem.Text = Languages.Lang.RestoreToolStrip_Minimize;
+            }
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -304,7 +319,7 @@ namespace Redmine.Client
             NormalSize = this.RestoreBounds;
             if (MinimizeToSystemTray)
                 Hide();
-            RestoreToolStripMenuItem.Text = "&Restore";
+            SetRestoreToolStripMenuItem();
             MinimizeTime = DateTime.Now;
         }
 
@@ -314,10 +329,7 @@ namespace Redmine.Client
                 Show();
             Bounds = NormalSize;
             WindowState = FormWindowState.Normal;
-            if (MinimizeToSystemTray)
-                RestoreToolStripMenuItem.Text = "&Hide";
-            else
-                RestoreToolStripMenuItem.Text = "Mi&nimize";
+            SetRestoreToolStripMenuItem();
             Activate();
          }
 
@@ -329,10 +341,7 @@ namespace Redmine.Client
             }
             else
             {
-                if (MinimizeToSystemTray)
-                    RestoreToolStripMenuItem.Text = "&Hide";
-                else
-                    RestoreToolStripMenuItem.Text = "Mi&nimize";
+                SetRestoreToolStripMenuItem();
             }
         }
 
@@ -450,7 +459,7 @@ namespace Redmine.Client
         {
             if (!CheckNumericValue(TextBoxSeconds.Text, 0, 60))
             {
-                MessageBox.Show("Value out of range", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Lang.Error_ValueOutOfRange, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 UpdateTime();
             }
             else
@@ -466,7 +475,7 @@ namespace Redmine.Client
         {
             if (!CheckNumericValue(TextBoxMinutes.Text, 0, 60))
             {
-                MessageBox.Show("Value out of range", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Lang.Error_ValueOutOfRange, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 UpdateTime();
             }
             else
@@ -482,7 +491,7 @@ namespace Redmine.Client
         {
             if (!CheckNumericValue(TextBoxHours.Text, 0, 999))
             {
-                MessageBox.Show("Value out of range", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Lang.Error_ValueOutOfRange, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 UpdateTime();
             }
             else
@@ -533,10 +542,10 @@ namespace Redmine.Client
 
                 ticking = false;
                 timer1.Stop();
-                BtnStartButton.Text = "Start";
-                if (MessageBox.Show(String.Format("Do you really want to commit the following entry: {6} Project: {0}, Activity: {1}, Issue: {2}, Date: {3}, Comment: {4}, Time: {5}",
+                BtnStartButton.Text = Lang.BtnStartButton;
+                if (MessageBox.Show(String.Format(Lang.CommitConfirmText,
                     selectedIssue.Project.Name, selectedActivity.Name, selectedIssue.Id, dateTimePicker1.Value.ToString("yyyy-MM-dd"), TextBoxComment.Text, String.Format("{0:0.##}", (double)ticks / 3600), Environment.NewLine), 
-                    "Ready to commit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    Lang.CommitConfirmQuestion, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
                     TimeEntry entry = new TimeEntry();
                     entry.Activity = new IdentifiableName { Id = selectedActivity.Id };
@@ -550,31 +559,35 @@ namespace Redmine.Client
                     {
                         redmine.CreateObject(entry);
                         ResetForm();
-                        MessageBox.Show("Work logged successfully ", "Work logged", MessageBoxButtons.OK,
+                        MessageBox.Show(Lang.CommitSuccessfullText, Lang.CommitSuccessfullTitle, MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
                 else if (shouldIRestart)
                 {
                     ticking = true;
                     timer1.Start();
-                    BtnStartButton.Text = "Pause";
+                    BtnStartButton.Text = Lang.BtnStartButton_Pause;
                 }
             }
             else
             {
                 if (ticks == 0)
                 {
-                    MessageBox.Show("There is no time to log...", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);   
+                    MessageBox.Show(Lang.CommitNoTime, Lang.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);   
                 }
-                else
+                else if (DataGridViewIssues.SelectedRows.Count != 1)
 				{
-                    MessageBox.Show("Some mandatory information is missing...", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Lang.CommitNoIssueSelected, Lang.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				}
+                else if (activityId == 0)
+                {
+                    MessageBox.Show(Lang.CommitNoActivitySelected, Lang.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -634,7 +647,7 @@ namespace Redmine.Client
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             this.Cursor = Cursors.Default;
         }
@@ -663,8 +676,12 @@ namespace Redmine.Client
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+            if (currentUser != null)
+                this.Text = String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName);
+            else
+                this.Text = Lang.RedmineClientTitle_NoUser;
             this.Cursor = Cursors.Default;
         }
 
@@ -686,7 +703,7 @@ namespace Redmine.Client
         {
             if (e.Result is Exception)
             {
-                MessageBox.Show(((Exception) e.Result).Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(String.Format(Lang.Error_Exception, ((Exception)e.Result).Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             else
             {
@@ -709,8 +726,8 @@ namespace Redmine.Client
             string latestVersionUrl = Utility.CheckForUpdate();
             if (latestVersionUrl != String.Empty)
             {
-                if (MessageBox.Show("New version available. Do you want me to take you to the download location?",
-                                    "New version", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                if (MessageBox.Show(Lang.NewVersionText,
+                                    Lang.NewVersionTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
                     System.Windows.Forms.DialogResult.Yes)
                 {
                     System.Diagnostics.Process.Start(latestVersionUrl);
@@ -732,7 +749,7 @@ namespace Redmine.Client
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error");
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 

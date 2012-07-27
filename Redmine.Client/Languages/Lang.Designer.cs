@@ -151,6 +151,114 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ready to commit?.
+        /// </summary>
+        internal static string CommitConfirmQuestion {
+            get {
+                return ResourceManager.GetString("CommitConfirmQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to commit the following entry: {6} Project: {0}, Activity: {1}, Issue: {2},{6}Date: {3}, Comment: {4}, Time: {5}.
+        /// </summary>
+        internal static string CommitConfirmText {
+            get {
+                return ResourceManager.GetString("CommitConfirmText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no activity selected.
+        /// </summary>
+        internal static string CommitNoActivitySelected {
+            get {
+                return ResourceManager.GetString("CommitNoActivitySelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no issue selected.
+        /// </summary>
+        internal static string CommitNoIssueSelected {
+            get {
+                return ResourceManager.GetString("CommitNoIssueSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no time to log....
+        /// </summary>
+        internal static string CommitNoTime {
+            get {
+                return ResourceManager.GetString("CommitNoTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Work logged successfully.
+        /// </summary>
+        internal static string CommitSuccessfullText {
+            get {
+                return ResourceManager.GetString("CommitSuccessfullText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Work logged.
+        /// </summary>
+        internal static string CommitSuccessfullTitle {
+            get {
+                return ResourceManager.GetString("CommitSuccessfullTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exception: {0}.
+        /// </summary>
+        internal static string Error_Exception {
+            get {
+                return ResourceManager.GetString("Error_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No projects found in Redmine.
+        /// </summary>
+        internal static string Error_NoProjectsFound {
+            get {
+                return ResourceManager.GetString("Error_NoProjectsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Startup error. Check Configuration..
+        /// </summary>
+        internal static string Error_Startup {
+            get {
+                return ResourceManager.GetString("Error_Startup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value out of range.
+        /// </summary>
+        internal static string Error_ValueOutOfRange {
+            get {
+                return ResourceManager.GetString("Error_ValueOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activity.
         /// </summary>
         internal static string labelActivity {
@@ -201,6 +309,78 @@ namespace Redmine.Client.Languages {
         internal static string labelRedmineUsername {
             get {
                 return ResourceManager.GetString("labelRedmineUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New version available. Do you want me to take you to the download location?.
+        /// </summary>
+        internal static string NewVersionText {
+            get {
+                return ResourceManager.GetString("NewVersionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New version.
+        /// </summary>
+        internal static string NewVersionTitle {
+            get {
+                return ResourceManager.GetString("NewVersionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redmine Client.
+        /// </summary>
+        internal static string RedmineClientTitle_NoUser {
+            get {
+                return ResourceManager.GetString("RedmineClientTitle_NoUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redmine Client - {0} {1}.
+        /// </summary>
+        internal static string RedmineClientTitle_User {
+            get {
+                return ResourceManager.GetString("RedmineClientTitle_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Hide.
+        /// </summary>
+        internal static string RestoreToolStrip_Hide {
+            get {
+                return ResourceManager.GetString("RestoreToolStrip_Hide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mi&amp;nimize.
+        /// </summary>
+        internal static string RestoreToolStrip_Minimize {
+            get {
+                return ResourceManager.GetString("RestoreToolStrip_Minimize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Restore.
+        /// </summary>
+        internal static string RestoreToolStrip_Restore {
+            get {
+                return ResourceManager.GetString("RestoreToolStrip_Restore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        internal static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
     }
