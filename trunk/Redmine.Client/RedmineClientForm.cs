@@ -11,6 +11,9 @@ using Redmine.Client.Languages;
 
 namespace Redmine.Client
 {
+    delegate void OnDone();
+    delegate OnDone RunAsync();
+
     public partial class RedmineClientForm : Form
     {
         internal static IssueFormData DataCache = null;
@@ -72,7 +75,11 @@ namespace Redmine.Client
                     currentUser = redmine.GetCurrentUser();
                     if (this.CheckForUpdates)
                     {
-                        backgroundWorker2.RunWorkerAsync();
+                        AddBgWork(() =>
+                        {
+                            AsyncCheckForUpdates();
+                            return null;
+                        } );
                     }
                     backgroundWorker1.RunWorkerAsync(0);
                 }
@@ -726,7 +733,39 @@ namespace Redmine.Client
             }
         }
 
+        Queue<RunAsync> m_WorkQueue = new Queue<RunAsync>();
+
+        private void AddBgWork(RunAsync work)
+        {
+            m_WorkQueue.Enqueue(work);
+            TriggerWork();
+        }
+
+        void TriggerWork(bool bForce = false)
+        {
+            if(m_WorkQueue.Count == 0)
+                return; //No work
+            if(!bForce && m_WorkQueue.Count != 1)
+                return; //Already busy...
+
+            backgroundWorker2.RunWorkerAsync(m_WorkQueue.Peek());
+        }
+
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (e.Argument != null)
+                e.Result = ((RunAsync)e.Argument)();
+        }
+
+        private void backgroundWorker2_Complete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null)
+                ((OnDone)e.Result)();
+            m_WorkQueue.Dequeue();
+            TriggerWork(true);
+        }
+
+        void AsyncCheckForUpdates()
         {
             string latestVersionUrl = Utility.CheckForUpdate();
             if (latestVersionUrl != String.Empty)
@@ -762,5 +801,6 @@ namespace Redmine.Client
         {
             SaveConfig();
         }
+
     }
 }
