@@ -1,4 +1,4 @@
-#labels Phase-Deploy
+#labels Phase-Deploy,Featured
 = Settings =
 
 This is a brief explanation of the Settings Dialog.
@@ -16,3 +16,5 @@ This is a brief explanation of the Settings Dialog.
 || _Minimize to Systemtray_ || When the application is minimized, hide it from the taskbar. ||
 || _Minimize on start timer_ || When you start the timer to measure your spent time, minimize the window. When _minimize to systemtray_ is enabled, the application will also be hidden from the taskbar. ||
 || _Popup window when minimized_ || Popup the application again after N minutes to trigger the user to check he is still working on the same issue or to commit the current time and start a new working period.<br>The popup timer will start when the window is minimized, so the application will popup N minutes after minimization. ||
+
+If you want to add activities and priorities that are not default available in redmine, please refer to [CustomActivitiesAndPriorities].
