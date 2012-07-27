@@ -117,16 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RedminePassword" xml:space="preserve">
+  <data name="AuthenticationCheckBox" xml:space="preserve">
+    <value>Requires authentication</value>
+  </data>
+  <data name="BtnAboutButton" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="BtnCommitButton" xml:space="preserve">
+    <value>Commit</value>
+  </data>
+  <data name="BtnExitButton" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="BtnNewIssueButton" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="BtnRefreshButton" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="BtnResetButton" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="BtnSettingsButton" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="BtnStartButton" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="BtnStartButton_Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="labelActivity" xml:space="preserve">
+    <value>Activity</value>
+    <comment>Choose the Activity for the time commit</comment>
+  </data>
+  <data name="labelComment" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Comment of time commit</comment>
+  </data>
+  <data name="labelProject" xml:space="preserve">
+    <value>Project</value>
+    <comment>Choose the Project</comment>
+  </data>
+  <data name="labelRedminePassword" xml:space="preserve">
     <value>Redmine password</value>
   </data>
-  <data name="RedmineURL" xml:space="preserve">
+  <data name="labelRedmineURL" xml:space="preserve">
     <value>Redmine URL</value>
   </data>
-  <data name="RedmineUsername" xml:space="preserve">
+  <data name="labelRedmineUsername" xml:space="preserve">
     <value>Redmine username</value>
-  </data>
-  <data name="RequiresAuthentication" xml:space="preserve">
-    <value>Requires authentication</value>
   </data>
 </root>

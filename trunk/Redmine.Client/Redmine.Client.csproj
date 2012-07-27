@@ -79,6 +79,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang.resx</DependentUpon>
     </Compile>
+    <Compile Include="Languages\LangTools.cs" />
     <Compile Include="MainFormData.cs" />
     <Compile Include="IssueForm.cs">
       <SubType>Form</SubType>
