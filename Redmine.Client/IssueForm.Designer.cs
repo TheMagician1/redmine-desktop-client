@@ -30,32 +30,32 @@
         {
             this.BtnSaveButton = new System.Windows.Forms.Button();
             this.BtnCancelButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelTracker = new System.Windows.Forms.Label();
             this.ComboBoxTracker = new System.Windows.Forms.ComboBox();
             this.DateStart = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelSubject = new System.Windows.Forms.Label();
             this.TextBoxSubject = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelDescription = new System.Windows.Forms.Label();
             this.TextBoxDescription = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelStatus = new System.Windows.Forms.Label();
             this.ComboBoxStatus = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelPriority = new System.Windows.Forms.Label();
             this.ComboBoxPriority = new System.Windows.Forms.ComboBox();
             this.DateDue = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
+            this.labelEstimatedTime = new System.Windows.Forms.Label();
             this.TextBoxEstimatedTime = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labelAssignedTo = new System.Windows.Forms.Label();
             this.ComboBoxAssignedTo = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.labelTargetVersion = new System.Windows.Forms.Label();
             this.ComboBoxTargetVersion = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelPercentDone = new System.Windows.Forms.Label();
             this.ListBoxWatchers = new System.Windows.Forms.ListBox();
             this.label12 = new System.Windows.Forms.Label();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.cbStartDate = new System.Windows.Forms.CheckBox();
             this.cbDueDate = new System.Windows.Forms.CheckBox();
-            this.BtnClose = new System.Windows.Forms.Button();
+            this.BtnCloseButton = new System.Windows.Forms.Button();
             this.linkEditInRedmine = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -83,15 +83,15 @@
             this.BtnCancelButton.UseVisualStyleBackColor = true;
             this.BtnCancelButton.Click += new System.EventHandler(this.BtnCancelButton_Click);
             // 
-            // label2
+            // labelTracker
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 7);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Tracker";
+            this.labelTracker.AutoSize = true;
+            this.labelTracker.Location = new System.Drawing.Point(9, 7);
+            this.labelTracker.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTracker.Name = "labelTracker";
+            this.labelTracker.Size = new System.Drawing.Size(44, 13);
+            this.labelTracker.TabIndex = 12;
+            this.labelTracker.Text = "Tracker";
             // 
             // ComboBoxTracker
             // 
@@ -112,15 +112,15 @@
             this.DateStart.Size = new System.Drawing.Size(86, 20);
             this.DateStart.TabIndex = 13;
             // 
-            // label1
+            // labelSubject
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 45);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Subject";
+            this.labelSubject.AutoSize = true;
+            this.labelSubject.Location = new System.Drawing.Point(9, 45);
+            this.labelSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSubject.Name = "labelSubject";
+            this.labelSubject.Size = new System.Drawing.Size(43, 13);
+            this.labelSubject.TabIndex = 15;
+            this.labelSubject.Text = "Subject";
             // 
             // TextBoxSubject
             // 
@@ -130,15 +130,15 @@
             this.TextBoxSubject.Size = new System.Drawing.Size(414, 20);
             this.TextBoxSubject.TabIndex = 14;
             // 
-            // label3
+            // labelDescription
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 81);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Description";
+            this.labelDescription.AutoSize = true;
+            this.labelDescription.Location = new System.Drawing.Point(9, 81);
+            this.labelDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(60, 13);
+            this.labelDescription.TabIndex = 17;
+            this.labelDescription.Text = "Description";
             // 
             // TextBoxDescription
             // 
@@ -152,15 +152,15 @@
             this.TextBoxDescription.Size = new System.Drawing.Size(414, 63);
             this.TextBoxDescription.TabIndex = 16;
             // 
-            // label4
+            // labelStatus
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(148, 7);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Status";
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Location = new System.Drawing.Point(148, 7);
+            this.labelStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(37, 13);
+            this.labelStatus.TabIndex = 19;
+            this.labelStatus.Text = "Status";
             // 
             // ComboBoxStatus
             // 
@@ -172,15 +172,15 @@
             this.ComboBoxStatus.Size = new System.Drawing.Size(136, 21);
             this.ComboBoxStatus.TabIndex = 18;
             // 
-            // label5
+            // labelPriority
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(287, 6);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Priority";
+            this.labelPriority.AutoSize = true;
+            this.labelPriority.Location = new System.Drawing.Point(287, 6);
+            this.labelPriority.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelPriority.Name = "labelPriority";
+            this.labelPriority.Size = new System.Drawing.Size(38, 13);
+            this.labelPriority.TabIndex = 21;
+            this.labelPriority.Text = "Priority";
             // 
             // ComboBoxPriority
             // 
@@ -201,15 +201,15 @@
             this.DateDue.Size = new System.Drawing.Size(86, 20);
             this.DateDue.TabIndex = 23;
             // 
-            // label8
+            // labelEstimatedTime
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(191, 162);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 13);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "Estimated time";
+            this.labelEstimatedTime.AutoSize = true;
+            this.labelEstimatedTime.Location = new System.Drawing.Point(191, 162);
+            this.labelEstimatedTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelEstimatedTime.Name = "labelEstimatedTime";
+            this.labelEstimatedTime.Size = new System.Drawing.Size(75, 13);
+            this.labelEstimatedTime.TabIndex = 26;
+            this.labelEstimatedTime.Text = "Estimated time";
             // 
             // TextBoxEstimatedTime
             // 
@@ -219,15 +219,15 @@
             this.TextBoxEstimatedTime.Size = new System.Drawing.Size(89, 20);
             this.TextBoxEstimatedTime.TabIndex = 25;
             // 
-            // label9
+            // labelAssignedTo
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(287, 162);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 13);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "Assigned to";
+            this.labelAssignedTo.AutoSize = true;
+            this.labelAssignedTo.Location = new System.Drawing.Point(287, 162);
+            this.labelAssignedTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelAssignedTo.Name = "labelAssignedTo";
+            this.labelAssignedTo.Size = new System.Drawing.Size(62, 13);
+            this.labelAssignedTo.TabIndex = 28;
+            this.labelAssignedTo.Text = "Assigned to";
             // 
             // ComboBoxAssignedTo
             // 
@@ -239,15 +239,15 @@
             this.ComboBoxAssignedTo.Size = new System.Drawing.Size(136, 21);
             this.ComboBoxAssignedTo.TabIndex = 27;
             // 
-            // label10
+            // labelTargetVersion
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(287, 201);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 13);
-            this.label10.TabIndex = 30;
-            this.label10.Text = "Target version";
+            this.labelTargetVersion.AutoSize = true;
+            this.labelTargetVersion.Location = new System.Drawing.Point(287, 201);
+            this.labelTargetVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTargetVersion.Name = "labelTargetVersion";
+            this.labelTargetVersion.Size = new System.Drawing.Size(75, 13);
+            this.labelTargetVersion.TabIndex = 30;
+            this.labelTargetVersion.Text = "Target version";
             // 
             // ComboBoxTargetVersion
             // 
@@ -272,15 +272,15 @@
             this.numericUpDown1.Size = new System.Drawing.Size(90, 20);
             this.numericUpDown1.TabIndex = 31;
             // 
-            // label11
+            // labelPercentDone
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(191, 201);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 13);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "% done";
+            this.labelPercentDone.AutoSize = true;
+            this.labelPercentDone.Location = new System.Drawing.Point(191, 201);
+            this.labelPercentDone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelPercentDone.Name = "labelPercentDone";
+            this.labelPercentDone.Size = new System.Drawing.Size(42, 13);
+            this.labelPercentDone.TabIndex = 32;
+            this.labelPercentDone.Text = "% done";
             // 
             // ListBoxWatchers
             // 
@@ -333,16 +333,16 @@
             this.cbDueDate.UseVisualStyleBackColor = true;
             this.cbDueDate.CheckedChanged += new System.EventHandler(this.cbDueDate_CheckedChanged);
             // 
-            // BtnClose
+            // BtnCloseButton
             // 
-            this.BtnClose.Location = new System.Drawing.Point(194, 253);
-            this.BtnClose.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(72, 19);
-            this.BtnClose.TabIndex = 4;
-            this.BtnClose.Text = "Close Issue";
-            this.BtnClose.UseVisualStyleBackColor = true;
-            this.BtnClose.Click += new System.EventHandler(this.BtnCloseButton_Click);
+            this.BtnCloseButton.Location = new System.Drawing.Point(194, 253);
+            this.BtnCloseButton.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnCloseButton.Name = "BtnCloseButton";
+            this.BtnCloseButton.Size = new System.Drawing.Size(72, 19);
+            this.BtnCloseButton.TabIndex = 4;
+            this.BtnCloseButton.Text = "Close Issue";
+            this.BtnCloseButton.UseVisualStyleBackColor = true;
+            this.BtnCloseButton.Click += new System.EventHandler(this.BtnCloseButton_Click);
             // 
             // linkEditInRedmine
             // 
@@ -369,25 +369,25 @@
             this.Controls.Add(this.cbStartDate);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.ListBoxWatchers);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.labelPercentDone);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.labelTargetVersion);
             this.Controls.Add(this.ComboBoxTargetVersion);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.labelAssignedTo);
             this.Controls.Add(this.ComboBoxAssignedTo);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.labelEstimatedTime);
             this.Controls.Add(this.TextBoxEstimatedTime);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelPriority);
             this.Controls.Add(this.ComboBoxPriority);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.ComboBoxStatus);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.TextBoxDescription);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelSubject);
             this.Controls.Add(this.TextBoxSubject);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelTracker);
             this.Controls.Add(this.ComboBoxTracker);
-            this.Controls.Add(this.BtnClose);
+            this.Controls.Add(this.BtnCloseButton);
             this.Controls.Add(this.BtnSaveButton);
             this.Controls.Add(this.BtnCancelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -405,32 +405,32 @@
 
         private System.Windows.Forms.Button BtnSaveButton;
         private System.Windows.Forms.Button BtnCancelButton;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelTracker;
         private System.Windows.Forms.ComboBox ComboBoxTracker;
         private System.Windows.Forms.DateTimePicker DateStart;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelSubject;
         private System.Windows.Forms.TextBox TextBoxSubject;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.TextBox TextBoxDescription;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.ComboBox ComboBoxStatus;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelPriority;
         private System.Windows.Forms.ComboBox ComboBoxPriority;
         private System.Windows.Forms.DateTimePicker DateDue;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelEstimatedTime;
         private System.Windows.Forms.TextBox TextBoxEstimatedTime;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelAssignedTo;
         private System.Windows.Forms.ComboBox ComboBoxAssignedTo;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelTargetVersion;
         private System.Windows.Forms.ComboBox ComboBoxTargetVersion;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelPercentDone;
         private System.Windows.Forms.ListBox ListBoxWatchers;
         private System.Windows.Forms.Label label12;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.CheckBox cbStartDate;
         private System.Windows.Forms.CheckBox cbDueDate;
-        private System.Windows.Forms.Button BtnClose;
+        private System.Windows.Forms.Button BtnCloseButton;
         private System.Windows.Forms.LinkLabel linkEditInRedmine;
     }
 }

@@ -228,28 +228,90 @@
   <data name="BtnCancelButton" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="BtnCloseButton" xml:space="preserve">
+    <value>Close Issue</value>
+  </data>
   <data name="BtnSaveButton" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="cbDueDate" xml:space="preserve">
+    <value>Due Date</value>
+  </data>
+  <data name="cbStartDate" xml:space="preserve">
+    <value>Start Date</value>
   </data>
   <data name="CheckForUpdatesCheckBox" xml:space="preserve">
     <value>Check for updates on startup</value>
   </data>
+  <data name="CloseIssueText" xml:space="preserve">
+    <value>Are you sure you want to close issue {0}?</value>
+    <comment>{0} IssueId</comment>
+  </data>
+  <data name="DlgIssueTitleEdit" xml:space="preserve">
+    <value>Edit Issue {0} for project {1}</value>
+    <comment>{0} IssueId; {1} ProjectName</comment>
+  </data>
+  <data name="DlgIssueTitleNew" xml:space="preserve">
+    <value>Create a New Issue for project {0}</value>
+    <comment>{0} ProjectName</comment>
+  </data>
   <data name="DlgSettingsTitle" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="Error_CreateIssueFailed" xml:space="preserve">
+    <value>Creating the issue failed; The server responded: {0}</value>
+    <comment>{0} exception message</comment>
   </data>
   <data name="Error_InvalidUrl" xml:space="preserve">
     <value>Invalid URL of Redmine installation.</value>
   </data>
+  <data name="Error_IssueSubjectMandatory" xml:space="preserve">
+    <value>The issue subject is mandatory</value>
+  </data>
+  <data name="Error_UpdateIssueFailed" xml:space="preserve">
+    <value>Updating the issue failed; The server responded: {0}</value>
+    <comment>{0} exception message</comment>
+  </data>
+  <data name="labelAssignedTo" xml:space="preserve">
+    <value>Assigned To</value>
+  </data>
   <data name="labelCacheLifetime" xml:space="preserve">
     <value>Cache lifetime (minutes, 0 = infinite)</value>
   </data>
+  <data name="labelDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="labelEstimatedTime" xml:space="preserve">
+    <value>Estimated Time</value>
+  </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="labelPercentDone" xml:space="preserve">
+    <value>% Done</value>
   </data>
   <data name="labelPopupTimout" xml:space="preserve">
     <value>Popup window when minimized
 or Request attention every
 (minutes, 0 = never)</value>
+  </data>
+  <data name="labelPriority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="labelStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="labelSubject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="labelTargetVersion" xml:space="preserve">
+    <value>Target Version</value>
+  </data>
+  <data name="labelTracker" xml:space="preserve">
+    <value>Tracker</value>
+  </data>
+  <data name="linkEditInRedmine" xml:space="preserve">
+    <value>Edit this issue in Redmine</value>
   </data>
   <data name="MinimizeOnStartTimerCheckBox" xml:space="preserve">
     <value>Minimize on start timer</value>

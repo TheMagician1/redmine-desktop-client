@@ -88,6 +88,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close Issue.
+        /// </summary>
+        internal static string BtnCloseButton {
+            get {
+                return ResourceManager.GetString("BtnCloseButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Commit.
         /// </summary>
         internal static string BtnCommitButton {
@@ -169,11 +178,38 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Due Date.
+        /// </summary>
+        internal static string cbDueDate {
+            get {
+                return ResourceManager.GetString("cbDueDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Date.
+        /// </summary>
+        internal static string cbStartDate {
+            get {
+                return ResourceManager.GetString("cbStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for updates on startup.
         /// </summary>
         internal static string CheckForUpdatesCheckBox {
             get {
                 return ResourceManager.GetString("CheckForUpdatesCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to close issue {0}?.
+        /// </summary>
+        internal static string CloseIssueText {
+            get {
+                return ResourceManager.GetString("CloseIssueText", resourceCulture);
             }
         }
         
@@ -241,6 +277,24 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Issue {0} for project {1}.
+        /// </summary>
+        internal static string DlgIssueTitleEdit {
+            get {
+                return ResourceManager.GetString("DlgIssueTitleEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a New Issue for project {0}.
+        /// </summary>
+        internal static string DlgIssueTitleNew {
+            get {
+                return ResourceManager.GetString("DlgIssueTitleNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string DlgSettingsTitle {
@@ -255,6 +309,15 @@ namespace Redmine.Client.Languages {
         internal static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating the issue failed; The server responded: {0}.
+        /// </summary>
+        internal static string Error_CreateIssueFailed {
+            get {
+                return ResourceManager.GetString("Error_CreateIssueFailed", resourceCulture);
             }
         }
         
@@ -277,6 +340,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The issue subject is mandatory.
+        /// </summary>
+        internal static string Error_IssueSubjectMandatory {
+            get {
+                return ResourceManager.GetString("Error_IssueSubjectMandatory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No projects found in Redmine..
         /// </summary>
         internal static string Error_NoProjectsFound {
@@ -291,6 +363,15 @@ namespace Redmine.Client.Languages {
         internal static string Error_Startup {
             get {
                 return ResourceManager.GetString("Error_Startup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating the issue failed; The server responded: {0}.
+        /// </summary>
+        internal static string Error_UpdateIssueFailed {
+            get {
+                return ResourceManager.GetString("Error_UpdateIssueFailed", resourceCulture);
             }
         }
         
@@ -313,6 +394,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assigned To.
+        /// </summary>
+        internal static string labelAssignedTo {
+            get {
+                return ResourceManager.GetString("labelAssignedTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cache lifetime (minutes, 0 = infinite).
         /// </summary>
         internal static string labelCacheLifetime {
@@ -331,11 +421,38 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string labelDescription {
+            get {
+                return ResourceManager.GetString("labelDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated Time.
+        /// </summary>
+        internal static string labelEstimatedTime {
+            get {
+                return ResourceManager.GetString("labelEstimatedTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string labelLanguage {
             get {
                 return ResourceManager.GetString("labelLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to % Done.
+        /// </summary>
+        internal static string labelPercentDone {
+            get {
+                return ResourceManager.GetString("labelPercentDone", resourceCulture);
             }
         }
         
@@ -347,6 +464,15 @@ namespace Redmine.Client.Languages {
         internal static string labelPopupTimout {
             get {
                 return ResourceManager.GetString("labelPopupTimout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priority.
+        /// </summary>
+        internal static string labelPriority {
+            get {
+                return ResourceManager.GetString("labelPriority", resourceCulture);
             }
         }
         
@@ -383,6 +509,51 @@ namespace Redmine.Client.Languages {
         internal static string labelRedmineUsername {
             get {
                 return ResourceManager.GetString("labelRedmineUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        internal static string labelStatus {
+            get {
+                return ResourceManager.GetString("labelStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subject.
+        /// </summary>
+        internal static string labelSubject {
+            get {
+                return ResourceManager.GetString("labelSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target Version.
+        /// </summary>
+        internal static string labelTargetVersion {
+            get {
+                return ResourceManager.GetString("labelTargetVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracker.
+        /// </summary>
+        internal static string labelTracker {
+            get {
+                return ResourceManager.GetString("labelTracker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit this issue in Redmine.
+        /// </summary>
+        internal static string linkEditInRedmine {
+            get {
+                return ResourceManager.GetString("linkEditInRedmine", resourceCulture);
             }
         }
         
