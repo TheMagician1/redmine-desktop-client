@@ -117,16 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RedminePassword" xml:space="preserve">
+  <data name="AuthenticationCheckBox" xml:space="preserve">
+    <value>Gebruik authenticatie</value>
+  </data>
+  <data name="BtnAboutButton" xml:space="preserve">
+    <value>Over...</value>
+  </data>
+  <data name="BtnCommitButton" xml:space="preserve">
+    <value>Sla op</value>
+  </data>
+  <data name="BtnExitButton" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="BtnNewIssueButton" xml:space="preserve">
+    <value>Nieuw</value>
+  </data>
+  <data name="BtnRefreshButton" xml:space="preserve">
+    <value>Ververs</value>
+  </data>
+  <data name="BtnResetButton" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="BtnSettingsButton" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="BtnStartButton" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="BtnStartButton_Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="labelActivity" xml:space="preserve">
+    <value>Activiteit</value>
+  </data>
+  <data name="labelComment" xml:space="preserve">
+    <value>Commentaar</value>
+  </data>
+  <data name="labelProject" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="labelRedminePassword" xml:space="preserve">
     <value>Redmine wachtwoord</value>
   </data>
-  <data name="RedmineURL" xml:space="preserve">
+  <data name="labelRedmineURL" xml:space="preserve">
     <value>Redmine URL</value>
   </data>
-  <data name="RedmineUsername" xml:space="preserve">
+  <data name="labelRedmineUsername" xml:space="preserve">
     <value>Redmine gebruikersnaam</value>
-  </data>
-  <data name="RequiresAuthentication" xml:space="preserve">
-    <value>Gebruik authenticatie</value>
   </data>
 </root>

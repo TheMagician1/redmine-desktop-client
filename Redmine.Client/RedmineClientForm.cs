@@ -58,6 +58,8 @@ namespace Redmine.Client
                 try
                 {
                     LoadConfig();
+                    //Languages.Lang.Culture = new System.Globalization.CultureInfo("nl-NL");
+                    Languages.LangTools.UpdateControlsForLanguage(this.Controls);
                     if (this.MinimizeToSystemTray)
                         this.RestoreToolStripMenuItem.Text = "&Hide";
                     else
@@ -213,7 +215,7 @@ namespace Redmine.Client
         private void SaveConfig()
         {
             //Load config file
-            Enumerations.LoadAll();
+//            Enumerations.LoadAll();
 
             Configuration roamingConf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
             ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
@@ -251,6 +253,7 @@ namespace Redmine.Client
                 settings.Add("MinimizeOnStartTimer", ConfigurationManager.AppSettings["MinimizeOnStartTimer"]);
                 settings.Add("PopupInterval", ConfigurationManager.AppSettings["PopupInterval"]);
                 settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
+                settings.Add("LanguageCode", Languages.Lang.Culture.Name);
                 conf.Save(ConfigurationSaveMode.Modified);
             }
             RedmineURL              = GetSetting(settings, "RedmineURL", "");
@@ -267,6 +270,15 @@ namespace Redmine.Client
                                       GetSetting(settings, "MainWindowSizeY", 0));
             if (FormSize.Height > 0 && FormSize.Width > 0)
                 Size = FormSize;
+
+            try
+            {
+                Languages.Lang.Culture = new System.Globalization.CultureInfo(conf.AppSettings.Settings["LanguageCode"].Value);
+            }
+            catch (Exception)
+            {
+                Languages.Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
+            }
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -347,12 +359,12 @@ namespace Redmine.Client
             if (ticking)
             {
                 timer1.Stop();
-                BtnPauseButton.Text = "Start";
+                BtnStartButton.Text = "Start";
             }
             else
             {
                 timer1.Start();
-                BtnPauseButton.Text = "Pause";
+                BtnStartButton.Text = "Pause";
                 if (MinimizeOnStartTimer)
                     Minimize();
             }
@@ -521,7 +533,7 @@ namespace Redmine.Client
 
                 ticking = false;
                 timer1.Stop();
-                BtnPauseButton.Text = "Start";
+                BtnStartButton.Text = "Start";
                 if (MessageBox.Show(String.Format("Do you really want to commit the following entry: {6} Project: {0}, Activity: {1}, Issue: {2}, Date: {3}, Comment: {4}, Time: {5}",
                     selectedIssue.Project.Name, selectedActivity.Name, selectedIssue.Id, dateTimePicker1.Value.ToString("yyyy-MM-dd"), TextBoxComment.Text, String.Format("{0:0.##}", (double)ticks / 3600), Environment.NewLine), 
                     "Ready to commit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
@@ -550,7 +562,7 @@ namespace Redmine.Client
                 {
                     ticking = true;
                     timer1.Start();
-                    BtnPauseButton.Text = "Pause";
+                    BtnStartButton.Text = "Pause";
                 }
             }
             else

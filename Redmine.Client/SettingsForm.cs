@@ -16,11 +16,7 @@ namespace Redmine.Client
 
         private void LoadLanguage()
         {
-            //Languages.Lang.Culture = new System.Globalization.CultureInfo("nl-NL");
-            labelRedmineURL.Text = Languages.Lang.RedmineURL;
-            AuthenticationCheckBox.Text = Languages.Lang.RequiresAuthentication;
-            labelRedmineUsername.Text = Languages.Lang.RedmineUsername;
-            labelRedminePassword.Text = Languages.Lang.RedminePassword;
+            Languages.LangTools.UpdateControlsForLanguage(this.Controls);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -62,6 +58,7 @@ namespace Redmine.Client
                 config.AppSettings.Settings.Add("MinimizeOnStartTimer", MinimizeOnStartTimerCheckBox.Checked.ToString());
                 config.AppSettings.Settings.Add("PopupInterval", PopupTime.Value.ToString());
                 config.AppSettings.Settings.Add("CacheLifetime", CacheLifetime.Value.ToString());
+                config.AppSettings.Settings.Add("LanguageCode", Languages.Lang.Culture.Name);
                 config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
                 Enumerations.SaveAll();
@@ -89,6 +86,7 @@ namespace Redmine.Client
                 conf.AppSettings.Settings.Add("MinimizeOnStartTimer", ConfigurationManager.AppSettings["MinimizeOnStartTimer"]);
                 conf.AppSettings.Settings.Add("PopupInterval", ConfigurationManager.AppSettings["PopupInterval"]);
                 conf.AppSettings.Settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
+                conf.AppSettings.Settings.Add("LanguageCode", Languages.Lang.Culture.Name);
                 conf.Save(ConfigurationSaveMode.Modified);
             }
             RedmineBaseUrlTextBox.Text = conf.AppSettings.Settings["RedmineURL"].Value;
@@ -142,6 +140,15 @@ namespace Redmine.Client
             {
                 PopupTime.Value = 0;
             }
+            try
+            {
+                Languages.Lang.Culture = new System.Globalization.CultureInfo(conf.AppSettings.Settings["LanguageCode"].Value);
+            }
+            catch (Exception)
+            {
+                Languages.Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
+            }
+
         }
 
         private void AuthenticationCheckBox_CheckedChanged(object sender, EventArgs e)

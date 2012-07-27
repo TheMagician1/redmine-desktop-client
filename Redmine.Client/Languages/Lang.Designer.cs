@@ -61,38 +61,146 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Requires authentication.
+        /// </summary>
+        internal static string AuthenticationCheckBox {
+            get {
+                return ResourceManager.GetString("AuthenticationCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string BtnAboutButton {
+            get {
+                return ResourceManager.GetString("BtnAboutButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commit.
+        /// </summary>
+        internal static string BtnCommitButton {
+            get {
+                return ResourceManager.GetString("BtnCommitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        internal static string BtnExitButton {
+            get {
+                return ResourceManager.GetString("BtnExitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        internal static string BtnNewIssueButton {
+            get {
+                return ResourceManager.GetString("BtnNewIssueButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        internal static string BtnRefreshButton {
+            get {
+                return ResourceManager.GetString("BtnRefreshButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        internal static string BtnResetButton {
+            get {
+                return ResourceManager.GetString("BtnResetButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string BtnSettingsButton {
+            get {
+                return ResourceManager.GetString("BtnSettingsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        internal static string BtnStartButton {
+            get {
+                return ResourceManager.GetString("BtnStartButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause.
+        /// </summary>
+        internal static string BtnStartButton_Pause {
+            get {
+                return ResourceManager.GetString("BtnStartButton_Pause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activity.
+        /// </summary>
+        internal static string labelActivity {
+            get {
+                return ResourceManager.GetString("labelActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        internal static string labelComment {
+            get {
+                return ResourceManager.GetString("labelComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        internal static string labelProject {
+            get {
+                return ResourceManager.GetString("labelProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Redmine password.
         /// </summary>
-        internal static string RedminePassword {
+        internal static string labelRedminePassword {
             get {
-                return ResourceManager.GetString("RedminePassword", resourceCulture);
+                return ResourceManager.GetString("labelRedminePassword", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Redmine URL.
         /// </summary>
-        internal static string RedmineURL {
+        internal static string labelRedmineURL {
             get {
-                return ResourceManager.GetString("RedmineURL", resourceCulture);
+                return ResourceManager.GetString("labelRedmineURL", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Redmine username.
         /// </summary>
-        internal static string RedmineUsername {
+        internal static string labelRedmineUsername {
             get {
-                return ResourceManager.GetString("RedmineUsername", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Requires authentication.
-        /// </summary>
-        internal static string RequiresAuthentication {
-            get {
-                return ResourceManager.GetString("RequiresAuthentication", resourceCulture);
+                return ResourceManager.GetString("labelRedmineUsername", resourceCulture);
             }
         }
     }
