@@ -236,6 +236,9 @@ namespace Redmine.Client
         {
             Enumerations.LoadAll();
 
+            if (Lang.Culture == null)
+                Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
+
             Configuration roamingConf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
             ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
             configFileMap.ExeConfigFilename = roamingConf.FilePath;
