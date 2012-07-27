@@ -567,7 +567,7 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimize to systemtry.
+        ///   Looks up a localized string similar to Minimize to systemtray.
         /// </summary>
         internal static string MinimizeToSystemTrayCheckBox {
             get {

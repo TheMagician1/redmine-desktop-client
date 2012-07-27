@@ -317,7 +317,7 @@ or Request attention every
     <value>Minimize on start timer</value>
   </data>
   <data name="MinimizeToSystemTrayCheckBox" xml:space="preserve">
-    <value>Minimize to systemtry</value>
+    <value>Minimize to systemtray</value>
   </data>
   <data name="RedmineClientTitle_NoUser" xml:space="preserve">
     <value>Redmine Client</value>
