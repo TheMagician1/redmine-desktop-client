@@ -55,7 +55,6 @@ namespace Redmine.Client
             this.BtnResetButton = new System.Windows.Forms.Button();
             this.BtnAboutButton = new System.Windows.Forms.Button();
             this.BtnSettingsButton = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.BtnNewIssueButton = new System.Windows.Forms.Button();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.NotifyIconMenuStrip.SuspendLayout();
@@ -299,11 +298,6 @@ namespace Redmine.Client
             this.BtnSettingsButton.UseVisualStyleBackColor = true;
             this.BtnSettingsButton.Click += new System.EventHandler(this.BtnSettingsButton_Click);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
             // BtnNewIssueButton
             // 
             this.BtnNewIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -384,7 +378,6 @@ namespace Redmine.Client
         private Button BtnResetButton;
         private Button BtnAboutButton;
         private Button BtnSettingsButton;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button BtnNewIssueButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }

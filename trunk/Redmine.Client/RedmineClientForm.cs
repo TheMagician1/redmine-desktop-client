@@ -73,15 +73,7 @@ namespace Redmine.Client
                     this.BtnNewIssueButton.Enabled = false;
 
                     currentUser = redmine.GetCurrentUser();
-                    if (this.CheckForUpdates)
-                    {
-                        AddBgWork(() =>
-                        {
-                            AsyncCheckForUpdates();
-                            return null;
-                        } );
-                    }
-                    backgroundWorker1.RunWorkerAsync(0);
+                    AsyncGetFormData(0);
                 }
                 catch (Exception e)
                 {
@@ -93,11 +85,21 @@ namespace Redmine.Client
                     bRetry = true;
                 }
             } while (bRetry);
+
+            if (this.CheckForUpdates)
+            {
+                AddBgWork(() =>
+                {
+                    AsyncCheckForUpdates();
+                    return null;
+                });
+            }
+
             if (currentUser != null)
                 this.Text = String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName);
             else
                 this.Text = Lang.RedmineClientTitle_NoUser;
-       }
+        }
 
         private MainFormData PrepareFormData(int projectId)
         {
@@ -697,32 +699,34 @@ namespace Redmine.Client
             this.Cursor = Cursors.Default;
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private void AsyncGetFormData(int projectId)
         {
-            MainFormData data;
-            try
+            this.Cursor = Cursors.WaitCursor;
+            AddBgWork(() =>
             {
-                data = PrepareFormData((int)e.Argument);
-                e.Result = data;
-            }
-            catch (Exception ex)
-            {
-                e.Result = ex;
-            }
+                try
+                {
+                    MainFormData data = PrepareFormData(projectId);
+                    
+                    //Let main thread fill form data...
+                    return () =>
+                    {
+                        FillForm(data);
+                        this.Cursor = Cursors.Default;
+                    };
+                }
+                catch (Exception e)
+                {
+                    //Show the exception in the main thread
+                    return () =>
+                    {
+                        this.Cursor = Cursors.Default;
+                        MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    };
+                }
+            });
         }
 
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Result is Exception)
-            {
-                MessageBox.Show(String.Format(Lang.Error_Exception, ((Exception)e.Result).Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            else
-            {
-				FillForm((MainFormData)e.Result);
-            }
-            this.Cursor = Cursors.Default;
-        }
 
         private void BtnNewIssueButton_Click(object sender, EventArgs e)
         {
