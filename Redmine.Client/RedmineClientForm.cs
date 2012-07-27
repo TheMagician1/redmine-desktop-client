@@ -97,32 +97,6 @@ namespace Redmine.Client
                     this.BtnRefreshButton.Enabled = false;
                     this.BtnNewIssueButton.Enabled = false;
 
-                    //Retrieve current user asynchroneous...
-                    AddBgWork(() =>
-                    {
-                        try
-                        {
-                            User newCurrentUser = redmine.GetCurrentUser();
-                            return () =>
-                            {
-                                currentUser = newCurrentUser;
-                                if (currentUser != null)
-                                    this.Text = String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName);
-                                else
-                                    this.Text = Lang.RedmineClientTitle_NoUser;
-                            };
-                        }
-                        catch(Exception e)
-                        {
-                            return ()=>
-                            {
-                                currentUser = null;
-                                this.Text = Lang.RedmineClientTitle_NoUser;
-                                if (OnInitFailed(e))
-                                    Reinit();
-                            };
-                        }
-                    });
                     AsyncGetFormData(0);
                 }
                 catch (Exception e)
@@ -710,34 +684,10 @@ namespace Redmine.Client
                 return; //User canceled.
 
             Reinit();
-            /*
-            LoadConfig();
-
-            this.Cursor = Cursors.AppStarting;
-            if (RedmineAuthentication)
-                redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword);
-            else
-                redmine = new RedmineManager(RedmineURL);
-            try
-            {
-                currentUser = redmine.GetCurrentUser();
-                FillForm(PrepareFormData(0));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            if (currentUser != null)
-                this.Text = String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName);
-            else
-                this.Text = Lang.RedmineClientTitle_NoUser;
-            this.Cursor = Cursors.Default;
-            */
         }
 
-        private void AsyncGetFormData(int projectId)
+        private void AsyncGetRestOfFormData(int projectId)
         {
-            this.Cursor = Cursors.WaitCursor;
             AddBgWork(() =>
             {
                 try
@@ -758,6 +708,40 @@ namespace Redmine.Client
                     {
                         //this.Cursor = Cursors.Default;
                         //MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        if (OnInitFailed(e))
+                            Reinit();
+                    };
+                }
+            });
+        }
+
+
+        private void AsyncGetFormData(int projectId)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            //Retrieve current user asynchroneous...
+            AddBgWork(() =>
+            {
+                try
+                {
+                    User newCurrentUser = redmine.GetCurrentUser();
+                    return () =>
+                    {
+                        currentUser = newCurrentUser;
+                        if (currentUser != null)
+                            this.Text = String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName);
+                        else
+                            this.Text = Lang.RedmineClientTitle_NoUser;
+                        //When done, get the rest of the form data...
+                        AsyncGetRestOfFormData(projectId);
+                    };
+                }
+                catch (Exception e)
+                {
+                    return () =>
+                    {
+                        currentUser = null;
+                        this.Text = Lang.RedmineClientTitle_NoUser;
                         if (OnInitFailed(e))
                             Reinit();
                     };
