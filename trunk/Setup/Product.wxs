@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="4f91a54d-c447-4dfa-82fd-7e5faba5b642" Name="Redmine Desktop Client" Language="1033" Version="1.0.0.0" Manufacturer="Redmine" UpgradeCode="1eb3286e-01fe-438a-a603-e5e706396f97">
+		<Package InstallerVersion="200" Compressed="yes" />
+
+		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <?define BinDir = ..\Redmine.Client\bin\$(var.Configuration) ?>
+    <?define ApiBinDir = ..\Redmine.Api\bin\$(var.Configuration) ?>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLLOCATION" Name="RedmineClient">
+				</Directory>
+			</Directory>
+		</Directory>
+
+    <DirectoryRef Id="INSTALLLOCATION">
+      <Component Id="RedmineClient.exe" Guid="344807fa-32cd-4840-b050-1769bd7bdedf">
+        <File Id="RedmineClient.exe" Source="$(var.BinDir)\RedmineClient.exe" />
+      </Component>
+      <Component Id="Redmine.Net.Api.dll" Guid="C3FA0BC5-5E42-4450-BEF9-6117134ECD65">
+        <File Id="Redmine.Net.Api.dll" Source="$(var.ApiBinDir)\Redmine.Net.Api.dll" />
+      </Component>
+    </DirectoryRef>
+    
+
+		<Feature Id="ProductFeature" Title="Setup Redmine Desktop Client" Level="1" ConfigurableDirectory="INSTALLLOCATION">
+			<ComponentRef Id="RedmineClient.exe" />
+      <ComponentRef Id="Redmine.Net.Api.dll" />
+      
+      <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
+			<ComponentGroupRef Id="Product.Generated" />
+		</Feature>
+	</Product>
+</Wix>
