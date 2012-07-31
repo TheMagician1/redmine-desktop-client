@@ -72,6 +72,7 @@
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Assignees.cs" />
+    <Compile Include="BgWork.cs" />
     <Compile Include="ClientExtensionMethods.cs" />
     <Compile Include="Enumerations.cs" />
     <Compile Include="IssueFormData.cs" />
