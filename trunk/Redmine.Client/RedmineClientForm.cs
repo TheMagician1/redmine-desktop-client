@@ -14,17 +14,6 @@ namespace Redmine.Client
     delegate void OnDone();
     delegate OnDone RunAsync();
 
-    class BgWork
-    {
-        public BgWork(String name, RunAsync work)
-        {
-            m_name = name;
-            m_work = work;
-        }
-        public String m_name;
-        public RunAsync m_work;
-    };
-
     public partial class RedmineClientForm : Form
     {
         internal static IssueFormData DataCache = null;
