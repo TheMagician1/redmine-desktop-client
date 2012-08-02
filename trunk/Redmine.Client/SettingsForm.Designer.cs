@@ -63,10 +63,10 @@
             // BtnCancelButton
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(370, 254);
+            this.BtnCancelButton.Location = new System.Drawing.Point(360, 254);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
-            this.BtnCancelButton.Size = new System.Drawing.Size(56, 19);
+            this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
             this.BtnCancelButton.TabIndex = 1;
             this.BtnCancelButton.Text = "Cancel";
             this.BtnCancelButton.UseVisualStyleBackColor = true;
@@ -74,10 +74,10 @@
             // 
             // BtnSaveButton
             // 
-            this.BtnSaveButton.Location = new System.Drawing.Point(309, 254);
+            this.BtnSaveButton.Location = new System.Drawing.Point(288, 254);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
-            this.BtnSaveButton.Size = new System.Drawing.Size(56, 19);
+            this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
             this.BtnSaveButton.TabIndex = 2;
             this.BtnSaveButton.Text = "Save";
             this.BtnSaveButton.UseVisualStyleBackColor = true;
