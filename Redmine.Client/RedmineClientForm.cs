@@ -404,18 +404,18 @@ namespace Redmine.Client
             Application.Exit();
         }
 
-        private void BtnPauseButton_Click(object sender, EventArgs e)
+        private void BtnStartButton_Click(object sender, EventArgs e)
         {
             timer1.Interval = 1000;
             if (ticking)
             {
                 timer1.Stop();
-                BtnStartButton.Text = "Start";
+                BtnStartButton.Text = Lang.BtnStartButton;
             }
             else
             {
                 timer1.Start();
-                BtnStartButton.Text = "Pause";
+                BtnStartButton.Text = Lang.BtnStartButton_Pause;
                 if (MinimizeOnStartTimer)
                     Minimize();
             }

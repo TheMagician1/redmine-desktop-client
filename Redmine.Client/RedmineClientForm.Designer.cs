@@ -100,7 +100,7 @@ namespace Redmine.Client
             this.BtnStartButton.TabIndex = 5;
             this.BtnStartButton.Text = "Start";
             this.BtnStartButton.UseVisualStyleBackColor = true;
-            this.BtnStartButton.Click += new System.EventHandler(this.BtnPauseButton_Click);
+            this.BtnStartButton.Click += new System.EventHandler(this.BtnStartButton_Click);
             // 
             // dateTimePicker1
             // 
