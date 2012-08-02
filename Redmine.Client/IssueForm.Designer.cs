@@ -62,10 +62,10 @@
             // 
             // BtnSaveButton
             // 
-            this.BtnSaveButton.Location = new System.Drawing.Point(308, 253);
+            this.BtnSaveButton.Location = new System.Drawing.Point(286, 250);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
-            this.BtnSaveButton.Size = new System.Drawing.Size(56, 19);
+            this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
             this.BtnSaveButton.TabIndex = 4;
             this.BtnSaveButton.Text = "Save";
             this.BtnSaveButton.UseVisualStyleBackColor = true;
@@ -74,10 +74,10 @@
             // BtnCancelButton
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(368, 253);
+            this.BtnCancelButton.Location = new System.Drawing.Point(358, 250);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
-            this.BtnCancelButton.Size = new System.Drawing.Size(56, 19);
+            this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
             this.BtnCancelButton.TabIndex = 3;
             this.BtnCancelButton.Text = "Cancel";
             this.BtnCancelButton.UseVisualStyleBackColor = true;
@@ -335,10 +335,10 @@
             // 
             // BtnCloseButton
             // 
-            this.BtnCloseButton.Location = new System.Drawing.Point(194, 253);
+            this.BtnCloseButton.Location = new System.Drawing.Point(194, 250);
             this.BtnCloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCloseButton.Name = "BtnCloseButton";
-            this.BtnCloseButton.Size = new System.Drawing.Size(72, 19);
+            this.BtnCloseButton.Size = new System.Drawing.Size(72, 24);
             this.BtnCloseButton.TabIndex = 4;
             this.BtnCloseButton.Text = "Close Issue";
             this.BtnCloseButton.UseVisualStyleBackColor = true;
