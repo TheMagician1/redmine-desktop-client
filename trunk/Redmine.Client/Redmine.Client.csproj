@@ -113,10 +113,13 @@
     <EmbeddedResource Include="IssueForm.resx">
       <DependentUpon>IssueForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Languages\Lang.nl.resx" />
+    <EmbeddedResource Include="Languages\Lang.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RedmineClientForm.resx">
       <DependentUpon>RedmineClientForm.cs</DependentUpon>

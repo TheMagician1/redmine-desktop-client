@@ -42,6 +42,10 @@ namespace Redmine.Client
 
         private Dictionary<int, Project> Projects;
 
+        private int LastProjectId = 0;
+        private int LastActivityId = 0;
+        private int LastIssueId = 0;
+
         public RedmineClientForm()
         {
             InitializeComponent();
@@ -79,8 +83,20 @@ namespace Redmine.Client
             return true;
         }
 
+        void LoadLastIds()
+        {
+            try
+            {
+                LastProjectId = ((Project)ComboBoxProject.SelectedItem).Id;
+                LastActivityId = ((IdentifiableName)ComboBoxActivity.SelectedItem).Id;
+                LastIssueId = ((Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem).Id;
+            }
+            catch (Exception) { }
+        }
+
         void Reinit()
         {
+            LoadLastIds();
             bool bRetry = false;
             do
             {
@@ -97,7 +113,7 @@ namespace Redmine.Client
                     this.BtnRefreshButton.Enabled = false;
                     this.BtnNewIssueButton.Enabled = false;
 
-                    AsyncGetFormData(0);
+                    AsyncGetFormData(LastProjectId, LastIssueId, LastActivityId);
                 }
                 catch (Exception e)
                 {
@@ -125,7 +141,7 @@ namespace Redmine.Client
             throw new Exception(Lang.Error_NoProjectsFound);
         }
 
-        private void FillForm(MainFormData data)
+        private void FillForm(MainFormData data, int issueId, int activityId)
         {
             updating = true;
             if (data.Projects.Count == 0 || data.Issues.Count == 0)
@@ -194,16 +210,22 @@ namespace Redmine.Client
             }
             if (ComboBoxActivity.Items.Count > 0)
             {
-                ComboBoxActivity.SelectedIndex = 0;
-                if (!Int32.TryParse(ComboBoxActivity.SelectedValue.ToString(), out activityId))
-                {
-                    activityId = 0;
-                } 
+                if (activityId != 0)
+                    ComboBoxActivity.SelectedValue = activityId;
+                this.activityId = ((IdentifiableName)ComboBoxActivity.SelectedItem).Id;
             }
             if (DataGridViewIssues.Rows.Count > 0)
             {
-                DataGridViewIssues.Rows[0].Selected = true;
-                DataGridViewIssues_SelectionChanged(null, null);
+                DataGridViewIssues.ClearSelection();
+                foreach (DataGridViewRow row in DataGridViewIssues.Rows)
+                {
+                    if (((Issue)row.DataBoundItem).Id == issueId)
+                    {
+                        row.Selected = true;
+                        DataGridViewIssues_SelectionChanged(null, null);
+                        break;
+                    }
+                }
             }
             updating = false;
             this.Cursor = Cursors.Default;
@@ -624,18 +646,11 @@ namespace Redmine.Client
         {
             if (!updating)
             {
+                LoadLastIds();
                 DataCache = null;
-                int reselect = ComboBoxProject.SelectedIndex;
                 this.Cursor = Cursors.AppStarting;
-                if ((int)ComboBoxProject.SelectedValue == 0)
-                    projectId = 0;
-                else
-                    projectId = (int)ComboBoxProject.SelectedValue;
 
-                FillForm(PrepareFormData(projectId));
-                updating = true;
-                ComboBoxProject.SelectedIndex = reselect;
-                updating = false;
+                FillForm(PrepareFormData(LastProjectId), LastIssueId, LastActivityId);
             }
         }
 
@@ -646,24 +661,11 @@ namespace Redmine.Client
 
         private void BtnRefreshButton_Click(object sender, EventArgs e)
         {
-            //redmine.InvalidateCache();
+            LoadLastIds();
             this.Cursor = Cursors.AppStarting;
-            int reselect = ComboBoxProject.SelectedIndex;
-            if (ComboBoxProject.SelectedValue != null)
-            {
-                if ((int)ComboBoxProject.SelectedValue == 0)
-                    projectId = 0;
-                else
-                    projectId = (int)ComboBoxProject.SelectedValue;
-            }
-            else
-            {
-                projectId = 0;
-            }
             try
             {
-                FillForm(PrepareFormData(projectId));
-                ComboBoxProject.SelectedIndex = reselect;
+                FillForm(PrepareFormData(projectId), LastIssueId, LastActivityId);
             }
             catch(Exception ex)
             {
@@ -686,7 +688,7 @@ namespace Redmine.Client
             Reinit();
         }
 
-        private void AsyncGetRestOfFormData(int projectId)
+        private void AsyncGetRestOfFormData(int projectId, int issueId, int activityId)
         {
             AddBgWork("Getting form data", () =>
             {
@@ -697,7 +699,7 @@ namespace Redmine.Client
                     //Let main thread fill form data...
                     return () =>
                     {
-                        FillForm(data);
+                        FillForm(data, issueId, activityId);
                         this.Cursor = Cursors.Default;
                     };
                 }
@@ -716,7 +718,7 @@ namespace Redmine.Client
         }
 
 
-        private void AsyncGetFormData(int projectId)
+        private void AsyncGetFormData(int projectId, int issueId, int activityId)
         {
             this.Cursor = Cursors.WaitCursor;
             //Retrieve current user asynchroneous...
@@ -733,7 +735,7 @@ namespace Redmine.Client
                         else
                             SetTitle(Lang.RedmineClientTitle_NoUser);
                         //When done, get the rest of the form data...
-                        AsyncGetRestOfFormData(projectId);
+                        AsyncGetRestOfFormData(projectId, issueId, activityId);
                     };
                 }
                 catch (Exception e)
