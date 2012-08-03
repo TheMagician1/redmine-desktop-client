@@ -20,7 +20,7 @@ namespace Redmine.Client
         private int ticks = 0;
         private bool ticking = false;
         private int issueId = 0;
-        internal int projectId = 0;
+        private int projectId = 0;
         private int activityId = 0;
         internal static RedmineManager redmine;
         private bool updating = false;
@@ -42,13 +42,12 @@ namespace Redmine.Client
 
         private Dictionary<int, Project> Projects;
 
-        private int LastProjectId = 0;
-        private int LastActivityId = 0;
-        private int LastIssueId = 0;
-
         public RedmineClientForm()
         {
             InitializeComponent();
+            Properties.Settings.Default.Upgrade();
+            Properties.Settings.Default.Reload();
+
             if (!IsRunningOnMono())
             {
                 this.Icon = (Icon)Properties.Resources.ResourceManager.GetObject("clock");
@@ -60,7 +59,7 @@ namespace Redmine.Client
 				this.DataGridViewIssues.Click += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
 			}
 
-            Reinit();
+            Reinit(false);
  
             //At last add check-for-updates work...
             if (this.CheckForUpdates)
@@ -87,16 +86,17 @@ namespace Redmine.Client
         {
             try
             {
-                LastProjectId = ((Project)ComboBoxProject.SelectedItem).Id;
-                LastActivityId = ((IdentifiableName)ComboBoxActivity.SelectedItem).Id;
-                LastIssueId = ((Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem).Id;
+                projectId = ((Project)ComboBoxProject.SelectedItem).Id;
+                activityId = ((IdentifiableName)ComboBoxActivity.SelectedItem).Id;
+                issueId = ((Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem).Id;
             }
             catch (Exception) { }
         }
 
-        void Reinit()
+        void Reinit(bool saveRuntime = true)
         {
-            LoadLastIds();
+            if (saveRuntime)
+                SaveRuntimeConfig();
             bool bRetry = false;
             do
             {
@@ -113,7 +113,7 @@ namespace Redmine.Client
                     this.BtnRefreshButton.Enabled = false;
                     this.BtnNewIssueButton.Enabled = false;
 
-                    AsyncGetFormData(LastProjectId, LastIssueId, LastActivityId);
+                    AsyncGetFormData(projectId, issueId, activityId);
                 }
                 catch (Exception e)
                 {
@@ -133,7 +133,6 @@ namespace Redmine.Client
                 {
                     projectId = projects[0].Id;
                 }
-                this.projectId = projectId;
                 Projects = MainFormData.ToDictionaryName(projects);
                 NameValueCollection curProject = new NameValueCollection { { "project_id", projectId.ToString() } };
                 return new MainFormData() { Issues = redmine.GetObjectList<Issue>(curProject), Members = redmine.GetObjectList<ProjectMembership>(curProject), Projects = projects };
@@ -196,23 +195,18 @@ namespace Redmine.Client
             if (ComboBoxProject.Items.Count > 0)
             {
                 if (projectId != 0)
-                {
                     ComboBoxProject.SelectedValue = projectId;
-                }
                 else
-                {
                     ComboBoxProject.SelectedIndex = 0;   
-                }
-                if ((int)ComboBoxProject.SelectedValue == 0)
-                {
-                    projectId = 0;
-                }   
+                projectId = (int)ComboBoxProject.SelectedValue;
             }
             if (ComboBoxActivity.Items.Count > 0)
             {
                 if (activityId != 0)
                     ComboBoxActivity.SelectedValue = activityId;
-                this.activityId = ((IdentifiableName)ComboBoxActivity.SelectedItem).Id;
+                else
+                    ComboBoxActivity.SelectedIndex = 0;
+                activityId = (int)ComboBoxActivity.SelectedValue;
             }
             if (DataGridViewIssues.Rows.Count > 0)
             {
@@ -227,6 +221,7 @@ namespace Redmine.Client
                     }
                 }
             }
+            projectId = projectId;
             updating = false;
             this.Cursor = Cursors.Default;
         }
@@ -250,25 +245,17 @@ namespace Redmine.Client
             return Convert.ToInt32(GetSetting(coll, name, Convert.ToString(defaultVal), true));
         }
 
-        private void SaveConfig()
+        private void SaveRuntimeConfig()
         {
-            //Load config file
-//            Enumerations.LoadAll();
-
-            Configuration roamingConf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
-            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
-            configFileMap.ExeConfigFilename = roamingConf.FilePath;
-            Configuration conf = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-            KeyValueConfigurationCollection settings = conf.AppSettings.Settings;
-
-            //Change some values
-            settings.Remove("MainWindowSizeX");
-            settings.Remove("MainWindowSizeY");
-            settings.Add("MainWindowSizeX", Convert.ToString(Size.Width));
-            settings.Add("MainWindowSizeY", Convert.ToString(Size.Height));
-
-            //Save it
-            conf.Save(ConfigurationSaveMode.Modified);
+            if (Size != null)
+            {
+                Properties.Settings.Default.PropertyValues["MainWindowSizeX"].PropertyValue = Size.Width;
+                Properties.Settings.Default.PropertyValues["MainWindowSizeY"].PropertyValue = Size.Height;
+            }
+            Properties.Settings.Default.PropertyValues["LastProjectId"].PropertyValue = projectId;
+            Properties.Settings.Default.PropertyValues["LastIssueId"].PropertyValue = issueId;
+            Properties.Settings.Default.PropertyValues["LastActivityId"].PropertyValue = activityId;
+            Properties.Settings.Default.Save();
         }
 
         private void LoadConfig()
@@ -278,43 +265,28 @@ namespace Redmine.Client
             if (Lang.Culture == null)
                 Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
 
-            Configuration roamingConf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
-            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
-            configFileMap.ExeConfigFilename = roamingConf.FilePath;
-            Configuration conf = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-            KeyValueConfigurationCollection settings = conf.AppSettings.Settings;
-            if (settings.Count == 0)
-            {
-                settings.Add("RedmineURL", ConfigurationManager.AppSettings["RedmineURL"]);
-                settings.Add("RedmineAuthentication", ConfigurationManager.AppSettings["RedmineAuthentication"]);
-                settings.Add("RedmineUser", ConfigurationManager.AppSettings["RedmineUser"]);
-                settings.Add("RedminePassword", ConfigurationManager.AppSettings["RedminePassword"]);
-                settings.Add("CheckForUpdates", ConfigurationManager.AppSettings["CheckForUpdates"]);
-                settings.Add("MinimizeToSystemTray", ConfigurationManager.AppSettings["MinimizeToSystemTray"]);
-                settings.Add("MinimizeOnStartTimer", ConfigurationManager.AppSettings["MinimizeOnStartTimer"]);
-                settings.Add("PopupInterval", ConfigurationManager.AppSettings["PopupInterval"]);
-                settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
-                settings.Add("LanguageCode", Languages.Lang.Culture.Name);
-                conf.Save(ConfigurationSaveMode.Modified);
-            }
-            RedmineURL              = GetSetting(settings, "RedmineURL", "");
-            RedmineAuthentication   = GetSetting(settings, "RedmineAuthentication", true);
-            RedmineUser             = GetSetting(settings, "RedmineUser", "");
-            RedminePassword         = GetSetting(settings, "RedminePassword", "");
-            MinimizeToSystemTray    = GetSetting(settings, "MinimizeToSystemTray", true);
-            MinimizeOnStartTimer    = GetSetting(settings, "MinimizeOnStartTimer", true);
-            CheckForUpdates         = GetSetting(settings, "CheckForUpdates", true);
-            CacheLifetime           = GetSetting(settings, "CacheLifetime", 0);
-            PopupInterval           = GetSetting(settings, "PopupInterval", 0);
-            Size FormSize           = new Size(
-                                      GetSetting(settings, "MainWindowSizeX", 0),
-                                      GetSetting(settings, "MainWindowSizeY", 0));
+            Properties.Settings.Default.Reload();
+            RedmineURL = Properties.Settings.Default.RedmineURL;
+            RedmineAuthentication = Properties.Settings.Default.RedmineAuthentication;
+            RedmineUser = Properties.Settings.Default.RedmineUser;
+            RedminePassword = Properties.Settings.Default.RedminePassword;
+            MinimizeToSystemTray = Properties.Settings.Default.MinimizeToSystemTray;
+            MinimizeOnStartTimer = Properties.Settings.Default.MinimizeOnStartTimer;
+            CheckForUpdates = Properties.Settings.Default.CheckForUpdates;
+            CacheLifetime = Properties.Settings.Default.CacheLifetime;
+            PopupInterval = Properties.Settings.Default.PopupInterval;
+
+            int sizeX = Properties.Settings.Default.MainWindowSizeX;
+            int sizeY = Properties.Settings.Default.MainWindowSizeY;
+            Size FormSize = new Size(
+                                      Properties.Settings.Default.MainWindowSizeX,
+                                      Properties.Settings.Default.MainWindowSizeY);
             if (FormSize.Height > 0 && FormSize.Width > 0)
                 Size = FormSize;
 
             try
             {
-                Languages.Lang.Culture = new System.Globalization.CultureInfo(conf.AppSettings.Settings["LanguageCode"].Value);
+                Languages.Lang.Culture = new System.Globalization.CultureInfo(Properties.Settings.Default.LanguageCode);
             }
             catch (Exception)
             {
@@ -323,6 +295,10 @@ namespace Redmine.Client
 
             Languages.LangTools.UpdateControlsForLanguage(this.Controls);
             SetRestoreToolStripMenuItem();
+
+            projectId = Properties.Settings.Default.LastProjectId;
+            issueId = Properties.Settings.Default.LastIssueId;
+            activityId = Properties.Settings.Default.LastActivityId;
         }
 
         private void SetRestoreToolStripMenuItem()
@@ -456,7 +432,7 @@ namespace Redmine.Client
                     Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
                     issueText = String.Format("({0}) {1}", selectedIssue.Id, selectedIssue.Subject);
                 }
-                if (activityId != 0)
+                if (ComboBoxActivity.SelectedItem != null)
                 {
                     IdentifiableName selectedActivity = (IdentifiableName)ComboBoxActivity.SelectedItem;
                     activityText = selectedActivity.Name;
@@ -565,19 +541,11 @@ namespace Redmine.Client
             UpdateNotifyIconText();
         }
 
-        private void EnsureSelectedIssue()
-        {
-            if (DataGridViewIssues.SelectedRows.Count == 1)
-                Int32.TryParse(DataGridViewIssues.SelectedRows[0].Cells["Id"].Value.ToString(), out issueId);
-        }
-
         private void BtnCommitButton_Click(object sender, EventArgs e)
         {
             bool shouldIRestart = ticking;
-            if (issueId == 0)
-                EnsureSelectedIssue();
 
-            if (DataGridViewIssues.SelectedRows.Count == 1 && activityId != 0 && ticks != 0)
+            if (DataGridViewIssues.SelectedRows.Count == 1 && ComboBoxActivity.SelectedItem != null && ticks != 0)
             {
                 Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
                 IdentifiableName selectedActivity = (IdentifiableName)ComboBoxActivity.SelectedItem;
@@ -626,7 +594,7 @@ namespace Redmine.Client
 				{
                     MessageBox.Show(Lang.CommitNoIssueSelected, Lang.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				}
-                else if (activityId == 0)
+                else if (ComboBoxActivity.SelectedItem == null)
                 {
                     MessageBox.Show(Lang.CommitNoActivitySelected, Lang.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -650,7 +618,7 @@ namespace Redmine.Client
                 DataCache = null;
                 this.Cursor = Cursors.AppStarting;
 
-                FillForm(PrepareFormData(LastProjectId), LastIssueId, LastActivityId);
+                FillForm(PrepareFormData(projectId), issueId, activityId);
             }
         }
 
@@ -665,7 +633,7 @@ namespace Redmine.Client
             this.Cursor = Cursors.AppStarting;
             try
             {
-                FillForm(PrepareFormData(projectId), LastIssueId, LastActivityId);
+                FillForm(PrepareFormData(projectId), issueId, activityId);
             }
             catch(Exception ex)
             {
@@ -682,6 +650,7 @@ namespace Redmine.Client
 
         private void BtnSettingsButton_Click(object sender, EventArgs e)
         {
+            SaveRuntimeConfig();
             if (!ShowSettingsForm())
                 return; //User canceled.
 
@@ -827,7 +796,6 @@ namespace Redmine.Client
 
         private void DataGridViewIssues_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            EnsureSelectedIssue();
             Issue issue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
             try
             {
@@ -845,7 +813,8 @@ namespace Redmine.Client
 
         private void OnClosing(object sender, FormClosingEventArgs e)
         {
-            SaveConfig();
+            LoadLastIds();
+            SaveRuntimeConfig();
         }
 
     }

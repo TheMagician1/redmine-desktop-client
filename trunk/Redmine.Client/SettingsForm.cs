@@ -61,23 +61,17 @@ namespace Redmine.Client
             catch (Exception) { }
             try
             {
-                System.Configuration.Configuration roamingConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
-                ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
-                configFileMap.ExeConfigFilename = roamingConfig.FilePath;
-                Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-                config.AppSettings.Settings.Clear();
-                config.AppSettings.Settings.Add("RedmineURL", RedmineBaseUrlTextBox.Text);
-                config.AppSettings.Settings.Add("RedmineUser", RedmineUsernameTextBox.Text);
-                config.AppSettings.Settings.Add("RedminePassword", RedminePasswordTextBox.Text);
-                config.AppSettings.Settings.Add("RedmineAuthentication", AuthenticationCheckBox.Checked.ToString());
-                config.AppSettings.Settings.Add("CheckForUpdates", CheckForUpdatesCheckBox.Checked.ToString());
-                config.AppSettings.Settings.Add("MinimizeToSystemTray", MinimizeToSystemTrayCheckBox.Checked.ToString());
-                config.AppSettings.Settings.Add("MinimizeOnStartTimer", MinimizeOnStartTimerCheckBox.Checked.ToString());
-                config.AppSettings.Settings.Add("PopupInterval", PopupTimout.Value.ToString());
-                config.AppSettings.Settings.Add("CacheLifetime", CacheLifetime.Value.ToString());
-                config.AppSettings.Settings.Add("LanguageCode", Languages.Lang.Culture.Name);
-                config.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection("appSettings");
+                Properties.Settings.Default.PropertyValues["RedmineURL"].PropertyValue = RedmineBaseUrlTextBox.Text;
+                Properties.Settings.Default.PropertyValues["RedmineUser"].PropertyValue = RedmineUsernameTextBox.Text;
+                Properties.Settings.Default.PropertyValues["RedminePassword"].PropertyValue = RedminePasswordTextBox.Text;
+                Properties.Settings.Default.PropertyValues["RedmineAuthentication"].PropertyValue = AuthenticationCheckBox.Checked;
+                Properties.Settings.Default.PropertyValues["CheckForUpdates"].PropertyValue = CheckForUpdatesCheckBox.Checked;
+                Properties.Settings.Default.PropertyValues["MinimizeToSystemTray"].PropertyValue = MinimizeToSystemTrayCheckBox.Checked;
+                Properties.Settings.Default.PropertyValues["MinimizeOnStartTimer"].PropertyValue = MinimizeOnStartTimerCheckBox.Checked;
+                Properties.Settings.Default.PropertyValues["PopupInterval"].PropertyValue = PopupTimout.Value;
+                Properties.Settings.Default.PropertyValues["CacheLifetime"].PropertyValue = CacheLifetime.Value;
+                Properties.Settings.Default.PropertyValues["LanguageCode"].PropertyValue = Languages.Lang.Culture.Name;
+                Properties.Settings.Default.Save();
                 Enumerations.SaveAll();
             }
             catch (Exception ex)
@@ -88,85 +82,23 @@ namespace Redmine.Client
 
         private void LoadConfig()
         {
-            Configuration roamingConf = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
-            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
-            configFileMap.ExeConfigFilename = roamingConf.FilePath;
-            Configuration conf = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-            if (conf.AppSettings.Settings.Count == 0)
-            {
-                conf.AppSettings.Settings.Add("RedmineURL", ConfigurationManager.AppSettings["RedmineURL"]);
-                conf.AppSettings.Settings.Add("RedmineAuthentication", ConfigurationManager.AppSettings["RedmineAuthentication"]);
-                conf.AppSettings.Settings.Add("RedmineUser", ConfigurationManager.AppSettings["RedmineUser"]);
-                conf.AppSettings.Settings.Add("RedminePassword", ConfigurationManager.AppSettings["RedminePassword"]);
-                conf.AppSettings.Settings.Add("CheckForUpdates", ConfigurationManager.AppSettings["CheckForUpdates"]);
-                conf.AppSettings.Settings.Add("MinimizeToSystemTray", ConfigurationManager.AppSettings["MinimizeToSystemTray"]);
-                conf.AppSettings.Settings.Add("MinimizeOnStartTimer", ConfigurationManager.AppSettings["MinimizeOnStartTimer"]);
-                conf.AppSettings.Settings.Add("PopupInterval", ConfigurationManager.AppSettings["PopupInterval"]);
-                conf.AppSettings.Settings.Add("CacheLifetime", ConfigurationManager.AppSettings["CacheLifetime"]);
-                conf.AppSettings.Settings.Add("LanguageCode", Languages.Lang.Culture.Name);
-                conf.Save(ConfigurationSaveMode.Modified);
-            }
-            RedmineBaseUrlTextBox.Text = conf.AppSettings.Settings["RedmineURL"].Value;
-            try
-            {
-                AuthenticationCheckBox.Checked = Convert.ToBoolean(conf.AppSettings.Settings["RedmineAuthentication"].Value);
-            }
-            catch (Exception)
-            {
-                AuthenticationCheckBox.Checked = true;
-            }
-            try
-            {
-                MinimizeToSystemTrayCheckBox.Checked = Convert.ToBoolean(conf.AppSettings.Settings["MinimizeToSystemTray"].Value);
-            }
-            catch (Exception)
-            {
-                MinimizeToSystemTrayCheckBox.Checked = true;
-            }
-            try
-            {
-                MinimizeOnStartTimerCheckBox.Checked = Convert.ToBoolean(conf.AppSettings.Settings["MinimizeOnStartTimer"].Value);
-            }
-            catch (Exception)
-            {
-                MinimizeOnStartTimerCheckBox.Checked = true;
-            }
-            RedmineUsernameTextBox.Text = conf.AppSettings.Settings["RedmineUser"].Value;
-            RedminePasswordTextBox.Text = conf.AppSettings.Settings["RedminePassword"].Value;
-            try
-            {
-                CheckForUpdatesCheckBox.Checked = Convert.ToBoolean(conf.AppSettings.Settings["CheckForUpdates"].Value);
-            }
-            catch (Exception)
-            {
-                CheckForUpdatesCheckBox.Checked = true;
-            }
-            try
-            {
-                CacheLifetime.Value = Convert.ToInt32(conf.AppSettings.Settings["CacheLifetime"].Value);
-            }
-            catch (Exception)
-            {
-                CacheLifetime.Value = 0;
-            }
-            try
-            {
-                PopupTimout.Value = Convert.ToInt32(conf.AppSettings.Settings["PopupInterval"].Value);
-            }
-            catch (Exception)
-            {
-                PopupTimout.Value = 0;
-            }
-            try
-            {
-                Languages.Lang.Culture = new System.Globalization.CultureInfo(conf.AppSettings.Settings["LanguageCode"].Value);
+            RedmineBaseUrlTextBox.Text = Properties.Settings.Default.RedmineURL;
+            AuthenticationCheckBox.Checked = Properties.Settings.Default.RedmineAuthentication;
+            MinimizeToSystemTrayCheckBox.Checked = Properties.Settings.Default.MinimizeToSystemTray;
+            MinimizeOnStartTimerCheckBox.Checked = Properties.Settings.Default.MinimizeOnStartTimer;
+            RedmineUsernameTextBox.Text = Properties.Settings.Default.RedmineUser;
+            RedminePasswordTextBox.Text = Properties.Settings.Default.RedminePassword;
+            CheckForUpdatesCheckBox.Checked = Properties.Settings.Default.CheckForUpdates;
+            CacheLifetime.Value = Properties.Settings.Default.CacheLifetime;
+            PopupTimout.Value = Properties.Settings.Default.PopupInterval;
+            try {
+                Languages.Lang.Culture = new System.Globalization.CultureInfo(Properties.Settings.Default.LanguageCode);
             }
             catch (Exception)
             {
                 Languages.Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
             }
             LanguageComboBox.SelectedIndex = LanguageComboBox.FindStringExact(Languages.Lang.Culture.DisplayName);
-
         }
 
         private void AuthenticationCheckBox_CheckedChanged(object sender, EventArgs e)
