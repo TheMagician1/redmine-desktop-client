@@ -70,6 +70,33 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Checking for updates.
+        /// </summary>
+        internal static string BgWork_CheckUpdates {
+            get {
+                return ResourceManager.GetString("BgWork_CheckUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrieving form data.
+        /// </summary>
+        internal static string BgWork_GetFormData {
+            get {
+                return ResourceManager.GetString("BgWork_GetFormData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrieving user name.
+        /// </summary>
+        internal static string BgWork_GetUsername {
+            get {
+                return ResourceManager.GetString("BgWork_GetUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         internal static string BtnAboutButton {
