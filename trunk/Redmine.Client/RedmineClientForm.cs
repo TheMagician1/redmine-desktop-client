@@ -16,6 +16,8 @@ namespace Redmine.Client
 
     public partial class RedmineClientForm : Form
     {
+        private string Title = Lang.RedmineClientTitle_NoUser;
+
         internal static IssueFormData DataCache = null;
         private int ticks = 0;
         private bool ticking = false;
@@ -64,7 +66,7 @@ namespace Redmine.Client
             //At last add check-for-updates work...
             if (this.CheckForUpdates)
             {
-                AddBgWork("Checking for updates", () =>
+                AddBgWork(Lang.BgWork_CheckUpdates, () =>
                 {
                     AsyncCheckForUpdates();
                     return null;
@@ -221,7 +223,6 @@ namespace Redmine.Client
                     }
                 }
             }
-            projectId = projectId;
             updating = false;
             this.Cursor = Cursors.Default;
         }
@@ -437,13 +438,13 @@ namespace Redmine.Client
                     IdentifiableName selectedActivity = (IdentifiableName)ComboBoxActivity.SelectedItem;
                     activityText = selectedActivity.Name;
                 }
-                string finalText = String.Format("Redmine Client - {2}{0}{1}", Environment.NewLine, issueText, activityText);
+                string finalText = String.Format("{3} - {2}{0}{1}", Environment.NewLine, issueText, activityText, Lang.RedmineClientTitle_NoUser);
                 if (finalText.Length>63)
                     finalText = String.Format("{0}...", finalText.Substring(0,60));
                 this.notifyIcon1.Text = finalText;
             }
             else
-                this.notifyIcon1.Text = "Redmine Client";
+                this.notifyIcon1.Text = Lang.RedmineClientTitle_NoUser;
         }
 
         private void BtnResetButton_Click(object sender, EventArgs e)
@@ -659,7 +660,7 @@ namespace Redmine.Client
 
         private void AsyncGetRestOfFormData(int projectId, int issueId, int activityId)
         {
-            AddBgWork("Getting form data", () =>
+            AddBgWork(Lang.BgWork_GetFormData, () =>
             {
                 try
                 {
@@ -691,7 +692,7 @@ namespace Redmine.Client
         {
             this.Cursor = Cursors.WaitCursor;
             //Retrieve current user asynchroneous...
-            AddBgWork("Getting user name", () =>
+            AddBgWork(Lang.BgWork_GetUsername, () =>
             {
                 try
                 {
@@ -730,17 +731,15 @@ namespace Redmine.Client
             }
         }
 
-        String m_Title = "Redmine Client";
-
         void SetTitle(String title)
         {
-            m_Title = title;
+            Title = title;
             UpdateTitle();
         }
 
         void UpdateTitle()
         {
-            String title = m_Title;
+            String title = Title;
             if (m_WorkQueue.Count > 0)
                 title += " - " + m_WorkQueue.Peek().m_name + "...";
             this.Text = title;

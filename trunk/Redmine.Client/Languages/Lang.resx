@@ -326,4 +326,13 @@ or Request attention every
     <value>Redmine Client - {0} {1}</value>
     <comment>{0} First name; {1} Last name</comment>
   </data>
+  <data name="BgWork_CheckUpdates" xml:space="preserve">
+    <value>Checking for updates</value>
+  </data>
+  <data name="BgWork_GetFormData" xml:space="preserve">
+    <value>Retrieving form data</value>
+  </data>
+  <data name="BgWork_GetUsername" xml:space="preserve">
+    <value>Retrieving user name</value>
+  </data>
 </root>
