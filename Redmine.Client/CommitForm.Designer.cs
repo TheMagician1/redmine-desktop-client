@@ -215,6 +215,7 @@
             this.Controls.Add(this.labelCommitComment);
             this.Controls.Add(this.BtnCommitButton);
             this.Controls.Add(this.BtnCancelButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "CommitForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
