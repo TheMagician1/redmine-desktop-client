@@ -412,6 +412,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Close.
+        /// </summary>
+        internal static string ExitToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("ExitToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activity.
         /// </summary>
         internal static string labelActivity {
