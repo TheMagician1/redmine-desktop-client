@@ -311,6 +311,7 @@ namespace Redmine.Client
             }
 
             Languages.LangTools.UpdateControlsForLanguage(this.Controls);
+            Languages.LangTools.UpdateControlsForLanguage(NotifyIconMenuStrip.Items);
             SetRestoreToolStripMenuItem();
 
             projectId = Properties.Settings.Default.LastProjectId;

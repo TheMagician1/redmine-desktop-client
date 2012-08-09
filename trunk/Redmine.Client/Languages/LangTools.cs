@@ -19,5 +19,14 @@ namespace Redmine.Client.Languages
                     c.Text = Lang.ResourceManager.GetString(c.Name, Lang.Culture);
             }
         }
+
+        internal static void UpdateControlsForLanguage(ToolStripItemCollection toolStripItems)
+        {
+            foreach (ToolStripItem i in toolStripItems)
+            {
+                if (!String.IsNullOrEmpty(Lang.ResourceManager.GetString(i.Name, Lang.Culture)))
+                    i.Text = Lang.ResourceManager.GetString(i.Name, Lang.Culture);
+            }
+        }
     }
 }
