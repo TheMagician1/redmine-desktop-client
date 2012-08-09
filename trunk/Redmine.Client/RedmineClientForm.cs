@@ -60,7 +60,7 @@ namespace Redmine.Client
 			{
 				this.DataGridViewIssues.Click += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
 			}
-
+            this.FormClosing += new FormClosingEventHandler(RedmineClientForm_FormClosing);
             Reinit(false);
  
             //At last add check-for-updates work...
@@ -82,6 +82,22 @@ namespace Redmine.Client
             if (!ShowSettingsForm())
                 return false;
             return true;
+        }
+
+        void RedmineClientForm_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            if (ticks != 0)
+            {
+                switch (MessageBox.Show(String.Format(Lang.Warning_ClosingSaveTimes, Environment.NewLine), Lang.Warning, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                {
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        return;
+                    case DialogResult.Yes:
+                        BtnCommitButton_Click(null, null);
+                        break;
+                }
+            }
         }
 
         void LoadLastIds()

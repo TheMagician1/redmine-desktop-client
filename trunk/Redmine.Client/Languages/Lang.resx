@@ -335,4 +335,8 @@ or Request attention every
   <data name="BgWork_GetUsername" xml:space="preserve">
     <value>Retrieving user name</value>
   </data>
+  <data name="Warning_ClosingSaveTimes" xml:space="preserve">
+    <value>The Redmine Client is trying to stop, but you are measuring your spent time.{0}Do you want to commit the time?</value>
+    <comment>{0} newline</comment>
+  </data>
 </root>
