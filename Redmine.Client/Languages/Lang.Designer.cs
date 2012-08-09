@@ -673,5 +673,14 @@ namespace Redmine.Client.Languages {
                 return ResourceManager.GetString("Warning", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Redmine Client is trying to stop, but you are measuring your spent time.{0}Do you want to commit the time?.
+        /// </summary>
+        internal static string Warning_ClosingSaveTimes {
+            get {
+                return ResourceManager.GetString("Warning_ClosingSaveTimes", resourceCulture);
+            }
+        }
     }
 }
