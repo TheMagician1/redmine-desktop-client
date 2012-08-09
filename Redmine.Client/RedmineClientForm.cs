@@ -571,14 +571,13 @@ namespace Redmine.Client
                 ticking = false;
                 timer1.Stop();
                 BtnStartButton.Text = Lang.BtnStartButton;
-                if (MessageBox.Show(String.Format(Lang.CommitConfirmText,
-                    selectedIssue.Project.Name, selectedActivity.Name, selectedIssue.Id, dateTimePicker1.Value.ToString("yyyy-MM-dd"), TextBoxComment.Text, String.Format("{0:0.##}", (double)ticks / 3600), Environment.NewLine), 
-                    Lang.CommitConfirmQuestion, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                CommitForm commitDlg = new CommitForm(selectedIssue, ticks, TextBoxComment.Text, selectedActivity.Id, dateTimePicker1.Value);
+                if (commitDlg.ShowDialog(this) == DialogResult.OK)
                 {
                     TimeEntry entry = new TimeEntry();
-                    entry.Activity = new IdentifiableName { Id = selectedActivity.Id };
-                    entry.Comments = TextBoxComment.Text;
-                    entry.Hours = (decimal)ticks/3600;
+                    entry.Activity = new IdentifiableName { Id = commitDlg.activityId };
+                    entry.Comments = commitDlg.Comment;
+                    entry.Hours = (decimal)ticks / 3600;
                     entry.Issue = new IdentifiableName { Id = selectedIssue.Id };
                     entry.Project = new IdentifiableName { Id = selectedIssue.Project.Id };
                     entry.SpentOn = dateTimePicker1.Value;
@@ -597,10 +596,13 @@ namespace Redmine.Client
                 }
                 else if (shouldIRestart)
                 {
+                    TextBoxComment.Text = commitDlg.Comment;
                     ticking = true;
                     timer1.Start();
                     BtnStartButton.Text = Lang.BtnStartButton_Pause;
                 }
+                else
+                    TextBoxComment.Text = commitDlg.Comment;
             }
             else
             {

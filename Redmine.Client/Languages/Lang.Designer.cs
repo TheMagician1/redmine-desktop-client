@@ -241,6 +241,24 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save the new comment?.
+        /// </summary>
+        internal static string CommitCancelSaveCommentQuestion {
+            get {
+                return ResourceManager.GetString("CommitCancelSaveCommentQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cancelled committing your spent time, but changed the comment.{0}Do you want to use the new comment?.
+        /// </summary>
+        internal static string CommitCancelSaveCommentText {
+            get {
+                return ResourceManager.GetString("CommitCancelSaveCommentText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ready to commit?.
         /// </summary>
         internal static string CommitConfirmQuestion {
@@ -453,6 +471,69 @@ namespace Redmine.Client.Languages {
         internal static string labelComment {
             get {
                 return ResourceManager.GetString("labelComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activity:.
+        /// </summary>
+        internal static string labelCommitActivity {
+            get {
+                return ResourceManager.GetString("labelCommitActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment:.
+        /// </summary>
+        internal static string labelCommitComment {
+            get {
+                return ResourceManager.GetString("labelCommitComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spent on:.
+        /// </summary>
+        internal static string labelCommitDateSpent {
+            get {
+                return ResourceManager.GetString("labelCommitDateSpent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Issue:.
+        /// </summary>
+        internal static string labelCommitIssue {
+            get {
+                return ResourceManager.GetString("labelCommitIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project:.
+        /// </summary>
+        internal static string labelCommitProject {
+            get {
+                return ResourceManager.GetString("labelCommitProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to commit the following time entry?.
+        /// </summary>
+        internal static string labelCommitQuestion {
+            get {
+                return ResourceManager.GetString("labelCommitQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time (H):.
+        /// </summary>
+        internal static string labelCommitTime {
+            get {
+                return ResourceManager.GetString("labelCommitTime", resourceCulture);
             }
         }
         

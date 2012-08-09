@@ -335,8 +335,36 @@ or Request attention every
   <data name="BgWork_GetUsername" xml:space="preserve">
     <value>Retrieving user name</value>
   </data>
+  <data name="CommitCancelSaveCommentQuestion" xml:space="preserve">
+    <value>Save the new comment?</value>
+  </data>
+  <data name="CommitCancelSaveCommentText" xml:space="preserve">
+    <value>You cancelled committing your spent time, but changed the comment.{0}Do you want to use the new comment?</value>
+    <comment>{0} newline</comment>
+  </data>
   <data name="ExitToolStripMenuItem" xml:space="preserve">
     <value>&amp;Close</value>
+  </data>
+  <data name="labelCommitActivity" xml:space="preserve">
+    <value>Activity:</value>
+  </data>
+  <data name="labelCommitComment" xml:space="preserve">
+    <value>Comment:</value>
+  </data>
+  <data name="labelCommitDateSpent" xml:space="preserve">
+    <value>Spent on:</value>
+  </data>
+  <data name="labelCommitIssue" xml:space="preserve">
+    <value>Issue:</value>
+  </data>
+  <data name="labelCommitProject" xml:space="preserve">
+    <value>Project:</value>
+  </data>
+  <data name="labelCommitQuestion" xml:space="preserve">
+    <value>Do you want to commit the following time entry?</value>
+  </data>
+  <data name="labelCommitTime" xml:space="preserve">
+    <value>Time (H):</value>
   </data>
   <data name="Warning_ClosingSaveTimes" xml:space="preserve">
     <value>The Redmine Client is trying to stop, but you are measuring your spent time.{0}Do you want to commit the time?</value>
