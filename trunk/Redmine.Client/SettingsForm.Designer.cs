@@ -278,6 +278,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SettingsForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).EndInit();

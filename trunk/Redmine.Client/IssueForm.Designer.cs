@@ -393,6 +393,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "IssueForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Create new issue";
             this.Load += new System.EventHandler(this.NewIssueForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
