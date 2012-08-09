@@ -264,7 +264,7 @@ namespace Redmine.Client
 
         private void SaveRuntimeConfig()
         {
-            if (Size != null)
+            if (Size != null && WindowState == FormWindowState.Normal)
             {
                 Properties.Settings.Default.PropertyValues["MainWindowSizeX"].PropertyValue = Size.Width;
                 Properties.Settings.Default.PropertyValues["MainWindowSizeY"].PropertyValue = Size.Height;
