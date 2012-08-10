@@ -49,6 +49,8 @@ namespace Redmine.Client
         {
             Comment = TextBoxComment.Text;
             activityId = (int)ComboBoxActivity.SelectedValue;
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void BtnCancelButton_Click(object sender, EventArgs e)
