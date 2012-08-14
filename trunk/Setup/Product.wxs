@@ -25,6 +25,7 @@
         <Directory Id="ProgramMenuDir" Name="Redmine Desktop Client">
           <Component Id="ProgramMenuDir" Guid="28F69F71-E0CC-4481-8265-E0EC5CE36A74">
             <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='Software\Redmine\RedmineClient' Type='string' Value='' KeyPath='yes' />
           </Component>
         </Directory>
       </Directory>
