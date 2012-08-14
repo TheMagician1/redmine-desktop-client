@@ -1,36 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="4f91a54d-c447-4dfa-82fd-7e5faba5b642" Name="Redmine Desktop Client" Language="1033" Version="1.0.0.0" Manufacturer="Redmine" UpgradeCode="1eb3286e-01fe-438a-a603-e5e706396f97">
-		<Package InstallerVersion="200" Compressed="yes" />
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<Product Id="4f91a54d-c447-4dfa-82fd-7e5faba5b642" Name="Redmine Desktop Client" Language="1033" Version="2.0.0.0" Manufacturer="Redmine" UpgradeCode="1eb3286e-01fe-438a-a603-e5e706396f97">
+    
+		<Package Id="*" Keywords="Installer" Description="Redmine Desktop Client Installer"
+             Comments="Redmine Desktop Client V2" InstallerVersion="200" Compressed="yes" />
 
 		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
+    <?define ResDir = ..\Redmine.Client\res ?>
     <?define BinDir = ..\Redmine.Client\bin\$(var.Configuration) ?>
     <?define ApiBinDir = ..\Redmine.Api\bin\$(var.Configuration) ?>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
+      
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLLOCATION" Name="RedmineClient">
+          <Directory Id="LANG_NL" Name="nl" />
+          <Directory Id="PROPERTIES" Name="Properties" />
 				</Directory>
 			</Directory>
-		</Directory>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="Redmine Desktop Client">
+          <Component Id="ProgramMenuDir" Guid="28F69F71-E0CC-4481-8265-E0EC5CE36A74">
+            <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+      
+    </Directory>
 
     <DirectoryRef Id="INSTALLLOCATION">
       <Component Id="RedmineClient.exe" Guid="344807fa-32cd-4840-b050-1769bd7bdedf">
-        <File Id="RedmineClient.exe" Source="$(var.BinDir)\RedmineClient.exe" />
+        <File Id="RedmineClient.exe" Source="$(var.BinDir)\RedmineClient.exe" KeyPath="yes">
+          <Shortcut Id="startmenu.RedmineClient.exe" Directory="ProgramMenuDir" Name="Redmine Desktop Client" WorkingDirectory="INSTALLLOCATION" Icon="icon.RedmineClient.exe" IconIndex="0" Advertise="yes"/>
+          <Shortcut Id="desktop.RedmineClient.exe" Directory="DesktopFolder" Name="Redmine Desktop Client" WorkingDirectory="INSTALLLOCATION" Icon="icon.RedmineClient.exe" IconIndex="0" Advertise="yes"/>
+        </File>
       </Component>
       <Component Id="Redmine.Net.Api.dll" Guid="C3FA0BC5-5E42-4450-BEF9-6117134ECD65">
-        <File Id="Redmine.Net.Api.dll" Source="$(var.ApiBinDir)\Redmine.Net.Api.dll" />
+        <File Id="Redmine.Net.Api.dll" Source="$(var.ApiBinDir)\Redmine.Net.Api.dll" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
-    
 
-		<Feature Id="ProductFeature" Title="Setup Redmine Desktop Client" Level="1" ConfigurableDirectory="INSTALLLOCATION">
-			<ComponentRef Id="RedmineClient.exe" />
-      <ComponentRef Id="Redmine.Net.Api.dll" />
-      
-      <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
-			<ComponentGroupRef Id="Product.Generated" />
-		</Feature>
-	</Product>
+    <DirectoryRef Id="LANG_NL">
+      <Component Id="nl.RedmineClient.resources.dll" Guid="72A27666-9B04-47CA-83D4-C51C60505FAD">
+        <File Id="nl.RedmineClient.resources.dll" Source="$(var.BinDir)\nl\RedmineClient.resources.dll" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="PROPERTIES">
+      <Component Id="properties.app.config" Guid="270DDDC8-8F70-4059-823C-3CFAEAEE83B8">
+        <File Id="properties.app.config" Source="$(var.BinDir)\properties\app.config" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Check if .Net 4.0 is installed-->
+    <PropertyRef Id="NETFRAMEWORK40FULL"/>
+    <Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework 4.0 then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK40FULL]]>
+    </Condition>
+    
+    
+    <Feature Id="Complete" Title="Redmine Desktop Client" Description="Install all files of the package." Level="1" ConfigurableDirectory="INSTALLLOCATION" Display="expand">
+      <Feature Id="MainProgram" Title="Redmine Desktop Client files" Description="All neccessary files to run the client." Level="1">
+			  <ComponentRef Id="RedmineClient.exe" />
+        <ComponentRef Id="Redmine.Net.Api.dll" />
+        <ComponentRef Id="nl.RedmineClient.resources.dll"/>
+        <ComponentRef Id="properties.app.config"/>
+        <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
+			  <ComponentGroupRef Id="Product.Generated" />
+      </Feature>
+      <Feature Id="ShortCuts" Title="Shortcuts" Description="Desktop and Startmenu shortcut" Level="1">
+        <ComponentRef Id="ProgramMenuDir"/>
+      </Feature>
+    </Feature>
+
+    <Icon Id="icon.RedmineClient.exe" SourceFile="$(var.ResDir)\clock.ico" />
+
+    <UIRef Id="WixUI_FeatureTree" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.RedmineClient.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="Banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="Dialog.bmp" />
+  </Product>
 </Wix>
