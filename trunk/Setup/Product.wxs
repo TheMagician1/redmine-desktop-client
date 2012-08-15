@@ -4,7 +4,7 @@
 	<Product Id="4f91a54d-c447-4dfa-82fd-7e5faba5b642" Name="Redmine Desktop Client" Language="1033" Version="2.0.0.0" Manufacturer="Redmine" UpgradeCode="1eb3286e-01fe-438a-a603-e5e706396f97">
     
 		<Package Id="*" Keywords="Installer" Description="Redmine Desktop Client Installer"
-             Comments="Redmine Desktop Client V2" InstallerVersion="200" Compressed="yes" />
+             Comments="Redmine Desktop Client V2" InstallerVersion="300" Compressed="yes" />
 
 		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
