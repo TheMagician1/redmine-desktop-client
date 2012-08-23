@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-	<Product Id="4f91a54d-c447-4dfa-82fd-7e5faba5b642" Name="Redmine Desktop Client" Language="1033" Version="2.0.0.0" Manufacturer="Redmine" UpgradeCode="1eb3286e-01fe-438a-a603-e5e706396f97">
+
+  <?define VersionNumber = "!(bind.FileVersion.RedmineClient.exe)" ?>
+  <?define UpgradeCode = "{1eb3286e-01fe-438a-a603-e5e706396f97}" ?>
+  <?define ProductCode = "{4f91a54d-c447-4dfa-82fd-7e5faba5b642}" ?>
+
+  <Product Id="$(var.ProductCode)" Name="Redmine Desktop Client" Language="1033" Version="$(var.VersionNumber)" Manufacturer="Redmine" UpgradeCode="$(var.UpgradeCode)">
     
 		<Package Id="*" Keywords="Installer" Description="Redmine Desktop Client Installer"
-             Comments="Redmine Desktop Client V2" InstallerVersion="300" Compressed="yes" />
+             Comments="Redmine Desktop Client V2" InstallerVersion="300" Compressed="yes" InstallPrivileges="limited" InstallScope="perUser"/>
 
 		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
     <?define ResDir = ..\Redmine.Client\res ?>
     <?define BinDir = ..\Redmine.Client\bin\$(var.Configuration) ?>
     <?define ApiBinDir = ..\Redmine.Api\bin\$(var.Configuration) ?>
+
+
+    <Upgrade Id="$(var.UpgradeCode)">
+      <UpgradeVersion OnlyDetect='yes' Property='SELFFOUND'
+                      Minimum='$(var.VersionNumber)' IncludeMinimum='yes'
+                      Maximum='$(var.VersionNumber)' IncludeMaximum='yes' />
+      <UpgradeVersion Minimum="$(var.VersionNumber)"
+                      IncludeMinimum="no"
+                      OnlyDetect="yes"
+                      Language="1033"
+                      Property="NEWPRODUCTFOUND" />
+      <UpgradeVersion Minimum="1.0.0.0"
+                      IncludeMinimum="yes"
+                      Maximum="$(var.VersionNumber)"
+                      IncludeMaximum="no"
+                      Language="1033"
+                      Property="UPGRADEFOUND" />
+    </Upgrade>
+
+    <CustomAction Id="AlreadyUpdated" Error="Redmine Desktop Client is already updated to version $(var.VersionNumber)." />
+    <CustomAction Id="NoDowngrade" Error="A newer version of the [ProductName] is already installed." />
+    <InstallExecuteSequence>
+      <Custom Action="AlreadyUpdated" After="FindRelatedProducts">SELFFOUND</Custom>
+      <Custom Action="NoDowngrade" After="FindRelatedProducts">NEWPRODUCTFOUND</Custom>
+      <RemoveExistingProducts After="InstallFinalize" />
+    </InstallExecuteSequence>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       
@@ -36,13 +67,13 @@
 
     <DirectoryRef Id="INSTALLLOCATION">
       <Component Id="RedmineClient.exe" Guid="344807fa-32cd-4840-b050-1769bd7bdedf">
-        <File Id="RedmineClient.exe" Source="$(var.BinDir)\RedmineClient.exe" KeyPath="yes">
+        <File Id="RedmineClient.exe" Source="$(var.Redmine.Client.TargetPath)" KeyPath="yes">
           <Shortcut Id="startmenu.RedmineClient.exe" Directory="ProgramMenuDir" Name="Redmine Desktop Client" WorkingDirectory="INSTALLLOCATION" Icon="icon.RedmineClient.exe" IconIndex="0" Advertise="yes"/>
           <Shortcut Id="desktop.RedmineClient.exe" Directory="DesktopFolder" Name="Redmine Desktop Client" WorkingDirectory="INSTALLLOCATION" Icon="icon.RedmineClient.exe" IconIndex="0" Advertise="yes"/>
         </File>
       </Component>
       <Component Id="Redmine.Net.Api.dll" Guid="C3FA0BC5-5E42-4450-BEF9-6117134ECD65">
-        <File Id="Redmine.Net.Api.dll" Source="$(var.ApiBinDir)\Redmine.Net.Api.dll" KeyPath="yes"/>
+        <File Id="Redmine.Net.Api.dll" Source="$(var.Api.TargetPath)" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
 
@@ -71,8 +102,6 @@
       <ComponentRef Id="nl.RedmineClient.resources.dll"/>
       <ComponentRef Id="properties.app.config"/>
       <ComponentRef Id="ProgramMenuDir"/>
-      <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
-			<ComponentGroupRef Id="Product.Generated" />
     </Feature>
 
     <Icon Id="icon.RedmineClient.exe" SourceFile="$(var.ResDir)\clock.ico" />
