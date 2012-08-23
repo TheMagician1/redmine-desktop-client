@@ -60,6 +60,13 @@ namespace Redmine.Client.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap aboutclock {
+            get {
+                object obj = ResourceManager.GetObject("aboutclock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon clock {
             get {
                 object obj = ResourceManager.GetObject("clock", resourceCulture);
