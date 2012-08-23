@@ -17,10 +17,8 @@
     <Chain>
       <PackageGroupRef Id="NetFx40Web"/>
       <RollbackBoundary />
-      <MsiPackage Id="SetupPackage" Compressed="yes" Vital="yes" SourceFile="$(var.Setup.TargetPath)" Visible="no" >
+      <MsiPackage Id="SetupPackage" Compressed="yes" Vital="yes" SourceFile="$(var.Setup.TargetPath)" Visible="no" DisplayInternalUI="no" EnableFeatureSelection="no">
         <MsiProperty Name="INSTALLLOCATION" Value="[InstallFolder]" />
-        <MsiProperty Name="REINSTALL" Value="ALL" />
-        <MsiProperty Name="REINSTALLMODE" Value="vomus"/>
       </MsiPackage>
     </Chain>
 	</Bundle>
