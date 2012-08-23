@@ -57,5 +57,10 @@
 	<Target Name="BeforeBuild">
 	</Target>
 	<Target Name="AfterBuild">
+    <GetAssemblyIdentity AssemblyFiles="$(SolutionDir)Redmine.Client\bin\$(ConfigurationName)\RedmineClient.exe">
+      <Output TaskParameter="Assemblies" ItemName="AssemblyVersion"/>
+    </GetAssemblyIdentity>
+ 
+    <Copy SourceFiles="$(TargetPath)" DestinationFiles="$(SolutionDir)$(SolutionName).Installer.%(AssemblyVersion.Version)$(TargetExt)" />
 	</Target>
 </Project>
