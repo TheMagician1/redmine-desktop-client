@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+
+  <?define VersionNumber = "2.0.0.0" ?>
+  <?define ResDir = ..\Redmine.Client\res ?>
+  <?define SetupDir = ..\Setup ?>
+
+  <Bundle Name="Redmine Desktop Client" Version="$(var.VersionNumber)" Manufacturer="Redmine" UpgradeCode="4ecdbd00-ab52-4f7a-a293-efa040589b67" IconSourceFile="$(var.ResDir)\clock.ico">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication
+        LicenseFile="$(var.SetupDir)\License.RedmineClient.rtf" LogoFile="$(var.ResDir)\clock-installer.png" />
+    </BootstrapperApplicationRef>
+
+    <Variable Name="InstallFolder" Type="string" Value="[ProgramFilesFolder]RedmineClient" />
+
+    <Chain>
+      <PackageGroupRef Id="NetFx40Web"/>
+      <RollbackBoundary />
+      <MsiPackage Id="SetupPackage" Compressed="yes" Vital="yes" SourceFile="$(var.Setup.TargetPath)" Visible="no" >
+        <MsiProperty Name="INSTALLLOCATION" Value="[InstallFolder]" />
+        <MsiProperty Name="REINSTALL" Value="ALL" />
+        <MsiProperty Name="REINSTALLMODE" Value="vomus"/>
+      </MsiPackage>
+    </Chain>
+	</Bundle>
+</Wix>
