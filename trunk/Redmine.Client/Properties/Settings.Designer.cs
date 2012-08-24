@@ -202,5 +202,17 @@ namespace Redmine.Client.Properties {
                 this["LanguageCode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int ApiVersion {
+            get {
+                return ((int)(this["ApiVersion"]));
+            }
+            set {
+                this["ApiVersion"] = value;
+            }
+        }
     }
 }

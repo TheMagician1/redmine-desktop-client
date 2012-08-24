@@ -43,6 +43,7 @@ namespace Redmine.Client
         private DateTime MinimizeTime;
 
         private Dictionary<int, Project> Projects;
+        public static ApiVersion RedmineVersion { get; private set; }
 
         public RedmineClientForm()
         {
@@ -152,8 +153,7 @@ namespace Redmine.Client
                     projectId = projects[0].Id;
                 }
                 Projects = MainFormData.ToDictionaryName(projects);
-                NameValueCollection curProject = new NameValueCollection { { "project_id", projectId.ToString() } };
-                return new MainFormData() { Issues = redmine.GetObjectList<Issue>(curProject), Members = redmine.GetObjectList<ProjectMembership>(curProject), Projects = projects };
+                return new MainFormData(projectId) { Projects = projects };
             }
             throw new Exception(Lang.Error_NoProjectsFound);
         }
@@ -281,7 +281,6 @@ namespace Redmine.Client
 
             if (Lang.Culture == null)
                 Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
-
             Properties.Settings.Default.Reload();
             RedmineURL = Properties.Settings.Default.RedmineURL;
             RedmineAuthentication = Properties.Settings.Default.RedmineAuthentication;
@@ -292,6 +291,7 @@ namespace Redmine.Client
             CheckForUpdates = Properties.Settings.Default.CheckForUpdates;
             CacheLifetime = Properties.Settings.Default.CacheLifetime;
             PopupInterval = Properties.Settings.Default.PopupInterval;
+            RedmineVersion = (ApiVersion)Properties.Settings.Default.ApiVersion;
 
             int sizeX = Properties.Settings.Default.MainWindowSizeX;
             int sizeY = Properties.Settings.Default.MainWindowSizeY;
@@ -317,6 +317,8 @@ namespace Redmine.Client
             projectId = Properties.Settings.Default.LastProjectId;
             issueId = Properties.Settings.Default.LastIssueId;
             activityId = Properties.Settings.Default.LastActivityId;
+
+            BtnNewIssueButton.Visible = RedmineVersion >= ApiVersion.V13x;
         }
 
         private void SetRestoreToolStripMenuItem()

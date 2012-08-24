@@ -46,6 +46,8 @@
             this.labelPopupTimout = new System.Windows.Forms.Label();
             this.PopupTimout = new System.Windows.Forms.NumericUpDown();
             this.LanguageComboBox = new System.Windows.Forms.ComboBox();
+            this.labelRedmineVersion = new System.Windows.Forms.Label();
+            this.RedmineVersionComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).BeginInit();
             this.SuspendLayout();
@@ -250,6 +252,25 @@
             this.LanguageComboBox.Size = new System.Drawing.Size(146, 21);
             this.LanguageComboBox.TabIndex = 13;
             // 
+            // labelRedmineVersion
+            // 
+            this.labelRedmineVersion.AutoSize = true;
+            this.labelRedmineVersion.Location = new System.Drawing.Point(221, 213);
+            this.labelRedmineVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelRedmineVersion.Name = "labelRedmineVersion";
+            this.labelRedmineVersion.Size = new System.Drawing.Size(87, 13);
+            this.labelRedmineVersion.TabIndex = 0;
+            this.labelRedmineVersion.Text = "Redmine Version";
+            // 
+            // RedmineVersionComboBox
+            // 
+            this.RedmineVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RedmineVersionComboBox.FormattingEnabled = true;
+            this.RedmineVersionComboBox.Location = new System.Drawing.Point(313, 210);
+            this.RedmineVersionComboBox.Name = "RedmineVersionComboBox";
+            this.RedmineVersionComboBox.Size = new System.Drawing.Size(114, 21);
+            this.RedmineVersionComboBox.TabIndex = 13;
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.BtnSaveButton;
@@ -257,6 +278,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
             this.ClientSize = new System.Drawing.Size(435, 283);
+            this.Controls.Add(this.RedmineVersionComboBox);
             this.Controls.Add(this.LanguageComboBox);
             this.Controls.Add(this.PopupTimout);
             this.Controls.Add(this.labelPopupTimout);
@@ -271,6 +293,7 @@
             this.Controls.Add(this.MinimizeOnStartTimerCheckBox);
             this.Controls.Add(this.MinimizeToSystemTrayCheckBox);
             this.Controls.Add(this.AuthenticationCheckBox);
+            this.Controls.Add(this.labelRedmineVersion);
             this.Controls.Add(this.BtnSaveButton);
             this.Controls.Add(this.labelLanguage);
             this.Controls.Add(this.BtnCancelButton);
@@ -308,5 +331,7 @@
         private System.Windows.Forms.Label labelPopupTimout;
         private System.Windows.Forms.NumericUpDown PopupTimout;
         private System.Windows.Forms.ComboBox LanguageComboBox;
+        private System.Windows.Forms.Label labelRedmineVersion;
+        private System.Windows.Forms.ComboBox RedmineVersionComboBox;
     }
 }

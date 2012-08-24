@@ -12,6 +12,14 @@ namespace Redmine.Client
             new System.Globalization.CultureInfo("nl-NL"),
             new System.Globalization.CultureInfo("en-US")
         };
+        /* api version lower then 1.1 does not support time-entry, so is not supported. */
+        private List<Redmine.Net.Api.Types.IdentifiableName> apiVersions = new List<Redmine.Net.Api.Types.IdentifiableName> {
+            /*new Redmine.Net.Api.Types.IdentifiableName { Id = (int)ApiVersion.V10x, Name = LangTools.GetTextForApiVersion(ApiVersion.V10x) },*/
+            new Redmine.Net.Api.Types.IdentifiableName { Id = (int)ApiVersion.V11x, Name = LangTools.GetTextForApiVersion(ApiVersion.V11x) },
+            new Redmine.Net.Api.Types.IdentifiableName { Id = (int)ApiVersion.V13x, Name = LangTools.GetTextForApiVersion(ApiVersion.V13x) },
+            new Redmine.Net.Api.Types.IdentifiableName { Id = (int)ApiVersion.V14x, Name = LangTools.GetTextForApiVersion(ApiVersion.V14x) },
+            new Redmine.Net.Api.Types.IdentifiableName { Id = (int)ApiVersion.V21x, Name = LangTools.GetTextForApiVersion(ApiVersion.V21x) }
+        };
 
         public SettingsForm()
         {
@@ -20,6 +28,10 @@ namespace Redmine.Client
             LanguageComboBox.DataSource = supportedLang;
             LanguageComboBox.ValueMember = "Name";
             LanguageComboBox.DisplayMember = "DisplayName";
+
+            RedmineVersionComboBox.DataSource = apiVersions;
+            RedmineVersionComboBox.ValueMember = "Id";
+            RedmineVersionComboBox.DisplayMember = "Name";
 
             LoadConfig();
             EnableDisableAuthenticationFields();
@@ -71,6 +83,7 @@ namespace Redmine.Client
                 Properties.Settings.Default.PropertyValues["PopupInterval"].PropertyValue = PopupTimout.Value;
                 Properties.Settings.Default.PropertyValues["CacheLifetime"].PropertyValue = CacheLifetime.Value;
                 Properties.Settings.Default.PropertyValues["LanguageCode"].PropertyValue = Languages.Lang.Culture.Name;
+                Properties.Settings.Default.PropertyValues["ApiVersion"].PropertyValue = (int)RedmineVersionComboBox.SelectedValue;
                 Properties.Settings.Default.Save();
                 Enumerations.SaveAll();
             }
@@ -91,6 +104,7 @@ namespace Redmine.Client
             CheckForUpdatesCheckBox.Checked = Properties.Settings.Default.CheckForUpdates;
             CacheLifetime.Value = Properties.Settings.Default.CacheLifetime;
             PopupTimout.Value = Properties.Settings.Default.PopupInterval;
+            RedmineVersionComboBox.SelectedIndex = RedmineVersionComboBox.FindStringExact(Languages.LangTools.GetTextForApiVersion((ApiVersion)Properties.Settings.Default.ApiVersion));
             try {
                 Languages.Lang.Culture = new System.Globalization.CultureInfo(Properties.Settings.Default.LanguageCode);
             }
