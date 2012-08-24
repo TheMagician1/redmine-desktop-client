@@ -28,5 +28,9 @@ namespace Redmine.Client.Languages
                     i.Text = Lang.ResourceManager.GetString(i.Name, Lang.Culture);
             }
         }
+        public static string GetTextForApiVersion(ApiVersion apiVersion)
+        {
+            return Lang.ResourceManager.GetString("ApiVersion_" + apiVersion.ToString(), Lang.Culture);
+        }
     }
 }

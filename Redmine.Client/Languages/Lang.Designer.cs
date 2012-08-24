@@ -61,6 +61,51 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to V1.0.x.
+        /// </summary>
+        internal static string ApiVersion_V10x {
+            get {
+                return ResourceManager.GetString("ApiVersion_V10x", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V1.1.x.
+        /// </summary>
+        internal static string ApiVersion_V11x {
+            get {
+                return ResourceManager.GetString("ApiVersion_V11x", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V1.3.x.
+        /// </summary>
+        internal static string ApiVersion_V13x {
+            get {
+                return ResourceManager.GetString("ApiVersion_V13x", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V1.4.x.
+        /// </summary>
+        internal static string ApiVersion_V14x {
+            get {
+                return ResourceManager.GetString("ApiVersion_V14x", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V2.1.x.
+        /// </summary>
+        internal static string ApiVersion_V21x {
+            get {
+                return ResourceManager.GetString("ApiVersion_V21x", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Requires authentication.
         /// </summary>
         internal static string AuthenticationCheckBox {
@@ -626,6 +671,15 @@ namespace Redmine.Client.Languages {
         internal static string labelRedmineUsername {
             get {
                 return ResourceManager.GetString("labelRedmineUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redmine Version.
+        /// </summary>
+        internal static string labelRedmineVersion {
+            get {
+                return ResourceManager.GetString("labelRedmineVersion", resourceCulture);
             }
         }
         
