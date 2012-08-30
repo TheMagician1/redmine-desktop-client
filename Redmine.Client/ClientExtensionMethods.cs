@@ -5,6 +5,8 @@ using System.Text;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using Redmine.Net.Api;
+using System.Collections.Specialized;
 
 namespace Redmine.Client
 {
@@ -20,5 +22,6 @@ namespace Redmine.Client
             }
             writer.WriteEndElement();
         }
+
     }
 }

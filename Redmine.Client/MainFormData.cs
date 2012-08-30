@@ -22,9 +22,9 @@ namespace Redmine.Client
         public MainFormData(int projectId)
         {
             NameValueCollection curProject = new NameValueCollection { { "project_id", projectId.ToString() } };
-            Issues = RedmineClientForm.redmine.GetObjectList<Issue>(curProject);
+            Issues = RedmineClientForm.redmine.GetTotalObjectList<Issue>(curProject);
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
-                Members = RedmineClientForm.redmine.GetObjectList<ProjectMembership>(curProject);
+                Members = RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(curProject);
         }
 
         public static Dictionary<int, T> ToDictionaryId<T>(IList<T> list) where T : Identifiable<T>

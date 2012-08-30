@@ -18,7 +18,6 @@ namespace Redmine.Client
     {
         private string Title = Lang.RedmineClientTitle_NoUser;
 
-        internal static IssueFormData DataCache = null;
         private int ticks = 0;
         private bool ticking = false;
         private int issueId = 0;
@@ -145,7 +144,7 @@ namespace Redmine.Client
         private MainFormData PrepareFormData(int projectId)
         {
             NameValueCollection parameters = new NameValueCollection();
-            IList<Project> projects = redmine.GetObjectList<Project>(parameters);
+            IList<Project> projects = redmine.GetTotalObjectList<Project>(parameters);
             if (projects.Count > 0)
             {
                 if (projectId == 0)
@@ -637,7 +636,6 @@ namespace Redmine.Client
             if (!updating)
             {
                 LoadLastIds();
-                DataCache = null;
                 this.Cursor = Cursors.AppStarting;
 
                 FillForm(PrepareFormData(projectId), issueId, activityId);
