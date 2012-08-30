@@ -80,6 +80,18 @@
     <Compile Include="CommitForm.Designer.cs">
       <DependentUpon>CommitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditEnumForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEnumForm.Designer.cs">
+      <DependentUpon>EditEnumForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditEnumListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEnumListForm.Designer.cs">
+      <DependentUpon>EditEnumListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enumerations.cs" />
     <Compile Include="IssueFormData.cs" />
     <Compile Include="Languages\Lang.Designer.cs">
@@ -114,6 +126,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CommitForm.resx">
       <DependentUpon>CommitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEnumForm.resx">
+      <DependentUpon>EditEnumForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEnumListForm.resx">
+      <DependentUpon>EditEnumListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IssueForm.resx">
       <DependentUpon>IssueForm.cs</DependentUpon>

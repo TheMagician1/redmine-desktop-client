@@ -133,5 +133,35 @@ namespace Redmine.Client
                 RedminePasswordTextBox.Enabled = false;
             }
         }
+
+        private void BtnEditActivitiesButton_Click(object sender, EventArgs e)
+        {
+            EditEnumListForm dlg = new EditEnumListForm(Enumerations.Activities, Lang.EnumName_Activities);
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+            {
+                Enumerations.Activities = dlg.enumeration;
+                Enumerations.SaveActivities();
+            }
+        }
+
+        private void BtnEditDocumentCategories_Click(object sender, EventArgs e)
+        {
+            EditEnumListForm dlg = new EditEnumListForm(Enumerations.DocumentCategories, Lang.EnumName_DocumentCategories);
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+            {
+                Enumerations.DocumentCategories = dlg.enumeration;
+                Enumerations.SaveDocumentCategories();
+            }
+        }
+
+        private void BtnEditIssuePriorities_Click(object sender, EventArgs e)
+        {
+            EditEnumListForm dlg = new EditEnumListForm(Enumerations.IssuePriorities, Lang.EnumName_IssuePriorities);
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+            {
+                Enumerations.IssuePriorities = dlg.enumeration;
+                Enumerations.SaveIssuePriorities();
+            }
+        }
     }
 }
