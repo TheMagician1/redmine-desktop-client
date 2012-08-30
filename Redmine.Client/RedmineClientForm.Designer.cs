@@ -67,7 +67,7 @@ namespace Redmine.Client
             this.TextBoxHours.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxHours.Name = "TextBoxHours";
             this.TextBoxHours.Size = new System.Drawing.Size(26, 20);
-            this.TextBoxHours.TabIndex = 2;
+            this.TextBoxHours.TabIndex = 15;
             this.TextBoxHours.Text = "0";
             this.TextBoxHours.TextChanged += new System.EventHandler(this.TextBoxHours_TextChanged);
             // 
@@ -77,7 +77,7 @@ namespace Redmine.Client
             this.TextBoxMinutes.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxMinutes.Name = "TextBoxMinutes";
             this.TextBoxMinutes.Size = new System.Drawing.Size(26, 20);
-            this.TextBoxMinutes.TabIndex = 3;
+            this.TextBoxMinutes.TabIndex = 16;
             this.TextBoxMinutes.Text = "0";
             this.TextBoxMinutes.TextChanged += new System.EventHandler(this.TextBoxMinutes_TextChanged);
             // 
@@ -87,7 +87,7 @@ namespace Redmine.Client
             this.TextBoxSeconds.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxSeconds.Name = "TextBoxSeconds";
             this.TextBoxSeconds.Size = new System.Drawing.Size(26, 20);
-            this.TextBoxSeconds.TabIndex = 4;
+            this.TextBoxSeconds.TabIndex = 17;
             this.TextBoxSeconds.Text = "0";
             this.TextBoxSeconds.TextChanged += new System.EventHandler(this.TextBoxSeconds_TextChanged);
             // 
@@ -97,7 +97,7 @@ namespace Redmine.Client
             this.BtnStartButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnStartButton.Name = "BtnStartButton";
             this.BtnStartButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnStartButton.TabIndex = 5;
+            this.BtnStartButton.TabIndex = 6;
             this.BtnStartButton.Text = "Start";
             this.BtnStartButton.UseVisualStyleBackColor = true;
             this.BtnStartButton.Click += new System.EventHandler(this.BtnStartButton_Click);
@@ -109,7 +109,7 @@ namespace Redmine.Client
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(86, 20);
-            this.dateTimePicker1.TabIndex = 6;
+            this.dateTimePicker1.TabIndex = 5;
             // 
             // TextBoxComment
             // 
@@ -119,7 +119,7 @@ namespace Redmine.Client
             this.TextBoxComment.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxComment.Name = "TextBoxComment";
             this.TextBoxComment.Size = new System.Drawing.Size(231, 20);
-            this.TextBoxComment.TabIndex = 7;
+            this.TextBoxComment.TabIndex = 8;
             // 
             // labelComment
             // 
@@ -128,7 +128,7 @@ namespace Redmine.Client
             this.labelComment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelComment.Name = "labelComment";
             this.labelComment.Size = new System.Drawing.Size(51, 13);
-            this.labelComment.TabIndex = 8;
+            this.labelComment.TabIndex = 7;
             this.labelComment.Text = "Comment";
             // 
             // ComboBoxActivity
@@ -139,7 +139,7 @@ namespace Redmine.Client
             this.ComboBoxActivity.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxActivity.Name = "ComboBoxActivity";
             this.ComboBoxActivity.Size = new System.Drawing.Size(158, 21);
-            this.ComboBoxActivity.TabIndex = 9;
+            this.ComboBoxActivity.TabIndex = 4;
             this.ComboBoxActivity.SelectedIndexChanged += new System.EventHandler(this.ComboBoxActivity_SelectedIndexChanged);
             // 
             // labelActivity
@@ -149,7 +149,7 @@ namespace Redmine.Client
             this.labelActivity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelActivity.Name = "labelActivity";
             this.labelActivity.Size = new System.Drawing.Size(41, 13);
-            this.labelActivity.TabIndex = 10;
+            this.labelActivity.TabIndex = 3;
             this.labelActivity.Text = "Activity";
             // 
             // labelProject
@@ -159,7 +159,7 @@ namespace Redmine.Client
             this.labelProject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelProject.Name = "labelProject";
             this.labelProject.Size = new System.Drawing.Size(40, 13);
-            this.labelProject.TabIndex = 12;
+            this.labelProject.TabIndex = 0;
             this.labelProject.Text = "Project";
             // 
             // ComboBoxProject
@@ -172,7 +172,7 @@ namespace Redmine.Client
             this.ComboBoxProject.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxProject.Name = "ComboBoxProject";
             this.ComboBoxProject.Size = new System.Drawing.Size(231, 21);
-            this.ComboBoxProject.TabIndex = 11;
+            this.ComboBoxProject.TabIndex = 1;
             this.ComboBoxProject.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProject_SelectedIndexChanged);
             // 
             // BtnCommitButton
@@ -182,7 +182,7 @@ namespace Redmine.Client
             this.BtnCommitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCommitButton.Name = "BtnCommitButton";
             this.BtnCommitButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnCommitButton.TabIndex = 13;
+            this.BtnCommitButton.TabIndex = 9;
             this.BtnCommitButton.Text = "Commit";
             this.BtnCommitButton.UseVisualStyleBackColor = true;
             this.BtnCommitButton.Click += new System.EventHandler(this.BtnCommitButton_Click);
@@ -231,7 +231,7 @@ namespace Redmine.Client
             this.DataGridViewIssues.RowTemplate.Height = 24;
             this.DataGridViewIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewIssues.Size = new System.Drawing.Size(396, 313);
-            this.DataGridViewIssues.TabIndex = 16;
+            this.DataGridViewIssues.TabIndex = 2;
             this.DataGridViewIssues.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewIssues_CellContentDoubleClick);
             this.DataGridViewIssues.SelectionChanged += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
             // 
@@ -246,7 +246,7 @@ namespace Redmine.Client
             this.BtnRefreshButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnRefreshButton.Name = "BtnRefreshButton";
             this.BtnRefreshButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnRefreshButton.TabIndex = 17;
+            this.BtnRefreshButton.TabIndex = 10;
             this.BtnRefreshButton.Text = "Refresh";
             this.BtnRefreshButton.UseVisualStyleBackColor = true;
             this.BtnRefreshButton.Click += new System.EventHandler(this.BtnRefreshButton_Click);
@@ -269,7 +269,7 @@ namespace Redmine.Client
             this.BtnResetButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnResetButton.Name = "BtnResetButton";
             this.BtnResetButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnResetButton.TabIndex = 19;
+            this.BtnResetButton.TabIndex = 14;
             this.BtnResetButton.Text = "Reset";
             this.BtnResetButton.UseVisualStyleBackColor = true;
             this.BtnResetButton.Click += new System.EventHandler(this.BtnResetButton_Click);
@@ -281,7 +281,7 @@ namespace Redmine.Client
             this.BtnAboutButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAboutButton.Name = "BtnAboutButton";
             this.BtnAboutButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnAboutButton.TabIndex = 20;
+            this.BtnAboutButton.TabIndex = 13;
             this.BtnAboutButton.Text = "About";
             this.BtnAboutButton.UseVisualStyleBackColor = true;
             this.BtnAboutButton.Click += new System.EventHandler(this.BtnAboutButton_Click);
@@ -293,7 +293,7 @@ namespace Redmine.Client
             this.BtnSettingsButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSettingsButton.Name = "BtnSettingsButton";
             this.BtnSettingsButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnSettingsButton.TabIndex = 21;
+            this.BtnSettingsButton.TabIndex = 12;
             this.BtnSettingsButton.Text = "Settings";
             this.BtnSettingsButton.UseVisualStyleBackColor = true;
             this.BtnSettingsButton.Click += new System.EventHandler(this.BtnSettingsButton_Click);
@@ -305,7 +305,7 @@ namespace Redmine.Client
             this.BtnNewIssueButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnNewIssueButton.Name = "BtnNewIssueButton";
             this.BtnNewIssueButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnNewIssueButton.TabIndex = 22;
+            this.BtnNewIssueButton.TabIndex = 11;
             this.BtnNewIssueButton.Text = "New issue";
             this.BtnNewIssueButton.UseVisualStyleBackColor = true;
             this.BtnNewIssueButton.Click += new System.EventHandler(this.BtnNewIssueButton_Click);

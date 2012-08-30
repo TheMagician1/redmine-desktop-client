@@ -85,7 +85,7 @@
             this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelProductName.Name = "labelProductName";
             this.labelProductName.Size = new System.Drawing.Size(271, 16);
-            this.labelProductName.TabIndex = 19;
+            this.labelProductName.TabIndex = 0;
             this.labelProductName.Text = "Redmine Client V2";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -97,7 +97,7 @@
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(271, 17);
-            this.labelVersion.TabIndex = 0;
+            this.labelVersion.TabIndex = 1;
             this.labelVersion.Text = "Version 0.2";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -109,7 +109,7 @@
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 42);
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(271, 42);
-            this.labelCopyright.TabIndex = 21;
+            this.labelCopyright.TabIndex = 2;
             this.labelCopyright.Text = "Copyright © Pavel Kalian 2009, All rights reserved\r\nCopyright © Bas van Leeuwen 2" +
                 "012\r\nOther Contributor(s): Johan \'t Hart";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -122,7 +122,7 @@
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 25);
             this.labelCompanyName.Name = "labelCompanyName";
             this.labelCompanyName.Size = new System.Drawing.Size(271, 25);
-            this.labelCompanyName.TabIndex = 22;
+            this.labelCompanyName.TabIndex = 3;
             this.labelCompanyName.Text = "Original Licensed under the original BSD License\r\nV2 Licensed under the new BSD L" +
                 "icense";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -137,7 +137,7 @@
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxDescription.Size = new System.Drawing.Size(271, 112);
-            this.textBoxDescription.TabIndex = 23;
+            this.textBoxDescription.TabIndex = 4;
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
             // 
@@ -148,7 +148,7 @@
             this.okButton.Location = new System.Drawing.Point(339, 240);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 22);
-            this.okButton.TabIndex = 24;
+            this.okButton.TabIndex = 5;
             this.okButton.Text = "&OK";
             // 
             // AboutBox
