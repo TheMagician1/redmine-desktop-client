@@ -272,7 +272,7 @@
             this.RedmineVersionComboBox.FormattingEnabled = true;
             this.RedmineVersionComboBox.Location = new System.Drawing.Point(105, 239);
             this.RedmineVersionComboBox.Name = "RedmineVersionComboBox";
-            this.RedmineVersionComboBox.Size = new System.Drawing.Size(110, 21);
+            this.RedmineVersionComboBox.Size = new System.Drawing.Size(68, 21);
             this.RedmineVersionComboBox.TabIndex = 17;
             // 
             // BtnEditActivitiesButton
