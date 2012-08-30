@@ -13,9 +13,9 @@ namespace Redmine.Client
 {
     internal static class Enumerations
     {
-        public static List<IdentifiableName> IssuePriorities { get; private set; }
-        public static List<IdentifiableName> DocumentCategories { get; private set; }
-        public static List<IdentifiableName> Activities { get; private set; }
+        public static List<IdentifiableName> IssuePriorities { get; set; }
+        public static List<IdentifiableName> DocumentCategories { get; set; }
+        public static List<IdentifiableName> Activities { get; set; }
 
         public static void LoadAll()
         {

@@ -178,6 +178,33 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activities.
+        /// </summary>
+        internal static string BtnEditActivitiesButton {
+            get {
+                return ResourceManager.GetString("BtnEditActivitiesButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doc. Cat..
+        /// </summary>
+        internal static string BtnEditDocumentCategories {
+            get {
+                return ResourceManager.GetString("BtnEditDocumentCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priorities.
+        /// </summary>
+        internal static string BtnEditIssuePriorities {
+            get {
+                return ResourceManager.GetString("BtnEditIssuePriorities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         internal static string BtnExitButton {
@@ -192,6 +219,15 @@ namespace Redmine.Client.Languages {
         internal static string BtnNewIssueButton {
             get {
                 return ResourceManager.GetString("BtnNewIssueButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string BtnOKButton {
+            get {
+                return ResourceManager.GetString("BtnOKButton", resourceCulture);
             }
         }
         
@@ -367,6 +403,33 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Enumeration Value {0} for {1}.
+        /// </summary>
+        internal static string DlgEditEnumFormTitle_Edit {
+            get {
+                return ResourceManager.GetString("DlgEditEnumFormTitle_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Enumeration Value for {0}.
+        /// </summary>
+        internal static string DlgEditEnumFormTitle_New {
+            get {
+                return ResourceManager.GetString("DlgEditEnumFormTitle_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Enumeration {0}.
+        /// </summary>
+        internal static string DlgEditEnumListFormTitle {
+            get {
+                return ResourceManager.GetString("DlgEditEnumListFormTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Issue {0} for project {1}.
         /// </summary>
         internal static string DlgIssueTitleEdit {
@@ -394,6 +457,33 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activities.
+        /// </summary>
+        internal static string EnumName_Activities {
+            get {
+                return ResourceManager.GetString("EnumName_Activities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document Categories.
+        /// </summary>
+        internal static string EnumName_DocumentCategories {
+            get {
+                return ResourceManager.GetString("EnumName_DocumentCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Issue Priorities.
+        /// </summary>
+        internal static string EnumName_IssuePriorities {
+            get {
+                return ResourceManager.GetString("EnumName_IssuePriorities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string Error {
@@ -408,6 +498,24 @@ namespace Redmine.Client.Languages {
         internal static string Error_CreateIssueFailed {
             get {
                 return ResourceManager.GetString("Error_CreateIssueFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {0}  is a mandatory field..
+        /// </summary>
+        internal static string Error_EnumFieldIsMandatory {
+            get {
+                return ResourceManager.GetString("Error_EnumFieldIsMandatory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Id and the Name must be unique..
+        /// </summary>
+        internal static string Error_EnumMustBeUnique {
+            get {
+                return ResourceManager.GetString("Error_EnumMustBeUnique", resourceCulture);
             }
         }
         
@@ -588,6 +696,33 @@ namespace Redmine.Client.Languages {
         internal static string labelDescription {
             get {
                 return ResourceManager.GetString("labelDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Enumerations.
+        /// </summary>
+        internal static string labelEditEnumerations {
+            get {
+                return ResourceManager.GetString("labelEditEnumerations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        internal static string labelEnumId {
+            get {
+                return ResourceManager.GetString("labelEnumId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string labelEnumName {
+            get {
+                return ResourceManager.GetString("labelEnumName", resourceCulture);
             }
         }
         
