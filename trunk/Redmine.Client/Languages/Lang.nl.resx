@@ -370,4 +370,79 @@ of Vraag aandacht elke
     <value>De Redmine Client probeert af te sluiten, maar u bent de tijd aan het meten.{0}Wilt u de tijd nog opslaan?</value>
     <comment>{0} newline</comment>
   </data>
+  <data name="ApiVersion_V10x" xml:space="preserve">
+    <value>V1.0.x</value>
+  </data>
+  <data name="ApiVersion_V11x" xml:space="preserve">
+    <value>V1.1.x</value>
+  </data>
+  <data name="ApiVersion_V13x" xml:space="preserve">
+    <value>V1.3.x</value>
+  </data>
+  <data name="ApiVersion_V14x" xml:space="preserve">
+    <value>V1.4.x</value>
+  </data>
+  <data name="ApiVersion_V21x" xml:space="preserve">
+    <value>V2.1.x</value>
+  </data>
+  <data name="labelRedmineVersion" xml:space="preserve">
+    <value>Redmine Versie</value>
+  </data>
+  <data name="BtnEditActivitiesButton" xml:space="preserve">
+    <value>Activiteiten</value>
+  </data>
+  <data name="BtnEditDocumentCategories" xml:space="preserve">
+    <value>Doc. Cat.</value>
+  </data>
+  <data name="BtnEditIssuePriorities" xml:space="preserve">
+    <value>Prioriteiten</value>
+  </data>
+  <data name="BtnOKButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DlgEditEnumFormTitle_Edit" xml:space="preserve">
+    <value>Wijzig Enumeratie waarde {0} voor {1}</value>
+    <comment>{0} Current name of the Enumeration; {1} Name of the Enumeration set</comment>
+  </data>
+  <data name="DlgEditEnumFormTitle_New" xml:space="preserve">
+    <value>Nieuwe Enumeratie waarde voor {0}</value>
+    <comment>{0} Name of the Enumeration set</comment>
+  </data>
+  <data name="DlgEditEnumListFormTitle" xml:space="preserve">
+    <value>Wijzig enumeratie {0}</value>
+  </data>
+  <data name="EnumName_Activities" xml:space="preserve">
+    <value>Activiteiten</value>
+  </data>
+  <data name="EnumName_DocumentCategories" xml:space="preserve">
+    <value>Documenten Categorieën</value>
+  </data>
+  <data name="EnumName_IssuePriorities" xml:space="preserve">
+    <value>Issue Prioriteiten</value>
+  </data>
+  <data name="Error_EnumFieldIsMandatory" xml:space="preserve">
+    <value>{0} is een verplicht veld</value>
+    <comment>{0} Fieldname</comment>
+  </data>
+  <data name="Error_EnumMustBeUnique" xml:space="preserve">
+    <value>Het Id en de Naam moeten uniek zijn.</value>
+  </data>
+  <data name="labelEditEnumerations" xml:space="preserve">
+    <value>Wijzig Enumeraties</value>
+  </data>
+  <data name="labelEnumId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="labelEnumName" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="BtnAddButton" xml:space="preserve">
+    <value>Nieuw</value>
+  </data>
+  <data name="BtnDeleteButton" xml:space="preserve">
+    <value>Verwijder</value>
+  </data>
+  <data name="BtnModifyButton" xml:space="preserve">
+    <value>Wijzig</value>
+  </data>
 </root>
