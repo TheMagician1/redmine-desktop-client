@@ -66,7 +66,7 @@
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnSaveButton.TabIndex = 4;
+            this.BtnSaveButton.TabIndex = 23;
             this.BtnSaveButton.Text = "Save";
             this.BtnSaveButton.UseVisualStyleBackColor = true;
             this.BtnSaveButton.Click += new System.EventHandler(this.BtnSaveButton_Click);
@@ -78,7 +78,7 @@
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnCancelButton.TabIndex = 3;
+            this.BtnCancelButton.TabIndex = 24;
             this.BtnCancelButton.Text = "Cancel";
             this.BtnCancelButton.UseVisualStyleBackColor = true;
             this.BtnCancelButton.Click += new System.EventHandler(this.BtnCancelButton_Click);
@@ -90,7 +90,7 @@
             this.labelTracker.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTracker.Name = "labelTracker";
             this.labelTracker.Size = new System.Drawing.Size(44, 13);
-            this.labelTracker.TabIndex = 12;
+            this.labelTracker.TabIndex = 4;
             this.labelTracker.Text = "Tracker";
             // 
             // ComboBoxTracker
@@ -101,7 +101,7 @@
             this.ComboBoxTracker.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTracker.Name = "ComboBoxTracker";
             this.ComboBoxTracker.Size = new System.Drawing.Size(136, 21);
-            this.ComboBoxTracker.TabIndex = 11;
+            this.ComboBoxTracker.TabIndex = 5;
             // 
             // DateStart
             // 
@@ -110,7 +110,7 @@
             this.DateStart.Margin = new System.Windows.Forms.Padding(2);
             this.DateStart.Name = "DateStart";
             this.DateStart.Size = new System.Drawing.Size(86, 20);
-            this.DateStart.TabIndex = 13;
+            this.DateStart.TabIndex = 11;
             // 
             // labelSubject
             // 
@@ -119,7 +119,7 @@
             this.labelSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSubject.Name = "labelSubject";
             this.labelSubject.Size = new System.Drawing.Size(43, 13);
-            this.labelSubject.TabIndex = 15;
+            this.labelSubject.TabIndex = 0;
             this.labelSubject.Text = "Subject";
             // 
             // TextBoxSubject
@@ -128,7 +128,7 @@
             this.TextBoxSubject.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxSubject.Name = "TextBoxSubject";
             this.TextBoxSubject.Size = new System.Drawing.Size(414, 20);
-            this.TextBoxSubject.TabIndex = 14;
+            this.TextBoxSubject.TabIndex = 1;
             // 
             // labelDescription
             // 
@@ -137,7 +137,7 @@
             this.labelDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(60, 13);
-            this.labelDescription.TabIndex = 17;
+            this.labelDescription.TabIndex = 2;
             this.labelDescription.Text = "Description";
             // 
             // TextBoxDescription
@@ -150,7 +150,7 @@
             this.TextBoxDescription.Name = "TextBoxDescription";
             this.TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TextBoxDescription.Size = new System.Drawing.Size(414, 63);
-            this.TextBoxDescription.TabIndex = 16;
+            this.TextBoxDescription.TabIndex = 3;
             // 
             // labelStatus
             // 
@@ -159,7 +159,7 @@
             this.labelStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(37, 13);
-            this.labelStatus.TabIndex = 19;
+            this.labelStatus.TabIndex = 6;
             this.labelStatus.Text = "Status";
             // 
             // ComboBoxStatus
@@ -170,7 +170,7 @@
             this.ComboBoxStatus.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxStatus.Name = "ComboBoxStatus";
             this.ComboBoxStatus.Size = new System.Drawing.Size(136, 21);
-            this.ComboBoxStatus.TabIndex = 18;
+            this.ComboBoxStatus.TabIndex = 7;
             // 
             // labelPriority
             // 
@@ -179,7 +179,7 @@
             this.labelPriority.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPriority.Name = "labelPriority";
             this.labelPriority.Size = new System.Drawing.Size(38, 13);
-            this.labelPriority.TabIndex = 21;
+            this.labelPriority.TabIndex = 8;
             this.labelPriority.Text = "Priority";
             // 
             // ComboBoxPriority
@@ -190,7 +190,7 @@
             this.ComboBoxPriority.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxPriority.Name = "ComboBoxPriority";
             this.ComboBoxPriority.Size = new System.Drawing.Size(136, 21);
-            this.ComboBoxPriority.TabIndex = 20;
+            this.ComboBoxPriority.TabIndex = 9;
             // 
             // DateDue
             // 
@@ -199,7 +199,7 @@
             this.DateDue.Margin = new System.Windows.Forms.Padding(2);
             this.DateDue.Name = "DateDue";
             this.DateDue.Size = new System.Drawing.Size(86, 20);
-            this.DateDue.TabIndex = 23;
+            this.DateDue.TabIndex = 13;
             // 
             // labelEstimatedTime
             // 
@@ -208,7 +208,7 @@
             this.labelEstimatedTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEstimatedTime.Name = "labelEstimatedTime";
             this.labelEstimatedTime.Size = new System.Drawing.Size(75, 13);
-            this.labelEstimatedTime.TabIndex = 26;
+            this.labelEstimatedTime.TabIndex = 14;
             this.labelEstimatedTime.Text = "Estimated time";
             // 
             // TextBoxEstimatedTime
@@ -217,7 +217,7 @@
             this.TextBoxEstimatedTime.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxEstimatedTime.Name = "TextBoxEstimatedTime";
             this.TextBoxEstimatedTime.Size = new System.Drawing.Size(89, 20);
-            this.TextBoxEstimatedTime.TabIndex = 25;
+            this.TextBoxEstimatedTime.TabIndex = 15;
             // 
             // labelAssignedTo
             // 
@@ -226,7 +226,7 @@
             this.labelAssignedTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAssignedTo.Name = "labelAssignedTo";
             this.labelAssignedTo.Size = new System.Drawing.Size(62, 13);
-            this.labelAssignedTo.TabIndex = 28;
+            this.labelAssignedTo.TabIndex = 16;
             this.labelAssignedTo.Text = "Assigned to";
             // 
             // ComboBoxAssignedTo
@@ -237,7 +237,7 @@
             this.ComboBoxAssignedTo.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxAssignedTo.Name = "ComboBoxAssignedTo";
             this.ComboBoxAssignedTo.Size = new System.Drawing.Size(136, 21);
-            this.ComboBoxAssignedTo.TabIndex = 27;
+            this.ComboBoxAssignedTo.TabIndex = 17;
             // 
             // labelTargetVersion
             // 
@@ -246,7 +246,7 @@
             this.labelTargetVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTargetVersion.Name = "labelTargetVersion";
             this.labelTargetVersion.Size = new System.Drawing.Size(75, 13);
-            this.labelTargetVersion.TabIndex = 30;
+            this.labelTargetVersion.TabIndex = 20;
             this.labelTargetVersion.Text = "Target version";
             // 
             // ComboBoxTargetVersion
@@ -257,7 +257,7 @@
             this.ComboBoxTargetVersion.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTargetVersion.Name = "ComboBoxTargetVersion";
             this.ComboBoxTargetVersion.Size = new System.Drawing.Size(136, 21);
-            this.ComboBoxTargetVersion.TabIndex = 29;
+            this.ComboBoxTargetVersion.TabIndex = 21;
             // 
             // numericUpDown1
             // 
@@ -270,7 +270,7 @@
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(90, 20);
-            this.numericUpDown1.TabIndex = 31;
+            this.numericUpDown1.TabIndex = 19;
             // 
             // labelPercentDone
             // 
@@ -279,7 +279,7 @@
             this.labelPercentDone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPercentDone.Name = "labelPercentDone";
             this.labelPercentDone.Size = new System.Drawing.Size(42, 13);
-            this.labelPercentDone.TabIndex = 32;
+            this.labelPercentDone.TabIndex = 18;
             this.labelPercentDone.Text = "% done";
             // 
             // ListBoxWatchers
@@ -316,7 +316,7 @@
             this.cbStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.cbStartDate.Name = "cbStartDate";
             this.cbStartDate.Size = new System.Drawing.Size(72, 17);
-            this.cbStartDate.TabIndex = 35;
+            this.cbStartDate.TabIndex = 10;
             this.cbStartDate.Text = "Start date";
             this.cbStartDate.UseVisualStyleBackColor = true;
             this.cbStartDate.CheckedChanged += new System.EventHandler(this.cbStartDate_CheckedChanged);
@@ -328,7 +328,7 @@
             this.cbDueDate.Margin = new System.Windows.Forms.Padding(2);
             this.cbDueDate.Name = "cbDueDate";
             this.cbDueDate.Size = new System.Drawing.Size(70, 17);
-            this.cbDueDate.TabIndex = 36;
+            this.cbDueDate.TabIndex = 12;
             this.cbDueDate.Text = "Due date";
             this.cbDueDate.UseVisualStyleBackColor = true;
             this.cbDueDate.CheckedChanged += new System.EventHandler(this.cbDueDate_CheckedChanged);
@@ -339,7 +339,7 @@
             this.BtnCloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCloseButton.Name = "BtnCloseButton";
             this.BtnCloseButton.Size = new System.Drawing.Size(72, 24);
-            this.BtnCloseButton.TabIndex = 4;
+            this.BtnCloseButton.TabIndex = 25;
             this.BtnCloseButton.Text = "Close Issue";
             this.BtnCloseButton.UseVisualStyleBackColor = true;
             this.BtnCloseButton.Click += new System.EventHandler(this.BtnCloseButton_Click);
@@ -350,7 +350,7 @@
             this.linkEditInRedmine.Location = new System.Drawing.Point(8, 220);
             this.linkEditInRedmine.Name = "linkEditInRedmine";
             this.linkEditInRedmine.Size = new System.Drawing.Size(127, 13);
-            this.linkEditInRedmine.TabIndex = 37;
+            this.linkEditInRedmine.TabIndex = 22;
             this.linkEditInRedmine.TabStop = true;
             this.linkEditInRedmine.Text = "Edit this issue in Redmine";
             this.linkEditInRedmine.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEditInRedmine_LinkClicked);

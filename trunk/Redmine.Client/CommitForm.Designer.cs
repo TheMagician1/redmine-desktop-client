@@ -51,7 +51,7 @@
             this.BtnCommitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCommitButton.Name = "BtnCommitButton";
             this.BtnCommitButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnCommitButton.TabIndex = 6;
+            this.BtnCommitButton.TabIndex = 13;
             this.BtnCommitButton.Text = "Commit";
             this.BtnCommitButton.UseVisualStyleBackColor = true;
             this.BtnCommitButton.Click += new System.EventHandler(this.BtnCommitButton_Click);
@@ -63,7 +63,7 @@
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnCancelButton.TabIndex = 5;
+            this.BtnCancelButton.TabIndex = 14;
             this.BtnCancelButton.Text = "Cancel";
             this.BtnCancelButton.UseVisualStyleBackColor = true;
             this.BtnCancelButton.Click += new System.EventHandler(this.BtnCancelButton_Click);
@@ -76,7 +76,7 @@
             this.TextBoxComment.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxComment.Name = "TextBoxComment";
             this.TextBoxComment.Size = new System.Drawing.Size(447, 20);
-            this.TextBoxComment.TabIndex = 9;
+            this.TextBoxComment.TabIndex = 12;
             // 
             // labelCommitComment
             // 
@@ -85,7 +85,7 @@
             this.labelCommitComment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCommitComment.Name = "labelCommitComment";
             this.labelCommitComment.Size = new System.Drawing.Size(51, 13);
-            this.labelCommitComment.TabIndex = 10;
+            this.labelCommitComment.TabIndex = 11;
             this.labelCommitComment.Text = "Comment";
             // 
             // labelCommitProject
@@ -94,7 +94,7 @@
             this.labelCommitProject.Location = new System.Drawing.Point(7, 38);
             this.labelCommitProject.Name = "labelCommitProject";
             this.labelCommitProject.Size = new System.Drawing.Size(43, 13);
-            this.labelCommitProject.TabIndex = 11;
+            this.labelCommitProject.TabIndex = 1;
             this.labelCommitProject.Text = "Project:";
             // 
             // labelProjectContent
@@ -104,7 +104,7 @@
             this.labelProjectContent.Location = new System.Drawing.Point(78, 38);
             this.labelProjectContent.Name = "labelProjectContent";
             this.labelProjectContent.Size = new System.Drawing.Size(79, 13);
-            this.labelProjectContent.TabIndex = 12;
+            this.labelProjectContent.TabIndex = 2;
             this.labelProjectContent.Text = "ProjectName";
             // 
             // labelCommitIssue
@@ -113,7 +113,7 @@
             this.labelCommitIssue.Location = new System.Drawing.Point(7, 57);
             this.labelCommitIssue.Name = "labelCommitIssue";
             this.labelCommitIssue.Size = new System.Drawing.Size(35, 13);
-            this.labelCommitIssue.TabIndex = 11;
+            this.labelCommitIssue.TabIndex = 3;
             this.labelCommitIssue.Text = "Issue:";
             // 
             // labelIssueContent
@@ -123,7 +123,7 @@
             this.labelIssueContent.Location = new System.Drawing.Point(78, 57);
             this.labelIssueContent.Name = "labelIssueContent";
             this.labelIssueContent.Size = new System.Drawing.Size(69, 13);
-            this.labelIssueContent.TabIndex = 12;
+            this.labelIssueContent.TabIndex = 4;
             this.labelIssueContent.Text = "IssueName";
             // 
             // labelCommitActivity
@@ -132,7 +132,7 @@
             this.labelCommitActivity.Location = new System.Drawing.Point(7, 76);
             this.labelCommitActivity.Name = "labelCommitActivity";
             this.labelCommitActivity.Size = new System.Drawing.Size(44, 13);
-            this.labelCommitActivity.TabIndex = 11;
+            this.labelCommitActivity.TabIndex = 5;
             this.labelCommitActivity.Text = "Activity:";
             // 
             // ComboBoxActivity
@@ -143,7 +143,7 @@
             this.ComboBoxActivity.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxActivity.Name = "ComboBoxActivity";
             this.ComboBoxActivity.Size = new System.Drawing.Size(158, 21);
-            this.ComboBoxActivity.TabIndex = 13;
+            this.ComboBoxActivity.TabIndex = 6;
             // 
             // labelCommitQuestion
             // 
@@ -152,7 +152,7 @@
             this.labelCommitQuestion.Location = new System.Drawing.Point(6, 9);
             this.labelCommitQuestion.Name = "labelCommitQuestion";
             this.labelCommitQuestion.Size = new System.Drawing.Size(310, 20);
-            this.labelCommitQuestion.TabIndex = 14;
+            this.labelCommitQuestion.TabIndex = 0;
             this.labelCommitQuestion.Text = "Do you want to commit the following entry?";
             // 
             // labelCommitTime
@@ -161,7 +161,7 @@
             this.labelCommitTime.Location = new System.Drawing.Point(7, 95);
             this.labelCommitTime.Name = "labelCommitTime";
             this.labelCommitTime.Size = new System.Drawing.Size(50, 13);
-            this.labelCommitTime.TabIndex = 11;
+            this.labelCommitTime.TabIndex = 7;
             this.labelCommitTime.Text = "Time (H):";
             // 
             // labelTimeContent
@@ -171,7 +171,7 @@
             this.labelTimeContent.Location = new System.Drawing.Point(78, 95);
             this.labelTimeContent.Name = "labelTimeContent";
             this.labelTimeContent.Size = new System.Drawing.Size(34, 13);
-            this.labelTimeContent.TabIndex = 12;
+            this.labelTimeContent.TabIndex = 8;
             this.labelTimeContent.Text = "Time";
             // 
             // labelCommitDateSpent
@@ -180,7 +180,7 @@
             this.labelCommitDateSpent.Location = new System.Drawing.Point(7, 113);
             this.labelCommitDateSpent.Name = "labelCommitDateSpent";
             this.labelCommitDateSpent.Size = new System.Drawing.Size(55, 13);
-            this.labelCommitDateSpent.TabIndex = 11;
+            this.labelCommitDateSpent.TabIndex = 9;
             this.labelCommitDateSpent.Text = "Spent On:";
             // 
             // labelDateSpentContent
@@ -190,7 +190,7 @@
             this.labelDateSpentContent.Location = new System.Drawing.Point(78, 113);
             this.labelDateSpentContent.Name = "labelDateSpentContent";
             this.labelDateSpentContent.Size = new System.Drawing.Size(34, 13);
-            this.labelDateSpentContent.TabIndex = 12;
+            this.labelDateSpentContent.TabIndex = 10;
             this.labelDateSpentContent.Text = "Date";
             // 
             // CommitForm
