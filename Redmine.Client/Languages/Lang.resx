@@ -436,4 +436,13 @@ or Request attention every
   <data name="labelEnumName" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="BtnAddButton" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="BtnDeleteButton" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="BtnModifyButton" xml:space="preserve">
+    <value>Modify</value>
+  </data>
 </root>

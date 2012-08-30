@@ -151,6 +151,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string BtnAddButton {
+            get {
+                return ResourceManager.GetString("BtnAddButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string BtnCancelButton {
@@ -174,6 +183,15 @@ namespace Redmine.Client.Languages {
         internal static string BtnCommitButton {
             get {
                 return ResourceManager.GetString("BtnCommitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string BtnDeleteButton {
+            get {
+                return ResourceManager.GetString("BtnDeleteButton", resourceCulture);
             }
         }
         
@@ -210,6 +228,15 @@ namespace Redmine.Client.Languages {
         internal static string BtnExitButton {
             get {
                 return ResourceManager.GetString("BtnExitButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify.
+        /// </summary>
+        internal static string BtnModifyButton {
+            get {
+                return ResourceManager.GetString("BtnModifyButton", resourceCulture);
             }
         }
         
