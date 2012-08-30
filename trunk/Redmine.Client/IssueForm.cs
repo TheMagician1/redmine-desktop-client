@@ -18,6 +18,7 @@ namespace Redmine.Client
         private Issue issue;
         private int ProjectId { get { if (this.type == DialogType.New) return project.Id; else return issue.Project.Id; } }
         private DialogType type;
+        private IssueFormData DataCache = null;
 
         public IssueForm(Project project)
         {
@@ -106,7 +107,7 @@ namespace Redmine.Client
             cbStartDate.Checked = false;
             DateStart.Enabled = false;
             DateDue.Enabled = false;
-            if (RedmineClientForm.DataCache == null)
+            if (this.DataCache == null)
             {
                 this.Cursor = Cursors.AppStarting;
                 backgroundWorker2.RunWorkerAsync(ProjectId);
@@ -124,19 +125,19 @@ namespace Redmine.Client
             {
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
                 {
-                    this.ComboBoxAssignedTo.DataSource = RedmineClientForm.DataCache.Assignees;
+                    this.ComboBoxAssignedTo.DataSource = this.DataCache.Assignees;
                     this.ComboBoxAssignedTo.DisplayMember = "Name";
                     this.ComboBoxAssignedTo.ValueMember = "Id";
                 }
                 else
                     ComboBoxAssignedTo.Enabled = false;
-                this.ComboBoxStatus.DataSource = RedmineClientForm.DataCache.Statuses;
+                this.ComboBoxStatus.DataSource = this.DataCache.Statuses;
                 this.ComboBoxStatus.DisplayMember = "Name";
                 this.ComboBoxStatus.ValueMember = "Id";
-                this.ComboBoxTargetVersion.DataSource = RedmineClientForm.DataCache.Versions;
+                this.ComboBoxTargetVersion.DataSource = this.DataCache.Versions;
                 this.ComboBoxTargetVersion.DisplayMember = "Name";
                 this.ComboBoxTargetVersion.ValueMember = "Id";
-                this.ComboBoxTracker.DataSource = RedmineClientForm.DataCache.Trackers;
+                this.ComboBoxTracker.DataSource = this.DataCache.Trackers;
                 this.ComboBoxTracker.DisplayMember = "Name";
                 this.ComboBoxTracker.ValueMember = "Id";
                 //this.ListBoxWatchers.DataSource = RedmineClientForm.DataCache.Watchers;
@@ -221,23 +222,32 @@ namespace Redmine.Client
 
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
-            RedmineClientForm.DataCache = new IssueFormData();
+            this.DataCache = new IssueFormData();
             int projectId = (int)e.Argument;
             NameValueCollection parameters = new NameValueCollection { { "project_id", projectId.ToString() } };
 
-            if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+            try
             {
-                RedmineClientForm.DataCache.Statuses = RedmineClientForm.redmine.GetObjectList<IssueStatus>(parameters);
-                RedmineClientForm.DataCache.Trackers = RedmineClientForm.redmine.GetObjectList<Tracker>(parameters);
-                RedmineClientForm.DataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetObjectList<Redmine.Net.Api.Types.Version>(parameters);
-                RedmineClientForm.DataCache.Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                 {
-                    List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetObjectList<ProjectMembership>(parameters);
-                    //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
-                    RedmineClientForm.DataCache.Assignees = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
-                    RedmineClientForm.DataCache.Assignees.Insert(0, new Assignee(new ProjectMembership { Id = 0, User = new IdentifiableName { Id = 0, Name = "" } }));
+                    this.DataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
+                    this.DataCache.Trackers = RedmineClientForm.redmine.GetTotalObjectList<Tracker>(parameters);
+                    this.DataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
+                    this.DataCache.Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
+                    if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+                    {
+                        List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
+                        //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
+                        this.DataCache.Assignees = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
+                        this.DataCache.Assignees.Insert(0, new Assignee(new ProjectMembership { Id = 0, User = new IdentifiableName { Id = 0, Name = "" } }));
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
             }
         }
 
