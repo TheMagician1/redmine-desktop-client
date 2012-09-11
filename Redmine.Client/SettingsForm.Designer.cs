@@ -54,10 +54,10 @@
             this.GrpRedmineServerSettings = new System.Windows.Forms.GroupBox();
             this.BtnTestConnection = new System.Windows.Forms.Button();
             this.GrpApplicationSettings = new System.Windows.Forms.GroupBox();
+            this.labelExplClosingIssueStatus = new System.Windows.Forms.Label();
             this.ComboBoxCloseStatus = new System.Windows.Forms.ComboBox();
             this.labelSelectCloseStatus = new System.Windows.Forms.Label();
             this.GrpEditEnumerations = new System.Windows.Forms.GroupBox();
-            this.labelExplClosingIssueStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).BeginInit();
             this.GrpRedmineServerSettings.SuspendLayout();
@@ -201,7 +201,7 @@
             // labelLanguage
             // 
             this.labelLanguage.AutoSize = true;
-            this.labelLanguage.Location = new System.Drawing.Point(5, 90);
+            this.labelLanguage.Location = new System.Drawing.Point(4, 90);
             this.labelLanguage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelLanguage.Name = "labelLanguage";
             this.labelLanguage.Size = new System.Drawing.Size(55, 13);
@@ -264,7 +264,7 @@
             // 
             this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageComboBox.FormattingEnabled = true;
-            this.LanguageComboBox.Location = new System.Drawing.Point(95, 87);
+            this.LanguageComboBox.Location = new System.Drawing.Point(142, 87);
             this.LanguageComboBox.Name = "LanguageComboBox";
             this.LanguageComboBox.Size = new System.Drawing.Size(216, 21);
             this.LanguageComboBox.TabIndex = 15;
@@ -366,12 +366,21 @@
             this.GrpApplicationSettings.TabStop = false;
             this.GrpApplicationSettings.Text = "Application Settings";
             // 
+            // labelExplClosingIssueStatus
+            // 
+            this.labelExplClosingIssueStatus.AutoSize = true;
+            this.labelExplClosingIssueStatus.Location = new System.Drawing.Point(4, 138);
+            this.labelExplClosingIssueStatus.Name = "labelExplClosingIssueStatus";
+            this.labelExplClosingIssueStatus.Size = new System.Drawing.Size(304, 13);
+            this.labelExplClosingIssueStatus.TabIndex = 16;
+            this.labelExplClosingIssueStatus.Text = "Enable field with \'Test Connection\' and version V1.3.x or higher";
+            // 
             // ComboBoxCloseStatus
             // 
             this.ComboBoxCloseStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxCloseStatus.Enabled = false;
             this.ComboBoxCloseStatus.FormattingEnabled = true;
-            this.ComboBoxCloseStatus.Location = new System.Drawing.Point(162, 114);
+            this.ComboBoxCloseStatus.Location = new System.Drawing.Point(209, 114);
             this.ComboBoxCloseStatus.Name = "ComboBoxCloseStatus";
             this.ComboBoxCloseStatus.Size = new System.Drawing.Size(149, 21);
             this.ComboBoxCloseStatus.TabIndex = 15;
@@ -397,15 +406,6 @@
             this.GrpEditEnumerations.TabIndex = 26;
             this.GrpEditEnumerations.TabStop = false;
             this.GrpEditEnumerations.Text = "Edit Enumerations";
-            // 
-            // labelExplClosingIssueStatus
-            // 
-            this.labelExplClosingIssueStatus.AutoSize = true;
-            this.labelExplClosingIssueStatus.Location = new System.Drawing.Point(4, 138);
-            this.labelExplClosingIssueStatus.Name = "labelExplClosingIssueStatus";
-            this.labelExplClosingIssueStatus.Size = new System.Drawing.Size(304, 13);
-            this.labelExplClosingIssueStatus.TabIndex = 16;
-            this.labelExplClosingIssueStatus.Text = "Enable field with \'Test Connection\' and version V1.3.x or higher";
             // 
             // SettingsForm
             // 

@@ -17,6 +17,8 @@ namespace Redmine.Client.Languages
             {
                 if (!String.IsNullOrEmpty(Lang.ResourceManager.GetString(c.Name, Lang.Culture)))
                     c.Text = Lang.ResourceManager.GetString(c.Name, Lang.Culture);
+                if (c.Controls.Count != 0)
+                    UpdateControlsForLanguage(c.Controls);
             }
         }
 
