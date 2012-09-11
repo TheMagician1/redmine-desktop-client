@@ -43,11 +43,12 @@
             this.labelTimeContent = new System.Windows.Forms.Label();
             this.labelCommitDateSpent = new System.Windows.Forms.Label();
             this.labelDateSpentContent = new System.Windows.Forms.Label();
+            this.CheckBoxClosesIssue = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // BtnCommitButton
             // 
-            this.BtnCommitButton.Location = new System.Drawing.Point(317, 175);
+            this.BtnCommitButton.Location = new System.Drawing.Point(317, 190);
             this.BtnCommitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCommitButton.Name = "BtnCommitButton";
             this.BtnCommitButton.Size = new System.Drawing.Size(68, 24);
@@ -59,7 +60,7 @@
             // BtnCancelButton
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(389, 175);
+            this.BtnCancelButton.Location = new System.Drawing.Point(389, 190);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -72,7 +73,7 @@
             // 
             this.TextBoxComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBoxComment.Location = new System.Drawing.Point(10, 149);
+            this.TextBoxComment.Location = new System.Drawing.Point(10, 164);
             this.TextBoxComment.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxComment.Name = "TextBoxComment";
             this.TextBoxComment.Size = new System.Drawing.Size(447, 20);
@@ -81,7 +82,7 @@
             // labelCommitComment
             // 
             this.labelCommitComment.AutoSize = true;
-            this.labelCommitComment.Location = new System.Drawing.Point(7, 134);
+            this.labelCommitComment.Location = new System.Drawing.Point(7, 149);
             this.labelCommitComment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCommitComment.Name = "labelCommitComment";
             this.labelCommitComment.Size = new System.Drawing.Size(51, 13);
@@ -193,13 +194,24 @@
             this.labelDateSpentContent.TabIndex = 10;
             this.labelDateSpentContent.Text = "Date";
             // 
+            // CheckBoxClosesIssue
+            // 
+            this.CheckBoxClosesIssue.AutoSize = true;
+            this.CheckBoxClosesIssue.Location = new System.Drawing.Point(81, 129);
+            this.CheckBoxClosesIssue.Name = "CheckBoxClosesIssue";
+            this.CheckBoxClosesIssue.Size = new System.Drawing.Size(119, 17);
+            this.CheckBoxClosesIssue.TabIndex = 15;
+            this.CheckBoxClosesIssue.Text = "Also close the issue";
+            this.CheckBoxClosesIssue.UseVisualStyleBackColor = true;
+            // 
             // CommitForm
             // 
             this.AcceptButton = this.BtnCommitButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(464, 205);
+            this.ClientSize = new System.Drawing.Size(464, 222);
+            this.Controls.Add(this.CheckBoxClosesIssue);
             this.Controls.Add(this.labelCommitQuestion);
             this.Controls.Add(this.ComboBoxActivity);
             this.Controls.Add(this.labelCommitActivity);
@@ -242,5 +254,6 @@
         private System.Windows.Forms.Label labelTimeContent;
         private System.Windows.Forms.Label labelCommitDateSpent;
         private System.Windows.Forms.Label labelDateSpentContent;
+        private System.Windows.Forms.CheckBox CheckBoxClosesIssue;
     }
 }

@@ -127,9 +127,6 @@ namespace Redmine.Client
                     else
                         redmine = new RedmineManager(RedmineURL);
                     this.Cursor = Cursors.AppStarting;
-                    this.BtnCommitButton.Enabled = false;
-                    this.BtnRefreshButton.Enabled = false;
-                    this.BtnNewIssueButton.Enabled = false;
 
                     AsyncGetFormData(projectId, issueId, activityId);
                 }
@@ -160,6 +157,8 @@ namespace Redmine.Client
         private void FillForm(MainFormData data, int issueId, int activityId)
         {
             updating = true;
+            this.BtnSettingsButton.Enabled = true;
+
             if (data.Projects.Count == 0 || data.Issues.Count == 0)
             {
                 BtnCommitButton.Enabled = false;
@@ -589,6 +588,21 @@ namespace Redmine.Client
                         ResetForm();
                         MessageBox.Show(Lang.CommitSuccessfullText, Lang.CommitSuccessfullTitle, MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
+                        if (commitDlg.closeIssue)
+                        {
+                            try
+                            {
+                                Issue issue = selectedIssue;
+                                issue.Status = new IdentifiableName { Name = "Closed" };
+                                RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(String.Format(Lang.Error_UpdateIssueFailed, ex.Message),
+                                            Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            BtnRefreshButton_Click(null, null);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -711,6 +725,12 @@ namespace Redmine.Client
         {
             this.Cursor = Cursors.WaitCursor;
             //Retrieve current user asynchroneous...
+
+            this.BtnCommitButton.Enabled = false;
+            this.BtnRefreshButton.Enabled = false;
+            this.BtnNewIssueButton.Enabled = false;
+            this.BtnSettingsButton.Enabled = false;
+
             AddBgWork(Lang.BgWork_GetUsername, () =>
             {
                 try
@@ -735,6 +755,8 @@ namespace Redmine.Client
                         SetTitle(Lang.RedmineClientTitle_NoUser);
                         if (OnInitFailed(e))
                             Reinit();
+                        else
+                            this.BtnSettingsButton.Enabled = true;
                     };
                 }
             });
