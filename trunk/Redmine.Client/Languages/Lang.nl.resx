@@ -427,7 +427,7 @@ of Vraag aandacht elke
   <data name="Error_EnumMustBeUnique" xml:space="preserve">
     <value>Het Id en de Naam moeten uniek zijn.</value>
   </data>
-  <data name="labelEditEnumerations" xml:space="preserve">
+  <data name="GrpEditEnumerations" xml:space="preserve">
     <value>Wijzig Enumeraties</value>
   </data>
   <data name="labelEnumId" xml:space="preserve">
@@ -444,5 +444,39 @@ of Vraag aandacht elke
   </data>
   <data name="BtnModifyButton" xml:space="preserve">
     <value>Wijzig</value>
+  </data>
+  <data name="BtnTestConnection" xml:space="preserve">
+    <value>Test Verbinding</value>
+  </data>
+  <data name="CheckBoxClosesIssue" xml:space="preserve">
+    <value>Sluit ook het issue.</value>
+  </data>
+  <data name="ConnectionTestFailed_Text" xml:space="preserve">
+    <value>Het opzetten van de verbinding met Redmine is mislukt. De volgende fout trad op: {0}</value>
+    <comment>{0} error</comment>
+  </data>
+  <data name="ConnectionTestFailed_Title" xml:space="preserve">
+    <value>Verbindingstest mislukt</value>
+  </data>
+  <data name="ConnectionTestOK_Text" xml:space="preserve">
+    <value>Het opzetten van de verbinding met Remine is gelukt</value>
+  </data>
+  <data name="ConnectionTestOK_Title" xml:space="preserve">
+    <value>Verbindingstest gelukt</value>
+  </data>
+  <data name="Error_ClosedStatusUnknown" xml:space="preserve">
+    <value>De status die gebruikt wordt om een Issue te sluiten is onbekend. Pas dit alstublieft aan in de instellingen.</value>
+  </data>
+  <data name="GrpApplicationSettings" xml:space="preserve">
+    <value>Applicatie Instellingen</value>
+  </data>
+  <data name="GrpRedmineServerSettings" xml:space="preserve">
+    <value>Redmine Server Instellingen</value>
+  </data>
+  <data name="labelExplClosingIssueStatus" xml:space="preserve">
+    <value>Maak het veld actief met &apos;Test Verbinding&apos; en een versie hoger dan V1.3.x</value>
+  </data>
+  <data name="labelSelectCloseStatus" xml:space="preserve">
+    <value>Bij het sluiten van een Issue gebruik</value>
   </data>
 </root>
