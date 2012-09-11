@@ -331,6 +331,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Also close the issue.
+        /// </summary>
+        internal static string CheckBoxClosesIssue {
+            get {
+                return ResourceManager.GetString("CheckBoxClosesIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for updates on startup.
         /// </summary>
         internal static string CheckForUpdatesCheckBox {

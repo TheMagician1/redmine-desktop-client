@@ -14,10 +14,11 @@ namespace Redmine.Client
     public partial class CommitForm : Form
     {
         public Issue issue;
-        public int ticks;
+        public int ticks = 0;
         public string Comment;
-        public int activityId;
+        public int activityId = 0;
         public DateTime spentOn;
+        public bool closeIssue = false;
 
         public CommitForm(Issue issue, int ticks, string Comment, int activityId, DateTime spentOn)
         {
@@ -49,6 +50,7 @@ namespace Redmine.Client
         {
             Comment = TextBoxComment.Text;
             activityId = (int)ComboBoxActivity.SelectedValue;
+            closeIssue = CheckBoxClosesIssue.Checked;
             DialogResult = DialogResult.OK;
             Close();
         }
