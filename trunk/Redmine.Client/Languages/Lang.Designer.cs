@@ -313,6 +313,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Test Connection.
+        /// </summary>
+        internal static string BtnTestConnection {
+            get {
+                return ResourceManager.GetString("BtnTestConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Due Date.
         /// </summary>
         internal static string cbDueDate {

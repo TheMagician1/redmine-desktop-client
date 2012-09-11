@@ -445,6 +445,9 @@ or Request attention every
   <data name="BtnModifyButton" xml:space="preserve">
     <value>Modify</value>
   </data>
+  <data name="BtnTestConnection" xml:space="preserve">
+    <value>Test Connection</value>
+  </data>
   <data name="CheckBoxClosesIssue" xml:space="preserve">
     <value>Also close the issue</value>
   </data>
