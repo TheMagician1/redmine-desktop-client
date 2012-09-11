@@ -3,6 +3,8 @@ using System.Configuration;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Redmine.Client.Languages;
+using Redmine.Net.Api.Types;
+using System.Collections.Specialized;
 
 namespace Redmine.Client
 {
@@ -13,12 +15,12 @@ namespace Redmine.Client
             new System.Globalization.CultureInfo("en-US")
         };
         /* api version lower then 1.1 does not support time-entry, so is not supported. */
-        private List<Redmine.Net.Api.Types.IdentifiableName> apiVersions = new List<Redmine.Net.Api.Types.IdentifiableName> {
-            /*new Redmine.Net.Api.Types.IdentifiableName { Id = (int)ApiVersion.V10x, Name = LangTools.GetTextForApiVersion(ApiVersion.V10x) },*/
-            new Redmine.Net.Api.Types.IdentifiableName { Id = (int)ApiVersion.V11x, Name = LangTools.GetTextForApiVersion(ApiVersion.V11x) },
-            new Redmine.Net.Api.Types.IdentifiableName { Id = (int)ApiVersion.V13x, Name = LangTools.GetTextForApiVersion(ApiVersion.V13x) },
-            new Redmine.Net.Api.Types.IdentifiableName { Id = (int)ApiVersion.V14x, Name = LangTools.GetTextForApiVersion(ApiVersion.V14x) },
-            new Redmine.Net.Api.Types.IdentifiableName { Id = (int)ApiVersion.V21x, Name = LangTools.GetTextForApiVersion(ApiVersion.V21x) }
+        private List<IdentifiableName> apiVersions = new List<IdentifiableName> {
+            /*new IdentifiableName { Id = (int)ApiVersion.V10x, Name = LangTools.GetTextForApiVersion(ApiVersion.V10x) },*/
+            new IdentifiableName { Id = (int)ApiVersion.V11x, Name = LangTools.GetTextForApiVersion(ApiVersion.V11x) },
+            new IdentifiableName { Id = (int)ApiVersion.V13x, Name = LangTools.GetTextForApiVersion(ApiVersion.V13x) },
+            new IdentifiableName { Id = (int)ApiVersion.V14x, Name = LangTools.GetTextForApiVersion(ApiVersion.V14x) },
+            new IdentifiableName { Id = (int)ApiVersion.V21x, Name = LangTools.GetTextForApiVersion(ApiVersion.V21x) }
         };
 
         public SettingsForm()
@@ -84,6 +86,8 @@ namespace Redmine.Client
                 Properties.Settings.Default.PropertyValues["CacheLifetime"].PropertyValue = CacheLifetime.Value;
                 Properties.Settings.Default.PropertyValues["LanguageCode"].PropertyValue = Languages.Lang.Culture.Name;
                 Properties.Settings.Default.PropertyValues["ApiVersion"].PropertyValue = (int)RedmineVersionComboBox.SelectedValue;
+                if (ComboBoxCloseStatus.Enabled)
+                    Properties.Settings.Default.PropertyValues["ClosedStatus"].PropertyValue = (int)ComboBoxCloseStatus.SelectedValue;
                 Properties.Settings.Default.Save();
                 Enumerations.SaveAll();
             }
@@ -161,6 +165,64 @@ namespace Redmine.Client
             {
                 Enumerations.IssuePriorities = dlg.enumeration;
                 Enumerations.SaveIssuePriorities();
+            }
+        }
+
+        private void BtnTestConnection_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Redmine.Net.Api.RedmineManager manager;
+                if (AuthenticationCheckBox.Checked)
+                    manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text, RedmineUsernameTextBox.Text, RedminePasswordTextBox.Text);
+                else
+                    manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text);
+                User newCurrentUser = manager.GetCurrentUser();
+                MessageBox.Show(Lang.ConnectionTestOK_Text, Lang.ConnectionTestOK_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.ConnectionTestFailed_Text, ex.Message), Lang.ConnectionTestFailed_Title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            LoadAndEnableCloseStatus();
+        }
+
+        private List<IssueStatus> Statuses;
+        private void LoadAndEnableCloseStatus()
+        {
+            ComboBoxCloseStatus.Enabled = false;
+            if ((ApiVersion)RedmineVersionComboBox.SelectedValue < ApiVersion.V13x)
+                return;
+            try
+            {
+                Redmine.Net.Api.RedmineManager manager;
+                Statuses = new List<IssueStatus>();
+                if (AuthenticationCheckBox.Checked)
+                    manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text, RedmineUsernameTextBox.Text, RedminePasswordTextBox.Text);
+                else
+                    manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text);
+
+                NameValueCollection parameters = new NameValueCollection { { "is_closed", "true" } };
+                foreach (IssueStatus status in manager.GetTotalObjectList<IssueStatus>(parameters))
+                {
+                    if (status.IsClosed)
+                        Statuses.Add(status);
+                }
+                ComboBoxCloseStatus.DataSource = Statuses;
+                ComboBoxCloseStatus.ValueMember = "Id";
+                ComboBoxCloseStatus.DisplayMember = "Name";
+                ComboBoxCloseStatus.Enabled = true;
+                if (Properties.Settings.Default.ClosedStatus != 0)
+                    ComboBoxCloseStatus.SelectedValue = Properties.Settings.Default.ClosedStatus;
+                else
+                    ComboBoxCloseStatus.SelectedIndex = ComboBoxCloseStatus.FindStringExact("Closed");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ComboBoxCloseStatus.Enabled = false;
+                return;
             }
         }
     }

@@ -590,18 +590,25 @@ namespace Redmine.Client
                                         MessageBoxIcon.Information);
                         if (commitDlg.closeIssue)
                         {
-                            try
+                            if (Properties.Settings.Default.ClosedStatus == 0)
                             {
-                                Issue issue = selectedIssue;
-                                issue.Status = new IdentifiableName { Name = "Closed" };
-                                RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+                                MessageBox.Show(Lang.Error_ClosedStatusUnknown, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                MessageBox.Show(String.Format(Lang.Error_UpdateIssueFailed, ex.Message),
-                                            Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                try
+                                {
+                                    Issue issue = selectedIssue;
+                                    issue.Status = new IdentifiableName { Id = Properties.Settings.Default.ClosedStatus };
+                                    RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(String.Format(Lang.Error_UpdateIssueFailed, ex.Message),
+                                                Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                BtnRefreshButton_Click(null, null);
                             }
-                            BtnRefreshButton_Click(null, null);
                         }
                     }
                     catch (Exception ex)

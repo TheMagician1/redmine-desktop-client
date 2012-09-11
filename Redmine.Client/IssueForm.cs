@@ -270,9 +270,14 @@ namespace Redmine.Client
 
         private void BtnCloseButton_Click(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.ClosedStatus == 0)
+            {
+                MessageBox.Show(Lang.Error_ClosedStatusUnknown, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (MessageBox.Show(String.Format(Lang.CloseIssueText, issue.Id), Lang.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                ComboBoxStatus.SelectedIndex = ComboBoxStatus.FindStringExact("Closed");
+                ComboBoxStatus.SelectedValue = Properties.Settings.Default.ClosedStatus; // ComboBoxStatus.FindStringExact("Closed");
                 BtnSaveButton_Click(null, null);
             }
         }
