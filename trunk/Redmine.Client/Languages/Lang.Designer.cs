@@ -439,6 +439,42 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Initiating the connection with Redmine failed. The following error occurred: {0}.
+        /// </summary>
+        internal static string ConnectionTestFailed_Text {
+            get {
+                return ResourceManager.GetString("ConnectionTestFailed_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection Test Failed.
+        /// </summary>
+        internal static string ConnectionTestFailed_Title {
+            get {
+                return ResourceManager.GetString("ConnectionTestFailed_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initiating the connection with Redmine was successful..
+        /// </summary>
+        internal static string ConnectionTestOK_Text {
+            get {
+                return ResourceManager.GetString("ConnectionTestOK_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connection Test Success.
+        /// </summary>
+        internal static string ConnectionTestOK_Title {
+            get {
+                return ResourceManager.GetString("ConnectionTestOK_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Enumeration Value {0} for {1}.
         /// </summary>
         internal static string DlgEditEnumFormTitle_Edit {
@@ -525,6 +561,15 @@ namespace Redmine.Client.Languages {
         internal static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The status used to close an issue is unknown, please go to settings to set this..
+        /// </summary>
+        internal static string Error_ClosedStatusUnknown {
+            get {
+                return ResourceManager.GetString("Error_ClosedStatusUnknown", resourceCulture);
             }
         }
         
@@ -624,6 +669,33 @@ namespace Redmine.Client.Languages {
         internal static string ExitToolStripMenuItem {
             get {
                 return ResourceManager.GetString("ExitToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Settings.
+        /// </summary>
+        internal static string GrpApplicationSettings {
+            get {
+                return ResourceManager.GetString("GrpApplicationSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Enumerations.
+        /// </summary>
+        internal static string GrpEditEnumerations {
+            get {
+                return ResourceManager.GetString("GrpEditEnumerations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redmine Server Settings.
+        /// </summary>
+        internal static string GrpRedmineServerSettings {
+            get {
+                return ResourceManager.GetString("GrpRedmineServerSettings", resourceCulture);
             }
         }
         
@@ -736,15 +808,6 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit Enumerations.
-        /// </summary>
-        internal static string labelEditEnumerations {
-            get {
-                return ResourceManager.GetString("labelEditEnumerations", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Id.
         /// </summary>
         internal static string labelEnumId {
@@ -768,6 +831,15 @@ namespace Redmine.Client.Languages {
         internal static string labelEstimatedTime {
             get {
                 return ResourceManager.GetString("labelEstimatedTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable field with &apos;Test Connection&apos; and version V1.3.x or higher.
+        /// </summary>
+        internal static string labelExplClosingIssueStatus {
+            get {
+                return ResourceManager.GetString("labelExplClosingIssueStatus", resourceCulture);
             }
         }
         
@@ -851,6 +923,15 @@ namespace Redmine.Client.Languages {
         internal static string labelRedmineVersion {
             get {
                 return ResourceManager.GetString("labelRedmineVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When closing an Issue, set it to.
+        /// </summary>
+        internal static string labelSelectCloseStatus {
+            get {
+                return ResourceManager.GetString("labelSelectCloseStatus", resourceCulture);
             }
         }
         

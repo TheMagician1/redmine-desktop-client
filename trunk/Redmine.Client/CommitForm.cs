@@ -44,6 +44,12 @@ namespace Redmine.Client
             labelDateSpentContent.Text = spentOn.ToString(Lang.Culture.DateTimeFormat.ShortDatePattern);
 
             TextBoxComment.Text = Comment;
+
+            if (RedmineClientForm.RedmineVersion < ApiVersion.V13x)
+            {
+                CheckBoxClosesIssue.Enabled = false;
+                CheckBoxClosesIssue.Visible = false;
+            }
         }
 
         private void BtnCommitButton_Click(object sender, EventArgs e)

@@ -214,5 +214,17 @@ namespace Redmine.Client.Properties {
                 this["ApiVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ClosedStatus {
+            get {
+                return ((int)(this["ClosedStatus"]));
+            }
+            set {
+                this["ClosedStatus"] = value;
+            }
+        }
     }
 }

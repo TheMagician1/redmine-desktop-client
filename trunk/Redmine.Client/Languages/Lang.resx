@@ -427,7 +427,7 @@ or Request attention every
   <data name="Error_EnumMustBeUnique" xml:space="preserve">
     <value>The Id and the Name must be unique.</value>
   </data>
-  <data name="labelEditEnumerations" xml:space="preserve">
+  <data name="GrpEditEnumerations" xml:space="preserve">
     <value>Edit Enumerations</value>
   </data>
   <data name="labelEnumId" xml:space="preserve">
@@ -447,5 +447,33 @@ or Request attention every
   </data>
   <data name="CheckBoxClosesIssue" xml:space="preserve">
     <value>Also close the issue</value>
+  </data>
+  <data name="ConnectionTestFailed_Text" xml:space="preserve">
+    <value>Initiating the connection with Redmine failed. The following error occurred: {0}</value>
+    <comment>{0} error</comment>
+  </data>
+  <data name="ConnectionTestFailed_Title" xml:space="preserve">
+    <value>Connection Test Failed</value>
+  </data>
+  <data name="ConnectionTestOK_Text" xml:space="preserve">
+    <value>Initiating the connection with Redmine was successful.</value>
+  </data>
+  <data name="ConnectionTestOK_Title" xml:space="preserve">
+    <value>Connection Test Success</value>
+  </data>
+  <data name="Error_ClosedStatusUnknown" xml:space="preserve">
+    <value>The status used to close an issue is unknown, please go to settings to set this.</value>
+  </data>
+  <data name="GrpApplicationSettings" xml:space="preserve">
+    <value>Application Settings</value>
+  </data>
+  <data name="GrpRedmineServerSettings" xml:space="preserve">
+    <value>Redmine Server Settings</value>
+  </data>
+  <data name="labelExplClosingIssueStatus" xml:space="preserve">
+    <value>Enable field with 'Test Connection' and version V1.3.x or higher</value>
+  </data>
+  <data name="labelSelectCloseStatus" xml:space="preserve">
+    <value>When closing an Issue, set it to</value>
   </data>
 </root>
