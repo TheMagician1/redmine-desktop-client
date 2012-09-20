@@ -50,14 +50,14 @@
             this.ComboBoxTargetVersion = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.labelPercentDone = new System.Windows.Forms.Label();
-            this.ListBoxWatchers = new System.Windows.Forms.ListBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.cbStartDate = new System.Windows.Forms.CheckBox();
             this.cbDueDate = new System.Windows.Forms.CheckBox();
             this.BtnCloseButton = new System.Windows.Forms.Button();
             this.linkEditInRedmine = new System.Windows.Forms.LinkLabel();
+            this.DataGridViewCustomFields = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCustomFields)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnSaveButton
@@ -106,7 +106,7 @@
             // DateStart
             // 
             this.DateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateStart.Location = new System.Drawing.Point(11, 179);
+            this.DateStart.Location = new System.Drawing.Point(9, 179);
             this.DateStart.Margin = new System.Windows.Forms.Padding(2);
             this.DateStart.Name = "DateStart";
             this.DateStart.Size = new System.Drawing.Size(86, 20);
@@ -115,7 +115,7 @@
             // labelSubject
             // 
             this.labelSubject.AutoSize = true;
-            this.labelSubject.Location = new System.Drawing.Point(9, 45);
+            this.labelSubject.Location = new System.Drawing.Point(6, 46);
             this.labelSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSubject.Name = "labelSubject";
             this.labelSubject.Size = new System.Drawing.Size(43, 13);
@@ -124,16 +124,16 @@
             // 
             // TextBoxSubject
             // 
-            this.TextBoxSubject.Location = new System.Drawing.Point(11, 61);
+            this.TextBoxSubject.Location = new System.Drawing.Point(9, 61);
             this.TextBoxSubject.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxSubject.Name = "TextBoxSubject";
-            this.TextBoxSubject.Size = new System.Drawing.Size(414, 20);
+            this.TextBoxSubject.Size = new System.Drawing.Size(416, 20);
             this.TextBoxSubject.TabIndex = 1;
             // 
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(9, 81);
+            this.labelDescription.Location = new System.Drawing.Point(6, 83);
             this.labelDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(60, 13);
@@ -144,12 +144,12 @@
             // 
             this.TextBoxDescription.AcceptsReturn = true;
             this.TextBoxDescription.AcceptsTab = true;
-            this.TextBoxDescription.Location = new System.Drawing.Point(11, 98);
+            this.TextBoxDescription.Location = new System.Drawing.Point(9, 96);
             this.TextBoxDescription.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxDescription.Multiline = true;
             this.TextBoxDescription.Name = "TextBoxDescription";
             this.TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TextBoxDescription.Size = new System.Drawing.Size(414, 63);
+            this.TextBoxDescription.Size = new System.Drawing.Size(416, 63);
             this.TextBoxDescription.TabIndex = 3;
             // 
             // labelStatus
@@ -282,28 +282,6 @@
             this.labelPercentDone.TabIndex = 18;
             this.labelPercentDone.Text = "% done";
             // 
-            // ListBoxWatchers
-            // 
-            this.ListBoxWatchers.FormattingEnabled = true;
-            this.ListBoxWatchers.Location = new System.Drawing.Point(11, 244);
-            this.ListBoxWatchers.Margin = new System.Windows.Forms.Padding(2);
-            this.ListBoxWatchers.Name = "ListBoxWatchers";
-            this.ListBoxWatchers.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.ListBoxWatchers.Size = new System.Drawing.Size(176, 30);
-            this.ListBoxWatchers.TabIndex = 33;
-            this.ListBoxWatchers.Visible = false;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(11, 201);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 13);
-            this.label12.TabIndex = 34;
-            this.label12.Text = "Watchers";
-            this.label12.Visible = false;
-            // 
             // backgroundWorker2
             // 
             this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
@@ -312,7 +290,7 @@
             // cbStartDate
             // 
             this.cbStartDate.AutoSize = true;
-            this.cbStartDate.Location = new System.Drawing.Point(11, 162);
+            this.cbStartDate.Location = new System.Drawing.Point(9, 161);
             this.cbStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.cbStartDate.Name = "cbStartDate";
             this.cbStartDate.Size = new System.Drawing.Size(72, 17);
@@ -347,13 +325,26 @@
             // linkEditInRedmine
             // 
             this.linkEditInRedmine.AutoSize = true;
-            this.linkEditInRedmine.Location = new System.Drawing.Point(8, 220);
+            this.linkEditInRedmine.Location = new System.Drawing.Point(6, 256);
             this.linkEditInRedmine.Name = "linkEditInRedmine";
             this.linkEditInRedmine.Size = new System.Drawing.Size(127, 13);
             this.linkEditInRedmine.TabIndex = 22;
             this.linkEditInRedmine.TabStop = true;
             this.linkEditInRedmine.Text = "Edit this issue in Redmine";
             this.linkEditInRedmine.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEditInRedmine_LinkClicked);
+            // 
+            // DataGridViewCustomFields
+            // 
+            this.DataGridViewCustomFields.AllowUserToAddRows = false;
+            this.DataGridViewCustomFields.AllowUserToDeleteRows = false;
+            this.DataGridViewCustomFields.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridViewCustomFields.Location = new System.Drawing.Point(9, 204);
+            this.DataGridViewCustomFields.MultiSelect = false;
+            this.DataGridViewCustomFields.Name = "DataGridViewCustomFields";
+            this.DataGridViewCustomFields.ReadOnly = true;
+            this.DataGridViewCustomFields.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridViewCustomFields.Size = new System.Drawing.Size(178, 49);
+            this.DataGridViewCustomFields.TabIndex = 26;
             // 
             // IssueForm
             // 
@@ -362,13 +353,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
             this.ClientSize = new System.Drawing.Size(434, 281);
+            this.Controls.Add(this.DataGridViewCustomFields);
             this.Controls.Add(this.linkEditInRedmine);
             this.Controls.Add(this.DateDue);
             this.Controls.Add(this.DateStart);
             this.Controls.Add(this.cbDueDate);
             this.Controls.Add(this.cbStartDate);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.ListBoxWatchers);
             this.Controls.Add(this.labelPercentDone);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.labelTargetVersion);
@@ -398,6 +388,7 @@
             this.Text = "Create new issue";
             this.Load += new System.EventHandler(this.NewIssueForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCustomFields)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,12 +418,11 @@
         private System.Windows.Forms.ComboBox ComboBoxTargetVersion;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label labelPercentDone;
-        private System.Windows.Forms.ListBox ListBoxWatchers;
-        private System.Windows.Forms.Label label12;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.CheckBox cbStartDate;
         private System.Windows.Forms.CheckBox cbDueDate;
         private System.Windows.Forms.Button BtnCloseButton;
         private System.Windows.Forms.LinkLabel linkEditInRedmine;
+        private System.Windows.Forms.DataGridView DataGridViewCustomFields;
     }
 }
