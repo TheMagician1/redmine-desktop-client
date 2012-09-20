@@ -28,6 +28,7 @@ namespace Redmine.Client
             this.Text = String.Format(Lang.DlgIssueTitleNew, project.Name);
             BtnCloseButton.Visible = false;
             linkEditInRedmine.Visible = false;
+            DataGridViewCustomFields.Visible = false;
             LangTools.UpdateControlsForLanguage(this.Controls);
         }
 
@@ -211,6 +212,18 @@ namespace Redmine.Client
                         ComboBoxTargetVersion.ValueMember = "Id";
                         ComboBoxTargetVersion.SelectedItem = issue.FixedVersion;
                     }
+                }
+                if (issue.CustomFields.Count == 0)
+                    DataGridViewCustomFields.Visible = false;
+                else
+                {
+                    DataGridViewCustomFields.DataSource = issue.CustomFields;
+                    DataGridViewCustomFields.RowHeadersVisible = false;
+                    DataGridViewCustomFields.ColumnHeadersVisible = false;
+                    DataGridViewCustomFields.Columns["Multiple"].Visible = false;
+                    DataGridViewCustomFields.Columns["Id"].Visible = false;
+                    DataGridViewCustomFields.Columns["Name"].DisplayIndex = 0;
+                    DataGridViewCustomFields.Columns["Value"].DisplayIndex = 1;
                 }
             }
         }
