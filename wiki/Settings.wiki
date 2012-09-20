@@ -12,10 +12,15 @@ This is a brief explanation of the Settings Dialog.
 || _Requires authentication_ || If you need authentication to view and edit the issues and to connect to redmine. ||
 || _Redmine username_ || Your username to authenticate to redmine. ||
 || _Redmine password_ || The password corresponding to your username. ||
-|| _Catche lifetime_ || Not actively used at the moment. ||
+|| _Redmine version_ || Select the redmine version, so only available api-calls will be used. ||
+|| _Test Connection_ || Test if the entered connection values are correct by setting up a connection. If the connection is successful (and the version is high enough) you can choose the status used to close an issue. ||
 || _Check for updates on startup_ || Check the this project if a newer version is available. ||
 || _Minimize to Systemtray_ || When the application is minimized, hide it from the taskbar. ||
 || _Minimize on start timer_ || When you start the timer to measure your spent time, minimize the window. When _minimize to systemtray_ is enabled, the application will also be hidden from the taskbar. ||
 || _Popup window when minimized_ || Popup the application again after N minutes to trigger the user to check he is still working on the same issue or to commit the current time and start a new working period.<br>The popup timer will start when the window is minimized, so the application will popup N minutes after minimization. ||
+|| _Language_ || Select the language you want to use the client in. ||
+|| _When closing an issue, set it to_ || The status used when you want to close the issue via the 'Close Issue' button in the issue dialog or when you check the 'This also closes the issue' in the submit time dialog ||
+|| _Edit Enumerations_ || Here you can edit the enumerations that are not provided by the Redmine API ||
 
+_If you use an older version, not all settings are available._<br>
 If you want to add activities and priorities that are not default available in redmine, please refer to [CustomActivitiesAndPriorities].
