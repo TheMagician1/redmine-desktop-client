@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using Redmine.Net.Api.Types;
 using Redmine.Client.Languages;
+using System.Text.RegularExpressions;
 
 namespace Redmine.Client
 {
@@ -174,7 +175,7 @@ namespace Redmine.Client
                     }
                 }
                 if (issue.Description != null)
-                    TextBoxDescription.Text = issue.Description;
+                    TextBoxDescription.Text = Regex.Replace(issue.Description, "(?<!\r)\n", "\r\n");
                 TextBoxEstimatedTime.Text = issue.EstimatedHours.ToString();
                 numericUpDown1.Value = Convert.ToDecimal(issue.DoneRatio);
                 ComboBoxPriority.SelectedIndex = ComboBoxPriority.FindStringExact(issue.Priority.Name);
