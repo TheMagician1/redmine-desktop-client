@@ -1,5 +1,9 @@
 #summary How to add custom Activities and Priorities
+#labels Deprecated
 = Custom Activities and Priorities =
+
+_From version 2.0.2.0 and higher you can edit those xml-files via the settings dialog._
+
 
 Because the redmine Rest API does not provide the enumerations used in issues and time management for activities and priorities, you have to add them yourself.
 
