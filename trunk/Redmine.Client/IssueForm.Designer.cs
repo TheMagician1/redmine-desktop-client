@@ -86,7 +86,7 @@
             // labelTracker
             // 
             this.labelTracker.AutoSize = true;
-            this.labelTracker.Location = new System.Drawing.Point(9, 7);
+            this.labelTracker.Location = new System.Drawing.Point(6, 6);
             this.labelTracker.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTracker.Name = "labelTracker";
             this.labelTracker.Size = new System.Drawing.Size(44, 13);
