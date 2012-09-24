@@ -73,7 +73,8 @@
         </File>
       </Component>
       <Component Id="Redmine.Net.Api.dll" Guid="C3FA0BC5-5E42-4450-BEF9-6117134ECD65">
-        <File Id="Redmine.Net.Api.dll" Source="$(var.Api.TargetPath)" KeyPath="yes"/>
+        <RemoveFile Id="Remove_Redmine_Net_Api_Dll" Name="$(var.Api.TargetFileName)" On="install"/>
+        <File Id="Redmine.Net.Api.dll" Name="$(var.Api.TargetFileName)" Source="$(var.Api.TargetPath)" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
 
