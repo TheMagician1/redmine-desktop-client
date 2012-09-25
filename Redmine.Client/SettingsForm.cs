@@ -12,7 +12,8 @@ namespace Redmine.Client
     {
         private List<System.Globalization.CultureInfo> supportedLang = new List<System.Globalization.CultureInfo> {
             new System.Globalization.CultureInfo("nl-NL"),
-            new System.Globalization.CultureInfo("en-US")
+            new System.Globalization.CultureInfo("en-US"),
+            new System.Globalization.CultureInfo("cs-CZ")
         };
         /* api version lower then 1.1 does not support time-entry, so is not supported. */
         private List<IdentifiableName> apiVersions = new List<IdentifiableName> {
@@ -89,6 +90,7 @@ namespace Redmine.Client
                 if (ComboBoxCloseStatus.Enabled)
                     Properties.Settings.Default.PropertyValues["ClosedStatus"].PropertyValue = (int)ComboBoxCloseStatus.SelectedValue;
                 Properties.Settings.Default.Save();
+                String Name = Properties.Settings.Default.LanguageCode;
                 Enumerations.SaveAll();
             }
             catch (Exception ex)

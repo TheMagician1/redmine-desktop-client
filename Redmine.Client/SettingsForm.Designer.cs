@@ -264,7 +264,7 @@
             // 
             this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageComboBox.FormattingEnabled = true;
-            this.LanguageComboBox.Location = new System.Drawing.Point(142, 87);
+            this.LanguageComboBox.Location = new System.Drawing.Point(207, 87);
             this.LanguageComboBox.Name = "LanguageComboBox";
             this.LanguageComboBox.Size = new System.Drawing.Size(216, 21);
             this.LanguageComboBox.TabIndex = 15;
@@ -380,7 +380,7 @@
             this.ComboBoxCloseStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxCloseStatus.Enabled = false;
             this.ComboBoxCloseStatus.FormattingEnabled = true;
-            this.ComboBoxCloseStatus.Location = new System.Drawing.Point(209, 114);
+            this.ComboBoxCloseStatus.Location = new System.Drawing.Point(274, 114);
             this.ComboBoxCloseStatus.Name = "ComboBoxCloseStatus";
             this.ComboBoxCloseStatus.Size = new System.Drawing.Size(149, 21);
             this.ComboBoxCloseStatus.TabIndex = 15;
