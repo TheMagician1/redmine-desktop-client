@@ -128,7 +128,7 @@ namespace Redmine.Client
                         redmine = new RedmineManager(RedmineURL);
                     this.Cursor = Cursors.AppStarting;
 
-                    AsyncGetFormData(projectId, issueId, activityId);
+                    AsyncGetFormData(projectId, issueId, activityId, CheckBoxOnlyMe.Checked);
                 }
                 catch (Exception e)
                 {
@@ -138,7 +138,7 @@ namespace Redmine.Client
             } while (bRetry);
         }
 
-        private MainFormData PrepareFormData(int projectId)
+        private MainFormData PrepareFormData(int projectId, bool onlyMe)
         {
             NameValueCollection parameters = new NameValueCollection();
             IList<Project> projects = redmine.GetTotalObjectList<Project>(parameters);
@@ -149,7 +149,7 @@ namespace Redmine.Client
                     projectId = projects[0].Id;
                 }
                 Projects = MainFormData.ToDictionaryName(projects);
-                return new MainFormData(projectId) { Projects = projects };
+                return new MainFormData(projectId, onlyMe) { Projects = projects };
             }
             throw new Exception(Lang.Error_NoProjectsFound);
         }
@@ -270,6 +270,7 @@ namespace Redmine.Client
             Properties.Settings.Default.PropertyValues["LastProjectId"].PropertyValue = projectId;
             Properties.Settings.Default.PropertyValues["LastIssueId"].PropertyValue = issueId;
             Properties.Settings.Default.PropertyValues["LastActivityId"].PropertyValue = activityId;
+            Properties.Settings.Default.PropertyValues["OnlyAssignedToMe"].PropertyValue = CheckBoxOnlyMe.Checked;
             Properties.Settings.Default.Save();
         }
 
@@ -315,6 +316,7 @@ namespace Redmine.Client
             projectId = Properties.Settings.Default.LastProjectId;
             issueId = Properties.Settings.Default.LastIssueId;
             activityId = Properties.Settings.Default.LastActivityId;
+            CheckBoxOnlyMe.Checked = Properties.Settings.Default.OnlyAssignedToMe;
 
             BtnNewIssueButton.Visible = RedmineVersion >= ApiVersion.V13x;
         }
@@ -659,7 +661,7 @@ namespace Redmine.Client
                 LoadLastIds();
                 this.Cursor = Cursors.AppStarting;
 
-                FillForm(PrepareFormData(projectId), issueId, activityId);
+                FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked), issueId, activityId);
             }
         }
 
@@ -674,7 +676,7 @@ namespace Redmine.Client
             this.Cursor = Cursors.AppStarting;
             try
             {
-                FillForm(PrepareFormData(projectId), issueId, activityId);
+                FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked), issueId, activityId);
             }
             catch(Exception ex)
             {
@@ -698,13 +700,13 @@ namespace Redmine.Client
             Reinit();
         }
 
-        private void AsyncGetRestOfFormData(int projectId, int issueId, int activityId)
+        private void AsyncGetRestOfFormData(int projectId, int issueId, int activityId, bool onlyMe)
         {
             AddBgWork(Lang.BgWork_GetFormData, () =>
             {
                 try
                 {
-                    MainFormData data = PrepareFormData(projectId);
+                    MainFormData data = PrepareFormData(projectId, onlyMe);
                     
                     //Let main thread fill form data...
                     return () =>
@@ -728,7 +730,7 @@ namespace Redmine.Client
         }
 
 
-        private void AsyncGetFormData(int projectId, int issueId, int activityId)
+        private void AsyncGetFormData(int projectId, int issueId, int activityId, bool onlyMe)
         {
             this.Cursor = Cursors.WaitCursor;
             //Retrieve current user asynchroneous...
@@ -751,7 +753,7 @@ namespace Redmine.Client
                         else
                             SetTitle(Lang.RedmineClientTitle_NoUser);
                         //When done, get the rest of the form data...
-                        AsyncGetRestOfFormData(projectId, issueId, activityId);
+                        AsyncGetRestOfFormData(projectId, issueId, activityId, onlyMe);
                     };
                 }
                 catch (Exception e)
@@ -862,6 +864,11 @@ namespace Redmine.Client
         {
             LoadLastIds();
             SaveRuntimeConfig();
+        }
+
+        private void CheckBoxOnlyMe_Click(object sender, EventArgs e)
+        {
+            BtnRefreshButton_Click(sender, e);
         }
 
     }
