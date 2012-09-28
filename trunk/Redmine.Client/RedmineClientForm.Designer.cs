@@ -119,7 +119,7 @@ namespace Redmine.Client
             this.TextBoxComment.Location = new System.Drawing.Point(174, 38);
             this.TextBoxComment.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxComment.Name = "TextBoxComment";
-            this.TextBoxComment.Size = new System.Drawing.Size(231, 20);
+            this.TextBoxComment.Size = new System.Drawing.Size(237, 20);
             this.TextBoxComment.TabIndex = 8;
             // 
             // labelComment
@@ -172,14 +172,14 @@ namespace Redmine.Client
             this.ComboBoxProject.Location = new System.Drawing.Point(174, 74);
             this.ComboBoxProject.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxProject.Name = "ComboBoxProject";
-            this.ComboBoxProject.Size = new System.Drawing.Size(231, 21);
+            this.ComboBoxProject.Size = new System.Drawing.Size(237, 21);
             this.ComboBoxProject.TabIndex = 1;
             this.ComboBoxProject.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProject_SelectedIndexChanged);
             // 
             // BtnCommitButton
             // 
             this.BtnCommitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCommitButton.Location = new System.Drawing.Point(412, 10);
+            this.BtnCommitButton.Location = new System.Drawing.Point(418, 10);
             this.BtnCommitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCommitButton.Name = "BtnCommitButton";
             this.BtnCommitButton.Size = new System.Drawing.Size(68, 24);
@@ -231,7 +231,7 @@ namespace Redmine.Client
             this.DataGridViewIssues.ReadOnly = true;
             this.DataGridViewIssues.RowTemplate.Height = 24;
             this.DataGridViewIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewIssues.Size = new System.Drawing.Size(396, 313);
+            this.DataGridViewIssues.Size = new System.Drawing.Size(402, 312);
             this.DataGridViewIssues.TabIndex = 2;
             this.DataGridViewIssues.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewIssues_CellContentDoubleClick);
             this.DataGridViewIssues.SelectionChanged += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
@@ -243,7 +243,7 @@ namespace Redmine.Client
             // BtnRefreshButton
             // 
             this.BtnRefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRefreshButton.Location = new System.Drawing.Point(412, 71);
+            this.BtnRefreshButton.Location = new System.Drawing.Point(418, 71);
             this.BtnRefreshButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnRefreshButton.Name = "BtnRefreshButton";
             this.BtnRefreshButton.Size = new System.Drawing.Size(68, 24);
@@ -255,7 +255,7 @@ namespace Redmine.Client
             // BtnExitButton
             // 
             this.BtnExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnExitButton.Location = new System.Drawing.Point(412, 388);
+            this.BtnExitButton.Location = new System.Drawing.Point(418, 387);
             this.BtnExitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnExitButton.Name = "BtnExitButton";
             this.BtnExitButton.Size = new System.Drawing.Size(68, 24);
@@ -278,7 +278,7 @@ namespace Redmine.Client
             // BtnAboutButton
             // 
             this.BtnAboutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAboutButton.Location = new System.Drawing.Point(412, 360);
+            this.BtnAboutButton.Location = new System.Drawing.Point(418, 359);
             this.BtnAboutButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAboutButton.Name = "BtnAboutButton";
             this.BtnAboutButton.Size = new System.Drawing.Size(68, 24);
@@ -290,7 +290,7 @@ namespace Redmine.Client
             // BtnSettingsButton
             // 
             this.BtnSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSettingsButton.Location = new System.Drawing.Point(412, 332);
+            this.BtnSettingsButton.Location = new System.Drawing.Point(418, 331);
             this.BtnSettingsButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSettingsButton.Name = "BtnSettingsButton";
             this.BtnSettingsButton.Size = new System.Drawing.Size(68, 24);
@@ -302,7 +302,7 @@ namespace Redmine.Client
             // BtnNewIssueButton
             // 
             this.BtnNewIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNewIssueButton.Location = new System.Drawing.Point(412, 99);
+            this.BtnNewIssueButton.Location = new System.Drawing.Point(418, 99);
             this.BtnNewIssueButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnNewIssueButton.Name = "BtnNewIssueButton";
             this.BtnNewIssueButton.Size = new System.Drawing.Size(68, 24);
@@ -320,7 +320,7 @@ namespace Redmine.Client
             // 
             this.CheckBoxOnlyMe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckBoxOnlyMe.AutoSize = true;
-            this.CheckBoxOnlyMe.Location = new System.Drawing.Point(250, 16);
+            this.CheckBoxOnlyMe.Location = new System.Drawing.Point(256, 16);
             this.CheckBoxOnlyMe.Name = "CheckBoxOnlyMe";
             this.CheckBoxOnlyMe.Size = new System.Drawing.Size(155, 17);
             this.CheckBoxOnlyMe.TabIndex = 19;
@@ -332,7 +332,7 @@ namespace Redmine.Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 422);
+            this.ClientSize = new System.Drawing.Size(492, 421);
             this.Controls.Add(this.CheckBoxOnlyMe);
             this.Controls.Add(this.BtnSettingsButton);
             this.Controls.Add(this.BtnNewIssueButton);
@@ -356,7 +356,7 @@ namespace Redmine.Client
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(494, 451);
+            this.MinimumSize = new System.Drawing.Size(500, 250);
             this.Name = "RedmineClientForm";
             this.Text = "Redmine Client";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
