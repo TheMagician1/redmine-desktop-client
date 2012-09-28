@@ -48,13 +48,14 @@
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLLOCATION" Name="RedmineClient">
           <Directory Id="LANG_NL" Name="nl" />
+          <Directory Id="LANG_CS_CZ" Name="cs-CZ" />
           <Directory Id="PROPERTIES" Name="Properties" />
 				</Directory>
 			</Directory>
 
       <Directory Id="ProgramMenuFolder" Name="Programs">
         <Directory Id="ProgramMenuDir" Name="Redmine Desktop Client">
-          <Component Id="ProgramMenuDir" Guid="28F69F71-E0CC-4481-8265-E0EC5CE36A74">
+          <Component Id="ProgramMenuDir" Guid="{28F69F71-E0CC-4481-8265-E0EC5CE36A74}">
             <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
             <RegistryValue Root='HKCU' Key='Software\Redmine\RedmineClient' Type='string' Value='' KeyPath='yes' />
           </Component>
@@ -66,26 +67,32 @@
     </Directory>
 
     <DirectoryRef Id="INSTALLLOCATION">
-      <Component Id="RedmineClient.exe" Guid="344807fa-32cd-4840-b050-1769bd7bdedf">
+      <Component Id="RedmineClient.exe" Guid="{344807fa-32cd-4840-b050-1769bd7bdedf}">
         <File Id="RedmineClient.exe" Source="$(var.Redmine.Client.TargetPath)" KeyPath="yes">
           <Shortcut Id="startmenu.RedmineClient.exe" Directory="ProgramMenuDir" Name="Redmine Desktop Client" WorkingDirectory="INSTALLLOCATION" Icon="icon.RedmineClient.exe" IconIndex="0" Advertise="yes"/>
           <Shortcut Id="desktop.RedmineClient.exe" Directory="DesktopFolder" Name="Redmine Desktop Client" WorkingDirectory="INSTALLLOCATION" Icon="icon.RedmineClient.exe" IconIndex="0" Advertise="yes"/>
         </File>
       </Component>
-      <Component Id="Redmine.Net.Api.dll" Guid="C3FA0BC5-5E42-4450-BEF9-6117134ECD65">
+      <Component Id="Redmine.Net.Api.dll" Guid="{C3FA0BC5-5E42-4450-BEF9-6117134ECD65}">
         <RemoveFile Id="Remove_Redmine_Net_Api_Dll" Name="$(var.Api.TargetFileName)" On="install"/>
         <File Id="Redmine.Net.Api.dll" Name="$(var.Api.TargetFileName)" Source="$(var.Api.TargetPath)" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
 
     <DirectoryRef Id="LANG_NL">
-      <Component Id="nl.RedmineClient.resources.dll" Guid="72A27666-9B04-47CA-83D4-C51C60505FAD">
+      <Component Id="nl.RedmineClient.resources.dll" Guid="{72A27666-9B04-47CA-83D4-C51C60505FAD}">
         <File Id="nl.RedmineClient.resources.dll" Source="$(var.BinDir)\nl\RedmineClient.resources.dll" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
 
+    <DirectoryRef Id="LANG_CS_CZ">
+      <Component Id="cs_cz.RedmineClient.resources.dll" Guid="{CC2C88A3-5D7E-4408-8DB8-8C519CD2736D}">
+        <File Id="cs_cz.RedmineClient.resources.dll" Source="$(var.BinDir)\cs-CZ\RedmineClient.resources.dll" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
     <DirectoryRef Id="PROPERTIES">
-      <Component Id="properties.app.config" Guid="270DDDC8-8F70-4059-823C-3CFAEAEE83B8">
+      <Component Id="properties.app.config" Guid="{270DDDC8-8F70-4059-823C-3CFAEAEE83B8}">
         <File Id="properties.app.config" Source="$(var.BinDir)\properties\app.config" />
       </Component>
     </DirectoryRef>
@@ -101,6 +108,7 @@
 			<ComponentRef Id="RedmineClient.exe" />
       <ComponentRef Id="Redmine.Net.Api.dll" />
       <ComponentRef Id="nl.RedmineClient.resources.dll"/>
+      <ComponentRef Id="cs_cz.RedmineClient.resources.dll"/>
       <ComponentRef Id="properties.app.config"/>
       <ComponentRef Id="ProgramMenuDir"/>
     </Feature>
