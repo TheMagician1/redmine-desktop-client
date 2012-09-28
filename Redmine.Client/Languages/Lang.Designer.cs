@@ -349,6 +349,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only Show Issues assigned to Me.
+        /// </summary>
+        internal static string CheckBoxOnlyMe {
+            get {
+                return ResourceManager.GetString("CheckBoxOnlyMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for updates on startup.
         /// </summary>
         internal static string CheckForUpdatesCheckBox {
