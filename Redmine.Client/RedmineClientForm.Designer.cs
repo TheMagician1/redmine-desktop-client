@@ -57,6 +57,7 @@ namespace Redmine.Client
             this.BtnSettingsButton = new System.Windows.Forms.Button();
             this.BtnNewIssueButton = new System.Windows.Forms.Button();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.CheckBoxOnlyMe = new System.Windows.Forms.CheckBox();
             this.NotifyIconMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).BeginInit();
             this.SuspendLayout();
@@ -315,11 +316,24 @@ namespace Redmine.Client
             this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
             this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_Complete);
             // 
+            // CheckBoxOnlyMe
+            // 
+            this.CheckBoxOnlyMe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CheckBoxOnlyMe.AutoSize = true;
+            this.CheckBoxOnlyMe.Location = new System.Drawing.Point(250, 16);
+            this.CheckBoxOnlyMe.Name = "CheckBoxOnlyMe";
+            this.CheckBoxOnlyMe.Size = new System.Drawing.Size(155, 17);
+            this.CheckBoxOnlyMe.TabIndex = 19;
+            this.CheckBoxOnlyMe.Text = "Only Issues assigned to Me";
+            this.CheckBoxOnlyMe.UseVisualStyleBackColor = true;
+            this.CheckBoxOnlyMe.Click += new System.EventHandler(this.CheckBoxOnlyMe_Click);
+            // 
             // RedmineClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 422);
+            this.Controls.Add(this.CheckBoxOnlyMe);
             this.Controls.Add(this.BtnSettingsButton);
             this.Controls.Add(this.BtnNewIssueButton);
             this.Controls.Add(this.BtnResetButton);
@@ -342,6 +356,7 @@ namespace Redmine.Client
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(494, 451);
             this.Name = "RedmineClientForm";
             this.Text = "Redmine Client";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
@@ -380,6 +395,7 @@ namespace Redmine.Client
         private Button BtnSettingsButton;
         private Button BtnNewIssueButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private CheckBox CheckBoxOnlyMe;
     }
 }
 

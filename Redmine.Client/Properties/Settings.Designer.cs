@@ -226,5 +226,17 @@ namespace Redmine.Client.Properties {
                 this["ClosedStatus"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OnlyAssignedToMe {
+            get {
+                return ((bool)(this["OnlyAssignedToMe"]));
+            }
+            set {
+                this["OnlyAssignedToMe"] = value;
+            }
+        }
     }
 }

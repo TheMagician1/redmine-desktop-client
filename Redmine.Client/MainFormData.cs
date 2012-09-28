@@ -19,12 +19,15 @@ namespace Redmine.Client
         public IList<Issue> Issues { get; set; }
         public IList<ProjectMembership> Members { get; set; }
 
-        public MainFormData(int projectId)
+        public MainFormData(int projectId, bool onlyMe)
         {
-            NameValueCollection curProject = new NameValueCollection { { "project_id", projectId.ToString() } };
-            Issues = RedmineClientForm.redmine.GetTotalObjectList<Issue>(curProject);
+            NameValueCollection parameters = new NameValueCollection { { "project_id", projectId.ToString() } };
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
-                Members = RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(curProject);
+                Members = RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
+
+            if (onlyMe)
+                parameters.Add("assigned_to_id", "me");
+            Issues = RedmineClientForm.redmine.GetTotalObjectList<Issue>(parameters);
         }
 
         public static Dictionary<int, T> ToDictionaryId<T>(IList<T> list) where T : Identifiable<T>
