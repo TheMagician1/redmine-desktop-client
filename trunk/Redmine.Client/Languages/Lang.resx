@@ -451,6 +451,9 @@ or Request attention every
   <data name="CheckBoxClosesIssue" xml:space="preserve">
     <value>Also close the issue</value>
   </data>
+  <data name="CheckBoxOnlyMe" xml:space="preserve">
+    <value>Only Show Issues assigned to Me</value>
+  </data>
   <data name="ConnectionTestFailed_Text" xml:space="preserve">
     <value>Initiating the connection with Redmine failed. The following error occurred: {0}</value>
     <comment>{0} error</comment>
