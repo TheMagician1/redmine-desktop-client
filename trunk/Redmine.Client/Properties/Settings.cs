@@ -24,5 +24,12 @@
         private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e) {
             // Add code to handle the SettingsSaving event here.
         }
+
+        public void SetTickingTick(bool ticking, int ticks)
+        {
+            Settings.Default.PropertyValues["IsTicking"].PropertyValue = ticking;
+            Settings.Default.PropertyValues["TickingTicks"].PropertyValue = ticks;
+            Settings.Default.Save();
+        }
     }
 }

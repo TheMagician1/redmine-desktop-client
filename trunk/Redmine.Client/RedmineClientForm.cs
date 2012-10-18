@@ -419,6 +419,7 @@ namespace Redmine.Client
                     Minimize();
             }
             ticking = !ticking;
+            Properties.Settings.Default.SetTickingTick(this.ticking, this.ticks);
             UpdateNotifyIconText();
         }
 
@@ -426,6 +427,7 @@ namespace Redmine.Client
         {
             this.ticks++;
             this.UpdateTime();
+            Properties.Settings.Default.SetTickingTick(this.ticking, this.ticks);
             AlertIfMinimized();
         }
 
