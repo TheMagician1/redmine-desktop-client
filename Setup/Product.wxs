@@ -84,18 +84,19 @@
         <File Id="nl.RedmineClient.resources.dll" Source="$(var.BinDir)\nl\RedmineClient.resources.dll" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
-
     <DirectoryRef Id="LANG_CS_CZ">
       <Component Id="cs_cz.RedmineClient.resources.dll" Guid="{CC2C88A3-5D7E-4408-8DB8-8C519CD2736D}">
         <File Id="cs_cz.RedmineClient.resources.dll" Source="$(var.BinDir)\cs-CZ\RedmineClient.resources.dll" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
 
+    <!--
     <DirectoryRef Id="PROPERTIES">
       <Component Id="properties.app.config" Guid="{270DDDC8-8F70-4059-823C-3CFAEAEE83B8}">
         <File Id="properties.app.config" Source="$(var.BinDir)\properties\app.config" />
       </Component>
     </DirectoryRef>
+    -->
 
     <!-- Check if .Net 4.0 is installed-->
     <PropertyRef Id="NETFRAMEWORK40FULL"/>
@@ -109,7 +110,7 @@
       <ComponentRef Id="Redmine.Net.Api.dll" />
       <ComponentRef Id="nl.RedmineClient.resources.dll"/>
       <ComponentRef Id="cs_cz.RedmineClient.resources.dll"/>
-      <ComponentRef Id="properties.app.config"/>
+      <!-- <ComponentRef Id="properties.app.config"/> -->
       <ComponentRef Id="ProgramMenuDir"/>
     </Feature>
 
