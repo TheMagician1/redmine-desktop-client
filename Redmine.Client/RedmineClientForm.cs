@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -61,6 +62,8 @@ namespace Redmine.Client
 				this.DataGridViewIssues.Click += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
 			}
             this.FormClosing += new FormClosingEventHandler(RedmineClientForm_FormClosing);
+            SystemEvents.SessionEnding += new SessionEndingEventHandler(SystemEvents_SessionEnding);
+            SystemEvents.SessionSwitch += new SessionSwitchEventHandler(SystemEvents_SessionSwitch);
             Reinit(false);
  
             //At last add check-for-updates work...
@@ -869,6 +872,16 @@ namespace Redmine.Client
         private void CheckBoxOnlyMe_Click(object sender, EventArgs e)
         {
             BtnRefreshButton_Click(sender, e);
+        }
+
+        void SystemEvents_SessionEnding(object sender, SessionEndingEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
     }
