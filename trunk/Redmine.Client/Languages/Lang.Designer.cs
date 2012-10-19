@@ -1035,6 +1035,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Question.
+        /// </summary>
+        internal static string Question {
+            get {
+                return ResourceManager.GetString("Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Redmine Client.
         /// </summary>
         internal static string RedmineClientTitle_NoUser {
@@ -1076,6 +1085,15 @@ namespace Redmine.Client.Languages {
         internal static string RestoreToolStrip_Restore {
             get {
                 return ResourceManager.GetString("RestoreToolStrip_Restore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Timer was ticking when you stopped the client. Do you want the client to continue ticking?.
+        /// </summary>
+        internal static string Timer_WasTickingWhenClosed {
+            get {
+                return ResourceManager.GetString("Timer_WasTickingWhenClosed", resourceCulture);
             }
         }
         

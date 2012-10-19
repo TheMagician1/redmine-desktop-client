@@ -482,4 +482,10 @@ or Request attention every
   <data name="labelSelectCloseStatus" xml:space="preserve">
     <value>When closing an Issue, set it to</value>
   </data>
+  <data name="Question" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="Timer_WasTickingWhenClosed" xml:space="preserve">
+    <value>The Timer was ticking when you stopped the client. Do you want the client to continue ticking?</value>
+  </data>
 </root>

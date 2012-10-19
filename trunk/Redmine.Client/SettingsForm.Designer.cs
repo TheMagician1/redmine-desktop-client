@@ -58,6 +58,7 @@
             this.ComboBoxCloseStatus = new System.Windows.Forms.ComboBox();
             this.labelSelectCloseStatus = new System.Windows.Forms.Label();
             this.GrpEditEnumerations = new System.Windows.Forms.GroupBox();
+            this.PauseTimerOnLockCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).BeginInit();
             this.GrpRedmineServerSettings.SuspendLayout();
@@ -78,7 +79,7 @@
             // BtnCancelButton
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(375, 421);
+            this.BtnCancelButton.Location = new System.Drawing.Point(375, 434);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -89,7 +90,7 @@
             // 
             // BtnSaveButton
             // 
-            this.BtnSaveButton.Location = new System.Drawing.Point(302, 421);
+            this.BtnSaveButton.Location = new System.Drawing.Point(302, 434);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
@@ -170,7 +171,7 @@
             // 
             this.labelCacheLifetime.AutoSize = true;
             this.labelCacheLifetime.Enabled = false;
-            this.labelCacheLifetime.Location = new System.Drawing.Point(10, 427);
+            this.labelCacheLifetime.Location = new System.Drawing.Point(10, 440);
             this.labelCacheLifetime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCacheLifetime.Name = "labelCacheLifetime";
             this.labelCacheLifetime.Size = new System.Drawing.Size(172, 13);
@@ -186,7 +187,7 @@
             0,
             0,
             0});
-            this.CacheLifetime.Location = new System.Drawing.Point(186, 425);
+            this.CacheLifetime.Location = new System.Drawing.Point(186, 438);
             this.CacheLifetime.Margin = new System.Windows.Forms.Padding(2);
             this.CacheLifetime.Maximum = new decimal(new int[] {
             100000,
@@ -201,7 +202,7 @@
             // labelLanguage
             // 
             this.labelLanguage.AutoSize = true;
-            this.labelLanguage.Location = new System.Drawing.Point(4, 90);
+            this.labelLanguage.Location = new System.Drawing.Point(5, 104);
             this.labelLanguage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelLanguage.Name = "labelLanguage";
             this.labelLanguage.Size = new System.Drawing.Size(55, 13);
@@ -264,9 +265,9 @@
             // 
             this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageComboBox.FormattingEnabled = true;
-            this.LanguageComboBox.Location = new System.Drawing.Point(207, 87);
+            this.LanguageComboBox.Location = new System.Drawing.Point(211, 101);
             this.LanguageComboBox.Name = "LanguageComboBox";
-            this.LanguageComboBox.Size = new System.Drawing.Size(216, 21);
+            this.LanguageComboBox.Size = new System.Drawing.Size(213, 21);
             this.LanguageComboBox.TabIndex = 15;
             // 
             // labelRedmineVersion
@@ -357,11 +358,12 @@
             this.GrpApplicationSettings.Controls.Add(this.labelSelectCloseStatus);
             this.GrpApplicationSettings.Controls.Add(this.MinimizeToSystemTrayCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.labelLanguage);
+            this.GrpApplicationSettings.Controls.Add(this.PauseTimerOnLockCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.MinimizeOnStartTimerCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.CheckForUpdatesCheckBox);
             this.GrpApplicationSettings.Location = new System.Drawing.Point(12, 196);
             this.GrpApplicationSettings.Name = "GrpApplicationSettings";
-            this.GrpApplicationSettings.Size = new System.Drawing.Size(431, 165);
+            this.GrpApplicationSettings.Size = new System.Drawing.Size(431, 178);
             this.GrpApplicationSettings.TabIndex = 25;
             this.GrpApplicationSettings.TabStop = false;
             this.GrpApplicationSettings.Text = "Application Settings";
@@ -369,7 +371,7 @@
             // labelExplClosingIssueStatus
             // 
             this.labelExplClosingIssueStatus.AutoSize = true;
-            this.labelExplClosingIssueStatus.Location = new System.Drawing.Point(4, 138);
+            this.labelExplClosingIssueStatus.Location = new System.Drawing.Point(5, 152);
             this.labelExplClosingIssueStatus.Name = "labelExplClosingIssueStatus";
             this.labelExplClosingIssueStatus.Size = new System.Drawing.Size(304, 13);
             this.labelExplClosingIssueStatus.TabIndex = 16;
@@ -380,7 +382,7 @@
             this.ComboBoxCloseStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxCloseStatus.Enabled = false;
             this.ComboBoxCloseStatus.FormattingEnabled = true;
-            this.ComboBoxCloseStatus.Location = new System.Drawing.Point(274, 114);
+            this.ComboBoxCloseStatus.Location = new System.Drawing.Point(275, 128);
             this.ComboBoxCloseStatus.Name = "ComboBoxCloseStatus";
             this.ComboBoxCloseStatus.Size = new System.Drawing.Size(149, 21);
             this.ComboBoxCloseStatus.TabIndex = 15;
@@ -388,7 +390,7 @@
             // labelSelectCloseStatus
             // 
             this.labelSelectCloseStatus.AutoSize = true;
-            this.labelSelectCloseStatus.Location = new System.Drawing.Point(5, 117);
+            this.labelSelectCloseStatus.Location = new System.Drawing.Point(6, 131);
             this.labelSelectCloseStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSelectCloseStatus.Name = "labelSelectCloseStatus";
             this.labelSelectCloseStatus.Size = new System.Drawing.Size(152, 13);
@@ -400,12 +402,24 @@
             this.GrpEditEnumerations.Controls.Add(this.BtnEditIssuePriorities);
             this.GrpEditEnumerations.Controls.Add(this.BtnEditDocumentCategories);
             this.GrpEditEnumerations.Controls.Add(this.BtnEditActivitiesButton);
-            this.GrpEditEnumerations.Location = new System.Drawing.Point(12, 367);
+            this.GrpEditEnumerations.Location = new System.Drawing.Point(12, 380);
             this.GrpEditEnumerations.Name = "GrpEditEnumerations";
             this.GrpEditEnumerations.Size = new System.Drawing.Size(430, 49);
             this.GrpEditEnumerations.TabIndex = 26;
             this.GrpEditEnumerations.TabStop = false;
             this.GrpEditEnumerations.Text = "Edit Enumerations";
+            // 
+            // PauseTimerOnLockCheckBox
+            // 
+            this.PauseTimerOnLockCheckBox.AutoSize = true;
+            this.PauseTimerOnLockCheckBox.Location = new System.Drawing.Point(8, 81);
+            this.PauseTimerOnLockCheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.PauseTimerOnLockCheckBox.Name = "PauseTimerOnLockCheckBox";
+            this.PauseTimerOnLockCheckBox.Size = new System.Drawing.Size(204, 17);
+            this.PauseTimerOnLockCheckBox.TabIndex = 11;
+            this.PauseTimerOnLockCheckBox.Text = "Pause timer on screen lock and logoff";
+            this.PauseTimerOnLockCheckBox.UseVisualStyleBackColor = true;
+            this.PauseTimerOnLockCheckBox.CheckedChanged += new System.EventHandler(this.AuthenticationCheckBox_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -413,7 +427,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(455, 456);
+            this.ClientSize = new System.Drawing.Size(455, 468);
             this.Controls.Add(this.GrpRedmineServerSettings);
             this.Controls.Add(this.CacheLifetime);
             this.Controls.Add(this.labelCacheLifetime);
@@ -473,5 +487,6 @@
         private System.Windows.Forms.ComboBox ComboBoxCloseStatus;
         private System.Windows.Forms.Label labelSelectCloseStatus;
         private System.Windows.Forms.Label labelExplClosingIssueStatus;
+        private System.Windows.Forms.CheckBox PauseTimerOnLockCheckBox;
     }
 }
