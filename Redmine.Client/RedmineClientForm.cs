@@ -51,6 +51,8 @@ namespace Redmine.Client
             Properties.Settings.Default.Upgrade();
             Properties.Settings.Default.Reload();
 
+            timer1.Interval = 1000;
+
             if (!IsRunningOnMono())
             {
                 this.Icon = (Icon)Properties.Resources.ResourceManager.GetObject("clock");
@@ -89,7 +91,7 @@ namespace Redmine.Client
 
         void RedmineClientForm_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            if (ticks != 0)
+            if (ticks != 0 && !Properties.Settings.Default.PauseTickingOnLock)
             {
                 switch (MessageBox.Show(String.Format(Lang.Warning_ClosingSaveTimes, Environment.NewLine), Lang.Warning, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                 {
@@ -114,9 +116,9 @@ namespace Redmine.Client
             catch (Exception) { }
         }
 
-        void Reinit(bool saveRuntime = true)
+        void Reinit(bool clientIsRunning = true)
         {
-            if (saveRuntime)
+            if (clientIsRunning)
                 SaveRuntimeConfig();
             bool bRetry = false;
             do
@@ -124,6 +126,16 @@ namespace Redmine.Client
                 try
                 {
                     LoadConfig();
+                    if (!clientIsRunning)
+                    {
+                        this.ticks = Properties.Settings.Default.TickingTicks;
+                        this.UpdateTime();
+                        if (Properties.Settings.Default.IsTicking)
+                        {
+                            if (MessageBox.Show(Lang.Timer_WasTickingWhenClosed, Lang.Question, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                this.StartTimer();
+                        }
+                    }
 
                     if (RedmineAuthentication)
                         redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword);
@@ -405,23 +417,30 @@ namespace Redmine.Client
 
         private void BtnStartButton_Click(object sender, EventArgs e)
         {
-            timer1.Interval = 1000;
             if (ticking)
             {
                 timer1.Stop();
                 BtnStartButton.Text = Lang.BtnStartButton;
+                ticking = false;
             }
             else
             {
-                timer1.Start();
-                BtnStartButton.Text = Lang.BtnStartButton_Pause;
-                if (MinimizeOnStartTimer)
-                    Minimize();
+                StartTimer();
             }
-            ticking = !ticking;
             Properties.Settings.Default.SetTickingTick(this.ticking, this.ticks);
             UpdateNotifyIconText();
         }
+
+        private void StartTimer()
+        {
+            timer1.Start();
+            BtnStartButton.Text = Lang.BtnStartButton_Pause;
+            if (MinimizeOnStartTimer)
+                Minimize();
+            ticking = true;
+        }
+
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -883,7 +902,22 @@ namespace Redmine.Client
 
         void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
-            //throw new NotImplementedException();
+            if (Properties.Settings.Default.PauseTickingOnLock)
+            {
+                switch (e.Reason)
+                {
+                    case SessionSwitchReason.SessionLock:
+                        timer1.Stop();
+                        break;
+                    case SessionSwitchReason.SessionUnlock:
+                        if (this.ticking)
+                        {
+                            timer1.Start();
+                        }
+                        break;
+                }
+                
+            }
         }
 
     }

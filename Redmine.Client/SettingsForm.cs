@@ -87,6 +87,7 @@ namespace Redmine.Client
                 Properties.Settings.Default.PropertyValues["CacheLifetime"].PropertyValue = CacheLifetime.Value;
                 Properties.Settings.Default.PropertyValues["LanguageCode"].PropertyValue = Languages.Lang.Culture.Name;
                 Properties.Settings.Default.PropertyValues["ApiVersion"].PropertyValue = (int)RedmineVersionComboBox.SelectedValue;
+                Properties.Settings.Default.PropertyValues["PauseTickingOnLock"].PropertyValue = PauseTimerOnLockCheckBox.Checked;
                 if (ComboBoxCloseStatus.Enabled)
                     Properties.Settings.Default.PropertyValues["ClosedStatus"].PropertyValue = (int)ComboBoxCloseStatus.SelectedValue;
                 Properties.Settings.Default.Save();
@@ -110,6 +111,7 @@ namespace Redmine.Client
             CheckForUpdatesCheckBox.Checked = Properties.Settings.Default.CheckForUpdates;
             CacheLifetime.Value = Properties.Settings.Default.CacheLifetime;
             PopupTimout.Value = Properties.Settings.Default.PopupInterval;
+            PauseTimerOnLockCheckBox.Checked = Properties.Settings.Default.PauseTickingOnLock;
             RedmineVersionComboBox.SelectedIndex = RedmineVersionComboBox.FindStringExact(Languages.LangTools.GetTextForApiVersion((ApiVersion)Properties.Settings.Default.ApiVersion));
             try {
                 Languages.Lang.Culture = new System.Globalization.CultureInfo(Properties.Settings.Default.LanguageCode);
