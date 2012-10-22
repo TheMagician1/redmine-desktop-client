@@ -1035,6 +1035,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pause timer on screen lock and on logoff.
+        /// </summary>
+        internal static string PauseTimerOnLockCheckBox {
+            get {
+                return ResourceManager.GetString("PauseTimerOnLockCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Question.
         /// </summary>
         internal static string Question {
