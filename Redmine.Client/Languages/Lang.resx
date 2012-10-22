@@ -488,4 +488,7 @@ or Request attention every
   <data name="Timer_WasTickingWhenClosed" xml:space="preserve">
     <value>The Timer was ticking when you stopped the client. Do you want the client to continue ticking?</value>
   </data>
+  <data name="PauseTimerOnLockCheckBox" xml:space="preserve">
+    <value>Pause timer on screen lock and on logoff</value>
+  </data>
 </root>
