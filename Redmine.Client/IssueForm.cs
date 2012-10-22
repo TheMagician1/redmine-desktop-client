@@ -9,6 +9,11 @@ using System.Text.RegularExpressions;
 
 namespace Redmine.Client
 {
+    class ClientCustomField
+    {
+        public String Name { get; set; }
+        public String Value { get; set; }
+    };
     public partial class IssueForm : Form
     {
         public enum DialogType {
@@ -218,13 +223,23 @@ namespace Redmine.Client
                     DataGridViewCustomFields.Visible = false;
                 else
                 {
-                    DataGridViewCustomFields.DataSource = issue.CustomFields;
+                    List<ClientCustomField> customFields = new List<ClientCustomField>();
+                    foreach (CustomField cf in issue.CustomFields)
+                    {
+                        ClientCustomField field = new ClientCustomField();
+                        field.Name = cf.Name;
+                        foreach (CustomFieldValue cfv in cf.Values)
+                        {
+                            if (field.Value == null)
+                                field.Value = cfv.Info;
+                            else
+                                field.Value += ", " + cfv.Info;
+                        }
+                        customFields.Add(field);
+                    }
+                    DataGridViewCustomFields.DataSource = customFields;
                     DataGridViewCustomFields.RowHeadersVisible = false;
                     DataGridViewCustomFields.ColumnHeadersVisible = false;
-                    DataGridViewCustomFields.Columns["Multiple"].Visible = false;
-                    DataGridViewCustomFields.Columns["Id"].Visible = false;
-                    DataGridViewCustomFields.Columns["Name"].DisplayIndex = 0;
-                    DataGridViewCustomFields.Columns["Value"].DisplayIndex = 1;
                 }
             }
         }
