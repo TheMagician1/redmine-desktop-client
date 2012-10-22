@@ -293,7 +293,7 @@
             // 
             this.BtnEditActivitiesButton.Location = new System.Drawing.Point(7, 19);
             this.BtnEditActivitiesButton.Name = "BtnEditActivitiesButton";
-            this.BtnEditActivitiesButton.Size = new System.Drawing.Size(68, 24);
+            this.BtnEditActivitiesButton.Size = new System.Drawing.Size(82, 24);
             this.BtnEditActivitiesButton.TabIndex = 19;
             this.BtnEditActivitiesButton.Text = "Activities";
             this.BtnEditActivitiesButton.UseVisualStyleBackColor = true;
@@ -301,9 +301,9 @@
             // 
             // BtnEditDocumentCategories
             // 
-            this.BtnEditDocumentCategories.Location = new System.Drawing.Point(81, 19);
+            this.BtnEditDocumentCategories.Location = new System.Drawing.Point(95, 19);
             this.BtnEditDocumentCategories.Name = "BtnEditDocumentCategories";
-            this.BtnEditDocumentCategories.Size = new System.Drawing.Size(68, 24);
+            this.BtnEditDocumentCategories.Size = new System.Drawing.Size(82, 24);
             this.BtnEditDocumentCategories.TabIndex = 20;
             this.BtnEditDocumentCategories.Text = "Doc. Cat.";
             this.BtnEditDocumentCategories.UseVisualStyleBackColor = true;
@@ -311,9 +311,9 @@
             // 
             // BtnEditIssuePriorities
             // 
-            this.BtnEditIssuePriorities.Location = new System.Drawing.Point(155, 19);
+            this.BtnEditIssuePriorities.Location = new System.Drawing.Point(183, 19);
             this.BtnEditIssuePriorities.Name = "BtnEditIssuePriorities";
-            this.BtnEditIssuePriorities.Size = new System.Drawing.Size(68, 24);
+            this.BtnEditIssuePriorities.Size = new System.Drawing.Size(82, 24);
             this.BtnEditIssuePriorities.TabIndex = 21;
             this.BtnEditIssuePriorities.Text = "Priorities";
             this.BtnEditIssuePriorities.UseVisualStyleBackColor = true;
