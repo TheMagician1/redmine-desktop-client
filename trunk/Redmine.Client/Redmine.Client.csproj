@@ -137,6 +137,7 @@
       <DependentUpon>IssueForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.cs-CZ.resx" />
+    <EmbeddedResource Include="Languages\Lang.de.resx" />
     <EmbeddedResource Include="Languages\Lang.nl.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

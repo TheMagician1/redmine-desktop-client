@@ -83,7 +83,7 @@
             // BtnCancelButton
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(375, 485);
+            this.BtnCancelButton.Location = new System.Drawing.Point(407, 485);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -94,7 +94,7 @@
             // 
             // BtnSaveButton
             // 
-            this.BtnSaveButton.Location = new System.Drawing.Point(302, 485);
+            this.BtnSaveButton.Location = new System.Drawing.Point(334, 485);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
@@ -120,7 +120,7 @@
             this.RedmineBaseUrlTextBox.Location = new System.Drawing.Point(7, 33);
             this.RedmineBaseUrlTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RedmineBaseUrlTextBox.Name = "RedmineBaseUrlTextBox";
-            this.RedmineBaseUrlTextBox.Size = new System.Drawing.Size(416, 20);
+            this.RedmineBaseUrlTextBox.Size = new System.Drawing.Size(451, 20);
             this.RedmineBaseUrlTextBox.TabIndex = 1;
             // 
             // RedmineUsernameTextBox
@@ -128,7 +128,7 @@
             this.RedmineUsernameTextBox.Location = new System.Drawing.Point(7, 91);
             this.RedmineUsernameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RedmineUsernameTextBox.Name = "RedmineUsernameTextBox";
-            this.RedmineUsernameTextBox.Size = new System.Drawing.Size(204, 20);
+            this.RedmineUsernameTextBox.Size = new System.Drawing.Size(222, 20);
             this.RedmineUsernameTextBox.TabIndex = 4;
             // 
             // labelRedmineUsername
@@ -143,17 +143,17 @@
             // 
             // RedminePasswordTextBox
             // 
-            this.RedminePasswordTextBox.Location = new System.Drawing.Point(220, 91);
+            this.RedminePasswordTextBox.Location = new System.Drawing.Point(236, 91);
             this.RedminePasswordTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RedminePasswordTextBox.Name = "RedminePasswordTextBox";
             this.RedminePasswordTextBox.PasswordChar = '*';
-            this.RedminePasswordTextBox.Size = new System.Drawing.Size(204, 20);
+            this.RedminePasswordTextBox.Size = new System.Drawing.Size(222, 20);
             this.RedminePasswordTextBox.TabIndex = 6;
             // 
             // labelRedminePassword
             // 
             this.labelRedminePassword.AutoSize = true;
-            this.labelRedminePassword.Location = new System.Drawing.Point(217, 75);
+            this.labelRedminePassword.Location = new System.Drawing.Point(233, 75);
             this.labelRedminePassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelRedminePassword.Name = "labelRedminePassword";
             this.labelRedminePassword.Size = new System.Drawing.Size(97, 13);
@@ -240,7 +240,7 @@
             // labelPopupTimout
             // 
             this.labelPopupTimout.AutoSize = true;
-            this.labelPopupTimout.Location = new System.Drawing.Point(208, 18);
+            this.labelPopupTimout.Location = new System.Drawing.Point(233, 17);
             this.labelPopupTimout.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPopupTimout.Name = "labelPopupTimout";
             this.labelPopupTimout.Size = new System.Drawing.Size(154, 39);
@@ -254,7 +254,7 @@
             0,
             0,
             0});
-            this.PopupTimout.Location = new System.Drawing.Point(211, 60);
+            this.PopupTimout.Location = new System.Drawing.Point(236, 59);
             this.PopupTimout.Margin = new System.Windows.Forms.Padding(2);
             this.PopupTimout.Maximum = new decimal(new int[] {
             100000,
@@ -269,9 +269,9 @@
             // 
             this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageComboBox.FormattingEnabled = true;
-            this.LanguageComboBox.Location = new System.Drawing.Point(211, 101);
+            this.LanguageComboBox.Location = new System.Drawing.Point(236, 101);
             this.LanguageComboBox.Name = "LanguageComboBox";
-            this.LanguageComboBox.Size = new System.Drawing.Size(213, 21);
+            this.LanguageComboBox.Size = new System.Drawing.Size(221, 21);
             this.LanguageComboBox.TabIndex = 15;
             // 
             // labelRedmineVersion
@@ -290,7 +290,7 @@
             this.RedmineVersionComboBox.FormattingEnabled = true;
             this.RedmineVersionComboBox.Location = new System.Drawing.Point(143, 116);
             this.RedmineVersionComboBox.Name = "RedmineVersionComboBox";
-            this.RedmineVersionComboBox.Size = new System.Drawing.Size(68, 21);
+            this.RedmineVersionComboBox.Size = new System.Drawing.Size(86, 21);
             this.RedmineVersionComboBox.TabIndex = 17;
             // 
             // BtnEditActivitiesButton
@@ -337,7 +337,7 @@
             this.GrpRedmineServerSettings.Controls.Add(this.labelRedmineVersion);
             this.GrpRedmineServerSettings.Location = new System.Drawing.Point(12, 12);
             this.GrpRedmineServerSettings.Name = "GrpRedmineServerSettings";
-            this.GrpRedmineServerSettings.Size = new System.Drawing.Size(431, 173);
+            this.GrpRedmineServerSettings.Size = new System.Drawing.Size(463, 173);
             this.GrpRedmineServerSettings.TabIndex = 24;
             this.GrpRedmineServerSettings.TabStop = false;
             this.GrpRedmineServerSettings.Text = "Redmine Server Settings";
@@ -371,7 +371,7 @@
             this.GrpApplicationSettings.Controls.Add(this.CheckForUpdatesCheckBox);
             this.GrpApplicationSettings.Location = new System.Drawing.Point(12, 196);
             this.GrpApplicationSettings.Name = "GrpApplicationSettings";
-            this.GrpApplicationSettings.Size = new System.Drawing.Size(431, 229);
+            this.GrpApplicationSettings.Size = new System.Drawing.Size(463, 229);
             this.GrpApplicationSettings.TabIndex = 25;
             this.GrpApplicationSettings.TabStop = false;
             this.GrpApplicationSettings.Text = "Application Settings";
@@ -400,7 +400,7 @@
             this.UpdateIssueInProgressComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UpdateIssueInProgressComboBox.Enabled = false;
             this.UpdateIssueInProgressComboBox.FormattingEnabled = true;
-            this.UpdateIssueInProgressComboBox.Location = new System.Drawing.Point(275, 200);
+            this.UpdateIssueInProgressComboBox.Location = new System.Drawing.Point(308, 200);
             this.UpdateIssueInProgressComboBox.Name = "UpdateIssueInProgressComboBox";
             this.UpdateIssueInProgressComboBox.Size = new System.Drawing.Size(149, 21);
             this.UpdateIssueInProgressComboBox.TabIndex = 15;
@@ -410,7 +410,7 @@
             this.UpdateIssueNewStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UpdateIssueNewStateComboBox.Enabled = false;
             this.UpdateIssueNewStateComboBox.FormattingEnabled = true;
-            this.UpdateIssueNewStateComboBox.Location = new System.Drawing.Point(275, 176);
+            this.UpdateIssueNewStateComboBox.Location = new System.Drawing.Point(308, 176);
             this.UpdateIssueNewStateComboBox.Name = "UpdateIssueNewStateComboBox";
             this.UpdateIssueNewStateComboBox.Size = new System.Drawing.Size(149, 21);
             this.UpdateIssueNewStateComboBox.TabIndex = 15;
@@ -420,7 +420,7 @@
             this.ComboBoxCloseStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxCloseStatus.Enabled = false;
             this.ComboBoxCloseStatus.FormattingEnabled = true;
-            this.ComboBoxCloseStatus.Location = new System.Drawing.Point(275, 149);
+            this.ComboBoxCloseStatus.Location = new System.Drawing.Point(308, 149);
             this.ComboBoxCloseStatus.Name = "ComboBoxCloseStatus";
             this.ComboBoxCloseStatus.Size = new System.Drawing.Size(149, 21);
             this.ComboBoxCloseStatus.TabIndex = 15;
@@ -468,7 +468,7 @@
             this.GrpEditEnumerations.Controls.Add(this.BtnEditActivitiesButton);
             this.GrpEditEnumerations.Location = new System.Drawing.Point(12, 431);
             this.GrpEditEnumerations.Name = "GrpEditEnumerations";
-            this.GrpEditEnumerations.Size = new System.Drawing.Size(430, 49);
+            this.GrpEditEnumerations.Size = new System.Drawing.Size(463, 49);
             this.GrpEditEnumerations.TabIndex = 26;
             this.GrpEditEnumerations.TabStop = false;
             this.GrpEditEnumerations.Text = "Edit Enumerations";
@@ -479,7 +479,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(455, 520);
+            this.ClientSize = new System.Drawing.Size(487, 520);
             this.Controls.Add(this.GrpRedmineServerSettings);
             this.Controls.Add(this.CacheLifetime);
             this.Controls.Add(this.labelCacheLifetime);
