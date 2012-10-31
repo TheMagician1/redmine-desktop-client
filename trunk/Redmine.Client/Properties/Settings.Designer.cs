@@ -274,5 +274,41 @@ namespace Redmine.Client.Properties {
                 this["PauseTickingOnLock"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UpdateIssueIfNew {
+            get {
+                return ((bool)(this["UpdateIssueIfNew"]));
+            }
+            set {
+                this["UpdateIssueIfNew"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int NewStatus {
+            get {
+                return ((int)(this["NewStatus"]));
+            }
+            set {
+                this["NewStatus"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int InProgressStatus {
+            get {
+                return ((int)(this["InProgressStatus"]));
+            }
+            set {
+                this["InProgressStatus"] = value;
+            }
+        }
     }
 }

@@ -90,6 +90,15 @@ namespace Redmine.Client
                 Properties.Settings.Default.PropertyValues["PauseTickingOnLock"].PropertyValue = PauseTimerOnLockCheckBox.Checked;
                 if (ComboBoxCloseStatus.Enabled)
                     Properties.Settings.Default.PropertyValues["ClosedStatus"].PropertyValue = (int)ComboBoxCloseStatus.SelectedValue;
+                if (UpdateIssueIfStateCheckBox.Enabled)
+                {
+                    Properties.Settings.Default.PropertyValues["UpdateIssueIfNew"].PropertyValue = UpdateIssueIfStateCheckBox.Checked;
+                    if (UpdateIssueIfStateCheckBox.Checked)
+                    {
+                        Properties.Settings.Default.PropertyValues["NewStatus"].PropertyValue = (int)UpdateIssueNewStateComboBox.SelectedValue;
+                        Properties.Settings.Default.PropertyValues["InProgressStatus"].PropertyValue = (int)UpdateIssueInProgressComboBox.SelectedValue;
+                    }
+                }
                 Properties.Settings.Default.Save();
                 String Name = Properties.Settings.Default.LanguageCode;
                 Enumerations.SaveAll();
@@ -113,6 +122,7 @@ namespace Redmine.Client
             PopupTimout.Value = Properties.Settings.Default.PopupInterval;
             PauseTimerOnLockCheckBox.Checked = Properties.Settings.Default.PauseTickingOnLock;
             RedmineVersionComboBox.SelectedIndex = RedmineVersionComboBox.FindStringExact(Languages.LangTools.GetTextForApiVersion((ApiVersion)Properties.Settings.Default.ApiVersion));
+            UpdateIssueIfStateCheckBox.Checked = Properties.Settings.Default.UpdateIssueIfNew;
             try {
                 Languages.Lang.Culture = new System.Globalization.CultureInfo(Properties.Settings.Default.LanguageCode);
             }
@@ -190,18 +200,20 @@ namespace Redmine.Client
                 return;
             }
             LoadAndEnableCloseStatus();
+            LoadAndEnableSetToInProgressStatus();
         }
 
-        private List<IssueStatus> Statuses;
+        private List<IssueStatus> CloseStatuses;
         private void LoadAndEnableCloseStatus()
         {
+            labelSelectCloseStatus.Enabled = false;
             ComboBoxCloseStatus.Enabled = false;
             if ((ApiVersion)RedmineVersionComboBox.SelectedValue < ApiVersion.V13x)
                 return;
             try
             {
                 Redmine.Net.Api.RedmineManager manager;
-                Statuses = new List<IssueStatus>();
+                CloseStatuses = new List<IssueStatus>();
                 if (AuthenticationCheckBox.Checked)
                     manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text, RedmineUsernameTextBox.Text, RedminePasswordTextBox.Text);
                 else
@@ -211,23 +223,100 @@ namespace Redmine.Client
                 foreach (IssueStatus status in manager.GetTotalObjectList<IssueStatus>(parameters))
                 {
                     if (status.IsClosed)
-                        Statuses.Add(status);
+                        CloseStatuses.Add(status);
                 }
-                ComboBoxCloseStatus.DataSource = Statuses;
+                ComboBoxCloseStatus.DataSource = CloseStatuses;
                 ComboBoxCloseStatus.ValueMember = "Id";
                 ComboBoxCloseStatus.DisplayMember = "Name";
+                labelSelectCloseStatus.Enabled = true;
                 ComboBoxCloseStatus.Enabled = true;
+
                 if (Properties.Settings.Default.ClosedStatus != 0)
                     ComboBoxCloseStatus.SelectedValue = Properties.Settings.Default.ClosedStatus;
                 else
                     ComboBoxCloseStatus.SelectedIndex = ComboBoxCloseStatus.FindStringExact("Closed");
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 ComboBoxCloseStatus.Enabled = false;
-                return;
+                labelSelectCloseStatus.Enabled = false;
             }
         }
+
+        private List<IssueStatus> NewStatuses;
+        private List<IssueStatus> InProgressStatuses;
+        private void LoadAndEnableSetToInProgressStatus()
+        {
+            UpdateIssueNewStateComboBox.Enabled = false;
+            UpdateIssueInProgressComboBox.Enabled = false;
+            UpdateIssueIfStateCheckBox.Enabled = false;
+            UpdateIssueIfStateLabel.Enabled = false;
+            if ((ApiVersion)RedmineVersionComboBox.SelectedValue < ApiVersion.V13x)
+                return;
+            try
+            {
+                Redmine.Net.Api.RedmineManager manager;
+                NewStatuses = new List<IssueStatus>();
+                InProgressStatuses = new List<IssueStatus>();
+                if (AuthenticationCheckBox.Checked)
+                    manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text, RedmineUsernameTextBox.Text, RedminePasswordTextBox.Text);
+                else
+                    manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text);
+
+                NameValueCollection parameters = new NameValueCollection { { "is_closed", "false" } };
+                foreach (IssueStatus status in manager.GetTotalObjectList<IssueStatus>(parameters))
+                {
+                    if (!status.IsClosed)
+                    {
+                        NewStatuses.Add(status);
+                        InProgressStatuses.Add(status);
+                    }
+                }
+                UpdateIssueNewStateComboBox.DataSource = NewStatuses;
+                UpdateIssueNewStateComboBox.ValueMember = "Id";
+                UpdateIssueNewStateComboBox.DisplayMember = "Name";
+
+                if (Properties.Settings.Default.NewStatus!= 0)
+                    UpdateIssueNewStateComboBox.SelectedValue = Properties.Settings.Default.NewStatus;
+                else
+                    UpdateIssueNewStateComboBox.SelectedIndex = UpdateIssueNewStateComboBox.FindStringExact("New");
+
+                UpdateIssueInProgressComboBox.DataSource = InProgressStatuses;
+                UpdateIssueInProgressComboBox.ValueMember = "Id";
+                UpdateIssueInProgressComboBox.DisplayMember = "Name";
+
+                if (Properties.Settings.Default.InProgressStatus != 0)
+                    UpdateIssueInProgressComboBox.SelectedValue = Properties.Settings.Default.InProgressStatus;
+                else
+                    UpdateIssueInProgressComboBox.SelectedIndex = UpdateIssueInProgressComboBox.FindStringExact("In Progress");
+
+                UpdateIssueIfStateCheckBox.Enabled = true;
+                UpdateIssueIfStateCheckBox.Checked = Properties.Settings.Default.UpdateIssueIfNew;
+                UpdateIssueIfStateLabel.Enabled = true;
+
+                EnableDisableUpdateIssueIfNewFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                UpdateIssueNewStateComboBox.Enabled = false;
+                UpdateIssueInProgressComboBox.Enabled = false;
+            }
+        }
+
+        private void EnableDisableUpdateIssueIfNewFields()
+        {
+            UpdateIssueNewStateComboBox.Enabled = UpdateIssueIfStateCheckBox.Checked;
+            UpdateIssueInProgressComboBox.Enabled = UpdateIssueIfStateCheckBox.Checked;
+        }
+
+        private void UpdateIssueIfStateCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            EnableDisableUpdateIssueIfNewFields();
+        }
+
     }
 }

@@ -646,6 +646,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The statusus used to update a new status to an in progress status of an issue are unknown, please go to settings to set those..
+        /// </summary>
+        internal static string Error_NewOrInProgressStatusUnknown {
+            get {
+                return ResourceManager.GetString("Error_NewOrInProgressStatusUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No projects found in Redmine..
         /// </summary>
         internal static string Error_NoProjectsFound {
@@ -714,6 +723,15 @@ namespace Redmine.Client.Languages {
         internal static string GrpRedmineServerSettings {
             get {
                 return ResourceManager.GetString("GrpRedmineServerSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The current selected issue {0} is updated to the &apos;In Progress&apos; state. (StatusId = {1}).
+        /// </summary>
+        internal static string IssueUpdatedToInProgress {
+            get {
+                return ResourceManager.GetString("IssueUpdatedToInProgress", resourceCulture);
             }
         }
         
@@ -853,7 +871,7 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable field with &apos;Test Connection&apos; and version V1.3.x or higher.
+        ///   Looks up a localized string similar to Enable fields with &apos;Test Connection&apos; and version V1.3.x or higher.
         /// </summary>
         internal static string labelExplClosingIssueStatus {
             get {
@@ -999,6 +1017,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        internal static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minimize on start timer.
         /// </summary>
         internal static string MinimizeOnStartTimerCheckBox {
@@ -1103,6 +1130,24 @@ namespace Redmine.Client.Languages {
         internal static string Timer_WasTickingWhenClosed {
             get {
                 return ResourceManager.GetString("Timer_WasTickingWhenClosed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If timer starts and issue has state.
+        /// </summary>
+        internal static string UpdateIssueIfStateCheckBox {
+            get {
+                return ResourceManager.GetString("UpdateIssueIfStateCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to then set the state to.
+        /// </summary>
+        internal static string UpdateIssueIfStateLabel {
+            get {
+                return ResourceManager.GetString("UpdateIssueIfStateLabel", resourceCulture);
             }
         }
         
