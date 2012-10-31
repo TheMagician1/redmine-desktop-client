@@ -11,8 +11,9 @@ namespace Redmine.Client
     public partial class SettingsForm : Form
     {
         private List<System.Globalization.CultureInfo> supportedLang = new List<System.Globalization.CultureInfo> {
-            new System.Globalization.CultureInfo("nl-NL"),
-            new System.Globalization.CultureInfo("en-US"),
+            new System.Globalization.CultureInfo("nl"),
+            new System.Globalization.CultureInfo("en"),
+            new System.Globalization.CultureInfo("de"),
             new System.Globalization.CultureInfo("cs-CZ")
         };
         /* api version lower then 1.1 does not support time-entry, so is not supported. */
