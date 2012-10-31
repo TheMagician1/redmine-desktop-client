@@ -477,7 +477,7 @@ of Vraag aandacht elke
     <value>Redmine Server Instellingen</value>
   </data>
   <data name="labelExplClosingIssueStatus" xml:space="preserve">
-    <value>Maak het veld actief met &apos;Test Verbinding&apos; en een versie hoger dan V1.3.x</value>
+    <value>Maak onderstaande velden actief met &apos;Test Verbinding&apos; en een versie hoger dan V1.3.x</value>
   </data>
   <data name="labelSelectCloseStatus" xml:space="preserve">
     <value>Bij het sluiten van een Issue gebruik</value>
