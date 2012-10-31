@@ -451,6 +451,9 @@ of Vraag aandacht elke
   <data name="CheckBoxClosesIssue" xml:space="preserve">
     <value>Sluit ook het issue.</value>
   </data>
+  <data name="CheckBoxOnlyMe" xml:space="preserve">
+    <value>Toon alleen issues toegewezen aan mij</value>
+  </data>
   <data name="ConnectionTestFailed_Text" xml:space="preserve">
     <value>Het opzetten van de verbinding met Redmine is mislukt. De volgende fout trad op: {0}</value>
     <comment>{0} error</comment>
@@ -478,5 +481,30 @@ of Vraag aandacht elke
   </data>
   <data name="labelSelectCloseStatus" xml:space="preserve">
     <value>Bij het sluiten van een Issue gebruik</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Vraag</value>
+  </data>
+  <data name="Timer_WasTickingWhenClosed" xml:space="preserve">
+    <value>De timer liep toen de client gestopt werd. Wilt u dat de timer verder gaat?</value>
+  </data>
+  <data name="PauseTimerOnLockCheckBox" xml:space="preserve">
+    <value>Pauzeer de timer wanneer het scherm gelocked wordt of bij uitloggen</value>
+  </data>
+  <data name="UpdateIssueIfStateCheckBox" xml:space="preserve">
+    <value>Als de timer wordt gestart en het issue heeft de status</value>
+  </data>
+  <data name="UpdateIssueIfStateLabel" xml:space="preserve">
+    <value>zet dan de status op</value>
+  </data>
+  <data name="Error_NewOrInProgressStatusUnknown" xml:space="preserve">
+    <value>De statussen die gebruikt worden om een nieuw issue naar een wordt aan gewerkt status te zetten, zijn onbekend. U kunt dit instellen in het instellingen scherm</value>
+  </data>
+  <data name="IssueUpdatedToInProgress" xml:space="preserve">
+    <value>Het huidige geselecteerde issue {0} is bijgewerkt naar de &apos;wordt aan gewerkt&apos; status. (StatusId = {1})</value>
+    <comment>{0} Issue name; {1} Id of In Progress</comment>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Bericht</value>
   </data>
 </root>
