@@ -1,11 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EE97F02E-A833-4921-B0B5-B85EC09B4137}"
-	ProjectSection(SolutionItems) = preProject
-		README.txt = README.txt
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redmine.Client", "Redmine.Client\Redmine.Client.csproj", "{07ABD877-B270-4054-B10E-7AA4DEBD37E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Redmine.Api\Api.csproj", "{F99E4720-D2A0-461B-A454-E6169BFA8C38}"

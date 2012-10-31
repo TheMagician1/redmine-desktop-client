@@ -477,7 +477,7 @@ or Request attention every
     <value>Redmine Server Settings</value>
   </data>
   <data name="labelExplClosingIssueStatus" xml:space="preserve">
-    <value>Enable field with 'Test Connection' and version V1.3.x or higher</value>
+    <value>Enable fields with 'Test Connection' and version V1.3.x or higher</value>
   </data>
   <data name="labelSelectCloseStatus" xml:space="preserve">
     <value>When closing an Issue, set it to</value>
@@ -490,5 +490,21 @@ or Request attention every
   </data>
   <data name="PauseTimerOnLockCheckBox" xml:space="preserve">
     <value>Pause timer on screen lock and on logoff</value>
+  </data>
+  <data name="UpdateIssueIfStateCheckBox" xml:space="preserve">
+    <value>If timer starts and issue has state</value>
+  </data>
+  <data name="UpdateIssueIfStateLabel" xml:space="preserve">
+    <value>then set the state to</value>
+  </data>
+  <data name="Error_NewOrInProgressStatusUnknown" xml:space="preserve">
+    <value>The statusus used to update a new status to an in progress status of an issue are unknown, please go to settings to set those.</value>
+  </data>
+  <data name="IssueUpdatedToInProgress" xml:space="preserve">
+    <value>The current selected issue {0} is updated to the 'In Progress' state. (StatusId = {1})</value>
+    <comment>{0} Issue name; {1} Id of In Progress</comment>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
   </data>
 </root>

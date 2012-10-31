@@ -54,11 +54,15 @@
             this.GrpRedmineServerSettings = new System.Windows.Forms.GroupBox();
             this.BtnTestConnection = new System.Windows.Forms.Button();
             this.GrpApplicationSettings = new System.Windows.Forms.GroupBox();
+            this.UpdateIssueIfStateLabel = new System.Windows.Forms.Label();
             this.labelExplClosingIssueStatus = new System.Windows.Forms.Label();
+            this.UpdateIssueInProgressComboBox = new System.Windows.Forms.ComboBox();
+            this.UpdateIssueNewStateComboBox = new System.Windows.Forms.ComboBox();
             this.ComboBoxCloseStatus = new System.Windows.Forms.ComboBox();
             this.labelSelectCloseStatus = new System.Windows.Forms.Label();
-            this.GrpEditEnumerations = new System.Windows.Forms.GroupBox();
+            this.UpdateIssueIfStateCheckBox = new System.Windows.Forms.CheckBox();
             this.PauseTimerOnLockCheckBox = new System.Windows.Forms.CheckBox();
+            this.GrpEditEnumerations = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).BeginInit();
             this.GrpRedmineServerSettings.SuspendLayout();
@@ -79,7 +83,7 @@
             // BtnCancelButton
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(375, 434);
+            this.BtnCancelButton.Location = new System.Drawing.Point(375, 485);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -90,7 +94,7 @@
             // 
             // BtnSaveButton
             // 
-            this.BtnSaveButton.Location = new System.Drawing.Point(302, 434);
+            this.BtnSaveButton.Location = new System.Drawing.Point(302, 485);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
@@ -171,7 +175,7 @@
             // 
             this.labelCacheLifetime.AutoSize = true;
             this.labelCacheLifetime.Enabled = false;
-            this.labelCacheLifetime.Location = new System.Drawing.Point(10, 440);
+            this.labelCacheLifetime.Location = new System.Drawing.Point(10, 491);
             this.labelCacheLifetime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCacheLifetime.Name = "labelCacheLifetime";
             this.labelCacheLifetime.Size = new System.Drawing.Size(172, 13);
@@ -187,7 +191,7 @@
             0,
             0,
             0});
-            this.CacheLifetime.Location = new System.Drawing.Point(186, 438);
+            this.CacheLifetime.Location = new System.Drawing.Point(186, 489);
             this.CacheLifetime.Margin = new System.Windows.Forms.Padding(2);
             this.CacheLifetime.Maximum = new decimal(new int[] {
             100000,
@@ -350,7 +354,10 @@
             // 
             // GrpApplicationSettings
             // 
+            this.GrpApplicationSettings.Controls.Add(this.UpdateIssueIfStateLabel);
             this.GrpApplicationSettings.Controls.Add(this.labelExplClosingIssueStatus);
+            this.GrpApplicationSettings.Controls.Add(this.UpdateIssueInProgressComboBox);
+            this.GrpApplicationSettings.Controls.Add(this.UpdateIssueNewStateComboBox);
             this.GrpApplicationSettings.Controls.Add(this.ComboBoxCloseStatus);
             this.GrpApplicationSettings.Controls.Add(this.LanguageComboBox);
             this.GrpApplicationSettings.Controls.Add(this.PopupTimout);
@@ -358,31 +365,62 @@
             this.GrpApplicationSettings.Controls.Add(this.labelSelectCloseStatus);
             this.GrpApplicationSettings.Controls.Add(this.MinimizeToSystemTrayCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.labelLanguage);
+            this.GrpApplicationSettings.Controls.Add(this.UpdateIssueIfStateCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.PauseTimerOnLockCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.MinimizeOnStartTimerCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.CheckForUpdatesCheckBox);
             this.GrpApplicationSettings.Location = new System.Drawing.Point(12, 196);
             this.GrpApplicationSettings.Name = "GrpApplicationSettings";
-            this.GrpApplicationSettings.Size = new System.Drawing.Size(431, 178);
+            this.GrpApplicationSettings.Size = new System.Drawing.Size(431, 229);
             this.GrpApplicationSettings.TabIndex = 25;
             this.GrpApplicationSettings.TabStop = false;
             this.GrpApplicationSettings.Text = "Application Settings";
             // 
+            // UpdateIssueIfStateLabel
+            // 
+            this.UpdateIssueIfStateLabel.AutoSize = true;
+            this.UpdateIssueIfStateLabel.Enabled = false;
+            this.UpdateIssueIfStateLabel.Location = new System.Drawing.Point(23, 203);
+            this.UpdateIssueIfStateLabel.Name = "UpdateIssueIfStateLabel";
+            this.UpdateIssueIfStateLabel.Size = new System.Drawing.Size(101, 13);
+            this.UpdateIssueIfStateLabel.TabIndex = 17;
+            this.UpdateIssueIfStateLabel.Text = "then set the state to";
+            // 
             // labelExplClosingIssueStatus
             // 
             this.labelExplClosingIssueStatus.AutoSize = true;
-            this.labelExplClosingIssueStatus.Location = new System.Drawing.Point(5, 152);
+            this.labelExplClosingIssueStatus.Location = new System.Drawing.Point(6, 133);
             this.labelExplClosingIssueStatus.Name = "labelExplClosingIssueStatus";
-            this.labelExplClosingIssueStatus.Size = new System.Drawing.Size(304, 13);
+            this.labelExplClosingIssueStatus.Size = new System.Drawing.Size(309, 13);
             this.labelExplClosingIssueStatus.TabIndex = 16;
-            this.labelExplClosingIssueStatus.Text = "Enable field with \'Test Connection\' and version V1.3.x or higher";
+            this.labelExplClosingIssueStatus.Text = "Enable fields with \'Test Connection\' and version V1.3.x or higher";
+            // 
+            // UpdateIssueInProgressComboBox
+            // 
+            this.UpdateIssueInProgressComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.UpdateIssueInProgressComboBox.Enabled = false;
+            this.UpdateIssueInProgressComboBox.FormattingEnabled = true;
+            this.UpdateIssueInProgressComboBox.Location = new System.Drawing.Point(275, 200);
+            this.UpdateIssueInProgressComboBox.Name = "UpdateIssueInProgressComboBox";
+            this.UpdateIssueInProgressComboBox.Size = new System.Drawing.Size(149, 21);
+            this.UpdateIssueInProgressComboBox.TabIndex = 15;
+            // 
+            // UpdateIssueNewStateComboBox
+            // 
+            this.UpdateIssueNewStateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.UpdateIssueNewStateComboBox.Enabled = false;
+            this.UpdateIssueNewStateComboBox.FormattingEnabled = true;
+            this.UpdateIssueNewStateComboBox.Location = new System.Drawing.Point(275, 176);
+            this.UpdateIssueNewStateComboBox.Name = "UpdateIssueNewStateComboBox";
+            this.UpdateIssueNewStateComboBox.Size = new System.Drawing.Size(149, 21);
+            this.UpdateIssueNewStateComboBox.TabIndex = 15;
             // 
             // ComboBoxCloseStatus
             // 
             this.ComboBoxCloseStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxCloseStatus.Enabled = false;
             this.ComboBoxCloseStatus.FormattingEnabled = true;
-            this.ComboBoxCloseStatus.Location = new System.Drawing.Point(275, 128);
+            this.ComboBoxCloseStatus.Location = new System.Drawing.Point(275, 149);
             this.ComboBoxCloseStatus.Name = "ComboBoxCloseStatus";
             this.ComboBoxCloseStatus.Size = new System.Drawing.Size(149, 21);
             this.ComboBoxCloseStatus.TabIndex = 15;
@@ -390,24 +428,26 @@
             // labelSelectCloseStatus
             // 
             this.labelSelectCloseStatus.AutoSize = true;
-            this.labelSelectCloseStatus.Location = new System.Drawing.Point(6, 131);
+            this.labelSelectCloseStatus.Enabled = false;
+            this.labelSelectCloseStatus.Location = new System.Drawing.Point(7, 152);
             this.labelSelectCloseStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSelectCloseStatus.Name = "labelSelectCloseStatus";
             this.labelSelectCloseStatus.Size = new System.Drawing.Size(152, 13);
             this.labelSelectCloseStatus.TabIndex = 14;
             this.labelSelectCloseStatus.Text = "When closing an Issue set it to";
             // 
-            // GrpEditEnumerations
+            // UpdateIssueIfStateCheckBox
             // 
-            this.GrpEditEnumerations.Controls.Add(this.BtnEditIssuePriorities);
-            this.GrpEditEnumerations.Controls.Add(this.BtnEditDocumentCategories);
-            this.GrpEditEnumerations.Controls.Add(this.BtnEditActivitiesButton);
-            this.GrpEditEnumerations.Location = new System.Drawing.Point(12, 380);
-            this.GrpEditEnumerations.Name = "GrpEditEnumerations";
-            this.GrpEditEnumerations.Size = new System.Drawing.Size(430, 49);
-            this.GrpEditEnumerations.TabIndex = 26;
-            this.GrpEditEnumerations.TabStop = false;
-            this.GrpEditEnumerations.Text = "Edit Enumerations";
+            this.UpdateIssueIfStateCheckBox.AutoSize = true;
+            this.UpdateIssueIfStateCheckBox.Enabled = false;
+            this.UpdateIssueIfStateCheckBox.Location = new System.Drawing.Point(8, 178);
+            this.UpdateIssueIfStateCheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.UpdateIssueIfStateCheckBox.Name = "UpdateIssueIfStateCheckBox";
+            this.UpdateIssueIfStateCheckBox.Size = new System.Drawing.Size(179, 17);
+            this.UpdateIssueIfStateCheckBox.TabIndex = 11;
+            this.UpdateIssueIfStateCheckBox.Text = "If timer starts and issue has state";
+            this.UpdateIssueIfStateCheckBox.UseVisualStyleBackColor = true;
+            this.UpdateIssueIfStateCheckBox.CheckedChanged += new System.EventHandler(this.UpdateIssueIfStateCheckBox_CheckedChanged);
             // 
             // PauseTimerOnLockCheckBox
             // 
@@ -421,13 +461,25 @@
             this.PauseTimerOnLockCheckBox.UseVisualStyleBackColor = true;
             this.PauseTimerOnLockCheckBox.CheckedChanged += new System.EventHandler(this.AuthenticationCheckBox_CheckedChanged);
             // 
+            // GrpEditEnumerations
+            // 
+            this.GrpEditEnumerations.Controls.Add(this.BtnEditIssuePriorities);
+            this.GrpEditEnumerations.Controls.Add(this.BtnEditDocumentCategories);
+            this.GrpEditEnumerations.Controls.Add(this.BtnEditActivitiesButton);
+            this.GrpEditEnumerations.Location = new System.Drawing.Point(12, 431);
+            this.GrpEditEnumerations.Name = "GrpEditEnumerations";
+            this.GrpEditEnumerations.Size = new System.Drawing.Size(430, 49);
+            this.GrpEditEnumerations.TabIndex = 26;
+            this.GrpEditEnumerations.TabStop = false;
+            this.GrpEditEnumerations.Text = "Edit Enumerations";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.BtnSaveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(455, 468);
+            this.ClientSize = new System.Drawing.Size(455, 520);
             this.Controls.Add(this.GrpRedmineServerSettings);
             this.Controls.Add(this.CacheLifetime);
             this.Controls.Add(this.labelCacheLifetime);
@@ -488,5 +540,9 @@
         private System.Windows.Forms.Label labelSelectCloseStatus;
         private System.Windows.Forms.Label labelExplClosingIssueStatus;
         private System.Windows.Forms.CheckBox PauseTimerOnLockCheckBox;
+        private System.Windows.Forms.Label UpdateIssueIfStateLabel;
+        private System.Windows.Forms.ComboBox UpdateIssueInProgressComboBox;
+        private System.Windows.Forms.ComboBox UpdateIssueNewStateComboBox;
+        private System.Windows.Forms.CheckBox UpdateIssueIfStateCheckBox;
     }
 }

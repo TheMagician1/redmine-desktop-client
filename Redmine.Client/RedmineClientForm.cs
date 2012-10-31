@@ -435,12 +435,13 @@ namespace Redmine.Client
         {
             timer1.Start();
             BtnStartButton.Text = Lang.BtnStartButton_Pause;
+            ticking = true;
+            UpdateIssueIfNeeded();
             if (MinimizeOnStartTimer)
                 Minimize();
-            ticking = true;
         }
 
-
+ 
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -917,6 +918,35 @@ namespace Redmine.Client
                         break;
                 }
                 
+            }
+        }
+
+        private void UpdateIssueIfNeeded()
+        {
+            if (!Properties.Settings.Default.UpdateIssueIfNew)
+                return;
+
+            if (DataGridViewIssues.SelectedRows.Count != 1)
+                return;
+
+            if (Properties.Settings.Default.NewStatus == 0 || Properties.Settings.Default.InProgressStatus == 0)
+            {
+                MessageBox.Show(Lang.Error_NewOrInProgressStatusUnknown, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            try
+            {
+                Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
+                if (selectedIssue.Status.Id == Properties.Settings.Default.NewStatus)
+                {
+                    selectedIssue.Status = new IdentifiableName { Id = Properties.Settings.Default.InProgressStatus };
+                    RedmineClientForm.redmine.UpdateObject<Issue>(selectedIssue.Id.ToString(), selectedIssue);
+                    MessageBox.Show(String.Format(Lang.IssueUpdatedToInProgress, selectedIssue.Subject, Properties.Settings.Default.InProgressStatus), Lang.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.Error_UpdateIssueFailed, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
