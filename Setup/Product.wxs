@@ -49,7 +49,6 @@
 				<Directory Id="INSTALLLOCATION" Name="RedmineClient">
           <Directory Id="LANG_NL" Name="nl" />
           <Directory Id="LANG_CS_CZ" Name="cs-CZ" />
-          <Directory Id="PROPERTIES" Name="Properties" />
 				</Directory>
 			</Directory>
 
@@ -77,6 +76,9 @@
         <RemoveFile Id="Remove_Redmine_Net_Api_Dll" Name="$(var.Api.TargetFileName)" On="install"/>
         <File Id="Redmine.Net.Api.dll" Name="$(var.Api.TargetFileName)" Source="$(var.Api.TargetPath)" KeyPath="yes"/>
       </Component>
+      <Component Id="properties.app.config" Guid="{270DDDC8-8F70-4059-823C-3CFAEAEE83B8}">
+        <File Id="properties.app.config" Source="$(var.Redmine.Client.TargetPath).config" />
+      </Component>
     </DirectoryRef>
 
     <DirectoryRef Id="LANG_NL">
@@ -90,14 +92,6 @@
       </Component>
     </DirectoryRef>
 
-    <!--
-    <DirectoryRef Id="PROPERTIES">
-      <Component Id="properties.app.config" Guid="{270DDDC8-8F70-4059-823C-3CFAEAEE83B8}">
-        <File Id="properties.app.config" Source="$(var.BinDir)\properties\app.config" />
-      </Component>
-    </DirectoryRef>
-    -->
-
     <!-- Check if .Net 4.0 is installed-->
     <PropertyRef Id="NETFRAMEWORK40FULL"/>
     <Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework 4.0 then run this installer again.">
@@ -110,7 +104,7 @@
       <ComponentRef Id="Redmine.Net.Api.dll" />
       <ComponentRef Id="nl.RedmineClient.resources.dll"/>
       <ComponentRef Id="cs_cz.RedmineClient.resources.dll"/>
-      <!-- <ComponentRef Id="properties.app.config"/> -->
+      <ComponentRef Id="properties.app.config"/>
       <ComponentRef Id="ProgramMenuDir"/>
     </Feature>
 
