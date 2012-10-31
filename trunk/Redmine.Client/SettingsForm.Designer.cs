@@ -389,7 +389,7 @@
             // labelExplClosingIssueStatus
             // 
             this.labelExplClosingIssueStatus.AutoSize = true;
-            this.labelExplClosingIssueStatus.Location = new System.Drawing.Point(6, 133);
+            this.labelExplClosingIssueStatus.Location = new System.Drawing.Point(5, 133);
             this.labelExplClosingIssueStatus.Name = "labelExplClosingIssueStatus";
             this.labelExplClosingIssueStatus.Size = new System.Drawing.Size(309, 13);
             this.labelExplClosingIssueStatus.TabIndex = 16;
@@ -429,7 +429,7 @@
             // 
             this.labelSelectCloseStatus.AutoSize = true;
             this.labelSelectCloseStatus.Enabled = false;
-            this.labelSelectCloseStatus.Location = new System.Drawing.Point(7, 152);
+            this.labelSelectCloseStatus.Location = new System.Drawing.Point(5, 152);
             this.labelSelectCloseStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSelectCloseStatus.Name = "labelSelectCloseStatus";
             this.labelSelectCloseStatus.Size = new System.Drawing.Size(152, 13);
