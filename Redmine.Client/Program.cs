@@ -26,7 +26,7 @@ namespace Redmine.Client
         }
 
         /// <summary>
-        /// Handler for the weird exceptions we are not handling in aour code and especially for the CLR20r3 stuff
+        /// Handler for the weird exceptions we are not handling in our code and especially for the CLR20r3 stuff
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

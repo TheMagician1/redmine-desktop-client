@@ -66,7 +66,7 @@
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnSaveButton.TabIndex = 23;
+            this.BtnSaveButton.TabIndex = 24;
             this.BtnSaveButton.Text = "Save";
             this.BtnSaveButton.UseVisualStyleBackColor = true;
             this.BtnSaveButton.Click += new System.EventHandler(this.BtnSaveButton_Click);
@@ -78,7 +78,7 @@
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnCancelButton.TabIndex = 24;
+            this.BtnCancelButton.TabIndex = 25;
             this.BtnCancelButton.Text = "Cancel";
             this.BtnCancelButton.UseVisualStyleBackColor = true;
             this.BtnCancelButton.Click += new System.EventHandler(this.BtnCancelButton_Click);
@@ -317,7 +317,7 @@
             this.BtnCloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCloseButton.Name = "BtnCloseButton";
             this.BtnCloseButton.Size = new System.Drawing.Size(72, 24);
-            this.BtnCloseButton.TabIndex = 25;
+            this.BtnCloseButton.TabIndex = 26;
             this.BtnCloseButton.Text = "Close Issue";
             this.BtnCloseButton.UseVisualStyleBackColor = true;
             this.BtnCloseButton.Click += new System.EventHandler(this.BtnCloseButton_Click);
@@ -328,7 +328,7 @@
             this.linkEditInRedmine.Location = new System.Drawing.Point(6, 256);
             this.linkEditInRedmine.Name = "linkEditInRedmine";
             this.linkEditInRedmine.Size = new System.Drawing.Size(127, 13);
-            this.linkEditInRedmine.TabIndex = 22;
+            this.linkEditInRedmine.TabIndex = 23;
             this.linkEditInRedmine.TabStop = true;
             this.linkEditInRedmine.Text = "Edit this issue in Redmine";
             this.linkEditInRedmine.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkEditInRedmine_LinkClicked);
@@ -344,7 +344,7 @@
             this.DataGridViewCustomFields.ReadOnly = true;
             this.DataGridViewCustomFields.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewCustomFields.Size = new System.Drawing.Size(178, 49);
-            this.DataGridViewCustomFields.TabIndex = 26;
+            this.DataGridViewCustomFields.TabIndex = 22;
             // 
             // IssueForm
             // 
