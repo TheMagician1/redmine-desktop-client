@@ -9,14 +9,15 @@ using System.Text.RegularExpressions;
 
 namespace Redmine.Client
 {
-    class ClientCustomField
-    {
-        public String Name { get; set; }
-        public String Value { get; set; }
-    };
     public partial class IssueForm : Form
     {
-        public enum DialogType {
+        class ClientCustomField
+        {
+            public String Name { get; set; }
+            public String Value { get; set; }
+        };
+        public enum DialogType
+        {
             New,
             Edit,
         };

@@ -52,7 +52,7 @@
             this.BtnCommitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCommitButton.Name = "BtnCommitButton";
             this.BtnCommitButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnCommitButton.TabIndex = 13;
+            this.BtnCommitButton.TabIndex = 14;
             this.BtnCommitButton.Text = "Commit";
             this.BtnCommitButton.UseVisualStyleBackColor = true;
             this.BtnCommitButton.Click += new System.EventHandler(this.BtnCommitButton_Click);
@@ -64,7 +64,7 @@
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnCancelButton.TabIndex = 14;
+            this.BtnCancelButton.TabIndex = 15;
             this.BtnCancelButton.Text = "Cancel";
             this.BtnCancelButton.UseVisualStyleBackColor = true;
             this.BtnCancelButton.Click += new System.EventHandler(this.BtnCancelButton_Click);
@@ -77,7 +77,7 @@
             this.TextBoxComment.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxComment.Name = "TextBoxComment";
             this.TextBoxComment.Size = new System.Drawing.Size(447, 20);
-            this.TextBoxComment.TabIndex = 12;
+            this.TextBoxComment.TabIndex = 13;
             // 
             // labelCommitComment
             // 
@@ -86,7 +86,7 @@
             this.labelCommitComment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCommitComment.Name = "labelCommitComment";
             this.labelCommitComment.Size = new System.Drawing.Size(51, 13);
-            this.labelCommitComment.TabIndex = 11;
+            this.labelCommitComment.TabIndex = 12;
             this.labelCommitComment.Text = "Comment";
             // 
             // labelCommitProject
@@ -200,7 +200,7 @@
             this.CheckBoxClosesIssue.Location = new System.Drawing.Point(81, 129);
             this.CheckBoxClosesIssue.Name = "CheckBoxClosesIssue";
             this.CheckBoxClosesIssue.Size = new System.Drawing.Size(119, 17);
-            this.CheckBoxClosesIssue.TabIndex = 15;
+            this.CheckBoxClosesIssue.TabIndex = 11;
             this.CheckBoxClosesIssue.Text = "Also close the issue";
             this.CheckBoxClosesIssue.UseVisualStyleBackColor = true;
             // 

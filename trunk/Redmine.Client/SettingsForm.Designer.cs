@@ -88,7 +88,7 @@
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnCancelButton.TabIndex = 23;
+            this.BtnCancelButton.TabIndex = 6;
             this.BtnCancelButton.Text = "Cancel";
             this.BtnCancelButton.UseVisualStyleBackColor = true;
             this.BtnCancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -99,7 +99,7 @@
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnSaveButton.TabIndex = 22;
+            this.BtnSaveButton.TabIndex = 5;
             this.BtnSaveButton.Text = "Save";
             this.BtnSaveButton.UseVisualStyleBackColor = true;
             this.BtnSaveButton.Click += new System.EventHandler(this.SaveButton_Click);
@@ -174,7 +174,7 @@
             this.CheckForUpdatesCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.CheckForUpdatesCheckBox.Name = "CheckForUpdatesCheckBox";
             this.CheckForUpdatesCheckBox.Size = new System.Drawing.Size(163, 17);
-            this.CheckForUpdatesCheckBox.TabIndex = 9;
+            this.CheckForUpdatesCheckBox.TabIndex = 0;
             this.CheckForUpdatesCheckBox.Text = "Check for updates on startup";
             this.CheckForUpdatesCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -186,7 +186,7 @@
             this.labelCacheLifetime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCacheLifetime.Name = "labelCacheLifetime";
             this.labelCacheLifetime.Size = new System.Drawing.Size(172, 13);
-            this.labelCacheLifetime.TabIndex = 7;
+            this.labelCacheLifetime.TabIndex = 3;
             this.labelCacheLifetime.Text = "Cache lifetime (minutes, 0 = infinite)";
             this.labelCacheLifetime.Visible = false;
             // 
@@ -207,7 +207,7 @@
             0});
             this.CacheLifetime.Name = "CacheLifetime";
             this.CacheLifetime.Size = new System.Drawing.Size(70, 20);
-            this.CacheLifetime.TabIndex = 8;
+            this.CacheLifetime.TabIndex = 4;
             this.CacheLifetime.Visible = false;
             // 
             // labelLanguage
@@ -217,7 +217,7 @@
             this.labelLanguage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelLanguage.Name = "labelLanguage";
             this.labelLanguage.Size = new System.Drawing.Size(55, 13);
-            this.labelLanguage.TabIndex = 14;
+            this.labelLanguage.TabIndex = 6;
             this.labelLanguage.Text = "Language";
             // 
             // MinimizeToSystemTrayCheckBox
@@ -227,7 +227,7 @@
             this.MinimizeToSystemTrayCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.MinimizeToSystemTrayCheckBox.Name = "MinimizeToSystemTrayCheckBox";
             this.MinimizeToSystemTrayCheckBox.Size = new System.Drawing.Size(132, 17);
-            this.MinimizeToSystemTrayCheckBox.TabIndex = 10;
+            this.MinimizeToSystemTrayCheckBox.TabIndex = 1;
             this.MinimizeToSystemTrayCheckBox.Text = "Minimize to Systemtray";
             this.MinimizeToSystemTrayCheckBox.UseVisualStyleBackColor = true;
             this.MinimizeToSystemTrayCheckBox.CheckedChanged += new System.EventHandler(this.AuthenticationCheckBox_CheckedChanged);
@@ -239,7 +239,7 @@
             this.MinimizeOnStartTimerCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.MinimizeOnStartTimerCheckBox.Name = "MinimizeOnStartTimerCheckBox";
             this.MinimizeOnStartTimerCheckBox.Size = new System.Drawing.Size(129, 17);
-            this.MinimizeOnStartTimerCheckBox.TabIndex = 11;
+            this.MinimizeOnStartTimerCheckBox.TabIndex = 2;
             this.MinimizeOnStartTimerCheckBox.Text = "Minimize on start timer";
             this.MinimizeOnStartTimerCheckBox.UseVisualStyleBackColor = true;
             this.MinimizeOnStartTimerCheckBox.CheckedChanged += new System.EventHandler(this.AuthenticationCheckBox_CheckedChanged);
@@ -251,7 +251,7 @@
             this.labelPopupTimout.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPopupTimout.Name = "labelPopupTimout";
             this.labelPopupTimout.Size = new System.Drawing.Size(154, 39);
-            this.labelPopupTimout.TabIndex = 12;
+            this.labelPopupTimout.TabIndex = 4;
             this.labelPopupTimout.Text = "Popup window when minimized\r\nor Request attention every\r\n(minutes, 0 = never)";
             // 
             // PopupTimout
@@ -270,7 +270,7 @@
             0});
             this.PopupTimout.Name = "PopupTimout";
             this.PopupTimout.Size = new System.Drawing.Size(70, 20);
-            this.PopupTimout.TabIndex = 13;
+            this.PopupTimout.TabIndex = 5;
             // 
             // LanguageComboBox
             // 
@@ -281,7 +281,7 @@
             this.LanguageComboBox.Location = new System.Drawing.Point(252, 101);
             this.LanguageComboBox.Name = "LanguageComboBox";
             this.LanguageComboBox.Size = new System.Drawing.Size(239, 21);
-            this.LanguageComboBox.TabIndex = 15;
+            this.LanguageComboBox.TabIndex = 7;
             // 
             // labelRedmineVersion
             // 
@@ -290,7 +290,7 @@
             this.labelRedmineVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelRedmineVersion.Name = "labelRedmineVersion";
             this.labelRedmineVersion.Size = new System.Drawing.Size(87, 13);
-            this.labelRedmineVersion.TabIndex = 16;
+            this.labelRedmineVersion.TabIndex = 7;
             this.labelRedmineVersion.Text = "Redmine Version";
             // 
             // RedmineVersionComboBox
@@ -300,14 +300,14 @@
             this.RedmineVersionComboBox.Location = new System.Drawing.Point(157, 116);
             this.RedmineVersionComboBox.Name = "RedmineVersionComboBox";
             this.RedmineVersionComboBox.Size = new System.Drawing.Size(91, 21);
-            this.RedmineVersionComboBox.TabIndex = 17;
+            this.RedmineVersionComboBox.TabIndex = 8;
             // 
             // BtnEditActivitiesButton
             // 
             this.BtnEditActivitiesButton.Location = new System.Drawing.Point(7, 19);
             this.BtnEditActivitiesButton.Name = "BtnEditActivitiesButton";
             this.BtnEditActivitiesButton.Size = new System.Drawing.Size(82, 24);
-            this.BtnEditActivitiesButton.TabIndex = 19;
+            this.BtnEditActivitiesButton.TabIndex = 0;
             this.BtnEditActivitiesButton.Text = "Activities";
             this.BtnEditActivitiesButton.UseVisualStyleBackColor = true;
             this.BtnEditActivitiesButton.Click += new System.EventHandler(this.BtnEditActivitiesButton_Click);
@@ -317,7 +317,7 @@
             this.BtnEditDocumentCategories.Location = new System.Drawing.Point(95, 19);
             this.BtnEditDocumentCategories.Name = "BtnEditDocumentCategories";
             this.BtnEditDocumentCategories.Size = new System.Drawing.Size(82, 24);
-            this.BtnEditDocumentCategories.TabIndex = 20;
+            this.BtnEditDocumentCategories.TabIndex = 1;
             this.BtnEditDocumentCategories.Text = "Doc. Cat.";
             this.BtnEditDocumentCategories.UseVisualStyleBackColor = true;
             this.BtnEditDocumentCategories.Click += new System.EventHandler(this.BtnEditDocumentCategories_Click);
@@ -327,7 +327,7 @@
             this.BtnEditIssuePriorities.Location = new System.Drawing.Point(183, 19);
             this.BtnEditIssuePriorities.Name = "BtnEditIssuePriorities";
             this.BtnEditIssuePriorities.Size = new System.Drawing.Size(82, 24);
-            this.BtnEditIssuePriorities.TabIndex = 21;
+            this.BtnEditIssuePriorities.TabIndex = 2;
             this.BtnEditIssuePriorities.Text = "Priorities";
             this.BtnEditIssuePriorities.UseVisualStyleBackColor = true;
             this.BtnEditIssuePriorities.Click += new System.EventHandler(this.BtnEditIssuePriorities_Click);
@@ -349,7 +349,7 @@
             this.GrpRedmineServerSettings.Location = new System.Drawing.Point(12, 12);
             this.GrpRedmineServerSettings.Name = "GrpRedmineServerSettings";
             this.GrpRedmineServerSettings.Size = new System.Drawing.Size(497, 173);
-            this.GrpRedmineServerSettings.TabIndex = 24;
+            this.GrpRedmineServerSettings.TabIndex = 0;
             this.GrpRedmineServerSettings.TabStop = false;
             this.GrpRedmineServerSettings.Text = "Redmine Server Settings";
             // 
@@ -358,7 +358,7 @@
             this.BtnTestConnection.Location = new System.Drawing.Point(8, 143);
             this.BtnTestConnection.Name = "BtnTestConnection";
             this.BtnTestConnection.Size = new System.Drawing.Size(149, 24);
-            this.BtnTestConnection.TabIndex = 21;
+            this.BtnTestConnection.TabIndex = 9;
             this.BtnTestConnection.Text = "Test Connection";
             this.BtnTestConnection.UseVisualStyleBackColor = true;
             this.BtnTestConnection.Click += new System.EventHandler(this.BtnTestConnection_Click);
@@ -385,7 +385,7 @@
             this.GrpApplicationSettings.Location = new System.Drawing.Point(12, 196);
             this.GrpApplicationSettings.Name = "GrpApplicationSettings";
             this.GrpApplicationSettings.Size = new System.Drawing.Size(497, 229);
-            this.GrpApplicationSettings.TabIndex = 25;
+            this.GrpApplicationSettings.TabIndex = 1;
             this.GrpApplicationSettings.TabStop = false;
             this.GrpApplicationSettings.Text = "Application Settings";
             // 
@@ -396,7 +396,7 @@
             this.UpdateIssueIfStateLabel.Location = new System.Drawing.Point(23, 203);
             this.UpdateIssueIfStateLabel.Name = "UpdateIssueIfStateLabel";
             this.UpdateIssueIfStateLabel.Size = new System.Drawing.Size(101, 13);
-            this.UpdateIssueIfStateLabel.TabIndex = 17;
+            this.UpdateIssueIfStateLabel.TabIndex = 13;
             this.UpdateIssueIfStateLabel.Text = "then set the state to";
             // 
             // labelExplClosingIssueStatus
@@ -405,7 +405,7 @@
             this.labelExplClosingIssueStatus.Location = new System.Drawing.Point(5, 133);
             this.labelExplClosingIssueStatus.Name = "labelExplClosingIssueStatus";
             this.labelExplClosingIssueStatus.Size = new System.Drawing.Size(309, 13);
-            this.labelExplClosingIssueStatus.TabIndex = 16;
+            this.labelExplClosingIssueStatus.TabIndex = 8;
             this.labelExplClosingIssueStatus.Text = "Enable fields with \'Test Connection\' and version V1.3.x or higher";
             // 
             // UpdateIssueInProgressComboBox
@@ -417,7 +417,7 @@
             this.UpdateIssueInProgressComboBox.Location = new System.Drawing.Point(342, 200);
             this.UpdateIssueInProgressComboBox.Name = "UpdateIssueInProgressComboBox";
             this.UpdateIssueInProgressComboBox.Size = new System.Drawing.Size(149, 21);
-            this.UpdateIssueInProgressComboBox.TabIndex = 15;
+            this.UpdateIssueInProgressComboBox.TabIndex = 14;
             // 
             // UpdateIssueNewStateComboBox
             // 
@@ -428,7 +428,7 @@
             this.UpdateIssueNewStateComboBox.Location = new System.Drawing.Point(342, 176);
             this.UpdateIssueNewStateComboBox.Name = "UpdateIssueNewStateComboBox";
             this.UpdateIssueNewStateComboBox.Size = new System.Drawing.Size(149, 21);
-            this.UpdateIssueNewStateComboBox.TabIndex = 15;
+            this.UpdateIssueNewStateComboBox.TabIndex = 12;
             // 
             // ComboBoxCloseStatus
             // 
@@ -439,7 +439,7 @@
             this.ComboBoxCloseStatus.Location = new System.Drawing.Point(342, 149);
             this.ComboBoxCloseStatus.Name = "ComboBoxCloseStatus";
             this.ComboBoxCloseStatus.Size = new System.Drawing.Size(149, 21);
-            this.ComboBoxCloseStatus.TabIndex = 15;
+            this.ComboBoxCloseStatus.TabIndex = 10;
             // 
             // labelSelectCloseStatus
             // 
@@ -449,7 +449,7 @@
             this.labelSelectCloseStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSelectCloseStatus.Name = "labelSelectCloseStatus";
             this.labelSelectCloseStatus.Size = new System.Drawing.Size(152, 13);
-            this.labelSelectCloseStatus.TabIndex = 14;
+            this.labelSelectCloseStatus.TabIndex = 9;
             this.labelSelectCloseStatus.Text = "When closing an Issue set it to";
             // 
             // UpdateIssueIfStateCheckBox
@@ -472,7 +472,7 @@
             this.PauseTimerOnLockCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.PauseTimerOnLockCheckBox.Name = "PauseTimerOnLockCheckBox";
             this.PauseTimerOnLockCheckBox.Size = new System.Drawing.Size(204, 17);
-            this.PauseTimerOnLockCheckBox.TabIndex = 11;
+            this.PauseTimerOnLockCheckBox.TabIndex = 3;
             this.PauseTimerOnLockCheckBox.Text = "Pause timer on screen lock and logoff";
             this.PauseTimerOnLockCheckBox.UseVisualStyleBackColor = true;
             this.PauseTimerOnLockCheckBox.CheckedChanged += new System.EventHandler(this.AuthenticationCheckBox_CheckedChanged);
@@ -487,7 +487,7 @@
             this.GrpEditEnumerations.Location = new System.Drawing.Point(12, 431);
             this.GrpEditEnumerations.Name = "GrpEditEnumerations";
             this.GrpEditEnumerations.Size = new System.Drawing.Size(497, 49);
-            this.GrpEditEnumerations.TabIndex = 26;
+            this.GrpEditEnumerations.TabIndex = 2;
             this.GrpEditEnumerations.TabStop = false;
             this.GrpEditEnumerations.Text = "Edit Enumerations";
             // 
