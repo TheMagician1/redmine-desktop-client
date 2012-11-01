@@ -18,7 +18,6 @@ namespace Redmine.Client
             try
             {
                 Application.Run(new RedmineClientForm());
-                MessageBox.Show("Done");
             }
             catch (Exception ex)
             {
