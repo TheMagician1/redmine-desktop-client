@@ -67,6 +67,7 @@
             // 
             // logoPictureBox
             // 
+            this.logoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logoPictureBox.Image = global::Redmine.Client.Properties.Resources.aboutclock;
             this.logoPictureBox.InitialImage = global::Redmine.Client.Properties.Resources.aboutclock;
