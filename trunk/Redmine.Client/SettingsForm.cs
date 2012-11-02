@@ -310,8 +310,8 @@ namespace Redmine.Client
 
         private void EnableDisableUpdateIssueIfNewFields()
         {
-            UpdateIssueNewStateComboBox.Enabled = UpdateIssueIfStateCheckBox.Checked;
-            UpdateIssueInProgressComboBox.Enabled = UpdateIssueIfStateCheckBox.Checked;
+            UpdateIssueNewStateComboBox.Enabled = UpdateIssueIfStateCheckBox.Checked && UpdateIssueIfStateCheckBox.Enabled;
+            UpdateIssueInProgressComboBox.Enabled = UpdateIssueIfStateCheckBox.Checked && UpdateIssueIfStateCheckBox.Enabled;
         }
 
         private void UpdateIssueIfStateCheckBox_CheckedChanged(object sender, EventArgs e)
