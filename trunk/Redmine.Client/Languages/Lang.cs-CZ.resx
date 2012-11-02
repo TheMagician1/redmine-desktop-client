@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,7 +124,7 @@
     <value>O programu</value>
   </data>
   <data name="BtnCommitButton" xml:space="preserve">
-    <value>Potvrdit</value>
+    <value>Odeslat</value>
   </data>
   <data name="BtnExitButton" xml:space="preserve">
     <value>Konec</value>
@@ -136,7 +136,7 @@
     <value>Obnovit</value>
   </data>
   <data name="BtnResetButton" xml:space="preserve">
-    <value>Vymazat</value>
+    <value>Obnovit</value>
   </data>
   <data name="BtnSettingsButton" xml:space="preserve">
     <value>Nastavení</value>
@@ -380,7 +380,7 @@ upozornit každých
     <value>V1.3.x</value>
   </data>
   <data name="ApiVersion_V14x" xml:space="preserve">
-    <value>V1.3.x</value>
+    <value>V1.4.x</value>
   </data>
   <data name="ApiVersion_V21x" xml:space="preserve">
     <value>V2.1.x</value>
@@ -392,7 +392,7 @@ upozornit každých
     <value>Aktivity</value>
   </data>
   <data name="BtnEditDocumentCategories" xml:space="preserve">
-    <value>Kategorie dokumentů</value>
+    <value>Kat. Dok.</value>
   </data>
   <data name="BtnEditIssuePriorities" xml:space="preserve">
     <value>Priority</value>
@@ -451,6 +451,9 @@ upozornit každých
   <data name="CheckBoxClosesIssue" xml:space="preserve">
     <value>Navíc uzavřít úkol</value>
   </data>
+  <data name="CheckBoxOnlyMe" xml:space="preserve">
+    <value>Ukázat pouze úkoly přiřazené mě</value>
+  </data>
   <data name="ConnectionTestFailed_Text" xml:space="preserve">
     <value>Inicializace spojení s Redmine selhala. Nastala následující chyba: {0}</value>
     <comment>{0} error</comment>
@@ -474,9 +477,34 @@ upozornit každých
     <value>Nastavení serveru Redmine</value>
   </data>
   <data name="labelExplClosingIssueStatus" xml:space="preserve">
-    <value>Povolit pole s 'Testem spojení' a verzí V1.3.x nebo vyšší</value>
+    <value>Pro povolení pole použijte &apos;Test spojení&apos; a verzi V1.3.x nebo vyšší</value>
   </data>
   <data name="labelSelectCloseStatus" xml:space="preserve">
     <value>Když uzavřete úkol, jeho stav bude nastaven na</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Otázka</value>
+  </data>
+  <data name="Timer_WasTickingWhenClosed" xml:space="preserve">
+    <value>Časovač byl při ukončení programu spuštěn. Chcete opět spustit měření času?</value>
+  </data>
+  <data name="PauseTimerOnLockCheckBox" xml:space="preserve">
+    <value>Pozastavit časovač při uzamčení počítače a odhlášení</value>
+  </data>
+  <data name="UpdateIssueIfStateCheckBox" xml:space="preserve">
+    <value>Když je časovač spuštěn a stav úkolu je</value>
+  </data>
+  <data name="UpdateIssueIfStateLabel" xml:space="preserve">
+    <value>nastavit stav na</value>
+  </data>
+  <data name="Error_NewOrInProgressStatusUnknown" xml:space="preserve">
+    <value>Stav používaný k aktualizaci stavu úkolu z Nový na Probíhající je neznámý, nastavte ho, prosím, v nastavení.</value>
+  </data>
+  <data name="IssueUpdatedToInProgress" xml:space="preserve">
+    <value>Aktuálně označený úkol {0} je aktualizován na stav &apos;Probíhající&apos;. (StatusId = {1})</value>
+    <comment>{0} Issue name; {1} Id of In Progress</comment>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Zpráva</value>
   </data>
 </root>
