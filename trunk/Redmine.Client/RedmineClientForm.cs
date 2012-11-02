@@ -566,6 +566,13 @@ namespace Redmine.Client
             }
         }
 
+        /// <summary>
+        /// Check if the value is numeric and between the provided minimum and maximum
+        /// </summary>
+        /// <param name="val">string value with numbers</param>
+        /// <param name="min">minumum value</param>
+        /// <param name="max">maximum value</param>
+        /// <returns></returns>
         private static bool CheckNumericValue(string val, int min, int max)
         {
             int myval;
@@ -577,6 +584,11 @@ namespace Redmine.Client
             return true;
         }
 
+        /// <summary>
+        /// A new Issue has been selected; update the systemtray
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridViewIssues_SelectionChanged(object sender, EventArgs e)
         {
             if (DataGridViewIssues.SelectedRows.Count == 0 || !Int32.TryParse(DataGridViewIssues.SelectedRows[0].Cells["Id"].Value.ToString(), out issueId))
@@ -586,6 +598,11 @@ namespace Redmine.Client
             UpdateNotifyIconText();
         }
 
+        /// <summary>
+        /// Commit the current time to Redmine and if applicable, close the current issue.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnCommitButton_Click(object sender, EventArgs e)
         {
             bool shouldIRestart = ticking;
@@ -670,6 +687,11 @@ namespace Redmine.Client
             }
         }
 
+        /// <summary>
+        /// A new activity has been selected; update the systemtray
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBoxActivity_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!Int32.TryParse(ComboBoxActivity.SelectedValue.ToString(), out activityId))
@@ -679,6 +701,11 @@ namespace Redmine.Client
             UpdateNotifyIconText();
         }
 
+        /// <summary>
+        /// A new project is selected; update the form data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBoxProject_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!updating)
@@ -690,11 +717,20 @@ namespace Redmine.Client
             }
         }
 
+        /// <summary>
+        /// Is executable running on Mono?
+        /// </summary>
+        /// <returns>true if running on Mono</returns>
         public static bool IsRunningOnMono()
         {
             return Type.GetType("Mono.Runtime") != null;
         }
 
+        /// <summary>
+        /// Refresh de form data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnRefreshButton_Click(object sender, EventArgs e)
         {
             LoadLastIds();
@@ -710,12 +746,21 @@ namespace Redmine.Client
             this.Cursor = Cursors.Default;
         }
 
+        /// <summary>
+        /// Show the settings form
+        /// </summary>
+        /// <returns>True if window was closed with OK</returns>
         private bool ShowSettingsForm()
         {
             SettingsForm dlg = new SettingsForm();
             return dlg.ShowDialog(this) == System.Windows.Forms.DialogResult.OK;
         }
 
+        /// <summary>
+        /// Open the settings dialog and reload the data after successful closure
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSettingsButton_Click(object sender, EventArgs e)
         {
             SaveRuntimeConfig();
@@ -725,6 +770,13 @@ namespace Redmine.Client
             Reinit();
         }
 
+        /// <summary>
+        /// Get Projects, Issues and Activities and select the current/last selected
+        /// </summary>
+        /// <param name="projectId">The current/last selected project</param>
+        /// <param name="issueId">The current/last selected issue</param>
+        /// <param name="activityId">The current/last selected activity</param>
+        /// <param name="onlyMe">Retrieve only issues assigned to me</param>
         private void AsyncGetRestOfFormData(int projectId, int issueId, int activityId, bool onlyMe)
         {
             AddBgWork(Lang.BgWork_GetFormData, () =>
@@ -754,7 +806,13 @@ namespace Redmine.Client
             });
         }
 
-
+        /// <summary>
+        /// Retrieve the form data asynchronous (first only the username)
+        /// </summary>
+        /// <param name="projectId">The current/last selected project</param>
+        /// <param name="issueId">The current/last selected issue</param>
+        /// <param name="activityId">The current/last selected activity</param>
+        /// <param name="onlyMe">Retrieve only issues assigned to me</param>
         private void AsyncGetFormData(int projectId, int issueId, int activityId, bool onlyMe)
         {
             this.Cursor = Cursors.WaitCursor;
@@ -796,7 +854,11 @@ namespace Redmine.Client
             });
         }
 
-
+        /// <summary>
+        /// Create a new issue through the issue dialog.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnNewIssueButton_Click(object sender, EventArgs e)
         {
             IssueForm dlg = new IssueForm(Projects[projectId]);
@@ -806,12 +868,19 @@ namespace Redmine.Client
             }
         }
 
+        /// <summary>
+        /// Set the (new) title of this dialog
+        /// </summary>
+        /// <param name="title">The (new) title</param>
         void SetTitle(String title)
         {
             Title = title;
             UpdateTitle();
         }
 
+        /// <summary>
+        /// Update the window title with the current background job (if one)
+        /// </summary>
         void UpdateTitle()
         {
             String title = Title;
@@ -822,12 +891,21 @@ namespace Redmine.Client
 
         Queue<BgWork> m_WorkQueue = new Queue<BgWork>();
 
+        /// <summary>
+        /// Add a new background job
+        /// </summary>
+        /// <param name="name">The name used to display in the statusbar when executing this item</param>
+        /// <param name="work">The function to execute in the background</param>
         private void AddBgWork(String name, RunAsync work)
         {
             m_WorkQueue.Enqueue(new BgWork(name, work));
             TriggerWork();
         }
 
+        /// <summary>
+        /// Start the background worker to process the workqueue
+        /// </summary>
+        /// <param name="bForce">Even if the worker is already started, start the next item</param>
         void TriggerWork(bool bForce = false)
         {
             if(m_WorkQueue.Count == 0)
@@ -839,12 +917,22 @@ namespace Redmine.Client
             UpdateTitle();
         }
 
+        /// <summary>
+        /// Execute the background function
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
             if (e.Argument != null)
                 e.Result = ((RunAsync)e.Argument)();
         }
 
+        /// <summary>
+        /// Current Backgroundwork is complete. Start next item.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void backgroundWorker2_Complete(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Result != null)
@@ -854,6 +942,9 @@ namespace Redmine.Client
             TriggerWork(true);
         }
 
+        /// <summary>
+        /// Check for updates and if there is an update available, send the user to the download URL.
+        /// </summary>
         void AsyncCheckForUpdates()
         {
             string latestVersionUrl = Utility.CheckForUpdate();
@@ -868,6 +959,11 @@ namespace Redmine.Client
             }
         }
 
+        /// <summary>
+        /// Allow users to double click on the issues and open the issue dialog to display the double clicked issue
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridViewIssues_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Issue issue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
@@ -885,22 +981,44 @@ namespace Redmine.Client
             }
         }
 
+        /// <summary>
+        /// When closing the form, save the running settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnClosing(object sender, FormClosingEventArgs e)
         {
             LoadLastIds();
             SaveRuntimeConfig();
         }
 
+        /// <summary>
+        /// if the 'Show Issues only assigned to me' checkbox is clicked, refresh the issues.
+        /// this way it will respect the setting of the checkbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckBoxOnlyMe_Click(object sender, EventArgs e)
         {
             BtnRefreshButton_Click(sender, e);
         }
 
+        /// <summary>
+        /// Not used at the moment
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void SystemEvents_SessionEnding(object sender, SessionEndingEventArgs e)
         {
             //throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// When the system is locked, check the setting and if requested, stop the timer.
+        /// Also start the timer again on unlock.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
             if (Properties.Settings.Default.PauseTickingOnLock)
@@ -921,6 +1039,10 @@ namespace Redmine.Client
             }
         }
 
+
+        /// <summary>
+        /// If the setting for updating the issue is true, then check the state of the current selected issue and if necessary update it in Redmine.
+        /// </summary>
         private void UpdateIssueIfNeeded()
         {
             if (!Properties.Settings.Default.UpdateIssueIfNew)
