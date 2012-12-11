@@ -4,6 +4,29 @@ using Redmine.Net.Api.Types;
 
 namespace Redmine.Client
 {
+    public class ClientProject : Project
+    {
+        public ClientProject(Project p) {
+            this.Id = p.Id;
+            this.Name = p.Name;
+            this.Identifier = p.Identifier;
+            this.Description = p.Description;
+            this.Parent = p.Parent;
+            this.HomePage = p.HomePage;
+            this.CreatedOn = p.CreatedOn;
+            this.UpdatedOn = p.UpdatedOn;
+            this.Trackers = p.Trackers;
+            this.CustomFields = p.CustomFields;
+        }
+        public string DisplayName {
+            get {
+                if (Parent != null)
+                    return Parent.Name + " - " + Name;
+                return Name;
+            }
+        }
+    }
+
     public enum ApiVersion
     {
         V10x,
@@ -15,12 +38,17 @@ namespace Redmine.Client
 
     internal class MainFormData
     {
-        public IList<Project> Projects { get; set; }
+        public List<ClientProject> Projects { get; private set; }
         public IList<Issue> Issues { get; set; }
         public IList<ProjectMembership> Members { get; set; }
 
-        public MainFormData(int projectId, bool onlyMe)
+        public MainFormData(IList<Project> projects, int projectId, bool onlyMe)
         {
+            Projects = new List<ClientProject>();
+            foreach(Project p in projects)
+            {
+                Projects.Add(new ClientProject(p));
+            }
             NameValueCollection parameters = new NameValueCollection { { "project_id", projectId.ToString() } };
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
                 Members = RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
