@@ -164,7 +164,7 @@ namespace Redmine.Client
                     projectId = projects[0].Id;
                 }
                 Projects = MainFormData.ToDictionaryName(projects);
-                return new MainFormData(projectId, onlyMe) { Projects = projects };
+                return new MainFormData(projects, projectId, onlyMe);
             }
             throw new Exception(Lang.Error_NoProjectsFound);
         }
@@ -196,7 +196,7 @@ namespace Redmine.Client
             }
             ComboBoxProject.DataSource = data.Projects;
             ComboBoxProject.ValueMember = "Id";
-            ComboBoxProject.DisplayMember = "Name";
+            ComboBoxProject.DisplayMember = "DisplayName";
             
             ComboBoxActivity.DataSource = Enumerations.Activities;
             ComboBoxActivity.DisplayMember = "Name";
