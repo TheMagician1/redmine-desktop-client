@@ -11,12 +11,27 @@ using System.Windows.Forms;
 
 namespace Redmine.Client
 {
+    /// <summary>
+    /// The enumerations we need that are not available through the Redmine API
+    /// </summary>
     internal static class Enumerations
     {
+        /// <summary>
+        /// Priorities that can be used in issues
+        /// </summary>
         public static List<IdentifiableName> IssuePriorities { get; set; }
+        /// <summary>
+        /// Document categories (currently not used)
+        /// </summary>
         public static List<IdentifiableName> DocumentCategories { get; set; }
+        /// <summary>
+        /// Activities that can be used to commit time
+        /// </summary>
         public static List<IdentifiableName> Activities { get; set; }
 
+        /// <summary>
+        /// Load all enumerations from file
+        /// </summary>
         public static void LoadAll()
         {
             LoadDocumentCategories();
@@ -24,6 +39,9 @@ namespace Redmine.Client
             LoadActivities();
         }
 
+        /// <summary>
+        /// Load document enumerations from file
+        /// </summary>
         public static void LoadDocumentCategories()
         {
             bool loadDefault = false;

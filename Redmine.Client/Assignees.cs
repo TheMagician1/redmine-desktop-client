@@ -6,18 +6,21 @@ using Redmine.Net.Api.Types;
 
 namespace Redmine.Client
 {
+    /// <summary>
+    /// Interface for showing Assignee information
+    /// </summary>
     public interface IAssignee
     {
         /// <summary>
-        /// Gets or sets the id.
+        /// Gets the id.
         /// </summary>
-        /// <value>The id of the issue.</value>
+        /// <value>The id of the assignee.</value>
         int Id { get; }
 
         /// <summary>
-        /// Gets or sets the subject.
+        /// Gets the name.
         /// </summary>
-        /// <value>The subject of the issue.</value>
+        /// <value>The name of the assignee.</value>
         string Name { get; }
     }
 
@@ -31,6 +34,9 @@ namespace Redmine.Client
         }
         public int Id { get { if (member.User == null) return member.Group.Id; else return member.User.Id; } }
         public string Name { get { if (member.User == null) return member.Group.Name; else return member.User.Name; } }
+        /// <summary>
+        /// Get the inner member of the projectmembership
+        /// </summary>
         public ProjectMembership Member { get { return member; } }
     }
 
