@@ -62,7 +62,7 @@
             // 
             // BtnSaveButton
             // 
-            this.BtnSaveButton.Location = new System.Drawing.Point(286, 250);
+            this.BtnSaveButton.Location = new System.Drawing.Point(286, 277);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
@@ -74,7 +74,7 @@
             // BtnCancelButton
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(358, 250);
+            this.BtnCancelButton.Location = new System.Drawing.Point(358, 277);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -166,7 +166,7 @@
             // 
             this.ComboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxStatus.FormattingEnabled = true;
-            this.ComboBoxStatus.Location = new System.Drawing.Point(148, 23);
+            this.ComboBoxStatus.Location = new System.Drawing.Point(150, 23);
             this.ComboBoxStatus.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxStatus.Name = "ComboBoxStatus";
             this.ComboBoxStatus.Size = new System.Drawing.Size(136, 21);
@@ -204,7 +204,7 @@
             // labelEstimatedTime
             // 
             this.labelEstimatedTime.AutoSize = true;
-            this.labelEstimatedTime.Location = new System.Drawing.Point(191, 162);
+            this.labelEstimatedTime.Location = new System.Drawing.Point(191, 163);
             this.labelEstimatedTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEstimatedTime.Name = "labelEstimatedTime";
             this.labelEstimatedTime.Size = new System.Drawing.Size(75, 13);
@@ -216,13 +216,13 @@
             this.TextBoxEstimatedTime.Location = new System.Drawing.Point(194, 179);
             this.TextBoxEstimatedTime.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxEstimatedTime.Name = "TextBoxEstimatedTime";
-            this.TextBoxEstimatedTime.Size = new System.Drawing.Size(89, 20);
+            this.TextBoxEstimatedTime.Size = new System.Drawing.Size(72, 20);
             this.TextBoxEstimatedTime.TabIndex = 15;
             // 
             // labelAssignedTo
             // 
             this.labelAssignedTo.AutoSize = true;
-            this.labelAssignedTo.Location = new System.Drawing.Point(287, 162);
+            this.labelAssignedTo.Location = new System.Drawing.Point(192, 199);
             this.labelAssignedTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAssignedTo.Name = "labelAssignedTo";
             this.labelAssignedTo.Size = new System.Drawing.Size(62, 13);
@@ -233,16 +233,16 @@
             // 
             this.ComboBoxAssignedTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxAssignedTo.FormattingEnabled = true;
-            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(290, 179);
+            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(194, 214);
             this.ComboBoxAssignedTo.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxAssignedTo.Name = "ComboBoxAssignedTo";
-            this.ComboBoxAssignedTo.Size = new System.Drawing.Size(136, 21);
+            this.ComboBoxAssignedTo.Size = new System.Drawing.Size(232, 21);
             this.ComboBoxAssignedTo.TabIndex = 17;
             // 
             // labelTargetVersion
             // 
             this.labelTargetVersion.AutoSize = true;
-            this.labelTargetVersion.Location = new System.Drawing.Point(287, 201);
+            this.labelTargetVersion.Location = new System.Drawing.Point(192, 237);
             this.labelTargetVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTargetVersion.Name = "labelTargetVersion";
             this.labelTargetVersion.Size = new System.Drawing.Size(75, 13);
@@ -253,10 +253,10 @@
             // 
             this.ComboBoxTargetVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxTargetVersion.FormattingEnabled = true;
-            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(290, 217);
+            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(194, 252);
             this.ComboBoxTargetVersion.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTargetVersion.Name = "ComboBoxTargetVersion";
-            this.ComboBoxTargetVersion.Size = new System.Drawing.Size(136, 21);
+            this.ComboBoxTargetVersion.Size = new System.Drawing.Size(232, 21);
             this.ComboBoxTargetVersion.TabIndex = 21;
             // 
             // numericUpDown1
@@ -266,16 +266,16 @@
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(194, 218);
+            this.numericUpDown1.Location = new System.Drawing.Point(273, 179);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(90, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(72, 20);
             this.numericUpDown1.TabIndex = 19;
             // 
             // labelPercentDone
             // 
             this.labelPercentDone.AutoSize = true;
-            this.labelPercentDone.Location = new System.Drawing.Point(191, 201);
+            this.labelPercentDone.Location = new System.Drawing.Point(270, 163);
             this.labelPercentDone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPercentDone.Name = "labelPercentDone";
             this.labelPercentDone.Size = new System.Drawing.Size(42, 13);
@@ -313,7 +313,7 @@
             // 
             // BtnCloseButton
             // 
-            this.BtnCloseButton.Location = new System.Drawing.Point(194, 250);
+            this.BtnCloseButton.Location = new System.Drawing.Point(194, 277);
             this.BtnCloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCloseButton.Name = "BtnCloseButton";
             this.BtnCloseButton.Size = new System.Drawing.Size(72, 24);
@@ -325,7 +325,7 @@
             // linkEditInRedmine
             // 
             this.linkEditInRedmine.AutoSize = true;
-            this.linkEditInRedmine.Location = new System.Drawing.Point(6, 256);
+            this.linkEditInRedmine.Location = new System.Drawing.Point(6, 283);
             this.linkEditInRedmine.Name = "linkEditInRedmine";
             this.linkEditInRedmine.Size = new System.Drawing.Size(127, 13);
             this.linkEditInRedmine.TabIndex = 23;
@@ -343,7 +343,7 @@
             this.DataGridViewCustomFields.Name = "DataGridViewCustomFields";
             this.DataGridViewCustomFields.ReadOnly = true;
             this.DataGridViewCustomFields.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewCustomFields.Size = new System.Drawing.Size(178, 49);
+            this.DataGridViewCustomFields.Size = new System.Drawing.Size(178, 69);
             this.DataGridViewCustomFields.TabIndex = 22;
             // 
             // IssueForm
@@ -352,7 +352,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(434, 281);
+            this.ClientSize = new System.Drawing.Size(434, 309);
             this.Controls.Add(this.DataGridViewCustomFields);
             this.Controls.Add(this.linkEditInRedmine);
             this.Controls.Add(this.DateDue);
