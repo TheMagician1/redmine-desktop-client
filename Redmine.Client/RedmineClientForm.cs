@@ -156,7 +156,7 @@ namespace Redmine.Client
         private MainFormData PrepareFormData(int projectId, bool onlyMe)
         {
             NameValueCollection parameters = new NameValueCollection();
-            IList<Project> projects = redmine.GetTotalObjectList<Project>(parameters);
+            IList<Project> projects = OnlyProjectsForMember(currentUser, redmine.GetTotalObjectList<Project>(parameters));
             if (projects.Count > 0)
             {
                 if (projectId == 0)
@@ -167,6 +167,23 @@ namespace Redmine.Client
                 return new MainFormData(projects, projectId, onlyMe);
             }
             throw new Exception(Lang.Error_NoProjectsFound);
+        }
+
+        private IList<Project> OnlyProjectsForMember(User member, IList<Project> projects)
+        {
+            List<Project> memberProjects = new List<Project>();
+            foreach (Project p in projects)
+            {
+                foreach (Membership m in member.Memberships)
+                {
+                    if (p.Id == m.Project.Id)
+                    {
+                        memberProjects.Add(p);
+                        break;
+                    }
+                }
+            }
+            return memberProjects;
         }
 
         private void FillForm(MainFormData data, int issueId, int activityId)
@@ -827,7 +844,9 @@ namespace Redmine.Client
             {
                 try
                 {
-                    User newCurrentUser = redmine.GetCurrentUser();
+                    NameValueCollection parameters = new NameValueCollection();
+                    parameters.Add("include", "memberships");
+                    User newCurrentUser = redmine.GetCurrentUser(parameters);
                     return () =>
                     {
                         currentUser = newCurrentUser;
