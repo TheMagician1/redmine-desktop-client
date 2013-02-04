@@ -507,4 +507,13 @@ or Request attention every
   <data name="Message" xml:space="preserve">
     <value>Message</value>
   </data>
+  <data name="ApiVersion_V12x" xml:space="preserve">
+    <value>V1.2.x</value>
+  </data>
+  <data name="ApiVersion_V20x" xml:space="preserve">
+    <value>V2.0.x</value>
+  </data>
+  <data name="ApiVersion_V22x" xml:space="preserve">
+    <value>V2.2.x</value>
+  </data>
 </root>
