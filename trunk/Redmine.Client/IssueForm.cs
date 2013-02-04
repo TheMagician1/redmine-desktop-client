@@ -270,6 +270,11 @@ namespace Redmine.Client
                         //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
                         this.DataCache.Assignees = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
                         this.DataCache.Assignees.Insert(0, new Assignee(new ProjectMembership { Id = 0, User = new IdentifiableName { Id = 0, Name = "" } }));
+                        if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
+                        {
+                            Enumerations.UpdateIssuePriorities(RedmineClientForm.redmine.GetTotalObjectList<IssuePriority>(null));
+                            Enumerations.SaveIssuePriorities();
+                        }
                     }
                 }
             }

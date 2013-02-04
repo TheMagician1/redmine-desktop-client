@@ -142,6 +142,21 @@ namespace Redmine.Client
             }
             f.Close();
         }
+
+        public static void UpdateActivities(IList<TimeEntryActivity> timeEntryActivities)
+        {
+            Activities.Clear();
+            foreach (TimeEntryActivity ta in timeEntryActivities)
+                Activities.Add(new IdentifiableName() { Id = ta.Id, Name = ta.Name });
+        }
+
+        public static void UpdateIssuePriorities(IList<IssuePriority> issuePriorities)
+        {
+            IssuePriorities.Clear();
+            foreach (IssuePriority ip in issuePriorities)
+                IssuePriorities.Add(new IdentifiableName() { Id = ip.Id, Name = ip.Name });
+        }
+
     }
 
 }
