@@ -15,7 +15,8 @@ namespace Redmine.Client
             new System.Globalization.CultureInfo("en"),
             new System.Globalization.CultureInfo("de"),
             new System.Globalization.CultureInfo("cs-CZ"),
-            new System.Globalization.CultureInfo("pt-BR")
+            new System.Globalization.CultureInfo("pt-BR"),
+            new System.Globalization.CultureInfo("fr")
         };
         /* api version lower then 1.1 does not support time-entry, so is not supported. */
         private List<IdentifiableName> apiVersions = new List<IdentifiableName> {
@@ -33,6 +34,9 @@ namespace Redmine.Client
         {
             InitializeComponent();
             LoadLanguage();
+
+            supportedLang.Sort((x, y) => string.Compare(x.DisplayName, y.DisplayName));
+
             LanguageComboBox.DataSource = supportedLang;
             LanguageComboBox.ValueMember = "Name";
             LanguageComboBox.DisplayMember = "DisplayName";
