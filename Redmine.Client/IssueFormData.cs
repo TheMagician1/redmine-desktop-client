@@ -14,6 +14,7 @@ namespace Redmine.Client
         public List<Redmine.Net.Api.Types.Version> Versions { get; set; }
 //        public List<Assignee> Watchers { get; set; }
         public List<Assignee> Assignees { get; set; }
+        public IList<IssuePriority> IssuePriorities { get; set; }
 
     }
 }

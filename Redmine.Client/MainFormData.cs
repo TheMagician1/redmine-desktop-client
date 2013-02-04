@@ -44,6 +44,7 @@ namespace Redmine.Client
         public List<ClientProject> Projects { get; private set; }
         public IList<Issue> Issues { get; set; }
         public IList<ProjectMembership> Members { get; set; }
+        public IList<TimeEntryActivity> Activities { get; private set; }
 
         public MainFormData(IList<Project> projects, int projectId, bool onlyMe)
         {
@@ -54,7 +55,11 @@ namespace Redmine.Client
             }
             NameValueCollection parameters = new NameValueCollection { { "project_id", projectId.ToString() } };
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
+            {
                 Members = RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
+                if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
+                    Activities = RedmineClientForm.redmine.GetTotalObjectList<TimeEntryActivity>(null);
+            }
 
             if (onlyMe)
                 parameters.Add("assigned_to_id", "me");

@@ -214,6 +214,12 @@ namespace Redmine.Client
             ComboBoxProject.DataSource = data.Projects;
             ComboBoxProject.ValueMember = "Id";
             ComboBoxProject.DisplayMember = "DisplayName";
+
+            if (RedmineVersion >= ApiVersion.V22x)
+            {
+                Enumerations.UpdateActivities(data.Activities);
+                Enumerations.SaveActivities();
+            }
             
             ComboBoxActivity.DataSource = Enumerations.Activities;
             ComboBoxActivity.DisplayMember = "Name";

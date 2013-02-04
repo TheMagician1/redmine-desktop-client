@@ -21,9 +21,12 @@ namespace Redmine.Client
         private List<IdentifiableName> apiVersions = new List<IdentifiableName> {
             /*new IdentifiableName { Id = (int)ApiVersion.V10x, Name = LangTools.GetTextForApiVersion(ApiVersion.V10x) },*/
             new IdentifiableName { Id = (int)ApiVersion.V11x, Name = LangTools.GetTextForApiVersion(ApiVersion.V11x) },
+            new IdentifiableName { Id = (int)ApiVersion.V12x, Name = LangTools.GetTextForApiVersion(ApiVersion.V12x) },
             new IdentifiableName { Id = (int)ApiVersion.V13x, Name = LangTools.GetTextForApiVersion(ApiVersion.V13x) },
             new IdentifiableName { Id = (int)ApiVersion.V14x, Name = LangTools.GetTextForApiVersion(ApiVersion.V14x) },
-            new IdentifiableName { Id = (int)ApiVersion.V21x, Name = LangTools.GetTextForApiVersion(ApiVersion.V21x) }
+            new IdentifiableName { Id = (int)ApiVersion.V20x, Name = LangTools.GetTextForApiVersion(ApiVersion.V20x) },
+            new IdentifiableName { Id = (int)ApiVersion.V21x, Name = LangTools.GetTextForApiVersion(ApiVersion.V21x) },
+            new IdentifiableName { Id = (int)ApiVersion.V22x, Name = LangTools.GetTextForApiVersion(ApiVersion.V22x) }
         };
 
         public SettingsForm()
@@ -256,6 +259,8 @@ namespace Redmine.Client
             UpdateIssueInProgressComboBox.Enabled = false;
             UpdateIssueIfStateCheckBox.Enabled = false;
             UpdateIssueIfStateLabel.Enabled = false;
+            BtnEditActivitiesButton.Enabled = true;
+            BtnEditIssuePriorities.Enabled = true;
             if ((ApiVersion)RedmineVersionComboBox.SelectedValue < ApiVersion.V13x)
                 return;
             try
@@ -307,6 +312,11 @@ namespace Redmine.Client
                 UpdateIssueNewStateComboBox.Enabled = false;
                 UpdateIssueInProgressComboBox.Enabled = false;
             }
+            if ((ApiVersion)RedmineVersionComboBox.SelectedValue < ApiVersion.V22x)
+                return;
+
+            BtnEditActivitiesButton.Enabled = false;
+            BtnEditIssuePriorities.Enabled = false;
         }
 
         private void EnableDisableUpdateIssueIfNewFields()
