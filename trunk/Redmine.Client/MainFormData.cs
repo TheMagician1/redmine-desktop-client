@@ -31,9 +31,12 @@ namespace Redmine.Client
     {
         V10x,
         V11x,
+        V12x,
         V13x,
         V14x,
+        V20x,
         V21x,
+        V22x,
     }
 
     internal class MainFormData
