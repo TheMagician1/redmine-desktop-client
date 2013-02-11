@@ -17,7 +17,7 @@ namespace Redmine.Client
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                Application.Run(new RedmineClientForm());
+                Application.Run(RedmineClientForm.Instance);
             }
             catch (Exception ex)
             {

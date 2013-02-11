@@ -50,12 +50,12 @@
             this.ComboBoxTargetVersion = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.labelPercentDone = new System.Windows.Forms.Label();
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.cbStartDate = new System.Windows.Forms.CheckBox();
             this.cbDueDate = new System.Windows.Forms.CheckBox();
             this.BtnCloseButton = new System.Windows.Forms.Button();
             this.linkEditInRedmine = new System.Windows.Forms.LinkLabel();
             this.DataGridViewCustomFields = new System.Windows.Forms.DataGridView();
+            this.BtnViewTimeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCustomFields)).BeginInit();
             this.SuspendLayout();
@@ -282,11 +282,6 @@
             this.labelPercentDone.TabIndex = 18;
             this.labelPercentDone.Text = "% done";
             // 
-            // backgroundWorker2
-            // 
-            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
-            this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
-            // 
             // cbStartDate
             // 
             this.cbStartDate.AutoSize = true;
@@ -346,6 +341,16 @@
             this.DataGridViewCustomFields.Size = new System.Drawing.Size(178, 69);
             this.DataGridViewCustomFields.TabIndex = 22;
             // 
+            // BtnViewTimeButton
+            // 
+            this.BtnViewTimeButton.Location = new System.Drawing.Point(350, 176);
+            this.BtnViewTimeButton.Name = "BtnViewTimeButton";
+            this.BtnViewTimeButton.Size = new System.Drawing.Size(75, 23);
+            this.BtnViewTimeButton.TabIndex = 27;
+            this.BtnViewTimeButton.Text = "View Time";
+            this.BtnViewTimeButton.UseVisualStyleBackColor = true;
+            this.BtnViewTimeButton.Click += new System.EventHandler(this.BtnViewTimeButton_Click);
+            // 
             // IssueForm
             // 
             this.AcceptButton = this.BtnSaveButton;
@@ -353,6 +358,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
             this.ClientSize = new System.Drawing.Size(434, 309);
+            this.Controls.Add(this.BtnViewTimeButton);
             this.Controls.Add(this.DataGridViewCustomFields);
             this.Controls.Add(this.linkEditInRedmine);
             this.Controls.Add(this.DateDue);
@@ -418,11 +424,11 @@
         private System.Windows.Forms.ComboBox ComboBoxTargetVersion;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label labelPercentDone;
-        private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.CheckBox cbStartDate;
         private System.Windows.Forms.CheckBox cbDueDate;
         private System.Windows.Forms.Button BtnCloseButton;
         private System.Windows.Forms.LinkLabel linkEditInRedmine;
         private System.Windows.Forms.DataGridView DataGridViewCustomFields;
+        private System.Windows.Forms.Button BtnViewTimeButton;
     }
 }

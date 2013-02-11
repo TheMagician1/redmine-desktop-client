@@ -56,7 +56,6 @@ namespace Redmine.Client
             this.BtnAboutButton = new System.Windows.Forms.Button();
             this.BtnSettingsButton = new System.Windows.Forms.Button();
             this.BtnNewIssueButton = new System.Windows.Forms.Button();
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.CheckBoxOnlyMe = new System.Windows.Forms.CheckBox();
             this.NotifyIconMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).BeginInit();
@@ -114,8 +113,8 @@ namespace Redmine.Client
             // 
             // TextBoxComment
             // 
-            this.TextBoxComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxComment.Location = new System.Drawing.Point(185, 38);
             this.TextBoxComment.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxComment.Name = "TextBoxComment";
@@ -165,8 +164,8 @@ namespace Redmine.Client
             // 
             // ComboBoxProject
             // 
-            this.ComboBoxProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ComboBoxProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxProject.FormattingEnabled = true;
             this.ComboBoxProject.Location = new System.Drawing.Point(185, 74);
@@ -201,19 +200,19 @@ namespace Redmine.Client
             this.RestoreToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.NotifyIconMenuStrip.Name = "NotifyIconMenuStrip";
-            this.NotifyIconMenuStrip.Size = new System.Drawing.Size(112, 48);
+            this.NotifyIconMenuStrip.Size = new System.Drawing.Size(104, 48);
             // 
             // RestoreToolStripMenuItem
             // 
             this.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem";
-            this.RestoreToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.RestoreToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.RestoreToolStripMenuItem.Text = "&Hide";
             this.RestoreToolStripMenuItem.Click += new System.EventHandler(this.RestoreToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.ExitToolStripMenuItem.Text = "&Close";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -221,12 +220,14 @@ namespace Redmine.Client
             // 
             this.DataGridViewIssues.AllowUserToAddRows = false;
             this.DataGridViewIssues.AllowUserToDeleteRows = false;
-            this.DataGridViewIssues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.DataGridViewIssues.AllowUserToResizeRows = false;
+            this.DataGridViewIssues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewIssues.Location = new System.Drawing.Point(9, 99);
             this.DataGridViewIssues.Margin = new System.Windows.Forms.Padding(2);
+            this.DataGridViewIssues.MultiSelect = false;
             this.DataGridViewIssues.Name = "DataGridViewIssues";
             this.DataGridViewIssues.ReadOnly = true;
             this.DataGridViewIssues.RowTemplate.Height = 24;
@@ -311,11 +312,6 @@ namespace Redmine.Client
             this.BtnNewIssueButton.UseVisualStyleBackColor = true;
             this.BtnNewIssueButton.Click += new System.EventHandler(this.BtnNewIssueButton_Click);
             // 
-            // backgroundWorker2
-            // 
-            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
-            this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_Complete);
-            // 
             // CheckBoxOnlyMe
             // 
             this.CheckBoxOnlyMe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -394,7 +390,6 @@ namespace Redmine.Client
         private Button BtnAboutButton;
         private Button BtnSettingsButton;
         private Button BtnNewIssueButton;
-        private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private CheckBox CheckBoxOnlyMe;
     }
 }

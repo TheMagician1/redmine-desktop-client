@@ -516,4 +516,17 @@ or Request attention every
   <data name="ApiVersion_V22x" xml:space="preserve">
     <value>V2.2.x</value>
   </data>
+  <data name="BtnViewTimeButton" xml:space="preserve">
+    <value>View Time</value>
+  </data>
+  <data name="BgWork_GetTimeEntries" xml:space="preserve">
+    <value>Retrieving Time Entries</value>
+  </data>
+  <data name="DlgTimeEntriesTitle" xml:space="preserve">
+    <value>View time-entries of issue {0} {1}</value>
+    <comment>{0} issuenumber; {1} issue subject</comment>
+  </data>
+  <data name="BgWork_GetIssue" xml:space="preserve">
+    <value>Retrieving Issue information</value>
+  </data>
 </root>
