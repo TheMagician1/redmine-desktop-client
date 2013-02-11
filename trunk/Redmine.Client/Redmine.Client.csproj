@@ -73,6 +73,9 @@
     </Compile>
     <Compile Include="Assignees.cs" />
     <Compile Include="BgWork.cs" />
+    <Compile Include="BgWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ClientExtensionMethods.cs" />
     <Compile Include="CommitForm.cs">
       <SubType>Form</SubType>
@@ -159,6 +162,9 @@
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TimeEntriesForm.resx">
+      <DependentUpon>TimeEntriesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -171,6 +177,12 @@
     </Compile>
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeEntriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeEntriesForm.Designer.cs">
+      <DependentUpon>TimeEntriesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
     <None Include="Properties\Settings.settings">

@@ -12,10 +12,7 @@ using Redmine.Client.Languages;
 
 namespace Redmine.Client
 {
-    delegate void OnDone();
-    delegate OnDone RunAsync();
-
-    public partial class RedmineClientForm : Form
+    public partial class RedmineClientForm : BgWorker
     {
         private string Title = Lang.RedmineClientTitle_NoUser;
 
@@ -27,6 +24,7 @@ namespace Redmine.Client
         internal static RedmineManager redmine;
         private bool updating = false;
         private User currentUser = null;
+        private string currentWorkName;
 
         public static string RedmineURL;
         private bool RedmineAuthentication;
@@ -45,7 +43,10 @@ namespace Redmine.Client
         private Dictionary<int, Project> Projects;
         public static ApiVersion RedmineVersion { get; private set; }
 
-        public RedmineClientForm()
+        /* ugly hack to create a singleton */
+        private static readonly RedmineClientForm instance = new RedmineClientForm();
+        public static RedmineClientForm Instance { get { return instance; } }
+        private RedmineClientForm()
         {
             InitializeComponent();
             Properties.Settings.Default.Upgrade();
@@ -909,62 +910,18 @@ namespace Redmine.Client
         void UpdateTitle()
         {
             String title = Title;
-            if (m_WorkQueue.Count > 0)
-                title += " - " + m_WorkQueue.Peek().m_name + "...";
+            if (!String.IsNullOrEmpty(currentWorkName))
+                title += " - " + currentWorkName + "...";
             this.Text = title;
         }
 
-        Queue<BgWork> m_WorkQueue = new Queue<BgWork>();
-
-        /// <summary>
-        /// Add a new background job
-        /// </summary>
-        /// <param name="name">The name used to display in the statusbar when executing this item</param>
-        /// <param name="work">The function to execute in the background</param>
-        private void AddBgWork(String name, RunAsync work)
+        override protected void WorkTriggered(BgWork CurrentWork) 
         {
-            m_WorkQueue.Enqueue(new BgWork(name, work));
-            TriggerWork();
-        }
-
-        /// <summary>
-        /// Start the background worker to process the workqueue
-        /// </summary>
-        /// <param name="bForce">Even if the worker is already started, start the next item</param>
-        void TriggerWork(bool bForce = false)
-        {
-            if(m_WorkQueue.Count == 0)
-                return; //No work
-            if(!bForce && m_WorkQueue.Count != 1)
-                return; //Already busy...
-
-            backgroundWorker2.RunWorkerAsync(m_WorkQueue.Peek().m_work);
+            if (CurrentWork != null)
+                currentWorkName = CurrentWork.m_name;
+            else
+                currentWorkName = "";
             UpdateTitle();
-        }
-
-        /// <summary>
-        /// Execute the background function
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
-        {
-            if (e.Argument != null)
-                e.Result = ((RunAsync)e.Argument)();
-        }
-
-        /// <summary>
-        /// Current Backgroundwork is complete. Start next item.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void backgroundWorker2_Complete(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Result != null)
-                ((OnDone)e.Result)();
-            m_WorkQueue.Dequeue();
-            UpdateTitle();
-            TriggerWork(true);
         }
 
         /// <summary>

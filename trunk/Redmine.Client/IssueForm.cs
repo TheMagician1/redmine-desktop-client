@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace Redmine.Client
 {
-    public partial class IssueForm : Form
+    public partial class IssueForm : BgWorker
     {
         class ClientCustomField
         {
@@ -118,7 +118,7 @@ namespace Redmine.Client
             if (this.DataCache == null)
             {
                 this.Cursor = Cursors.AppStarting;
-                backgroundWorker2.RunWorkerAsync(ProjectId);
+                RunWorkerAsync(ProjectId);
                 this.BtnSaveButton.Enabled = false;
             }
             else
@@ -250,47 +250,53 @@ namespace Redmine.Client
             return new Assignee(projectMember);
         }
 
-        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        private void RunWorkerAsync(int projectId)
         {
-            this.DataCache = new IssueFormData();
-            int projectId = (int)e.Argument;
             NameValueCollection parameters = new NameValueCollection { { "project_id", projectId.ToString() } };
 
-            try
-            {
-                if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+            AddBgWork(Lang.BgWork_GetIssue, () =>
                 {
-                    this.DataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
-                    this.DataCache.Trackers = RedmineClientForm.redmine.GetTotalObjectList<Tracker>(parameters);
-                    this.DataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
-                    this.DataCache.Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
-                    if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+                    try
                     {
-                        List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
-                        //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
-                        this.DataCache.Assignees = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
-                        this.DataCache.Assignees.Insert(0, new Assignee(new ProjectMembership { Id = 0, User = new IdentifiableName { Id = 0, Name = "" } }));
-                        if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
+                        IssueFormData dataCache = new IssueFormData();
+                        if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                         {
-                            Enumerations.UpdateIssuePriorities(RedmineClientForm.redmine.GetTotalObjectList<IssuePriority>(null));
-                            Enumerations.SaveIssuePriorities();
+                            dataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
+                            dataCache.Trackers = RedmineClientForm.redmine.GetTotalObjectList<Tracker>(parameters);
+                            dataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
+                            dataCache.Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
+                            if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+                            {
+                                List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
+                                //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
+                                dataCache.Assignees = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
+                                dataCache.Assignees.Insert(0, new Assignee(new ProjectMembership { Id = 0, User = new IdentifiableName { Id = 0, Name = "" } }));
+                                if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
+                                {
+                                    Enumerations.UpdateIssuePriorities(RedmineClientForm.redmine.GetTotalObjectList<IssuePriority>(null));
+                                    Enumerations.SaveIssuePriorities();
+                                }
+                            }
                         }
+                        return () =>
+                            {
+                                this.DataCache = dataCache;
+                                FillForm();
+                                this.BtnSaveButton.Enabled = true;
+                                this.Cursor = Cursors.Default;
+                            };
                     }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
-            }
-        }
-
-        private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-            FillForm();
-            this.BtnSaveButton.Enabled = true;
+                    catch (Exception ex)
+                    {
+                        return () =>
+                            {
+                                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                this.DialogResult = DialogResult.Cancel;
+                                this.Close();
+                                this.Cursor = Cursors.Default;
+                            };
+                    }
+                });
         }
 
         private void cbStartDate_CheckedChanged(object sender, EventArgs e)
@@ -323,6 +329,22 @@ namespace Redmine.Client
 
             // Navigate to a URL.
             System.Diagnostics.Process.Start(RedmineClientForm.RedmineURL + "/issues/" + issue.Id.ToString());
+        }
+
+        private void BtnViewTimeButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TimeEntriesForm dlg = new TimeEntriesForm(issue);
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    //BtnRefreshButton_Click(null, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
         }
 
 

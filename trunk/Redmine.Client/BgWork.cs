@@ -8,7 +8,7 @@ namespace Redmine.Client
     /// <summary>
     /// Class for storing asynchronous functions
     /// </summary>
-    class BgWork
+    public class BgWork
     {
         /// <summary>
         /// Constructor of Background work
