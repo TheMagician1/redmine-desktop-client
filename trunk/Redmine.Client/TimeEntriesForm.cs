@@ -172,12 +172,27 @@ namespace Redmine.Client
             try
             {
                 TimeEntry timeEntry = (TimeEntry)DataGridViewTimeEntries.SelectedRows[0].DataBoundItem;
-                MessageBox.Show(String.Format(Lang.Warning_AreYouSureDeleteTimeEntry, timeEntry.Id), Lang.Warning, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                TimeEntryForm dlg = new TimeEntryForm(issue, projectMembers, timeEntry);
-                if (dlg.ShowDialog(this) == DialogResult.OK)
-                {
-                    //BtnRefreshButton_Click(null, null);
-                }
+                if (MessageBox.Show(String.Format(Lang.Warning_AreYouSureDeleteTimeEntry, timeEntry.Id), Lang.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.No)
+                    return;
+
+                AddBgWork("Delete TimeEntry", () =>
+                    {
+                        try
+                        {
+                            RedmineClientForm.redmine.DeleteObject<TimeEntry>(timeEntry.Id.ToString(), null);
+                            return () =>
+                                {
+                                    //MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                };
+                        }
+                        catch (Exception ex)
+                        {
+                            return () =>
+                                {
+                                    MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                };
+                        }
+                    });
             }
             catch (Exception ex)
             {

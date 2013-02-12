@@ -11,7 +11,7 @@ using Redmine.Client.Languages;
 
 namespace Redmine.Client
 {
-    public partial class TimeEntryForm : Form
+    public partial class TimeEntryForm : BgWorker
     {
         public enum eFormType
         {
@@ -78,6 +78,20 @@ namespace Redmine.Client
                 this.Text = String.Format(Lang.DlgTimeEntryFormTitle_Edit, fmtSpentOn, issue.Id, issue.Subject);
                 labelTimeEntryTitle.Text = String.Format(Lang.labelTimeEntryTitle_Edit, fmtSpentOn, issue.Id, issue.Subject);
             }
+        }
+
+        private void BtnOKButton_Click(object sender, EventArgs e)
+        {
+            CurTimeEntry.SpentOn = datePickerSpentOn.Value;
+            CurTimeEntry.User.Id = ((ProjectMember)comboBoxByUser.SelectedItem).Id;
+            CurTimeEntry.Activity.Id = ((IdentifiableName)comboBoxActivity.SelectedItem).Id;
+            CurTimeEntry.Hours = decimal.Parse(textBoxSpentHours.Text, Lang.Culture);
+            CurTimeEntry.Comments = textBoxComment.Text;
+
+            if (type == eFormType.New)
+                RedmineClientForm.redmine.CreateObject(CurTimeEntry);
+            else
+                RedmineClientForm.redmine.UpdateObject(CurTimeEntry.Id.ToString(), CurTimeEntry);
         }
     }
 }
