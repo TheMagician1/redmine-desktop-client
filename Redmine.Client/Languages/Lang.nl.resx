@@ -554,4 +554,8 @@ of Vraag aandacht elke
   <data name="labelSpentOn" xml:space="preserve">
     <value>Besteed op</value>
   </data>
+  <data name="Warning_AreYouSureDeleteTimeEntry" xml:space="preserve">
+    <value>Weet u zeker dat u de tijd met id {0} wil verwijderen</value>
+    <comment>{0} time-entry id</comment>
+  </data>
 </root>

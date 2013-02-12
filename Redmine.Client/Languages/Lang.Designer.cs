@@ -1287,6 +1287,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete time entry {0}.
+        /// </summary>
+        internal static string Warning_AreYouSureDeleteTimeEntry {
+            get {
+                return ResourceManager.GetString("Warning_AreYouSureDeleteTimeEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Redmine Client is trying to stop, but you are measuring your spent time.{0}Do you want to commit the time?.
         /// </summary>
         internal static string Warning_ClosingSaveTimes {
