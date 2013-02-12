@@ -160,11 +160,13 @@ namespace Redmine.Client
             IList<Project> projects = OnlyProjectsForMember(currentUser, redmine.GetTotalObjectList<Project>(parameters));
             if (projects.Count > 0)
             {
-                if (projectId == 0)
+                Projects = MainFormData.ToDictionaryName(projects);
+                Project CurProject;
+                if (!Projects.TryGetValue(projectId, out CurProject)
+                    || projectId == 0)
                 {
                     projectId = projects[0].Id;
                 }
-                Projects = MainFormData.ToDictionaryName(projects);
                 return new MainFormData(projects, projectId, onlyMe);
             }
             throw new Exception(Lang.Error_NoProjectsFound);
@@ -252,8 +254,8 @@ namespace Redmine.Client
                 if (projectId != 0)
                     ComboBoxProject.SelectedValue = projectId;
                 else
-                    ComboBoxProject.SelectedIndex = 0;   
-                projectId = (int)ComboBoxProject.SelectedValue;
+                    ComboBoxProject.SelectedIndex = 0;
+                 projectId = (int)ComboBoxProject.SelectedValue;
             }
             if (ComboBoxActivity.Items.Count > 0)
             {
