@@ -133,7 +133,7 @@ namespace Redmine.Client
             {
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
                 {
-                    this.ComboBoxAssignedTo.DataSource = this.DataCache.Assignees;
+                    this.ComboBoxAssignedTo.DataSource = this.DataCache.ProjectMembers;
                     this.ComboBoxAssignedTo.DisplayMember = "Name";
                     this.ComboBoxAssignedTo.ValueMember = "Id";
                 }
@@ -245,9 +245,9 @@ namespace Redmine.Client
             }
         }
 
-        private static Assignee MemberToAssignee(ProjectMembership projectMember)
+        private static ProjectMember MembershipToMember(ProjectMembership projectMember)
         {
-            return new Assignee(projectMember);
+            return new ProjectMember(projectMember);
         }
 
         private void RunWorkerAsync(int projectId)
@@ -269,8 +269,8 @@ namespace Redmine.Client
                             {
                                 List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
                                 //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
-                                dataCache.Assignees = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
-                                dataCache.Assignees.Insert(0, new Assignee(new ProjectMembership { Id = 0, User = new IdentifiableName { Id = 0, Name = "" } }));
+                                dataCache.ProjectMembers = projectMembers.ConvertAll(new Converter<ProjectMembership, ProjectMember>(MembershipToMember));
+                                dataCache.ProjectMembers.Insert(0, new ProjectMember(new ProjectMembership { Id = 0, User = new IdentifiableName { Id = 0, Name = "" } }));
                                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
                                 {
                                     Enumerations.UpdateIssuePriorities(RedmineClientForm.redmine.GetTotalObjectList<IssuePriority>(null));
@@ -335,7 +335,7 @@ namespace Redmine.Client
         {
             try
             {
-                TimeEntriesForm dlg = new TimeEntriesForm(issue);
+                TimeEntriesForm dlg = new TimeEntriesForm(issue, DataCache.ProjectMembers);
                 if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
                     //BtnRefreshButton_Click(null, null);

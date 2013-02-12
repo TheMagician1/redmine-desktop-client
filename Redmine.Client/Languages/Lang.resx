@@ -529,4 +529,20 @@ or Request attention every
   <data name="BgWork_GetIssue" xml:space="preserve">
     <value>Retrieving Issue information</value>
   </data>
+  <data name="DlgTimeEntryFormTitle_Edit" xml:space="preserve">
+    <value>Edit Time entry of {0} for issue {1} {2}</value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
+    <value>New Time Entry for issue {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_Edit" xml:space="preserve">
+    <value>Edit Time entry of {0} for issue {1} {2}</value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_New" xml:space="preserve">
+    <value>Create new Time Entry for issue {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
 </root>

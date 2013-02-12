@@ -9,7 +9,7 @@ namespace Redmine.Client
     /// <summary>
     /// Interface for showing Assignee information
     /// </summary>
-    public interface IAssignee
+    public interface IProjectMember
     {
         /// <summary>
         /// Gets the id.
@@ -24,11 +24,11 @@ namespace Redmine.Client
         string Name { get; }
     }
 
-    public class Assignee : IAssignee
+    public class ProjectMember : IProjectMember
     {
         private ProjectMembership member;
 
-        public Assignee(ProjectMembership projectMember)
+        public ProjectMember(ProjectMembership projectMember)
         {
             this.member = projectMember;
         }
