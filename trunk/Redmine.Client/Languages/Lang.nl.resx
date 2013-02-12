@@ -529,4 +529,29 @@ of Vraag aandacht elke
   <data name="BgWork_GetIssue" xml:space="preserve">
     <value>Ophalen van informatie van het issue</value>
   </data>
+  <data name="DlgTimeEntryFormTitle_Edit" xml:space="preserve">
+    <value>Bewerk besteedde tijd van {0} voor issue {1} {2}</value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
+    <value>Nieuwe tijd toevoegen voor issue {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_Edit" xml:space="preserve">
+    <value>Bewerk besteedde tijd van {0} voor issue {1} {2}</value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_New" xml:space="preserve">
+    <value>Voeg nieuwe besteedde tijd toe voor issue {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelByUser" xml:space="preserve">
+    <value>Door gebruiker</value>
+  </data>
+  <data name="labelSpentHours" xml:space="preserve">
+    <value>Besteedde Uren</value>
+  </data>
+  <data name="labelSpentOn" xml:space="preserve">
+    <value>Besteed op</value>
+  </data>
 </root>

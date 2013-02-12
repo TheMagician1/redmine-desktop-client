@@ -545,4 +545,13 @@ or Request attention every
     <value>Create new Time Entry for issue {0} {1}</value>
     <comment>{0} issue number; {1} issue subject</comment>
   </data>
+  <data name="labelByUser" xml:space="preserve">
+    <value>By User</value>
+  </data>
+  <data name="labelSpentHours" xml:space="preserve">
+    <value>Spent Hours</value>
+  </data>
+  <data name="labelSpentOn" xml:space="preserve">
+    <value>Spent On</value>
+  </data>
 </root>
