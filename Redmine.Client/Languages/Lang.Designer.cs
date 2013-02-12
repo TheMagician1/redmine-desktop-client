@@ -835,6 +835,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to By User.
+        /// </summary>
+        internal static string labelByUser {
+            get {
+                return ResourceManager.GetString("labelByUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cache lifetime (minutes, 0 = infinite).
         /// </summary>
         internal static string labelCacheLifetime {
@@ -1049,6 +1058,24 @@ namespace Redmine.Client.Languages {
         internal static string labelSelectCloseStatus {
             get {
                 return ResourceManager.GetString("labelSelectCloseStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spent Hours.
+        /// </summary>
+        internal static string labelSpentHours {
+            get {
+                return ResourceManager.GetString("labelSpentHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spent On.
+        /// </summary>
+        internal static string labelSpentOn {
+            get {
+                return ResourceManager.GetString("labelSpentOn", resourceCulture);
             }
         }
         
