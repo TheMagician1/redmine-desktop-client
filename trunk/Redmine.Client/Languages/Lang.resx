@@ -554,4 +554,8 @@ or Request attention every
   <data name="labelSpentOn" xml:space="preserve">
     <value>Spent On</value>
   </data>
+  <data name="Warning_AreYouSureDeleteTimeEntry" xml:space="preserve">
+    <value>Are you sure you want to delete time entry {0}</value>
+    <comment>{0} time-entry id</comment>
+  </data>
 </root>

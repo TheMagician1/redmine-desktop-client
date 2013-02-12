@@ -68,7 +68,8 @@ namespace Redmine.Client
             DataGridViewTimeEntries.DataSource = timeEntries;
             foreach (DataGridViewColumn column in DataGridViewTimeEntries.Columns)
             {
-                if (column.Name != "SpentOn"
+                if (column.Name != "Id"
+                    && column.Name != "SpentOn"
                     && column.Name != "Activity"
                     && column.Name != "Hours"
                     && column.Name != "User"
@@ -88,12 +89,13 @@ namespace Redmine.Client
                 DataGridViewTimeEntries.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             DataGridViewTimeEntries.RowHeadersWidth = 20;
-            DataGridViewTimeEntries.Columns["SpentOn"].DisplayIndex = 0;
-            DataGridViewTimeEntries.Columns["Activity"].DisplayIndex = 1;
-            DataGridViewTimeEntries.Columns["User"].DisplayIndex = 2;
-            DataGridViewTimeEntries.Columns["Hours"].DisplayIndex = 3;
-            DataGridViewTimeEntries.Columns["Comments"].DisplayIndex = 4;
-            DataGridViewTimeEntries.Columns["UpdatedOn"].DisplayIndex = 5;
+            DataGridViewTimeEntries.Columns["Id"].DisplayIndex = 0;
+            DataGridViewTimeEntries.Columns["SpentOn"].DisplayIndex = 1;
+            DataGridViewTimeEntries.Columns["Activity"].DisplayIndex = 2;
+            DataGridViewTimeEntries.Columns["User"].DisplayIndex = 3;
+            DataGridViewTimeEntries.Columns["Hours"].DisplayIndex = 4;
+            DataGridViewTimeEntries.Columns["Comments"].DisplayIndex = 5;
+            DataGridViewTimeEntries.Columns["UpdatedOn"].DisplayIndex = 6;
 
         }
 
@@ -114,6 +116,63 @@ namespace Redmine.Client
             TimeEntry timeEntry = (TimeEntry)DataGridViewTimeEntries.Rows[e.RowIndex].DataBoundItem;
             try
             {
+                TimeEntryForm dlg = new TimeEntryForm(issue, projectMembers, timeEntry);
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    AsyncLoadTimeEntries();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+
+        private void BtnAddButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TimeEntryForm dlg = new TimeEntryForm(issue, projectMembers);
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    AsyncLoadTimeEntries();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+
+        private void BtnModifyButton_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewTimeEntries.SelectedRows.Count <= 0)
+                return;
+
+            try
+            {
+                TimeEntry timeEntry = (TimeEntry)DataGridViewTimeEntries.SelectedRows[0].DataBoundItem;
+                TimeEntryForm dlg = new TimeEntryForm(issue, projectMembers, timeEntry);
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    AsyncLoadTimeEntries();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+
+        private void BtnDeleteButton_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewTimeEntries.SelectedRows.Count <= 0)
+                return;
+
+            try
+            {
+                TimeEntry timeEntry = (TimeEntry)DataGridViewTimeEntries.SelectedRows[0].DataBoundItem;
+                MessageBox.Show(String.Format(Lang.Warning_AreYouSureDeleteTimeEntry, timeEntry.Id), Lang.Warning, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 TimeEntryForm dlg = new TimeEntryForm(issue, projectMembers, timeEntry);
                 if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
