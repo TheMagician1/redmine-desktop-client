@@ -16,9 +16,12 @@ namespace Redmine.Client
     {
         private Issue issue;
         private IList<TimeEntry> timeEntries;
-        public TimeEntriesForm(Issue issue)
+        private IList<ProjectMember> projectMembers;
+
+        public TimeEntriesForm(Issue issue, IList<ProjectMember> projectMembers)
         {
             this.issue = issue;
+            this.projectMembers = projectMembers;
             InitializeComponent();
             this.Text = String.Format(Lang.DlgTimeEntriesTitle, issue.Id, issue.Subject);
             LangTools.UpdateControlsForLanguage(this.Controls);
@@ -98,6 +101,29 @@ namespace Redmine.Client
         {
             if (e.Value is IdentifiableName)
                 e.Value = ((IdentifiableName)e.Value).Name;
+        }
+
+        private void BtnOKButton_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void DataGridViewTimeEntries_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            TimeEntry timeEntry = (TimeEntry)DataGridViewTimeEntries.Rows[e.RowIndex].DataBoundItem;
+            try
+            {
+                TimeEntryForm dlg = new TimeEntryForm(issue, projectMembers, timeEntry);
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    //BtnRefreshButton_Click(null, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
         }
 
     }

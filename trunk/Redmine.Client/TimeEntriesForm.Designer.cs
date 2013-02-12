@@ -44,6 +44,7 @@
             this.BtnOKButton.TabIndex = 26;
             this.BtnOKButton.Text = "OK";
             this.BtnOKButton.UseVisualStyleBackColor = true;
+            this.BtnOKButton.Click += new System.EventHandler(this.BtnOKButton_Click);
             // 
             // BtnCancelButton
             // 
@@ -74,6 +75,7 @@
             this.DataGridViewTimeEntries.Size = new System.Drawing.Size(390, 218);
             this.DataGridViewTimeEntries.TabIndex = 28;
             this.DataGridViewTimeEntries.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewTimeEntries_CellFormatting);
+            this.DataGridViewTimeEntries.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewTimeEntries_CellMouseDoubleClick);
             // 
             // TimeEntriesForm
             // 
