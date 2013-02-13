@@ -82,6 +82,7 @@
             // 
             // BtnDeleteButton
             // 
+            this.BtnDeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnDeleteButton.Location = new System.Drawing.Point(372, 72);
             this.BtnDeleteButton.Name = "BtnDeleteButton";
             this.BtnDeleteButton.Size = new System.Drawing.Size(68, 24);
@@ -92,6 +93,7 @@
             // 
             // BtnModifyButton
             // 
+            this.BtnModifyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnModifyButton.Location = new System.Drawing.Point(372, 42);
             this.BtnModifyButton.Name = "BtnModifyButton";
             this.BtnModifyButton.Size = new System.Drawing.Size(68, 24);
@@ -102,6 +104,7 @@
             // 
             // BtnAddButton
             // 
+            this.BtnAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAddButton.Location = new System.Drawing.Point(372, 12);
             this.BtnAddButton.Name = "BtnAddButton";
             this.BtnAddButton.Size = new System.Drawing.Size(68, 24);

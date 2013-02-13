@@ -34,7 +34,7 @@ namespace Redmine.Client
 
         private void AsyncLoadTimeEntries()
         {
-            this.Cursor = Cursors.AppStarting;        
+            this.Cursor = Cursors.AppStarting;
             AddBgWork(Lang.BgWork_GetTimeEntries, () =>
                 {
                     try

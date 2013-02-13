@@ -58,8 +58,8 @@ namespace Redmine.Client
             comboBoxActivity.DisplayMember = "Name";
             comboBoxActivity.ValueMember = "Id";
             comboBoxByUser.DataSource = projectMembers;
-            comboBoxActivity.DisplayMember = "Name";
-            comboBoxActivity.ValueMember = "Id";
+            comboBoxByUser.DisplayMember = "Name";
+            comboBoxByUser.ValueMember = "Id";
         }
 
         private void LoadLanguage()
@@ -75,8 +75,8 @@ namespace Redmine.Client
                 string fmtSpentOn = "";
                 if (CurTimeEntry.SpentOn.HasValue)
                     fmtSpentOn = CurTimeEntry.SpentOn.Value.ToString("d", Lang.Culture);
-                this.Text = String.Format(Lang.DlgTimeEntryFormTitle_Edit, fmtSpentOn, issue.Id, issue.Subject);
-                labelTimeEntryTitle.Text = String.Format(Lang.labelTimeEntryTitle_Edit, fmtSpentOn, issue.Id, issue.Subject);
+                this.Text = String.Format(Lang.DlgTimeEntryFormTitle_Edit, fmtSpentOn, issue.Id, issue.Subject, Environment.NewLine);
+                labelTimeEntryTitle.Text = String.Format(Lang.labelTimeEntryTitle_Edit, fmtSpentOn, issue.Id, issue.Subject, Environment.NewLine);
             }
         }
 
@@ -87,11 +87,19 @@ namespace Redmine.Client
             CurTimeEntry.Activity.Id = ((IdentifiableName)comboBoxActivity.SelectedItem).Id;
             CurTimeEntry.Hours = decimal.Parse(textBoxSpentHours.Text, Lang.Culture);
             CurTimeEntry.Comments = textBoxComment.Text;
-
-            if (type == eFormType.New)
-                RedmineClientForm.redmine.CreateObject(CurTimeEntry);
-            else
-                RedmineClientForm.redmine.UpdateObject(CurTimeEntry.Id.ToString(), CurTimeEntry);
+            try
+            {
+                if (type == eFormType.New)
+                    RedmineClientForm.redmine.CreateObject(CurTimeEntry);
+                else
+                    RedmineClientForm.redmine.UpdateObject(CurTimeEntry.Id.ToString(), CurTimeEntry);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
         }
     }
 }
