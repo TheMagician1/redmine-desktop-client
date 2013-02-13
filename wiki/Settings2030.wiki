@@ -27,6 +27,6 @@ For older versions, see [#Older_versions bottom] of this page.
 || _Edit Enumerations_ || Here you can edit the enumerations that are not provided by the Redmine API ||
 
 == Older versions ==
-Version 2.0.2.0: [Settings2020 Settings]
+Version 2.0.2.0: [Settings2020 Settings]<br>
 _If you use an older version, not all settings are available._<br>
 If you want to add activities and priorities in an older Redmine Desktop Client, which are not default available in redmine, please refer to [CustomActivitiesAndPriorities].
