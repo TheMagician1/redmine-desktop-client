@@ -948,7 +948,7 @@ namespace Redmine.Client
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DataGridViewIssues_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewIssues_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Issue issue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
             try

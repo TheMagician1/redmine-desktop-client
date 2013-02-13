@@ -45,7 +45,7 @@
             // 
             // BtnOKButton
             // 
-            this.BtnOKButton.Location = new System.Drawing.Point(78, 192);
+            this.BtnOKButton.Location = new System.Drawing.Point(82, 202);
             this.BtnOKButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnOKButton.Name = "BtnOKButton";
             this.BtnOKButton.Size = new System.Drawing.Size(68, 24);
@@ -57,7 +57,7 @@
             // BtnCancelButton
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(150, 192);
+            this.BtnCancelButton.Location = new System.Drawing.Point(154, 202);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -67,8 +67,9 @@
             // 
             // comboBoxActivity
             // 
+            this.comboBoxActivity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxActivity.FormattingEnabled = true;
-            this.comboBoxActivity.Location = new System.Drawing.Point(150, 95);
+            this.comboBoxActivity.Location = new System.Drawing.Point(153, 105);
             this.comboBoxActivity.Name = "comboBoxActivity";
             this.comboBoxActivity.Size = new System.Drawing.Size(121, 21);
             this.comboBoxActivity.TabIndex = 8;
@@ -76,29 +77,30 @@
             // datePickerSpentOn
             // 
             this.datePickerSpentOn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datePickerSpentOn.Location = new System.Drawing.Point(150, 42);
+            this.datePickerSpentOn.Location = new System.Drawing.Point(153, 52);
             this.datePickerSpentOn.Name = "datePickerSpentOn";
             this.datePickerSpentOn.Size = new System.Drawing.Size(95, 20);
             this.datePickerSpentOn.TabIndex = 9;
             // 
             // comboBoxByUser
             // 
+            this.comboBoxByUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxByUser.FormattingEnabled = true;
-            this.comboBoxByUser.Location = new System.Drawing.Point(150, 68);
+            this.comboBoxByUser.Location = new System.Drawing.Point(153, 78);
             this.comboBoxByUser.Name = "comboBoxByUser";
             this.comboBoxByUser.Size = new System.Drawing.Size(121, 21);
             this.comboBoxByUser.TabIndex = 10;
             // 
             // textBoxSpentHours
             // 
-            this.textBoxSpentHours.Location = new System.Drawing.Point(150, 122);
+            this.textBoxSpentHours.Location = new System.Drawing.Point(153, 132);
             this.textBoxSpentHours.Name = "textBoxSpentHours";
             this.textBoxSpentHours.Size = new System.Drawing.Size(121, 20);
             this.textBoxSpentHours.TabIndex = 11;
             // 
             // textBoxComment
             // 
-            this.textBoxComment.Location = new System.Drawing.Point(31, 167);
+            this.textBoxComment.Location = new System.Drawing.Point(34, 177);
             this.textBoxComment.Name = "textBoxComment";
             this.textBoxComment.Size = new System.Drawing.Size(240, 20);
             this.textBoxComment.TabIndex = 12;
@@ -106,7 +108,7 @@
             // labelSpentOn
             // 
             this.labelSpentOn.AutoSize = true;
-            this.labelSpentOn.Location = new System.Drawing.Point(28, 48);
+            this.labelSpentOn.Location = new System.Drawing.Point(31, 58);
             this.labelSpentOn.Name = "labelSpentOn";
             this.labelSpentOn.Size = new System.Drawing.Size(52, 13);
             this.labelSpentOn.TabIndex = 13;
@@ -115,7 +117,7 @@
             // labelByUser
             // 
             this.labelByUser.AutoSize = true;
-            this.labelByUser.Location = new System.Drawing.Point(28, 71);
+            this.labelByUser.Location = new System.Drawing.Point(31, 81);
             this.labelByUser.Name = "labelByUser";
             this.labelByUser.Size = new System.Drawing.Size(44, 13);
             this.labelByUser.TabIndex = 13;
@@ -124,7 +126,7 @@
             // labelActivity
             // 
             this.labelActivity.AutoSize = true;
-            this.labelActivity.Location = new System.Drawing.Point(28, 98);
+            this.labelActivity.Location = new System.Drawing.Point(31, 108);
             this.labelActivity.Name = "labelActivity";
             this.labelActivity.Size = new System.Drawing.Size(41, 13);
             this.labelActivity.TabIndex = 13;
@@ -133,7 +135,7 @@
             // labelSpentHours
             // 
             this.labelSpentHours.AutoSize = true;
-            this.labelSpentHours.Location = new System.Drawing.Point(28, 125);
+            this.labelSpentHours.Location = new System.Drawing.Point(31, 135);
             this.labelSpentHours.Name = "labelSpentHours";
             this.labelSpentHours.Size = new System.Drawing.Size(66, 13);
             this.labelSpentHours.TabIndex = 13;
@@ -142,7 +144,7 @@
             // labelComment
             // 
             this.labelComment.AutoSize = true;
-            this.labelComment.Location = new System.Drawing.Point(28, 151);
+            this.labelComment.Location = new System.Drawing.Point(31, 161);
             this.labelComment.Name = "labelComment";
             this.labelComment.Size = new System.Drawing.Size(51, 13);
             this.labelComment.TabIndex = 13;
@@ -161,7 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 229);
+            this.ClientSize = new System.Drawing.Size(305, 237);
             this.Controls.Add(this.labelTimeEntryTitle);
             this.Controls.Add(this.labelComment);
             this.Controls.Add(this.labelSpentHours);
@@ -175,6 +177,7 @@
             this.Controls.Add(this.comboBoxActivity);
             this.Controls.Add(this.BtnOKButton);
             this.Controls.Add(this.BtnCancelButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "TimeEntryForm";
             this.ShowIcon = false;

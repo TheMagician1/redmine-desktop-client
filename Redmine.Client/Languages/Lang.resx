@@ -538,11 +538,11 @@ or Request attention every
     <comment>{0} issue number; {1} issue subject</comment>
   </data>
   <data name="labelTimeEntryTitle_Edit" xml:space="preserve">
-    <value>Edit Time entry of {0} for issue {1} {2}</value>
+    <value>Edit Time entry of {0} for issue{3}{1} {2}</value>
     <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
   </data>
   <data name="labelTimeEntryTitle_New" xml:space="preserve">
-    <value>Create new Time Entry for issue {0} {1}</value>
+    <value>Create new Time Entry for issue{3}{0} {1}</value>
     <comment>{0} issue number; {1} issue subject</comment>
   </data>
   <data name="labelByUser" xml:space="preserve">
