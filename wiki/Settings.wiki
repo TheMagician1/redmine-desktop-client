@@ -1,8 +1,8 @@
-#summary What do the settings mean
+#summary What do the settings mean (V2.0.2.0)
 #labels Phase-Deploy,Featured
 = Settings =
 
-This is a brief explanation of the Settings Dialog.
+This is a brief explanation of the Settings Dialog of version 2.0.2.0.
 
 [http://redmine-desktop-client.googlecode.com/svn/images/screenshots/redmineclient.settings.png]
 <br>_The settings dialog_
