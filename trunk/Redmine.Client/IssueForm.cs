@@ -22,14 +22,16 @@ namespace Redmine.Client
             Edit,
         };
         private Project project;
+        private int issueId = 0;
         private Issue issue;
-        private int ProjectId { get { if (this.type == DialogType.New) return project.Id; else return issue.Project.Id; } }
+        private int projectId;
         private DialogType type;
         private IssueFormData DataCache = null;
 
         public IssueForm(Project project)
         {
             this.project = project;
+            this.projectId = project.Id;
             this.type = DialogType.New;
             InitializeComponent();
             this.Text = String.Format(Lang.DlgIssueTitleNew, project.Name);
@@ -41,12 +43,47 @@ namespace Redmine.Client
 
         public IssueForm(Issue issue)
         {
-            this.issue = issue;
+            this.issueId = issue.Id;
+            this.projectId = issue.Project.Id;
             this.type = DialogType.Edit;
             InitializeComponent();
 
             this.Text = String.Format(Lang.DlgIssueTitleEdit, issue.Id, issue.Project.Name);
             LangTools.UpdateControlsForLanguage(this.Controls);
+
+            EnableDisableAllControls(false);
+        }
+
+        private void EnableDisableAllControls(bool enable)
+        {
+            //BtnCancelButton.Enabled = enable;
+            BtnSaveButton.Enabled = enable;
+            labelTracker.Enabled = enable;
+            ComboBoxTracker.Enabled = enable;
+            DateStart.Enabled = enable;
+            labelSubject.Enabled = enable;
+            TextBoxSubject.Enabled = enable;
+            labelDescription.Enabled = enable;
+            TextBoxDescription.Enabled = enable;
+            labelStatus.Enabled = enable;
+            ComboBoxStatus.Enabled = enable;
+            labelPriority.Enabled = enable;
+            ComboBoxPriority.Enabled = enable;
+            DateDue.Enabled = enable;
+            labelEstimatedTime.Enabled = enable;
+            TextBoxEstimatedTime.Enabled = enable;
+            labelAssignedTo.Enabled = enable;
+            ComboBoxAssignedTo.Enabled = enable;
+            labelTargetVersion.Enabled = enable;
+            ComboBoxTargetVersion.Enabled = enable;
+            numericUpDown1.Enabled = enable;
+            labelPercentDone.Enabled = enable;
+            cbStartDate.Enabled = enable;
+            cbDueDate.Enabled = enable;
+            BtnCloseButton.Enabled = enable;
+            //linkEditInRedmine.Enabled = enable;
+            DataGridViewCustomFields.Enabled = enable;
+            BtnViewTimeButton.Enabled = enable;
         }
 
         private void BtnSaveButton_Click(object sender, EventArgs e)
@@ -54,7 +91,7 @@ namespace Redmine.Client
             Issue issue = new Issue();
             if (type == DialogType.Edit)
                 issue.Id = this.issue.Id;
-            issue.Project = new IdentifiableName { Id = ProjectId };
+            issue.Project = new IdentifiableName { Id = projectId };
             issue.AssignedTo = new IdentifiableName { Id = Convert.ToInt32(ComboBoxAssignedTo.SelectedValue) };
             issue.Description = TextBoxDescription.Text;
             
@@ -118,7 +155,7 @@ namespace Redmine.Client
             if (this.DataCache == null)
             {
                 this.Cursor = Cursors.AppStarting;
-                RunWorkerAsync(ProjectId);
+                RunWorkerAsync(projectId);
                 this.BtnSaveButton.Enabled = false;
             }
             else
@@ -129,6 +166,9 @@ namespace Redmine.Client
 
         private void FillForm()
         {
+            EnableDisableAllControls(true);
+            // update title again
+            this.Text = String.Format(Lang.DlgIssueTitleEdit, issue.Id, issue.Project.Name);
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
             {
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
@@ -259,8 +299,11 @@ namespace Redmine.Client
                     try
                     {
                         IssueFormData dataCache = new IssueFormData();
+                        Issue currentIssue = null;
                         if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                         {
+                            NameValueCollection issueParameters = new NameValueCollection { { "include", "journals" } };
+                            currentIssue = RedmineClientForm.redmine.GetObject<Issue>(issueId.ToString(), issueParameters);
                             dataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
                             dataCache.Trackers = RedmineClientForm.redmine.GetTotalObjectList<Tracker>(parameters);
                             dataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
@@ -280,6 +323,7 @@ namespace Redmine.Client
                         }
                         return () =>
                             {
+                                this.issue = currentIssue;
                                 this.DataCache = dataCache;
                                 FillForm();
                                 this.BtnSaveButton.Enabled = true;
@@ -328,7 +372,7 @@ namespace Redmine.Client
             this.linkEditInRedmine.LinkVisited = true;
 
             // Navigate to a URL.
-            System.Diagnostics.Process.Start(RedmineClientForm.RedmineURL + "/issues/" + issue.Id.ToString());
+            System.Diagnostics.Process.Start(RedmineClientForm.RedmineURL + "/issues/" + issueId.ToString());
         }
 
         private void BtnViewTimeButton_Click(object sender, EventArgs e)
