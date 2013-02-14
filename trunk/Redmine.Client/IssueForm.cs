@@ -28,6 +28,8 @@ namespace Redmine.Client
         private DialogType type;
         private IssueFormData DataCache = null;
 
+        private DataGridView DataGridViewChildren;
+
         public IssueForm(Project project)
         {
             this.project = project;
@@ -94,7 +96,7 @@ namespace Redmine.Client
             issue.Project = new IdentifiableName { Id = projectId };
             issue.AssignedTo = new IdentifiableName { Id = Convert.ToInt32(ComboBoxAssignedTo.SelectedValue) };
             issue.Description = TextBoxDescription.Text;
-            
+
             int time;
             issue.EstimatedHours = Int32.TryParse(TextBoxEstimatedTime.Text, out time) ? time : 0;
             issue.DoneRatio = Convert.ToInt32(numericUpDown1.Value);
@@ -105,7 +107,7 @@ namespace Redmine.Client
             }
             if (DateDue.Enabled)
             {
-                issue.DueDate = DateDue.Value;   
+                issue.DueDate = DateDue.Value;
             }
             issue.Status = new IdentifiableName { Id = Convert.ToInt32(ComboBoxStatus.SelectedValue) };
             issue.Subject = TextBoxSubject.Text;
@@ -160,7 +162,7 @@ namespace Redmine.Client
             }
             else
             {
-                FillForm();   
+                FillForm();
             }
         }
 
@@ -282,7 +284,58 @@ namespace Redmine.Client
                     DataGridViewCustomFields.RowHeadersVisible = false;
                     DataGridViewCustomFields.ColumnHeadersVisible = false;
                 }
+                // if the issue has children, show them.
+                if (issue.Children.Count > 0)
+                {
+                    DataGridViewChildren = new DataGridView();
+                    DataGridViewChildren.AllowUserToAddRows = false;
+                    DataGridViewChildren.AllowUserToDeleteRows = false;
+                    DataGridViewChildren.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                    DataGridViewChildren.Location = new System.Drawing.Point(TextBoxDescription.Location.X, linkEditInRedmine.Location.Y);
+                    DataGridViewChildren.MultiSelect = false;
+                    DataGridViewChildren.Name = "DataGridViewChildren";
+                    DataGridViewChildren.ReadOnly = true;
+                    DataGridViewChildren.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+                    DataGridViewChildren.Size = new System.Drawing.Size(TextBoxDescription.Width, 88);
+                    DataGridViewChildren.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewChildren_CellFormatting);
+                    DataGridViewChildren.TabIndex = 26;
+                    DataGridViewChildren.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                    try // Very ugly trick to fix the mono crash reported in the SF.net forum
+                    {
+                        DataGridViewChildren.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    }
+                    catch (Exception) { }
+                    if (DataGridViewChildren.Columns.Count > 0)
+                    {
+                        DataGridViewChildren.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    }
+                    DataGridViewChildren.RowHeadersWidth = 20;
+                    Controls.Add(DataGridViewChildren);
+                    DataGridViewChildren.DataSource = issue.Children;
+                    foreach (DataGridViewColumn column in DataGridViewChildren.Columns)
+                    {
+                        if (column.Name != "Id" && column.Name != "Subject")
+                        {
+                            column.Visible = false;
+                        }
+                    }
+                    DataGridViewChildren.Columns["Id"].DisplayIndex = 0;
+                    DataGridViewChildren.Columns["Subject"].DisplayIndex = 1;
+                    Height += 100;
+                    MoveControl(linkEditInRedmine, 0, 100);
+                    MoveControl(BtnCancelButton, 0, 100);
+                    MoveControl(BtnCloseButton, 0, 100);
+                    MoveControl(BtnSaveButton, 0, 100);
+                }
             }
+        }
+
+        private void MoveControl(Control control, int diffx, int diffy)
+        {
+            System.Drawing.Point loc = control.Location;
+            loc.X += diffx;
+            loc.Y += diffy;
+            control.Location = loc;
         }
 
         private static ProjectMember MembershipToMember(ProjectMembership projectMember)
@@ -302,7 +355,7 @@ namespace Redmine.Client
                         Issue currentIssue = null;
                         if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                         {
-                            NameValueCollection issueParameters = new NameValueCollection { { "include", "journals" } };
+                            NameValueCollection issueParameters = new NameValueCollection { { "include", "journals,relations,children" } };
                             currentIssue = RedmineClientForm.redmine.GetObject<Issue>(issueId.ToString(), issueParameters);
                             dataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
                             dataCache.Trackers = RedmineClientForm.redmine.GetTotalObjectList<Tracker>(parameters);
@@ -391,6 +444,14 @@ namespace Redmine.Client
             }
         }
 
+        private void DataGridViewChildren_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == DataGridViewChildren.Columns["Id"].Index) // Id column
+            {
+                IssueChild currentIssueChild = (IssueChild)DataGridViewChildren.Rows[e.RowIndex].DataBoundItem;
+                e.Value = currentIssueChild.Tracker.Name + " " + currentIssueChild.Id.ToString();
+            }
+        }
 
     }
 }
