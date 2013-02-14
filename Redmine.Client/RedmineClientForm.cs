@@ -1056,5 +1056,14 @@ namespace Redmine.Client
             }
         }
 
+        private void DataGridViewIssues_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == DataGridViewIssues.Columns["Id"].Index) // Id column
+            {
+                Issue currentIssue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
+                e.Value = currentIssue.Tracker.Name + " " + currentIssue.Id.ToString();
+            }
+        }
+
     }
 }
