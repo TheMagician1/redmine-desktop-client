@@ -558,6 +558,13 @@ or Request attention every
     <value>Are you sure you want to delete time entry {0}</value>
     <comment>{0} time-entry id</comment>
   </data>
+  <data name="LabelChildren" xml:space="preserve">
+    <value>Children:</value>
+  </data>
+  <data name="LabelParent" xml:space="preserve">
+    <value>Parent: {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
   <data name="PauseToolStripMenuItem" xml:space="preserve">
     <value>&amp;Pause</value>
   </data>

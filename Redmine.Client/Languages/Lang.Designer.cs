@@ -853,6 +853,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Children:.
+        /// </summary>
+        internal static string LabelChildren {
+            get {
+                return ResourceManager.GetString("LabelChildren", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         internal static string labelComment {
@@ -975,6 +984,15 @@ namespace Redmine.Client.Languages {
         internal static string labelLanguage {
             get {
                 return ResourceManager.GetString("labelLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parent: {0} {1}.
+        /// </summary>
+        internal static string LabelParent {
+            get {
+                return ResourceManager.GetString("LabelParent", resourceCulture);
             }
         }
         
