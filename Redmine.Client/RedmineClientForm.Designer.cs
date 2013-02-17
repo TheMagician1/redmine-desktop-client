@@ -47,7 +47,9 @@ namespace Redmine.Client
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.NotifyIconMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RestoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DataGridViewIssues = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.BtnRefreshButton = new System.Windows.Forms.Button();
@@ -198,23 +200,39 @@ namespace Redmine.Client
             // 
             this.NotifyIconMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RestoreToolStripMenuItem,
+            this.StartToolStripMenuItem,
+            this.PauseToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.NotifyIconMenuStrip.Name = "NotifyIconMenuStrip";
-            this.NotifyIconMenuStrip.Size = new System.Drawing.Size(104, 48);
+            this.NotifyIconMenuStrip.Size = new System.Drawing.Size(153, 114);
             // 
             // RestoreToolStripMenuItem
             // 
             this.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem";
-            this.RestoreToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.RestoreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.RestoreToolStripMenuItem.Text = "&Hide";
             this.RestoreToolStripMenuItem.Click += new System.EventHandler(this.RestoreToolStripMenuItem_Click);
+            // 
+            // PauseToolStripMenuItem
+            // 
+            this.PauseToolStripMenuItem.Name = "PauseToolStripMenuItem";
+            this.PauseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.PauseToolStripMenuItem.Text = "&Pause";
+            this.PauseToolStripMenuItem.Click += new System.EventHandler(this.PauseToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ExitToolStripMenuItem.Text = "&Close";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // StartToolStripMenuItem
+            // 
+            this.StartToolStripMenuItem.Name = "StartToolStripMenuItem";
+            this.StartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.StartToolStripMenuItem.Text = "&Start";
+            this.StartToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
             // DataGridViewIssues
             // 
@@ -392,6 +410,8 @@ namespace Redmine.Client
         private Button BtnSettingsButton;
         private Button BtnNewIssueButton;
         private CheckBox CheckBoxOnlyMe;
+        private ToolStripMenuItem PauseToolStripMenuItem;
+        private ToolStripMenuItem StartToolStripMenuItem;
     }
 }
 

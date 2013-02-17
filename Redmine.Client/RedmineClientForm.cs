@@ -353,6 +353,7 @@ namespace Redmine.Client
             Languages.LangTools.UpdateControlsForLanguage(this.Controls);
             Languages.LangTools.UpdateControlsForLanguage(NotifyIconMenuStrip.Items);
             SetRestoreToolStripMenuItem();
+            UpdateToolStripMenuItemsStartPause();
 
             projectId = Properties.Settings.Default.LastProjectId;
             issueId = Properties.Settings.Default.LastIssueId;
@@ -360,6 +361,12 @@ namespace Redmine.Client
             CheckBoxOnlyMe.Checked = Properties.Settings.Default.OnlyAssignedToMe;
 
             BtnNewIssueButton.Visible = RedmineVersion >= ApiVersion.V13x;
+        }
+
+        private void UpdateToolStripMenuItemsStartPause()
+        {
+            StartToolStripMenuItem.Enabled = !ticking;
+            PauseToolStripMenuItem.Enabled = ticking;
         }
 
         private void SetRestoreToolStripMenuItem()
@@ -455,6 +462,7 @@ namespace Redmine.Client
             }
             Properties.Settings.Default.SetTickingTick(this.ticking, this.ticks);
             UpdateNotifyIconText();
+            UpdateToolStripMenuItemsStartPause();
         }
 
         private void StartTimer()
@@ -1063,6 +1071,16 @@ namespace Redmine.Client
                 Issue currentIssue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
                 e.Value = currentIssue.Tracker.Name + " " + currentIssue.Id.ToString();
             }
+        }
+
+        private void StartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BtnStartButton_Click(sender, e);
+        }
+
+        private void PauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BtnStartButton_Click(sender, e);
         }
 
     }
