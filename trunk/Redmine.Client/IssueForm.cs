@@ -28,7 +28,9 @@ namespace Redmine.Client
         private DialogType type;
         private IssueFormData DataCache = null;
 
+        private Label LabelChildren;
         private DataGridView DataGridViewChildren;
+        private Label LabelParent;
 
         public IssueForm(Project project)
         {
@@ -287,11 +289,20 @@ namespace Redmine.Client
                 // if the issue has children, show them.
                 if (issue.Children.Count > 0)
                 {
+                    LabelChildren = new Label();
+                    LabelChildren.AutoSize = true;
+                    LabelChildren.Location = new System.Drawing.Point(TextBoxDescription.Location.X, linkEditInRedmine.Location.Y);
+                    LabelChildren.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+                    LabelChildren.Name = "LabelChildren";
+                    LabelChildren.Size = new System.Drawing.Size(44, 13);
+                    LabelChildren.TabIndex = 4;
+                    LabelChildren.Text = Lang.LabelChildren;
+
                     DataGridViewChildren = new DataGridView();
                     DataGridViewChildren.AllowUserToAddRows = false;
                     DataGridViewChildren.AllowUserToDeleteRows = false;
                     DataGridViewChildren.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-                    DataGridViewChildren.Location = new System.Drawing.Point(TextBoxDescription.Location.X, linkEditInRedmine.Location.Y);
+                    DataGridViewChildren.Location = new System.Drawing.Point(TextBoxDescription.Location.X, linkEditInRedmine.Location.Y+19);
                     DataGridViewChildren.MultiSelect = false;
                     DataGridViewChildren.Name = "DataGridViewChildren";
                     DataGridViewChildren.ReadOnly = true;
@@ -321,11 +332,27 @@ namespace Redmine.Client
                     }
                     DataGridViewChildren.Columns["Id"].DisplayIndex = 0;
                     DataGridViewChildren.Columns["Subject"].DisplayIndex = 1;
-                    Height += 100;
-                    MoveControl(linkEditInRedmine, 0, 100);
-                    MoveControl(BtnCancelButton, 0, 100);
-                    MoveControl(BtnCloseButton, 0, 100);
-                    MoveControl(BtnSaveButton, 0, 100);
+                    Height += 119;
+                    MoveControl(linkEditInRedmine, 0, 119);
+                    MoveControl(BtnCancelButton, 0, 119);
+                    MoveControl(BtnCloseButton, 0, 119);
+                    MoveControl(BtnSaveButton, 0, 119);
+                }
+                if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
+                {
+                    LabelParent = new Label();
+                    LabelParent.AutoSize = true;
+                    LabelParent.Location = new System.Drawing.Point(TextBoxDescription.Location.X, linkEditInRedmine.Location.Y);
+                    LabelParent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+                    LabelParent.Name = "LabelParent";
+                    LabelParent.Size = new System.Drawing.Size(44, 13);
+                    LabelParent.TabIndex = 4;
+                    LabelParent.Text = String.Format(Lang.LabelParent, issue.ParentIssue.Id, issue.ParentIssue.Name);
+                    Height += 19;
+                    MoveControl(linkEditInRedmine, 0, 19);
+                    MoveControl(BtnCancelButton, 0, 19);
+                    MoveControl(BtnCloseButton, 0, 19);
+                    MoveControl(BtnSaveButton, 0, 19);
                 }
             }
         }
