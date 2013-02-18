@@ -47,9 +47,9 @@ namespace Redmine.Client
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.NotifyIconMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RestoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.StartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DataGridViewIssues = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.BtnRefreshButton = new System.Windows.Forms.Button();
@@ -161,7 +161,7 @@ namespace Redmine.Client
             this.labelProject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelProject.Name = "labelProject";
             this.labelProject.Size = new System.Drawing.Size(40, 13);
-            this.labelProject.TabIndex = 0;
+            this.labelProject.TabIndex = 1;
             this.labelProject.Text = "Project";
             // 
             // ComboBoxProject
@@ -174,7 +174,7 @@ namespace Redmine.Client
             this.ComboBoxProject.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxProject.Name = "ComboBoxProject";
             this.ComboBoxProject.Size = new System.Drawing.Size(240, 21);
-            this.ComboBoxProject.TabIndex = 1;
+            this.ComboBoxProject.TabIndex = 2;
             this.ComboBoxProject.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProject_SelectedIndexChanged);
             // 
             // BtnCommitButton
@@ -204,35 +204,35 @@ namespace Redmine.Client
             this.PauseToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.NotifyIconMenuStrip.Name = "NotifyIconMenuStrip";
-            this.NotifyIconMenuStrip.Size = new System.Drawing.Size(153, 114);
+            this.NotifyIconMenuStrip.Size = new System.Drawing.Size(106, 92);
             // 
             // RestoreToolStripMenuItem
             // 
             this.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem";
-            this.RestoreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.RestoreToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.RestoreToolStripMenuItem.Text = "&Hide";
             this.RestoreToolStripMenuItem.Click += new System.EventHandler(this.RestoreToolStripMenuItem_Click);
+            // 
+            // StartToolStripMenuItem
+            // 
+            this.StartToolStripMenuItem.Name = "StartToolStripMenuItem";
+            this.StartToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.StartToolStripMenuItem.Text = "&Start";
+            this.StartToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
             // PauseToolStripMenuItem
             // 
             this.PauseToolStripMenuItem.Name = "PauseToolStripMenuItem";
-            this.PauseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.PauseToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.PauseToolStripMenuItem.Text = "&Pause";
             this.PauseToolStripMenuItem.Click += new System.EventHandler(this.PauseToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.ExitToolStripMenuItem.Text = "&Close";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            // 
-            // StartToolStripMenuItem
-            // 
-            this.StartToolStripMenuItem.Name = "StartToolStripMenuItem";
-            this.StartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.StartToolStripMenuItem.Text = "&Start";
-            this.StartToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
             // DataGridViewIssues
             // 
@@ -251,7 +251,7 @@ namespace Redmine.Client
             this.DataGridViewIssues.RowTemplate.Height = 24;
             this.DataGridViewIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewIssues.Size = new System.Drawing.Size(416, 312);
-            this.DataGridViewIssues.TabIndex = 2;
+            this.DataGridViewIssues.TabIndex = 0;
             this.DataGridViewIssues.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewIssues_CellDoubleClick);
             this.DataGridViewIssues.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewIssues_CellFormatting);
             this.DataGridViewIssues.SelectionChanged += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
