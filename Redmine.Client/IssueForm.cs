@@ -287,7 +287,7 @@ namespace Redmine.Client
                     DataGridViewCustomFields.ColumnHeadersVisible = false;
                 }
                 // if the issue has children, show them.
-                if (issue.Children.Count > 0)
+                if (issue.Children != null && issue.Children.Count > 0)
                 {
                     LabelChildren = new Label();
                     LabelChildren.AutoSize = true;
@@ -297,6 +297,7 @@ namespace Redmine.Client
                     LabelChildren.Size = new System.Drawing.Size(44, 13);
                     LabelChildren.TabIndex = 4;
                     LabelChildren.Text = Lang.LabelChildren;
+                    Controls.Add(LabelChildren);
 
                     DataGridViewChildren = new DataGridView();
                     DataGridViewChildren.AllowUserToAddRows = false;
@@ -311,6 +312,8 @@ namespace Redmine.Client
                     DataGridViewChildren.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewChildren_CellFormatting);
                     DataGridViewChildren.TabIndex = 26;
                     DataGridViewChildren.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                    Controls.Add(DataGridViewChildren);
+                    DataGridViewChildren.DataSource = issue.Children;
                     try // Very ugly trick to fix the mono crash reported in the SF.net forum
                     {
                         DataGridViewChildren.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -321,8 +324,6 @@ namespace Redmine.Client
                         DataGridViewChildren.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     }
                     DataGridViewChildren.RowHeadersWidth = 20;
-                    Controls.Add(DataGridViewChildren);
-                    DataGridViewChildren.DataSource = issue.Children;
                     foreach (DataGridViewColumn column in DataGridViewChildren.Columns)
                     {
                         if (column.Name != "Id" && column.Name != "Subject")
@@ -342,17 +343,20 @@ namespace Redmine.Client
                 {
                     LabelParent = new Label();
                     LabelParent.AutoSize = true;
+                    System.Drawing.Font defaultFont = (System.Drawing.Font)labelDescription.Font.Clone();
+                    LabelParent.Font = new System.Drawing.Font(defaultFont.FontFamily, defaultFont.Size, System.Drawing.FontStyle.Italic, defaultFont.Unit, defaultFont.GdiCharSet);
                     LabelParent.Location = new System.Drawing.Point(TextBoxDescription.Location.X, linkEditInRedmine.Location.Y);
                     LabelParent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
                     LabelParent.Name = "LabelParent";
                     LabelParent.Size = new System.Drawing.Size(44, 13);
                     LabelParent.TabIndex = 4;
                     LabelParent.Text = String.Format(Lang.LabelParent, issue.ParentIssue.Id, issue.ParentIssue.Name);
-                    Height += 19;
-                    MoveControl(linkEditInRedmine, 0, 19);
-                    MoveControl(BtnCancelButton, 0, 19);
-                    MoveControl(BtnCloseButton, 0, 19);
-                    MoveControl(BtnSaveButton, 0, 19);
+                    Controls.Add(LabelParent);
+                    Height += 24;
+                    MoveControl(linkEditInRedmine, 0, 24);
+                    MoveControl(BtnCancelButton, 0, 24);
+                    MoveControl(BtnCloseButton, 0, 24);
+                    MoveControl(BtnSaveButton, 0, 24);
                 }
             }
         }
@@ -384,6 +388,12 @@ namespace Redmine.Client
                         {
                             NameValueCollection issueParameters = new NameValueCollection { { "include", "journals,relations,children" } };
                             currentIssue = RedmineClientForm.redmine.GetObject<Issue>(issueId.ToString(), issueParameters);
+                            if (currentIssue.ParentIssue != null && currentIssue.ParentIssue.Id != 0)
+                            {
+                                Issue parentIssue = RedmineClientForm.redmine.GetObject<Issue>(currentIssue.ParentIssue.Id.ToString(), null);
+                                currentIssue.ParentIssue.Name = parentIssue.Subject;
+                            }
+
                             dataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
                             dataCache.Trackers = RedmineClientForm.redmine.GetTotalObjectList<Tracker>(parameters);
                             dataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
