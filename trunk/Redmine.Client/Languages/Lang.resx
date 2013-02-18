@@ -205,7 +205,7 @@
     <value>Redmine URL</value>
   </data>
   <data name="labelRedmineUsername" xml:space="preserve">
-    <value>Redmine username</value>
+    <value>Redmine username / API Key</value>
   </data>
   <data name="NewVersionText" xml:space="preserve">
     <value>New version available. Do you want me to take you to the download location?</value>
