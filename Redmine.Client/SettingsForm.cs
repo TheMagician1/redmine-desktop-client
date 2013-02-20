@@ -83,6 +83,8 @@ namespace Redmine.Client
                 Languages.Lang.Culture = (System.Globalization.CultureInfo)LanguageComboBox.SelectedItem;
             }
             catch (Exception) { }
+            if (Languages.Lang.Culture == null)
+                Languages.Lang.Culture = new System.Globalization.CultureInfo("en");
             try
             {
                 Properties.Settings.Default.PropertyValues["RedmineURL"].PropertyValue = RedmineBaseUrlTextBox.Text;
