@@ -530,28 +530,45 @@ oder Aufmerksamtkeit fordern alle
     <value>Hole Ticket Informationen</value>
   </data>
   <data name="DlgTimeEntryFormTitle_Edit" xml:space="preserve">
-    <value></value>
+    <value>Gebuchte Zeit von {0} für Ticket {1} {2} ändern</value>
     <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
   </data>
   <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
-    <value></value>
+    <value>Neue gebuchte Zeit für Ticket {0} {1} anlegen</value>
     <comment>{0} issue number; {1} issue subject</comment>
   </data>
   <data name="labelTimeEntryTitle_Edit" xml:space="preserve">
-    <value></value>
+    <value>Gebuchte Zeit von {0} für Ticket{3}{1} {2} ändern</value>
     <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
   </data>
   <data name="labelTimeEntryTitle_New" xml:space="preserve">
-    <value></value>
+    <value>Neue Zeit buchen für Ticket{3}{0} {1}</value>
     <comment>{0} issue number; {1} issue subject</comment>
   </data>
   <data name="labelByUser" xml:space="preserve">
-    <value></value>
+    <value>Nach Benutzer</value>
   </data>
   <data name="labelSpentHours" xml:space="preserve">
-    <value></value>
+    <value>aufgewendete Stunden</value>
   </data>
   <data name="labelSpentOn" xml:space="preserve">
+    <value>aufgewendet für</value>
+  </data>
+  <data name="Warning_AreYouSureDeleteTimeEntry" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie die gebuchte Zeit {0} löschen möchten?</value>
+    <comment>{0} time-entry id</comment>
+  </data>
+  <data name="LabelChildren" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LabelParent" xml:space="preserve">
+    <value></value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="PauseToolStripMenuItem" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StartToolStripMenuItem" xml:space="preserve">
     <value></value>
   </data>
 </root>
