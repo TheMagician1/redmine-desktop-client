@@ -383,17 +383,15 @@ namespace Redmine.Client
                     try
                     {
                         IssueFormData dataCache = new IssueFormData();
-                        Issue currentIssue = null;
+                        NameValueCollection issueParameters = new NameValueCollection { { "include", "journals,relations,children" } };
+                        Issue currentIssue = RedmineClientForm.redmine.GetObject<Issue>(issueId.ToString(), issueParameters);
+                        if (currentIssue.ParentIssue != null && currentIssue.ParentIssue.Id != 0)
+                        {
+                            Issue parentIssue = RedmineClientForm.redmine.GetObject<Issue>(currentIssue.ParentIssue.Id.ToString(), null);
+                            currentIssue.ParentIssue.Name = parentIssue.Subject;
+                        }
                         if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                         {
-                            NameValueCollection issueParameters = new NameValueCollection { { "include", "journals,relations,children" } };
-                            currentIssue = RedmineClientForm.redmine.GetObject<Issue>(issueId.ToString(), issueParameters);
-                            if (currentIssue.ParentIssue != null && currentIssue.ParentIssue.Id != 0)
-                            {
-                                Issue parentIssue = RedmineClientForm.redmine.GetObject<Issue>(currentIssue.ParentIssue.Id.ToString(), null);
-                                currentIssue.ParentIssue.Name = parentIssue.Subject;
-                            }
-
                             dataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
                             dataCache.Trackers = RedmineClientForm.redmine.GetTotalObjectList<Tracker>(parameters);
                             dataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
