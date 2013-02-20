@@ -151,14 +151,14 @@
     <value>Klaar om op te slaan?</value>
   </data>
   <data name="CommitConfirmText" xml:space="preserve">
-    <value>Weet je zeker dat je de volgende gegevens op wilt slaan: {6}Project: {0}, Activiteit: {1}, Issue: {2},{6}Datum: {3}, Commentaar: {4}, Tijd: {5}</value>
+    <value>Weet je zeker dat je de volgende gegevens op wilt slaan: {6}Project: {0}, Activiteit: {1}, Incident: {2},{6}Datum: {3}, Commentaar: {4}, Tijd: {5}</value>
     <comment>{0} ProjectName; {1} ActivityName; {2} IssueId; {3} Date; {4} Comment; {5} Time(Hours) {6} newline</comment>
   </data>
   <data name="CommitNoActivitySelected" xml:space="preserve">
     <value>Er is geen activiteit geselecteerd</value>
   </data>
   <data name="CommitNoIssueSelected" xml:space="preserve">
-    <value>Er is geen issue geselecteerd.</value>
+    <value>Er is geen incident geselecteerd.</value>
   </data>
   <data name="CommitNoTime" xml:space="preserve">
     <value>Er is geen tijd om op te slaan</value>
@@ -229,7 +229,7 @@
     <value>Annuleer</value>
   </data>
   <data name="BtnCloseButton" xml:space="preserve">
-    <value>Sluit Issue</value>
+    <value>Sluit Incident</value>
   </data>
   <data name="BtnSaveButton" xml:space="preserve">
     <value>Opslaan</value>
@@ -244,32 +244,32 @@
     <value>Controleer op nieuwe versie bij start</value>
   </data>
   <data name="CloseIssueText" xml:space="preserve">
-    <value>Weet je zeker dat je issue {0} wilt sluiten?</value>
+    <value>Weet je zeker dat je incident {0} wilt sluiten?</value>
     <comment>{0} IssueId</comment>
   </data>
   <data name="DlgIssueTitleEdit" xml:space="preserve">
-    <value>Bewerk Issue {0} van project {1}</value>
+    <value>Bewerk Incident {0} van project {1}</value>
     <comment>{0} IssueId; {1} ProjectName</comment>
   </data>
   <data name="DlgIssueTitleNew" xml:space="preserve">
-    <value>Maak een Nieuw Issue bij project {0}</value>
+    <value>Maak een Nieuw Incident bij project {0}</value>
     <comment>{0} ProjectName</comment>
   </data>
   <data name="DlgSettingsTitle" xml:space="preserve">
     <value>Instellingen</value>
   </data>
   <data name="Error_CreateIssueFailed" xml:space="preserve">
-    <value>Het maken van het issue is fout gegaan; De server antwoordde: {0}</value>
+    <value>Het maken van het incident is fout gegaan; De server antwoordde: {0}</value>
     <comment>{0} exception message</comment>
   </data>
   <data name="Error_InvalidUrl" xml:space="preserve">
     <value>De URL van uw Redmine installatie is incorrect.</value>
   </data>
   <data name="Error_IssueSubjectMandatory" xml:space="preserve">
-    <value>Het onderwerp van een issue is verplicht</value>
+    <value>Het onderwerp van een incident is verplicht</value>
   </data>
   <data name="Error_UpdateIssueFailed" xml:space="preserve">
-    <value>Het bijwerken van het issue is fout gegaan; De server antwoordde: {0}</value>
+    <value>Het bijwerken van het incident is fout gegaan; De server antwoordde: {0}</value>
     <comment>{0} exception message</comment>
   </data>
   <data name="labelAssignedTo" xml:space="preserve">
@@ -311,7 +311,7 @@ of Vraag aandacht elke
     <value>Tracker</value>
   </data>
   <data name="linkEditInRedmine" xml:space="preserve">
-    <value>Bewerk dit issue in Redmine</value>
+    <value>Bewerk dit incident in Redmine</value>
   </data>
   <data name="MinimizeOnStartTimerCheckBox" xml:space="preserve">
     <value>Minimaliseer bij start timer</value>
@@ -355,7 +355,7 @@ of Vraag aandacht elke
     <value>Besteed op:</value>
   </data>
   <data name="labelCommitIssue" xml:space="preserve">
-    <value>Issue:</value>
+    <value>Incident:</value>
   </data>
   <data name="labelCommitProject" xml:space="preserve">
     <value>Project:</value>
@@ -418,7 +418,7 @@ of Vraag aandacht elke
     <value>Documenten Categorieën</value>
   </data>
   <data name="EnumName_IssuePriorities" xml:space="preserve">
-    <value>Issue Prioriteiten</value>
+    <value>Incident Prioriteiten</value>
   </data>
   <data name="Error_EnumFieldIsMandatory" xml:space="preserve">
     <value>{0} is een verplicht veld</value>
@@ -449,10 +449,10 @@ of Vraag aandacht elke
     <value>Test Verbinding</value>
   </data>
   <data name="CheckBoxClosesIssue" xml:space="preserve">
-    <value>Sluit ook het issue.</value>
+    <value>Sluit ook het incident.</value>
   </data>
   <data name="CheckBoxOnlyMe" xml:space="preserve">
-    <value>Toon alleen issues toegewezen aan mij</value>
+    <value>Toon alleen incidenten toegewezen aan mij</value>
   </data>
   <data name="ConnectionTestFailed_Text" xml:space="preserve">
     <value>Het opzetten van de verbinding met Redmine is mislukt. De volgende fout trad op: {0}</value>
@@ -468,7 +468,7 @@ of Vraag aandacht elke
     <value>Verbindingstest gelukt</value>
   </data>
   <data name="Error_ClosedStatusUnknown" xml:space="preserve">
-    <value>De status die gebruikt wordt om een Issue te sluiten is onbekend. Pas dit alstublieft aan in de instellingen.</value>
+    <value>De status die gebruikt wordt om een incident te sluiten is onbekend. Pas dit alstublieft aan in de instellingen.</value>
   </data>
   <data name="GrpApplicationSettings" xml:space="preserve">
     <value>Applicatie Instellingen</value>
@@ -480,7 +480,7 @@ of Vraag aandacht elke
     <value>Maak onderstaande velden actief met &apos;Test Verbinding&apos; en een versie hoger dan V1.3.x</value>
   </data>
   <data name="labelSelectCloseStatus" xml:space="preserve">
-    <value>Bij het sluiten van een Issue gebruik</value>
+    <value>Bij het sluiten van een incident, gebruik</value>
   </data>
   <data name="Question" xml:space="preserve">
     <value>Vraag</value>
@@ -492,16 +492,16 @@ of Vraag aandacht elke
     <value>Pauzeer de timer wanneer het scherm gelocked wordt of bij uitloggen</value>
   </data>
   <data name="UpdateIssueIfStateCheckBox" xml:space="preserve">
-    <value>Als de timer wordt gestart en het issue heeft de status</value>
+    <value>Als de timer wordt gestart en het incident heeft de status</value>
   </data>
   <data name="UpdateIssueIfStateLabel" xml:space="preserve">
     <value>zet dan de status op</value>
   </data>
   <data name="Error_NewOrInProgressStatusUnknown" xml:space="preserve">
-    <value>De statussen die gebruikt worden om een nieuw issue naar een wordt aan gewerkt status te zetten, zijn onbekend. U kunt dit instellen in het instellingen scherm</value>
+    <value>De statussen die gebruikt worden om een nieuw incident naar een &apos;wordt aan gewerkt&apos; status te zetten, zijn onbekend. U kunt dit instellen in het instellingen scherm</value>
   </data>
   <data name="IssueUpdatedToInProgress" xml:space="preserve">
-    <value>Het huidige geselecteerde issue {0} is bijgewerkt naar de &apos;wordt aan gewerkt&apos; status. (StatusId = {1})</value>
+    <value>Het huidige geselecteerde incident {0} is bijgewerkt naar de &apos;wordt aan gewerkt&apos; status. (StatusId = {1})</value>
     <comment>{0} Issue name; {1} Id of In Progress</comment>
   </data>
   <data name="Message" xml:space="preserve">
@@ -523,26 +523,26 @@ of Vraag aandacht elke
     <value>Ophalen van besteedde uren</value>
   </data>
   <data name="DlgTimeEntriesTitle" xml:space="preserve">
-    <value>Besteedde uren van issue {0} {1}</value>
+    <value>Besteedde uren van incident {0} {1}</value>
     <comment>{0} issuenumber; {1} issue subject</comment>
   </data>
   <data name="BgWork_GetIssue" xml:space="preserve">
-    <value>Ophalen van informatie van het issue</value>
+    <value>Ophalen van informatie van het incident</value>
   </data>
   <data name="DlgTimeEntryFormTitle_Edit" xml:space="preserve">
-    <value>Bewerk besteedde tijd van {0} voor issue {1} {2}</value>
+    <value>Bewerk besteedde tijd van {0} voor incident {1} {2}</value>
     <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
   </data>
   <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
-    <value>Nieuwe tijd toevoegen voor issue {0} {1}</value>
+    <value>Nieuwe tijd toevoegen voor incident {0} {1}</value>
     <comment>{0} issue number; {1} issue subject</comment>
   </data>
   <data name="labelTimeEntryTitle_Edit" xml:space="preserve">
-    <value>Bewerk besteedde tijd van {0} voor issue{3}{1} {2}</value>
+    <value>Bewerk besteedde tijd van {0} voor incident{3}{1} {2}</value>
     <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
   </data>
   <data name="labelTimeEntryTitle_New" xml:space="preserve">
-    <value>Voeg nieuwe besteedde tijd toe voor issue{3}{0} {1}</value>
+    <value>Voeg nieuwe besteedde tijd toe voor incident{3}{0} {1}</value>
     <comment>{0} issue number; {1} issue subject</comment>
   </data>
   <data name="labelByUser" xml:space="preserve">
@@ -557,5 +557,18 @@ of Vraag aandacht elke
   <data name="Warning_AreYouSureDeleteTimeEntry" xml:space="preserve">
     <value>Weet u zeker dat u de tijd met id {0} wil verwijderen</value>
     <comment>{0} time-entry id</comment>
+  </data>
+  <data name="LabelChildren" xml:space="preserve">
+    <value>Subtaken:</value>
+  </data>
+  <data name="LabelParent" xml:space="preserve">
+    <value>Hoofdtaak: {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="PauseToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Pauze</value>
+  </data>
+  <data name="StartToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Start</value>
   </data>
 </root>
