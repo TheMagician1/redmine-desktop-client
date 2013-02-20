@@ -264,9 +264,7 @@ namespace Redmine.Client
                         ComboBoxTargetVersion.SelectedItem = issue.FixedVersion;
                     }
                 }
-                if (issue.CustomFields.Count == 0)
-                    DataGridViewCustomFields.Visible = false;
-                else
+                if (issue.CustomFields != null && issue.CustomFields.Count != 0)
                 {
                     List<ClientCustomField> customFields = new List<ClientCustomField>();
                     foreach (CustomField cf in issue.CustomFields)
@@ -286,6 +284,9 @@ namespace Redmine.Client
                     DataGridViewCustomFields.RowHeadersVisible = false;
                     DataGridViewCustomFields.ColumnHeadersVisible = false;
                 }
+                else
+                    DataGridViewCustomFields.Visible = false;
+
                 // if the issue has children, show them.
                 if (issue.Children != null && issue.Children.Count > 0)
                 {
