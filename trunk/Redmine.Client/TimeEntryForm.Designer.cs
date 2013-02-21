@@ -85,6 +85,7 @@
             // comboBoxByUser
             // 
             this.comboBoxByUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxByUser.Enabled = false;
             this.comboBoxByUser.FormattingEnabled = true;
             this.comboBoxByUser.Location = new System.Drawing.Point(153, 78);
             this.comboBoxByUser.Name = "comboBoxByUser";
