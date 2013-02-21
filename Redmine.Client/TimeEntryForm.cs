@@ -32,6 +32,7 @@ namespace Redmine.Client
             CurTimeEntry = new TimeEntry();
             LoadLanguage();
             LoadCombos();
+            comboBoxByUser.SelectedValue = RedmineClientForm.Instance.CurrentUser.Id;
         }
         public TimeEntryForm(Issue issue, IList<ProjectMember> projectMembers, TimeEntry timeEntry)
         {
@@ -68,14 +69,15 @@ namespace Redmine.Client
             if (type == eFormType.New)
             {
                 this.Text = String.Format(Lang.DlgTimeEntryFormTitle_New, issue.Id, issue.Subject);
-                labelTimeEntryTitle.Text = String.Format(Lang.labelTimeEntryTitle_New, issue.Id, issue.Subject);
+                //there is a mistake in the language-string, so we added the newline also as the third ({2}) element in the format string
+                labelTimeEntryTitle.Text = String.Format(Lang.labelTimeEntryTitle_New, issue.Id, issue.Subject, Environment.NewLine, Environment.NewLine);
             }
             else
             {
                 string fmtSpentOn = "";
                 if (CurTimeEntry.SpentOn.HasValue)
                     fmtSpentOn = CurTimeEntry.SpentOn.Value.ToString("d", Lang.Culture);
-                this.Text = String.Format(Lang.DlgTimeEntryFormTitle_Edit, fmtSpentOn, issue.Id, issue.Subject, Environment.NewLine);
+                this.Text = String.Format(Lang.DlgTimeEntryFormTitle_Edit, fmtSpentOn, issue.Id, issue.Subject);
                 labelTimeEntryTitle.Text = String.Format(Lang.labelTimeEntryTitle_Edit, fmtSpentOn, issue.Id, issue.Subject, Environment.NewLine);
             }
         }

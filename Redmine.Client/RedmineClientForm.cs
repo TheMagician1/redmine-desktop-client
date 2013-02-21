@@ -43,6 +43,8 @@ namespace Redmine.Client
         private Dictionary<int, Project> Projects;
         public static ApiVersion RedmineVersion { get; private set; }
 
+        public User CurrentUser { get { return currentUser; } }
+
         /* ugly hack to create a singleton */
         private static readonly RedmineClientForm instance = new RedmineClientForm();
         public static RedmineClientForm Instance { get { return instance; } }
