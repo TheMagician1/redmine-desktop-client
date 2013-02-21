@@ -32,6 +32,9 @@ namespace Redmine.Client
         private DataGridView DataGridViewChildren;
         private Label LabelParent;
 
+        private const int ChildrenHeight = 119;
+        private const int ParentHeight = 24;
+
         public IssueForm(Project project)
         {
             this.project = project;
@@ -123,6 +126,19 @@ namespace Redmine.Client
                         RedmineClientForm.redmine.CreateObject<Issue>(issue);
                     else
                         RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+
+                    // resize to screen without children and parents...
+                    if (issue.Children != null && issue.Children.Count > 0)
+                    {
+                        MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ChildrenHeight);
+                        Size = new System.Drawing.Size(Size.Width, Size.Height - ChildrenHeight);
+                    }
+                    if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
+                    {
+                        MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ParentHeight);
+                        Size = new System.Drawing.Size(Size.Width, Size.Height - ParentHeight);
+                    }
+
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -146,6 +162,18 @@ namespace Redmine.Client
 
         private void BtnCancelButton_Click(object sender, EventArgs e)
         {
+            // resize to screen without children and parents...
+            if (issue.Children != null && issue.Children.Count > 0)
+            {
+                MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ChildrenHeight);
+                Size = new System.Drawing.Size(Size.Width, Size.Height - ChildrenHeight);
+            }
+            if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
+            {
+                MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ParentHeight);
+                Size = new System.Drawing.Size(Size.Width, Size.Height - ParentHeight);
+            }
+
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
@@ -338,12 +366,12 @@ namespace Redmine.Client
                     DataGridViewChildren.Columns["Subject"].DisplayIndex = 1;
                     SuspendLayout();
                     // first set size, then alter minimum size; otherwise dialog is expanded twice.
-                    Size = new System.Drawing.Size(Size.Width, Size.Height + 119);
-                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height + 119);
-                    MoveControl(linkEditInRedmine, 0, 119);
-                    MoveControl(BtnCancelButton, 0, 119);
-                    MoveControl(BtnCloseButton, 0, 119);
-                    MoveControl(BtnSaveButton, 0, 119);
+                    Size = new System.Drawing.Size(Size.Width, Size.Height + ChildrenHeight);
+                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height + ChildrenHeight);
+                    MoveControl(linkEditInRedmine, 0, ChildrenHeight);
+                    MoveControl(BtnCancelButton, 0, ChildrenHeight);
+                    MoveControl(BtnCloseButton, 0, ChildrenHeight);
+                    MoveControl(BtnSaveButton, 0, ChildrenHeight);
                     ResumeLayout(false);
                 }
                 if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
@@ -362,12 +390,12 @@ namespace Redmine.Client
                     Controls.Add(LabelParent);
                     SuspendLayout();
                     // first set size, then alter minimum size; otherwise dialog is expanded twice.
-                    Size = new System.Drawing.Size(Size.Width, Size.Height + 24);
-                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height + 24);
-                    MoveControl(linkEditInRedmine, 0, 24);
-                    MoveControl(BtnCancelButton, 0, 24);
-                    MoveControl(BtnCloseButton, 0, 24);
-                    MoveControl(BtnSaveButton, 0, 24);
+                    Size = new System.Drawing.Size(Size.Width, Size.Height + ParentHeight);
+                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height + ParentHeight);
+                    MoveControl(linkEditInRedmine, 0, ParentHeight);
+                    MoveControl(BtnCancelButton, 0, ParentHeight);
+                    MoveControl(BtnCloseButton, 0, ParentHeight);
+                    MoveControl(BtnSaveButton, 0, ParentHeight);
                     ResumeLayout(false);
                     if (Size.Width < LabelParent.Width + 30)
                         Size = new System.Drawing.Size(LabelParent.Width + 30, Size.Height);

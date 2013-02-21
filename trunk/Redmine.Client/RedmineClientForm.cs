@@ -900,10 +900,15 @@ namespace Redmine.Client
         private void BtnNewIssueButton_Click(object sender, EventArgs e)
         {
             IssueForm dlg = new IssueForm(Projects[projectId]);
+            dlg.Size = new Size(Properties.Settings.Default.IssueWindowSizeX,
+                                Properties.Settings.Default.IssueWindowSizeY);
             if (dlg.ShowDialog(this) == DialogResult.OK)
             {
                 BtnRefreshButton_Click(null, null);
             }
+            Properties.Settings.Default.PropertyValues["IssueWindowSizeX"].PropertyValue = dlg.Size.Width;
+            Properties.Settings.Default.PropertyValues["IssueWindowSizeY"].PropertyValue = dlg.Size.Height;
+            Properties.Settings.Default.Save();
         }
 
         /// <summary>
@@ -964,10 +969,15 @@ namespace Redmine.Client
             try
             {
                 IssueForm dlg = new IssueForm(issue);
+                dlg.Size = new Size(Properties.Settings.Default.IssueWindowSizeX,
+                                    Properties.Settings.Default.IssueWindowSizeY);
                 if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
                     BtnRefreshButton_Click(null, null);
                 }
+                Properties.Settings.Default.PropertyValues["IssueWindowSizeX"].PropertyValue = dlg.Size.Width;
+                Properties.Settings.Default.PropertyValues["IssueWindowSizeY"].PropertyValue = dlg.Size.Height;
+                Properties.Settings.Default.Save();
             }
             catch (Exception ex)
             {
