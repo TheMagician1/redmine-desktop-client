@@ -119,11 +119,11 @@
   </resheader>
   <data name="labelCopyright.Text" xml:space="preserve">
     <value>Copyright © Pavel Kalian 2009, All rights reserved
-Copyright © Bas van Leeuwen 2012
+Copyright © Bas van Leeuwen 2012-2013
 Other Contributor(s): Johan 't Hart
 Translators:
 Blackman82 (Czech)
-jgoetze (German)
+jgoetze &amp;&amp; fabismailer (German)
 rafaelff1 (Portugese (Brazil))
 MademoiselleGeek (French)</value>
   </data>
