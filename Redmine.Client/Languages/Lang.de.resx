@@ -311,13 +311,13 @@ oder Aufmerksamtkeit fordern alle
     <value>Tracker</value>
   </data>
   <data name="linkEditInRedmine" xml:space="preserve">
-    <value>Dieses Ticket in Redmine bearbeiten</value>
+    <value>Dieses Ticket im Browser bearbeiten</value>
   </data>
   <data name="MinimizeOnStartTimerCheckBox" xml:space="preserve">
     <value>Beim Start des Timers minimieren</value>
   </data>
   <data name="MinimizeToSystemTrayCheckBox" xml:space="preserve">
-    <value>In den Infobereich minimeren</value>
+    <value>In den Infobereich minimieren</value>
   </data>
   <data name="RedmineClientTitle_NoUser" xml:space="preserve">
     <value>Redmine Client</value>
@@ -455,14 +455,14 @@ oder Aufmerksamtkeit fordern alle
     <value>Nur Tickets anzeigen, die mir zugewiesen sind</value>
   </data>
   <data name="ConnectionTestFailed_Text" xml:space="preserve">
-    <value>Herstellen der Verbindung mit Redmine ist fehlgeschlagen. Der folgende Fehler trat auf: {0}</value>
+    <value>Herstellen der Verbindung mit dem Server ist fehlgeschlagen. Der folgende Fehler trat auf: {0}</value>
     <comment>{0} error</comment>
   </data>
   <data name="ConnectionTestFailed_Title" xml:space="preserve">
     <value>Vebindungstest fehlgeschlagen</value>
   </data>
   <data name="ConnectionTestOK_Text" xml:space="preserve">
-    <value>Das Herstellen der Verbindung mit Redmine war erfolgreich.</value>
+    <value>Das Herstellen der Verbindung mit dem Server war erfolgreich.</value>
   </data>
   <data name="ConnectionTestOK_Title" xml:space="preserve">
     <value>Verbindungstest erfolgreich</value>
@@ -474,7 +474,7 @@ oder Aufmerksamtkeit fordern alle
     <value>Anwendungseinstellungen</value>
   </data>
   <data name="GrpRedmineServerSettings" xml:space="preserve">
-    <value>Redmine Server Einstellungen</value>
+    <value>Server Einstellungen</value>
   </data>
   <data name="labelExplClosingIssueStatus" xml:space="preserve">
     <value>Aktiviere das Feld mit &quot;Verbindungstest&quot; und Version V1.3.x oder höher</value>
@@ -559,16 +559,16 @@ oder Aufmerksamtkeit fordern alle
     <comment>{0} time-entry id</comment>
   </data>
   <data name="LabelChildren" xml:space="preserve">
-    <value></value>
+    <value>Unteraufgaben</value>
   </data>
   <data name="LabelParent" xml:space="preserve">
-    <value></value>
+    <value>Übergeordnete Aufgabe</value>
     <comment>{0} issue number; {1} issue subject</comment>
   </data>
   <data name="PauseToolStripMenuItem" xml:space="preserve">
-    <value></value>
+    <value>pausieren</value>
   </data>
   <data name="StartToolStripMenuItem" xml:space="preserve">
-    <value></value>
+    <value>fortsetzen</value>
   </data>
 </root>
