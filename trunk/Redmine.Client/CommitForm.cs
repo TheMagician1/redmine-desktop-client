@@ -34,6 +34,8 @@ namespace Redmine.Client
 
             labelProjectContent.Text = issue.Project.Name;
             labelIssueContent.Text = String.Format("({0}) {1}", issue.Id, issue.Subject);
+            if (labelIssueContent.Size.Width > Size.Width - labelIssueContent.Location.X - 10)
+                this.Size = new Size(labelIssueContent.Location.X + labelIssueContent.Size.Width + 10, this.Size.Height);
 
             ComboBoxActivity.DataSource = Enumerations.Activities;
             ComboBoxActivity.DisplayMember = "Name";

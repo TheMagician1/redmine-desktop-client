@@ -48,7 +48,8 @@
             // 
             // BtnCommitButton
             // 
-            this.BtnCommitButton.Location = new System.Drawing.Point(317, 190);
+            this.BtnCommitButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnCommitButton.Location = new System.Drawing.Point(162, 190);
             this.BtnCommitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCommitButton.Name = "BtnCommitButton";
             this.BtnCommitButton.Size = new System.Drawing.Size(68, 24);
@@ -59,8 +60,9 @@
             // 
             // BtnCancelButton
             // 
+            this.BtnCancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(389, 190);
+            this.BtnCancelButton.Location = new System.Drawing.Point(234, 190);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -71,8 +73,8 @@
             // 
             // TextBoxComment
             // 
-            this.TextBoxComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBoxComment.Location = new System.Drawing.Point(10, 164);
             this.TextBoxComment.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxComment.Name = "TextBoxComment";
