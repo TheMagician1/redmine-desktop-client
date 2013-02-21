@@ -562,7 +562,7 @@ oder Aufmerksamtkeit fordern alle
     <value>Unteraufgaben</value>
   </data>
   <data name="LabelParent" xml:space="preserve">
-    <value>Übergeordnete Aufgabe</value>
+    <value>Übergeordnete Aufgabe: {0} {1}</value>
     <comment>{0} issue number; {1} issue subject</comment>
   </data>
   <data name="PauseToolStripMenuItem" xml:space="preserve">
