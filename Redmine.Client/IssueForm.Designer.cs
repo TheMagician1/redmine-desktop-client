@@ -62,7 +62,7 @@
             // 
             // BtnSaveButton
             // 
-            this.BtnSaveButton.Location = new System.Drawing.Point(286, 277);
+            this.BtnSaveButton.Location = new System.Drawing.Point(327, 277);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
@@ -74,7 +74,7 @@
             // BtnCancelButton
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(358, 277);
+            this.BtnCancelButton.Location = new System.Drawing.Point(399, 277);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -100,7 +100,7 @@
             this.ComboBoxTracker.Location = new System.Drawing.Point(9, 23);
             this.ComboBoxTracker.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTracker.Name = "ComboBoxTracker";
-            this.ComboBoxTracker.Size = new System.Drawing.Size(136, 21);
+            this.ComboBoxTracker.Size = new System.Drawing.Size(149, 21);
             this.ComboBoxTracker.TabIndex = 5;
             // 
             // DateStart
@@ -109,7 +109,7 @@
             this.DateStart.Location = new System.Drawing.Point(9, 179);
             this.DateStart.Margin = new System.Windows.Forms.Padding(2);
             this.DateStart.Name = "DateStart";
-            this.DateStart.Size = new System.Drawing.Size(86, 20);
+            this.DateStart.Size = new System.Drawing.Size(95, 20);
             this.DateStart.TabIndex = 11;
             // 
             // labelSubject
@@ -127,7 +127,7 @@
             this.TextBoxSubject.Location = new System.Drawing.Point(9, 61);
             this.TextBoxSubject.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxSubject.Name = "TextBoxSubject";
-            this.TextBoxSubject.Size = new System.Drawing.Size(416, 20);
+            this.TextBoxSubject.Size = new System.Drawing.Size(458, 20);
             this.TextBoxSubject.TabIndex = 1;
             // 
             // labelDescription
@@ -149,13 +149,13 @@
             this.TextBoxDescription.Multiline = true;
             this.TextBoxDescription.Name = "TextBoxDescription";
             this.TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TextBoxDescription.Size = new System.Drawing.Size(416, 63);
+            this.TextBoxDescription.Size = new System.Drawing.Size(458, 63);
             this.TextBoxDescription.TabIndex = 3;
             // 
             // labelStatus
             // 
             this.labelStatus.AutoSize = true;
-            this.labelStatus.Location = new System.Drawing.Point(148, 7);
+            this.labelStatus.Location = new System.Drawing.Point(160, 6);
             this.labelStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(37, 13);
@@ -166,16 +166,16 @@
             // 
             this.ComboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxStatus.FormattingEnabled = true;
-            this.ComboBoxStatus.Location = new System.Drawing.Point(150, 23);
+            this.ComboBoxStatus.Location = new System.Drawing.Point(163, 23);
             this.ComboBoxStatus.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxStatus.Name = "ComboBoxStatus";
-            this.ComboBoxStatus.Size = new System.Drawing.Size(136, 21);
+            this.ComboBoxStatus.Size = new System.Drawing.Size(149, 21);
             this.ComboBoxStatus.TabIndex = 7;
             // 
             // labelPriority
             // 
             this.labelPriority.AutoSize = true;
-            this.labelPriority.Location = new System.Drawing.Point(287, 6);
+            this.labelPriority.Location = new System.Drawing.Point(315, 6);
             this.labelPriority.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPriority.Name = "labelPriority";
             this.labelPriority.Size = new System.Drawing.Size(38, 13);
@@ -186,25 +186,25 @@
             // 
             this.ComboBoxPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxPriority.FormattingEnabled = true;
-            this.ComboBoxPriority.Location = new System.Drawing.Point(290, 23);
+            this.ComboBoxPriority.Location = new System.Drawing.Point(318, 23);
             this.ComboBoxPriority.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxPriority.Name = "ComboBoxPriority";
-            this.ComboBoxPriority.Size = new System.Drawing.Size(136, 21);
+            this.ComboBoxPriority.Size = new System.Drawing.Size(149, 21);
             this.ComboBoxPriority.TabIndex = 9;
             // 
             // DateDue
             // 
             this.DateDue.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateDue.Location = new System.Drawing.Point(101, 179);
+            this.DateDue.Location = new System.Drawing.Point(108, 179);
             this.DateDue.Margin = new System.Windows.Forms.Padding(2);
             this.DateDue.Name = "DateDue";
-            this.DateDue.Size = new System.Drawing.Size(86, 20);
+            this.DateDue.Size = new System.Drawing.Size(93, 20);
             this.DateDue.TabIndex = 13;
             // 
             // labelEstimatedTime
             // 
             this.labelEstimatedTime.AutoSize = true;
-            this.labelEstimatedTime.Location = new System.Drawing.Point(191, 163);
+            this.labelEstimatedTime.Location = new System.Drawing.Point(202, 162);
             this.labelEstimatedTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEstimatedTime.Name = "labelEstimatedTime";
             this.labelEstimatedTime.Size = new System.Drawing.Size(75, 13);
@@ -213,16 +213,16 @@
             // 
             // TextBoxEstimatedTime
             // 
-            this.TextBoxEstimatedTime.Location = new System.Drawing.Point(194, 179);
+            this.TextBoxEstimatedTime.Location = new System.Drawing.Point(205, 178);
             this.TextBoxEstimatedTime.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxEstimatedTime.Name = "TextBoxEstimatedTime";
-            this.TextBoxEstimatedTime.Size = new System.Drawing.Size(72, 20);
+            this.TextBoxEstimatedTime.Size = new System.Drawing.Size(83, 20);
             this.TextBoxEstimatedTime.TabIndex = 15;
             // 
             // labelAssignedTo
             // 
             this.labelAssignedTo.AutoSize = true;
-            this.labelAssignedTo.Location = new System.Drawing.Point(192, 199);
+            this.labelAssignedTo.Location = new System.Drawing.Point(202, 199);
             this.labelAssignedTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAssignedTo.Name = "labelAssignedTo";
             this.labelAssignedTo.Size = new System.Drawing.Size(62, 13);
@@ -233,16 +233,16 @@
             // 
             this.ComboBoxAssignedTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxAssignedTo.FormattingEnabled = true;
-            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(194, 214);
+            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(205, 214);
             this.ComboBoxAssignedTo.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxAssignedTo.Name = "ComboBoxAssignedTo";
-            this.ComboBoxAssignedTo.Size = new System.Drawing.Size(232, 21);
+            this.ComboBoxAssignedTo.Size = new System.Drawing.Size(262, 21);
             this.ComboBoxAssignedTo.TabIndex = 17;
             // 
             // labelTargetVersion
             // 
             this.labelTargetVersion.AutoSize = true;
-            this.labelTargetVersion.Location = new System.Drawing.Point(192, 237);
+            this.labelTargetVersion.Location = new System.Drawing.Point(202, 237);
             this.labelTargetVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTargetVersion.Name = "labelTargetVersion";
             this.labelTargetVersion.Size = new System.Drawing.Size(75, 13);
@@ -253,10 +253,10 @@
             // 
             this.ComboBoxTargetVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxTargetVersion.FormattingEnabled = true;
-            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(194, 252);
+            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(205, 252);
             this.ComboBoxTargetVersion.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTargetVersion.Name = "ComboBoxTargetVersion";
-            this.ComboBoxTargetVersion.Size = new System.Drawing.Size(232, 21);
+            this.ComboBoxTargetVersion.Size = new System.Drawing.Size(262, 21);
             this.ComboBoxTargetVersion.TabIndex = 21;
             // 
             // numericUpDown1
@@ -266,16 +266,16 @@
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(273, 179);
+            this.numericUpDown1.Location = new System.Drawing.Point(293, 178);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(72, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(81, 20);
             this.numericUpDown1.TabIndex = 19;
             // 
             // labelPercentDone
             // 
             this.labelPercentDone.AutoSize = true;
-            this.labelPercentDone.Location = new System.Drawing.Point(270, 163);
+            this.labelPercentDone.Location = new System.Drawing.Point(290, 162);
             this.labelPercentDone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPercentDone.Name = "labelPercentDone";
             this.labelPercentDone.Size = new System.Drawing.Size(42, 13);
@@ -297,7 +297,7 @@
             // cbDueDate
             // 
             this.cbDueDate.AutoSize = true;
-            this.cbDueDate.Location = new System.Drawing.Point(101, 162);
+            this.cbDueDate.Location = new System.Drawing.Point(108, 162);
             this.cbDueDate.Margin = new System.Windows.Forms.Padding(2);
             this.cbDueDate.Name = "cbDueDate";
             this.cbDueDate.Size = new System.Drawing.Size(70, 17);
@@ -308,10 +308,10 @@
             // 
             // BtnCloseButton
             // 
-            this.BtnCloseButton.Location = new System.Drawing.Point(194, 277);
+            this.BtnCloseButton.Location = new System.Drawing.Point(205, 277);
             this.BtnCloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCloseButton.Name = "BtnCloseButton";
-            this.BtnCloseButton.Size = new System.Drawing.Size(72, 24);
+            this.BtnCloseButton.Size = new System.Drawing.Size(118, 24);
             this.BtnCloseButton.TabIndex = 26;
             this.BtnCloseButton.Text = "Close Issue";
             this.BtnCloseButton.UseVisualStyleBackColor = true;
@@ -338,14 +338,14 @@
             this.DataGridViewCustomFields.Name = "DataGridViewCustomFields";
             this.DataGridViewCustomFields.ReadOnly = true;
             this.DataGridViewCustomFields.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewCustomFields.Size = new System.Drawing.Size(178, 69);
+            this.DataGridViewCustomFields.Size = new System.Drawing.Size(191, 69);
             this.DataGridViewCustomFields.TabIndex = 22;
             // 
             // BtnViewTimeButton
             // 
-            this.BtnViewTimeButton.Location = new System.Drawing.Point(350, 176);
+            this.BtnViewTimeButton.Location = new System.Drawing.Point(379, 176);
             this.BtnViewTimeButton.Name = "BtnViewTimeButton";
-            this.BtnViewTimeButton.Size = new System.Drawing.Size(75, 23);
+            this.BtnViewTimeButton.Size = new System.Drawing.Size(88, 23);
             this.BtnViewTimeButton.TabIndex = 27;
             this.BtnViewTimeButton.Text = "View Time";
             this.BtnViewTimeButton.UseVisualStyleBackColor = true;
@@ -357,7 +357,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(434, 309);
+            this.ClientSize = new System.Drawing.Size(476, 309);
             this.Controls.Add(this.BtnViewTimeButton);
             this.Controls.Add(this.DataGridViewCustomFields);
             this.Controls.Add(this.linkEditInRedmine);
