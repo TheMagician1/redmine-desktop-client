@@ -298,6 +298,7 @@ namespace Redmine.Client
                     LabelChildren.Size = new System.Drawing.Size(44, 13);
                     LabelChildren.TabIndex = 4;
                     LabelChildren.Text = Lang.LabelChildren;
+                    LabelChildren.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
                     Controls.Add(LabelChildren);
 
                     DataGridViewChildren = new DataGridView();
@@ -313,6 +314,7 @@ namespace Redmine.Client
                     DataGridViewChildren.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewChildren_CellFormatting);
                     DataGridViewChildren.TabIndex = 26;
                     DataGridViewChildren.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                    DataGridViewChildren.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
                     Controls.Add(DataGridViewChildren);
                     DataGridViewChildren.DataSource = issue.Children;
                     try // Very ugly trick to fix the mono crash reported in the SF.net forum
@@ -334,11 +336,15 @@ namespace Redmine.Client
                     }
                     DataGridViewChildren.Columns["Id"].DisplayIndex = 0;
                     DataGridViewChildren.Columns["Subject"].DisplayIndex = 1;
-                    Height += 119;
+                    SuspendLayout();
+                    // first set size, then alter minimum size; otherwise dialog is expanded twice.
+                    Size = new System.Drawing.Size(Size.Width, Size.Height + 119);
+                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height + 119);
                     MoveControl(linkEditInRedmine, 0, 119);
                     MoveControl(BtnCancelButton, 0, 119);
                     MoveControl(BtnCloseButton, 0, 119);
                     MoveControl(BtnSaveButton, 0, 119);
+                    ResumeLayout(false);
                 }
                 if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
                 {
@@ -352,12 +358,21 @@ namespace Redmine.Client
                     LabelParent.Size = new System.Drawing.Size(44, 13);
                     LabelParent.TabIndex = 4;
                     LabelParent.Text = String.Format(Lang.LabelParent, issue.ParentIssue.Id, issue.ParentIssue.Name);
+                    LabelParent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
                     Controls.Add(LabelParent);
-                    Height += 24;
+                    SuspendLayout();
+                    // first set size, then alter minimum size; otherwise dialog is expanded twice.
+                    Size = new System.Drawing.Size(Size.Width, Size.Height + 24);
+                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height + 24);
                     MoveControl(linkEditInRedmine, 0, 24);
                     MoveControl(BtnCancelButton, 0, 24);
                     MoveControl(BtnCloseButton, 0, 24);
                     MoveControl(BtnSaveButton, 0, 24);
+                    ResumeLayout(false);
+                    if (Size.Width < LabelParent.Width + 30)
+                        Size = new System.Drawing.Size(LabelParent.Width + 30, Size.Height);
+                    if (MinimumSize.Width < LabelParent.Width + 30)
+                        MinimumSize = new System.Drawing.Size(LabelParent.Width + 30, MinimumSize.Height);
                 }
             }
         }
