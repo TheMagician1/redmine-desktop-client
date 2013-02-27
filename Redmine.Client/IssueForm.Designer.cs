@@ -412,7 +412,6 @@
             this.MinimumSize = new System.Drawing.Size(492, 374);
             this.Name = "IssueForm";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.Text = "Create new issue";
             this.Load += new System.EventHandler(this.NewIssueForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
