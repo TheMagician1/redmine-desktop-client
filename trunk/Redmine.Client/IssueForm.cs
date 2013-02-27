@@ -41,7 +41,7 @@ namespace Redmine.Client
             this.projectId = project.Id;
             this.type = DialogType.New;
             InitializeComponent();
-            this.Text = String.Format(Lang.DlgIssueTitleNew, project.Name);
+            UpdateTitle();
             BtnCloseButton.Visible = false;
             linkEditInRedmine.Visible = false;
             DataGridViewCustomFields.Visible = false;
@@ -55,10 +55,18 @@ namespace Redmine.Client
             this.type = DialogType.Edit;
             InitializeComponent();
 
-            this.Text = String.Format(Lang.DlgIssueTitleEdit, issue.Id, issue.Project.Name);
             LangTools.UpdateControlsForLanguage(this.Controls);
+            UpdateTitle();
 
             EnableDisableAllControls(false);
+        }
+
+        private void UpdateTitle()
+        {
+            if (type == DialogType.New)
+                this.Text = String.Format(Lang.DlgIssueTitleNew, project.Name);
+            else
+                this.Text = String.Format(Lang.DlgIssueTitleEdit, issue.Id, issue.Project.Name);
         }
 
         private void EnableDisableAllControls(bool enable)
@@ -163,17 +171,19 @@ namespace Redmine.Client
         private void BtnCancelButton_Click(object sender, EventArgs e)
         {
             // resize to screen without children and parents...
-            if (issue.Children != null && issue.Children.Count > 0)
+            if (issue != null)
             {
-                MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ChildrenHeight);
-                Size = new System.Drawing.Size(Size.Width, Size.Height - ChildrenHeight);
+                if (issue.Children != null && issue.Children.Count > 0)
+                {
+                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ChildrenHeight);
+                    Size = new System.Drawing.Size(Size.Width, Size.Height - ChildrenHeight);
+                }
+                if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
+                {
+                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ParentHeight);
+                    Size = new System.Drawing.Size(Size.Width, Size.Height - ParentHeight);
+                }
             }
-            if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
-            {
-                MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ParentHeight);
-                Size = new System.Drawing.Size(Size.Width, Size.Height - ParentHeight);
-            }
-
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
@@ -200,7 +210,7 @@ namespace Redmine.Client
         {
             EnableDisableAllControls(true);
             // update title again
-            this.Text = String.Format(Lang.DlgIssueTitleEdit, issue.Id, issue.Project.Name);
+            UpdateTitle();
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
             {
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
@@ -433,12 +443,16 @@ namespace Redmine.Client
                     try
                     {
                         IssueFormData dataCache = new IssueFormData();
-                        NameValueCollection issueParameters = new NameValueCollection { { "include", "journals,relations,children" } };
-                        Issue currentIssue = RedmineClientForm.redmine.GetObject<Issue>(issueId.ToString(), issueParameters);
-                        if (currentIssue.ParentIssue != null && currentIssue.ParentIssue.Id != 0)
+                        Issue currentIssue = null;
+                        if (type == DialogType.Edit)
                         {
-                            Issue parentIssue = RedmineClientForm.redmine.GetObject<Issue>(currentIssue.ParentIssue.Id.ToString(), null);
-                            currentIssue.ParentIssue.Name = parentIssue.Subject;
+                            NameValueCollection issueParameters = new NameValueCollection { { "include", "journals,relations,children" } };
+                            currentIssue = RedmineClientForm.redmine.GetObject<Issue>(issueId.ToString(), issueParameters);
+                            if (currentIssue.ParentIssue != null && currentIssue.ParentIssue.Id != 0)
+                            {
+                                Issue parentIssue = RedmineClientForm.redmine.GetObject<Issue>(currentIssue.ParentIssue.Id.ToString(), null);
+                                currentIssue.ParentIssue.Name = parentIssue.Subject;
+                            }
                         }
                         if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                         {
