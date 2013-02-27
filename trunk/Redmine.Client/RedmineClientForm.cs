@@ -12,6 +12,8 @@ using Redmine.Client.Languages;
 
 namespace Redmine.Client
 {
+    public delegate void AsyncCloseForm(DialogResult result, Size currentWindowSize);
+
     public partial class RedmineClientForm : BgWorker
     {
         private string Title = Lang.RedmineClientTitle_NoUser;
@@ -742,12 +744,7 @@ namespace Redmine.Client
         private void ComboBoxProject_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!updating)
-            {
-                LoadLastIds();
-                this.Cursor = Cursors.AppStarting;
-
-                FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked), issueId, activityId);
-            }
+                RefreshFormData();
         }
 
         /// <summary>
@@ -760,14 +757,24 @@ namespace Redmine.Client
         }
 
         /// <summary>
-        /// Refresh de form data
+        /// Refresh de form data at onclick refresh button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnRefreshButton_Click(object sender, EventArgs e)
         {
+            RefreshFormData();
+        }
+
+        /// <summary>
+        /// Refresh de form data synchronous
+        /// </summary>
+        private void RefreshFormData()
+        {
             LoadLastIds();
+
             this.Cursor = Cursors.AppStarting;
+            SetCurrentWorkName(Lang.BgWork_GetFormData);
             try
             {
                 FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked), issueId, activityId);
@@ -777,6 +784,7 @@ namespace Redmine.Client
                 MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             this.Cursor = Cursors.Default;
+            SetCurrentWorkName("");
         }
 
         /// <summary>
@@ -932,9 +940,14 @@ namespace Redmine.Client
         override protected void WorkTriggered(BgWork CurrentWork) 
         {
             if (CurrentWork != null)
-                currentWorkName = CurrentWork.m_name;
+                SetCurrentWorkName(CurrentWork.m_name);
             else
-                currentWorkName = "";
+                SetCurrentWorkName("");
+        }
+
+        private void SetCurrentWorkName(string currentWorkName)
+        {
+            this.currentWorkName = currentWorkName;
             UpdateTitle();
         }
 
@@ -968,18 +981,23 @@ namespace Redmine.Client
                 IssueForm dlg = new IssueForm(issue);
                 dlg.Size = new Size(Properties.Settings.Default.IssueWindowSizeX,
                                     Properties.Settings.Default.IssueWindowSizeY);
-                if (dlg.ShowDialog(this) == DialogResult.OK)
-                {
-                    BtnRefreshButton_Click(null, null);
-                }
-                Properties.Settings.Default.PropertyValues["IssueWindowSizeX"].PropertyValue = dlg.Size.Width;
-                Properties.Settings.Default.PropertyValues["IssueWindowSizeY"].PropertyValue = dlg.Size.Height;
-                Properties.Settings.Default.Save();
+                dlg.Show(this);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+        }
+
+        public void IssueFormClosed(DialogResult result, Size currentWindowSize)
+        {
+            if (result == DialogResult.OK)
+            {
+                BtnRefreshButton_Click(null, null);
+            }
+            Properties.Settings.Default.PropertyValues["IssueWindowSizeX"].PropertyValue = currentWindowSize.Width;
+            Properties.Settings.Default.PropertyValues["IssueWindowSizeY"].PropertyValue = currentWindowSize.Height;
+            Properties.Settings.Default.Save();
         }
 
         /// <summary>

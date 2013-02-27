@@ -41,7 +41,7 @@ namespace Redmine.Client
             this.projectId = project.Id;
             this.type = DialogType.New;
             InitializeComponent();
-            UpdateTitle();
+            UpdateTitle(null);
             BtnCloseButton.Visible = false;
             linkEditInRedmine.Visible = false;
             DataGridViewCustomFields.Visible = false;
@@ -56,12 +56,12 @@ namespace Redmine.Client
             InitializeComponent();
 
             LangTools.UpdateControlsForLanguage(this.Controls);
-            UpdateTitle();
+            UpdateTitle(issue);
 
             EnableDisableAllControls(false);
         }
 
-        private void UpdateTitle()
+        private void UpdateTitle(Issue issue)
         {
             if (type == DialogType.New)
                 this.Text = String.Format(Lang.DlgIssueTitleNew, project.Name);
@@ -148,6 +148,8 @@ namespace Redmine.Client
                     }
 
                     this.DialogResult = DialogResult.OK;
+                    if (type == DialogType.Edit)
+                        RedmineClientForm.Instance.Invoke(new AsyncCloseForm(RedmineClientForm.Instance.IssueFormClosed), new Object[] { this.DialogResult, Size });
                     this.Close();
                 }
                 else
@@ -185,6 +187,8 @@ namespace Redmine.Client
                 }
             }
             this.DialogResult = DialogResult.Cancel;
+            if (type == DialogType.Edit)
+                RedmineClientForm.Instance.Invoke(new AsyncCloseForm(RedmineClientForm.Instance.IssueFormClosed), new Object[] { this.DialogResult, Size });
             this.Close();
         }
 
@@ -210,7 +214,7 @@ namespace Redmine.Client
         {
             EnableDisableAllControls(true);
             // update title again
-            UpdateTitle();
+            UpdateTitle(issue);
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
             {
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
