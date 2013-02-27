@@ -136,7 +136,7 @@
     <value>Obnovit</value>
   </data>
   <data name="BtnResetButton" xml:space="preserve">
-    <value>Obnovit</value>
+    <value>Reset</value>
   </data>
   <data name="BtnSettingsButton" xml:space="preserve">
     <value>Nastavení</value>
@@ -506,5 +506,69 @@ upozornit každých
   </data>
   <data name="Message" xml:space="preserve">
     <value>Zpráva</value>
+  </data>
+  <data name="ApiVersion_V12x" xml:space="preserve">
+    <value>V1.2.x</value>
+  </data>
+  <data name="ApiVersion_V20x" xml:space="preserve">
+    <value>V2.0.x</value>
+  </data>
+  <data name="ApiVersion_V22x" xml:space="preserve">
+    <value>V2.2.x</value>
+  </data>
+  <data name="BtnViewTimeButton" xml:space="preserve">
+    <value>Prohlížet strávený čas</value>
+  </data>
+  <data name="BgWork_GetTimeEntries" xml:space="preserve">
+    <value>Získávám časové záznamy</value>
+  </data>
+  <data name="DlgTimeEntriesTitle" xml:space="preserve">
+    <value>Získávám časové záznamy úkolu {0} {1}</value>
+    <comment>{0} issuenumber; {1} issue subject</comment>
+  </data>
+  <data name="BgWork_GetIssue" xml:space="preserve">
+    <value>Získávám informace o úkolu</value>
+  </data>
+  <data name="DlgTimeEntryFormTitle_Edit" xml:space="preserve">
+    <value>Úprava časového záznamu {0} pro úkol {1} {2}</value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
+    <value>Nový časový záznam pro úkol {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_Edit" xml:space="preserve">
+    <value>Upravit časový záznam {0} pro úkol{3}{1} {2}</value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_New" xml:space="preserve">
+    <value>Vytvořit časový záznam pro úkol{3}{0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelByUser" xml:space="preserve">
+    <value>Podle uživatele</value>
+  </data>
+  <data name="labelSpentHours" xml:space="preserve">
+    <value>Strávený čas</value>
+  </data>
+  <data name="labelSpentOn" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="Warning_AreYouSureDeleteTimeEntry" xml:space="preserve">
+    <value>Opravdu chcete smazat záznam {0}</value>
+    <comment>{0} time-entry id</comment>
+  </data>
+  <data name="LabelChildren" xml:space="preserve">
+    <value>Podúkoly:</value>
+  </data>
+  <data name="LabelParent" xml:space="preserve">
+    <value>Nadřazený úkol: {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="PauseToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Pauza</value>
+  </data>
+  <data name="StartToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Start</value>
   </data>
 </root>
