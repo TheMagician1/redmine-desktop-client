@@ -311,6 +311,12 @@ namespace Redmine.Client
                     DataGridViewCustomFields.DataSource = customFields;
                     DataGridViewCustomFields.RowHeadersVisible = false;
                     DataGridViewCustomFields.ColumnHeadersVisible = false;
+                    try // Very ugly trick to fix the mono crash reported in the SF.net forum
+                    {
+                        DataGridViewCustomFields.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    }
+                    catch (Exception) { }
+                    DataGridViewCustomFields.Columns["Value"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
                 else
                     DataGridViewCustomFields.Visible = false;

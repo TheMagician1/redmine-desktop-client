@@ -243,13 +243,10 @@ namespace Redmine.Client
                 DataGridViewIssues.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception) { }
-            if (DataGridViewIssues.Columns.Count > 0)
-            {
-                DataGridViewIssues.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;    
-            }
             DataGridViewIssues.RowHeadersWidth = 20;
             DataGridViewIssues.Columns["Id"].DisplayIndex = 0;
             DataGridViewIssues.Columns["Subject"].DisplayIndex = 1;
+            DataGridViewIssues.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;    
 
             if (ComboBoxProject.Items.Count > 0)
             {
