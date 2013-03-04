@@ -71,6 +71,12 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="AttachmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttachmentForm.Designer.cs">
+      <DependentUpon>AttachmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectMember.cs" />
     <Compile Include="BgWork.cs" />
     <Compile Include="BgWorker.cs">
@@ -126,6 +132,9 @@
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttachmentForm.resx">
+      <DependentUpon>AttachmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CommitForm.resx">
       <DependentUpon>CommitForm.cs</DependentUpon>

@@ -3,6 +3,12 @@ using System.Windows.Forms;
 
 namespace Redmine.Client
 {
+    public enum DialogType
+    {
+        New,
+        Edit,
+    };
+
     static class Program
     {
         /// <summary>

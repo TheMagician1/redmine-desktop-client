@@ -61,6 +61,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New.
+        /// </summary>
+        internal static string addNewToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("addNewToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to V1.0.x.
         /// </summary>
         internal static string ApiVersion_V10x {
@@ -201,6 +210,15 @@ namespace Redmine.Client.Languages {
         internal static string BtnAddButton {
             get {
                 return ResourceManager.GetString("BtnAddButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse.
+        /// </summary>
+        internal static string BtnBrowseButton {
+            get {
+                return ResourceManager.GetString("BtnBrowseButton", resourceCulture);
             }
         }
         
@@ -547,6 +565,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding a new attachment for issue {0} {1}.
+        /// </summary>
+        internal static string DlgAttachmentTitle {
+            get {
+                return ResourceManager.GetString("DlgAttachmentTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Enumeration Value {0} for {1}.
         /// </summary>
         internal static string DlgEditEnumFormTitle_Edit {
@@ -624,6 +651,15 @@ namespace Redmine.Client.Languages {
         internal static string DlgTimeEntryFormTitle_New {
             get {
                 return ResourceManager.GetString("DlgTimeEntryFormTitle_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download / Open.
+        /// </summary>
+        internal static string downloadOpenToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("downloadOpenToolStripMenuItem", resourceCulture);
             }
         }
         
@@ -781,6 +817,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attachments.
+        /// </summary>
+        internal static string groupBoxAttachments {
+            get {
+                return ResourceManager.GetString("groupBoxAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application Settings.
         /// </summary>
         internal static string GrpApplicationSettings {
@@ -831,6 +876,15 @@ namespace Redmine.Client.Languages {
         internal static string labelAssignedTo {
             get {
                 return ResourceManager.GetString("labelAssignedTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string labelAttachmentDescription {
+            get {
+                return ResourceManager.GetString("labelAttachmentDescription", resourceCulture);
             }
         }
         
@@ -1071,6 +1125,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attachment File.
+        /// </summary>
+        internal static string labelSelectAttachment {
+            get {
+                return ResourceManager.GetString("labelSelectAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to When closing an Issue, set it to.
         /// </summary>
         internal static string labelSelectCloseStatus {
@@ -1184,6 +1247,15 @@ namespace Redmine.Client.Languages {
         internal static string MinimizeToSystemTrayCheckBox {
             get {
                 return ResourceManager.GetString("MinimizeToSystemTrayCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New issue.
+        /// </summary>
+        internal static string NewIssue {
+            get {
+                return ResourceManager.GetString("NewIssue", resourceCulture);
             }
         }
         
