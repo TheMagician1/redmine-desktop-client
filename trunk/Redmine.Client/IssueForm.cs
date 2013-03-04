@@ -61,6 +61,8 @@ namespace Redmine.Client
             LangTools.UpdateControlsForLanguage(contextMenuStripAttachments.Items);
             UpdateTitle(issue);
 
+            BtnDeleteButton.Visible = false;
+
             EnableDisableAllControls(false);
         }
 
@@ -714,6 +716,16 @@ namespace Redmine.Client
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BtnAddButton_Click(sender, e);
+        }
+
+        private void BtnDeleteButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewAttachments.SelectedRows.Count <= 0)
+                return;
+
+            Attachment attachment = (Attachment)dataGridViewAttachments.SelectedRows[0].DataBoundItem;
+            issue.Attachments.Remove(attachment);
+            AttachAttachements(issue.Attachments);
         }
     }
 }
