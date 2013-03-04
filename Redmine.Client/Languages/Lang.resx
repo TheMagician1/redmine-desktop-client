@@ -596,4 +596,7 @@ or Request attention every
   <data name="NewIssue" xml:space="preserve">
     <value>New issue</value>
   </data>
+  <data name="LabelRelations" xml:space="preserve">
+    <value>Relations</value>
+  </data>
 </root>

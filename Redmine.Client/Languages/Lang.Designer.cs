@@ -1125,6 +1125,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Relations.
+        /// </summary>
+        internal static string LabelRelations {
+            get {
+                return ResourceManager.GetString("LabelRelations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachment File.
         /// </summary>
         internal static string labelSelectAttachment {
