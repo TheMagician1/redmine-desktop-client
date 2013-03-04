@@ -571,4 +571,29 @@ or Request attention every
   <data name="StartToolStripMenuItem" xml:space="preserve">
     <value>&amp;Start</value>
   </data>
+  <data name="addNewToolStripMenuItem" xml:space="preserve">
+    <value>Add New</value>
+  </data>
+  <data name="BtnBrowseButton" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="DlgAttachmentTitle" xml:space="preserve">
+    <value>Adding a new attachment for issue {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="downloadOpenToolStripMenuItem" xml:space="preserve">
+    <value>Download / Open</value>
+  </data>
+  <data name="groupBoxAttachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="labelAttachmentDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="labelSelectAttachment" xml:space="preserve">
+    <value>Attachment File</value>
+  </data>
+  <data name="NewIssue" xml:space="preserve">
+    <value>New issue</value>
+  </data>
 </root>

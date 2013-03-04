@@ -571,4 +571,29 @@ of Vraag aandacht elke
   <data name="StartToolStripMenuItem" xml:space="preserve">
     <value>&amp;Start</value>
   </data>
+  <data name="addNewToolStripMenuItem" xml:space="preserve">
+    <value>Voeg nieuwe toe</value>
+  </data>
+  <data name="BtnBrowseButton" xml:space="preserve">
+    <value>Blader</value>
+  </data>
+  <data name="DlgAttachmentTitle" xml:space="preserve">
+    <value>Nieuwe bijlage toevoegen voor incident {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="downloadOpenToolStripMenuItem" xml:space="preserve">
+    <value>Download / Open</value>
+  </data>
+  <data name="groupBoxAttachments" xml:space="preserve">
+    <value>Bijlagen</value>
+  </data>
+  <data name="labelAttachmentDescription" xml:space="preserve">
+    <value>Beschrijving</value>
+  </data>
+  <data name="labelSelectAttachment" xml:space="preserve">
+    <value>Bijlage bestandsnaam</value>
+  </data>
+  <data name="NewIssue" xml:space="preserve">
+    <value>Nieuw incident</value>
+  </data>
 </root>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BtnSaveButton = new System.Windows.Forms.Button();
             this.BtnCancelButton = new System.Windows.Forms.Button();
             this.labelTracker = new System.Windows.Forms.Label();
@@ -56,14 +57,23 @@
             this.linkEditInRedmine = new System.Windows.Forms.LinkLabel();
             this.DataGridViewCustomFields = new System.Windows.Forms.DataGridView();
             this.BtnViewTimeButton = new System.Windows.Forms.Button();
+            this.dataGridViewAttachments = new System.Windows.Forms.DataGridView();
+            this.contextMenuStripAttachments = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.downloadOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBoxAttachments = new System.Windows.Forms.GroupBox();
+            this.BtnAddButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCustomFields)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAttachments)).BeginInit();
+            this.contextMenuStripAttachments.SuspendLayout();
+            this.groupBoxAttachments.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnSaveButton
             // 
             this.BtnSaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSaveButton.Location = new System.Drawing.Point(327, 305);
+            this.BtnSaveButton.Location = new System.Drawing.Point(327, 401);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
@@ -76,7 +86,7 @@
             // 
             this.BtnCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(399, 305);
+            this.BtnCancelButton.Location = new System.Drawing.Point(399, 401);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -109,7 +119,7 @@
             // 
             this.DateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateStart.Location = new System.Drawing.Point(9, 197);
+            this.DateStart.Location = new System.Drawing.Point(9, 207);
             this.DateStart.Margin = new System.Windows.Forms.Padding(2);
             this.DateStart.Name = "DateStart";
             this.DateStart.Size = new System.Drawing.Size(95, 20);
@@ -157,7 +167,7 @@
             this.TextBoxDescription.Multiline = true;
             this.TextBoxDescription.Name = "TextBoxDescription";
             this.TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TextBoxDescription.Size = new System.Drawing.Size(458, 63);
+            this.TextBoxDescription.Size = new System.Drawing.Size(458, 73);
             this.TextBoxDescription.TabIndex = 3;
             // 
             // labelStatus
@@ -204,7 +214,7 @@
             // 
             this.DateDue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DateDue.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateDue.Location = new System.Drawing.Point(108, 197);
+            this.DateDue.Location = new System.Drawing.Point(108, 207);
             this.DateDue.Margin = new System.Windows.Forms.Padding(2);
             this.DateDue.Name = "DateDue";
             this.DateDue.Size = new System.Drawing.Size(93, 20);
@@ -213,7 +223,7 @@
             // labelEstimatedTime
             // 
             this.labelEstimatedTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelEstimatedTime.Location = new System.Drawing.Point(202, 164);
+            this.labelEstimatedTime.Location = new System.Drawing.Point(202, 174);
             this.labelEstimatedTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEstimatedTime.Name = "labelEstimatedTime";
             this.labelEstimatedTime.Size = new System.Drawing.Size(86, 29);
@@ -224,7 +234,7 @@
             // TextBoxEstimatedTime
             // 
             this.TextBoxEstimatedTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TextBoxEstimatedTime.Location = new System.Drawing.Point(205, 196);
+            this.TextBoxEstimatedTime.Location = new System.Drawing.Point(205, 206);
             this.TextBoxEstimatedTime.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxEstimatedTime.Name = "TextBoxEstimatedTime";
             this.TextBoxEstimatedTime.Size = new System.Drawing.Size(83, 20);
@@ -234,7 +244,7 @@
             // 
             this.labelAssignedTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelAssignedTo.AutoSize = true;
-            this.labelAssignedTo.Location = new System.Drawing.Point(202, 222);
+            this.labelAssignedTo.Location = new System.Drawing.Point(202, 232);
             this.labelAssignedTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAssignedTo.Name = "labelAssignedTo";
             this.labelAssignedTo.Size = new System.Drawing.Size(62, 13);
@@ -246,7 +256,7 @@
             this.ComboBoxAssignedTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxAssignedTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxAssignedTo.FormattingEnabled = true;
-            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(205, 241);
+            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(205, 251);
             this.ComboBoxAssignedTo.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxAssignedTo.Name = "ComboBoxAssignedTo";
             this.ComboBoxAssignedTo.Size = new System.Drawing.Size(262, 21);
@@ -256,7 +266,7 @@
             // 
             this.labelTargetVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTargetVersion.AutoSize = true;
-            this.labelTargetVersion.Location = new System.Drawing.Point(202, 265);
+            this.labelTargetVersion.Location = new System.Drawing.Point(202, 275);
             this.labelTargetVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTargetVersion.Name = "labelTargetVersion";
             this.labelTargetVersion.Size = new System.Drawing.Size(75, 13);
@@ -268,7 +278,7 @@
             this.ComboBoxTargetVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxTargetVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxTargetVersion.FormattingEnabled = true;
-            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(205, 280);
+            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(205, 290);
             this.ComboBoxTargetVersion.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTargetVersion.Name = "ComboBoxTargetVersion";
             this.ComboBoxTargetVersion.Size = new System.Drawing.Size(262, 21);
@@ -282,7 +292,7 @@
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(293, 196);
+            this.numericUpDown1.Location = new System.Drawing.Point(293, 206);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(81, 20);
@@ -291,7 +301,7 @@
             // labelPercentDone
             // 
             this.labelPercentDone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelPercentDone.Location = new System.Drawing.Point(293, 163);
+            this.labelPercentDone.Location = new System.Drawing.Point(293, 173);
             this.labelPercentDone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPercentDone.Name = "labelPercentDone";
             this.labelPercentDone.Size = new System.Drawing.Size(81, 30);
@@ -302,7 +312,7 @@
             // cbStartDate
             // 
             this.cbStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbStartDate.Location = new System.Drawing.Point(9, 163);
+            this.cbStartDate.Location = new System.Drawing.Point(9, 173);
             this.cbStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.cbStartDate.Name = "cbStartDate";
             this.cbStartDate.Size = new System.Drawing.Size(95, 30);
@@ -314,7 +324,7 @@
             // cbDueDate
             // 
             this.cbDueDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbDueDate.Location = new System.Drawing.Point(108, 163);
+            this.cbDueDate.Location = new System.Drawing.Point(108, 173);
             this.cbDueDate.Margin = new System.Windows.Forms.Padding(2);
             this.cbDueDate.Name = "cbDueDate";
             this.cbDueDate.Size = new System.Drawing.Size(93, 30);
@@ -326,7 +336,7 @@
             // BtnCloseButton
             // 
             this.BtnCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCloseButton.Location = new System.Drawing.Point(204, 305);
+            this.BtnCloseButton.Location = new System.Drawing.Point(204, 401);
             this.BtnCloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCloseButton.Name = "BtnCloseButton";
             this.BtnCloseButton.Size = new System.Drawing.Size(118, 24);
@@ -339,7 +349,7 @@
             // 
             this.linkEditInRedmine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkEditInRedmine.AutoSize = true;
-            this.linkEditInRedmine.Location = new System.Drawing.Point(6, 311);
+            this.linkEditInRedmine.Location = new System.Drawing.Point(6, 407);
             this.linkEditInRedmine.Name = "linkEditInRedmine";
             this.linkEditInRedmine.Size = new System.Drawing.Size(127, 13);
             this.linkEditInRedmine.TabIndex = 23;
@@ -351,10 +361,11 @@
             // 
             this.DataGridViewCustomFields.AllowUserToAddRows = false;
             this.DataGridViewCustomFields.AllowUserToDeleteRows = false;
+            this.DataGridViewCustomFields.AllowUserToResizeRows = false;
             this.DataGridViewCustomFields.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewCustomFields.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewCustomFields.Location = new System.Drawing.Point(9, 222);
+            this.DataGridViewCustomFields.Location = new System.Drawing.Point(9, 232);
             this.DataGridViewCustomFields.MultiSelect = false;
             this.DataGridViewCustomFields.Name = "DataGridViewCustomFields";
             this.DataGridViewCustomFields.ReadOnly = true;
@@ -365,7 +376,7 @@
             // BtnViewTimeButton
             // 
             this.BtnViewTimeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnViewTimeButton.Location = new System.Drawing.Point(379, 194);
+            this.BtnViewTimeButton.Location = new System.Drawing.Point(379, 204);
             this.BtnViewTimeButton.Name = "BtnViewTimeButton";
             this.BtnViewTimeButton.Size = new System.Drawing.Size(88, 23);
             this.BtnViewTimeButton.TabIndex = 27;
@@ -373,13 +384,83 @@
             this.BtnViewTimeButton.UseVisualStyleBackColor = true;
             this.BtnViewTimeButton.Click += new System.EventHandler(this.BtnViewTimeButton_Click);
             // 
+            // dataGridViewAttachments
+            // 
+            this.dataGridViewAttachments.AllowDrop = true;
+            this.dataGridViewAttachments.AllowUserToAddRows = false;
+            this.dataGridViewAttachments.AllowUserToDeleteRows = false;
+            this.dataGridViewAttachments.AllowUserToResizeRows = false;
+            this.dataGridViewAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewAttachments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAttachments.ContextMenuStrip = this.contextMenuStripAttachments;
+            this.dataGridViewAttachments.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewAttachments.MultiSelect = false;
+            this.dataGridViewAttachments.Name = "dataGridViewAttachments";
+            this.dataGridViewAttachments.ReadOnly = true;
+            this.dataGridViewAttachments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewAttachments.Size = new System.Drawing.Size(371, 54);
+            this.dataGridViewAttachments.TabIndex = 22;
+            this.dataGridViewAttachments.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAttachments_CellContentDoubleClick);
+            this.dataGridViewAttachments.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewAttachments_CellFormatting);
+            this.dataGridViewAttachments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewAttachments_CellMouseDown);
+            this.dataGridViewAttachments.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridViewAttachments_DragDrop);
+            this.dataGridViewAttachments.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridViewAttachments_DragEnter);
+            // 
+            // contextMenuStripAttachments
+            // 
+            this.contextMenuStripAttachments.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.downloadOpenToolStripMenuItem,
+            this.addNewToolStripMenuItem});
+            this.contextMenuStripAttachments.Name = "contextMenuStripAttachments";
+            this.contextMenuStripAttachments.Size = new System.Drawing.Size(169, 48);
+            // 
+            // downloadOpenToolStripMenuItem
+            // 
+            this.downloadOpenToolStripMenuItem.Name = "downloadOpenToolStripMenuItem";
+            this.downloadOpenToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.downloadOpenToolStripMenuItem.Text = "Download / Open";
+            this.downloadOpenToolStripMenuItem.Click += new System.EventHandler(this.downloadOpenToolStripMenuItem_Click);
+            // 
+            // addNewToolStripMenuItem
+            // 
+            this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
+            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.addNewToolStripMenuItem.Text = "Add New";
+            this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
+            // 
+            // groupBoxAttachments
+            // 
+            this.groupBoxAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxAttachments.Controls.Add(this.BtnAddButton);
+            this.groupBoxAttachments.Controls.Add(this.dataGridViewAttachments);
+            this.groupBoxAttachments.Location = new System.Drawing.Point(9, 317);
+            this.groupBoxAttachments.Name = "groupBoxAttachments";
+            this.groupBoxAttachments.Size = new System.Drawing.Size(457, 79);
+            this.groupBoxAttachments.TabIndex = 28;
+            this.groupBoxAttachments.TabStop = false;
+            this.groupBoxAttachments.Text = "Attachments";
+            // 
+            // BtnAddButton
+            // 
+            this.BtnAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAddButton.Location = new System.Drawing.Point(383, 19);
+            this.BtnAddButton.Name = "BtnAddButton";
+            this.BtnAddButton.Size = new System.Drawing.Size(68, 24);
+            this.BtnAddButton.TabIndex = 23;
+            this.BtnAddButton.Text = "Add";
+            this.BtnAddButton.UseVisualStyleBackColor = true;
+            this.BtnAddButton.Click += new System.EventHandler(this.BtnAddButton_Click);
+            // 
             // IssueForm
             // 
             this.AcceptButton = this.BtnSaveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(476, 336);
+            this.ClientSize = new System.Drawing.Size(476, 432);
+            this.Controls.Add(this.groupBoxAttachments);
             this.Controls.Add(this.BtnViewTimeButton);
             this.Controls.Add(this.DataGridViewCustomFields);
             this.Controls.Add(this.linkEditInRedmine);
@@ -409,13 +490,16 @@
             this.Controls.Add(this.BtnSaveButton);
             this.Controls.Add(this.BtnCancelButton);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(492, 374);
+            this.MinimumSize = new System.Drawing.Size(492, 470);
             this.Name = "IssueForm";
             this.ShowIcon = false;
             this.Text = "Create new issue";
             this.Load += new System.EventHandler(this.NewIssueForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCustomFields)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAttachments)).EndInit();
+            this.contextMenuStripAttachments.ResumeLayout(false);
+            this.groupBoxAttachments.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,5 +535,11 @@
         private System.Windows.Forms.LinkLabel linkEditInRedmine;
         private System.Windows.Forms.DataGridView DataGridViewCustomFields;
         private System.Windows.Forms.Button BtnViewTimeButton;
+        private System.Windows.Forms.DataGridView dataGridViewAttachments;
+        private System.Windows.Forms.GroupBox groupBoxAttachments;
+        private System.Windows.Forms.Button BtnAddButton;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripAttachments;
+        private System.Windows.Forms.ToolStripMenuItem downloadOpenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewToolStripMenuItem;
     }
 }

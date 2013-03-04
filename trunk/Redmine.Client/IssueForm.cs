@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Redmine.Net.Api.Types;
 using Redmine.Client.Languages;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Redmine.Client
 {
@@ -15,11 +16,6 @@ namespace Redmine.Client
         {
             public String Name { get; set; }
             public String Value { get; set; }
-        };
-        public enum DialogType
-        {
-            New,
-            Edit,
         };
         private Project project;
         private int issueId = 0;
@@ -45,7 +41,13 @@ namespace Redmine.Client
             BtnCloseButton.Visible = false;
             linkEditInRedmine.Visible = false;
             DataGridViewCustomFields.Visible = false;
+            downloadOpenToolStripMenuItem.Enabled = false;
             LangTools.UpdateControlsForLanguage(this.Controls);
+            LangTools.UpdateControlsForLanguage(contextMenuStripAttachments.Items);
+
+            // initialize new objects
+            Issue issue = new Issue();
+            issue.Attachments = new List<Attachment>();
         }
 
         public IssueForm(Issue issue)
@@ -56,6 +58,7 @@ namespace Redmine.Client
             InitializeComponent();
 
             LangTools.UpdateControlsForLanguage(this.Controls);
+            LangTools.UpdateControlsForLanguage(contextMenuStripAttachments.Items);
             UpdateTitle(issue);
 
             EnableDisableAllControls(false);
@@ -103,9 +106,17 @@ namespace Redmine.Client
 
         private void BtnSaveButton_Click(object sender, EventArgs e)
         {
-            Issue issue = new Issue();
             if (type == DialogType.Edit)
                 issue.Id = this.issue.Id;
+            // first check subject as it is mandatory
+            issue.Subject = TextBoxSubject.Text;
+            if (String.IsNullOrEmpty(issue.Subject))
+            {
+                MessageBox.Show(Lang.Error_IssueSubjectMandatory,
+                            Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TextBoxSubject.Focus();
+            }
+
             issue.Project = new IdentifiableName { Id = projectId };
             issue.AssignedTo = new IdentifiableName { Id = Convert.ToInt32(ComboBoxAssignedTo.SelectedValue) };
             issue.Description = TextBoxDescription.Text;
@@ -123,41 +134,47 @@ namespace Redmine.Client
                 issue.DueDate = DateDue.Value;
             }
             issue.Status = new IdentifiableName { Id = Convert.ToInt32(ComboBoxStatus.SelectedValue) };
-            issue.Subject = TextBoxSubject.Text;
             issue.FixedVersion = new IdentifiableName { Id = Convert.ToInt32(ComboBoxTargetVersion.SelectedValue) };
             issue.Tracker = new IdentifiableName { Id = Convert.ToInt32(ComboBoxTracker.SelectedValue) };
             try
             {
-                if (issue.Subject != String.Empty)
+                if (type == DialogType.New)
                 {
-                    if (type == DialogType.New)
-                        RedmineClientForm.redmine.CreateObject<Issue>(issue);
-                    else
-                        RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
-
-                    // resize to screen without children and parents...
-                    if (issue.Children != null && issue.Children.Count > 0)
+                    if (issue.Attachments.Count >= 0)
                     {
-                        MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ChildrenHeight);
-                        Size = new System.Drawing.Size(Size.Width, Size.Height - ChildrenHeight);
+                        // first upload all attachment
+                        issue.Uploads = new List<Upload>();
+                        foreach (var a in issue.Attachments)
+                        {
+                            byte[] file = File.ReadAllBytes(a.ContentUrl);
+                            Upload uploadedFile = RedmineClientForm.redmine.UploadData(file);
+                            uploadedFile.FileName = a.FileName;
+                            uploadedFile.Description = a.Description;
+                            uploadedFile.ContentType = a.ContentType;
+                            issue.Uploads.Add(uploadedFile);
+                        }
                     }
-                    if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
-                    {
-                        MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ParentHeight);
-                        Size = new System.Drawing.Size(Size.Width, Size.Height - ParentHeight);
-                    }
-
-                    this.DialogResult = DialogResult.OK;
-                    if (type == DialogType.Edit)
-                        RedmineClientForm.Instance.Invoke(new AsyncCloseForm(RedmineClientForm.Instance.IssueFormClosed), new Object[] { this.DialogResult, Size });
-                    this.Close();
+                    RedmineClientForm.redmine.CreateObject<Issue>(issue);
                 }
                 else
+                    RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+
+                // resize to screen without children and parents...
+                if (issue.Children != null && issue.Children.Count > 0)
                 {
-                    MessageBox.Show(Lang.Error_IssueSubjectMandatory,
-                                Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    TextBoxSubject.Focus();
+                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ChildrenHeight);
+                    Size = new System.Drawing.Size(Size.Width, Size.Height - ChildrenHeight);
                 }
+                if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
+                {
+                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ParentHeight);
+                    Size = new System.Drawing.Size(Size.Width, Size.Height - ParentHeight);
+                }
+
+                this.DialogResult = DialogResult.OK;
+                if (type == DialogType.Edit)
+                    RedmineClientForm.Instance.Invoke(new AsyncCloseForm(RedmineClientForm.Instance.IssueFormClosed), new Object[] { this.DialogResult, Size });
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -200,14 +217,20 @@ namespace Redmine.Client
             DateDue.Enabled = false;
             if (this.DataCache == null)
             {
-                this.Cursor = Cursors.AppStarting;
-                RunWorkerAsync(projectId);
-                this.BtnSaveButton.Enabled = false;
+                UpdateDataFromRedmine();
             }
             else
             {
                 FillForm();
             }
+        }
+
+        private void UpdateDataFromRedmine()
+        {
+            EnableDisableAllControls(false);
+            this.Cursor = Cursors.AppStarting;
+            RunWorkerAsync(projectId);
+            this.BtnSaveButton.Enabled = false;
         }
 
         private void FillForm()
@@ -335,6 +358,12 @@ namespace Redmine.Client
                 else
                     DataGridViewCustomFields.Visible = false;
 
+                if (issue.Attachments != null)
+                {
+                    dataGridViewAttachments.RowHeadersVisible = false;
+                    dataGridViewAttachments.ColumnHeadersVisible = false;
+                    AttachAttachements(issue.Attachments);
+                }
                 // if the issue has children, show them.
                 if (issue.Children != null && issue.Children.Count > 0)
                 {
@@ -425,6 +454,30 @@ namespace Redmine.Client
             }
         }
 
+        private void AttachAttachements(IList<Attachment> attachments)
+        {
+            dataGridViewAttachments.DataSource = null;
+            dataGridViewAttachments.DataSource = attachments;
+            foreach (DataGridViewColumn column in dataGridViewAttachments.Columns)
+            {
+                if (column.Name != "FileName"
+                    && column.Name != "Description"
+                    && column.Name != "Author")
+                {
+                    column.Visible = false;
+                }
+            }
+            try // Very ugly trick to fix the mono crash reported in the SF.net forum
+            {
+                dataGridViewAttachments.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch (Exception) { }
+            dataGridViewAttachments.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewAttachments.Columns["FileName"].DisplayIndex = 0;
+            dataGridViewAttachments.Columns["Description"].DisplayIndex = 1;
+            dataGridViewAttachments.Columns["Author"].DisplayIndex = 2;
+        }
+
         private void MoveControl(Control control, int diffx, int diffy)
         {
             System.Drawing.Point loc = control.Location;
@@ -450,13 +503,21 @@ namespace Redmine.Client
                         Issue currentIssue = null;
                         if (type == DialogType.Edit)
                         {
-                            NameValueCollection issueParameters = new NameValueCollection { { "include", "journals,relations,children" } };
+                            NameValueCollection issueParameters = new NameValueCollection { { "include", "journals,relations,children,attachments" } };
                             currentIssue = RedmineClientForm.redmine.GetObject<Issue>(issueId.ToString(), issueParameters);
                             if (currentIssue.ParentIssue != null && currentIssue.ParentIssue.Id != 0)
                             {
                                 Issue parentIssue = RedmineClientForm.redmine.GetObject<Issue>(currentIssue.ParentIssue.Id.ToString(), null);
                                 currentIssue.ParentIssue.Name = parentIssue.Subject;
                             }
+                        }
+                        else
+                        {
+                            // initialize new objects
+                            currentIssue = new Issue();
+                            currentIssue.Id = 0;
+                            currentIssue.Subject = Lang.NewIssue;
+                            currentIssue.Attachments = new List<Attachment>();
                         }
                         if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                         {
@@ -556,5 +617,103 @@ namespace Redmine.Client
             }
         }
 
+        private void dataGridViewAttachments_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (type == DialogType.New)
+                return;
+            Attachment attachment = (Attachment)dataGridViewAttachments.Rows[e.RowIndex].DataBoundItem;
+            System.Diagnostics.Process.Start(attachment.ContentUrl);
+        }
+
+        private void dataGridViewAttachments_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridViewAttachments.Columns["FileName"].Index) // Filename
+            {
+                Attachment attachment = (Attachment)dataGridViewAttachments.Rows[e.RowIndex].DataBoundItem;
+                e.Value = attachment.FileName + " (" + attachment.FileSize.ToByteString() + ")";
+            }
+            if (e.ColumnIndex == dataGridViewAttachments.Columns["Author"].Index) // Author
+            {
+                Attachment attachment = (Attachment)dataGridViewAttachments.Rows[e.RowIndex].DataBoundItem;
+                e.Value = attachment.Author.Name;
+            }
+        }
+
+        private void BtnAddButton_Click(object sender, EventArgs e)
+        {
+            AttachmentForm dlg = new AttachmentForm(issue, type, "");
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+            {
+                if (type == DialogType.Edit)
+                    UpdateDataFromRedmine();
+                else
+                {
+                    issue.Attachments.Add(dlg.NewAttachment);
+                    AttachAttachements(issue.Attachments);
+                }
+            }
+        }
+
+        private void dataGridViewAttachments_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.All;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void dataGridViewAttachments_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                bool addedAttachment = false;
+                foreach (var file in files)
+                {
+                    AttachmentForm dlg = new AttachmentForm(issue, type, file);
+                    if (dlg.ShowDialog(this) == DialogResult.Cancel)
+                        break;
+                    else
+                    {
+                        if (type == DialogType.New)
+                            issue.Attachments.Add(dlg.NewAttachment);
+                    }
+                    addedAttachment = true;
+                }
+                if (addedAttachment)
+                {
+                    if (type == DialogType.Edit)
+                        UpdateDataFromRedmine();
+                    else
+                        AttachAttachements(issue.Attachments);
+                }
+            }
+        }
+
+        private void dataGridViewAttachments_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dataGridViewAttachments.ClearSelection();
+                dataGridViewAttachments.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+        private void downloadOpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (type == DialogType.New)
+                return;
+
+            if (dataGridViewAttachments.SelectedRows.Count <= 0)
+                return;
+
+            Attachment attachment = (Attachment)dataGridViewAttachments.SelectedRows[0].DataBoundItem;
+            System.Diagnostics.Process.Start(attachment.ContentUrl);
+        }
+
+        private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BtnAddButton_Click(sender, e);
+        }
     }
 }
