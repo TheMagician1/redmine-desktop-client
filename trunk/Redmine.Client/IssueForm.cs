@@ -17,9 +17,25 @@ namespace Redmine.Client
             public String Name { get; set; }
             public String Value { get; set; }
         };
+        class ClientIssueRelation : IssueRelation
+        {
+            private Issue issueTo;
+            public String IssueToSubject { get { return issueTo.Subject; } }
+            public IdentifiableName IssueToTracker { get { return issueTo.Tracker; } }
+            public IdentifiableName IssueToStatus { get { return issueTo.Status; } }
+            public ClientIssueRelation(IssueRelation relation, Issue issueTo)
+            {
+                this.Id = relation.Id;
+                this.IssueId = relation.IssueId;
+                this.IssueToId = relation.IssueToId;
+                this.Type = relation.Type;
+                this.issueTo = issueTo;
+            }
+        };
         private Project project;
         private int issueId = 0;
         private Issue issue;
+        private List<ClientIssueRelation> issueRelations;
         private int projectId;
         private DialogType type;
         private IssueFormData DataCache = null;
@@ -27,8 +43,11 @@ namespace Redmine.Client
         private Label LabelChildren;
         private DataGridView DataGridViewChildren;
         private Label LabelParent;
+        private Label LabelRelations;
+        private DataGridView DataGridViewRelations;
 
         private const int ChildrenHeight = 119;
+        private const int RelationsHeight = 119;
         private const int ParentHeight = 24;
 
         public IssueForm(Project project)
@@ -162,16 +181,7 @@ namespace Redmine.Client
                     RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
 
                 // resize to screen without children and parents...
-                if (issue.Children != null && issue.Children.Count > 0)
-                {
-                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ChildrenHeight);
-                    Size = new System.Drawing.Size(Size.Width, Size.Height - ChildrenHeight);
-                }
-                if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
-                {
-                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ParentHeight);
-                    Size = new System.Drawing.Size(Size.Width, Size.Height - ParentHeight);
-                }
+                SetOriginalSize();
 
                 this.DialogResult = DialogResult.OK;
                 if (type == DialogType.Edit)
@@ -194,21 +204,31 @@ namespace Redmine.Client
             // resize to screen without children and parents...
             if (issue != null)
             {
-                if (issue.Children != null && issue.Children.Count > 0)
-                {
-                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ChildrenHeight);
-                    Size = new System.Drawing.Size(Size.Width, Size.Height - ChildrenHeight);
-                }
-                if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
-                {
-                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ParentHeight);
-                    Size = new System.Drawing.Size(Size.Width, Size.Height - ParentHeight);
-                }
+                SetOriginalSize();
             }
             this.DialogResult = DialogResult.Cancel;
             if (type == DialogType.Edit)
                 RedmineClientForm.Instance.Invoke(new AsyncCloseForm(RedmineClientForm.Instance.IssueFormClosed), new Object[] { this.DialogResult, Size });
             this.Close();
+        }
+
+        private void SetOriginalSize()
+        {
+            if (DataGridViewChildren != null)
+            {
+                MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ChildrenHeight);
+                Size = new System.Drawing.Size(Size.Width, Size.Height - ChildrenHeight);
+            }
+            if (LabelParent != null)
+            {
+                MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - ParentHeight);
+                Size = new System.Drawing.Size(Size.Width, Size.Height - ParentHeight);
+            }
+            if (DataGridViewRelations != null)
+            {
+                MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height - RelationsHeight);
+                Size = new System.Drawing.Size(Size.Width, Size.Height - RelationsHeight);
+            }
         }
 
         private void NewIssueForm_Load(object sender, EventArgs e)
@@ -453,6 +473,74 @@ namespace Redmine.Client
                     if (MinimumSize.Width < LabelParent.Width + 30)
                         MinimumSize = new System.Drawing.Size(LabelParent.Width + 30, MinimumSize.Height);
                 }
+                // if the issue has children, show them.
+                if (issue.Relations != null && issue.Relations.Count > 0)
+                {
+                    LabelRelations = new Label();
+                    LabelRelations.AutoSize = true;
+                    LabelRelations.Location = new System.Drawing.Point(TextBoxDescription.Location.X, linkEditInRedmine.Location.Y);
+                    LabelRelations.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+                    LabelRelations.Name = "LabelRelations";
+                    LabelRelations.Size = new System.Drawing.Size(44, 13);
+                    LabelRelations.TabIndex = 4;
+                    LabelRelations.Text = Lang.LabelRelations;
+                    LabelRelations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+                    Controls.Add(LabelRelations);
+
+                    DataGridViewRelations = new DataGridView();
+                    DataGridViewRelations.AllowUserToAddRows = false;
+                    DataGridViewRelations.AllowUserToDeleteRows = false;
+                    DataGridViewRelations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                    DataGridViewRelations.Location = new System.Drawing.Point(TextBoxDescription.Location.X, linkEditInRedmine.Location.Y + 19);
+                    DataGridViewRelations.MultiSelect = false;
+                    DataGridViewRelations.Name = "DataGridViewRelations";
+                    DataGridViewRelations.ReadOnly = true;
+                    DataGridViewRelations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+                    DataGridViewRelations.Size = new System.Drawing.Size(TextBoxDescription.Width, 88);
+                    DataGridViewRelations.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewRelations_CellFormatting);
+                    DataGridViewRelations.TabIndex = 26;
+                    DataGridViewRelations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                    DataGridViewRelations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+                    Controls.Add(DataGridViewRelations);
+                    DataGridViewRelations.DataSource = issueRelations;
+                    try // Very ugly trick to fix the mono crash reported in the SF.net forum
+                    {
+                        DataGridViewRelations.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    }
+                    catch (Exception) { }
+                    if (DataGridViewRelations.Columns.Count > 0)
+                    {
+                        DataGridViewRelations.Columns["IssueToSubject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    }
+                    DataGridViewRelations.RowHeadersWidth = 20;
+                    foreach (DataGridViewColumn column in DataGridViewRelations.Columns)
+                    {
+                        if (column.Name != "Id"
+                            && column.Name != "IssueToSubject"
+                            && column.Name != "Type"
+                            && column.Name != "IssueToStatus")
+                        {
+                            column.Visible = false;
+                        }
+                    }
+                    DataGridViewRelations.Columns["Type"].DisplayIndex = 0;
+                    DataGridViewRelations.Columns["Type"].HeaderText = "Relation";
+                    DataGridViewRelations.Columns["Id"].DisplayIndex = 1;
+                    DataGridViewRelations.Columns["IssueToSubject"].DisplayIndex = 2;
+                    DataGridViewRelations.Columns["IssueToSubject"].HeaderText = "Subject";
+                    DataGridViewRelations.Columns["IssueToStatus"].DisplayIndex = 3;
+                    DataGridViewRelations.Columns["IssueToStatus"].HeaderText = "Status";
+
+                    SuspendLayout();
+                    // first set size, then alter minimum size; otherwise dialog is expanded twice.
+                    Size = new System.Drawing.Size(Size.Width, Size.Height + RelationsHeight);
+                    MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height + RelationsHeight);
+                    MoveControl(linkEditInRedmine, 0, RelationsHeight);
+                    MoveControl(BtnCancelButton, 0, RelationsHeight);
+                    MoveControl(BtnCloseButton, 0, RelationsHeight);
+                    MoveControl(BtnSaveButton, 0, RelationsHeight);
+                    ResumeLayout(false);
+                }
             }
         }
 
@@ -502,6 +590,7 @@ namespace Redmine.Client
                     try
                     {
                         IssueFormData dataCache = new IssueFormData();
+                        List<ClientIssueRelation> currentIssueRelations = new List<ClientIssueRelation>();
                         Issue currentIssue = null;
                         if (type == DialogType.Edit)
                         {
@@ -539,10 +628,19 @@ namespace Redmine.Client
                                     Enumerations.SaveIssuePriorities();
                                 }
                             }
+                            if (currentIssue.Relations != null)
+                            {
+                                foreach (var r in currentIssue.Relations)
+                                {
+                                    Issue relatedIssue = RedmineClientForm.redmine.GetObject<Issue>(r.IssueToId.ToString(), null);
+                                    currentIssueRelations.Add(new ClientIssueRelation(r, relatedIssue));
+                                }
+                            }
                         }
                         return () =>
                             {
                                 this.issue = currentIssue;
+                                this.issueRelations = currentIssueRelations;
                                 this.DataCache = dataCache;
                                 FillForm();
                                 this.BtnSaveButton.Enabled = true;
@@ -616,6 +714,20 @@ namespace Redmine.Client
             {
                 IssueChild currentIssueChild = (IssueChild)DataGridViewChildren.Rows[e.RowIndex].DataBoundItem;
                 e.Value = currentIssueChild.Tracker.Name + " " + currentIssueChild.Id.ToString();
+            }
+        }
+
+        private void DataGridViewRelations_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == DataGridViewRelations.Columns["Id"].Index) // Id column
+            {
+                ClientIssueRelation currentIssueRelation = (ClientIssueRelation)DataGridViewRelations.Rows[e.RowIndex].DataBoundItem;
+                e.Value = currentIssueRelation.IssueToTracker.Name + " " + currentIssueRelation.IssueToId.ToString();
+            }
+            if (e.ColumnIndex == DataGridViewRelations.Columns["IssueToStatus"].Index) // Id column
+            {
+                ClientIssueRelation currentIssueRelation = (ClientIssueRelation)DataGridViewRelations.Rows[e.RowIndex].DataBoundItem;
+                e.Value = currentIssueRelation.IssueToStatus.Name;
             }
         }
 
