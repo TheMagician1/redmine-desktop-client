@@ -62,6 +62,7 @@
             this.downloadOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxAttachments = new System.Windows.Forms.GroupBox();
+            this.BtnDeleteButton = new System.Windows.Forms.Button();
             this.BtnAddButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCustomFields)).BeginInit();
@@ -433,6 +434,7 @@
             // 
             this.groupBoxAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxAttachments.Controls.Add(this.BtnDeleteButton);
             this.groupBoxAttachments.Controls.Add(this.BtnAddButton);
             this.groupBoxAttachments.Controls.Add(this.dataGridViewAttachments);
             this.groupBoxAttachments.Location = new System.Drawing.Point(9, 317);
@@ -441,6 +443,17 @@
             this.groupBoxAttachments.TabIndex = 28;
             this.groupBoxAttachments.TabStop = false;
             this.groupBoxAttachments.Text = "Attachments";
+            // 
+            // BtnDeleteButton
+            // 
+            this.BtnDeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDeleteButton.Location = new System.Drawing.Point(383, 49);
+            this.BtnDeleteButton.Name = "BtnDeleteButton";
+            this.BtnDeleteButton.Size = new System.Drawing.Size(68, 24);
+            this.BtnDeleteButton.TabIndex = 24;
+            this.BtnDeleteButton.Text = "Delete";
+            this.BtnDeleteButton.UseVisualStyleBackColor = true;
+            this.BtnDeleteButton.Click += new System.EventHandler(this.BtnDeleteButton_Click);
             // 
             // BtnAddButton
             // 
@@ -541,5 +554,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAttachments;
         private System.Windows.Forms.ToolStripMenuItem downloadOpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewToolStripMenuItem;
+        private System.Windows.Forms.Button BtnDeleteButton;
     }
 }
