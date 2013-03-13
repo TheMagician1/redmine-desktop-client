@@ -85,8 +85,9 @@ namespace Redmine.Client
         private void BtnOKButton_Click(object sender, EventArgs e)
         {
             CurTimeEntry.SpentOn = datePickerSpentOn.Value;
-            CurTimeEntry.User.Id = ((ProjectMember)comboBoxByUser.SelectedItem).Id;
-            CurTimeEntry.Activity.Id = ((IdentifiableName)comboBoxActivity.SelectedItem).Id;
+            CurTimeEntry.Issue = new IdentifiableName() { Id = issue.Id };
+            CurTimeEntry.User = new IdentifiableName() { Id = ((ProjectMember)comboBoxByUser.SelectedItem).Id };
+            CurTimeEntry.Activity = (IdentifiableName)comboBoxActivity.SelectedItem;
             CurTimeEntry.Hours = decimal.Parse(textBoxSpentHours.Text, Lang.Culture);
             CurTimeEntry.Comments = textBoxComment.Text;
             try
