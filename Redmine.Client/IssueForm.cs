@@ -146,14 +146,14 @@ namespace Redmine.Client
             issue.EstimatedHours = Int32.TryParse(TextBoxEstimatedTime.Text, out time) ? time : 0;
             issue.DoneRatio = Convert.ToInt32(numericUpDown1.Value);
             issue.Priority = new IdentifiableName { Id = Convert.ToInt32(ComboBoxPriority.SelectedValue) };
-            if (DateStart.Enabled)
-            {
+            if (DateStart.Enabled && cbStartDate.Checked)
                 issue.StartDate = DateStart.Value;
-            }
-            if (DateDue.Enabled)
-            {
+            else
+                issue.StartDate = null;
+            if (DateDue.Enabled && cbDueDate.Checked)
                 issue.DueDate = DateDue.Value;
-            }
+            else
+                issue.DueDate = null;
             issue.Status = new IdentifiableName { Id = Convert.ToInt32(ComboBoxStatus.SelectedValue) };
             issue.FixedVersion = new IdentifiableName { Id = Convert.ToInt32(ComboBoxTargetVersion.SelectedValue) };
             issue.Tracker = new IdentifiableName { Id = Convert.ToInt32(ComboBoxTracker.SelectedValue) };
@@ -316,8 +316,14 @@ namespace Redmine.Client
                 TextBoxEstimatedTime.Text = issue.EstimatedHours.ToString();
                 numericUpDown1.Value = Convert.ToDecimal(issue.DoneRatio);
                 ComboBoxPriority.SelectedIndex = ComboBoxPriority.FindStringExact(issue.Priority.Name);
+
+                cbStartDate.Checked = issue.StartDate.HasValue;
+                DateStart.Enabled = cbStartDate.Checked;
                 if (issue.StartDate.HasValue)
                     DateStart.Value = issue.StartDate.Value;
+
+                cbDueDate.Checked = issue.DueDate.HasValue;
+                DateDue.Enabled = cbDueDate.Checked;
                 if (issue.DueDate.HasValue)
                     DateDue.Value = issue.DueDate.Value;
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
