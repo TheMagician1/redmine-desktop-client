@@ -182,6 +182,7 @@ namespace Redmine.Client
                             RedmineClientForm.redmine.DeleteObject<TimeEntry>(timeEntry.Id.ToString(), null);
                             return () =>
                                 {
+                                    AsyncLoadTimeEntries();
                                     //MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                 };
                         }
