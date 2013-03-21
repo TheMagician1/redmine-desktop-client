@@ -410,7 +410,7 @@ namespace Redmine.Client
                     DataGridViewChildren.AllowUserToAddRows = false;
                     DataGridViewChildren.AllowUserToDeleteRows = false;
                     DataGridViewChildren.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-                    DataGridViewChildren.Location = new System.Drawing.Point(TextBoxDescription.Location.X, linkEditInRedmine.Location.Y+19);
+                    DataGridViewChildren.Location = new System.Drawing.Point(TextBoxDescription.Location.X, linkEditInRedmine.Location.Y + 19);
                     DataGridViewChildren.MultiSelect = false;
                     DataGridViewChildren.Name = "DataGridViewChildren";
                     DataGridViewChildren.ReadOnly = true;
@@ -547,6 +547,12 @@ namespace Redmine.Client
                     MoveControl(BtnSaveButton, 0, RelationsHeight);
                     ResumeLayout(false);
                 }
+            }
+            else // type new
+            {
+                cbStartDate.Checked = true;
+                DateStart.Enabled = cbStartDate.Checked;
+                DateDue.Enabled = cbDueDate.Checked;
             }
         }
 
