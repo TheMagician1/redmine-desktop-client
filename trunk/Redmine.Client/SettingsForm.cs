@@ -214,7 +214,7 @@ namespace Redmine.Client
             LoadAndEnableSetToInProgressStatus();
         }
 
-        private List<IssueStatus> CloseStatuses;
+        private IList<IssueStatus> CloseStatuses;
         private void LoadAndEnableCloseStatus()
         {
             labelSelectCloseStatus.Enabled = false;
@@ -230,12 +230,7 @@ namespace Redmine.Client
                 else
                     manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text);
 
-                NameValueCollection parameters = new NameValueCollection { { "is_closed", "true" } };
-                foreach (IssueStatus status in manager.GetTotalObjectList<IssueStatus>(parameters))
-                {
-                    if (status.IsClosed)
-                        CloseStatuses.Add(status);
-                }
+                CloseStatuses = manager.GetTotalObjectList<IssueStatus>(null);
                 ComboBoxCloseStatus.DataSource = CloseStatuses;
                 ComboBoxCloseStatus.ValueMember = "Id";
                 ComboBoxCloseStatus.DisplayMember = "Name";
