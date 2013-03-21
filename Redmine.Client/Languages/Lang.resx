@@ -599,4 +599,7 @@ or Request attention every
   <data name="LabelRelations" xml:space="preserve">
     <value>Relations</value>
   </data>
+  <data name="ShowAllIssues" xml:space="preserve">
+    <value>Show all issues</value>
+  </data>
 </root>

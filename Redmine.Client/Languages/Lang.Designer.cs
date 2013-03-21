@@ -1359,6 +1359,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show all issues.
+        /// </summary>
+        internal static string ShowAllIssues {
+            get {
+                return ResourceManager.GetString("ShowAllIssues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Start.
         /// </summary>
         internal static string StartToolStripMenuItem {
