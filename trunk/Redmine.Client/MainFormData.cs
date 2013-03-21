@@ -43,20 +43,22 @@ namespace Redmine.Client
     {
         public List<ClientProject> Projects { get; private set; }
         public IList<Issue> Issues { get; set; }
-        public IList<ProjectMembership> Members { get; set; }
         public IList<TimeEntryActivity> Activities { get; private set; }
 
         public MainFormData(IList<Project> projects, int projectId, bool onlyMe)
         {
             Projects = new List<ClientProject>();
+            Projects.Add(new ClientProject(new Project { Id = -1, Name = Languages.Lang.ShowAllIssues }));
             foreach(Project p in projects)
             {
                 Projects.Add(new ClientProject(p));
             }
-            NameValueCollection parameters = new NameValueCollection { { "project_id", projectId.ToString() } };
+            NameValueCollection parameters = new NameValueCollection();
+            if (projectId != -1)
+                parameters.Add("project_id", projectId.ToString());
+
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
             {
-                Members = RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
                     Activities = RedmineClientForm.redmine.GetTotalObjectList<TimeEntryActivity>(null);
             }

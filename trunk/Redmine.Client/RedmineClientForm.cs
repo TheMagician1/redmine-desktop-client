@@ -166,8 +166,8 @@ namespace Redmine.Client
             {
                 Projects = MainFormData.ToDictionaryName(projects);
                 Project CurProject;
-                if (!Projects.TryGetValue(projectId, out CurProject)
-                    || projectId == 0)
+                if (projectId != -1 && (!Projects.TryGetValue(projectId, out CurProject)
+                    || projectId == 0) )
                 {
                     projectId = projects[0].Id;
                 }
@@ -201,7 +201,7 @@ namespace Redmine.Client
             if (data.Projects.Count == 0 || data.Issues.Count == 0)
             {
                 BtnCommitButton.Enabled = false;
-                if (data.Projects.Count > 0)
+                if (data.Projects.Count > 0 && projectId != -1)
                 {
                     BtnNewIssueButton.Enabled = true;   
                 }
@@ -215,8 +215,8 @@ namespace Redmine.Client
             else
             {
                 BtnCommitButton.Enabled = true;
-                BtnNewIssueButton.Enabled = true;
                 BtnRefreshButton.Enabled = true;
+                BtnNewIssueButton.Enabled = projectId != -1;
             }
             ComboBoxProject.DataSource = data.Projects;
             ComboBoxProject.ValueMember = "Id";
@@ -236,9 +236,9 @@ namespace Redmine.Client
             foreach (DataGridViewColumn column in DataGridViewIssues.Columns)
             {
                 if (column.Name != "Id" && column.Name != "Subject")
-                {
                     column.Visible = false;
-                }
+                if (projectId == -1 && column.Name == "Project")
+                    column.Visible = true;
             }
             try // Very ugly trick to fix the mono crash reported in the SF.net forum
             {
@@ -248,7 +248,9 @@ namespace Redmine.Client
             DataGridViewIssues.RowHeadersWidth = 20;
             DataGridViewIssues.Columns["Id"].DisplayIndex = 0;
             DataGridViewIssues.Columns["Subject"].DisplayIndex = 1;
-            DataGridViewIssues.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;    
+            DataGridViewIssues.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            if (projectId == -1)
+                DataGridViewIssues.Columns["Project"].DisplayIndex = 2;
 
             if (ComboBoxProject.Items.Count > 0)
             {
@@ -1097,6 +1099,11 @@ namespace Redmine.Client
             {
                 Issue currentIssue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
                 e.Value = currentIssue.Tracker.Name + " " + currentIssue.Id.ToString();
+            }
+            if (e.ColumnIndex == DataGridViewIssues.Columns["Project"].Index)
+            {
+                Issue currentIssue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
+                e.Value = currentIssue.Project.Name;
             }
         }
 
