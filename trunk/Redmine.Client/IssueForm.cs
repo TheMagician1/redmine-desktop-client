@@ -7,6 +7,7 @@ using Redmine.Net.Api.Types;
 using Redmine.Client.Languages;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Globalization;
 
 namespace Redmine.Client
 {
@@ -610,7 +611,7 @@ namespace Redmine.Client
                             currentIssue = RedmineClientForm.redmine.GetObject<Issue>(issueId.ToString(), issueParameters);
                             if (currentIssue.ParentIssue != null && currentIssue.ParentIssue.Id != 0)
                             {
-                                Issue parentIssue = RedmineClientForm.redmine.GetObject<Issue>(currentIssue.ParentIssue.Id.ToString(), null);
+                                Issue parentIssue = RedmineClientForm.redmine.GetObject<Issue>(currentIssue.ParentIssue.Id.ToString(CultureInfo.InvariantCulture), null);
                                 currentIssue.ParentIssue.Name = parentIssue.Subject;
                             }
                         }
@@ -624,8 +625,12 @@ namespace Redmine.Client
                         }
                         if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                         {
+                            NameValueCollection projectParameters = new NameValueCollection { { "include", "trackers,issue_categories" } };
+                            Project project = RedmineClientForm.redmine.GetObject<Project>(projectId.ToString(), projectParameters);
+                            dataCache.Trackers = project.Trackers;
+                            dataCache.Categories = project.IssueCategories;
                             dataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
-                            dataCache.Trackers = RedmineClientForm.redmine.GetTotalObjectList<Tracker>(parameters);
+                            //dataCache.Trackers = RedmineClientForm.redmine.GetTotalObjectList<Tracker>(parameters);
                             dataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
                             dataCache.Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
                             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
