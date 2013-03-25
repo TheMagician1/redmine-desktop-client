@@ -655,6 +655,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating issue {0} {1}.
+        /// </summary>
+        internal static string DlgUpdateIssueNoteTitle {
+            get {
+                return ResourceManager.GetString("DlgUpdateIssueNoteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download / Open.
         /// </summary>
         internal static string downloadOpenToolStripMenuItem {
@@ -849,6 +858,159 @@ namespace Redmine.Client.Languages {
         internal static string GrpRedmineServerSettings {
             get {
                 return ResourceManager.GetString("GrpRedmineServerSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assigned To.
+        /// </summary>
+        internal static string IssueField_assigned_to {
+            get {
+                return ResourceManager.GetString("IssueField_assigned_to", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        internal static string IssueField_author {
+            get {
+                return ResourceManager.GetString("IssueField_author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        internal static string IssueField_category {
+            get {
+                return ResourceManager.GetString("IssueField_category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created On.
+        /// </summary>
+        internal static string IssueField_created_on {
+            get {
+                return ResourceManager.GetString("IssueField_created_on", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string IssueField_description {
+            get {
+                return ResourceManager.GetString("IssueField_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done Ratio.
+        /// </summary>
+        internal static string IssueField_done_ratio {
+            get {
+                return ResourceManager.GetString("IssueField_done_ratio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Due Date.
+        /// </summary>
+        internal static string IssueField_due_date {
+            get {
+                return ResourceManager.GetString("IssueField_due_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated Hours.
+        /// </summary>
+        internal static string IssueField_estimated_hours {
+            get {
+                return ResourceManager.GetString("IssueField_estimated_hours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target Version.
+        /// </summary>
+        internal static string IssueField_fixed_version {
+            get {
+                return ResourceManager.GetString("IssueField_fixed_version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parent Issue.
+        /// </summary>
+        internal static string IssueField_parent {
+            get {
+                return ResourceManager.GetString("IssueField_parent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priority.
+        /// </summary>
+        internal static string IssueField_priority {
+            get {
+                return ResourceManager.GetString("IssueField_priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        internal static string IssueField_project {
+            get {
+                return ResourceManager.GetString("IssueField_project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Date.
+        /// </summary>
+        internal static string IssueField_start_date {
+            get {
+                return ResourceManager.GetString("IssueField_start_date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        internal static string IssueField_status {
+            get {
+                return ResourceManager.GetString("IssueField_status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subject.
+        /// </summary>
+        internal static string IssueField_subject {
+            get {
+                return ResourceManager.GetString("IssueField_subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracker.
+        /// </summary>
+        internal static string IssueField_tracker {
+            get {
+                return ResourceManager.GetString("IssueField_tracker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updated On.
+        /// </summary>
+        internal static string IssueField_updated_on {
+            get {
+                return ResourceManager.GetString("IssueField_updated_on", resourceCulture);
             }
         }
         
@@ -1233,6 +1395,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional notes explaning your change - leave empty if none.
+        /// </summary>
+        internal static string labelUpdateIssueNote {
+            get {
+                return ResourceManager.GetString("labelUpdateIssueNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit this issue in Redmine.
         /// </summary>
         internal static string linkEditInRedmine {
@@ -1391,6 +1562,42 @@ namespace Redmine.Client.Languages {
         internal static string Timer_WasTickingWhenClosed {
             get {
                 return ResourceManager.GetString("Timer_WasTickingWhenClosed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} deleted ({1}).
+        /// </summary>
+        internal static string UpdatedField_Deleted {
+            get {
+                return ResourceManager.GetString("UpdatedField_Deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description has been updated.
+        /// </summary>
+        internal static string UpdatedField_Description {
+            get {
+                return ResourceManager.GetString("UpdatedField_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} set to {2}.
+        /// </summary>
+        internal static string UpdatedField_SetTo {
+            get {
+                return ResourceManager.GetString("UpdatedField_SetTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} changed from {1} to {2}.
+        /// </summary>
+        internal static string UpdatedField_UpdatedTo {
+            get {
+                return ResourceManager.GetString("UpdatedField_UpdatedTo", resourceCulture);
             }
         }
         
