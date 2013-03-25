@@ -55,6 +55,13 @@ namespace Redmine.Client
             return bytes.ToByteString();
         }
 
+        public static void MoveControl(this System.Windows.Forms.Control control, int diffx, int diffy)
+        {
+            System.Drawing.Point loc = control.Location;
+            loc.X += diffx;
+            loc.Y += diffy;
+            control.Location = loc;
+        }
 
     }
 }

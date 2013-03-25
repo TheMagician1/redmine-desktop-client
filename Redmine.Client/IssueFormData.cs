@@ -9,7 +9,7 @@ namespace Redmine.Client
     internal class IssueFormData
     {
         public IList<ProjectTracker> Trackers { get; set; }
-        public IList<IssueCategory> Categories { get; set; }
+        public List<IssueCategory> Categories { get; set; }
         public IList<IssueStatus> Statuses { get; set; }
 //        public List<IdentifiableName> Priorities { get; set; }
         public List<Redmine.Net.Api.Types.Version> Versions { get; set; }

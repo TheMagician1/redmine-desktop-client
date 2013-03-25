@@ -37,7 +37,7 @@ namespace Redmine.Client
         private int issueId = 0;
         private Issue issue;
         private List<ClientIssueRelation> issueRelations;
-        private int projectId;
+        private IdentifiableName projectId;
         private DialogType type;
         private IssueFormData DataCache = null;
 
@@ -54,7 +54,7 @@ namespace Redmine.Client
         public IssueForm(Project project)
         {
             this.project = project;
-            this.projectId = project.Id;
+            this.projectId = new IdentifiableName { Id = project.Id, Name = project.Name } ;
             this.type = DialogType.New;
             InitializeComponent();
             UpdateTitle(null);
@@ -73,7 +73,7 @@ namespace Redmine.Client
         public IssueForm(Issue issue)
         {
             this.issueId = issue.Id;
-            this.projectId = issue.Project.Id;
+            this.projectId = issue.Project;
             this.type = DialogType.Edit;
             InitializeComponent();
 
@@ -129,36 +129,112 @@ namespace Redmine.Client
 
         private void BtnSaveButton_Click(object sender, EventArgs e)
         {
+            Issue newIssue = (Issue)issue.Clone();
             if (type == DialogType.Edit)
-                issue.Id = this.issue.Id;
+                newIssue.Id = this.issue.Id;
             // first check subject as it is mandatory
-            issue.Subject = TextBoxSubject.Text;
-            if (String.IsNullOrEmpty(issue.Subject))
+            newIssue.Subject = TextBoxSubject.Text;
+            if (String.IsNullOrEmpty(newIssue.Subject))
             {
                 MessageBox.Show(Lang.Error_IssueSubjectMandatory,
                             Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 TextBoxSubject.Focus();
+                return;
             }
 
-            issue.Project = new IdentifiableName { Id = projectId };
-            issue.AssignedTo = new IdentifiableName { Id = Convert.ToInt32(ComboBoxAssignedTo.SelectedValue) };
-            issue.Description = TextBoxDescription.Text;
+            // set project identification.
+            newIssue.Project = projectId;
 
-            int time;
-            issue.EstimatedHours = Int32.TryParse(TextBoxEstimatedTime.Text, out time) ? time : 0;
-            issue.DoneRatio = Convert.ToInt32(numericUpDown1.Value);
-            issue.Priority = new IdentifiableName { Id = Convert.ToInt32(ComboBoxPriority.SelectedValue) };
+            // set assigned to
+            try {
+                if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
+                {
+                    ProjectMember selectedMember = (ProjectMember)ComboBoxAssignedTo.SelectedItem;
+                    if (selectedMember.Id != 0)
+                        newIssue.AssignedTo = new IdentifiableName { Id = selectedMember.Id, Name = selectedMember.Name };
+                    else
+                        newIssue.AssignedTo = null;
+                }
+                else if (type == DialogType.Edit)
+                {
+                    newIssue.AssignedTo = issue.AssignedTo;
+                }
+            } catch (Exception) {}
+
+            // set description
+            newIssue.Description = TextBoxDescription.Text;
+
+            // set estimated hours
+            float time;
+            if (float.TryParse(TextBoxEstimatedTime.Text, out time))
+                newIssue.EstimatedHours = time;
+            else
+                newIssue.EstimatedHours = null;
+
+            // set done ratio
+            int doneRatio = Convert.ToInt32(numericUpDown1.Value);
+            if (doneRatio >= 0)
+                newIssue.DoneRatio = doneRatio;
+            else
+                newIssue.DoneRatio = null;
+
+            // set priority
+            if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+                newIssue.Priority = (IdentifiableName)ComboBoxPriority.SelectedItem;
+            else
+                newIssue.Priority = issue.Priority;
+
+            // set start date
             if (DateStart.Enabled && cbStartDate.Checked)
-                issue.StartDate = DateStart.Value;
+                newIssue.StartDate = DateStart.Value;
             else
-                issue.StartDate = null;
+                newIssue.StartDate = null;
+
+            // set due date
             if (DateDue.Enabled && cbDueDate.Checked)
-                issue.DueDate = DateDue.Value;
+                newIssue.DueDate = DateDue.Value;
             else
-                issue.DueDate = null;
-            issue.Status = new IdentifiableName { Id = Convert.ToInt32(ComboBoxStatus.SelectedValue) };
-            issue.FixedVersion = new IdentifiableName { Id = Convert.ToInt32(ComboBoxTargetVersion.SelectedValue) };
-            issue.Tracker = new IdentifiableName { Id = Convert.ToInt32(ComboBoxTracker.SelectedValue) };
+                newIssue.DueDate = null;
+
+            // set status
+            if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+            {
+                IssueStatus status = (IssueStatus)ComboBoxStatus.SelectedItem;
+                newIssue.Status = new IdentifiableName { Id = status.Id, Name = status.Name };
+            }
+            else
+                newIssue.Status = issue.Status;
+
+            // set version
+            if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+            {
+                Redmine.Net.Api.Types.Version version = (Redmine.Net.Api.Types.Version)ComboBoxTargetVersion.SelectedItem;
+                if (version.Id != 0)
+                    newIssue.FixedVersion = new IdentifiableName { Id = version.Id, Name = version.Name };
+                else
+                    newIssue.FixedVersion = null;
+            }
+            else
+                newIssue.FixedVersion = issue.FixedVersion;
+
+            // set tracker
+            if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+                newIssue.Tracker = (ProjectTracker)ComboBoxTracker.SelectedItem;
+            else
+                newIssue.Tracker = issue.Tracker;
+
+            // set category
+            if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+            {
+                IssueCategory category = (IssueCategory)ComboBoxCategory.SelectedItem;
+                if (category.Id != 0)
+                    newIssue.Category = new IdentifiableName { Id = category.Id, Name = category.Name };
+                else
+                    newIssue.Category = null;
+            }
+            else
+                newIssue.Category = issue.Category;
+
             try
             {
                 if (type == DialogType.New)
@@ -180,7 +256,18 @@ namespace Redmine.Client
                     RedmineClientForm.redmine.CreateObject<Issue>(issue);
                 }
                 else
-                    RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+                {
+                    // ask for additional note...
+                    UpdateIssueNoteForm dlg = new UpdateIssueNoteForm(issue, newIssue);
+                    if (dlg.ShowDialog(this) == DialogResult.OK)
+                    {
+                        if (!String.IsNullOrEmpty(dlg.Note))
+                            newIssue.Notes = dlg.Note;
+                        RedmineClientForm.redmine.UpdateObject<Issue>(newIssue.Id.ToString(), newIssue);
+                    }
+                    else
+                        return;
+                }
 
                 // resize to screen without children and parents...
                 SetOriginalSize();
@@ -253,7 +340,7 @@ namespace Redmine.Client
         {
             EnableDisableAllControls(false);
             this.Cursor = Cursors.AppStarting;
-            RunWorkerAsync(projectId);
+            RunWorkerAsync(projectId.Id);
             this.BtnSaveButton.Enabled = false;
         }
 
@@ -266,24 +353,28 @@ namespace Redmine.Client
             {
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
                 {
-                    this.ComboBoxAssignedTo.DataSource = this.DataCache.ProjectMembers;
-                    this.ComboBoxAssignedTo.DisplayMember = "Name";
-                    this.ComboBoxAssignedTo.ValueMember = "Id";
+                    ComboBoxAssignedTo.DataSource = DataCache.ProjectMembers;
+                    ComboBoxAssignedTo.DisplayMember = "Name";
+                    ComboBoxAssignedTo.ValueMember = "Id";
                 }
                 else
                     ComboBoxAssignedTo.Enabled = false;
-                this.ComboBoxStatus.DataSource = this.DataCache.Statuses;
-                this.ComboBoxStatus.DisplayMember = "Name";
-                this.ComboBoxStatus.ValueMember = "Id";
-                this.ComboBoxTargetVersion.DataSource = this.DataCache.Versions;
-                this.ComboBoxTargetVersion.DisplayMember = "Name";
-                this.ComboBoxTargetVersion.ValueMember = "Id";
-                this.ComboBoxTracker.DataSource = this.DataCache.Trackers;
-                this.ComboBoxTracker.DisplayMember = "Name";
-                this.ComboBoxTracker.ValueMember = "Id";
-                this.ComboBoxCategory.DataSource = this.DataCache.Categories;
-                this.ComboBoxCategory.DisplayMember = "Name";
-                this.ComboBoxCategory.ValueMember = "Id";
+                ComboBoxStatus.DataSource = DataCache.Statuses;
+                ComboBoxStatus.DisplayMember = "Name";
+                ComboBoxStatus.ValueMember = "Id";
+
+                ComboBoxTargetVersion.DataSource = DataCache.Versions;
+                ComboBoxTargetVersion.DisplayMember = "Name";
+                ComboBoxTargetVersion.ValueMember = "Id";
+
+                ComboBoxTracker.DataSource = DataCache.Trackers;
+                ComboBoxTracker.DisplayMember = "Name";
+                ComboBoxTracker.ValueMember = "Id";
+
+                ComboBoxCategory.DataSource = DataCache.Categories;
+                ComboBoxCategory.DisplayMember = "Name";
+                ComboBoxCategory.ValueMember = "Id";
+
                 //this.ListBoxWatchers.DataSource = RedmineClientForm.DataCache.Watchers;
                 //this.ListBoxWatchers.DisplayMember = "Name";
                 //this.ListBoxWatchers.ClearSelected();
@@ -461,10 +552,10 @@ namespace Redmine.Client
                     // first set size, then alter minimum size; otherwise dialog is expanded twice.
                     Size = new System.Drawing.Size(Size.Width, Size.Height + ChildrenHeight);
                     MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height + ChildrenHeight);
-                    MoveControl(linkEditInRedmine, 0, ChildrenHeight);
-                    MoveControl(BtnCancelButton, 0, ChildrenHeight);
-                    MoveControl(BtnCloseButton, 0, ChildrenHeight);
-                    MoveControl(BtnSaveButton, 0, ChildrenHeight);
+                    linkEditInRedmine.MoveControl(0, ChildrenHeight);
+                    BtnCancelButton.MoveControl(0, ChildrenHeight);
+                    BtnCloseButton.MoveControl(0, ChildrenHeight);
+                    BtnSaveButton.MoveControl(0, ChildrenHeight);
                     ResumeLayout(false);
                 }
                 if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
@@ -485,10 +576,10 @@ namespace Redmine.Client
                     // first set size, then alter minimum size; otherwise dialog is expanded twice.
                     Size = new System.Drawing.Size(Size.Width, Size.Height + ParentHeight);
                     MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height + ParentHeight);
-                    MoveControl(linkEditInRedmine, 0, ParentHeight);
-                    MoveControl(BtnCancelButton, 0, ParentHeight);
-                    MoveControl(BtnCloseButton, 0, ParentHeight);
-                    MoveControl(BtnSaveButton, 0, ParentHeight);
+                    linkEditInRedmine.MoveControl(0, ParentHeight);
+                    BtnCancelButton.MoveControl(0, ParentHeight);
+                    BtnCloseButton.MoveControl(0, ParentHeight);
+                    BtnSaveButton.MoveControl(0, ParentHeight);
                     ResumeLayout(false);
                     if (Size.Width < LabelParent.Width + 30)
                         Size = new System.Drawing.Size(LabelParent.Width + 30, Size.Height);
@@ -557,10 +648,10 @@ namespace Redmine.Client
                     // first set size, then alter minimum size; otherwise dialog is expanded twice.
                     Size = new System.Drawing.Size(Size.Width, Size.Height + RelationsHeight);
                     MinimumSize = new System.Drawing.Size(MinimumSize.Width, MinimumSize.Height + RelationsHeight);
-                    MoveControl(linkEditInRedmine, 0, RelationsHeight);
-                    MoveControl(BtnCancelButton, 0, RelationsHeight);
-                    MoveControl(BtnCloseButton, 0, RelationsHeight);
-                    MoveControl(BtnSaveButton, 0, RelationsHeight);
+                    linkEditInRedmine.MoveControl(0, RelationsHeight);
+                    BtnCancelButton.MoveControl(0, RelationsHeight);
+                    BtnCloseButton.MoveControl(0, RelationsHeight);
+                    BtnSaveButton.MoveControl(0, RelationsHeight);
                     ResumeLayout(false);
                 }
             }
@@ -594,14 +685,6 @@ namespace Redmine.Client
             dataGridViewAttachments.Columns["FileName"].DisplayIndex = 0;
             dataGridViewAttachments.Columns["Description"].DisplayIndex = 1;
             dataGridViewAttachments.Columns["Author"].DisplayIndex = 2;
-        }
-
-        private void MoveControl(Control control, int diffx, int diffy)
-        {
-            System.Drawing.Point loc = control.Location;
-            loc.X += diffx;
-            loc.Y += diffy;
-            control.Location = loc;
         }
 
         private static ProjectMember MembershipToMember(ProjectMembership projectMember)
@@ -643,7 +726,8 @@ namespace Redmine.Client
                             NameValueCollection projectParameters = new NameValueCollection { { "include", "trackers" } };
                             Project project = RedmineClientForm.redmine.GetObject<Project>(projectId.ToString(), projectParameters);
                             dataCache.Trackers = project.Trackers;
-                            dataCache.Categories = RedmineClientForm.redmine.GetTotalObjectList<IssueCategory>(parameters);
+                            dataCache.Categories = new List<IssueCategory>(RedmineClientForm.redmine.GetTotalObjectList<IssueCategory>(parameters));
+                            dataCache.Categories.Insert(0, new IssueCategory { Id = 0, Name = "" });
                             dataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
                             dataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
                             dataCache.Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });

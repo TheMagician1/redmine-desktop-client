@@ -177,6 +177,9 @@
     <EmbeddedResource Include="TimeEntryForm.resx">
       <DependentUpon>TimeEntryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UpdateIssueNoteForm.resx">
+      <DependentUpon>UpdateIssueNoteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -201,6 +204,12 @@
     </Compile>
     <Compile Include="TimeEntryForm.Designer.cs">
       <DependentUpon>TimeEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateIssueNoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateIssueNoteForm.Designer.cs">
+      <DependentUpon>UpdateIssueNoteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
     <None Include="Properties\Settings.settings">
