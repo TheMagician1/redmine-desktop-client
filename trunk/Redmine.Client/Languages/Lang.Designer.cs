@@ -907,6 +907,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        internal static string labelCategory {
+            get {
+                return ResourceManager.GetString("labelCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Children:.
         /// </summary>
         internal static string LabelChildren {

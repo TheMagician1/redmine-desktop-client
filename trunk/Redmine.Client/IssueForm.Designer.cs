@@ -64,6 +64,8 @@
             this.groupBoxAttachments = new System.Windows.Forms.GroupBox();
             this.BtnDeleteButton = new System.Windows.Forms.Button();
             this.BtnAddButton = new System.Windows.Forms.Button();
+            this.ComboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.labelCategory = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCustomFields)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAttachments)).BeginInit();
@@ -74,7 +76,7 @@
             // BtnSaveButton
             // 
             this.BtnSaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSaveButton.Location = new System.Drawing.Point(327, 401);
+            this.BtnSaveButton.Location = new System.Drawing.Point(327, 438);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
@@ -87,7 +89,7 @@
             // 
             this.BtnCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(399, 401);
+            this.BtnCancelButton.Location = new System.Drawing.Point(399, 438);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -337,7 +339,7 @@
             // BtnCloseButton
             // 
             this.BtnCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCloseButton.Location = new System.Drawing.Point(204, 401);
+            this.BtnCloseButton.Location = new System.Drawing.Point(204, 438);
             this.BtnCloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCloseButton.Name = "BtnCloseButton";
             this.BtnCloseButton.Size = new System.Drawing.Size(118, 24);
@@ -350,7 +352,7 @@
             // 
             this.linkEditInRedmine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkEditInRedmine.AutoSize = true;
-            this.linkEditInRedmine.Location = new System.Drawing.Point(6, 407);
+            this.linkEditInRedmine.Location = new System.Drawing.Point(6, 444);
             this.linkEditInRedmine.Name = "linkEditInRedmine";
             this.linkEditInRedmine.Size = new System.Drawing.Size(127, 13);
             this.linkEditInRedmine.TabIndex = 23;
@@ -371,7 +373,7 @@
             this.DataGridViewCustomFields.Name = "DataGridViewCustomFields";
             this.DataGridViewCustomFields.ReadOnly = true;
             this.DataGridViewCustomFields.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewCustomFields.Size = new System.Drawing.Size(191, 79);
+            this.DataGridViewCustomFields.Size = new System.Drawing.Size(191, 117);
             this.DataGridViewCustomFields.TabIndex = 22;
             // 
             // BtnViewTimeButton
@@ -437,7 +439,7 @@
             this.groupBoxAttachments.Controls.Add(this.BtnDeleteButton);
             this.groupBoxAttachments.Controls.Add(this.BtnAddButton);
             this.groupBoxAttachments.Controls.Add(this.dataGridViewAttachments);
-            this.groupBoxAttachments.Location = new System.Drawing.Point(9, 317);
+            this.groupBoxAttachments.Location = new System.Drawing.Point(9, 354);
             this.groupBoxAttachments.Name = "groupBoxAttachments";
             this.groupBoxAttachments.Size = new System.Drawing.Size(457, 79);
             this.groupBoxAttachments.TabIndex = 28;
@@ -466,13 +468,35 @@
             this.BtnAddButton.UseVisualStyleBackColor = true;
             this.BtnAddButton.Click += new System.EventHandler(this.BtnAddButton_Click);
             // 
+            // ComboBoxCategory
+            // 
+            this.ComboBoxCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ComboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxCategory.FormattingEnabled = true;
+            this.ComboBoxCategory.Location = new System.Drawing.Point(205, 328);
+            this.ComboBoxCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.ComboBoxCategory.Name = "ComboBoxCategory";
+            this.ComboBoxCategory.Size = new System.Drawing.Size(262, 21);
+            this.ComboBoxCategory.TabIndex = 21;
+            // 
+            // labelCategory
+            // 
+            this.labelCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelCategory.AutoSize = true;
+            this.labelCategory.Location = new System.Drawing.Point(202, 313);
+            this.labelCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCategory.Name = "labelCategory";
+            this.labelCategory.Size = new System.Drawing.Size(49, 13);
+            this.labelCategory.TabIndex = 20;
+            this.labelCategory.Text = "Category";
+            // 
             // IssueForm
             // 
             this.AcceptButton = this.BtnSaveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(476, 432);
+            this.ClientSize = new System.Drawing.Size(476, 469);
             this.Controls.Add(this.groupBoxAttachments);
             this.Controls.Add(this.BtnViewTimeButton);
             this.Controls.Add(this.DataGridViewCustomFields);
@@ -483,6 +507,8 @@
             this.Controls.Add(this.cbStartDate);
             this.Controls.Add(this.labelPercentDone);
             this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.labelCategory);
+            this.Controls.Add(this.ComboBoxCategory);
             this.Controls.Add(this.labelTargetVersion);
             this.Controls.Add(this.ComboBoxTargetVersion);
             this.Controls.Add(this.labelAssignedTo);
@@ -555,5 +581,7 @@
         private System.Windows.Forms.ToolStripMenuItem downloadOpenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewToolStripMenuItem;
         private System.Windows.Forms.Button BtnDeleteButton;
+        private System.Windows.Forms.ComboBox ComboBoxCategory;
+        private System.Windows.Forms.Label labelCategory;
     }
 }

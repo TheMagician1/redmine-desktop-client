@@ -124,6 +124,7 @@ namespace Redmine.Client
             //linkEditInRedmine.Enabled = enable;
             DataGridViewCustomFields.Enabled = enable;
             BtnViewTimeButton.Enabled = enable;
+            ComboBoxCategory.Enabled = enable;
         }
 
         private void BtnSaveButton_Click(object sender, EventArgs e)
@@ -280,6 +281,9 @@ namespace Redmine.Client
                 this.ComboBoxTracker.DataSource = this.DataCache.Trackers;
                 this.ComboBoxTracker.DisplayMember = "Name";
                 this.ComboBoxTracker.ValueMember = "Id";
+                this.ComboBoxCategory.DataSource = this.DataCache.Categories;
+                this.ComboBoxCategory.DisplayMember = "Name";
+                this.ComboBoxCategory.ValueMember = "Id";
                 //this.ListBoxWatchers.DataSource = RedmineClientForm.DataCache.Watchers;
                 //this.ListBoxWatchers.DisplayMember = "Name";
                 //this.ListBoxWatchers.ClearSelected();
@@ -290,6 +294,7 @@ namespace Redmine.Client
                 ComboBoxStatus.Enabled = false;
                 ComboBoxTargetVersion.Enabled = false;
                 ComboBoxTracker.Enabled = false;
+                ComboBoxCategory.Enabled = false;
                 BtnCloseButton.Visible = false;
             }
             this.ComboBoxPriority.DataSource = Enumerations.IssuePriorities;
@@ -327,10 +332,13 @@ namespace Redmine.Client
                 DateDue.Enabled = cbDueDate.Checked;
                 if (issue.DueDate.HasValue)
                     DateDue.Value = issue.DueDate.Value;
+
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                 {
                     ComboBoxStatus.SelectedIndex = ComboBoxStatus.FindStringExact(issue.Status.Name);
                     ComboBoxTracker.SelectedIndex = ComboBoxTracker.FindStringExact(issue.Tracker.Name);
+                    if (issue.Category != null)
+                        ComboBoxCategory.SelectedIndex = ComboBoxTracker.FindStringExact(issue.Category.Name);
                 }
                 else
                 {
@@ -342,6 +350,13 @@ namespace Redmine.Client
                     ComboBoxTracker.DisplayMember = "Name";
                     ComboBoxTracker.ValueMember = "Id";
                     ComboBoxTracker.SelectedItem = issue.Tracker;
+                    if (issue.Category != null)
+                    {
+                        ComboBoxCategory.Items.Add(issue.Category);
+                        ComboBoxCategory.DisplayMember = "Name";
+                        ComboBoxCategory.ValueMember = "Id";
+                        ComboBoxCategory.SelectedItem = issue.Category;
+                    }
                 }
                 TextBoxSubject.Text = issue.Subject;
                 if (issue.FixedVersion != null)
@@ -625,12 +640,11 @@ namespace Redmine.Client
                         }
                         if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                         {
-                            NameValueCollection projectParameters = new NameValueCollection { { "include", "trackers,issue_categories" } };
+                            NameValueCollection projectParameters = new NameValueCollection { { "include", "trackers" } };
                             Project project = RedmineClientForm.redmine.GetObject<Project>(projectId.ToString(), projectParameters);
                             dataCache.Trackers = project.Trackers;
-                            dataCache.Categories = project.IssueCategories;
+                            dataCache.Categories = RedmineClientForm.redmine.GetTotalObjectList<IssueCategory>(parameters);
                             dataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
-                            //dataCache.Trackers = RedmineClientForm.redmine.GetTotalObjectList<Tracker>(parameters);
                             dataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
                             dataCache.Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
                             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
