@@ -158,6 +158,26 @@ namespace Redmine.Client
             } while (bRetry);
         }
 
+        int GetProjectIdCheckExists(Dictionary<int, Project> projects, int projectId)
+        {
+            Project CurProject;
+            if (projectId != -1 && (!projects.TryGetValue(projectId, out CurProject)
+                || projectId == 0))
+            {
+                try
+                {
+                    IEnumerator<int> enumerator = projects.Keys.GetEnumerator();
+                    enumerator.MoveNext();
+                    projectId = (int)enumerator.Current;
+                }
+                catch (Exception)
+                {
+                    projectId = -1;
+                }
+            }
+            return projectId;
+        }
+
         private MainFormData PrepareFormData(int projectId, bool onlyMe)
         {
             NameValueCollection parameters = new NameValueCollection();
@@ -165,12 +185,8 @@ namespace Redmine.Client
             if (projects.Count > 0)
             {
                 Projects = MainFormData.ToDictionaryName(projects);
-                Project CurProject;
-                if (projectId != -1 && (!Projects.TryGetValue(projectId, out CurProject)
-                    || projectId == 0) )
-                {
-                    projectId = projects[0].Id;
-                }
+
+                projectId = GetProjectIdCheckExists(Projects, projectId);
                 return new MainFormData(projects, projectId, onlyMe);
             }
             throw new Exception(Lang.Error_NoProjectsFound);
@@ -196,6 +212,8 @@ namespace Redmine.Client
         private void FillForm(MainFormData data, int issueId, int activityId)
         {
             updating = true;
+            this.projectId = GetProjectIdCheckExists(Projects, this.projectId);
+
             this.BtnSettingsButton.Enabled = true;
 
             if (data.Projects.Count == 0 || data.Issues.Count == 0)
