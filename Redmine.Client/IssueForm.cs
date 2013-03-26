@@ -534,10 +534,7 @@ namespace Redmine.Client
                         DataGridViewChildren.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     }
                     catch (Exception) { }
-                    if (DataGridViewChildren.Columns.Count > 0)
-                    {
-                        DataGridViewChildren.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    }
+
                     DataGridViewChildren.RowHeadersWidth = 20;
                     foreach (DataGridViewColumn column in DataGridViewChildren.Columns)
                     {
@@ -548,6 +545,7 @@ namespace Redmine.Client
                     }
                     DataGridViewChildren.Columns["Id"].DisplayIndex = 0;
                     DataGridViewChildren.Columns["Subject"].DisplayIndex = 1;
+                    DataGridViewChildren.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     SuspendLayout();
                     // first set size, then alter minimum size; otherwise dialog is expanded twice.
                     Size = new System.Drawing.Size(Size.Width, Size.Height + ChildrenHeight);
@@ -621,10 +619,6 @@ namespace Redmine.Client
                         DataGridViewRelations.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     }
                     catch (Exception) { }
-                    if (DataGridViewRelations.Columns.Count > 0)
-                    {
-                        DataGridViewRelations.Columns["IssueToSubject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    }
                     DataGridViewRelations.RowHeadersWidth = 20;
                     foreach (DataGridViewColumn column in DataGridViewRelations.Columns)
                     {
@@ -641,6 +635,7 @@ namespace Redmine.Client
                     DataGridViewRelations.Columns["Id"].DisplayIndex = 1;
                     DataGridViewRelations.Columns["IssueToSubject"].DisplayIndex = 2;
                     DataGridViewRelations.Columns["IssueToSubject"].HeaderText = "Subject";
+                    DataGridViewRelations.Columns["IssueToSubject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     DataGridViewRelations.Columns["IssueToStatus"].DisplayIndex = 3;
                     DataGridViewRelations.Columns["IssueToStatus"].HeaderText = "Status";
 
