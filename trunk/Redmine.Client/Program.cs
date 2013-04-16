@@ -17,10 +17,15 @@ namespace Redmine.Client
         [STAThread]
         static void Main()
         {
-            AppDomain.CurrentDomain.UnhandledException += new
-                UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            try
+            {
+                AppDomain.CurrentDomain.UnhandledException += new
+                    UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+            }
+            catch (Exception)
+            { }
             try
             {
                 Application.Run(RedmineClientForm.Instance);
