@@ -496,7 +496,6 @@
             // AddNoteOnChangeCheckBox
             // 
             this.AddNoteOnChangeCheckBox.AutoSize = true;
-            this.AddNoteOnChangeCheckBox.Enabled = false;
             this.AddNoteOnChangeCheckBox.Location = new System.Drawing.Point(8, 229);
             this.AddNoteOnChangeCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.AddNoteOnChangeCheckBox.Name = "AddNoteOnChangeCheckBox";
