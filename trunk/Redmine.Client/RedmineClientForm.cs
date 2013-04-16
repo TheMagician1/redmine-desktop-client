@@ -697,9 +697,7 @@ namespace Redmine.Client
                             {
                                 try
                                 {
-                                    Issue issue = selectedIssue;
-                                    issue.Status = new IdentifiableName { Id = Properties.Settings.Default.ClosedStatus };
-                                    RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+                                    UpdateIssueState(selectedIssue, Properties.Settings.Default.ClosedStatus);
                                 }
                                 catch (Exception ex)
                                 {
@@ -1098,17 +1096,45 @@ namespace Redmine.Client
             try
             {
                 Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
+                Issue originalIssue = (Issue)selectedIssue.Clone();
                 if (selectedIssue.Status.Id == Properties.Settings.Default.NewStatus)
                 {
-                    selectedIssue.Status = new IdentifiableName { Id = Properties.Settings.Default.InProgressStatus };
-                    RedmineClientForm.redmine.UpdateObject<Issue>(selectedIssue.Id.ToString(), selectedIssue);
-                    MessageBox.Show(String.Format(Lang.IssueUpdatedToInProgress, selectedIssue.Subject, Properties.Settings.Default.InProgressStatus), Lang.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (UpdateIssueState(selectedIssue, Properties.Settings.Default.InProgressStatus))
+                        MessageBox.Show(String.Format(Lang.IssueUpdatedToInProgress, selectedIssue.Subject, Properties.Settings.Default.InProgressStatus), Lang.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format(Lang.Error_UpdateIssueFailed, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+        }
+
+        private bool UpdateIssueState(Issue issue, int idState)
+        {
+            Issue originalIssue = (Issue)issue.Clone();
+            if (issue.Status.Id == idState)
+                return false;
+
+            Dictionary<int, IssueStatus> statusDict = MainFormData.ToDictionaryName<IssueStatus>(redmine.GetObjectList<IssueStatus>(null));
+            IssueStatus newStatus;
+            if (!statusDict.TryGetValue(Properties.Settings.Default.InProgressStatus, out newStatus))
+                throw new Exception(Lang.Error_ClosedStatusUnknown);
+
+            issue.Status = new IdentifiableName { Id = newStatus.Id, Name = newStatus.Name };
+            if (Properties.Settings.Default.AddNoteOnChangeStatus)
+            {
+                UpdateIssueNoteForm dlg = new UpdateIssueNoteForm(originalIssue, issue);
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    issue.Notes = dlg.Note;
+                    RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+                }
+                else
+                    return false;
+            }
+            else
+                RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+            return true;
         }
 
         private void DataGridViewIssues_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

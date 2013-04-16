@@ -63,6 +63,7 @@
             this.UpdateIssueIfStateCheckBox = new System.Windows.Forms.CheckBox();
             this.PauseTimerOnLockCheckBox = new System.Windows.Forms.CheckBox();
             this.GrpEditEnumerations = new System.Windows.Forms.GroupBox();
+            this.AddNoteOnChangeCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).BeginInit();
             this.GrpRedmineServerSettings.SuspendLayout();
@@ -84,7 +85,7 @@
             // 
             this.BtnCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(441, 485);
+            this.BtnCancelButton.Location = new System.Drawing.Point(441, 510);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -95,7 +96,7 @@
             // 
             // BtnSaveButton
             // 
-            this.BtnSaveButton.Location = new System.Drawing.Point(369, 485);
+            this.BtnSaveButton.Location = new System.Drawing.Point(369, 510);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
@@ -118,9 +119,9 @@
             // 
             // RedmineBaseUrlTextBox
             // 
-            this.RedmineBaseUrlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.RedmineBaseUrlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.RedmineBaseUrlTextBox.Location = new System.Drawing.Point(7, 33);
             this.RedmineBaseUrlTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RedmineBaseUrlTextBox.Name = "RedmineBaseUrlTextBox";
@@ -147,9 +148,9 @@
             // 
             // RedminePasswordTextBox
             // 
-            this.RedminePasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.RedminePasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.RedminePasswordTextBox.Location = new System.Drawing.Point(252, 91);
             this.RedminePasswordTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.RedminePasswordTextBox.Name = "RedminePasswordTextBox";
@@ -182,7 +183,7 @@
             // 
             this.labelCacheLifetime.AutoSize = true;
             this.labelCacheLifetime.Enabled = false;
-            this.labelCacheLifetime.Location = new System.Drawing.Point(10, 491);
+            this.labelCacheLifetime.Location = new System.Drawing.Point(10, 516);
             this.labelCacheLifetime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCacheLifetime.Name = "labelCacheLifetime";
             this.labelCacheLifetime.Size = new System.Drawing.Size(172, 13);
@@ -198,7 +199,7 @@
             0,
             0,
             0});
-            this.CacheLifetime.Location = new System.Drawing.Point(186, 489);
+            this.CacheLifetime.Location = new System.Drawing.Point(186, 514);
             this.CacheLifetime.Margin = new System.Windows.Forms.Padding(2);
             this.CacheLifetime.Maximum = new decimal(new int[] {
             100000,
@@ -274,8 +275,8 @@
             // 
             // LanguageComboBox
             // 
-            this.LanguageComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.LanguageComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageComboBox.FormattingEnabled = true;
             this.LanguageComboBox.Location = new System.Drawing.Point(252, 101);
@@ -334,8 +335,8 @@
             // 
             // GrpRedmineServerSettings
             // 
-            this.GrpRedmineServerSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrpRedmineServerSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GrpRedmineServerSettings.Controls.Add(this.RedminePasswordTextBox);
             this.GrpRedmineServerSettings.Controls.Add(this.BtnTestConnection);
             this.GrpRedmineServerSettings.Controls.Add(this.labelRedminePassword);
@@ -365,8 +366,8 @@
             // 
             // GrpApplicationSettings
             // 
-            this.GrpApplicationSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrpApplicationSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GrpApplicationSettings.Controls.Add(this.UpdateIssueIfStateLabel);
             this.GrpApplicationSettings.Controls.Add(this.labelExplClosingIssueStatus);
             this.GrpApplicationSettings.Controls.Add(this.UpdateIssueInProgressComboBox);
@@ -378,13 +379,14 @@
             this.GrpApplicationSettings.Controls.Add(this.labelSelectCloseStatus);
             this.GrpApplicationSettings.Controls.Add(this.MinimizeToSystemTrayCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.labelLanguage);
+            this.GrpApplicationSettings.Controls.Add(this.AddNoteOnChangeCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.UpdateIssueIfStateCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.PauseTimerOnLockCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.MinimizeOnStartTimerCheckBox);
             this.GrpApplicationSettings.Controls.Add(this.CheckForUpdatesCheckBox);
             this.GrpApplicationSettings.Location = new System.Drawing.Point(12, 196);
             this.GrpApplicationSettings.Name = "GrpApplicationSettings";
-            this.GrpApplicationSettings.Size = new System.Drawing.Size(497, 229);
+            this.GrpApplicationSettings.Size = new System.Drawing.Size(497, 254);
             this.GrpApplicationSettings.TabIndex = 1;
             this.GrpApplicationSettings.TabStop = false;
             this.GrpApplicationSettings.Text = "Application Settings";
@@ -393,7 +395,7 @@
             // 
             this.UpdateIssueIfStateLabel.AutoSize = true;
             this.UpdateIssueIfStateLabel.Enabled = false;
-            this.UpdateIssueIfStateLabel.Location = new System.Drawing.Point(23, 203);
+            this.UpdateIssueIfStateLabel.Location = new System.Drawing.Point(24, 203);
             this.UpdateIssueIfStateLabel.Name = "UpdateIssueIfStateLabel";
             this.UpdateIssueIfStateLabel.Size = new System.Drawing.Size(101, 13);
             this.UpdateIssueIfStateLabel.TabIndex = 13;
@@ -479,17 +481,30 @@
             // 
             // GrpEditEnumerations
             // 
-            this.GrpEditEnumerations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrpEditEnumerations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GrpEditEnumerations.Controls.Add(this.BtnEditIssuePriorities);
             this.GrpEditEnumerations.Controls.Add(this.BtnEditDocumentCategories);
             this.GrpEditEnumerations.Controls.Add(this.BtnEditActivitiesButton);
-            this.GrpEditEnumerations.Location = new System.Drawing.Point(12, 431);
+            this.GrpEditEnumerations.Location = new System.Drawing.Point(12, 456);
             this.GrpEditEnumerations.Name = "GrpEditEnumerations";
             this.GrpEditEnumerations.Size = new System.Drawing.Size(497, 49);
             this.GrpEditEnumerations.TabIndex = 2;
             this.GrpEditEnumerations.TabStop = false;
             this.GrpEditEnumerations.Text = "Edit Enumerations";
+            // 
+            // AddNoteOnChangeCheckBox
+            // 
+            this.AddNoteOnChangeCheckBox.AutoSize = true;
+            this.AddNoteOnChangeCheckBox.Enabled = false;
+            this.AddNoteOnChangeCheckBox.Location = new System.Drawing.Point(8, 229);
+            this.AddNoteOnChangeCheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.AddNoteOnChangeCheckBox.Name = "AddNoteOnChangeCheckBox";
+            this.AddNoteOnChangeCheckBox.Size = new System.Drawing.Size(295, 17);
+            this.AddNoteOnChangeCheckBox.TabIndex = 11;
+            this.AddNoteOnChangeCheckBox.Text = "Add a note when changing the status with above options";
+            this.AddNoteOnChangeCheckBox.UseVisualStyleBackColor = true;
+            this.AddNoteOnChangeCheckBox.CheckedChanged += new System.EventHandler(this.UpdateIssueIfStateCheckBox_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -497,7 +512,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(521, 520);
+            this.ClientSize = new System.Drawing.Size(521, 550);
             this.Controls.Add(this.GrpRedmineServerSettings);
             this.Controls.Add(this.CacheLifetime);
             this.Controls.Add(this.labelCacheLifetime);
@@ -562,5 +577,6 @@
         private System.Windows.Forms.ComboBox UpdateIssueInProgressComboBox;
         private System.Windows.Forms.ComboBox UpdateIssueNewStateComboBox;
         private System.Windows.Forms.CheckBox UpdateIssueIfStateCheckBox;
+        private System.Windows.Forms.CheckBox AddNoteOnChangeCheckBox;
     }
 }

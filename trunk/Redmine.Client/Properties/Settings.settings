@@ -80,5 +80,8 @@
     <Setting Name="IssueWindowSizeY" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">374</Value>
     </Setting>
+    <Setting Name="AddNoteOnChangeStatus" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

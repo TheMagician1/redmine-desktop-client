@@ -70,6 +70,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a note when changing the status with above options.
+        /// </summary>
+        internal static string AddNoteOnChangeCheckBox {
+            get {
+                return ResourceManager.GetString("AddNoteOnChangeCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to V1.0.x.
         /// </summary>
         internal static string ApiVersion_V10x {

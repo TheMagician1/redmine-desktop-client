@@ -110,6 +110,7 @@ namespace Redmine.Client
                         Properties.Settings.Default.PropertyValues["InProgressStatus"].PropertyValue = (int)UpdateIssueInProgressComboBox.SelectedValue;
                     }
                 }
+                Properties.Settings.Default.PropertyValues["AddNoteOnChangeStatus"].PropertyValue = AddNoteOnChangeCheckBox.Checked;
                 Properties.Settings.Default.Save();
                 String Name = Properties.Settings.Default.LanguageCode;
                 Enumerations.SaveAll();
@@ -142,6 +143,7 @@ namespace Redmine.Client
                 Languages.Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
             }
             LanguageComboBox.SelectedIndex = LanguageComboBox.FindStringExact(Languages.Lang.Culture.DisplayName);
+            AddNoteOnChangeCheckBox.Checked = Properties.Settings.Default.AddNoteOnChangeStatus;
         }
 
         private void AuthenticationCheckBox_CheckedChanged(object sender, EventArgs e)

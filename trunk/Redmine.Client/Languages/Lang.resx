@@ -677,4 +677,7 @@ or Request attention every
     <value>{0} changed from {1} to {2}</value>
     <comment>{0} fieldname; {1} from value; {2} to value;</comment>
   </data>
+  <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
+    <value>Add a note when changing the status with above options</value>
+  </data>
 </root>
