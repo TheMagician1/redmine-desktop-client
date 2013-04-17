@@ -1096,7 +1096,6 @@ namespace Redmine.Client
             try
             {
                 Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
-                Issue originalIssue = (Issue)selectedIssue.Clone();
                 if (selectedIssue.Status.Id == Properties.Settings.Default.NewStatus)
                 {
                     if (UpdateIssueState(selectedIssue, Properties.Settings.Default.InProgressStatus))
