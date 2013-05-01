@@ -71,8 +71,8 @@ namespace Redmine.Client
             AddUpdatedLabel("due_date", LangTools.CreateUpdatedText("due_date", fromIssue.DueDate, toIssue.DueDate, "d"));
             AddUpdatedLabel("done_ratio", LangTools.CreateUpdatedText("done_ratio", fromIssue.DoneRatio, toIssue.DoneRatio, "0.0"));
             AddUpdatedLabel("estimated_hours", LangTools.CreateUpdatedText("estimated_hours", fromIssue.EstimatedHours, toIssue.EstimatedHours, "0.0"));
-            AddUpdatedLabel("created_on", LangTools.CreateUpdatedText("created_on", fromIssue.CreatedOn, toIssue.CreatedOn, "d"));
-            AddUpdatedLabel("updated_on", LangTools.CreateUpdatedText("updated_on", fromIssue.UpdatedOn, toIssue.UpdatedOn, "d"));
+            //AddUpdatedLabel("created_on", LangTools.CreateUpdatedText("created_on", fromIssue.CreatedOn, toIssue.CreatedOn, "d"));
+            //AddUpdatedLabel("updated_on", LangTools.CreateUpdatedText("updated_on", fromIssue.UpdatedOn, toIssue.UpdatedOn, "d"));
             if (fromIssue.Description != toIssue.Description)
                 AddUpdatedLabel("description", Lang.UpdatedField_Description);
         }
