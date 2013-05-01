@@ -124,7 +124,9 @@ namespace Redmine.Client
             //linkEditInRedmine.Enabled = enable;
             DataGridViewCustomFields.Enabled = enable;
             BtnViewTimeButton.Enabled = enable;
+            labelCategory.Enabled = enable;
             ComboBoxCategory.Enabled = enable;
+            groupBoxAttachments.Enabled = enable;
         }
 
         private void BtnSaveButton_Click(object sender, EventArgs e)
