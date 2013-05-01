@@ -505,4 +505,177 @@
   <data name="Message" xml:space="preserve">
     <value>Message</value>
   </data>
+  <data name="ApiVersion_V12x" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ApiVersion_V20x" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ApiVersion_V22x" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="BtnViewTimeButton" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="BgWork_GetTimeEntries" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="DlgTimeEntriesTitle" xml:space="preserve">
+    <value></value>
+    <comment>{0} issuenumber; {1} issue subject</comment>
+  </data>
+  <data name="BgWork_GetIssue" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="DlgTimeEntryFormTitle_Edit" xml:space="preserve">
+    <value></value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
+    <value></value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_Edit" xml:space="preserve">
+    <value></value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_New" xml:space="preserve">
+    <value></value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelByUser" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="labelSpentHours" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="labelSpentOn" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Warning_AreYouSureDeleteTimeEntry" xml:space="preserve">
+    <value></value>
+    <comment>{0} time-entry id</comment>
+  </data>
+  <data name="LabelChildren" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LabelParent" xml:space="preserve">
+    <value></value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="PauseToolStripMenuItem" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StartToolStripMenuItem" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="addNewToolStripMenuItem" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="BtnBrowseButton" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="DlgAttachmentTitle" xml:space="preserve">
+    <value></value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="downloadOpenToolStripMenuItem" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="groupBoxAttachments" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="labelAttachmentDescription" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="labelSelectAttachment" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="NewIssue" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="LabelRelations" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="DlgUpdateIssueNoteTitle" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_assigned_to" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_author" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_category" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_created_on" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_description" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_done_ratio" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_due_date" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_estimated_hours" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_fixed_version" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_parent" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_priority" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_project" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_start_date" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_status" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_subject" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_tracker" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="IssueField_updated_on" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="labelCategory" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="labelUpdateIssueNote" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="ShowAllIssues" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UpdatedField_Deleted" xml:space="preserve">
+    <value></value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="UpdatedField_Description" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="UpdatedField_SetTo" xml:space="preserve">
+    <value></value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="UpdatedField_UpdatedTo" xml:space="preserve">
+    <value></value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
+    <value></value>
+  </data>
 </root>
