@@ -244,7 +244,7 @@ namespace Redmine.Client
                     if (issue.Attachments.Count >= 0)
                     {
                         // first upload all attachment
-                        issue.Uploads = new List<Upload>();
+                        newIssue.Uploads = new List<Upload>();
                         foreach (var a in issue.Attachments)
                         {
                             byte[] file = File.ReadAllBytes(a.ContentUrl);
@@ -252,10 +252,10 @@ namespace Redmine.Client
                             uploadedFile.FileName = a.FileName;
                             uploadedFile.Description = a.Description;
                             uploadedFile.ContentType = a.ContentType;
-                            issue.Uploads.Add(uploadedFile);
+                            newIssue.Uploads.Add(uploadedFile);
                         }
                     }
-                    RedmineClientForm.redmine.CreateObject<Issue>(issue);
+                    RedmineClientForm.redmine.CreateObject<Issue>(newIssue);
                 }
                 else
                 {
