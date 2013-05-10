@@ -24,6 +24,7 @@ namespace Redmine.Client
             public String IssueToSubject { get { return issueTo.Subject; } }
             public IdentifiableName IssueToTracker { get { return issueTo.Tracker; } }
             public IdentifiableName IssueToStatus { get { return issueTo.Status; } }
+            public IdentifiableName IssueToProject { get { return issueTo.Project; } }
             public ClientIssueRelation(IssueRelation relation, Issue issueTo)
             {
                 this.Id = relation.Id;
@@ -47,8 +48,8 @@ namespace Redmine.Client
         private Label LabelRelations;
         private DataGridView DataGridViewRelations;
 
-        private const int ChildrenHeight = 119;
-        private const int RelationsHeight = 119;
+        private const int ChildrenHeight = 100;
+        private const int RelationsHeight = 100;
         private const int ParentHeight = 24;
 
         public IssueForm(Project project)
@@ -91,7 +92,7 @@ namespace Redmine.Client
             if (type == DialogType.New)
                 this.Text = String.Format(Lang.DlgIssueTitleNew, project.Name);
             else
-                this.Text = String.Format(Lang.DlgIssueTitleEdit, issue.Id, issue.Project.Name);
+                this.Text = String.Format(Lang.DlgIssueTitleEdit, issue.Id, issue.Project!=null?issue.Project.Name:"");
         }
 
         private void EnableDisableAllControls(bool enable)
@@ -342,7 +343,7 @@ namespace Redmine.Client
         {
             EnableDisableAllControls(false);
             this.Cursor = Cursors.AppStarting;
-            RunWorkerAsync(projectId.Id);
+            RunWorkerAsync(projectId);
             this.BtnSaveButton.Enabled = false;
         }
 
@@ -524,11 +525,12 @@ namespace Redmine.Client
                     DataGridViewChildren.Name = "DataGridViewChildren";
                     DataGridViewChildren.ReadOnly = true;
                     DataGridViewChildren.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-                    DataGridViewChildren.Size = new System.Drawing.Size(TextBoxDescription.Width, 88);
+                    DataGridViewChildren.Size = new System.Drawing.Size(TextBoxDescription.Width, 69);
                     DataGridViewChildren.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewChildren_CellFormatting);
                     DataGridViewChildren.TabIndex = 26;
                     DataGridViewChildren.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
                     DataGridViewChildren.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+                    DataGridViewChildren.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewChildren_CellDoubleClick);
                     Controls.Add(DataGridViewChildren);
                     DataGridViewChildren.DataSource = issue.Children;
                     try // Very ugly trick to fix the mono crash reported in the SF.net forum
@@ -586,7 +588,7 @@ namespace Redmine.Client
                     if (MinimumSize.Width < LabelParent.Width + 30)
                         MinimumSize = new System.Drawing.Size(LabelParent.Width + 30, MinimumSize.Height);
                 }
-                // if the issue has children, show them.
+                // if the issue has relations, show them.
                 if (issue.Relations != null && issue.Relations.Count > 0)
                 {
                     LabelRelations = new Label();
@@ -609,11 +611,13 @@ namespace Redmine.Client
                     DataGridViewRelations.Name = "DataGridViewRelations";
                     DataGridViewRelations.ReadOnly = true;
                     DataGridViewRelations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-                    DataGridViewRelations.Size = new System.Drawing.Size(TextBoxDescription.Width, 88);
+                    DataGridViewRelations.Size = new System.Drawing.Size(TextBoxDescription.Width, 69);
                     DataGridViewRelations.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewRelations_CellFormatting);
                     DataGridViewRelations.TabIndex = 26;
                     DataGridViewRelations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
                     DataGridViewRelations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+                    DataGridViewRelations.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewRelations_CellDoubleClick);
+
                     Controls.Add(DataGridViewRelations);
                     DataGridViewRelations.DataSource = issueRelations;
                     try // Very ugly trick to fix the mono crash reported in the SF.net forum
@@ -689,10 +693,8 @@ namespace Redmine.Client
             return new ProjectMember(projectMember);
         }
 
-        private void RunWorkerAsync(int projectId)
+        private void RunWorkerAsync(IdentifiableName projectId)
         {
-            NameValueCollection parameters = new NameValueCollection { { "project_id", projectId.ToString() } };
-
             AddBgWork(Lang.BgWork_GetIssue, () =>
                 {
                     try
@@ -709,6 +711,7 @@ namespace Redmine.Client
                                 Issue parentIssue = RedmineClientForm.redmine.GetObject<Issue>(currentIssue.ParentIssue.Id.ToString(CultureInfo.InvariantCulture), null);
                                 currentIssue.ParentIssue.Name = parentIssue.Subject;
                             }
+                            this.projectId = projectId = currentIssue.Project;
                         }
                         else
                         {
@@ -720,8 +723,9 @@ namespace Redmine.Client
                         }
                         if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                         {
+                            NameValueCollection parameters = new NameValueCollection { { "project_id", projectId.Id.ToString() } };
                             NameValueCollection projectParameters = new NameValueCollection { { "include", "trackers" } };
-                            Project project = RedmineClientForm.redmine.GetObject<Project>(projectId.ToString(), projectParameters);
+                            Project project = RedmineClientForm.redmine.GetObject<Project>(projectId.Id.ToString(), projectParameters);
                             dataCache.Trackers = project.Trackers;
                             dataCache.Categories = new List<IssueCategory>(RedmineClientForm.redmine.GetTotalObjectList<IssueCategory>(parameters));
                             dataCache.Categories.Insert(0, new IssueCategory { Id = 0, Name = "" });
@@ -744,6 +748,12 @@ namespace Redmine.Client
                             {
                                 foreach (var r in currentIssue.Relations)
                                 {
+                                    // swap id's if neccesary
+                                    if (r.IssueId != issueId)
+                                    {
+                                        r.IssueToId = r.IssueId;
+                                        r.IssueId = issueId;
+                                    }
                                     Issue relatedIssue = RedmineClientForm.redmine.GetObject<Issue>(r.IssueToId.ToString(), null);
                                     currentIssueRelations.Add(new ClientIssueRelation(r, relatedIssue));
                                 }
@@ -829,6 +839,12 @@ namespace Redmine.Client
             }
         }
 
+        private void DataGridViewChildren_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            IssueChild currentIssueChild = (IssueChild)DataGridViewChildren.Rows[e.RowIndex].DataBoundItem;
+            RedmineClientForm.ShowIssue(new Issue { Id = currentIssueChild.Id, Subject = currentIssueChild.Subject });
+        }
+
         private void DataGridViewRelations_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == DataGridViewRelations.Columns["Id"].Index) // Id column
@@ -841,6 +857,12 @@ namespace Redmine.Client
                 ClientIssueRelation currentIssueRelation = (ClientIssueRelation)DataGridViewRelations.Rows[e.RowIndex].DataBoundItem;
                 e.Value = currentIssueRelation.IssueToStatus.Name;
             }
+        }
+
+        private void DataGridViewRelations_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ClientIssueRelation currentIssueRelation = (ClientIssueRelation)DataGridViewRelations.Rows[e.RowIndex].DataBoundItem;
+            RedmineClientForm.ShowIssue(new Issue { Id = currentIssueRelation.IssueToId, Subject = currentIssueRelation.IssueToSubject, Project = currentIssueRelation.IssueToProject } );
         }
 
         private void dataGridViewAttachments_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -950,6 +972,11 @@ namespace Redmine.Client
             Attachment attachment = (Attachment)dataGridViewAttachments.SelectedRows[0].DataBoundItem;
             issue.Attachments.Remove(attachment);
             AttachAttachements(issue.Attachments);
+        }
+
+        internal bool ShowingIssue(int issueId)
+        {
+            return this.issueId == issueId;
         }
     }
 }
