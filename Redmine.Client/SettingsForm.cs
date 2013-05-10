@@ -16,7 +16,8 @@ namespace Redmine.Client
             new System.Globalization.CultureInfo("de"),
             new System.Globalization.CultureInfo("cs-CZ"),
             new System.Globalization.CultureInfo("pt-BR"),
-            new System.Globalization.CultureInfo("fr")
+            new System.Globalization.CultureInfo("fr"),
+            new System.Globalization.CultureInfo("gl")
         };
         /* api version lower then 1.1 does not support time-entry, so is not supported. */
         private List<IdentifiableName> apiVersions = new List<IdentifiableName> {
