@@ -1110,7 +1110,7 @@ namespace Redmine.Client
 
         private bool UpdateIssueState(Issue issue, int idState)
         {
-            Issue originalIssue = (Issue)issue.Clone();
+            Issue originalIssue = redmine.GetObject<Issue>(issue.Id.ToString(), null);
             if (issue.Status.Id == idState)
                 return false;
 
