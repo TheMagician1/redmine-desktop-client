@@ -596,4 +596,88 @@ upozornit každých
   <data name="NewIssue" xml:space="preserve">
     <value>Nový úkol</value>
   </data>
+  <data name="LabelRelations" xml:space="preserve">
+    <value>Vazby</value>
+  </data>
+  <data name="DlgUpdateIssueNoteTitle" xml:space="preserve">
+    <value>Aktualizace úkolu {0} {1}</value>
+  </data>
+  <data name="IssueField_assigned_to" xml:space="preserve">
+    <value>Přiřazeno</value>
+  </data>
+  <data name="IssueField_author" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="IssueField_category" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="IssueField_created_on" xml:space="preserve">
+    <value>Vytvořeno</value>
+  </data>
+  <data name="IssueField_description" xml:space="preserve">
+    <value>Popis</value>
+  </data>
+  <data name="IssueField_done_ratio" xml:space="preserve">
+    <value>Hotovo</value>
+  </data>
+  <data name="IssueField_due_date" xml:space="preserve">
+    <value>Uzavřít do</value>
+  </data>
+  <data name="IssueField_estimated_hours" xml:space="preserve">
+    <value>Odhadovaná doba</value>
+  </data>
+  <data name="IssueField_fixed_version" xml:space="preserve">
+    <value>Cílová verze</value>
+  </data>
+  <data name="IssueField_parent" xml:space="preserve">
+    <value>Rodičovský úkol</value>
+  </data>
+  <data name="IssueField_priority" xml:space="preserve">
+    <value>Priorita</value>
+  </data>
+  <data name="IssueField_project" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="IssueField_start_date" xml:space="preserve">
+    <value>Začátek</value>
+  </data>
+  <data name="IssueField_status" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="IssueField_subject" xml:space="preserve">
+    <value>Předmět</value>
+  </data>
+  <data name="IssueField_tracker" xml:space="preserve">
+    <value>Fronta</value>
+  </data>
+  <data name="IssueField_updated_on" xml:space="preserve">
+    <value>Aktualizováno</value>
+  </data>
+  <data name="labelCategory" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="labelUpdateIssueNote" xml:space="preserve">
+    <value>Doplňující poznámky ke změně - lze ponechat prázdné</value>
+  </data>
+  <data name="ShowAllIssues" xml:space="preserve">
+    <value>Ukázat všechny úkoly</value>
+  </data>
+  <data name="UpdatedField_Deleted" xml:space="preserve">
+    <value>{0} smazáno ({1})</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="UpdatedField_Description" xml:space="preserve">
+    <value>Popis byl upraven</value>
+  </data>
+  <data name="UpdatedField_SetTo" xml:space="preserve">
+    <value>{0} nastaveno na {2}</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="UpdatedField_UpdatedTo" xml:space="preserve">
+    <value>{0} změněno z {1} na {2}</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
+    <value>Přidat poznámku při změně stavu s dříve uvedenými volbami</value>
+  </data>
 </root>
