@@ -994,12 +994,28 @@ namespace Redmine.Client
         private void DataGridViewIssues_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Issue issue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
+            ShowIssue(issue);
+        }
+
+        public static void ShowIssue(Issue issue)
+        {
             try
             {
+                foreach (Form f in Application.OpenForms)
+                {
+                    if (f.GetType() == typeof(IssueForm))
+                    {
+                        if (((IssueForm)f).ShowingIssue(issue.Id))
+                        {
+                            f.Focus();
+                            return;
+                        }
+                    }
+                }
                 IssueForm dlg = new IssueForm(issue);
                 dlg.Size = new Size(Properties.Settings.Default.IssueWindowSizeX,
                                     Properties.Settings.Default.IssueWindowSizeY);
-                dlg.Show(this);
+                dlg.Show();
             }
             catch (Exception ex)
             {
