@@ -400,7 +400,7 @@ namespace Redmine.Client
                 {
                     if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
                     {
-                        ComboBoxAssignedTo.SelectedIndex = ComboBoxAssignedTo.FindStringExact(issue.AssignedTo.Name);
+                        ComboBoxAssignedTo.SelectedValue = issue.AssignedTo.Id;
                     }
                     else
                     {
@@ -414,7 +414,7 @@ namespace Redmine.Client
                     TextBoxDescription.Text = Regex.Replace(issue.Description, "(?<!\r)\n", "\r\n");
                 TextBoxEstimatedTime.Text = issue.EstimatedHours.ToString();
                 numericUpDown1.Value = Convert.ToDecimal(issue.DoneRatio);
-                ComboBoxPriority.SelectedIndex = ComboBoxPriority.FindStringExact(issue.Priority.Name);
+                ComboBoxPriority.SelectedValue = issue.Priority.Id;
 
                 cbStartDate.Checked = issue.StartDate.HasValue;
                 DateStart.Enabled = cbStartDate.Checked;
@@ -428,10 +428,10 @@ namespace Redmine.Client
 
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                 {
-                    ComboBoxStatus.SelectedIndex = ComboBoxStatus.FindStringExact(issue.Status.Name);
-                    ComboBoxTracker.SelectedIndex = ComboBoxTracker.FindStringExact(issue.Tracker.Name);
+                    ComboBoxStatus.SelectedValue = issue.Status.Id;
+                    ComboBoxTracker.SelectedValue = issue.Tracker.Id;
                     if (issue.Category != null)
-                        ComboBoxCategory.SelectedIndex = ComboBoxTracker.FindStringExact(issue.Category.Name);
+                        ComboBoxCategory.SelectedValue = issue.Category.Id;
                 }
                 else
                 {
@@ -456,7 +456,7 @@ namespace Redmine.Client
                 {
                     if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
                     {
-                        ComboBoxTargetVersion.SelectedIndex = ComboBoxTargetVersion.FindStringExact(issue.FixedVersion.Name);
+                        ComboBoxTargetVersion.SelectedValue = issue.FixedVersion.Id;
                     }
                     else
                     {
