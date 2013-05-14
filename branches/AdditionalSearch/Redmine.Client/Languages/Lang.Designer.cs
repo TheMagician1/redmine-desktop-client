@@ -340,6 +340,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filter.
+        /// </summary>
+        internal static string BtnRefreshButton_Filter {
+            get {
+                return ResourceManager.GetString("BtnRefreshButton_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
         internal static string BtnResetButton {

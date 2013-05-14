@@ -45,6 +45,7 @@ namespace Redmine.Client
         private Dictionary<int, Project> Projects;
         public static ApiVersion RedmineVersion { get; private set; }
 
+        private Filter currentFilter = new Filter();
         public User CurrentUser { get { return currentUser; } }
 
         /* ugly hack to create a singleton */
@@ -178,7 +179,7 @@ namespace Redmine.Client
             return projectId;
         }
 
-        private MainFormData PrepareFormData(int projectId, bool onlyMe)
+        private MainFormData PrepareFormData(int projectId, bool onlyMe, Filter filter)
         {
             NameValueCollection parameters = new NameValueCollection();
             IList<Project> projects = OnlyProjectsForMember(currentUser, redmine.GetTotalObjectList<Project>(parameters));
@@ -187,7 +188,7 @@ namespace Redmine.Client
                 Projects = MainFormData.ToDictionaryName(projects);
 
                 projectId = GetProjectIdCheckExists(Projects, projectId);
-                return new MainFormData(projects, projectId, onlyMe);
+                return new MainFormData(projects, projectId, onlyMe, filter);
             }
             throw new Exception(Lang.Error_NoProjectsFound);
         }
@@ -257,6 +258,7 @@ namespace Redmine.Client
                     ComboBoxAssignedTo.DataSource = data.ProjectMembers;
                     ComboBoxAssignedTo.DisplayMember = "Name";
                     ComboBoxAssignedTo.ValueMember = "Id";
+                    ComboBoxAssignedTo.SelectedValue = currentFilter.AssignedToId;
                 }
                 else
                     ComboBoxAssignedTo.Enabled = false;
@@ -264,12 +266,14 @@ namespace Redmine.Client
                 ComboBoxStatus.DataSource = data.Statuses;
                 ComboBoxStatus.DisplayMember = "Name";
                 ComboBoxStatus.ValueMember = "Id";
+                ComboBoxStatus.SelectedValue = currentFilter.StatusId;
 
                 if (data.Versions != null)
                 {
                     ComboBoxTargetVersion.DataSource = data.Versions;
                     ComboBoxTargetVersion.DisplayMember = "Name";
                     ComboBoxTargetVersion.ValueMember = "Id";
+                    ComboBoxTargetVersion.SelectedValue = currentFilter.VersionId;
                 }
                 else
                     ComboBoxTargetVersion.Enabled = false;
@@ -277,12 +281,14 @@ namespace Redmine.Client
                 ComboBoxTracker.DataSource = data.Trackers;
                 ComboBoxTracker.DisplayMember = "Name";
                 ComboBoxTracker.ValueMember = "Id";
+                ComboBoxTracker.SelectedValue = currentFilter.TrackerId;
 
                 if (data.Categories != null)
                 {
                     ComboBoxCategory.DataSource = data.Categories;
                     ComboBoxCategory.DisplayMember = "Name";
                     ComboBoxCategory.ValueMember = "Id";
+                    ComboBoxCategory.SelectedValue = currentFilter.CategoryId;
                 }
                 else
                     ComboBoxCategory.Enabled = false;
@@ -845,7 +851,7 @@ namespace Redmine.Client
             SetCurrentWorkName(Lang.BgWork_GetFormData);
             try
             {
-                FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked), issueId, activityId);
+                FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked, currentFilter), issueId, activityId);
             }
             catch(Exception ex)
             {
@@ -853,6 +859,7 @@ namespace Redmine.Client
             }
             this.Cursor = Cursors.Default;
             SetCurrentWorkName("");
+            BtnRefreshButton.Text = Lang.BtnRefreshButton;
         }
 
         /// <summary>
@@ -886,13 +893,14 @@ namespace Redmine.Client
         /// <param name="issueId">The current/last selected issue</param>
         /// <param name="activityId">The current/last selected activity</param>
         /// <param name="onlyMe">Retrieve only issues assigned to me</param>
-        private void AsyncGetRestOfFormData(int projectId, int issueId, int activityId, bool onlyMe)
+        /// <param name="filter">Retrieve only issues matchig the filter</param>
+        private void AsyncGetRestOfFormData(int projectId, int issueId, int activityId, bool onlyMe, Filter filter)
         {
             AddBgWork(Lang.BgWork_GetFormData, () =>
             {
                 try
                 {
-                    MainFormData data = PrepareFormData(projectId, onlyMe);
+                    MainFormData data = PrepareFormData(projectId, onlyMe, filter);
                     
                     //Let main thread fill form data...
                     return () =>
@@ -947,7 +955,7 @@ namespace Redmine.Client
                         else
                             SetTitle(Lang.RedmineClientTitle_NoUser);
                         //When done, get the rest of the form data...
-                        AsyncGetRestOfFormData(projectId, issueId, activityId, onlyMe);
+                        AsyncGetRestOfFormData(projectId, issueId, activityId, onlyMe, currentFilter);
                     };
                 }
                 catch (Exception e)
@@ -1226,5 +1234,87 @@ namespace Redmine.Client
             BtnStartButton_Click(sender, e);
         }
 
+        private void ComboBoxTracker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.TrackerId = (int)ComboBoxTracker.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.TrackerId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void ComboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.StatusId = (int)ComboBoxStatus.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.StatusId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void ComboBoxPriority_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.PriorityId = (int)ComboBoxPriority.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.PriorityId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void ComboBoxAssignedTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.AssignedToId = (int)ComboBoxAssignedTo.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.AssignedToId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void ComboBoxTargetVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.VersionId = (int)ComboBoxTargetVersion.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.VersionId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void ComboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.CategoryId = (int)ComboBoxCategory.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.CategoryId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void FilterChanged()
+        {
+            BtnRefreshButton.Text = Lang.BtnRefreshButton_Filter;
+        }
     }
 }

@@ -402,6 +402,7 @@ namespace Redmine.Client
             this.ComboBoxCategory.Name = "ComboBoxCategory";
             this.ComboBoxCategory.Size = new System.Drawing.Size(170, 21);
             this.ComboBoxCategory.TabIndex = 25;
+            this.ComboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCategory_SelectedIndexChanged);
             // 
             // labelTargetVersion
             // 
@@ -422,6 +423,7 @@ namespace Redmine.Client
             this.ComboBoxTargetVersion.Name = "ComboBoxTargetVersion";
             this.ComboBoxTargetVersion.Size = new System.Drawing.Size(170, 21);
             this.ComboBoxTargetVersion.TabIndex = 23;
+            this.ComboBoxTargetVersion.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTargetVersion_SelectedIndexChanged);
             // 
             // labelAssignedTo
             // 
@@ -442,6 +444,7 @@ namespace Redmine.Client
             this.ComboBoxAssignedTo.Name = "ComboBoxAssignedTo";
             this.ComboBoxAssignedTo.Size = new System.Drawing.Size(170, 21);
             this.ComboBoxAssignedTo.TabIndex = 19;
+            this.ComboBoxAssignedTo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxAssignedTo_SelectedIndexChanged);
             // 
             // labelSubject
             // 
@@ -482,6 +485,7 @@ namespace Redmine.Client
             this.ComboBoxPriority.Name = "ComboBoxPriority";
             this.ComboBoxPriority.Size = new System.Drawing.Size(170, 21);
             this.ComboBoxPriority.TabIndex = 11;
+            this.ComboBoxPriority.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPriority_SelectedIndexChanged);
             // 
             // labelStatus
             // 
@@ -502,6 +506,7 @@ namespace Redmine.Client
             this.ComboBoxStatus.Name = "ComboBoxStatus";
             this.ComboBoxStatus.Size = new System.Drawing.Size(170, 21);
             this.ComboBoxStatus.TabIndex = 9;
+            this.ComboBoxStatus.SelectedIndexChanged += new System.EventHandler(this.ComboBoxStatus_SelectedIndexChanged);
             // 
             // labelTracker
             // 
@@ -522,6 +527,7 @@ namespace Redmine.Client
             this.ComboBoxTracker.Name = "ComboBoxTracker";
             this.ComboBoxTracker.Size = new System.Drawing.Size(170, 21);
             this.ComboBoxTracker.TabIndex = 7;
+            this.ComboBoxTracker.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTracker_SelectedIndexChanged);
             // 
             // RedmineClientForm
             // 

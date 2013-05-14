@@ -38,6 +38,18 @@ namespace Redmine.Client
         V20x,
         V21x,
         V22x,
+        V23x,
+    }
+
+    public class Filter
+    {
+        public int TrackerId = 0;
+        public int StatusId = 0;
+        public int PriorityId = 0;
+        public string Subject = "";
+        public int AssignedToId = 0;
+        public int VersionId = 0;
+        public int CategoryId = 0;
     }
 
     internal class MainFormData
@@ -53,7 +65,7 @@ namespace Redmine.Client
         public List<ProjectMember> ProjectMembers { get; private set; }
         public List<IdentifiableName> IssuePriorities { get; private set; }
 
-        public MainFormData(IList<Project> projects, int projectId, bool onlyMe)
+        public MainFormData(IList<Project> projects, int projectId, bool onlyMe, Filter filter)
         {
             Projects = new List<ClientProject>();
             Projects.Add(new ClientProject(new Project { Id = -1, Name = Languages.Lang.ShowAllIssues }));
@@ -120,6 +132,31 @@ namespace Redmine.Client
 
             if (onlyMe)
                 parameters.Add("assigned_to_id", "me");
+            else if (filter.AssignedToId > 0)
+                parameters.Add("assigned_to_id", filter.AssignedToId.ToString());
+
+            if (filter.TrackerId > 0)
+                parameters.Add("tracker_id", filter.TrackerId.ToString());
+
+            if (filter.StatusId > 0)
+                parameters.Add("status_id", filter.TrackerId.ToString());
+
+            if (filter.PriorityId > 0)
+                parameters.Add("priority_id", filter.PriorityId.ToString());
+
+            if (filter.VersionId > 0)
+                parameters.Add("fixed_version_id", filter.VersionId.ToString());
+
+            if (filter.CategoryId > 0)
+                parameters.Add("category_id", filter.CategoryId.ToString());
+
+        //public int TrackerId = 0;
+        //public int StatusId = 0;
+        //public int PriorityId = 0;
+        //public string Subject = "";
+        //public int AssignedToId = 0;
+        //public int VersionId = 0;
+        //public int CategoryId = 0;
 
             Issues = RedmineClientForm.redmine.GetTotalObjectList<Issue>(parameters);
         }
