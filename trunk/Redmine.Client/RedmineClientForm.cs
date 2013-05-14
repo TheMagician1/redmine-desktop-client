@@ -1132,7 +1132,7 @@ namespace Redmine.Client
 
             Dictionary<int, IssueStatus> statusDict = MainFormData.ToDictionaryName<IssueStatus>(redmine.GetObjectList<IssueStatus>(null));
             IssueStatus newStatus;
-            if (!statusDict.TryGetValue(Properties.Settings.Default.InProgressStatus, out newStatus))
+            if (!statusDict.TryGetValue(idState, out newStatus))
                 throw new Exception(Lang.Error_ClosedStatusUnknown);
 
             issue.Status = new IdentifiableName { Id = newStatus.Id, Name = newStatus.Name };
