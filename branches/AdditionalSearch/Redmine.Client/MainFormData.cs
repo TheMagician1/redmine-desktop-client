@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using Redmine.Net.Api.Types;
 
@@ -44,6 +45,13 @@ namespace Redmine.Client
         public List<ClientProject> Projects { get; private set; }
         public IList<Issue> Issues { get; set; }
         public IList<TimeEntryActivity> Activities { get; private set; }
+        // search data
+        public List<ProjectTracker> Trackers { get; private set; }
+        public List<IssueCategory> Categories { get; private set; }
+        public List<IssueStatus> Statuses { get; private set; }
+        public List<Redmine.Net.Api.Types.Version> Versions { get; private set; }
+        public List<ProjectMember> ProjectMembers { get; private set; }
+        public List<IdentifiableName> IssuePriorities { get; private set; }
 
         public MainFormData(IList<Project> projects, int projectId, bool onlyMe)
         {
@@ -57,15 +65,72 @@ namespace Redmine.Client
             if (projectId != -1)
                 parameters.Add("project_id", projectId.ToString());
 
-            if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
+            if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
             {
+                if (projectId < 0)
+                {
+                    List<Tracker> allTrackers = (List<Tracker>)RedmineClientForm.redmine.GetTotalObjectList<Tracker>(null);
+                    Trackers = allTrackers.ConvertAll(new Converter<Tracker, ProjectTracker>(TrackerToProjectTracker));
+
+                    Categories = null;
+                    Versions = null;
+                }
+                else
+                {
+                    NameValueCollection projectParameters = new NameValueCollection { { "include", "trackers" } };
+                    Project project = RedmineClientForm.redmine.GetObject<Project>(projectId.ToString(), projectParameters);
+                    Trackers = new List<ProjectTracker>(project.Trackers);
+
+                    Categories = new List<IssueCategory>(RedmineClientForm.redmine.GetTotalObjectList<IssueCategory>(parameters));
+                    Categories.Insert(0, new IssueCategory { Id = 0, Name = "" });
+
+                    Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
+                    Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
+
+                }
+                Trackers.Insert(0, new ProjectTracker { Id = 0, Name = "" });
+
+                Statuses = new List<IssueStatus>(RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters));
+                Statuses.Insert(0, new IssueStatus { Id = 0, Name = "" });
+
+                if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x
+                    && projectId > 0)
+                {
+                    List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
+                    //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
+                    ProjectMembers = projectMembers.ConvertAll(new Converter<ProjectMembership, ProjectMember>(ProjectMember.MembershipToMember));
+                }
+                else
+                {
+                    List<User> allUsers = (List<User>)RedmineClientForm.redmine.GetTotalObjectList<User>(null);
+                    ProjectMembers = allUsers.ConvertAll(new Converter<User, ProjectMember>(UserToProjectMember));
+                }
+                ProjectMembers.Insert(0, new ProjectMember() );
+
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
+                {
+                    Enumerations.UpdateIssuePriorities(RedmineClientForm.redmine.GetTotalObjectList<IssuePriority>(null));
+                    Enumerations.SaveIssuePriorities();
+                    IssuePriorities = new List<IdentifiableName>(Enumerations.IssuePriorities);
+                    IssuePriorities.Insert(0, new IdentifiableName { Id = 0, Name = "" });
+
                     Activities = RedmineClientForm.redmine.GetTotalObjectList<TimeEntryActivity>(null);
+                }
             }
 
             if (onlyMe)
                 parameters.Add("assigned_to_id", "me");
+
             Issues = RedmineClientForm.redmine.GetTotalObjectList<Issue>(parameters);
+        }
+
+        private static ProjectTracker TrackerToProjectTracker(Tracker tracker)
+        {
+            return new ProjectTracker { Id = tracker.Id, Name = tracker.Name };
+        }
+        private static ProjectMember UserToProjectMember(User user)
+        {
+            return new ProjectMember(user);
         }
 
         public static Dictionary<int, T> ToDictionaryId<T>(IList<T> list) where T : Identifiable<T>

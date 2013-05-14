@@ -250,6 +250,55 @@ namespace Redmine.Client
             ComboBoxActivity.DisplayMember = "Name";
             ComboBoxActivity.ValueMember = "Id";
 
+            if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+            {
+                if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
+                {
+                    ComboBoxAssignedTo.DataSource = data.ProjectMembers;
+                    ComboBoxAssignedTo.DisplayMember = "Name";
+                    ComboBoxAssignedTo.ValueMember = "Id";
+                }
+                else
+                    ComboBoxAssignedTo.Enabled = false;
+
+                ComboBoxStatus.DataSource = data.Statuses;
+                ComboBoxStatus.DisplayMember = "Name";
+                ComboBoxStatus.ValueMember = "Id";
+
+                if (data.Versions != null)
+                {
+                    ComboBoxTargetVersion.DataSource = data.Versions;
+                    ComboBoxTargetVersion.DisplayMember = "Name";
+                    ComboBoxTargetVersion.ValueMember = "Id";
+                }
+                else
+                    ComboBoxTargetVersion.Enabled = false;
+
+                ComboBoxTracker.DataSource = data.Trackers;
+                ComboBoxTracker.DisplayMember = "Name";
+                ComboBoxTracker.ValueMember = "Id";
+
+                if (data.Categories != null)
+                {
+                    ComboBoxCategory.DataSource = data.Categories;
+                    ComboBoxCategory.DisplayMember = "Name";
+                    ComboBoxCategory.ValueMember = "Id";
+                }
+                else
+                    ComboBoxCategory.Enabled = false;
+            }
+            else
+            {
+                ComboBoxAssignedTo.Enabled = false;
+                ComboBoxStatus.Enabled = false;
+                ComboBoxTargetVersion.Enabled = false;
+                ComboBoxTracker.Enabled = false;
+                ComboBoxCategory.Enabled = false;
+            }
+            ComboBoxPriority.DataSource = data.IssuePriorities;
+            ComboBoxPriority.DisplayMember = "Name";
+            ComboBoxPriority.ValueMember = "Id";
+
             DataGridViewIssues.DataSource = data.Issues;
             foreach (DataGridViewColumn column in DataGridViewIssues.Columns)
             {
@@ -364,15 +413,16 @@ namespace Redmine.Client
 
             try
             {
-                Languages.Lang.Culture = new System.Globalization.CultureInfo(Properties.Settings.Default.LanguageCode);
+                Lang.Culture = new System.Globalization.CultureInfo(Properties.Settings.Default.LanguageCode);
             }
             catch (Exception)
             {
-                Languages.Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
+                Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
             }
 
-            Languages.LangTools.UpdateControlsForLanguage(this.Controls);
-            Languages.LangTools.UpdateControlsForLanguage(NotifyIconMenuStrip.Items);
+            LangTools.UpdateControlsForLanguage(this.Controls);
+            LangTools.UpdateControlsForLanguage(groupBoxFilter.Controls);
+            LangTools.UpdateControlsForLanguage(NotifyIconMenuStrip.Items);
             SetRestoreToolStripMenuItem();
             UpdateToolStripMenuItemsStartPause();
 

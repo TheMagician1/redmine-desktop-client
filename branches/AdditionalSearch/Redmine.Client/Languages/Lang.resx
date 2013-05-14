@@ -680,4 +680,7 @@ or Request attention every
   <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
     <value>Add a note when changing the status with above options</value>
   </data>
+  <data name="groupBoxFilter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
 </root>
