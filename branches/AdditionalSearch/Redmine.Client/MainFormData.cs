@@ -41,7 +41,7 @@ namespace Redmine.Client
         V23x,
     }
 
-    public class Filter
+    public class Filter : ICloneable
     {
         public int TrackerId = 0;
         public int StatusId = 0;
@@ -50,6 +50,15 @@ namespace Redmine.Client
         public int AssignedToId = 0;
         public int VersionId = 0;
         public int CategoryId = 0;
+
+        #region ICloneable Members
+
+        public object Clone()
+        {
+            return new Filter { TrackerId = TrackerId, StatusId = StatusId, PriorityId = PriorityId, Subject = Subject, AssignedToId = AssignedToId, VersionId = VersionId, CategoryId = CategoryId };
+        }
+
+        #endregion
     }
 
     internal class MainFormData
@@ -105,29 +114,37 @@ namespace Redmine.Client
                 Statuses = new List<IssueStatus>(RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters));
                 Statuses.Insert(0, new IssueStatus { Id = 0, Name = "" });
 
-                if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x
-                    && projectId > 0)
+                try
                 {
-                    List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
-                    //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
-                    ProjectMembers = projectMembers.ConvertAll(new Converter<ProjectMembership, ProjectMember>(ProjectMember.MembershipToMember));
+                    if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x
+                        && projectId > 0)
+                    {
+                        List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
+                        //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
+                        ProjectMembers = projectMembers.ConvertAll(new Converter<ProjectMembership, ProjectMember>(ProjectMember.MembershipToMember));
+                    }
+                    else
+                    {
+                        List<User> allUsers = (List<User>)RedmineClientForm.redmine.GetTotalObjectList<User>(null);
+                        ProjectMembers = allUsers.ConvertAll(new Converter<User, ProjectMember>(UserToProjectMember));
+                    }
+                    ProjectMembers.Insert(0, new ProjectMember());
                 }
-                else
+                catch (Exception)
                 {
-                    List<User> allUsers = (List<User>)RedmineClientForm.redmine.GetTotalObjectList<User>(null);
-                    ProjectMembers = allUsers.ConvertAll(new Converter<User, ProjectMember>(UserToProjectMember));
+                    ProjectMembers = null;
                 }
-                ProjectMembers.Insert(0, new ProjectMember() );
 
                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
                 {
                     Enumerations.UpdateIssuePriorities(RedmineClientForm.redmine.GetTotalObjectList<IssuePriority>(null));
                     Enumerations.SaveIssuePriorities();
-                    IssuePriorities = new List<IdentifiableName>(Enumerations.IssuePriorities);
-                    IssuePriorities.Insert(0, new IdentifiableName { Id = 0, Name = "" });
 
                     Activities = RedmineClientForm.redmine.GetTotalObjectList<TimeEntryActivity>(null);
                 }
+
+                IssuePriorities = new List<IdentifiableName>(Enumerations.IssuePriorities);
+                IssuePriorities.Insert(0, new IdentifiableName { Id = 0, Name = "" });
             }
 
             if (onlyMe)
@@ -139,7 +156,7 @@ namespace Redmine.Client
                 parameters.Add("tracker_id", filter.TrackerId.ToString());
 
             if (filter.StatusId > 0)
-                parameters.Add("status_id", filter.TrackerId.ToString());
+                parameters.Add("status_id", filter.StatusId.ToString());
 
             if (filter.PriorityId > 0)
                 parameters.Add("priority_id", filter.PriorityId.ToString());
@@ -150,13 +167,8 @@ namespace Redmine.Client
             if (filter.CategoryId > 0)
                 parameters.Add("category_id", filter.CategoryId.ToString());
 
-        //public int TrackerId = 0;
-        //public int StatusId = 0;
-        //public int PriorityId = 0;
-        //public string Subject = "";
-        //public int AssignedToId = 0;
-        //public int VersionId = 0;
-        //public int CategoryId = 0;
+            if (!String.IsNullOrEmpty(filter.Subject))
+                parameters.Add("subject", "~" + filter.Subject);
 
             Issues = RedmineClientForm.redmine.GetTotalObjectList<Issue>(parameters);
         }

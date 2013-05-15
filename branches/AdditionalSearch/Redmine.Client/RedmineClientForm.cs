@@ -210,7 +210,7 @@ namespace Redmine.Client
             return memberProjects;
         }
 
-        private void FillForm(MainFormData data, int issueId, int activityId)
+        private void FillForm(MainFormData data, int issueId, int activityId, Filter filter)
         {
             updating = true;
             this.projectId = GetProjectIdCheckExists(Projects, this.projectId);
@@ -253,45 +253,64 @@ namespace Redmine.Client
 
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
             {
-                if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
+                if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x && data.ProjectMembers != null)
                 {
+                    labelAssignedTo.Enabled = true;
+                    ComboBoxAssignedTo.Enabled = true;
                     ComboBoxAssignedTo.DataSource = data.ProjectMembers;
                     ComboBoxAssignedTo.DisplayMember = "Name";
                     ComboBoxAssignedTo.ValueMember = "Id";
-                    ComboBoxAssignedTo.SelectedValue = currentFilter.AssignedToId;
+                    ComboBoxAssignedTo.SelectedValue = filter.AssignedToId;
                 }
                 else
+                {
                     ComboBoxAssignedTo.Enabled = false;
+                    labelAssignedTo.Enabled = false;
+                    ComboBoxAssignedTo.DataSource = null;
+                }
 
                 ComboBoxStatus.DataSource = data.Statuses;
                 ComboBoxStatus.DisplayMember = "Name";
                 ComboBoxStatus.ValueMember = "Id";
-                ComboBoxStatus.SelectedValue = currentFilter.StatusId;
+                ComboBoxStatus.SelectedValue = filter.StatusId;
 
                 if (data.Versions != null)
                 {
+                    labelTargetVersion.Enabled = true;
+                    ComboBoxTargetVersion.Enabled = true;
                     ComboBoxTargetVersion.DataSource = data.Versions;
                     ComboBoxTargetVersion.DisplayMember = "Name";
                     ComboBoxTargetVersion.ValueMember = "Id";
-                    ComboBoxTargetVersion.SelectedValue = currentFilter.VersionId;
+                    ComboBoxTargetVersion.SelectedValue = filter.VersionId;
                 }
                 else
+                {
+                    labelTargetVersion.Enabled = false;
                     ComboBoxTargetVersion.Enabled = false;
+                    ComboBoxTargetVersion.DataSource = null;
+                }
 
                 ComboBoxTracker.DataSource = data.Trackers;
                 ComboBoxTracker.DisplayMember = "Name";
                 ComboBoxTracker.ValueMember = "Id";
-                ComboBoxTracker.SelectedValue = currentFilter.TrackerId;
+                ComboBoxTracker.SelectedValue = filter.TrackerId;
 
                 if (data.Categories != null)
                 {
+                    labelCategory.Enabled = true;
+                    ComboBoxCategory.Enabled = true;
                     ComboBoxCategory.DataSource = data.Categories;
                     ComboBoxCategory.DisplayMember = "Name";
                     ComboBoxCategory.ValueMember = "Id";
-                    ComboBoxCategory.SelectedValue = currentFilter.CategoryId;
+                    ComboBoxCategory.SelectedValue = filter.CategoryId;
                 }
                 else
+                {
+                    labelCategory.Enabled = false;
                     ComboBoxCategory.Enabled = false;
+                    ComboBoxCategory.DataSource = null;
+                }
+                UpdateFilterControls();
             }
             else
             {
@@ -436,8 +455,18 @@ namespace Redmine.Client
             issueId = Properties.Settings.Default.LastIssueId;
             activityId = Properties.Settings.Default.LastActivityId;
             CheckBoxOnlyMe.Checked = Properties.Settings.Default.OnlyAssignedToMe;
+            UpdateFilterControls();
 
             BtnNewIssueButton.Visible = RedmineVersion >= ApiVersion.V13x;
+        }
+
+        private void UpdateFilterControls()
+        {
+            if (ComboBoxAssignedTo.DataSource != null)
+            {
+                labelAssignedTo.Enabled = !CheckBoxOnlyMe.Checked;
+                ComboBoxAssignedTo.Enabled = !CheckBoxOnlyMe.Checked;
+            }
         }
 
         private void UpdateToolStripMenuItemsStartPause()
@@ -851,7 +880,8 @@ namespace Redmine.Client
             SetCurrentWorkName(Lang.BgWork_GetFormData);
             try
             {
-                FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked, currentFilter), issueId, activityId);
+                Filter newFilter = (Filter)currentFilter.Clone();
+                FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked, newFilter), issueId, activityId, newFilter);
             }
             catch(Exception ex)
             {
@@ -905,7 +935,8 @@ namespace Redmine.Client
                     //Let main thread fill form data...
                     return () =>
                     {
-                        FillForm(data, issueId, activityId);
+                        FillForm(data, issueId, activityId, (Filter)currentFilter.Clone());
+                        BtnRefreshButton.Text = Lang.BtnRefreshButton;
                         this.Cursor = Cursors.Default;
                     };
                 }
@@ -1112,6 +1143,7 @@ namespace Redmine.Client
         private void CheckBoxOnlyMe_Click(object sender, EventArgs e)
         {
             BtnRefreshButton_Click(sender, e);
+            UpdateFilterControls();
         }
 
         /// <summary>
@@ -1311,10 +1343,23 @@ namespace Redmine.Client
             }
             FilterChanged();
         }
+        private void TextBoxSubject_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.Subject = TextBoxSubject.Text;
+            }
+            catch (Exception)
+            {
+                currentFilter.Subject = "";
+            }
+            FilterChanged();
+        }
 
         private void FilterChanged()
         {
             BtnRefreshButton.Text = Lang.BtnRefreshButton_Filter;
         }
+
     }
 }

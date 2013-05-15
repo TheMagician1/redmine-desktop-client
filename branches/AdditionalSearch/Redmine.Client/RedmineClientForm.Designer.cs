@@ -465,6 +465,7 @@ namespace Redmine.Client
             this.TextBoxSubject.Name = "TextBoxSubject";
             this.TextBoxSubject.Size = new System.Drawing.Size(170, 20);
             this.TextBoxSubject.TabIndex = 13;
+            this.TextBoxSubject.TextChanged += new System.EventHandler(this.TextBoxSubject_TextChanged);
             // 
             // labelPriority
             // 
