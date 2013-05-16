@@ -38,6 +38,7 @@ namespace Redmine.Client
 
         private bool CheckForUpdates;
         private int CacheLifetime;
+        private DataGridViewColumn currentSortedColumn;
 
         private Rectangle NormalSize;
         private DateTime MinimizeTime;
@@ -331,6 +332,10 @@ namespace Redmine.Client
                     column.Visible = false;
                 if (projectId == -1 && column.Name == "Project")
                     column.Visible = true;
+                if (column.Visible)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.Programmatic;
+                }
             }
             try // Very ugly trick to fix the mono crash reported in the SF.net forum
             {
@@ -343,6 +348,10 @@ namespace Redmine.Client
             DataGridViewIssues.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             if (projectId == -1)
                 DataGridViewIssues.Columns["Project"].DisplayIndex = 2;
+            if (currentSortedColumn == null || !DataGridViewIssues.Columns[currentSortedColumn.Name].Visible)
+                DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns["Id"]);
+            else
+                DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns[currentSortedColumn.Name]);
 
             if (ComboBoxProject.Items.Count > 0)
             {
@@ -1082,6 +1091,8 @@ namespace Redmine.Client
         /// <param name="e"></param>
         private void DataGridViewIssues_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
             Issue issue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
             ShowIssue(issue);
         }
@@ -1359,6 +1370,78 @@ namespace Redmine.Client
         private void FilterChanged()
         {
             BtnRefreshButton.Text = Lang.BtnRefreshButton_Filter;
+        }
+
+        class CompareIssue : IComparer<Issue>
+        {
+            public CompareIssue(string column, SortOrder sortOrder)
+            {
+                this.column = column;
+                this.sortOrder = sortOrder;
+            }
+            private string column;
+            private SortOrder sortOrder;
+
+            #region IComparer<Issue> Members
+
+            public int Compare(Issue left, Issue right)
+            {
+                Issue x, y;
+                if (sortOrder == SortOrder.Ascending)
+                {
+                    x = left;
+                    y = right;
+                }
+                else
+                {
+                    x = right;
+                    y = left;
+                }
+                if (column == "Id")
+                {
+                    int result = x.Tracker.Name.CompareTo(y.Tracker.Name);
+                    if (result != 0)
+                        return result;
+                    return x.Id.CompareTo(y.Id);
+                }
+                else if (column == "Subject")
+                {
+                    return x.Subject.CompareTo(y.Subject);
+                }
+                else if (column == "Project")
+                {
+                    return x.Project.Name.CompareTo(y.Project.Name);
+                }
+                return 0;
+            }
+
+            #endregion
+        }
+
+        private void DataGridViewIssues_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex < 0)
+                return;
+
+            DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns[e.ColumnIndex]);
+        }
+
+        private void DataGridViewIssues_SortByColumn(DataGridViewColumn sortColumn)
+        {
+            SortOrder sortOrder = sortColumn.HeaderCell.SortGlyphDirection;
+            // reset current sortcolumn after retrieving the current sortorder.
+            if (currentSortedColumn != null && currentSortedColumn.DataGridView == DataGridViewIssues)
+                currentSortedColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+
+            if (sortOrder == SortOrder.None || sortOrder == SortOrder.Descending)
+                sortOrder = SortOrder.Ascending;
+            else
+                sortOrder = SortOrder.Descending;
+            List<Issue> issueList = (List<Issue>)DataGridViewIssues.DataSource;
+            issueList.Sort(new CompareIssue(sortColumn.Name, sortOrder));
+            sortColumn.HeaderCell.SortGlyphDirection = sortOrder;
+            currentSortedColumn = sortColumn;
+            DataGridViewIssues.Refresh();
         }
 
     }
