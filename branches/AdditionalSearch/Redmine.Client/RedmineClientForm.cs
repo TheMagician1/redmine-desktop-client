@@ -1413,9 +1413,6 @@ namespace Redmine.Client
                 }
                 if (column == "Id")
                 {
-                    int result = x.Tracker.Name.CompareTo(y.Tracker.Name);
-                    if (result != 0)
-                        return result;
                     return x.Id.CompareTo(y.Id);
                 }
                 else
