@@ -611,6 +611,7 @@ namespace Redmine.Client
         {
             this.ticks = 0;
             this.UpdateTime();
+            Properties.Settings.Default.SetTickingTick(this.ticking, this.ticks);
             this.dateTimePicker1.Value = DateTime.Now;
             this.TextBoxComment.Text = String.Empty;
         }

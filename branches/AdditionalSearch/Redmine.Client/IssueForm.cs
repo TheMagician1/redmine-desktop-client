@@ -411,8 +411,12 @@ namespace Redmine.Client
                         ComboBoxAssignedTo.SelectedItem = issue.AssignedTo;
                     }
                 }
+
                 if (issue.Description != null)
-                    TextBoxDescription.Text = Regex.Replace(issue.Description, "(?<!\r)\n", "\r\n");
+                {
+                    issue.Description = Regex.Replace(issue.Description, "(?<!\r)\n", "\r\n");
+                    TextBoxDescription.Text = issue.Description;
+                }
                 TextBoxEstimatedTime.Text = issue.EstimatedHours.ToString();
                 numericUpDown1.Value = Convert.ToDecimal(issue.DoneRatio);
                 ComboBoxPriority.SelectedValue = issue.Priority.Id;
