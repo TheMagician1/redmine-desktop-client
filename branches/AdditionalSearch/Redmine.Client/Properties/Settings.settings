@@ -83,5 +83,11 @@
     <Setting Name="AddNoteOnChangeStatus" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="IssueGridSortOrder" Type="System.Windows.Forms.SortOrder" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="IssueGridSortColumn" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Id</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

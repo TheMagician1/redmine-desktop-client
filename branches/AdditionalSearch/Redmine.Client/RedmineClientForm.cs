@@ -348,10 +348,18 @@ namespace Redmine.Client
             DataGridViewIssues.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             if (projectId == -1)
                 DataGridViewIssues.Columns["Project"].DisplayIndex = 2;
-            if (currentSortedColumn == null || !DataGridViewIssues.Columns[currentSortedColumn.Name].Visible)
-                DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns["Id"]);
+            if (currentSortedColumn == null)
+            {
+                currentSortedColumn = DataGridViewIssues.Columns[Properties.Settings.Default.IssueGridSortColumn];
+                SortOrder order = Properties.Settings.Default.IssueGridSortOrder;
+                InvertSort(ref order);
+                currentSortedColumn.HeaderCell.SortGlyphDirection = order;
+            }
+            
+            if (!DataGridViewIssues.Columns[currentSortedColumn.Name].Visible)
+                DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns["Id"], SortOrder.Ascending);
             else
-                DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns[currentSortedColumn.Name]);
+                DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns[currentSortedColumn.Name], null);
 
             if (ComboBoxProject.Items.Count > 0)
             {
@@ -1429,10 +1437,10 @@ namespace Redmine.Client
             if (e.ColumnIndex < 0)
                 return;
 
-            DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns[e.ColumnIndex]);
+            DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns[e.ColumnIndex], null);
         }
 
-        private void DataGridViewIssues_SortByColumn(DataGridViewColumn sortColumn)
+        private void DataGridViewIssues_SortByColumn(DataGridViewColumn sortColumn, SortOrder? newOrder)
         {
             SortOrder sortOrder = sortColumn.HeaderCell.SortGlyphDirection;
             // reset current sortcolumn after retrieving the current sortorder.
@@ -1440,17 +1448,31 @@ namespace Redmine.Client
                 currentSortedColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
 
             int currentSelectedIssue = issueId;
-            if (sortOrder == SortOrder.None || sortOrder == SortOrder.Descending)
+            if (sortOrder == SortOrder.None)
                 sortOrder = SortOrder.Ascending;
             else
-                sortOrder = SortOrder.Descending;
+                InvertSort(ref sortOrder);
+
+            if (newOrder.HasValue)
+                sortOrder = newOrder.Value;
+
             List<Issue> issueList = (List<Issue>)DataGridViewIssues.DataSource;
             issueList.Sort(new CompareIssue(sortColumn.Name, sortOrder));
             sortColumn.HeaderCell.SortGlyphDirection = sortOrder;
             currentSortedColumn = sortColumn;
+            Properties.Settings.Default.SetIssueGridSort(sortColumn.Name, sortOrder);
             SetIssueSelectionTo(currentSelectedIssue);
             DataGridViewIssues.Refresh();
         }
 
+        public static void InvertSort(ref System.Windows.Forms.SortOrder order)
+        {
+            if (order == System.Windows.Forms.SortOrder.None)
+                return;
+            if (order == System.Windows.Forms.SortOrder.Ascending)
+                order = System.Windows.Forms.SortOrder.Descending;
+            else
+                order = System.Windows.Forms.SortOrder.Ascending;
+        }
     }
 }
