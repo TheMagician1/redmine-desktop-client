@@ -369,6 +369,13 @@ namespace Redmine.Client
                     ComboBoxActivity.SelectedIndex = 0;
                 activityId = (int)ComboBoxActivity.SelectedValue;
             }
+            SetIssueSelectionTo(issueId);
+            updating = false;
+            this.Cursor = Cursors.Default;
+        }
+
+        private void SetIssueSelectionTo(int issueId)
+        {
             if (DataGridViewIssues.Rows.Count > 0)
             {
                 DataGridViewIssues.ClearSelection();
@@ -382,8 +389,6 @@ namespace Redmine.Client
                     }
                 }
             }
-            updating = false;
-            this.Cursor = Cursors.Default;
         }
 
 
@@ -1434,6 +1439,7 @@ namespace Redmine.Client
             if (currentSortedColumn != null && currentSortedColumn.DataGridView == DataGridViewIssues)
                 currentSortedColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
 
+            int currentSelectedIssue = issueId;
             if (sortOrder == SortOrder.None || sortOrder == SortOrder.Descending)
                 sortOrder = SortOrder.Ascending;
             else
@@ -1442,6 +1448,7 @@ namespace Redmine.Client
             issueList.Sort(new CompareIssue(sortColumn.Name, sortOrder));
             sortColumn.HeaderCell.SortGlyphDirection = sortOrder;
             currentSortedColumn = sortColumn;
+            SetIssueSelectionTo(currentSelectedIssue);
             DataGridViewIssues.Refresh();
         }
 
