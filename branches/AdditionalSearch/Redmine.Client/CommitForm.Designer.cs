@@ -49,7 +49,7 @@
             // BtnCommitButton
             // 
             this.BtnCommitButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnCommitButton.Location = new System.Drawing.Point(162, 190);
+            this.BtnCommitButton.Location = new System.Drawing.Point(162, 207);
             this.BtnCommitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCommitButton.Name = "BtnCommitButton";
             this.BtnCommitButton.Size = new System.Drawing.Size(68, 24);
@@ -62,7 +62,7 @@
             // 
             this.BtnCancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(234, 190);
+            this.BtnCancelButton.Location = new System.Drawing.Point(234, 207);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -75,7 +75,7 @@
             // 
             this.TextBoxComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBoxComment.Location = new System.Drawing.Point(10, 164);
+            this.TextBoxComment.Location = new System.Drawing.Point(10, 183);
             this.TextBoxComment.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxComment.Name = "TextBoxComment";
             this.TextBoxComment.Size = new System.Drawing.Size(447, 20);
@@ -84,7 +84,7 @@
             // labelCommitComment
             // 
             this.labelCommitComment.AutoSize = true;
-            this.labelCommitComment.Location = new System.Drawing.Point(7, 149);
+            this.labelCommitComment.Location = new System.Drawing.Point(7, 164);
             this.labelCommitComment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCommitComment.Name = "labelCommitComment";
             this.labelCommitComment.Size = new System.Drawing.Size(51, 13);
@@ -113,7 +113,7 @@
             // labelCommitIssue
             // 
             this.labelCommitIssue.AutoSize = true;
-            this.labelCommitIssue.Location = new System.Drawing.Point(7, 57);
+            this.labelCommitIssue.Location = new System.Drawing.Point(7, 59);
             this.labelCommitIssue.Name = "labelCommitIssue";
             this.labelCommitIssue.Size = new System.Drawing.Size(35, 13);
             this.labelCommitIssue.TabIndex = 3;
@@ -123,7 +123,7 @@
             // 
             this.labelIssueContent.AutoSize = true;
             this.labelIssueContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIssueContent.Location = new System.Drawing.Point(78, 57);
+            this.labelIssueContent.Location = new System.Drawing.Point(78, 59);
             this.labelIssueContent.Name = "labelIssueContent";
             this.labelIssueContent.Size = new System.Drawing.Size(69, 13);
             this.labelIssueContent.TabIndex = 4;
@@ -132,7 +132,7 @@
             // labelCommitActivity
             // 
             this.labelCommitActivity.AutoSize = true;
-            this.labelCommitActivity.Location = new System.Drawing.Point(7, 76);
+            this.labelCommitActivity.Location = new System.Drawing.Point(7, 80);
             this.labelCommitActivity.Name = "labelCommitActivity";
             this.labelCommitActivity.Size = new System.Drawing.Size(44, 13);
             this.labelCommitActivity.TabIndex = 5;
@@ -142,7 +142,7 @@
             // 
             this.ComboBoxActivity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxActivity.FormattingEnabled = true;
-            this.ComboBoxActivity.Location = new System.Drawing.Point(81, 73);
+            this.ComboBoxActivity.Location = new System.Drawing.Point(81, 77);
             this.ComboBoxActivity.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxActivity.Name = "ComboBoxActivity";
             this.ComboBoxActivity.Size = new System.Drawing.Size(158, 21);
@@ -161,7 +161,7 @@
             // labelCommitTime
             // 
             this.labelCommitTime.AutoSize = true;
-            this.labelCommitTime.Location = new System.Drawing.Point(7, 95);
+            this.labelCommitTime.Location = new System.Drawing.Point(7, 103);
             this.labelCommitTime.Name = "labelCommitTime";
             this.labelCommitTime.Size = new System.Drawing.Size(50, 13);
             this.labelCommitTime.TabIndex = 7;
@@ -171,7 +171,7 @@
             // 
             this.labelTimeContent.AutoSize = true;
             this.labelTimeContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTimeContent.Location = new System.Drawing.Point(78, 95);
+            this.labelTimeContent.Location = new System.Drawing.Point(78, 103);
             this.labelTimeContent.Name = "labelTimeContent";
             this.labelTimeContent.Size = new System.Drawing.Size(34, 13);
             this.labelTimeContent.TabIndex = 8;
@@ -180,7 +180,7 @@
             // labelCommitDateSpent
             // 
             this.labelCommitDateSpent.AutoSize = true;
-            this.labelCommitDateSpent.Location = new System.Drawing.Point(7, 113);
+            this.labelCommitDateSpent.Location = new System.Drawing.Point(7, 124);
             this.labelCommitDateSpent.Name = "labelCommitDateSpent";
             this.labelCommitDateSpent.Size = new System.Drawing.Size(55, 13);
             this.labelCommitDateSpent.TabIndex = 9;
@@ -190,7 +190,7 @@
             // 
             this.labelDateSpentContent.AutoSize = true;
             this.labelDateSpentContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDateSpentContent.Location = new System.Drawing.Point(78, 113);
+            this.labelDateSpentContent.Location = new System.Drawing.Point(78, 124);
             this.labelDateSpentContent.Name = "labelDateSpentContent";
             this.labelDateSpentContent.Size = new System.Drawing.Size(34, 13);
             this.labelDateSpentContent.TabIndex = 10;
@@ -199,7 +199,7 @@
             // CheckBoxClosesIssue
             // 
             this.CheckBoxClosesIssue.AutoSize = true;
-            this.CheckBoxClosesIssue.Location = new System.Drawing.Point(81, 129);
+            this.CheckBoxClosesIssue.Location = new System.Drawing.Point(81, 144);
             this.CheckBoxClosesIssue.Name = "CheckBoxClosesIssue";
             this.CheckBoxClosesIssue.Size = new System.Drawing.Size(119, 17);
             this.CheckBoxClosesIssue.TabIndex = 11;
@@ -212,7 +212,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(464, 222);
+            this.ClientSize = new System.Drawing.Size(464, 242);
             this.Controls.Add(this.CheckBoxClosesIssue);
             this.Controls.Add(this.labelCommitQuestion);
             this.Controls.Add(this.ComboBoxActivity);

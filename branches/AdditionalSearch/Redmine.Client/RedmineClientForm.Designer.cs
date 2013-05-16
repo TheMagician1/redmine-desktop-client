@@ -153,7 +153,7 @@ namespace Redmine.Client
             // 
             this.ComboBoxActivity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxActivity.FormattingEnabled = true;
-            this.ComboBoxActivity.Location = new System.Drawing.Point(9, 74);
+            this.ComboBoxActivity.Location = new System.Drawing.Point(9, 78);
             this.ComboBoxActivity.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxActivity.Name = "ComboBoxActivity";
             this.ComboBoxActivity.Size = new System.Drawing.Size(172, 21);
@@ -163,7 +163,7 @@ namespace Redmine.Client
             // labelActivity
             // 
             this.labelActivity.AutoSize = true;
-            this.labelActivity.Location = new System.Drawing.Point(8, 59);
+            this.labelActivity.Location = new System.Drawing.Point(8, 60);
             this.labelActivity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelActivity.Name = "labelActivity";
             this.labelActivity.Size = new System.Drawing.Size(41, 13);
@@ -173,7 +173,7 @@ namespace Redmine.Client
             // labelProject
             // 
             this.labelProject.AutoSize = true;
-            this.labelProject.Location = new System.Drawing.Point(185, 59);
+            this.labelProject.Location = new System.Drawing.Point(185, 60);
             this.labelProject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelProject.Name = "labelProject";
             this.labelProject.Size = new System.Drawing.Size(40, 13);
@@ -186,7 +186,7 @@ namespace Redmine.Client
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxProject.FormattingEnabled = true;
-            this.ComboBoxProject.Location = new System.Drawing.Point(185, 74);
+            this.ComboBoxProject.Location = new System.Drawing.Point(185, 78);
             this.ComboBoxProject.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxProject.Name = "ComboBoxProject";
             this.ComboBoxProject.Size = new System.Drawing.Size(232, 21);
@@ -259,14 +259,14 @@ namespace Redmine.Client
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewIssues.Location = new System.Drawing.Point(9, 99);
+            this.DataGridViewIssues.Location = new System.Drawing.Point(9, 103);
             this.DataGridViewIssues.Margin = new System.Windows.Forms.Padding(2);
             this.DataGridViewIssues.MultiSelect = false;
             this.DataGridViewIssues.Name = "DataGridViewIssues";
             this.DataGridViewIssues.ReadOnly = true;
             this.DataGridViewIssues.RowTemplate.Height = 24;
             this.DataGridViewIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewIssues.Size = new System.Drawing.Size(408, 351);
+            this.DataGridViewIssues.Size = new System.Drawing.Size(408, 355);
             this.DataGridViewIssues.TabIndex = 0;
             this.DataGridViewIssues.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewIssues_CellDoubleClick);
             this.DataGridViewIssues.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewIssues_CellFormatting);
@@ -280,7 +280,7 @@ namespace Redmine.Client
             // BtnRefreshButton
             // 
             this.BtnRefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRefreshButton.Location = new System.Drawing.Point(422, 72);
+            this.BtnRefreshButton.Location = new System.Drawing.Point(422, 76);
             this.BtnRefreshButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnRefreshButton.Name = "BtnRefreshButton";
             this.BtnRefreshButton.Size = new System.Drawing.Size(82, 24);
@@ -292,7 +292,7 @@ namespace Redmine.Client
             // BtnExitButton
             // 
             this.BtnExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnExitButton.Location = new System.Drawing.Point(521, 426);
+            this.BtnExitButton.Location = new System.Drawing.Point(521, 434);
             this.BtnExitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnExitButton.Name = "BtnExitButton";
             this.BtnExitButton.Size = new System.Drawing.Size(82, 24);
@@ -315,7 +315,7 @@ namespace Redmine.Client
             // BtnAboutButton
             // 
             this.BtnAboutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAboutButton.Location = new System.Drawing.Point(421, 426);
+            this.BtnAboutButton.Location = new System.Drawing.Point(421, 434);
             this.BtnAboutButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAboutButton.Name = "BtnAboutButton";
             this.BtnAboutButton.Size = new System.Drawing.Size(82, 24);
@@ -327,7 +327,7 @@ namespace Redmine.Client
             // BtnSettingsButton
             // 
             this.BtnSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSettingsButton.Location = new System.Drawing.Point(521, 45);
+            this.BtnSettingsButton.Location = new System.Drawing.Point(521, 47);
             this.BtnSettingsButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSettingsButton.Name = "BtnSettingsButton";
             this.BtnSettingsButton.Size = new System.Drawing.Size(82, 24);
@@ -339,7 +339,7 @@ namespace Redmine.Client
             // BtnNewIssueButton
             // 
             this.BtnNewIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNewIssueButton.Location = new System.Drawing.Point(521, 72);
+            this.BtnNewIssueButton.Location = new System.Drawing.Point(521, 76);
             this.BtnNewIssueButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnNewIssueButton.Name = "BtnNewIssueButton";
             this.BtnNewIssueButton.Size = new System.Drawing.Size(82, 24);
@@ -379,7 +379,7 @@ namespace Redmine.Client
             this.groupBoxFilter.Controls.Add(this.ComboBoxTracker);
             this.groupBoxFilter.Location = new System.Drawing.Point(422, 103);
             this.groupBoxFilter.Name = "groupBoxFilter";
-            this.groupBoxFilter.Size = new System.Drawing.Size(180, 318);
+            this.groupBoxFilter.Size = new System.Drawing.Size(180, 326);
             this.groupBoxFilter.TabIndex = 20;
             this.groupBoxFilter.TabStop = false;
             this.groupBoxFilter.Text = "Filter";
@@ -387,7 +387,7 @@ namespace Redmine.Client
             // labelCategory
             // 
             this.labelCategory.AutoSize = true;
-            this.labelCategory.Location = new System.Drawing.Point(2, 275);
+            this.labelCategory.Location = new System.Drawing.Point(2, 280);
             this.labelCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCategory.Name = "labelCategory";
             this.labelCategory.Size = new System.Drawing.Size(49, 13);
@@ -398,7 +398,7 @@ namespace Redmine.Client
             // 
             this.ComboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxCategory.FormattingEnabled = true;
-            this.ComboBoxCategory.Location = new System.Drawing.Point(5, 290);
+            this.ComboBoxCategory.Location = new System.Drawing.Point(5, 298);
             this.ComboBoxCategory.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxCategory.Name = "ComboBoxCategory";
             this.ComboBoxCategory.Size = new System.Drawing.Size(170, 21);
@@ -408,7 +408,7 @@ namespace Redmine.Client
             // labelTargetVersion
             // 
             this.labelTargetVersion.AutoSize = true;
-            this.labelTargetVersion.Location = new System.Drawing.Point(2, 233);
+            this.labelTargetVersion.Location = new System.Drawing.Point(2, 236);
             this.labelTargetVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTargetVersion.Name = "labelTargetVersion";
             this.labelTargetVersion.Size = new System.Drawing.Size(75, 13);
@@ -419,7 +419,7 @@ namespace Redmine.Client
             // 
             this.ComboBoxTargetVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxTargetVersion.FormattingEnabled = true;
-            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(5, 248);
+            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(5, 254);
             this.ComboBoxTargetVersion.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTargetVersion.Name = "ComboBoxTargetVersion";
             this.ComboBoxTargetVersion.Size = new System.Drawing.Size(170, 21);
@@ -429,7 +429,7 @@ namespace Redmine.Client
             // labelAssignedTo
             // 
             this.labelAssignedTo.AutoSize = true;
-            this.labelAssignedTo.Location = new System.Drawing.Point(2, 188);
+            this.labelAssignedTo.Location = new System.Drawing.Point(2, 192);
             this.labelAssignedTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAssignedTo.Name = "labelAssignedTo";
             this.labelAssignedTo.Size = new System.Drawing.Size(62, 13);
@@ -440,7 +440,7 @@ namespace Redmine.Client
             // 
             this.ComboBoxAssignedTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxAssignedTo.FormattingEnabled = true;
-            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(5, 207);
+            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(5, 210);
             this.ComboBoxAssignedTo.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxAssignedTo.Name = "ComboBoxAssignedTo";
             this.ComboBoxAssignedTo.Size = new System.Drawing.Size(170, 21);
@@ -450,7 +450,7 @@ namespace Redmine.Client
             // labelSubject
             // 
             this.labelSubject.AutoSize = true;
-            this.labelSubject.Location = new System.Drawing.Point(2, 148);
+            this.labelSubject.Location = new System.Drawing.Point(2, 149);
             this.labelSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSubject.Name = "labelSubject";
             this.labelSubject.Size = new System.Drawing.Size(43, 13);
@@ -461,7 +461,7 @@ namespace Redmine.Client
             // 
             this.TextBoxSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBoxSubject.Location = new System.Drawing.Point(5, 163);
+            this.TextBoxSubject.Location = new System.Drawing.Point(5, 167);
             this.TextBoxSubject.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxSubject.Name = "TextBoxSubject";
             this.TextBoxSubject.Size = new System.Drawing.Size(170, 20);
@@ -482,7 +482,7 @@ namespace Redmine.Client
             // 
             this.ComboBoxPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxPriority.FormattingEnabled = true;
-            this.ComboBoxPriority.Location = new System.Drawing.Point(5, 122);
+            this.ComboBoxPriority.Location = new System.Drawing.Point(5, 123);
             this.ComboBoxPriority.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxPriority.Name = "ComboBoxPriority";
             this.ComboBoxPriority.Size = new System.Drawing.Size(170, 21);
@@ -492,7 +492,7 @@ namespace Redmine.Client
             // labelStatus
             // 
             this.labelStatus.AutoSize = true;
-            this.labelStatus.Location = new System.Drawing.Point(2, 62);
+            this.labelStatus.Location = new System.Drawing.Point(2, 61);
             this.labelStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(37, 13);
@@ -513,7 +513,7 @@ namespace Redmine.Client
             // labelTracker
             // 
             this.labelTracker.AutoSize = true;
-            this.labelTracker.Location = new System.Drawing.Point(2, 19);
+            this.labelTracker.Location = new System.Drawing.Point(2, 17);
             this.labelTracker.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTracker.Name = "labelTracker";
             this.labelTracker.Size = new System.Drawing.Size(44, 13);
@@ -524,7 +524,7 @@ namespace Redmine.Client
             // 
             this.ComboBoxTracker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxTracker.FormattingEnabled = true;
-            this.ComboBoxTracker.Location = new System.Drawing.Point(5, 36);
+            this.ComboBoxTracker.Location = new System.Drawing.Point(5, 35);
             this.ComboBoxTracker.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTracker.Name = "ComboBoxTracker";
             this.ComboBoxTracker.Size = new System.Drawing.Size(170, 21);
@@ -535,7 +535,7 @@ namespace Redmine.Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 460);
+            this.ClientSize = new System.Drawing.Size(609, 468);
             this.Controls.Add(this.groupBoxFilter);
             this.Controls.Add(this.BtnSettingsButton);
             this.Controls.Add(this.CheckBoxOnlyMe);
@@ -560,7 +560,7 @@ namespace Redmine.Client
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(625, 498);
+            this.MinimumSize = new System.Drawing.Size(625, 506);
             this.Name = "RedmineClientForm";
             this.Text = "Redmine Client";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);

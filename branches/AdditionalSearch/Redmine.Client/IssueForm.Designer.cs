@@ -76,7 +76,7 @@
             // BtnSaveButton
             // 
             this.BtnSaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSaveButton.Location = new System.Drawing.Point(327, 438);
+            this.BtnSaveButton.Location = new System.Drawing.Point(327, 455);
             this.BtnSaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSaveButton.Name = "BtnSaveButton";
             this.BtnSaveButton.Size = new System.Drawing.Size(68, 24);
@@ -89,7 +89,7 @@
             // 
             this.BtnCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(399, 438);
+            this.BtnCancelButton.Location = new System.Drawing.Point(399, 455);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -112,7 +112,7 @@
             // 
             this.ComboBoxTracker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxTracker.FormattingEnabled = true;
-            this.ComboBoxTracker.Location = new System.Drawing.Point(9, 23);
+            this.ComboBoxTracker.Location = new System.Drawing.Point(9, 26);
             this.ComboBoxTracker.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTracker.Name = "ComboBoxTracker";
             this.ComboBoxTracker.Size = new System.Drawing.Size(149, 21);
@@ -122,7 +122,7 @@
             // 
             this.DateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateStart.Location = new System.Drawing.Point(9, 207);
+            this.DateStart.Location = new System.Drawing.Point(9, 213);
             this.DateStart.Margin = new System.Windows.Forms.Padding(2);
             this.DateStart.Name = "DateStart";
             this.DateStart.Size = new System.Drawing.Size(95, 20);
@@ -131,7 +131,7 @@
             // labelSubject
             // 
             this.labelSubject.AutoSize = true;
-            this.labelSubject.Location = new System.Drawing.Point(6, 46);
+            this.labelSubject.Location = new System.Drawing.Point(6, 52);
             this.labelSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSubject.Name = "labelSubject";
             this.labelSubject.Size = new System.Drawing.Size(43, 13);
@@ -142,7 +142,7 @@
             // 
             this.TextBoxSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBoxSubject.Location = new System.Drawing.Point(9, 61);
+            this.TextBoxSubject.Location = new System.Drawing.Point(9, 72);
             this.TextBoxSubject.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxSubject.Name = "TextBoxSubject";
             this.TextBoxSubject.Size = new System.Drawing.Size(458, 20);
@@ -151,7 +151,7 @@
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(6, 83);
+            this.labelDescription.Location = new System.Drawing.Point(6, 97);
             this.labelDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(60, 13);
@@ -165,12 +165,12 @@
             this.TextBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBoxDescription.Location = new System.Drawing.Point(9, 96);
+            this.TextBoxDescription.Location = new System.Drawing.Point(9, 117);
             this.TextBoxDescription.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxDescription.Multiline = true;
             this.TextBoxDescription.Name = "TextBoxDescription";
             this.TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TextBoxDescription.Size = new System.Drawing.Size(458, 73);
+            this.TextBoxDescription.Size = new System.Drawing.Size(458, 56);
             this.TextBoxDescription.TabIndex = 3;
             // 
             // labelStatus
@@ -187,7 +187,7 @@
             // 
             this.ComboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxStatus.FormattingEnabled = true;
-            this.ComboBoxStatus.Location = new System.Drawing.Point(163, 23);
+            this.ComboBoxStatus.Location = new System.Drawing.Point(163, 26);
             this.ComboBoxStatus.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxStatus.Name = "ComboBoxStatus";
             this.ComboBoxStatus.Size = new System.Drawing.Size(149, 21);
@@ -207,7 +207,7 @@
             // 
             this.ComboBoxPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxPriority.FormattingEnabled = true;
-            this.ComboBoxPriority.Location = new System.Drawing.Point(318, 23);
+            this.ComboBoxPriority.Location = new System.Drawing.Point(318, 26);
             this.ComboBoxPriority.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxPriority.Name = "ComboBoxPriority";
             this.ComboBoxPriority.Size = new System.Drawing.Size(149, 21);
@@ -217,7 +217,7 @@
             // 
             this.DateDue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DateDue.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateDue.Location = new System.Drawing.Point(108, 207);
+            this.DateDue.Location = new System.Drawing.Point(108, 213);
             this.DateDue.Margin = new System.Windows.Forms.Padding(2);
             this.DateDue.Name = "DateDue";
             this.DateDue.Size = new System.Drawing.Size(93, 20);
@@ -226,7 +226,7 @@
             // labelEstimatedTime
             // 
             this.labelEstimatedTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelEstimatedTime.Location = new System.Drawing.Point(202, 174);
+            this.labelEstimatedTime.Location = new System.Drawing.Point(202, 180);
             this.labelEstimatedTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEstimatedTime.Name = "labelEstimatedTime";
             this.labelEstimatedTime.Size = new System.Drawing.Size(86, 29);
@@ -237,7 +237,7 @@
             // TextBoxEstimatedTime
             // 
             this.TextBoxEstimatedTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TextBoxEstimatedTime.Location = new System.Drawing.Point(205, 206);
+            this.TextBoxEstimatedTime.Location = new System.Drawing.Point(205, 212);
             this.TextBoxEstimatedTime.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxEstimatedTime.Name = "TextBoxEstimatedTime";
             this.TextBoxEstimatedTime.Size = new System.Drawing.Size(83, 20);
@@ -247,7 +247,7 @@
             // 
             this.labelAssignedTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelAssignedTo.AutoSize = true;
-            this.labelAssignedTo.Location = new System.Drawing.Point(202, 232);
+            this.labelAssignedTo.Location = new System.Drawing.Point(202, 239);
             this.labelAssignedTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAssignedTo.Name = "labelAssignedTo";
             this.labelAssignedTo.Size = new System.Drawing.Size(62, 13);
@@ -259,7 +259,7 @@
             this.ComboBoxAssignedTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxAssignedTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxAssignedTo.FormattingEnabled = true;
-            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(205, 251);
+            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(205, 257);
             this.ComboBoxAssignedTo.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxAssignedTo.Name = "ComboBoxAssignedTo";
             this.ComboBoxAssignedTo.Size = new System.Drawing.Size(262, 21);
@@ -269,7 +269,7 @@
             // 
             this.labelTargetVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTargetVersion.AutoSize = true;
-            this.labelTargetVersion.Location = new System.Drawing.Point(202, 275);
+            this.labelTargetVersion.Location = new System.Drawing.Point(202, 283);
             this.labelTargetVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTargetVersion.Name = "labelTargetVersion";
             this.labelTargetVersion.Size = new System.Drawing.Size(75, 13);
@@ -281,7 +281,7 @@
             this.ComboBoxTargetVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxTargetVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxTargetVersion.FormattingEnabled = true;
-            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(205, 290);
+            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(205, 301);
             this.ComboBoxTargetVersion.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxTargetVersion.Name = "ComboBoxTargetVersion";
             this.ComboBoxTargetVersion.Size = new System.Drawing.Size(262, 21);
@@ -295,7 +295,7 @@
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(293, 206);
+            this.numericUpDown1.Location = new System.Drawing.Point(293, 212);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(81, 20);
@@ -304,7 +304,7 @@
             // labelPercentDone
             // 
             this.labelPercentDone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelPercentDone.Location = new System.Drawing.Point(293, 173);
+            this.labelPercentDone.Location = new System.Drawing.Point(293, 179);
             this.labelPercentDone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPercentDone.Name = "labelPercentDone";
             this.labelPercentDone.Size = new System.Drawing.Size(81, 30);
@@ -315,7 +315,7 @@
             // cbStartDate
             // 
             this.cbStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbStartDate.Location = new System.Drawing.Point(9, 173);
+            this.cbStartDate.Location = new System.Drawing.Point(9, 179);
             this.cbStartDate.Margin = new System.Windows.Forms.Padding(2);
             this.cbStartDate.Name = "cbStartDate";
             this.cbStartDate.Size = new System.Drawing.Size(95, 30);
@@ -327,7 +327,7 @@
             // cbDueDate
             // 
             this.cbDueDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbDueDate.Location = new System.Drawing.Point(108, 173);
+            this.cbDueDate.Location = new System.Drawing.Point(108, 179);
             this.cbDueDate.Margin = new System.Windows.Forms.Padding(2);
             this.cbDueDate.Name = "cbDueDate";
             this.cbDueDate.Size = new System.Drawing.Size(93, 30);
@@ -339,7 +339,7 @@
             // BtnCloseButton
             // 
             this.BtnCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCloseButton.Location = new System.Drawing.Point(204, 438);
+            this.BtnCloseButton.Location = new System.Drawing.Point(204, 455);
             this.BtnCloseButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCloseButton.Name = "BtnCloseButton";
             this.BtnCloseButton.Size = new System.Drawing.Size(118, 24);
@@ -352,7 +352,7 @@
             // 
             this.linkEditInRedmine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkEditInRedmine.AutoSize = true;
-            this.linkEditInRedmine.Location = new System.Drawing.Point(6, 444);
+            this.linkEditInRedmine.Location = new System.Drawing.Point(6, 461);
             this.linkEditInRedmine.Name = "linkEditInRedmine";
             this.linkEditInRedmine.Size = new System.Drawing.Size(127, 13);
             this.linkEditInRedmine.TabIndex = 23;
@@ -368,18 +368,18 @@
             this.DataGridViewCustomFields.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewCustomFields.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewCustomFields.Location = new System.Drawing.Point(9, 232);
+            this.DataGridViewCustomFields.Location = new System.Drawing.Point(9, 239);
             this.DataGridViewCustomFields.MultiSelect = false;
             this.DataGridViewCustomFields.Name = "DataGridViewCustomFields";
             this.DataGridViewCustomFields.ReadOnly = true;
             this.DataGridViewCustomFields.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewCustomFields.Size = new System.Drawing.Size(191, 117);
+            this.DataGridViewCustomFields.Size = new System.Drawing.Size(191, 127);
             this.DataGridViewCustomFields.TabIndex = 22;
             // 
             // BtnViewTimeButton
             // 
             this.BtnViewTimeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnViewTimeButton.Location = new System.Drawing.Point(379, 204);
+            this.BtnViewTimeButton.Location = new System.Drawing.Point(379, 210);
             this.BtnViewTimeButton.Name = "BtnViewTimeButton";
             this.BtnViewTimeButton.Size = new System.Drawing.Size(88, 23);
             this.BtnViewTimeButton.TabIndex = 27;
@@ -439,7 +439,7 @@
             this.groupBoxAttachments.Controls.Add(this.BtnDeleteButton);
             this.groupBoxAttachments.Controls.Add(this.BtnAddButton);
             this.groupBoxAttachments.Controls.Add(this.dataGridViewAttachments);
-            this.groupBoxAttachments.Location = new System.Drawing.Point(9, 354);
+            this.groupBoxAttachments.Location = new System.Drawing.Point(9, 371);
             this.groupBoxAttachments.Name = "groupBoxAttachments";
             this.groupBoxAttachments.Size = new System.Drawing.Size(457, 79);
             this.groupBoxAttachments.TabIndex = 28;
@@ -473,7 +473,7 @@
             this.ComboBoxCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxCategory.FormattingEnabled = true;
-            this.ComboBoxCategory.Location = new System.Drawing.Point(205, 328);
+            this.ComboBoxCategory.Location = new System.Drawing.Point(205, 345);
             this.ComboBoxCategory.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxCategory.Name = "ComboBoxCategory";
             this.ComboBoxCategory.Size = new System.Drawing.Size(262, 21);
@@ -483,7 +483,7 @@
             // 
             this.labelCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCategory.AutoSize = true;
-            this.labelCategory.Location = new System.Drawing.Point(202, 313);
+            this.labelCategory.Location = new System.Drawing.Point(202, 327);
             this.labelCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCategory.Name = "labelCategory";
             this.labelCategory.Size = new System.Drawing.Size(49, 13);
@@ -496,7 +496,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(476, 469);
+            this.ClientSize = new System.Drawing.Size(476, 486);
             this.Controls.Add(this.groupBoxAttachments);
             this.Controls.Add(this.BtnViewTimeButton);
             this.Controls.Add(this.DataGridViewCustomFields);
