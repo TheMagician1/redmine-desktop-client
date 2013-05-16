@@ -1418,17 +1418,35 @@ namespace Redmine.Client
                         return result;
                     return x.Id.CompareTo(y.Id);
                 }
-                else if (column == "Subject")
+                else
                 {
-                    return x.Subject.CompareTo(y.Subject);
-                }
-                else if (column == "Project")
-                {
-                    return x.Project.Name.CompareTo(y.Project.Name);
+                    Type type = GetPropertyType(x, column);
+                    if (type == typeof(IdentifiableName))
+                    {
+                        var valx = GetPropertyValue<IdentifiableName>(x, column);
+                        var valy = GetPropertyValue<IdentifiableName>(y, column);
+                        return valx.Name.CompareTo(valy.Name);
+                    }
+                    else if (type == typeof(string))
+                    {
+                        var valx = GetPropertyValue<string>(x, column);
+                        var valy = GetPropertyValue<string>(y, column);
+                        return valx.CompareTo(valy);
+                    }
                 }
                 return 0;
             }
 
+            #endregion
+            #region Get Property Values
+            private T GetPropertyValue<T>(object o, string p) where T : class
+            {
+                return (T)o.GetType().GetProperty(p).GetValue(o, null);
+            }
+            private Type GetPropertyType(object o, string p)
+            {
+                return o.GetType().GetProperty(p).GetValue(o, null).GetType();
+            }
             #endregion
         }
 
