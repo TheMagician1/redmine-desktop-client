@@ -336,6 +336,7 @@ namespace Redmine.Client
                 {
                     column.SortMode = DataGridViewColumnSortMode.Programmatic;
                 }
+                column.HeaderCell.ContextMenuStrip = IssueGridHeaderMenuStrip;
             }
             try // Very ugly trick to fix the mono crash reported in the SF.net forum
             {
@@ -470,6 +471,7 @@ namespace Redmine.Client
             LangTools.UpdateControlsForLanguage(this.Controls);
             LangTools.UpdateControlsForLanguage(groupBoxFilter.Controls);
             LangTools.UpdateControlsForLanguage(NotifyIconMenuStrip.Items);
+            LangTools.UpdateControlsForLanguage(IssueGridHeaderMenuStrip.Items);
             SetRestoreToolStripMenuItem();
             UpdateToolStripMenuItemsStartPause();
 
@@ -1452,6 +1454,9 @@ namespace Redmine.Client
             if (e.ColumnIndex < 0)
                 return;
 
+            if (e.Button != MouseButtons.Left)
+                return;
+
             DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns[e.ColumnIndex], null);
         }
 
@@ -1488,6 +1493,11 @@ namespace Redmine.Client
                 order = System.Windows.Forms.SortOrder.Descending;
             else
                 order = System.Windows.Forms.SortOrder.Ascending;
+        }
+
+        private void editVisibleColumnsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -691,6 +691,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Edit Visible Columns.
+        /// </summary>
+        internal static string editVisibleColumnsToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("editVisibleColumnsToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activities.
         /// </summary>
         internal static string EnumName_Activities {

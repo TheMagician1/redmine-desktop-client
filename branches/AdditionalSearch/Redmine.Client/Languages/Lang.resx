@@ -686,4 +686,7 @@ or Request attention every
   <data name="groupBoxFilter" xml:space="preserve">
     <value>Filter</value>
   </data>
+  <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Edit Visible Columns</value>
+  </data>
 </root>

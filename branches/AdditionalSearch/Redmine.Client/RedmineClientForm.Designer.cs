@@ -74,9 +74,12 @@ namespace Redmine.Client
             this.ComboBoxStatus = new System.Windows.Forms.ComboBox();
             this.labelTracker = new System.Windows.Forms.Label();
             this.ComboBoxTracker = new System.Windows.Forms.ComboBox();
+            this.IssueGridHeaderMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editVisibleColumnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotifyIconMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).BeginInit();
             this.groupBoxFilter.SuspendLayout();
+            this.IssueGridHeaderMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // TextBoxHours
@@ -531,6 +534,20 @@ namespace Redmine.Client
             this.ComboBoxTracker.TabIndex = 7;
             this.ComboBoxTracker.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTracker_SelectedIndexChanged);
             // 
+            // IssueGridHeaderMenuStrip
+            // 
+            this.IssueGridHeaderMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editVisibleColumnsToolStripMenuItem});
+            this.IssueGridHeaderMenuStrip.Name = "IssueGridHeaderMenuStrip";
+            this.IssueGridHeaderMenuStrip.Size = new System.Drawing.Size(183, 48);
+            // 
+            // editVisibleColumnsToolStripMenuItem
+            // 
+            this.editVisibleColumnsToolStripMenuItem.Name = "editVisibleColumnsToolStripMenuItem";
+            this.editVisibleColumnsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.editVisibleColumnsToolStripMenuItem.Text = "Edit Visible Columns";
+            this.editVisibleColumnsToolStripMenuItem.Click += new System.EventHandler(this.editVisibleColumnsToolStripMenuItem_Click);
+            // 
             // RedmineClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,6 +586,7 @@ namespace Redmine.Client
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).EndInit();
             this.groupBoxFilter.ResumeLayout(false);
             this.groupBoxFilter.PerformLayout();
+            this.IssueGridHeaderMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -618,6 +636,8 @@ namespace Redmine.Client
         private ComboBox ComboBoxTargetVersion;
         private Label labelCategory;
         private ComboBox ComboBoxCategory;
+        private ContextMenuStrip IssueGridHeaderMenuStrip;
+        private ToolStripMenuItem editVisibleColumnsToolStripMenuItem;
     }
 }
 
