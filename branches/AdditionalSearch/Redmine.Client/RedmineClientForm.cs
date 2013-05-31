@@ -326,18 +326,7 @@ namespace Redmine.Client
             ComboBoxPriority.ValueMember = "Id";
 
             DataGridViewIssues.DataSource = data.Issues;
-            foreach (DataGridViewColumn column in DataGridViewIssues.Columns)
-            {
-                if (column.Name != "Id" && column.Name != "Subject")
-                    column.Visible = false;
-                if (projectId == -1 && column.Name == "Project")
-                    column.Visible = true;
-                if (column.Visible)
-                {
-                    column.SortMode = DataGridViewColumnSortMode.Programmatic;
-                }
-                column.HeaderCell.ContextMenuStrip = IssueGridHeaderMenuStrip;
-            }
+            UpdateIssueDataColumns();
             try // Very ugly trick to fix the mono crash reported in the SF.net forum
             {
                 DataGridViewIssues.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -381,6 +370,23 @@ namespace Redmine.Client
             SetIssueSelectionTo(issueId);
             updating = false;
             this.Cursor = Cursors.Default;
+        }
+
+        private void UpdateIssueDataColumns()
+        {
+            foreach (DataGridViewColumn column in DataGridViewIssues.Columns)
+            {
+                if (column.Name != "Id" && column.Name != "Subject")
+                    column.Visible = Properties.Settings.Default.ShowIssueGridColumn(column.Name);
+                if (projectId == -1 && column.Name == "Project")
+                    column.Visible = true;
+                if (column.Visible)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.Programmatic;
+                }
+                column.HeaderCell.ContextMenuStrip = IssueGridHeaderMenuStrip;
+                column.HeaderText = LangTools.GetIssueField(column.Name); // translate the headers
+            }
         }
 
         private void SetIssueSelectionTo(int issueId)
@@ -1271,16 +1277,24 @@ namespace Redmine.Client
 
         private void DataGridViewIssues_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
+            Issue currentIssue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
+
             if (e.ColumnIndex == DataGridViewIssues.Columns["Id"].Index) // Id column
-            {
-                Issue currentIssue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
                 e.Value = currentIssue.Tracker.Name + " " + currentIssue.Id.ToString();
-            }
-            if (e.ColumnIndex == DataGridViewIssues.Columns["Project"].Index)
-            {
-                Issue currentIssue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
+            else if (e.ColumnIndex == DataGridViewIssues.Columns["Project"].Index)
                 e.Value = currentIssue.Project.Name;
-            }
+            else if (e.ColumnIndex == DataGridViewIssues.Columns["ParentIssue"].Index)
+                e.Value = currentIssue.ParentIssue!=null?currentIssue.ParentIssue.Id.ToString() + (currentIssue.ParentIssue.Name!=null?" " + currentIssue.ParentIssue.Name:"") :"";
+            else if (e.ColumnIndex == DataGridViewIssues.Columns["AssignedTo"].Index)
+                e.Value = currentIssue.AssignedTo!=null?currentIssue.AssignedTo.Name:"";
+            else if (e.ColumnIndex == DataGridViewIssues.Columns["Status"].Index)
+                e.Value = currentIssue.Status.Name;
+            else if (e.ColumnIndex == DataGridViewIssues.Columns["Priority"].Index)
+                e.Value = currentIssue.Priority.Name;
+            else if (e.ColumnIndex == DataGridViewIssues.Columns["Category"].Index)
+                e.Value = currentIssue.Category!=null?currentIssue.Category.Name:"";
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1424,6 +1438,14 @@ namespace Redmine.Client
                     {
                         var valx = GetPropertyValue<IdentifiableName>(x, column);
                         var valy = GetPropertyValue<IdentifiableName>(y, column);
+                        if (valx == null || valy == null)
+                        {
+                            if (valx == null && valy != null)
+                                return -1;
+                            else if (valx != null && valy == null)
+                                return 1;
+                            return 0;
+                        }
                         return valx.Name.CompareTo(valy.Name);
                     }
                     else if (type == typeof(string))
@@ -1497,7 +1519,9 @@ namespace Redmine.Client
 
         private void editVisibleColumnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            IssueGridSelectColumns dlg = new IssueGridSelectColumns();
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+                UpdateIssueDataColumns();
         }
     }
 }

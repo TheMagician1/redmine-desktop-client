@@ -38,5 +38,11 @@
             Settings.Default.PropertyValues["IssueGridSortOrder"].PropertyValue = order;
             Settings.Default.Save();
         }
+        public bool ShowIssueGridColumn(string columnName)
+        {
+            if (Settings.Default.PropertyValues["IssueGridHeader_Show" + columnName] != null)
+                return (bool)Settings.Default.PropertyValues["IssueGridHeader_Show" + columnName].PropertyValue;
+            return false;
+        }
     }
 }

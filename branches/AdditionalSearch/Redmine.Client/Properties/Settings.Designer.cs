@@ -370,5 +370,77 @@ namespace Redmine.Client.Properties {
                 this["IssueGridSortColumn"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IssueGridHeader_ShowAssignedTo {
+            get {
+                return ((bool)(this["IssueGridHeader_ShowAssignedTo"]));
+            }
+            set {
+                this["IssueGridHeader_ShowAssignedTo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IssueGridHeader_ShowCategory {
+            get {
+                return ((bool)(this["IssueGridHeader_ShowCategory"]));
+            }
+            set {
+                this["IssueGridHeader_ShowCategory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IssueGridHeader_ShowParentIssue {
+            get {
+                return ((bool)(this["IssueGridHeader_ShowParentIssue"]));
+            }
+            set {
+                this["IssueGridHeader_ShowParentIssue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IssueGridHeader_ShowPriority {
+            get {
+                return ((bool)(this["IssueGridHeader_ShowPriority"]));
+            }
+            set {
+                this["IssueGridHeader_ShowPriority"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IssueGridHeader_ShowProject {
+            get {
+                return ((bool)(this["IssueGridHeader_ShowProject"]));
+            }
+            set {
+                this["IssueGridHeader_ShowProject"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IssueGridHeader_ShowStatus {
+            get {
+                return ((bool)(this["IssueGridHeader_ShowStatus"]));
+            }
+            set {
+                this["IssueGridHeader_ShowStatus"] = value;
+            }
+        }
     }
 }

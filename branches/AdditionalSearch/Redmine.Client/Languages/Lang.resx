@@ -602,7 +602,7 @@ or Request attention every
   <data name="DlgUpdateIssueNoteTitle" xml:space="preserve">
     <value>Updating issue {0} {1}</value>
   </data>
-  <data name="IssueField_assigned_to" xml:space="preserve">
+  <data name="IssueField_assignedto" xml:space="preserve">
     <value>Assigned To</value>
   </data>
   <data name="IssueField_author" xml:space="preserve">
@@ -611,25 +611,25 @@ or Request attention every
   <data name="IssueField_category" xml:space="preserve">
     <value>Category</value>
   </data>
-  <data name="IssueField_created_on" xml:space="preserve">
+  <data name="IssueField_createdon" xml:space="preserve">
     <value>Created On</value>
   </data>
   <data name="IssueField_description" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="IssueField_done_ratio" xml:space="preserve">
+  <data name="IssueField_doneratio" xml:space="preserve">
     <value>Done Ratio</value>
   </data>
-  <data name="IssueField_due_date" xml:space="preserve">
+  <data name="IssueField_duedate" xml:space="preserve">
     <value>Due Date</value>
   </data>
-  <data name="IssueField_estimated_hours" xml:space="preserve">
+  <data name="IssueField_estimatedhours" xml:space="preserve">
     <value>Estimated Hours</value>
   </data>
-  <data name="IssueField_fixed_version" xml:space="preserve">
+  <data name="IssueField_fixedversion" xml:space="preserve">
     <value>Target Version</value>
   </data>
-  <data name="IssueField_parent" xml:space="preserve">
+  <data name="IssueField_parentissue" xml:space="preserve">
     <value>Parent Issue</value>
   </data>
   <data name="IssueField_priority" xml:space="preserve">
@@ -638,7 +638,7 @@ or Request attention every
   <data name="IssueField_project" xml:space="preserve">
     <value>Project</value>
   </data>
-  <data name="IssueField_start_date" xml:space="preserve">
+  <data name="IssueField_startdate" xml:space="preserve">
     <value>Start Date</value>
   </data>
   <data name="IssueField_status" xml:space="preserve">
@@ -650,7 +650,7 @@ or Request attention every
   <data name="IssueField_tracker" xml:space="preserve">
     <value>Tracker</value>
   </data>
-  <data name="IssueField_updated_on" xml:space="preserve">
+  <data name="IssueField_updatedon" xml:space="preserve">
     <value>Updated On</value>
   </data>
   <data name="labelCategory" xml:space="preserve">
@@ -688,5 +688,8 @@ or Request attention every
   </data>
   <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
     <value>&amp;Edit Visible Columns</value>
+  </data>
+  <data name="IssueField_id" xml:space="preserve">
+    <value>Id</value>
   </data>
 </root>

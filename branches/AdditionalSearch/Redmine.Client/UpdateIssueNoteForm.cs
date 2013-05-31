@@ -63,16 +63,16 @@ namespace Redmine.Client
             AddUpdatedLabel("priority", LangTools.CreateUpdatedText("priority", fromIssue.Priority, toIssue.Priority));
             AddUpdatedLabel("status", LangTools.CreateUpdatedText("status", fromIssue.Status, toIssue.Status));
             AddUpdatedLabel("author", LangTools.CreateUpdatedText("author", fromIssue.Author, toIssue.Author));
-            AddUpdatedLabel("assigned_to", LangTools.CreateUpdatedText("assigned_to", fromIssue.AssignedTo, toIssue.AssignedTo));
+            AddUpdatedLabel("assignedto", LangTools.CreateUpdatedText("assignedto", fromIssue.AssignedTo, toIssue.AssignedTo));
             AddUpdatedLabel("category", LangTools.CreateUpdatedText("category", fromIssue.Category, toIssue.Category));
-            AddUpdatedLabel("parent", LangTools.CreateUpdatedText("parent", fromIssue.ParentIssue, toIssue.ParentIssue));
-            AddUpdatedLabel("fixed_version", LangTools.CreateUpdatedText("fixed_version", fromIssue.FixedVersion, toIssue.FixedVersion));
-            AddUpdatedLabel("start_date", LangTools.CreateUpdatedText("start_date", fromIssue.StartDate, toIssue.StartDate, "d"));
-            AddUpdatedLabel("due_date", LangTools.CreateUpdatedText("due_date", fromIssue.DueDate, toIssue.DueDate, "d"));
-            AddUpdatedLabel("done_ratio", LangTools.CreateUpdatedText("done_ratio", fromIssue.DoneRatio, toIssue.DoneRatio, "0.0"));
-            AddUpdatedLabel("estimated_hours", LangTools.CreateUpdatedText("estimated_hours", fromIssue.EstimatedHours, toIssue.EstimatedHours, "0.0"));
-            //AddUpdatedLabel("created_on", LangTools.CreateUpdatedText("created_on", fromIssue.CreatedOn, toIssue.CreatedOn, "d"));
-            //AddUpdatedLabel("updated_on", LangTools.CreateUpdatedText("updated_on", fromIssue.UpdatedOn, toIssue.UpdatedOn, "d"));
+            AddUpdatedLabel("parentissue", LangTools.CreateUpdatedText("parentissue", fromIssue.ParentIssue, toIssue.ParentIssue));
+            AddUpdatedLabel("fixedversion", LangTools.CreateUpdatedText("fixedversion", fromIssue.FixedVersion, toIssue.FixedVersion));
+            AddUpdatedLabel("start_date", LangTools.CreateUpdatedText("startdate", fromIssue.StartDate, toIssue.StartDate, "d"));
+            AddUpdatedLabel("duedate", LangTools.CreateUpdatedText("duedate", fromIssue.DueDate, toIssue.DueDate, "d"));
+            AddUpdatedLabel("doneratio", LangTools.CreateUpdatedText("doneratio", fromIssue.DoneRatio, toIssue.DoneRatio, "0.0"));
+            AddUpdatedLabel("estimatedhours", LangTools.CreateUpdatedText("estimatedhours", fromIssue.EstimatedHours, toIssue.EstimatedHours, "0.0"));
+            //AddUpdatedLabel("createdon", LangTools.CreateUpdatedText("createdon", fromIssue.CreatedOn, toIssue.CreatedOn, "d"));
+            //AddUpdatedLabel("updatedon", LangTools.CreateUpdatedText("updatedon", fromIssue.UpdatedOn, toIssue.UpdatedOn, "d"));
             if (fromIssue.Description != toIssue.Description)
                 AddUpdatedLabel("description", Lang.UpdatedField_Description);
         }
