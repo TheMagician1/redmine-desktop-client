@@ -442,5 +442,17 @@ namespace Redmine.Client.Properties {
                 this["IssueGridHeader_ShowStatus"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IssueGridHeader_ShowFixedVersion {
+            get {
+                return ((bool)(this["IssueGridHeader_ShowFixedVersion"]));
+            }
+            set {
+                this["IssueGridHeader_ShowFixedVersion"] = value;
+            }
+        }
     }
 }

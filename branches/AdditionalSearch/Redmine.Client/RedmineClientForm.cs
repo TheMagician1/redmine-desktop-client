@@ -324,6 +324,7 @@ namespace Redmine.Client
             ComboBoxPriority.DataSource = data.IssuePriorities;
             ComboBoxPriority.DisplayMember = "Name";
             ComboBoxPriority.ValueMember = "Id";
+            ComboBoxPriority.SelectedValue = filter.PriorityId;
 
             DataGridViewIssues.DataSource = data.Issues;
             UpdateIssueDataColumns();
@@ -336,6 +337,7 @@ namespace Redmine.Client
             DataGridViewIssues.Columns["Id"].DisplayIndex = 0;
             DataGridViewIssues.Columns["Subject"].DisplayIndex = 1;
             DataGridViewIssues.Columns["Subject"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DataGridViewIssues.Columns["Subject"].MinimumWidth = 200;
             if (projectId == -1)
                 DataGridViewIssues.Columns["Project"].DisplayIndex = 2;
             if (currentSortedColumn == null)
@@ -1295,6 +1297,8 @@ namespace Redmine.Client
                 e.Value = currentIssue.Priority.Name;
             else if (e.ColumnIndex == DataGridViewIssues.Columns["Category"].Index)
                 e.Value = currentIssue.Category!=null?currentIssue.Category.Name:"";
+            else if (e.ColumnIndex == DataGridViewIssues.Columns["FixedVersion"].Index)
+                e.Value = currentIssue.FixedVersion != null ? currentIssue.FixedVersion.Name : "";
         }
 
         private void StartToolStripMenuItem_Click(object sender, EventArgs e)

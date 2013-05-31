@@ -29,6 +29,8 @@ namespace Redmine.Client
             radioButtonShowProject.Checked = Properties.Settings.Default.IssueGridHeader_ShowProject;
             radioButtonHideStatus.Checked = !Properties.Settings.Default.IssueGridHeader_ShowStatus;
             radioButtonShowStatus.Checked = Properties.Settings.Default.IssueGridHeader_ShowStatus;
+            radioButtonHideFixedVersion.Checked = !Properties.Settings.Default.IssueGridHeader_ShowFixedVersion;
+            radioButtonShowFixedVersion.Checked = Properties.Settings.Default.IssueGridHeader_ShowFixedVersion;
         }
 
         private void BtnOKButton_Click(object sender, EventArgs e)
@@ -41,6 +43,7 @@ namespace Redmine.Client
                 Properties.Settings.Default.PropertyValues["IssueGridHeader_ShowPriority"].PropertyValue = radioButtonShowPriority.Checked;
                 Properties.Settings.Default.PropertyValues["IssueGridHeader_ShowProject"].PropertyValue = radioButtonShowProject.Checked;
                 Properties.Settings.Default.PropertyValues["IssueGridHeader_ShowStatus"].PropertyValue = radioButtonShowStatus.Checked;
+                Properties.Settings.Default.PropertyValues["IssueGridHeader_ShowFixedVersion"].PropertyValue = radioButtonShowFixedVersion.Checked;
                 Properties.Settings.Default.Save();
 
                 this.DialogResult = DialogResult.OK;

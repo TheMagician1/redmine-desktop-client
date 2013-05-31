@@ -54,12 +54,17 @@
             this.IssueField_parent = new System.Windows.Forms.Label();
             this.BtnOKButton = new System.Windows.Forms.Button();
             this.BtnCancelButton = new System.Windows.Forms.Button();
+            this.panelFixedVersion = new System.Windows.Forms.Panel();
+            this.radioButtonHideFixedVersion = new System.Windows.Forms.RadioButton();
+            this.radioButtonShowFixedVersion = new System.Windows.Forms.RadioButton();
+            this.IssueField_fixedversion = new System.Windows.Forms.Label();
             this.panelProject.SuspendLayout();
             this.panelStatus.SuspendLayout();
             this.panelPriority.SuspendLayout();
             this.panelAssignedTo.SuspendLayout();
             this.panelCategory.SuspendLayout();
             this.panelParent.SuspendLayout();
+            this.panelFixedVersion.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioButtonShowProject
@@ -98,7 +103,7 @@
             this.panelProject.Controls.Add(this.radioButtonHideProject);
             this.panelProject.Controls.Add(this.radioButtonShowProject);
             this.panelProject.Controls.Add(this.IssueField_project);
-            this.panelProject.Location = new System.Drawing.Point(35, 27);
+            this.panelProject.Location = new System.Drawing.Point(35, 12);
             this.panelProject.Name = "panelProject";
             this.panelProject.Size = new System.Drawing.Size(237, 24);
             this.panelProject.TabIndex = 20;
@@ -108,7 +113,7 @@
             this.panelStatus.Controls.Add(this.radioButtonHideStatus);
             this.panelStatus.Controls.Add(this.radioButtonShowStatus);
             this.panelStatus.Controls.Add(this.IssueField_status);
-            this.panelStatus.Location = new System.Drawing.Point(35, 57);
+            this.panelStatus.Location = new System.Drawing.Point(35, 42);
             this.panelStatus.Name = "panelStatus";
             this.panelStatus.Size = new System.Drawing.Size(237, 24);
             this.panelStatus.TabIndex = 20;
@@ -149,7 +154,7 @@
             this.panelPriority.Controls.Add(this.radioButtonHidePriority);
             this.panelPriority.Controls.Add(this.radioButtonShowPriority);
             this.panelPriority.Controls.Add(this.IssueField_priority);
-            this.panelPriority.Location = new System.Drawing.Point(35, 87);
+            this.panelPriority.Location = new System.Drawing.Point(35, 72);
             this.panelPriority.Name = "panelPriority";
             this.panelPriority.Size = new System.Drawing.Size(237, 24);
             this.panelPriority.TabIndex = 20;
@@ -190,7 +195,7 @@
             this.panelAssignedTo.Controls.Add(this.radioButtonHideAssignedTo);
             this.panelAssignedTo.Controls.Add(this.radioButtonShowAssignedTo);
             this.panelAssignedTo.Controls.Add(this.IssueField_assigned_to);
-            this.panelAssignedTo.Location = new System.Drawing.Point(35, 117);
+            this.panelAssignedTo.Location = new System.Drawing.Point(35, 102);
             this.panelAssignedTo.Name = "panelAssignedTo";
             this.panelAssignedTo.Size = new System.Drawing.Size(237, 24);
             this.panelAssignedTo.TabIndex = 20;
@@ -231,7 +236,7 @@
             this.panelCategory.Controls.Add(this.radioButtonHideCategory);
             this.panelCategory.Controls.Add(this.radioButtonShowCategory);
             this.panelCategory.Controls.Add(this.IssueField_category);
-            this.panelCategory.Location = new System.Drawing.Point(35, 147);
+            this.panelCategory.Location = new System.Drawing.Point(35, 132);
             this.panelCategory.Name = "panelCategory";
             this.panelCategory.Size = new System.Drawing.Size(237, 24);
             this.panelCategory.TabIndex = 20;
@@ -272,7 +277,7 @@
             this.panelParent.Controls.Add(this.radioButtonHideParent);
             this.panelParent.Controls.Add(this.radioButtonShowParent);
             this.panelParent.Controls.Add(this.IssueField_parent);
-            this.panelParent.Location = new System.Drawing.Point(35, 177);
+            this.panelParent.Location = new System.Drawing.Point(35, 162);
             this.panelParent.Name = "panelParent";
             this.panelParent.Size = new System.Drawing.Size(237, 24);
             this.panelParent.TabIndex = 20;
@@ -310,7 +315,7 @@
             // 
             // BtnOKButton
             // 
-            this.BtnOKButton.Location = new System.Drawing.Point(83, 222);
+            this.BtnOKButton.Location = new System.Drawing.Point(83, 236);
             this.BtnOKButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnOKButton.Name = "BtnOKButton";
             this.BtnOKButton.Size = new System.Drawing.Size(68, 24);
@@ -322,7 +327,7 @@
             // BtnCancelButton
             // 
             this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(155, 222);
+            this.BtnCancelButton.Location = new System.Drawing.Point(155, 236);
             this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelButton.Name = "BtnCancelButton";
             this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
@@ -331,15 +336,57 @@
             this.BtnCancelButton.UseVisualStyleBackColor = true;
             this.BtnCancelButton.Click += new System.EventHandler(this.BtnCancelButton_Click);
             // 
+            // panelFixedVersion
+            // 
+            this.panelFixedVersion.Controls.Add(this.radioButtonHideFixedVersion);
+            this.panelFixedVersion.Controls.Add(this.radioButtonShowFixedVersion);
+            this.panelFixedVersion.Controls.Add(this.IssueField_fixedversion);
+            this.panelFixedVersion.Location = new System.Drawing.Point(35, 192);
+            this.panelFixedVersion.Name = "panelFixedVersion";
+            this.panelFixedVersion.Size = new System.Drawing.Size(237, 24);
+            this.panelFixedVersion.TabIndex = 20;
+            // 
+            // radioButtonHideFixedVersion
+            // 
+            this.radioButtonHideFixedVersion.AutoSize = true;
+            this.radioButtonHideFixedVersion.Location = new System.Drawing.Point(187, 3);
+            this.radioButtonHideFixedVersion.Name = "radioButtonHideFixedVersion";
+            this.radioButtonHideFixedVersion.Size = new System.Drawing.Size(47, 17);
+            this.radioButtonHideFixedVersion.TabIndex = 18;
+            this.radioButtonHideFixedVersion.TabStop = true;
+            this.radioButtonHideFixedVersion.Text = "Hide";
+            this.radioButtonHideFixedVersion.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonShowFixedVersion
+            // 
+            this.radioButtonShowFixedVersion.AutoSize = true;
+            this.radioButtonShowFixedVersion.Location = new System.Drawing.Point(129, 3);
+            this.radioButtonShowFixedVersion.Name = "radioButtonShowFixedVersion";
+            this.radioButtonShowFixedVersion.Size = new System.Drawing.Size(52, 17);
+            this.radioButtonShowFixedVersion.TabIndex = 18;
+            this.radioButtonShowFixedVersion.TabStop = true;
+            this.radioButtonShowFixedVersion.Text = "Show";
+            this.radioButtonShowFixedVersion.UseVisualStyleBackColor = true;
+            // 
+            // IssueField_fixedversion
+            // 
+            this.IssueField_fixedversion.AutoSize = true;
+            this.IssueField_fixedversion.Location = new System.Drawing.Point(6, 5);
+            this.IssueField_fixedversion.Name = "IssueField_fixedversion";
+            this.IssueField_fixedversion.Size = new System.Drawing.Size(38, 13);
+            this.IssueField_fixedversion.TabIndex = 19;
+            this.IssueField_fixedversion.Text = "Parent";
+            // 
             // IssueGridSelectColumns
             // 
             this.AcceptButton = this.BtnOKButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(306, 257);
+            this.ClientSize = new System.Drawing.Size(306, 271);
             this.Controls.Add(this.BtnOKButton);
             this.Controls.Add(this.BtnCancelButton);
+            this.Controls.Add(this.panelFixedVersion);
             this.Controls.Add(this.panelParent);
             this.Controls.Add(this.panelCategory);
             this.Controls.Add(this.panelAssignedTo);
@@ -362,6 +409,8 @@
             this.panelCategory.PerformLayout();
             this.panelParent.ResumeLayout(false);
             this.panelParent.PerformLayout();
+            this.panelFixedVersion.ResumeLayout(false);
+            this.panelFixedVersion.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -394,5 +443,9 @@
         private System.Windows.Forms.Label IssueField_parent;
         private System.Windows.Forms.Button BtnOKButton;
         private System.Windows.Forms.Button BtnCancelButton;
+        private System.Windows.Forms.Panel panelFixedVersion;
+        private System.Windows.Forms.RadioButton radioButtonHideFixedVersion;
+        private System.Windows.Forms.RadioButton radioButtonShowFixedVersion;
+        private System.Windows.Forms.Label IssueField_fixedversion;
     }
 }
