@@ -388,6 +388,7 @@ namespace Redmine.Client
                 }
                 column.HeaderCell.ContextMenuStrip = IssueGridHeaderMenuStrip;
                 column.HeaderText = LangTools.GetIssueField(column.Name); // translate the headers
+                column.ContextMenuStrip = IssueGridMenuStrip;
             }
         }
 
@@ -480,6 +481,7 @@ namespace Redmine.Client
             LangTools.UpdateControlsForLanguage(groupBoxFilter.Controls);
             LangTools.UpdateControlsForLanguage(NotifyIconMenuStrip.Items);
             LangTools.UpdateControlsForLanguage(IssueGridHeaderMenuStrip.Items);
+            LangTools.UpdateControlsForLanguage(IssueGridMenuStrip.Items);
             SetRestoreToolStripMenuItem();
             UpdateToolStripMenuItemsStartPause();
 
@@ -1527,5 +1529,40 @@ namespace Redmine.Client
             if (dlg.ShowDialog(this) == DialogResult.OK)
                 UpdateIssueDataColumns();
         }
+
+        private void openIssueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Issue issue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
+                ShowIssue(issue);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void openIssueInBrowserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Issue issue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
+                System.Diagnostics.Process.Start(RedmineClientForm.RedmineURL + "/issues/" + issue.Id.ToString());
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void DataGridViewIssues_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            DataGridViewIssues.ClearSelection();
+            DataGridViewIssues.Rows[e.RowIndex].Selected = true;
+            DataGridViewIssues_SelectionChanged(null, null);
+        }
+
     }
 }

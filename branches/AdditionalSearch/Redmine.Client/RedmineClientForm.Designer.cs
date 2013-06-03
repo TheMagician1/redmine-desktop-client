@@ -75,11 +75,16 @@ namespace Redmine.Client
             this.labelTracker = new System.Windows.Forms.Label();
             this.ComboBoxTracker = new System.Windows.Forms.ComboBox();
             this.IssueGridHeaderMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editVisibleColumnsHeaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IssueGridMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openIssueInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editVisibleColumnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotifyIconMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).BeginInit();
             this.groupBoxFilter.SuspendLayout();
             this.IssueGridHeaderMenuStrip.SuspendLayout();
+            this.IssueGridMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // TextBoxHours
@@ -273,6 +278,7 @@ namespace Redmine.Client
             this.DataGridViewIssues.TabIndex = 0;
             this.DataGridViewIssues.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewIssues_CellDoubleClick);
             this.DataGridViewIssues.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewIssues_CellFormatting);
+            this.DataGridViewIssues.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewIssues_CellMouseDown);
             this.DataGridViewIssues.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewIssues_ColumnHeaderMouseClick);
             this.DataGridViewIssues.SelectionChanged += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
             // 
@@ -538,14 +544,44 @@ namespace Redmine.Client
             // IssueGridHeaderMenuStrip
             // 
             this.IssueGridHeaderMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editVisibleColumnsToolStripMenuItem});
+            this.editVisibleColumnsHeaderToolStripMenuItem});
             this.IssueGridHeaderMenuStrip.Name = "IssueGridHeaderMenuStrip";
             this.IssueGridHeaderMenuStrip.Size = new System.Drawing.Size(183, 26);
+            // 
+            // editVisibleColumnsHeaderToolStripMenuItem
+            // 
+            this.editVisibleColumnsHeaderToolStripMenuItem.Name = "editVisibleColumnsHeaderToolStripMenuItem";
+            this.editVisibleColumnsHeaderToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.editVisibleColumnsHeaderToolStripMenuItem.Text = "Edit Visible Columns";
+            this.editVisibleColumnsHeaderToolStripMenuItem.Click += new System.EventHandler(this.editVisibleColumnsToolStripMenuItem_Click);
+            // 
+            // IssueGridMenuStrip
+            // 
+            this.IssueGridMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openIssueToolStripMenuItem,
+            this.openIssueInBrowserToolStripMenuItem,
+            this.editVisibleColumnsToolStripMenuItem});
+            this.IssueGridMenuStrip.Name = "IssueGridMenuStrip";
+            this.IssueGridMenuStrip.Size = new System.Drawing.Size(191, 70);
+            // 
+            // openIssueToolStripMenuItem
+            // 
+            this.openIssueToolStripMenuItem.Name = "openIssueToolStripMenuItem";
+            this.openIssueToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.openIssueToolStripMenuItem.Text = "Open Issue";
+            this.openIssueToolStripMenuItem.Click += new System.EventHandler(this.openIssueToolStripMenuItem_Click);
+            // 
+            // openIssueInBrowserToolStripMenuItem
+            // 
+            this.openIssueInBrowserToolStripMenuItem.Name = "openIssueInBrowserToolStripMenuItem";
+            this.openIssueInBrowserToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.openIssueInBrowserToolStripMenuItem.Text = "Open Issue In Browser";
+            this.openIssueInBrowserToolStripMenuItem.Click += new System.EventHandler(this.openIssueInBrowserToolStripMenuItem_Click);
             // 
             // editVisibleColumnsToolStripMenuItem
             // 
             this.editVisibleColumnsToolStripMenuItem.Name = "editVisibleColumnsToolStripMenuItem";
-            this.editVisibleColumnsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.editVisibleColumnsToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.editVisibleColumnsToolStripMenuItem.Text = "Edit Visible Columns";
             this.editVisibleColumnsToolStripMenuItem.Click += new System.EventHandler(this.editVisibleColumnsToolStripMenuItem_Click);
             // 
@@ -587,6 +623,7 @@ namespace Redmine.Client
             this.groupBoxFilter.ResumeLayout(false);
             this.groupBoxFilter.PerformLayout();
             this.IssueGridHeaderMenuStrip.ResumeLayout(false);
+            this.IssueGridMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -637,6 +674,10 @@ namespace Redmine.Client
         private Label labelCategory;
         private ComboBox ComboBoxCategory;
         private ContextMenuStrip IssueGridHeaderMenuStrip;
+        private ToolStripMenuItem editVisibleColumnsHeaderToolStripMenuItem;
+        private ContextMenuStrip IssueGridMenuStrip;
+        private ToolStripMenuItem openIssueToolStripMenuItem;
+        private ToolStripMenuItem openIssueInBrowserToolStripMenuItem;
         private ToolStripMenuItem editVisibleColumnsToolStripMenuItem;
     }
 }

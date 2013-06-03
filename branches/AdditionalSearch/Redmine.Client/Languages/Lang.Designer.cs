@@ -693,6 +693,15 @@ namespace Redmine.Client.Languages {
         /// <summary>
         ///   Looks up a localized string similar to &amp;Edit Visible Columns.
         /// </summary>
+        internal static string editVisibleColumnsHeaderToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("editVisibleColumnsHeaderToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Edit Visible Columns.
+        /// </summary>
         internal static string editVisibleColumnsToolStripMenuItem {
             get {
                 return ResourceManager.GetString("editVisibleColumnsToolStripMenuItem", resourceCulture);
@@ -1508,6 +1517,24 @@ namespace Redmine.Client.Languages {
         internal static string NewVersionTitle {
             get {
                 return ResourceManager.GetString("NewVersionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Issue in &amp;Browser.
+        /// </summary>
+        internal static string openIssueInBrowserToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("openIssueInBrowserToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Open Issue.
+        /// </summary>
+        internal static string openIssueToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("openIssueToolStripMenuItem", resourceCulture);
             }
         }
         

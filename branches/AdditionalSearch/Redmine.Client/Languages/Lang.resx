@@ -692,4 +692,13 @@ or Request attention every
   <data name="IssueField_id" xml:space="preserve">
     <value>Id</value>
   </data>
+  <data name="editVisibleColumnsHeaderToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Edit Visible Columns</value>
+  </data>
+  <data name="openIssueInBrowserToolStripMenuItem" xml:space="preserve">
+    <value>Open Issue in &amp;Browser</value>
+  </data>
+  <data name="openIssueToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Open Issue</value>
+  </data>
 </root>
