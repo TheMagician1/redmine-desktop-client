@@ -70,6 +70,7 @@ namespace Redmine.Client
             this.TextBoxSubject = new System.Windows.Forms.TextBox();
             this.labelPriority = new System.Windows.Forms.Label();
             this.ComboBoxPriority = new System.Windows.Forms.ComboBox();
+            this.BtnClearButton = new System.Windows.Forms.Button();
             this.labelStatus = new System.Windows.Forms.Label();
             this.ComboBoxStatus = new System.Windows.Forms.ComboBox();
             this.labelTracker = new System.Windows.Forms.Label();
@@ -382,6 +383,7 @@ namespace Redmine.Client
             this.groupBoxFilter.Controls.Add(this.TextBoxSubject);
             this.groupBoxFilter.Controls.Add(this.labelPriority);
             this.groupBoxFilter.Controls.Add(this.ComboBoxPriority);
+            this.groupBoxFilter.Controls.Add(this.BtnClearButton);
             this.groupBoxFilter.Controls.Add(this.BtnRefreshButton);
             this.groupBoxFilter.Controls.Add(this.labelStatus);
             this.groupBoxFilter.Controls.Add(this.ComboBoxStatus);
@@ -498,6 +500,18 @@ namespace Redmine.Client
             this.ComboBoxPriority.Size = new System.Drawing.Size(170, 21);
             this.ComboBoxPriority.TabIndex = 11;
             this.ComboBoxPriority.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPriority_SelectedIndexChanged);
+            // 
+            // BtnClearButton
+            // 
+            this.BtnClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnClearButton.Location = new System.Drawing.Point(93, 327);
+            this.BtnClearButton.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnClearButton.Name = "BtnClearButton";
+            this.BtnClearButton.Size = new System.Drawing.Size(82, 24);
+            this.BtnClearButton.TabIndex = 10;
+            this.BtnClearButton.Text = "Clear";
+            this.BtnClearButton.UseVisualStyleBackColor = true;
+            this.BtnClearButton.Click += new System.EventHandler(this.BtnClearButton_Click);
             // 
             // labelStatus
             // 
@@ -679,6 +693,7 @@ namespace Redmine.Client
         private ToolStripMenuItem openIssueToolStripMenuItem;
         private ToolStripMenuItem openIssueInBrowserToolStripMenuItem;
         private ToolStripMenuItem editVisibleColumnsToolStripMenuItem;
+        private Button BtnClearButton;
     }
 }
 

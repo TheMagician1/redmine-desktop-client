@@ -241,6 +241,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        internal static string BtnClearButton {
+            get {
+                return ResourceManager.GetString("BtnClearButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close Issue.
         /// </summary>
         internal static string BtnCloseButton {

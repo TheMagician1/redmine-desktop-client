@@ -1564,5 +1564,16 @@ namespace Redmine.Client
             DataGridViewIssues_SelectionChanged(null, null);
         }
 
+        private void BtnClearButton_Click(object sender, EventArgs e)
+        {
+            ComboBoxTracker.SelectedValue = 0;
+            ComboBoxStatus.SelectedValue = 0;
+            ComboBoxPriority.SelectedValue = 0;
+            TextBoxSubject.Text = "";
+            ComboBoxAssignedTo.SelectedValue = 0;
+            ComboBoxTargetVersion.SelectedValue = 0;
+            ComboBoxCategory.SelectedValue = 0;
+        }
+
     }
 }
