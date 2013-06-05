@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Redmine.Net.Api;
 using Redmine.Net.Api.Types;
 using Redmine.Client.Languages;
+using Redmine.Client.Properties;
 
 namespace Redmine.Client
 {
@@ -55,15 +56,15 @@ namespace Redmine.Client
         private RedmineClientForm()
         {
             InitializeComponent();
-            Properties.Settings.Default.Upgrade();
-            Properties.Settings.Default.Reload();
+            Settings.Default.Upgrade();
+            Settings.Default.Reload();
 
             timer1.Interval = 1000;
 
             if (!IsRunningOnMono())
             {
-                this.Icon = (Icon)Properties.Resources.ResourceManager.GetObject("clock");
-                this.notifyIcon1.Icon = (Icon)Properties.Resources.ResourceManager.GetObject("clock");
+                this.Icon = (Icon)Resources.ResourceManager.GetObject("clock");
+                this.notifyIcon1.Icon = (Icon)Resources.ResourceManager.GetObject("clock");
                 this.notifyIcon1.Visible = true;
             }
 			else 
@@ -97,7 +98,7 @@ namespace Redmine.Client
 
         void RedmineClientForm_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            if (ticks != 0 && !Properties.Settings.Default.PauseTickingOnLock)
+            if (ticks != 0 && !Settings.Default.PauseTickingOnLock)
             {
                 switch (MessageBox.Show(String.Format(Lang.Warning_ClosingSaveTimes, Environment.NewLine), Lang.Warning, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                 {
@@ -134,9 +135,9 @@ namespace Redmine.Client
                     LoadConfig();
                     if (!clientIsRunning)
                     {
-                        this.ticks = Properties.Settings.Default.TickingTicks;
+                        this.ticks = Settings.Default.TickingTicks;
                         this.UpdateTime();
-                        if (Properties.Settings.Default.IsTicking)
+                        if (Settings.Default.IsTicking)
                         {
                             if (MessageBox.Show(Lang.Timer_WasTickingWhenClosed, Lang.Question, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                 this.StartTimer();
@@ -341,8 +342,8 @@ namespace Redmine.Client
                 DataGridViewIssues.Columns["Project"].DisplayIndex = 2;
             if (currentSortedColumn == null)
             {
-                currentSortedColumn = DataGridViewIssues.Columns[Properties.Settings.Default.IssueGridSortColumn];
-                SortOrder order = Properties.Settings.Default.IssueGridSortOrder;
+                currentSortedColumn = DataGridViewIssues.Columns[Settings.Default.IssueGridSortColumn];
+                SortOrder order = Settings.Default.IssueGridSortOrder;
                 InvertSort(ref order);
                 currentSortedColumn.HeaderCell.SortGlyphDirection = order;
             }
@@ -373,36 +374,18 @@ namespace Redmine.Client
             this.Cursor = Cursors.Default;
         }
 
-        String GetSetting(KeyValueConfigurationCollection coll, String name, String defaultVal, bool bEmptyIsDefault = false)
-        {
-            KeyValueConfigurationElement val = coll[name];
-            if (val == null)
-                return defaultVal;
-            if (bEmptyIsDefault && String.IsNullOrEmpty(val.Value))
-                return defaultVal;
-            return val.Value;
-        }
-        Boolean GetSetting(KeyValueConfigurationCollection coll, String name, Boolean defaultVal)
-        {
-            return Convert.ToBoolean(GetSetting(coll, name, Convert.ToString(defaultVal), true));
-        }
-        Int32 GetSetting(KeyValueConfigurationCollection coll, String name, Int32 defaultVal)
-        {
-            return Convert.ToInt32(GetSetting(coll, name, Convert.ToString(defaultVal), true));
-        }
-
         private void SaveRuntimeConfig()
         {
             if (Size != null && WindowState == FormWindowState.Normal)
             {
-                Properties.Settings.Default.PropertyValues["MainWindowSizeX"].PropertyValue = Size.Width;
-                Properties.Settings.Default.PropertyValues["MainWindowSizeY"].PropertyValue = Size.Height;
+                Settings.Default.UpdateSetting("MainWindowSizeX", Size.Width);
+                Settings.Default.UpdateSetting("MainWindowSizeY", Size.Height);
             }
-            Properties.Settings.Default.PropertyValues["LastProjectId"].PropertyValue = projectId;
-            Properties.Settings.Default.PropertyValues["LastIssueId"].PropertyValue = issueId;
-            Properties.Settings.Default.PropertyValues["LastActivityId"].PropertyValue = activityId;
-            Properties.Settings.Default.PropertyValues["OnlyAssignedToMe"].PropertyValue = CheckBoxOnlyMe.Checked;
-            Properties.Settings.Default.Save();
+            Settings.Default.UpdateSetting("LastProjectId", projectId);
+            Settings.Default.UpdateSetting("LastIssueId", issueId);
+            Settings.Default.UpdateSetting("LastActivityId", activityId);
+            Settings.Default.UpdateSetting("OnlyAssignedToMe", CheckBoxOnlyMe.Checked);
+            Settings.Default.Save();
         }
 
         private void LoadConfig()
@@ -411,29 +394,29 @@ namespace Redmine.Client
 
             if (Lang.Culture == null)
                 Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
-            Properties.Settings.Default.Reload();
-            RedmineURL = Properties.Settings.Default.RedmineURL;
-            RedmineAuthentication = Properties.Settings.Default.RedmineAuthentication;
-            RedmineUser = Properties.Settings.Default.RedmineUser;
-            RedminePassword = Properties.Settings.Default.RedminePassword;
-            MinimizeToSystemTray = Properties.Settings.Default.MinimizeToSystemTray;
-            MinimizeOnStartTimer = Properties.Settings.Default.MinimizeOnStartTimer;
-            CheckForUpdates = Properties.Settings.Default.CheckForUpdates;
-            CacheLifetime = Properties.Settings.Default.CacheLifetime;
-            PopupInterval = Properties.Settings.Default.PopupInterval;
-            RedmineVersion = (ApiVersion)Properties.Settings.Default.ApiVersion;
+            Settings.Default.Reload();
+            RedmineURL = Settings.Default.RedmineURL;
+            RedmineAuthentication = Settings.Default.RedmineAuthentication;
+            RedmineUser = Settings.Default.RedmineUser;
+            RedminePassword = Settings.Default.RedminePassword;
+            MinimizeToSystemTray = Settings.Default.MinimizeToSystemTray;
+            MinimizeOnStartTimer = Settings.Default.MinimizeOnStartTimer;
+            CheckForUpdates = Settings.Default.CheckForUpdates;
+            CacheLifetime = Settings.Default.CacheLifetime;
+            PopupInterval = Settings.Default.PopupInterval;
+            RedmineVersion = (ApiVersion)Settings.Default.ApiVersion;
 
-            int sizeX = Properties.Settings.Default.MainWindowSizeX;
-            int sizeY = Properties.Settings.Default.MainWindowSizeY;
+            int sizeX = Settings.Default.MainWindowSizeX;
+            int sizeY = Settings.Default.MainWindowSizeY;
             Size FormSize = new Size(
-                                      Properties.Settings.Default.MainWindowSizeX,
-                                      Properties.Settings.Default.MainWindowSizeY);
+                                      Settings.Default.MainWindowSizeX,
+                                      Settings.Default.MainWindowSizeY);
             if (FormSize.Height > 0 && FormSize.Width > 0)
                 Size = FormSize;
 
             try
             {
-                Lang.Culture = new System.Globalization.CultureInfo(Properties.Settings.Default.LanguageCode);
+                Lang.Culture = new System.Globalization.CultureInfo(Settings.Default.LanguageCode);
             }
             catch (Exception)
             {
@@ -447,10 +430,10 @@ namespace Redmine.Client
             SetRestoreToolStripMenuItem();
             UpdateToolStripMenuItemsStartPause();
 
-            projectId = Properties.Settings.Default.LastProjectId;
-            issueId = Properties.Settings.Default.LastIssueId;
-            activityId = Properties.Settings.Default.LastActivityId;
-            CheckBoxOnlyMe.Checked = Properties.Settings.Default.OnlyAssignedToMe;
+            projectId = Settings.Default.LastProjectId;
+            issueId = Settings.Default.LastIssueId;
+            activityId = Settings.Default.LastActivityId;
+            CheckBoxOnlyMe.Checked = Settings.Default.OnlyAssignedToMe;
             UpdateFilterControls();
 
             BtnNewIssueButton.Visible = RedmineVersion >= ApiVersion.V13x;
@@ -572,7 +555,7 @@ namespace Redmine.Client
             {
                 StartTimer();
             }
-            Properties.Settings.Default.SetTickingTick(this.ticking, this.ticks);
+            Settings.Default.SetTickingTick(this.ticking, this.ticks);
             UpdateNotifyIconText();
             UpdateToolStripMenuItemsStartPause();
         }
@@ -593,7 +576,7 @@ namespace Redmine.Client
         {
             this.ticks++;
             this.UpdateTime();
-            Properties.Settings.Default.SetTickingTick(this.ticking, this.ticks);
+            Settings.Default.SetTickingTick(this.ticking, this.ticks);
             AlertIfMinimized();
         }
 
@@ -608,7 +591,7 @@ namespace Redmine.Client
         {
             this.ticks = 0;
             this.UpdateTime();
-            Properties.Settings.Default.SetTickingTick(this.ticking, this.ticks);
+            Settings.Default.SetTickingTick(this.ticking, this.ticks);
             this.dateTimePicker1.Value = DateTime.Now;
             this.TextBoxComment.Text = String.Empty;
         }
@@ -756,7 +739,7 @@ namespace Redmine.Client
                                         MessageBoxIcon.Information);
                         if (commitDlg.closeIssue)
                         {
-                            if (Properties.Settings.Default.ClosedStatus == 0)
+                            if (Settings.Default.ClosedStatus == 0)
                             {
                                 MessageBox.Show(Lang.Error_ClosedStatusUnknown, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
@@ -764,7 +747,7 @@ namespace Redmine.Client
                             {
                                 try
                                 {
-                                    UpdateIssueState(selectedIssue, Properties.Settings.Default.ClosedStatus);
+                                    UpdateIssueState(selectedIssue, Settings.Default.ClosedStatus);
                                 }
                                 catch (Exception ex)
                                 {
@@ -906,15 +889,15 @@ namespace Redmine.Client
         private void BtnNewIssueButton_Click(object sender, EventArgs e)
         {
             IssueForm dlg = new IssueForm(Projects[projectId]);
-            dlg.Size = new Size(Properties.Settings.Default.IssueWindowSizeX,
-                                Properties.Settings.Default.IssueWindowSizeY);
+            dlg.Size = new Size(Settings.Default.IssueWindowSizeX,
+                                Settings.Default.IssueWindowSizeY);
             if (dlg.ShowDialog(this) == DialogResult.OK)
             {
                 BtnRefreshButton_Click(null, null);
             }
-            Properties.Settings.Default.PropertyValues["IssueWindowSizeX"].PropertyValue = dlg.Size.Width;
-            Properties.Settings.Default.PropertyValues["IssueWindowSizeY"].PropertyValue = dlg.Size.Height;
-            Properties.Settings.Default.Save();
+            Settings.Default.UpdateSetting("IssueWindowSizeX", dlg.Size.Width);
+            Settings.Default.UpdateSetting("IssueWindowSizeY", dlg.Size.Height);
+            Settings.Default.Save();
         }
 
         private void BtnAboutButton_Click(object sender, EventArgs e)
@@ -1084,8 +1067,8 @@ namespace Redmine.Client
                     }
                 }
                 IssueForm dlg = new IssueForm(issue);
-                dlg.Size = new Size(Properties.Settings.Default.IssueWindowSizeX,
-                                    Properties.Settings.Default.IssueWindowSizeY);
+                dlg.Size = new Size(Settings.Default.IssueWindowSizeX,
+                                    Settings.Default.IssueWindowSizeY);
                 dlg.Show();
             }
             catch (Exception ex)
@@ -1100,9 +1083,9 @@ namespace Redmine.Client
             {
                 BtnRefreshButton_Click(null, null);
             }
-            Properties.Settings.Default.PropertyValues["IssueWindowSizeX"].PropertyValue = currentWindowSize.Width;
-            Properties.Settings.Default.PropertyValues["IssueWindowSizeY"].PropertyValue = currentWindowSize.Height;
-            Properties.Settings.Default.Save();
+            Settings.Default.UpdateSetting("IssueWindowSizeX", currentWindowSize.Width);
+            Settings.Default.UpdateSetting("IssueWindowSizeY", currentWindowSize.Height);
+            Settings.Default.Save();
         }
 
         /// <summary>
@@ -1124,7 +1107,7 @@ namespace Redmine.Client
         /// <param name="e"></param>
         void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
-            if (Properties.Settings.Default.PauseTickingOnLock)
+            if (Settings.Default.PauseTickingOnLock)
             {
                 switch (e.Reason)
                 {
@@ -1147,13 +1130,13 @@ namespace Redmine.Client
         /// </summary>
         private void UpdateIssueIfNeeded()
         {
-            if (!Properties.Settings.Default.UpdateIssueIfNew)
+            if (!Settings.Default.UpdateIssueIfNew)
                 return;
 
             if (DataGridViewIssues.SelectedRows.Count != 1)
                 return;
 
-            if (Properties.Settings.Default.NewStatus == 0 || Properties.Settings.Default.InProgressStatus == 0)
+            if (Settings.Default.NewStatus == 0 || Settings.Default.InProgressStatus == 0)
             {
                 MessageBox.Show(Lang.Error_NewOrInProgressStatusUnknown, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -1161,10 +1144,10 @@ namespace Redmine.Client
             try
             {
                 Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
-                if (selectedIssue.Status.Id == Properties.Settings.Default.NewStatus)
+                if (selectedIssue.Status.Id == Settings.Default.NewStatus)
                 {
-                    if (UpdateIssueState(selectedIssue, Properties.Settings.Default.InProgressStatus))
-                        MessageBox.Show(String.Format(Lang.IssueUpdatedToInProgress, selectedIssue.Subject, Properties.Settings.Default.InProgressStatus), Lang.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (UpdateIssueState(selectedIssue, Settings.Default.InProgressStatus))
+                        MessageBox.Show(String.Format(Lang.IssueUpdatedToInProgress, selectedIssue.Subject, Settings.Default.InProgressStatus), Lang.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -1185,7 +1168,7 @@ namespace Redmine.Client
                 throw new Exception(Lang.Error_ClosedStatusUnknown);
 
             issue.Status = new IdentifiableName { Id = newStatus.Id, Name = newStatus.Name };
-            if (Properties.Settings.Default.AddNoteOnChangeStatus)
+            if (Settings.Default.AddNoteOnChangeStatus)
             {
                 UpdateIssueNoteForm dlg = new UpdateIssueNoteForm(originalIssue, issue);
                 if (dlg.ShowDialog(this) == DialogResult.OK)
@@ -1235,7 +1218,7 @@ namespace Redmine.Client
             foreach (DataGridViewColumn column in DataGridViewIssues.Columns)
             {
                 if (column.Name != "Id" && column.Name != "Subject")
-                    column.Visible = Properties.Settings.Default.ShowIssueGridColumn(column.Name);
+                    column.Visible = Settings.Default.ShowIssueGridColumn(column.Name);
                 if (projectId == -1 && column.Name == "Project")
                     column.Visible = true;
                 if (column.Visible)
@@ -1389,7 +1372,7 @@ namespace Redmine.Client
             issueList.Sort(new CompareIssue(sortColumn.Name, sortOrder));
             sortColumn.HeaderCell.SortGlyphDirection = sortOrder;
             currentSortedColumn = sortColumn;
-            Properties.Settings.Default.SetIssueGridSort(sortColumn.Name, sortOrder);
+            Settings.Default.SetIssueGridSort(sortColumn.Name, sortOrder);
             SetIssueSelectionTo(currentSelectedIssue);
             DataGridViewIssues.Refresh();
         }

@@ -44,5 +44,10 @@
                 return (bool)Settings.Default.PropertyValues["IssueGridHeader_Show" + columnName].PropertyValue;
             return false;
         }
+
+        public void UpdateSetting<T>(string settingName, T setting)
+        {
+            Settings.Default.PropertyValues[settingName].PropertyValue = setting;
+        }
     }
 }
