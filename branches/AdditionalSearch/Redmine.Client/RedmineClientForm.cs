@@ -71,7 +71,6 @@ namespace Redmine.Client
 				this.DataGridViewIssues.Click += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
 			}
             this.FormClosing += new FormClosingEventHandler(RedmineClientForm_FormClosing);
-            SystemEvents.SessionEnding += new SessionEndingEventHandler(SystemEvents_SessionEnding);
             SystemEvents.SessionSwitch += new SessionSwitchEventHandler(SystemEvents_SessionSwitch);
             Reinit(false);
  
@@ -374,42 +373,6 @@ namespace Redmine.Client
             this.Cursor = Cursors.Default;
         }
 
-        private void UpdateIssueDataColumns()
-        {
-            foreach (DataGridViewColumn column in DataGridViewIssues.Columns)
-            {
-                if (column.Name != "Id" && column.Name != "Subject")
-                    column.Visible = Properties.Settings.Default.ShowIssueGridColumn(column.Name);
-                if (projectId == -1 && column.Name == "Project")
-                    column.Visible = true;
-                if (column.Visible)
-                {
-                    column.SortMode = DataGridViewColumnSortMode.Programmatic;
-                }
-                column.HeaderCell.ContextMenuStrip = IssueGridHeaderMenuStrip;
-                column.HeaderText = LangTools.GetIssueField(column.Name); // translate the headers
-                column.ContextMenuStrip = IssueGridMenuStrip;
-            }
-        }
-
-        private void SetIssueSelectionTo(int issueId)
-        {
-            if (DataGridViewIssues.Rows.Count > 0)
-            {
-                DataGridViewIssues.ClearSelection();
-                foreach (DataGridViewRow row in DataGridViewIssues.Rows)
-                {
-                    if (((Issue)row.DataBoundItem).Id == issueId)
-                    {
-                        row.Selected = true;
-                        DataGridViewIssues_SelectionChanged(null, null);
-                        break;
-                    }
-                }
-            }
-        }
-
-
         String GetSetting(KeyValueConfigurationCollection coll, String name, String defaultVal, bool bEmptyIsDefault = false)
         {
             KeyValueConfigurationElement val = coll[name];
@@ -478,7 +441,6 @@ namespace Redmine.Client
             }
 
             LangTools.UpdateControlsForLanguage(this.Controls);
-            LangTools.UpdateControlsForLanguage(groupBoxFilter.Controls);
             LangTools.UpdateControlsForLanguage(NotifyIconMenuStrip.Items);
             LangTools.UpdateControlsForLanguage(IssueGridHeaderMenuStrip.Items);
             LangTools.UpdateControlsForLanguage(IssueGridMenuStrip.Items);
@@ -520,11 +482,6 @@ namespace Redmine.Client
                 else
                     RestoreToolStripMenuItem.Text = Languages.Lang.RestoreToolStrip_Minimize;
             }
-        }
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            HideRestore();
         }
 
         private void HideRestore()
@@ -571,18 +528,33 @@ namespace Redmine.Client
             }
         }
 
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            HideRestore();
+        }
+
         private void RestoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HideRestore();
         }
 
-        private void BtnExitButton_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             notifyIcon1.Dispose();
             Application.Exit();
         }
 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BtnStartButton_Click(sender, e);
+        }
+
+        private void PauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BtnStartButton_Click(sender, e);
+        }
+
+        private void BtnExitButton_Click(object sender, EventArgs e)
         {
             notifyIcon1.Dispose();
             Application.Exit();
@@ -666,11 +638,6 @@ namespace Redmine.Client
                 this.notifyIcon1.Text = Lang.RedmineClientTitle_NoUser;
         }
 
-        private void BtnResetButton_Click(object sender, EventArgs e)
-        {
-            ResetForm();
-        }
-
         private void UpdateTime()
         {
             this.updating = true;
@@ -685,12 +652,6 @@ namespace Redmine.Client
             ticks = Convert.ToInt32(TextBoxHours.Text)*3600 + Convert.ToInt32(TextBoxMinutes.Text)*60 +
                     Convert.ToInt32(TextBoxSeconds.Text);
             UpdateTime();
-        }
-
-        private void BtnAboutButton_Click(object sender, EventArgs e)
-        {
-            AboutBox aboutBox = new AboutBox();
-            aboutBox.ShowDialog(this);
         }
 
         private void TextBoxSeconds_TextChanged(object sender, EventArgs e)
@@ -757,20 +718,6 @@ namespace Redmine.Client
                 return false;
             }
             return true;
-        }
-
-        /// <summary>
-        /// A new Issue has been selected; update the systemtray
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DataGridViewIssues_SelectionChanged(object sender, EventArgs e)
-        {
-            if (DataGridViewIssues.SelectedRows.Count == 0 || !Int32.TryParse(DataGridViewIssues.SelectedRows[0].Cells["Id"].Value.ToString(), out issueId))
-            {
-                issueId = 0;
-            }
-            UpdateNotifyIconText();
         }
 
         /// <summary>
@@ -952,6 +899,36 @@ namespace Redmine.Client
         }
 
         /// <summary>
+        /// Create a new issue through the issue dialog.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnNewIssueButton_Click(object sender, EventArgs e)
+        {
+            IssueForm dlg = new IssueForm(Projects[projectId]);
+            dlg.Size = new Size(Properties.Settings.Default.IssueWindowSizeX,
+                                Properties.Settings.Default.IssueWindowSizeY);
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+            {
+                BtnRefreshButton_Click(null, null);
+            }
+            Properties.Settings.Default.PropertyValues["IssueWindowSizeX"].PropertyValue = dlg.Size.Width;
+            Properties.Settings.Default.PropertyValues["IssueWindowSizeY"].PropertyValue = dlg.Size.Height;
+            Properties.Settings.Default.Save();
+        }
+
+        private void BtnAboutButton_Click(object sender, EventArgs e)
+        {
+            AboutBox aboutBox = new AboutBox();
+            aboutBox.ShowDialog(this);
+        }
+
+        private void BtnResetButton_Click(object sender, EventArgs e)
+        {
+            ResetForm();
+        }
+
+        /// <summary>
         /// Get Projects, Issues and Activities and select the current/last selected
         /// </summary>
         /// <param name="projectId">The current/last selected project</param>
@@ -1040,25 +1017,6 @@ namespace Redmine.Client
         }
 
         /// <summary>
-        /// Create a new issue through the issue dialog.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnNewIssueButton_Click(object sender, EventArgs e)
-        {
-            IssueForm dlg = new IssueForm(Projects[projectId]);
-            dlg.Size = new Size(Properties.Settings.Default.IssueWindowSizeX,
-                                Properties.Settings.Default.IssueWindowSizeY);
-            if (dlg.ShowDialog(this) == DialogResult.OK)
-            {
-                BtnRefreshButton_Click(null, null);
-            }
-            Properties.Settings.Default.PropertyValues["IssueWindowSizeX"].PropertyValue = dlg.Size.Width;
-            Properties.Settings.Default.PropertyValues["IssueWindowSizeY"].PropertyValue = dlg.Size.Height;
-            Properties.Settings.Default.Save();
-        }
-
-        /// <summary>
         /// Set the (new) title of this dialog
         /// </summary>
         /// <param name="title">The (new) title</param>
@@ -1110,19 +1068,6 @@ namespace Redmine.Client
             }
         }
 
-        /// <summary>
-        /// Allow users to double click on the issues and open the issue dialog to display the double clicked issue
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DataGridViewIssues_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0)
-                return;
-            Issue issue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
-            ShowIssue(issue);
-        }
-
         public static void ShowIssue(Issue issue)
         {
             try
@@ -1172,28 +1117,6 @@ namespace Redmine.Client
         }
 
         /// <summary>
-        /// if the 'Show Issues only assigned to me' checkbox is clicked, refresh the issues.
-        /// this way it will respect the setting of the checkbox
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CheckBoxOnlyMe_Click(object sender, EventArgs e)
-        {
-            BtnRefreshButton_Click(sender, e);
-            UpdateFilterControls();
-        }
-
-        /// <summary>
-        /// Not used at the moment
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void SystemEvents_SessionEnding(object sender, SessionEndingEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// When the system is locked, check the setting and if requested, stop the timer.
         /// Also start the timer again on unlock.
         /// </summary>
@@ -1218,7 +1141,6 @@ namespace Redmine.Client
                 
             }
         }
-
 
         /// <summary>
         /// If the setting for updating the issue is true, then check the state of the current selected issue and if necessary update it in Redmine.
@@ -1279,6 +1201,70 @@ namespace Redmine.Client
             return true;
         }
 
+
+        #region DataGridViewIssues Functions
+        /// <summary>
+        /// A new Issue has been selected; update the systemtray
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewIssues_SelectionChanged(object sender, EventArgs e)
+        {
+            if (DataGridViewIssues.SelectedRows.Count == 0 || !Int32.TryParse(DataGridViewIssues.SelectedRows[0].Cells["Id"].Value.ToString(), out issueId))
+            {
+                issueId = 0;
+            }
+            UpdateNotifyIconText();
+        }
+
+        /// <summary>
+        /// Allow users to double click on the issues and open the issue dialog to display the double clicked issue
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewIssues_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+            Issue issue = (Issue)DataGridViewIssues.Rows[e.RowIndex].DataBoundItem;
+            ShowIssue(issue);
+        }
+
+        private void UpdateIssueDataColumns()
+        {
+            foreach (DataGridViewColumn column in DataGridViewIssues.Columns)
+            {
+                if (column.Name != "Id" && column.Name != "Subject")
+                    column.Visible = Properties.Settings.Default.ShowIssueGridColumn(column.Name);
+                if (projectId == -1 && column.Name == "Project")
+                    column.Visible = true;
+                if (column.Visible)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.Programmatic;
+                }
+                column.HeaderCell.ContextMenuStrip = IssueGridHeaderMenuStrip;
+                column.HeaderText = LangTools.GetIssueField(column.Name); // translate the headers
+                column.ContextMenuStrip = IssueGridMenuStrip;
+            }
+        }
+
+        private void SetIssueSelectionTo(int issueId)
+        {
+            if (DataGridViewIssues.Rows.Count > 0)
+            {
+                DataGridViewIssues.ClearSelection();
+                foreach (DataGridViewRow row in DataGridViewIssues.Rows)
+                {
+                    if (((Issue)row.DataBoundItem).Id == issueId)
+                    {
+                        row.Selected = true;
+                        DataGridViewIssues_SelectionChanged(null, null);
+                        break;
+                    }
+                }
+            }
+        }
+
         private void DataGridViewIssues_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -1301,111 +1287,6 @@ namespace Redmine.Client
                 e.Value = currentIssue.Category!=null?currentIssue.Category.Name:"";
             else if (e.ColumnIndex == DataGridViewIssues.Columns["FixedVersion"].Index)
                 e.Value = currentIssue.FixedVersion != null ? currentIssue.FixedVersion.Name : "";
-        }
-
-        private void StartToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            BtnStartButton_Click(sender, e);
-        }
-
-        private void PauseToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            BtnStartButton_Click(sender, e);
-        }
-
-        private void ComboBoxTracker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                currentFilter.TrackerId = (int)ComboBoxTracker.SelectedValue;
-            }
-            catch (Exception)
-            {
-                currentFilter.TrackerId = 0;
-            }
-            FilterChanged();
-        }
-
-        private void ComboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                currentFilter.StatusId = (int)ComboBoxStatus.SelectedValue;
-            }
-            catch (Exception)
-            {
-                currentFilter.StatusId = 0;
-            }
-            FilterChanged();
-        }
-
-        private void ComboBoxPriority_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                currentFilter.PriorityId = (int)ComboBoxPriority.SelectedValue;
-            }
-            catch (Exception)
-            {
-                currentFilter.PriorityId = 0;
-            }
-            FilterChanged();
-        }
-
-        private void ComboBoxAssignedTo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                currentFilter.AssignedToId = (int)ComboBoxAssignedTo.SelectedValue;
-            }
-            catch (Exception)
-            {
-                currentFilter.AssignedToId = 0;
-            }
-            FilterChanged();
-        }
-
-        private void ComboBoxTargetVersion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                currentFilter.VersionId = (int)ComboBoxTargetVersion.SelectedValue;
-            }
-            catch (Exception)
-            {
-                currentFilter.VersionId = 0;
-            }
-            FilterChanged();
-        }
-
-        private void ComboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                currentFilter.CategoryId = (int)ComboBoxCategory.SelectedValue;
-            }
-            catch (Exception)
-            {
-                currentFilter.CategoryId = 0;
-            }
-            FilterChanged();
-        }
-        private void TextBoxSubject_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                currentFilter.Subject = TextBoxSubject.Text;
-            }
-            catch (Exception)
-            {
-                currentFilter.Subject = "";
-            }
-            FilterChanged();
-        }
-
-        private void FilterChanged()
-        {
-            BtnRefreshButton.Text = Lang.BtnRefreshButton_Filter;
         }
 
         class CompareIssue : IComparer<Issue>
@@ -1523,6 +1404,19 @@ namespace Redmine.Client
                 order = System.Windows.Forms.SortOrder.Ascending;
         }
 
+        private void DataGridViewIssues_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            DataGridViewIssues.ClearSelection();
+            DataGridViewIssues.Rows[e.RowIndex].Selected = true;
+            DataGridViewIssues_SelectionChanged(null, null);
+        }
+
+        #endregion //DataGridViewIssues Functions
+
+        #region DataGridViewIssues Context Menu's
         private void editVisibleColumnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IssueGridSelectColumns dlg = new IssueGridSelectColumns();
@@ -1553,15 +1447,114 @@ namespace Redmine.Client
             {
             }
         }
+        #endregion //DataGridViewIssues Context Menu's
 
-        private void DataGridViewIssues_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        #region FilterFunctions
+        /// <summary>
+        /// if the 'Show Issues only assigned to me' checkbox is clicked, refresh the issues.
+        /// this way it will respect the setting of the checkbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CheckBoxOnlyMe_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex < 0)
-                return;
+            BtnRefreshButton_Click(sender, e);
+            UpdateFilterControls();
+        }
 
-            DataGridViewIssues.ClearSelection();
-            DataGridViewIssues.Rows[e.RowIndex].Selected = true;
-            DataGridViewIssues_SelectionChanged(null, null);
+        private void ComboBoxTracker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.TrackerId = (int)ComboBoxTracker.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.TrackerId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void ComboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.StatusId = (int)ComboBoxStatus.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.StatusId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void ComboBoxPriority_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.PriorityId = (int)ComboBoxPriority.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.PriorityId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void ComboBoxAssignedTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.AssignedToId = (int)ComboBoxAssignedTo.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.AssignedToId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void ComboBoxTargetVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.VersionId = (int)ComboBoxTargetVersion.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.VersionId = 0;
+            }
+            FilterChanged();
+        }
+
+        private void ComboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.CategoryId = (int)ComboBoxCategory.SelectedValue;
+            }
+            catch (Exception)
+            {
+                currentFilter.CategoryId = 0;
+            }
+            FilterChanged();
+        }
+        private void TextBoxSubject_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFilter.Subject = TextBoxSubject.Text;
+            }
+            catch (Exception)
+            {
+                currentFilter.Subject = "";
+            }
+            FilterChanged();
+        }
+
+        private void FilterChanged()
+        {
+            BtnRefreshButton.Text = Lang.BtnRefreshButton_Filter;
         }
 
         private void BtnClearButton_Click(object sender, EventArgs e)
@@ -1574,6 +1567,6 @@ namespace Redmine.Client
             ComboBoxTargetVersion.SelectedValue = 0;
             ComboBoxCategory.SelectedValue = 0;
         }
-
+        #endregion //FilterFunctions
     }
 }
