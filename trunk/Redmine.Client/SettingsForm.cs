@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using Redmine.Client.Languages;
 using Redmine.Net.Api.Types;
+using Redmine.Client.Properties;
 using System.Collections.Specialized;
 
 namespace Redmine.Client
@@ -88,32 +89,32 @@ namespace Redmine.Client
                 Languages.Lang.Culture = new System.Globalization.CultureInfo("en");
             try
             {
-                Properties.Settings.Default.PropertyValues["RedmineURL"].PropertyValue = RedmineBaseUrlTextBox.Text;
-                Properties.Settings.Default.PropertyValues["RedmineUser"].PropertyValue = RedmineUsernameTextBox.Text;
-                Properties.Settings.Default.PropertyValues["RedminePassword"].PropertyValue = RedminePasswordTextBox.Text;
-                Properties.Settings.Default.PropertyValues["RedmineAuthentication"].PropertyValue = AuthenticationCheckBox.Checked;
-                Properties.Settings.Default.PropertyValues["CheckForUpdates"].PropertyValue = CheckForUpdatesCheckBox.Checked;
-                Properties.Settings.Default.PropertyValues["MinimizeToSystemTray"].PropertyValue = MinimizeToSystemTrayCheckBox.Checked;
-                Properties.Settings.Default.PropertyValues["MinimizeOnStartTimer"].PropertyValue = MinimizeOnStartTimerCheckBox.Checked;
-                Properties.Settings.Default.PropertyValues["PopupInterval"].PropertyValue = PopupTimout.Value;
-                Properties.Settings.Default.PropertyValues["CacheLifetime"].PropertyValue = CacheLifetime.Value;
-                Properties.Settings.Default.PropertyValues["LanguageCode"].PropertyValue = Languages.Lang.Culture.Name;
-                Properties.Settings.Default.PropertyValues["ApiVersion"].PropertyValue = (int)RedmineVersionComboBox.SelectedValue;
-                Properties.Settings.Default.PropertyValues["PauseTickingOnLock"].PropertyValue = PauseTimerOnLockCheckBox.Checked;
+                Settings.Default.UpdateSetting("RedmineURL", RedmineBaseUrlTextBox.Text);
+                Settings.Default.UpdateSetting("RedmineUser", RedmineUsernameTextBox.Text);
+                Settings.Default.UpdateSetting("RedminePassword", RedminePasswordTextBox.Text);
+                Settings.Default.UpdateSetting("RedmineAuthentication", AuthenticationCheckBox.Checked);
+                Settings.Default.UpdateSetting("CheckForUpdates", CheckForUpdatesCheckBox.Checked);
+                Settings.Default.UpdateSetting("MinimizeToSystemTray", MinimizeToSystemTrayCheckBox.Checked);
+                Settings.Default.UpdateSetting("MinimizeOnStartTimer", MinimizeOnStartTimerCheckBox.Checked);
+                Settings.Default.UpdateSetting("PopupInterval", PopupTimout.Value);
+                Settings.Default.UpdateSetting("CacheLifetime", CacheLifetime.Value);
+                Settings.Default.UpdateSetting("LanguageCode", Languages.Lang.Culture.Name);
+                Settings.Default.UpdateSetting("ApiVersion", (int)RedmineVersionComboBox.SelectedValue);
+                Settings.Default.UpdateSetting("PauseTickingOnLock", PauseTimerOnLockCheckBox.Checked);
                 if (ComboBoxCloseStatus.Enabled)
-                    Properties.Settings.Default.PropertyValues["ClosedStatus"].PropertyValue = (int)ComboBoxCloseStatus.SelectedValue;
+                    Settings.Default.UpdateSetting("ClosedStatus", (int)ComboBoxCloseStatus.SelectedValue);
                 if (UpdateIssueIfStateCheckBox.Enabled)
                 {
-                    Properties.Settings.Default.PropertyValues["UpdateIssueIfNew"].PropertyValue = UpdateIssueIfStateCheckBox.Checked;
+                    Settings.Default.UpdateSetting("UpdateIssueIfNew", UpdateIssueIfStateCheckBox.Checked);
                     if (UpdateIssueIfStateCheckBox.Checked)
                     {
-                        Properties.Settings.Default.PropertyValues["NewStatus"].PropertyValue = (int)UpdateIssueNewStateComboBox.SelectedValue;
-                        Properties.Settings.Default.PropertyValues["InProgressStatus"].PropertyValue = (int)UpdateIssueInProgressComboBox.SelectedValue;
+                        Settings.Default.UpdateSetting("NewStatus", (int)UpdateIssueNewStateComboBox.SelectedValue);
+                        Settings.Default.UpdateSetting("InProgressStatus", (int)UpdateIssueInProgressComboBox.SelectedValue);
                     }
                 }
-                Properties.Settings.Default.PropertyValues["AddNoteOnChangeStatus"].PropertyValue = AddNoteOnChangeCheckBox.Checked;
-                Properties.Settings.Default.Save();
-                String Name = Properties.Settings.Default.LanguageCode;
+                Settings.Default.UpdateSetting("AddNoteOnChangeStatus", AddNoteOnChangeCheckBox.Checked);
+                Settings.Default.Save();
+                String Name = Settings.Default.LanguageCode;
                 Enumerations.SaveAll();
             }
             catch (Exception ex)
@@ -124,27 +125,27 @@ namespace Redmine.Client
 
         private void LoadConfig()
         {
-            RedmineBaseUrlTextBox.Text = Properties.Settings.Default.RedmineURL;
-            AuthenticationCheckBox.Checked = Properties.Settings.Default.RedmineAuthentication;
-            MinimizeToSystemTrayCheckBox.Checked = Properties.Settings.Default.MinimizeToSystemTray;
-            MinimizeOnStartTimerCheckBox.Checked = Properties.Settings.Default.MinimizeOnStartTimer;
-            RedmineUsernameTextBox.Text = Properties.Settings.Default.RedmineUser;
-            RedminePasswordTextBox.Text = Properties.Settings.Default.RedminePassword;
-            CheckForUpdatesCheckBox.Checked = Properties.Settings.Default.CheckForUpdates;
-            CacheLifetime.Value = Properties.Settings.Default.CacheLifetime;
-            PopupTimout.Value = Properties.Settings.Default.PopupInterval;
-            PauseTimerOnLockCheckBox.Checked = Properties.Settings.Default.PauseTickingOnLock;
-            RedmineVersionComboBox.SelectedIndex = RedmineVersionComboBox.FindStringExact(Languages.LangTools.GetTextForApiVersion((ApiVersion)Properties.Settings.Default.ApiVersion));
-            UpdateIssueIfStateCheckBox.Checked = Properties.Settings.Default.UpdateIssueIfNew;
+            RedmineBaseUrlTextBox.Text = Settings.Default.RedmineURL;
+            AuthenticationCheckBox.Checked = Settings.Default.RedmineAuthentication;
+            MinimizeToSystemTrayCheckBox.Checked = Settings.Default.MinimizeToSystemTray;
+            MinimizeOnStartTimerCheckBox.Checked = Settings.Default.MinimizeOnStartTimer;
+            RedmineUsernameTextBox.Text = Settings.Default.RedmineUser;
+            RedminePasswordTextBox.Text = Settings.Default.RedminePassword;
+            CheckForUpdatesCheckBox.Checked = Settings.Default.CheckForUpdates;
+            CacheLifetime.Value = Settings.Default.CacheLifetime;
+            PopupTimout.Value = Settings.Default.PopupInterval;
+            PauseTimerOnLockCheckBox.Checked = Settings.Default.PauseTickingOnLock;
+            RedmineVersionComboBox.SelectedIndex = RedmineVersionComboBox.FindStringExact(Languages.LangTools.GetTextForApiVersion((ApiVersion)Settings.Default.ApiVersion));
+            UpdateIssueIfStateCheckBox.Checked = Settings.Default.UpdateIssueIfNew;
             try {
-                Languages.Lang.Culture = new System.Globalization.CultureInfo(Properties.Settings.Default.LanguageCode);
+                Languages.Lang.Culture = new System.Globalization.CultureInfo(Settings.Default.LanguageCode);
             }
             catch (Exception)
             {
                 Languages.Lang.Culture = System.Globalization.CultureInfo.CurrentUICulture;
             }
             LanguageComboBox.SelectedIndex = LanguageComboBox.FindStringExact(Languages.Lang.Culture.DisplayName);
-            AddNoteOnChangeCheckBox.Checked = Properties.Settings.Default.AddNoteOnChangeStatus;
+            AddNoteOnChangeCheckBox.Checked = Settings.Default.AddNoteOnChangeStatus;
         }
 
         private void AuthenticationCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -240,8 +241,8 @@ namespace Redmine.Client
                 labelSelectCloseStatus.Enabled = true;
                 ComboBoxCloseStatus.Enabled = true;
 
-                if (Properties.Settings.Default.ClosedStatus != 0)
-                    ComboBoxCloseStatus.SelectedValue = Properties.Settings.Default.ClosedStatus;
+                if (Settings.Default.ClosedStatus != 0)
+                    ComboBoxCloseStatus.SelectedValue = Settings.Default.ClosedStatus;
                 else
                     ComboBoxCloseStatus.SelectedIndex = ComboBoxCloseStatus.FindStringExact("Closed");
 
@@ -290,8 +291,8 @@ namespace Redmine.Client
                 UpdateIssueNewStateComboBox.ValueMember = "Id";
                 UpdateIssueNewStateComboBox.DisplayMember = "Name";
 
-                if (Properties.Settings.Default.NewStatus!= 0)
-                    UpdateIssueNewStateComboBox.SelectedValue = Properties.Settings.Default.NewStatus;
+                if (Settings.Default.NewStatus!= 0)
+                    UpdateIssueNewStateComboBox.SelectedValue = Settings.Default.NewStatus;
                 else
                     UpdateIssueNewStateComboBox.SelectedIndex = UpdateIssueNewStateComboBox.FindStringExact("New");
 
@@ -299,13 +300,13 @@ namespace Redmine.Client
                 UpdateIssueInProgressComboBox.ValueMember = "Id";
                 UpdateIssueInProgressComboBox.DisplayMember = "Name";
 
-                if (Properties.Settings.Default.InProgressStatus != 0)
-                    UpdateIssueInProgressComboBox.SelectedValue = Properties.Settings.Default.InProgressStatus;
+                if (Settings.Default.InProgressStatus != 0)
+                    UpdateIssueInProgressComboBox.SelectedValue = Settings.Default.InProgressStatus;
                 else
                     UpdateIssueInProgressComboBox.SelectedIndex = UpdateIssueInProgressComboBox.FindStringExact("In Progress");
 
                 UpdateIssueIfStateCheckBox.Enabled = true;
-                UpdateIssueIfStateCheckBox.Checked = Properties.Settings.Default.UpdateIssueIfNew;
+                UpdateIssueIfStateCheckBox.Checked = Settings.Default.UpdateIssueIfNew;
                 UpdateIssueIfStateLabel.Enabled = true;
 
                 EnableDisableUpdateIssueIfNewFields();

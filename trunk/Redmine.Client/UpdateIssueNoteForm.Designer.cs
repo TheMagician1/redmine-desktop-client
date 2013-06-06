@@ -76,7 +76,7 @@
             // labelUpdateIssueNote
             // 
             this.labelUpdateIssueNote.AutoSize = true;
-            this.labelUpdateIssueNote.Location = new System.Drawing.Point(12, 24);
+            this.labelUpdateIssueNote.Location = new System.Drawing.Point(12, 22);
             this.labelUpdateIssueNote.Name = "labelUpdateIssueNote";
             this.labelUpdateIssueNote.Size = new System.Drawing.Size(79, 13);
             this.labelUpdateIssueNote.TabIndex = 28;

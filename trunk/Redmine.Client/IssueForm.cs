@@ -692,11 +692,6 @@ namespace Redmine.Client
             dataGridViewAttachments.Columns["Author"].DisplayIndex = 2;
         }
 
-        private static ProjectMember MembershipToMember(ProjectMembership projectMember)
-        {
-            return new ProjectMember(projectMember);
-        }
-
         private void RunWorkerAsync(IdentifiableName projectId)
         {
             AddBgWork(Lang.BgWork_GetIssue, () =>
@@ -736,11 +731,11 @@ namespace Redmine.Client
                             dataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
                             dataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
                             dataCache.Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
-                            if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
+                            if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
                             {
                                 List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
                                 //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
-                                dataCache.ProjectMembers = projectMembers.ConvertAll(new Converter<ProjectMembership, ProjectMember>(MembershipToMember));
+                                dataCache.ProjectMembers = projectMembers.ConvertAll(new Converter<ProjectMembership, ProjectMember>(ProjectMember.MembershipToMember));
                                 dataCache.ProjectMembers.Insert(0, new ProjectMember(new ProjectMembership { Id = 0, User = new IdentifiableName { Id = 0, Name = "" } }));
                                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
                                 {
