@@ -273,7 +273,7 @@
     <comment>{0} exception message</comment>
   </data>
   <data name="labelAssignedTo" xml:space="preserve">
-    <value>Assigned To</value>
+    <value>Toegewezen aan</value>
   </data>
   <data name="labelCacheLifetime" xml:space="preserve">
     <value>Cache levensduur (minuten, 0 = oneindig)</value>
@@ -602,7 +602,7 @@ of Vraag aandacht elke
   <data name="DlgUpdateIssueNoteTitle" xml:space="preserve">
     <value>Bijwerken incident {0} {1}</value>
   </data>
-  <data name="IssueField_assigned_to" xml:space="preserve">
+  <data name="IssueField_assignedto" xml:space="preserve">
     <value>Toegewezen aan</value>
   </data>
   <data name="IssueField_author" xml:space="preserve">
@@ -611,25 +611,25 @@ of Vraag aandacht elke
   <data name="IssueField_category" xml:space="preserve">
     <value>Categorie</value>
   </data>
-  <data name="IssueField_created_on" xml:space="preserve">
+  <data name="IssueField_createdon" xml:space="preserve">
     <value>Aangemaakt op</value>
   </data>
   <data name="IssueField_description" xml:space="preserve">
     <value>Beschrijving</value>
   </data>
-  <data name="IssueField_done_ratio" xml:space="preserve">
+  <data name="IssueField_doneratio" xml:space="preserve">
     <value>% Gereed</value>
   </data>
-  <data name="IssueField_due_date" xml:space="preserve">
-    <value>Verwachte datum gereed</value>
+  <data name="IssueField_duedate" xml:space="preserve">
+    <value>Datum Gereed</value>
   </data>
-  <data name="IssueField_estimated_hours" xml:space="preserve">
+  <data name="IssueField_estimatedhours" xml:space="preserve">
     <value>Geschatte Tijd</value>
   </data>
-  <data name="IssueField_fixed_version" xml:space="preserve">
+  <data name="IssueField_fixedversion" xml:space="preserve">
     <value>Versie</value>
   </data>
-  <data name="IssueField_parent" xml:space="preserve">
+  <data name="IssueField_parentissue" xml:space="preserve">
     <value>Hoofdtaak</value>
   </data>
   <data name="IssueField_priority" xml:space="preserve">
@@ -638,7 +638,7 @@ of Vraag aandacht elke
   <data name="IssueField_project" xml:space="preserve">
     <value>Project</value>
   </data>
-  <data name="IssueField_start_date" xml:space="preserve">
+  <data name="IssueField_startdate" xml:space="preserve">
     <value>Startdatum</value>
   </data>
   <data name="IssueField_status" xml:space="preserve">
@@ -650,7 +650,7 @@ of Vraag aandacht elke
   <data name="IssueField_tracker" xml:space="preserve">
     <value>Tracker</value>
   </data>
-  <data name="IssueField_updated_on" xml:space="preserve">
+  <data name="IssueField_updatedon" xml:space="preserve">
     <value>Bijgewerkt op</value>
   </data>
   <data name="labelCategory" xml:space="preserve">
@@ -679,5 +679,29 @@ of Vraag aandacht elke
   </data>
   <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
     <value>Voeg een notitie toe wanneer de status met bovenstaande opties wordt gewijzigd</value>
+  </data>
+  <data name="BtnRefreshButton_Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="groupBoxFilter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Wijzig zichtbare kolommen</value>
+  </data>
+  <data name="IssueField_id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="BtnClearButton" xml:space="preserve">
+    <value>Reset Filter</value>
+  </data>
+  <data name="editVisibleColumnsHeaderToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Wijzig zichtbare kolommen</value>
+  </data>
+  <data name="openIssueInBrowserToolStripMenuItem" xml:space="preserve">
+    <value>Open incident in &amp;Browser</value>
+  </data>
+  <data name="openIssueToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Open incident</value>
   </data>
 </root>
