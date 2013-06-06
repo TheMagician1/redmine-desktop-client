@@ -145,9 +145,9 @@ namespace Redmine.Client
                     }
 
                     if (RedmineAuthentication)
-                        redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword);
+                        redmine = new RedmineManager(RedmineURL, RedmineUser, RedminePassword, Settings.Default.CommunicationType);
                     else
-                        redmine = new RedmineManager(RedmineURL);
+                        redmine = new RedmineManager(RedmineURL, Settings.Default.CommunicationType);
                     this.Cursor = Cursors.AppStarting;
 
                     AsyncGetFormData(projectId, issueId, activityId, CheckBoxOnlyMe.Checked);

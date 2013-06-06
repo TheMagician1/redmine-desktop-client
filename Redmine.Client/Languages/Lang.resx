@@ -704,4 +704,7 @@ or Request attention every
   <data name="openIssueToolStripMenuItem" xml:space="preserve">
     <value>&amp;Open Issue</value>
   </data>
+  <data name="labelCommunicationType" xml:space="preserve">
+    <value>Communicate using</value>
+  </data>
 </root>

@@ -110,5 +110,8 @@
     <Setting Name="IssueGridHeader_ShowFixedVersion" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="CommunicationType" Type="Redmine.Net.Api.MimeFormat" Scope="User">
+      <Value Profile="(Default)">xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

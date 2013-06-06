@@ -1222,6 +1222,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Communicate using.
+        /// </summary>
+        internal static string labelCommunicationType {
+            get {
+                return ResourceManager.GetString("labelCommunicationType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string labelDescription {

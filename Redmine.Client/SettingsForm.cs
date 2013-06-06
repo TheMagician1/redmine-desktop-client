@@ -93,6 +93,11 @@ namespace Redmine.Client
                 Settings.Default.UpdateSetting("RedmineUser", RedmineUsernameTextBox.Text);
                 Settings.Default.UpdateSetting("RedminePassword", RedminePasswordTextBox.Text);
                 Settings.Default.UpdateSetting("RedmineAuthentication", AuthenticationCheckBox.Checked);
+                if (radioButtonJson.Checked)
+                    Settings.Default.UpdateSetting("CommunicationType", Redmine.Net.Api.MimeFormat.json);
+                else
+                    Settings.Default.UpdateSetting("CommunicationType", Redmine.Net.Api.MimeFormat.xml);
+
                 Settings.Default.UpdateSetting("CheckForUpdates", CheckForUpdatesCheckBox.Checked);
                 Settings.Default.UpdateSetting("MinimizeToSystemTray", MinimizeToSystemTrayCheckBox.Checked);
                 Settings.Default.UpdateSetting("MinimizeOnStartTimer", MinimizeOnStartTimerCheckBox.Checked);
@@ -127,10 +132,13 @@ namespace Redmine.Client
         {
             RedmineBaseUrlTextBox.Text = Settings.Default.RedmineURL;
             AuthenticationCheckBox.Checked = Settings.Default.RedmineAuthentication;
-            MinimizeToSystemTrayCheckBox.Checked = Settings.Default.MinimizeToSystemTray;
-            MinimizeOnStartTimerCheckBox.Checked = Settings.Default.MinimizeOnStartTimer;
             RedmineUsernameTextBox.Text = Settings.Default.RedmineUser;
             RedminePasswordTextBox.Text = Settings.Default.RedminePassword;
+            radioButtonJson.Checked = Settings.Default.CommunicationType == Net.Api.MimeFormat.json;
+            radioButtonXml.Checked = Settings.Default.CommunicationType != Net.Api.MimeFormat.json;
+
+            MinimizeToSystemTrayCheckBox.Checked = Settings.Default.MinimizeToSystemTray;
+            MinimizeOnStartTimerCheckBox.Checked = Settings.Default.MinimizeOnStartTimer;
             CheckForUpdatesCheckBox.Checked = Settings.Default.CheckForUpdates;
             CacheLifetime.Value = Settings.Default.CacheLifetime;
             PopupTimout.Value = Settings.Default.PopupInterval;
@@ -202,10 +210,11 @@ namespace Redmine.Client
             try
             {
                 Redmine.Net.Api.RedmineManager manager;
+                Redmine.Net.Api.MimeFormat format = radioButtonXml.Checked ? Redmine.Net.Api.MimeFormat.xml : Net.Api.MimeFormat.json;
                 if (AuthenticationCheckBox.Checked)
-                    manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text, RedmineUsernameTextBox.Text, RedminePasswordTextBox.Text);
+                    manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text, RedmineUsernameTextBox.Text, RedminePasswordTextBox.Text, format);
                 else
-                    manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text);
+                    manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text, format);
                 User newCurrentUser = manager.GetCurrentUser();
                 MessageBox.Show(Lang.ConnectionTestOK_Text, Lang.ConnectionTestOK_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
