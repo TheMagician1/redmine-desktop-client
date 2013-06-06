@@ -59,8 +59,33 @@ namespace Redmine.Client
             this.BtnSettingsButton = new System.Windows.Forms.Button();
             this.BtnNewIssueButton = new System.Windows.Forms.Button();
             this.CheckBoxOnlyMe = new System.Windows.Forms.CheckBox();
+            this.groupBoxFilter = new System.Windows.Forms.GroupBox();
+            this.labelCategory = new System.Windows.Forms.Label();
+            this.ComboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.labelTargetVersion = new System.Windows.Forms.Label();
+            this.ComboBoxTargetVersion = new System.Windows.Forms.ComboBox();
+            this.labelAssignedTo = new System.Windows.Forms.Label();
+            this.ComboBoxAssignedTo = new System.Windows.Forms.ComboBox();
+            this.labelSubject = new System.Windows.Forms.Label();
+            this.TextBoxSubject = new System.Windows.Forms.TextBox();
+            this.labelPriority = new System.Windows.Forms.Label();
+            this.ComboBoxPriority = new System.Windows.Forms.ComboBox();
+            this.BtnClearButton = new System.Windows.Forms.Button();
+            this.labelStatus = new System.Windows.Forms.Label();
+            this.ComboBoxStatus = new System.Windows.Forms.ComboBox();
+            this.labelTracker = new System.Windows.Forms.Label();
+            this.ComboBoxTracker = new System.Windows.Forms.ComboBox();
+            this.IssueGridHeaderMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editVisibleColumnsHeaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IssueGridMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openIssueInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editVisibleColumnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotifyIconMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).BeginInit();
+            this.groupBoxFilter.SuspendLayout();
+            this.IssueGridHeaderMenuStrip.SuspendLayout();
+            this.IssueGridMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // TextBoxHours
@@ -120,7 +145,7 @@ namespace Redmine.Client
             this.TextBoxComment.Location = new System.Drawing.Point(185, 38);
             this.TextBoxComment.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxComment.Name = "TextBoxComment";
-            this.TextBoxComment.Size = new System.Drawing.Size(240, 20);
+            this.TextBoxComment.Size = new System.Drawing.Size(318, 20);
             this.TextBoxComment.TabIndex = 8;
             // 
             // labelComment
@@ -137,7 +162,7 @@ namespace Redmine.Client
             // 
             this.ComboBoxActivity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxActivity.FormattingEnabled = true;
-            this.ComboBoxActivity.Location = new System.Drawing.Point(9, 74);
+            this.ComboBoxActivity.Location = new System.Drawing.Point(9, 78);
             this.ComboBoxActivity.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxActivity.Name = "ComboBoxActivity";
             this.ComboBoxActivity.Size = new System.Drawing.Size(172, 21);
@@ -147,7 +172,7 @@ namespace Redmine.Client
             // labelActivity
             // 
             this.labelActivity.AutoSize = true;
-            this.labelActivity.Location = new System.Drawing.Point(8, 59);
+            this.labelActivity.Location = new System.Drawing.Point(8, 60);
             this.labelActivity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelActivity.Name = "labelActivity";
             this.labelActivity.Size = new System.Drawing.Size(41, 13);
@@ -157,7 +182,7 @@ namespace Redmine.Client
             // labelProject
             // 
             this.labelProject.AutoSize = true;
-            this.labelProject.Location = new System.Drawing.Point(185, 59);
+            this.labelProject.Location = new System.Drawing.Point(185, 60);
             this.labelProject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelProject.Name = "labelProject";
             this.labelProject.Size = new System.Drawing.Size(40, 13);
@@ -170,17 +195,17 @@ namespace Redmine.Client
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxProject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxProject.FormattingEnabled = true;
-            this.ComboBoxProject.Location = new System.Drawing.Point(185, 74);
+            this.ComboBoxProject.Location = new System.Drawing.Point(185, 78);
             this.ComboBoxProject.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxProject.Name = "ComboBoxProject";
-            this.ComboBoxProject.Size = new System.Drawing.Size(240, 21);
+            this.ComboBoxProject.Size = new System.Drawing.Size(232, 21);
             this.ComboBoxProject.TabIndex = 2;
             this.ComboBoxProject.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProject_SelectedIndexChanged);
             // 
             // BtnCommitButton
             // 
             this.BtnCommitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCommitButton.Location = new System.Drawing.Point(429, 10);
+            this.BtnCommitButton.Location = new System.Drawing.Point(521, 10);
             this.BtnCommitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCommitButton.Name = "BtnCommitButton";
             this.BtnCommitButton.Size = new System.Drawing.Size(82, 24);
@@ -243,17 +268,19 @@ namespace Redmine.Client
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewIssues.Location = new System.Drawing.Point(9, 99);
+            this.DataGridViewIssues.Location = new System.Drawing.Point(9, 103);
             this.DataGridViewIssues.Margin = new System.Windows.Forms.Padding(2);
             this.DataGridViewIssues.MultiSelect = false;
             this.DataGridViewIssues.Name = "DataGridViewIssues";
             this.DataGridViewIssues.ReadOnly = true;
             this.DataGridViewIssues.RowTemplate.Height = 24;
             this.DataGridViewIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewIssues.Size = new System.Drawing.Size(416, 312);
+            this.DataGridViewIssues.Size = new System.Drawing.Size(408, 385);
             this.DataGridViewIssues.TabIndex = 0;
             this.DataGridViewIssues.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewIssues_CellDoubleClick);
             this.DataGridViewIssues.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewIssues_CellFormatting);
+            this.DataGridViewIssues.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewIssues_CellMouseDown);
+            this.DataGridViewIssues.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewIssues_ColumnHeaderMouseClick);
             this.DataGridViewIssues.SelectionChanged += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
             // 
             // timer1
@@ -263,7 +290,7 @@ namespace Redmine.Client
             // BtnRefreshButton
             // 
             this.BtnRefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRefreshButton.Location = new System.Drawing.Point(429, 71);
+            this.BtnRefreshButton.Location = new System.Drawing.Point(4, 327);
             this.BtnRefreshButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnRefreshButton.Name = "BtnRefreshButton";
             this.BtnRefreshButton.Size = new System.Drawing.Size(82, 24);
@@ -275,7 +302,7 @@ namespace Redmine.Client
             // BtnExitButton
             // 
             this.BtnExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnExitButton.Location = new System.Drawing.Point(429, 387);
+            this.BtnExitButton.Location = new System.Drawing.Point(521, 464);
             this.BtnExitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnExitButton.Name = "BtnExitButton";
             this.BtnExitButton.Size = new System.Drawing.Size(82, 24);
@@ -298,7 +325,7 @@ namespace Redmine.Client
             // BtnAboutButton
             // 
             this.BtnAboutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAboutButton.Location = new System.Drawing.Point(429, 359);
+            this.BtnAboutButton.Location = new System.Drawing.Point(421, 464);
             this.BtnAboutButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAboutButton.Name = "BtnAboutButton";
             this.BtnAboutButton.Size = new System.Drawing.Size(82, 24);
@@ -309,8 +336,8 @@ namespace Redmine.Client
             // 
             // BtnSettingsButton
             // 
-            this.BtnSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSettingsButton.Location = new System.Drawing.Point(429, 331);
+            this.BtnSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSettingsButton.Location = new System.Drawing.Point(521, 47);
             this.BtnSettingsButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSettingsButton.Name = "BtnSettingsButton";
             this.BtnSettingsButton.Size = new System.Drawing.Size(82, 24);
@@ -322,7 +349,7 @@ namespace Redmine.Client
             // BtnNewIssueButton
             // 
             this.BtnNewIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNewIssueButton.Location = new System.Drawing.Point(429, 99);
+            this.BtnNewIssueButton.Location = new System.Drawing.Point(521, 76);
             this.BtnNewIssueButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnNewIssueButton.Name = "BtnNewIssueButton";
             this.BtnNewIssueButton.Size = new System.Drawing.Size(82, 24);
@@ -335,7 +362,7 @@ namespace Redmine.Client
             // 
             this.CheckBoxOnlyMe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckBoxOnlyMe.AutoSize = true;
-            this.CheckBoxOnlyMe.Location = new System.Drawing.Point(270, 16);
+            this.CheckBoxOnlyMe.Location = new System.Drawing.Point(348, 15);
             this.CheckBoxOnlyMe.Name = "CheckBoxOnlyMe";
             this.CheckBoxOnlyMe.Size = new System.Drawing.Size(155, 17);
             this.CheckBoxOnlyMe.TabIndex = 19;
@@ -343,11 +370,241 @@ namespace Redmine.Client
             this.CheckBoxOnlyMe.UseVisualStyleBackColor = true;
             this.CheckBoxOnlyMe.Click += new System.EventHandler(this.CheckBoxOnlyMe_Click);
             // 
+            // groupBoxFilter
+            // 
+            this.groupBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxFilter.Controls.Add(this.labelCategory);
+            this.groupBoxFilter.Controls.Add(this.ComboBoxCategory);
+            this.groupBoxFilter.Controls.Add(this.labelTargetVersion);
+            this.groupBoxFilter.Controls.Add(this.ComboBoxTargetVersion);
+            this.groupBoxFilter.Controls.Add(this.labelAssignedTo);
+            this.groupBoxFilter.Controls.Add(this.ComboBoxAssignedTo);
+            this.groupBoxFilter.Controls.Add(this.labelSubject);
+            this.groupBoxFilter.Controls.Add(this.TextBoxSubject);
+            this.groupBoxFilter.Controls.Add(this.labelPriority);
+            this.groupBoxFilter.Controls.Add(this.ComboBoxPriority);
+            this.groupBoxFilter.Controls.Add(this.BtnClearButton);
+            this.groupBoxFilter.Controls.Add(this.BtnRefreshButton);
+            this.groupBoxFilter.Controls.Add(this.labelStatus);
+            this.groupBoxFilter.Controls.Add(this.ComboBoxStatus);
+            this.groupBoxFilter.Controls.Add(this.labelTracker);
+            this.groupBoxFilter.Controls.Add(this.ComboBoxTracker);
+            this.groupBoxFilter.Location = new System.Drawing.Point(422, 103);
+            this.groupBoxFilter.Name = "groupBoxFilter";
+            this.groupBoxFilter.Size = new System.Drawing.Size(180, 356);
+            this.groupBoxFilter.TabIndex = 20;
+            this.groupBoxFilter.TabStop = false;
+            this.groupBoxFilter.Text = "Filter";
+            // 
+            // labelCategory
+            // 
+            this.labelCategory.AutoSize = true;
+            this.labelCategory.Location = new System.Drawing.Point(2, 280);
+            this.labelCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCategory.Name = "labelCategory";
+            this.labelCategory.Size = new System.Drawing.Size(49, 13);
+            this.labelCategory.TabIndex = 24;
+            this.labelCategory.Text = "Category";
+            // 
+            // ComboBoxCategory
+            // 
+            this.ComboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxCategory.FormattingEnabled = true;
+            this.ComboBoxCategory.Location = new System.Drawing.Point(5, 298);
+            this.ComboBoxCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.ComboBoxCategory.Name = "ComboBoxCategory";
+            this.ComboBoxCategory.Size = new System.Drawing.Size(170, 21);
+            this.ComboBoxCategory.TabIndex = 25;
+            this.ComboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCategory_SelectedIndexChanged);
+            // 
+            // labelTargetVersion
+            // 
+            this.labelTargetVersion.AutoSize = true;
+            this.labelTargetVersion.Location = new System.Drawing.Point(2, 236);
+            this.labelTargetVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTargetVersion.Name = "labelTargetVersion";
+            this.labelTargetVersion.Size = new System.Drawing.Size(75, 13);
+            this.labelTargetVersion.TabIndex = 22;
+            this.labelTargetVersion.Text = "Target version";
+            // 
+            // ComboBoxTargetVersion
+            // 
+            this.ComboBoxTargetVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxTargetVersion.FormattingEnabled = true;
+            this.ComboBoxTargetVersion.Location = new System.Drawing.Point(5, 254);
+            this.ComboBoxTargetVersion.Margin = new System.Windows.Forms.Padding(2);
+            this.ComboBoxTargetVersion.Name = "ComboBoxTargetVersion";
+            this.ComboBoxTargetVersion.Size = new System.Drawing.Size(170, 21);
+            this.ComboBoxTargetVersion.TabIndex = 23;
+            this.ComboBoxTargetVersion.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTargetVersion_SelectedIndexChanged);
+            // 
+            // labelAssignedTo
+            // 
+            this.labelAssignedTo.AutoSize = true;
+            this.labelAssignedTo.Location = new System.Drawing.Point(2, 192);
+            this.labelAssignedTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelAssignedTo.Name = "labelAssignedTo";
+            this.labelAssignedTo.Size = new System.Drawing.Size(62, 13);
+            this.labelAssignedTo.TabIndex = 18;
+            this.labelAssignedTo.Text = "Assigned to";
+            // 
+            // ComboBoxAssignedTo
+            // 
+            this.ComboBoxAssignedTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxAssignedTo.FormattingEnabled = true;
+            this.ComboBoxAssignedTo.Location = new System.Drawing.Point(5, 210);
+            this.ComboBoxAssignedTo.Margin = new System.Windows.Forms.Padding(2);
+            this.ComboBoxAssignedTo.Name = "ComboBoxAssignedTo";
+            this.ComboBoxAssignedTo.Size = new System.Drawing.Size(170, 21);
+            this.ComboBoxAssignedTo.TabIndex = 19;
+            this.ComboBoxAssignedTo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxAssignedTo_SelectedIndexChanged);
+            // 
+            // labelSubject
+            // 
+            this.labelSubject.AutoSize = true;
+            this.labelSubject.Location = new System.Drawing.Point(2, 149);
+            this.labelSubject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSubject.Name = "labelSubject";
+            this.labelSubject.Size = new System.Drawing.Size(43, 13);
+            this.labelSubject.TabIndex = 12;
+            this.labelSubject.Text = "Subject";
+            // 
+            // TextBoxSubject
+            // 
+            this.TextBoxSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxSubject.Location = new System.Drawing.Point(5, 167);
+            this.TextBoxSubject.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxSubject.Name = "TextBoxSubject";
+            this.TextBoxSubject.Size = new System.Drawing.Size(170, 20);
+            this.TextBoxSubject.TabIndex = 13;
+            this.TextBoxSubject.TextChanged += new System.EventHandler(this.TextBoxSubject_TextChanged);
+            // 
+            // labelPriority
+            // 
+            this.labelPriority.AutoSize = true;
+            this.labelPriority.Location = new System.Drawing.Point(2, 105);
+            this.labelPriority.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelPriority.Name = "labelPriority";
+            this.labelPriority.Size = new System.Drawing.Size(38, 13);
+            this.labelPriority.TabIndex = 10;
+            this.labelPriority.Text = "Priority";
+            // 
+            // ComboBoxPriority
+            // 
+            this.ComboBoxPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxPriority.FormattingEnabled = true;
+            this.ComboBoxPriority.Location = new System.Drawing.Point(5, 123);
+            this.ComboBoxPriority.Margin = new System.Windows.Forms.Padding(2);
+            this.ComboBoxPriority.Name = "ComboBoxPriority";
+            this.ComboBoxPriority.Size = new System.Drawing.Size(170, 21);
+            this.ComboBoxPriority.TabIndex = 11;
+            this.ComboBoxPriority.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPriority_SelectedIndexChanged);
+            // 
+            // BtnClearButton
+            // 
+            this.BtnClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnClearButton.Location = new System.Drawing.Point(93, 327);
+            this.BtnClearButton.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnClearButton.Name = "BtnClearButton";
+            this.BtnClearButton.Size = new System.Drawing.Size(82, 24);
+            this.BtnClearButton.TabIndex = 10;
+            this.BtnClearButton.Text = "Clear";
+            this.BtnClearButton.UseVisualStyleBackColor = true;
+            this.BtnClearButton.Click += new System.EventHandler(this.BtnClearButton_Click);
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Location = new System.Drawing.Point(2, 61);
+            this.labelStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(37, 13);
+            this.labelStatus.TabIndex = 8;
+            this.labelStatus.Text = "Status";
+            // 
+            // ComboBoxStatus
+            // 
+            this.ComboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxStatus.FormattingEnabled = true;
+            this.ComboBoxStatus.Location = new System.Drawing.Point(5, 79);
+            this.ComboBoxStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.ComboBoxStatus.Name = "ComboBoxStatus";
+            this.ComboBoxStatus.Size = new System.Drawing.Size(170, 21);
+            this.ComboBoxStatus.TabIndex = 9;
+            this.ComboBoxStatus.SelectedIndexChanged += new System.EventHandler(this.ComboBoxStatus_SelectedIndexChanged);
+            // 
+            // labelTracker
+            // 
+            this.labelTracker.AutoSize = true;
+            this.labelTracker.Location = new System.Drawing.Point(2, 17);
+            this.labelTracker.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTracker.Name = "labelTracker";
+            this.labelTracker.Size = new System.Drawing.Size(44, 13);
+            this.labelTracker.TabIndex = 6;
+            this.labelTracker.Text = "Tracker";
+            // 
+            // ComboBoxTracker
+            // 
+            this.ComboBoxTracker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxTracker.FormattingEnabled = true;
+            this.ComboBoxTracker.Location = new System.Drawing.Point(5, 35);
+            this.ComboBoxTracker.Margin = new System.Windows.Forms.Padding(2);
+            this.ComboBoxTracker.Name = "ComboBoxTracker";
+            this.ComboBoxTracker.Size = new System.Drawing.Size(170, 21);
+            this.ComboBoxTracker.TabIndex = 7;
+            this.ComboBoxTracker.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTracker_SelectedIndexChanged);
+            // 
+            // IssueGridHeaderMenuStrip
+            // 
+            this.IssueGridHeaderMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editVisibleColumnsHeaderToolStripMenuItem});
+            this.IssueGridHeaderMenuStrip.Name = "IssueGridHeaderMenuStrip";
+            this.IssueGridHeaderMenuStrip.Size = new System.Drawing.Size(183, 26);
+            // 
+            // editVisibleColumnsHeaderToolStripMenuItem
+            // 
+            this.editVisibleColumnsHeaderToolStripMenuItem.Name = "editVisibleColumnsHeaderToolStripMenuItem";
+            this.editVisibleColumnsHeaderToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.editVisibleColumnsHeaderToolStripMenuItem.Text = "Edit Visible Columns";
+            this.editVisibleColumnsHeaderToolStripMenuItem.Click += new System.EventHandler(this.editVisibleColumnsToolStripMenuItem_Click);
+            // 
+            // IssueGridMenuStrip
+            // 
+            this.IssueGridMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openIssueToolStripMenuItem,
+            this.openIssueInBrowserToolStripMenuItem,
+            this.editVisibleColumnsToolStripMenuItem});
+            this.IssueGridMenuStrip.Name = "IssueGridMenuStrip";
+            this.IssueGridMenuStrip.Size = new System.Drawing.Size(191, 70);
+            // 
+            // openIssueToolStripMenuItem
+            // 
+            this.openIssueToolStripMenuItem.Name = "openIssueToolStripMenuItem";
+            this.openIssueToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.openIssueToolStripMenuItem.Text = "Open Issue";
+            this.openIssueToolStripMenuItem.Click += new System.EventHandler(this.openIssueToolStripMenuItem_Click);
+            // 
+            // openIssueInBrowserToolStripMenuItem
+            // 
+            this.openIssueInBrowserToolStripMenuItem.Name = "openIssueInBrowserToolStripMenuItem";
+            this.openIssueInBrowserToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.openIssueInBrowserToolStripMenuItem.Text = "Open Issue In Browser";
+            this.openIssueInBrowserToolStripMenuItem.Click += new System.EventHandler(this.openIssueInBrowserToolStripMenuItem_Click);
+            // 
+            // editVisibleColumnsToolStripMenuItem
+            // 
+            this.editVisibleColumnsToolStripMenuItem.Name = "editVisibleColumnsToolStripMenuItem";
+            this.editVisibleColumnsToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.editVisibleColumnsToolStripMenuItem.Text = "Edit Visible Columns";
+            this.editVisibleColumnsToolStripMenuItem.Click += new System.EventHandler(this.editVisibleColumnsToolStripMenuItem_Click);
+            // 
             // RedmineClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 421);
+            this.ClientSize = new System.Drawing.Size(609, 498);
+            this.Controls.Add(this.groupBoxFilter);
             this.Controls.Add(this.BtnSettingsButton);
             this.Controls.Add(this.CheckBoxOnlyMe);
             this.Controls.Add(this.BtnNewIssueButton);
@@ -355,7 +612,6 @@ namespace Redmine.Client
             this.Controls.Add(this.BtnAboutButton);
             this.Controls.Add(this.DataGridViewIssues);
             this.Controls.Add(this.BtnExitButton);
-            this.Controls.Add(this.BtnRefreshButton);
             this.Controls.Add(this.labelActivity);
             this.Controls.Add(this.ComboBoxProject);
             this.Controls.Add(this.BtnCommitButton);
@@ -371,13 +627,17 @@ namespace Redmine.Client
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(525, 250);
+            this.MinimumSize = new System.Drawing.Size(625, 536);
             this.Name = "RedmineClientForm";
             this.Text = "Redmine Client";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.NotifyIconMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).EndInit();
+            this.groupBoxFilter.ResumeLayout(false);
+            this.groupBoxFilter.PerformLayout();
+            this.IssueGridHeaderMenuStrip.ResumeLayout(false);
+            this.IssueGridMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,6 +672,28 @@ namespace Redmine.Client
         private CheckBox CheckBoxOnlyMe;
         private ToolStripMenuItem PauseToolStripMenuItem;
         private ToolStripMenuItem StartToolStripMenuItem;
+        private GroupBox groupBoxFilter;
+        private Label labelTracker;
+        private ComboBox ComboBoxTracker;
+        private Label labelStatus;
+        private ComboBox ComboBoxStatus;
+        private Label labelPriority;
+        private ComboBox ComboBoxPriority;
+        private Label labelSubject;
+        private TextBox TextBoxSubject;
+        private Label labelAssignedTo;
+        private ComboBox ComboBoxAssignedTo;
+        private Label labelTargetVersion;
+        private ComboBox ComboBoxTargetVersion;
+        private Label labelCategory;
+        private ComboBox ComboBoxCategory;
+        private ContextMenuStrip IssueGridHeaderMenuStrip;
+        private ToolStripMenuItem editVisibleColumnsHeaderToolStripMenuItem;
+        private ContextMenuStrip IssueGridMenuStrip;
+        private ToolStripMenuItem openIssueToolStripMenuItem;
+        private ToolStripMenuItem openIssueInBrowserToolStripMenuItem;
+        private ToolStripMenuItem editVisibleColumnsToolStripMenuItem;
+        private Button BtnClearButton;
     }
 }
 

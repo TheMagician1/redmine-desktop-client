@@ -77,6 +77,12 @@
     <Compile Include="AttachmentForm.Designer.cs">
       <DependentUpon>AttachmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IssueGridSelectColumns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IssueGridSelectColumns.Designer.cs">
+      <DependentUpon>IssueGridSelectColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectMember.cs" />
     <Compile Include="BgWork.cs" />
     <Compile Include="BgWorker.cs">
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IssueForm.resx">
       <DependentUpon>IssueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueGridSelectColumns.resx">
+      <DependentUpon>IssueGridSelectColumns.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages\Lang.cs-CZ.resx" />
     <EmbeddedResource Include="Languages\Lang.de.resx" />

@@ -241,6 +241,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        internal static string BtnClearButton {
+            get {
+                return ResourceManager.GetString("BtnClearButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close Issue.
         /// </summary>
         internal static string BtnCloseButton {
@@ -336,6 +345,15 @@ namespace Redmine.Client.Languages {
         internal static string BtnRefreshButton {
             get {
                 return ResourceManager.GetString("BtnRefreshButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter.
+        /// </summary>
+        internal static string BtnRefreshButton_Filter {
+            get {
+                return ResourceManager.GetString("BtnRefreshButton_Filter", resourceCulture);
             }
         }
         
@@ -682,6 +700,24 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Edit Visible Columns.
+        /// </summary>
+        internal static string editVisibleColumnsHeaderToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("editVisibleColumnsHeaderToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Edit Visible Columns.
+        /// </summary>
+        internal static string editVisibleColumnsToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("editVisibleColumnsToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activities.
         /// </summary>
         internal static string EnumName_Activities {
@@ -844,6 +880,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filter.
+        /// </summary>
+        internal static string groupBoxFilter {
+            get {
+                return ResourceManager.GetString("groupBoxFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application Settings.
         /// </summary>
         internal static string GrpApplicationSettings {
@@ -873,9 +918,9 @@ namespace Redmine.Client.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Assigned To.
         /// </summary>
-        internal static string IssueField_assigned_to {
+        internal static string IssueField_assignedto {
             get {
-                return ResourceManager.GetString("IssueField_assigned_to", resourceCulture);
+                return ResourceManager.GetString("IssueField_assignedto", resourceCulture);
             }
         }
         
@@ -900,9 +945,9 @@ namespace Redmine.Client.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Created On.
         /// </summary>
-        internal static string IssueField_created_on {
+        internal static string IssueField_createdon {
             get {
-                return ResourceManager.GetString("IssueField_created_on", resourceCulture);
+                return ResourceManager.GetString("IssueField_createdon", resourceCulture);
             }
         }
         
@@ -918,45 +963,54 @@ namespace Redmine.Client.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Done Ratio.
         /// </summary>
-        internal static string IssueField_done_ratio {
+        internal static string IssueField_doneratio {
             get {
-                return ResourceManager.GetString("IssueField_done_ratio", resourceCulture);
+                return ResourceManager.GetString("IssueField_doneratio", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Due Date.
         /// </summary>
-        internal static string IssueField_due_date {
+        internal static string IssueField_duedate {
             get {
-                return ResourceManager.GetString("IssueField_due_date", resourceCulture);
+                return ResourceManager.GetString("IssueField_duedate", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Estimated Hours.
         /// </summary>
-        internal static string IssueField_estimated_hours {
+        internal static string IssueField_estimatedhours {
             get {
-                return ResourceManager.GetString("IssueField_estimated_hours", resourceCulture);
+                return ResourceManager.GetString("IssueField_estimatedhours", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Target Version.
         /// </summary>
-        internal static string IssueField_fixed_version {
+        internal static string IssueField_fixedversion {
             get {
-                return ResourceManager.GetString("IssueField_fixed_version", resourceCulture);
+                return ResourceManager.GetString("IssueField_fixedversion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        internal static string IssueField_id {
+            get {
+                return ResourceManager.GetString("IssueField_id", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Parent Issue.
         /// </summary>
-        internal static string IssueField_parent {
+        internal static string IssueField_parentissue {
             get {
-                return ResourceManager.GetString("IssueField_parent", resourceCulture);
+                return ResourceManager.GetString("IssueField_parentissue", resourceCulture);
             }
         }
         
@@ -981,9 +1035,9 @@ namespace Redmine.Client.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Start Date.
         /// </summary>
-        internal static string IssueField_start_date {
+        internal static string IssueField_startdate {
             get {
-                return ResourceManager.GetString("IssueField_start_date", resourceCulture);
+                return ResourceManager.GetString("IssueField_startdate", resourceCulture);
             }
         }
         
@@ -1017,9 +1071,9 @@ namespace Redmine.Client.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Updated On.
         /// </summary>
-        internal static string IssueField_updated_on {
+        internal static string IssueField_updatedon {
             get {
-                return ResourceManager.GetString("IssueField_updated_on", resourceCulture);
+                return ResourceManager.GetString("IssueField_updatedon", resourceCulture);
             }
         }
         
@@ -1472,6 +1526,24 @@ namespace Redmine.Client.Languages {
         internal static string NewVersionTitle {
             get {
                 return ResourceManager.GetString("NewVersionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Issue in &amp;Browser.
+        /// </summary>
+        internal static string openIssueInBrowserToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("openIssueInBrowserToolStripMenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Open Issue.
+        /// </summary>
+        internal static string openIssueToolStripMenuItem {
+            get {
+                return ResourceManager.GetString("openIssueToolStripMenuItem", resourceCulture);
             }
         }
         

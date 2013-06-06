@@ -162,8 +162,10 @@
             // 
             // TimeEntryForm
             // 
+            this.AcceptButton = this.BtnOKButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.BtnCancelButton;
             this.ClientSize = new System.Drawing.Size(305, 237);
             this.Controls.Add(this.labelTimeEntryTitle);
             this.Controls.Add(this.labelComment);

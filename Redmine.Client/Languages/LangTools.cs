@@ -36,6 +36,11 @@ namespace Redmine.Client.Languages
             return Lang.ResourceManager.GetString("ApiVersion_" + apiVersion.ToString(), Lang.Culture);
         }
 
+        public static string GetIssueField(string fieldName)
+        {
+            return Lang.ResourceManager.GetString("IssueField_" + fieldName.ToLower(Lang.Culture), Lang.Culture);
+        }
+
         public static string CreateUpdatedText(string fieldName, string from, string to)
         {
             string basicFormatString;
@@ -47,7 +52,7 @@ namespace Redmine.Client.Languages
                 basicFormatString = Lang.UpdatedField_Deleted;
             else
                 return ""; // nothing changed...
-            return String.Format(basicFormatString, Lang.ResourceManager.GetString("IssueField_" + fieldName, Lang.Culture), from, to);
+            return String.Format(basicFormatString, GetIssueField(fieldName), from, to);
         }
         public static string CreateUpdatedText(string fieldName, IdentifiableName from, IdentifiableName to)
         {

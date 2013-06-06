@@ -45,7 +45,7 @@
             // labelAttachmentDescription
             // 
             this.labelAttachmentDescription.AutoSize = true;
-            this.labelAttachmentDescription.Location = new System.Drawing.Point(9, 58);
+            this.labelAttachmentDescription.Location = new System.Drawing.Point(9, 57);
             this.labelAttachmentDescription.Name = "labelAttachmentDescription";
             this.labelAttachmentDescription.Size = new System.Drawing.Size(60, 13);
             this.labelAttachmentDescription.TabIndex = 17;
@@ -53,7 +53,7 @@
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(12, 74);
+            this.textBoxDescription.Location = new System.Drawing.Point(12, 75);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(366, 20);
             this.textBoxDescription.TabIndex = 16;
@@ -82,7 +82,7 @@
             // 
             // textBoxAttachmentFilePath
             // 
-            this.textBoxAttachmentFilePath.Location = new System.Drawing.Point(12, 35);
+            this.textBoxAttachmentFilePath.Location = new System.Drawing.Point(12, 32);
             this.textBoxAttachmentFilePath.Name = "textBoxAttachmentFilePath";
             this.textBoxAttachmentFilePath.Size = new System.Drawing.Size(293, 20);
             this.textBoxAttachmentFilePath.TabIndex = 16;
@@ -90,7 +90,7 @@
             // labelSelectAttachment
             // 
             this.labelSelectAttachment.AutoSize = true;
-            this.labelSelectAttachment.Location = new System.Drawing.Point(12, 19);
+            this.labelSelectAttachment.Location = new System.Drawing.Point(12, 14);
             this.labelSelectAttachment.Name = "labelSelectAttachment";
             this.labelSelectAttachment.Size = new System.Drawing.Size(80, 13);
             this.labelSelectAttachment.TabIndex = 17;
@@ -98,7 +98,7 @@
             // 
             // BtnBrowseButton
             // 
-            this.BtnBrowseButton.Location = new System.Drawing.Point(310, 32);
+            this.BtnBrowseButton.Location = new System.Drawing.Point(310, 29);
             this.BtnBrowseButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnBrowseButton.Name = "BtnBrowseButton";
             this.BtnBrowseButton.Size = new System.Drawing.Size(68, 24);

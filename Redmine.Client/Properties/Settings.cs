@@ -31,5 +31,23 @@
             Settings.Default.PropertyValues["TickingTicks"].PropertyValue = ticks;
             Settings.Default.Save();
         }
+
+        public void SetIssueGridSort(string columnName, System.Windows.Forms.SortOrder order)
+        {
+            Settings.Default.PropertyValues["IssueGridSortColumn"].PropertyValue = columnName;
+            Settings.Default.PropertyValues["IssueGridSortOrder"].PropertyValue = order;
+            Settings.Default.Save();
+        }
+        public bool ShowIssueGridColumn(string columnName)
+        {
+            if (Settings.Default.PropertyValues["IssueGridHeader_Show" + columnName] != null)
+                return (bool)Settings.Default.PropertyValues["IssueGridHeader_Show" + columnName].PropertyValue;
+            return false;
+        }
+
+        public void UpdateSetting<T>(string settingName, T setting)
+        {
+            Settings.Default.PropertyValues[settingName].PropertyValue = setting;
+        }
     }
 }

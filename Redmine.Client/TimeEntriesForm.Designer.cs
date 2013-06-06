@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.BtnOKButton = new System.Windows.Forms.Button();
-            this.BtnCancelButton = new System.Windows.Forms.Button();
             this.DataGridViewTimeEntries = new System.Windows.Forms.DataGridView();
             this.BtnDeleteButton = new System.Windows.Forms.Button();
             this.BtnModifyButton = new System.Windows.Forms.Button();
@@ -40,7 +39,7 @@
             // BtnOKButton
             // 
             this.BtnOKButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnOKButton.Location = new System.Drawing.Point(156, 235);
+            this.BtnOKButton.Location = new System.Drawing.Point(192, 235);
             this.BtnOKButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnOKButton.Name = "BtnOKButton";
             this.BtnOKButton.Size = new System.Drawing.Size(68, 24);
@@ -48,18 +47,6 @@
             this.BtnOKButton.Text = "OK";
             this.BtnOKButton.UseVisualStyleBackColor = true;
             this.BtnOKButton.Click += new System.EventHandler(this.BtnOKButton_Click);
-            // 
-            // BtnCancelButton
-            // 
-            this.BtnCancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BtnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancelButton.Location = new System.Drawing.Point(228, 235);
-            this.BtnCancelButton.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnCancelButton.Name = "BtnCancelButton";
-            this.BtnCancelButton.Size = new System.Drawing.Size(68, 24);
-            this.BtnCancelButton.TabIndex = 27;
-            this.BtnCancelButton.Text = "Cancel";
-            this.BtnCancelButton.UseVisualStyleBackColor = true;
             // 
             // DataGridViewTimeEntries
             // 
@@ -123,7 +110,6 @@
             this.Controls.Add(this.BtnAddButton);
             this.Controls.Add(this.DataGridViewTimeEntries);
             this.Controls.Add(this.BtnOKButton);
-            this.Controls.Add(this.BtnCancelButton);
             this.Name = "TimeEntriesForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -137,7 +123,6 @@
         #endregion
 
         private System.Windows.Forms.Button BtnOKButton;
-        private System.Windows.Forms.Button BtnCancelButton;
         private System.Windows.Forms.DataGridView DataGridViewTimeEntries;
         private System.Windows.Forms.Button BtnDeleteButton;
         private System.Windows.Forms.Button BtnModifyButton;
