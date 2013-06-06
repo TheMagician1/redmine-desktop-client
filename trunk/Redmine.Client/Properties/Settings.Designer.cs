@@ -454,5 +454,17 @@ namespace Redmine.Client.Properties {
                 this["IssueGridHeader_ShowFixedVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("xml")]
+        public global::Redmine.Net.Api.MimeFormat CommunicationType {
+            get {
+                return ((global::Redmine.Net.Api.MimeFormat)(this["CommunicationType"]));
+            }
+            set {
+                this["CommunicationType"] = value;
+            }
+        }
     }
 }

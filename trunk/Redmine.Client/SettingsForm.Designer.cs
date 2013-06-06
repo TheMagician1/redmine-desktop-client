@@ -60,10 +60,13 @@
             this.UpdateIssueNewStateComboBox = new System.Windows.Forms.ComboBox();
             this.ComboBoxCloseStatus = new System.Windows.Forms.ComboBox();
             this.labelSelectCloseStatus = new System.Windows.Forms.Label();
+            this.AddNoteOnChangeCheckBox = new System.Windows.Forms.CheckBox();
             this.UpdateIssueIfStateCheckBox = new System.Windows.Forms.CheckBox();
             this.PauseTimerOnLockCheckBox = new System.Windows.Forms.CheckBox();
             this.GrpEditEnumerations = new System.Windows.Forms.GroupBox();
-            this.AddNoteOnChangeCheckBox = new System.Windows.Forms.CheckBox();
+            this.radioButtonXml = new System.Windows.Forms.RadioButton();
+            this.radioButtonJson = new System.Windows.Forms.RadioButton();
+            this.labelCommunicationType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).BeginInit();
             this.GrpRedmineServerSettings.SuspendLayout();
@@ -337,6 +340,9 @@
             // 
             this.GrpRedmineServerSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrpRedmineServerSettings.Controls.Add(this.radioButtonJson);
+            this.GrpRedmineServerSettings.Controls.Add(this.radioButtonXml);
+            this.GrpRedmineServerSettings.Controls.Add(this.labelCommunicationType);
             this.GrpRedmineServerSettings.Controls.Add(this.RedminePasswordTextBox);
             this.GrpRedmineServerSettings.Controls.Add(this.BtnTestConnection);
             this.GrpRedmineServerSettings.Controls.Add(this.labelRedminePassword);
@@ -454,6 +460,18 @@
             this.labelSelectCloseStatus.TabIndex = 9;
             this.labelSelectCloseStatus.Text = "When closing an Issue set it to";
             // 
+            // AddNoteOnChangeCheckBox
+            // 
+            this.AddNoteOnChangeCheckBox.AutoSize = true;
+            this.AddNoteOnChangeCheckBox.Location = new System.Drawing.Point(8, 229);
+            this.AddNoteOnChangeCheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.AddNoteOnChangeCheckBox.Name = "AddNoteOnChangeCheckBox";
+            this.AddNoteOnChangeCheckBox.Size = new System.Drawing.Size(295, 17);
+            this.AddNoteOnChangeCheckBox.TabIndex = 11;
+            this.AddNoteOnChangeCheckBox.Text = "Add a note when changing the status with above options";
+            this.AddNoteOnChangeCheckBox.UseVisualStyleBackColor = true;
+            this.AddNoteOnChangeCheckBox.CheckedChanged += new System.EventHandler(this.UpdateIssueIfStateCheckBox_CheckedChanged);
+            // 
             // UpdateIssueIfStateCheckBox
             // 
             this.UpdateIssueIfStateCheckBox.AutoSize = true;
@@ -493,17 +511,36 @@
             this.GrpEditEnumerations.TabStop = false;
             this.GrpEditEnumerations.Text = "Edit Enumerations";
             // 
-            // AddNoteOnChangeCheckBox
+            // radioButtonXml
             // 
-            this.AddNoteOnChangeCheckBox.AutoSize = true;
-            this.AddNoteOnChangeCheckBox.Location = new System.Drawing.Point(8, 229);
-            this.AddNoteOnChangeCheckBox.Margin = new System.Windows.Forms.Padding(2);
-            this.AddNoteOnChangeCheckBox.Name = "AddNoteOnChangeCheckBox";
-            this.AddNoteOnChangeCheckBox.Size = new System.Drawing.Size(295, 17);
-            this.AddNoteOnChangeCheckBox.TabIndex = 11;
-            this.AddNoteOnChangeCheckBox.Text = "Add a note when changing the status with above options";
-            this.AddNoteOnChangeCheckBox.UseVisualStyleBackColor = true;
-            this.AddNoteOnChangeCheckBox.CheckedChanged += new System.EventHandler(this.UpdateIssueIfStateCheckBox_CheckedChanged);
+            this.radioButtonXml.AutoSize = true;
+            this.radioButtonXml.Location = new System.Drawing.Point(373, 117);
+            this.radioButtonXml.Name = "radioButtonXml";
+            this.radioButtonXml.Size = new System.Drawing.Size(40, 17);
+            this.radioButtonXml.TabIndex = 10;
+            this.radioButtonXml.TabStop = true;
+            this.radioButtonXml.Text = "xml";
+            this.radioButtonXml.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonJson
+            // 
+            this.radioButtonJson.AutoSize = true;
+            this.radioButtonJson.Location = new System.Drawing.Point(429, 117);
+            this.radioButtonJson.Name = "radioButtonJson";
+            this.radioButtonJson.Size = new System.Drawing.Size(44, 17);
+            this.radioButtonJson.TabIndex = 10;
+            this.radioButtonJson.TabStop = true;
+            this.radioButtonJson.Text = "json";
+            this.radioButtonJson.UseVisualStyleBackColor = true;
+            // 
+            // labelCommunicationType
+            // 
+            this.labelCommunicationType.AutoSize = true;
+            this.labelCommunicationType.Location = new System.Drawing.Point(254, 119);
+            this.labelCommunicationType.Name = "labelCommunicationType";
+            this.labelCommunicationType.Size = new System.Drawing.Size(99, 13);
+            this.labelCommunicationType.TabIndex = 11;
+            this.labelCommunicationType.Text = "Communicate using";
             // 
             // SettingsForm
             // 
@@ -577,5 +614,8 @@
         private System.Windows.Forms.ComboBox UpdateIssueNewStateComboBox;
         private System.Windows.Forms.CheckBox UpdateIssueIfStateCheckBox;
         private System.Windows.Forms.CheckBox AddNoteOnChangeCheckBox;
+        private System.Windows.Forms.RadioButton radioButtonJson;
+        private System.Windows.Forms.RadioButton radioButtonXml;
+        private System.Windows.Forms.Label labelCommunicationType;
     }
 }
