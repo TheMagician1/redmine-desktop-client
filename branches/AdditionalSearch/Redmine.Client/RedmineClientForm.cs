@@ -634,6 +634,7 @@ namespace Redmine.Client
         {
             ticks = Convert.ToInt32(TextBoxHours.Text)*3600 + Convert.ToInt32(TextBoxMinutes.Text)*60 +
                     Convert.ToInt32(TextBoxSeconds.Text);
+            Properties.Settings.Default.SetTickingTick(ticking, ticks);
             UpdateTime();
         }
 
