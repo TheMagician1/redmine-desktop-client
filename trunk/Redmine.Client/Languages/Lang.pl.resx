@@ -1,0 +1,710 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AuthenticationCheckBox" xml:space="preserve">
+    <value>Wymaga uwierzytelniania</value>
+  </data>
+  <data name="BtnAboutButton" xml:space="preserve">
+    <value>O...</value>
+  </data>
+  <data name="BtnCommitButton" xml:space="preserve">
+    <value>Zatwierdź</value>
+  </data>
+  <data name="BtnExitButton" xml:space="preserve">
+    <value>Wyjdź</value>
+  </data>
+  <data name="BtnNewIssueButton" xml:space="preserve">
+    <value>Nowy</value>
+  </data>
+  <data name="BtnRefreshButton" xml:space="preserve">
+    <value>Odśwież</value>
+  </data>
+  <data name="BtnResetButton" xml:space="preserve">
+    <value>Zresetuj</value>
+  </data>
+  <data name="BtnSettingsButton" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="BtnStartButton" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="BtnStartButton_Pause" xml:space="preserve">
+    <value>Pauza</value>
+  </data>
+  <data name="CommitConfirmQuestion" xml:space="preserve">
+    <value>Gotowy do wysłania?</value>
+  </data>
+  <data name="CommitConfirmText" xml:space="preserve">
+    <value>Czy na pewno chcesz zatwierdzić następujący wpis: {6} Projekt: {0}, Rodzaj działań: {1}, Zagadnienie: {2},{6} Data: {3}, Komentarz: {4}, Czas: {5}</value>
+    <comment>{0} ProjectName; {1} ActivityName; {2} IssueId; {3} Date; {4} Comment; {5} Time(Hours) {6} newline</comment>
+  </data>
+  <data name="CommitNoActivitySelected" xml:space="preserve">
+    <value>Nie wybrałeś rodzaju działań.</value>
+  </data>
+  <data name="CommitNoIssueSelected" xml:space="preserve">
+    <value>Nie wybrałeś żadnego zagadnienia.</value>
+  </data>
+  <data name="CommitNoTime" xml:space="preserve">
+    <value>Nie wprowadziłeś czasu do zarejestrowania...</value>
+  </data>
+  <data name="CommitSuccessfullText" xml:space="preserve">
+    <value>Czas pracy został poprawnie zarejestrowany.</value>
+  </data>
+  <data name="CommitSuccessfullTitle" xml:space="preserve">
+    <value>Czas pracy został zarejestrowany</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Błąd</value>
+  </data>
+  <data name="Error_Exception" xml:space="preserve">
+    <value>Wyjątek: {0}</value>
+    <comment>{0} exception message</comment>
+  </data>
+  <data name="Error_NoProjectsFound" xml:space="preserve">
+    <value>Nie znaleziono żadnych projektów w Redmine.</value>
+  </data>
+  <data name="Error_Startup" xml:space="preserve">
+    <value>Błąd uruchamiania. Sprawdź konfigurację.</value>
+    <comment>The settings dialog will be started after this message</comment>
+  </data>
+  <data name="Error_ValueOutOfRange" xml:space="preserve">
+    <value>Wartość poza zakresem</value>
+  </data>
+  <data name="labelActivity" xml:space="preserve">
+    <value>Rodzaj działań</value>
+    <comment>Choose the Activity for the time commit</comment>
+  </data>
+  <data name="labelComment" xml:space="preserve">
+    <value>Komentarz</value>
+    <comment>Comment of time commit</comment>
+  </data>
+  <data name="labelProject" xml:space="preserve">
+    <value>Projekt</value>
+    <comment>Choose the Project</comment>
+  </data>
+  <data name="labelRedminePassword" xml:space="preserve">
+    <value>Hasło do Redmine</value>
+  </data>
+  <data name="labelRedmineURL" xml:space="preserve">
+    <value>Adres Redmine</value>
+  </data>
+  <data name="labelRedmineUsername" xml:space="preserve">
+    <value>Nazwa użytkownika Redmine / Klucz API</value>
+  </data>
+  <data name="NewVersionText" xml:space="preserve">
+    <value>Dostępna jest nowa wersja. Czy chesz abym otworzył stronę pobierania?</value>
+  </data>
+  <data name="NewVersionTitle" xml:space="preserve">
+    <value>Nowa wersja</value>
+  </data>
+  <data name="RestoreToolStrip_Hide" xml:space="preserve">
+    <value>&amp;Ukryj</value>
+  </data>
+  <data name="RestoreToolStrip_Minimize" xml:space="preserve">
+    <value>Zmi&amp;nimalizuj</value>
+  </data>
+  <data name="RestoreToolStrip_Restore" xml:space="preserve">
+    <value>Przyw&amp;róć</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Ostrzeżenie</value>
+  </data>
+  <data name="BtnCancelButton" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="BtnCloseButton" xml:space="preserve">
+    <value>Zamknij zagadnienie</value>
+  </data>
+  <data name="BtnSaveButton" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="cbDueDate" xml:space="preserve">
+    <value>Termin wykonania</value>
+  </data>
+  <data name="cbStartDate" xml:space="preserve">
+    <value>Data rozpoczęcia</value>
+  </data>
+  <data name="CheckForUpdatesCheckBox" xml:space="preserve">
+    <value>Przy uruchamianiu sprawdź czy jest nowa wersja</value>
+  </data>
+  <data name="CloseIssueText" xml:space="preserve">
+    <value>Czy na pewno chcesz zamknąć zagadnienie {0}?</value>
+    <comment>{0} IssueId</comment>
+  </data>
+  <data name="DlgIssueTitleEdit" xml:space="preserve">
+    <value>Edycja zagadnienia {0} w ramach projektu {1}</value>
+    <comment>{0} IssueId; {1} ProjectName</comment>
+  </data>
+  <data name="DlgIssueTitleNew" xml:space="preserve">
+    <value>Utwórz nowe zagadnienie w projekcie {0}</value>
+    <comment>{0} ProjectName</comment>
+  </data>
+  <data name="DlgSettingsTitle" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="Error_CreateIssueFailed" xml:space="preserve">
+    <value>Tworzenie nowego zagadnienia nie powiodło się. Odpowiedź serwera: {0}</value>
+    <comment>{0} exception message</comment>
+  </data>
+  <data name="Error_InvalidUrl" xml:space="preserve">
+    <value>Nieprawidłowy adres instalacji Redmine.</value>
+  </data>
+  <data name="Error_IssueSubjectMandatory" xml:space="preserve">
+    <value>Temat zagadnienia musi zostać wprowadzony</value>
+  </data>
+  <data name="Error_UpdateIssueFailed" xml:space="preserve">
+    <value>Aktualizacja zagadnienia nie powiodła się. Odpowiedź serwera: {0}</value>
+    <comment>{0} exception message</comment>
+  </data>
+  <data name="labelAssignedTo" xml:space="preserve">
+    <value>Przypisane do</value>
+  </data>
+  <data name="labelCacheLifetime" xml:space="preserve">
+    <value>Ważność pamięci podręcznej (w minutach, 0 = nieskończony)</value>
+  </data>
+  <data name="labelDescription" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="labelEstimatedTime" xml:space="preserve">
+    <value>Szacunkowy czas</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>Język</value>
+  </data>
+  <data name="labelPercentDone" xml:space="preserve">
+    <value>% wykonane</value>
+  </data>
+  <data name="labelPopupTimout" xml:space="preserve">
+    <value>Wyświetl komunikat gdy zminimalizowany
+lub zażądaj reakcji co
+(minut, 0 = nigdy)</value>
+  </data>
+  <data name="labelPriority" xml:space="preserve">
+    <value>Priorytet</value>
+  </data>
+  <data name="labelStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="labelSubject" xml:space="preserve">
+    <value>Temat</value>
+  </data>
+  <data name="labelTargetVersion" xml:space="preserve">
+    <value>Wersja docelowa</value>
+  </data>
+  <data name="labelTracker" xml:space="preserve">
+    <value>Rodzaj zagadnienia</value>
+  </data>
+  <data name="linkEditInRedmine" xml:space="preserve">
+    <value>Edytuj te zagadnienie w Redmine</value>
+  </data>
+  <data name="MinimizeOnStartTimerCheckBox" xml:space="preserve">
+    <value>Zminimalizuj po rozpoczęciu pomiaru czasu</value>
+  </data>
+  <data name="MinimizeToSystemTrayCheckBox" xml:space="preserve">
+    <value>Minimalizuj do zasobnika systemowego</value>
+  </data>
+  <data name="RedmineClientTitle_NoUser" xml:space="preserve">
+    <value>Redmine Client</value>
+  </data>
+  <data name="RedmineClientTitle_User" xml:space="preserve">
+    <value>Redmine Client - {0} {1}</value>
+    <comment>{0} First name; {1} Last name</comment>
+  </data>
+  <data name="BgWork_CheckUpdates" xml:space="preserve">
+    <value>Sprawdzam aktualizacje</value>
+  </data>
+  <data name="BgWork_GetFormData" xml:space="preserve">
+    <value>Pobieram dane</value>
+  </data>
+  <data name="BgWork_GetUsername" xml:space="preserve">
+    <value>Pobieram nazwę użytkownika</value>
+  </data>
+  <data name="CommitCancelSaveCommentQuestion" xml:space="preserve">
+    <value>Zapisać nowy komentarz?</value>
+  </data>
+  <data name="CommitCancelSaveCommentText" xml:space="preserve">
+    <value>Anulowałeś zatwierdzanie wykorzystanego czasu, ale zmieniłeś komentarz.{0}Czy chcesz użyć nowego komentarza?</value>
+    <comment>{0} newline</comment>
+  </data>
+  <data name="ExitToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Zamknij</value>
+  </data>
+  <data name="labelCommitActivity" xml:space="preserve">
+    <value>Rodzaj działań:</value>
+  </data>
+  <data name="labelCommitComment" xml:space="preserve">
+    <value>Komentarz:</value>
+  </data>
+  <data name="labelCommitDateSpent" xml:space="preserve">
+    <value>Spędzony na:</value>
+  </data>
+  <data name="labelCommitIssue" xml:space="preserve">
+    <value>Zagadnienie:</value>
+  </data>
+  <data name="labelCommitProject" xml:space="preserve">
+    <value>Projekt:</value>
+  </data>
+  <data name="labelCommitQuestion" xml:space="preserve">
+    <value>Czy chcesz zatwierdzić następujący wpis?</value>
+  </data>
+  <data name="labelCommitTime" xml:space="preserve">
+    <value>Czas (h):</value>
+  </data>
+  <data name="Warning_ClosingSaveTimes" xml:space="preserve">
+    <value>Probujesz zamknąć Redmine Client, ale trwa pomiar czasu poświęconego na pracę.{0}Czy chcesz zatwierdzić wpis czasu pracy przed wyjściem?</value>
+    <comment>{0} newline</comment>
+  </data>
+  <data name="ApiVersion_V10x" xml:space="preserve">
+    <value>V1.0.x</value>
+  </data>
+  <data name="ApiVersion_V11x" xml:space="preserve">
+    <value>V1.1.x</value>
+  </data>
+  <data name="ApiVersion_V13x" xml:space="preserve">
+    <value>V1.3.x</value>
+  </data>
+  <data name="ApiVersion_V14x" xml:space="preserve">
+    <value>V1.4.x</value>
+  </data>
+  <data name="ApiVersion_V21x" xml:space="preserve">
+    <value>V2.1.x</value>
+  </data>
+  <data name="labelRedmineVersion" xml:space="preserve">
+    <value>Wersja Redmine</value>
+  </data>
+  <data name="BtnEditActivitiesButton" xml:space="preserve">
+    <value>Działania</value>
+  </data>
+  <data name="BtnEditDocumentCategories" xml:space="preserve">
+    <value>Kat. Dok.</value>
+  </data>
+  <data name="BtnEditIssuePriorities" xml:space="preserve">
+    <value>Priorytety</value>
+  </data>
+  <data name="BtnOKButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DlgEditEnumFormTitle_Edit" xml:space="preserve">
+    <value>Edycja dozwolonej wartości {0} dla {1}</value>
+    <comment>{0} Current name of the Enumeration; {1} Name of the Enumeration set</comment>
+  </data>
+  <data name="DlgEditEnumFormTitle_New" xml:space="preserve">
+    <value>Nowa wartość dla {0}</value>
+    <comment>{0} Name of the Enumeration set</comment>
+  </data>
+  <data name="DlgEditEnumListFormTitle" xml:space="preserve">
+    <value>Edycja dozwolonych wartości {0}</value>
+  </data>
+  <data name="EnumName_Activities" xml:space="preserve">
+    <value>Rodzaje działań</value>
+  </data>
+  <data name="EnumName_DocumentCategories" xml:space="preserve">
+    <value>Kategorie dokumentów</value>
+  </data>
+  <data name="EnumName_IssuePriorities" xml:space="preserve">
+    <value>Priorytety zagadnień</value>
+  </data>
+  <data name="Error_EnumFieldIsMandatory" xml:space="preserve">
+    <value>Pole {0} musi zostać wypełnione.</value>
+    <comment>{0} Fieldname</comment>
+  </data>
+  <data name="Error_EnumMustBeUnique" xml:space="preserve">
+    <value>Id i nazwa muszą być unikalne.</value>
+  </data>
+  <data name="GrpEditEnumerations" xml:space="preserve">
+    <value>Edytuj dozwolone wartości</value>
+  </data>
+  <data name="labelEnumId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="labelEnumName" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="BtnAddButton" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="BtnDeleteButton" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="BtnModifyButton" xml:space="preserve">
+    <value>Zmień</value>
+  </data>
+  <data name="BtnTestConnection" xml:space="preserve">
+    <value>Sprawdź połączenie</value>
+  </data>
+  <data name="CheckBoxClosesIssue" xml:space="preserve">
+    <value>Zamknij też zagadnienie</value>
+  </data>
+  <data name="CheckBoxOnlyMe" xml:space="preserve">
+    <value>Pokaż tylko zagadnienia przypisane do mnie</value>
+  </data>
+  <data name="ConnectionTestFailed_Text" xml:space="preserve">
+    <value>Połączenie z Redmine nie powiodło się. Wystąpił następujący błąd: {0}</value>
+    <comment>{0} error</comment>
+  </data>
+  <data name="ConnectionTestFailed_Title" xml:space="preserve">
+    <value>Test połączenia nie powiódł się</value>
+  </data>
+  <data name="ConnectionTestOK_Text" xml:space="preserve">
+    <value>Pomyślnie nawiązano połączenie z Redmine.</value>
+  </data>
+  <data name="ConnectionTestOK_Title" xml:space="preserve">
+    <value>Połączenie testowe zostało pomyślnie nawiązane</value>
+  </data>
+  <data name="Error_ClosedStatusUnknown" xml:space="preserve">
+    <value>Status wykorzystywany do oznaczania zagadnienia jako zamknięte jest nieznany, przejdź do ustawień aby wskazać właściwą wartość.</value>
+  </data>
+  <data name="GrpApplicationSettings" xml:space="preserve">
+    <value>Ustawienia aplikacji</value>
+  </data>
+  <data name="GrpRedmineServerSettings" xml:space="preserve">
+    <value>Ustawienia serwera Redmine</value>
+  </data>
+  <data name="labelExplClosingIssueStatus" xml:space="preserve">
+    <value>Aby odblokować pola przeprowadź test połączenia z Redmine w wersji 1.3.x lub wyższej</value>
+  </data>
+  <data name="labelSelectCloseStatus" xml:space="preserve">
+    <value>Podczas zamykania zagadnienia, ustaw na</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Pytanie</value>
+  </data>
+  <data name="Timer_WasTickingWhenClosed" xml:space="preserve">
+    <value>Licznik czasu był włączony gdy wyłączyłeś aplikację. Czy chcesz aby odliczanie było kontynowane?</value>
+  </data>
+  <data name="PauseTimerOnLockCheckBox" xml:space="preserve">
+    <value>Wstrzymaj licznik przy zablokowanym ekranie i przy wylogowaniu</value>
+  </data>
+  <data name="UpdateIssueIfStateCheckBox" xml:space="preserve">
+    <value>Gdy startujesz licznik a zagadnienie ma status</value>
+  </data>
+  <data name="UpdateIssueIfStateLabel" xml:space="preserve">
+    <value>ustaw wtedy status na</value>
+  </data>
+  <data name="Error_NewOrInProgressStatusUnknown" xml:space="preserve">
+    <value>Status wykorzystywany do oznaczania zagadnienia jako realizowanego jest nieznany, przejdź do ustawień aby wskazać właściwą wartość.</value>
+  </data>
+  <data name="IssueUpdatedToInProgress" xml:space="preserve">
+    <value>Wybrane zagadnienie {0} jest oznaczane jako &quot;W realizacji&quot;. (StatusId = {1})</value>
+    <comment>{0} Issue name; {1} Id of In Progress</comment>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Wiadomość</value>
+  </data>
+  <data name="ApiVersion_V12x" xml:space="preserve">
+    <value>V1.2.x</value>
+  </data>
+  <data name="ApiVersion_V20x" xml:space="preserve">
+    <value>V2.0.x</value>
+  </data>
+  <data name="ApiVersion_V22x" xml:space="preserve">
+    <value>V2.2.x</value>
+  </data>
+  <data name="BtnViewTimeButton" xml:space="preserve">
+    <value>Zobacz czas</value>
+  </data>
+  <data name="BgWork_GetTimeEntries" xml:space="preserve">
+    <value>Pobieram wpisy czasu pracy</value>
+  </data>
+  <data name="DlgTimeEntriesTitle" xml:space="preserve">
+    <value>Podgląd czasu pracy nad zagadnieniem {0} {1}</value>
+    <comment>{0} issuenumber; {1} issue subject</comment>
+  </data>
+  <data name="BgWork_GetIssue" xml:space="preserve">
+    <value>Pobieranie informacji o zagadnieniu</value>
+  </data>
+  <data name="DlgTimeEntryFormTitle_Edit" xml:space="preserve">
+    <value>Edycja wpisu czasu pracy {0} dla zagadnienia {1} {2}</value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
+    <value>Nowy wpisz czasu pracy dla zagadnienia {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_Edit" xml:space="preserve">
+    <value>Edycja czasu pracy {0} dla zgłoszenia {3}{1} {2}</value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_New" xml:space="preserve">
+    <value>Dodaj nowy wpis czasu pracy dla zagadnienia{3}{0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelByUser" xml:space="preserve">
+    <value>Przez użytkownika</value>
+  </data>
+  <data name="labelSpentHours" xml:space="preserve">
+    <value>Wykorzystany czas</value>
+  </data>
+  <data name="labelSpentOn" xml:space="preserve">
+    <value>Wykorzystany na</value>
+  </data>
+  <data name="Warning_AreYouSureDeleteTimeEntry" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć informacje o czasie pracy {0}</value>
+    <comment>{0} time-entry id</comment>
+  </data>
+  <data name="LabelChildren" xml:space="preserve">
+    <value>Podzagadnienia:</value>
+  </data>
+  <data name="LabelParent" xml:space="preserve">
+    <value>Rodzic: {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="PauseToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Pauza</value>
+  </data>
+  <data name="StartToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Start</value>
+  </data>
+  <data name="addNewToolStripMenuItem" xml:space="preserve">
+    <value>Dodaj nowe</value>
+  </data>
+  <data name="BtnBrowseButton" xml:space="preserve">
+    <value>Przeglądaj</value>
+  </data>
+  <data name="DlgAttachmentTitle" xml:space="preserve">
+    <value>Dodawanie załącznika do zagadnienia {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="downloadOpenToolStripMenuItem" xml:space="preserve">
+    <value>Pobierz / Otwórz</value>
+  </data>
+  <data name="groupBoxAttachments" xml:space="preserve">
+    <value>Załącznik</value>
+  </data>
+  <data name="labelAttachmentDescription" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="labelSelectAttachment" xml:space="preserve">
+    <value>Plik załącznika</value>
+  </data>
+  <data name="NewIssue" xml:space="preserve">
+    <value>Nowe zagadnienie</value>
+  </data>
+  <data name="LabelRelations" xml:space="preserve">
+    <value>Powiązania</value>
+  </data>
+  <data name="DlgUpdateIssueNoteTitle" xml:space="preserve">
+    <value>Aktualizacja zagadnienia {0} {1}</value>
+  </data>
+  <data name="IssueField_assignedto" xml:space="preserve">
+    <value>Przypisane do</value>
+  </data>
+  <data name="IssueField_author" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="IssueField_category" xml:space="preserve">
+    <value>Kategoria</value>
+  </data>
+  <data name="IssueField_createdon" xml:space="preserve">
+    <value>Utworzone</value>
+  </data>
+  <data name="IssueField_description" xml:space="preserve">
+    <value>Opis</value>
+  </data>
+  <data name="IssueField_doneratio" xml:space="preserve">
+    <value>Postęp realizacji</value>
+  </data>
+  <data name="IssueField_duedate" xml:space="preserve">
+    <value>Termin wykonania</value>
+  </data>
+  <data name="IssueField_estimatedhours" xml:space="preserve">
+    <value>Szacunkowy czas wykonania</value>
+  </data>
+  <data name="IssueField_fixedversion" xml:space="preserve">
+    <value>Wersja docelowa</value>
+  </data>
+  <data name="IssueField_parentissue" xml:space="preserve">
+    <value>Zagadnienie nadrzędne</value>
+  </data>
+  <data name="IssueField_priority" xml:space="preserve">
+    <value>Priorytet</value>
+  </data>
+  <data name="IssueField_project" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="IssueField_startdate" xml:space="preserve">
+    <value>Data rozpoczęcia</value>
+  </data>
+  <data name="IssueField_status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="IssueField_subject" xml:space="preserve">
+    <value>Temat</value>
+  </data>
+  <data name="IssueField_tracker" xml:space="preserve">
+    <value>Rodzaj zagadnienia</value>
+  </data>
+  <data name="IssueField_updatedon" xml:space="preserve">
+    <value>Zaktualizowane</value>
+  </data>
+  <data name="labelCategory" xml:space="preserve">
+    <value>Kategoria</value>
+  </data>
+  <data name="labelUpdateIssueNote" xml:space="preserve">
+    <value>Dodatkowe notatki objaśniające wprowadzone zmiany - pozostaw puste jeżeli brak</value>
+  </data>
+  <data name="ShowAllIssues" xml:space="preserve">
+    <value>Pokaż wszystkie zagadnienia</value>
+  </data>
+  <data name="UpdatedField_Deleted" xml:space="preserve">
+    <value>Usunięto {0} ({1})</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="UpdatedField_Description" xml:space="preserve">
+    <value>Opis został uaktualniony</value>
+  </data>
+  <data name="UpdatedField_SetTo" xml:space="preserve">
+    <value>Ustawiono {0} na {2}</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="UpdatedField_UpdatedTo" xml:space="preserve">
+    <value>Zmieniono {0} z {1} na {2}</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
+    <value>Dodaj komentarz gdy zmieniany jest status z wykorzystaniem powyższych opcji</value>
+  </data>
+  <data name="BtnRefreshButton_Filter" xml:space="preserve">
+    <value>Filtr</value>
+  </data>
+  <data name="groupBoxFilter" xml:space="preserve">
+    <value>Filtr</value>
+  </data>
+  <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Edytuj widoczne kolumny</value>
+  </data>
+  <data name="IssueField_id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="BtnClearButton" xml:space="preserve">
+    <value>Wyczyść</value>
+  </data>
+  <data name="editVisibleColumnsHeaderToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Edytuj widoczne kolumny</value>
+  </data>
+  <data name="openIssueInBrowserToolStripMenuItem" xml:space="preserve">
+    <value>Otwórz zagadnienie w przeg&amp;lądarce</value>
+  </data>
+  <data name="openIssueToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Otwórz zagadnienie</value>
+  </data>
+  <data name="labelCommunicationType" xml:space="preserve">
+    <value>Połącz używając</value>
+  </data>
+</root>

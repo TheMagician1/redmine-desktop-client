@@ -164,6 +164,7 @@
     <EmbeddedResource Include="Languages\Lang.nl.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.pl.resx" />
     <EmbeddedResource Include="Languages\Lang.pt-BR.resx" />
     <EmbeddedResource Include="Languages\Lang.resx">
       <Generator>ResXFileCodeGenerator</Generator>
