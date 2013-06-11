@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,41 +117,145 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="labelCopyright.Text" xml:space="preserve">
-    <value>Copyright © Pavel Kalian 2009, All rights reserved
-Copyright © Bas van Leeuwen 2012-2013
-Other Contributor(s): Johan 't Hart
-Translators:
-Blackman82 (Czech)
-jgoetze &amp;&amp; fabismailer (German)
-rafaelff1 (Portugese (Brazil))
-MademoiselleGeek (French)
-mbouzada (Galician)
-legal90 (Russian)</value>
+  <data name="BtnAboutButton" xml:space="preserve">
+    <value>О программе</value>
   </data>
-  <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>Redmine Desktop Client
-=========
-
-Desktop tool for reporting time spent on issues in Redmine project management system.
-
-You can download it, report bugs, get the source or post feature requests on http://code.google.com/p/redmine-desktop-client
-
-You are free to use this code as much as you wish, but if you make any improvemens, please share them with the community.
-
-Icons from the excellent Nuvola theme drawn by David Vignoni.
-
-Copyright (c) 2009, Pavel Kalian
-Copyright (c) 2012, Bas van Leeuwen
-Other Contributors: Johan 't Hart
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-    * Neither the name of the author nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</value>
+  <data name="BtnExitButton" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="BtnRefreshButton" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="BtnResetButton" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="BtnSettingsButton" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="BtnStartButton" xml:space="preserve">
+    <value>Запуск</value>
+  </data>
+  <data name="BtnStartButton_Pause" xml:space="preserve">
+    <value>Пауза</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Error_Exception" xml:space="preserve">
+    <value>Исключение: {0}</value>
+    <comment>{0} exception message</comment>
+  </data>
+  <data name="Error_NoProjectsFound" xml:space="preserve">
+    <value>Проекты в Redmine не найдены.</value>
+  </data>
+  <data name="Error_Startup" xml:space="preserve">
+    <value>Ошибка запуска. Проверьте конфигурацию.</value>
+    <comment>The settings dialog will be started after this message</comment>
+  </data>
+  <data name="labelComment" xml:space="preserve">
+    <value>Комментарий</value>
+    <comment>Comment of time commit</comment>
+  </data>
+  <data name="labelProject" xml:space="preserve">
+    <value>Проект</value>
+    <comment>Choose the Project</comment>
+  </data>
+  <data name="labelRedminePassword" xml:space="preserve">
+    <value>Пароль в Redmine</value>
+  </data>
+  <data name="labelRedmineURL" xml:space="preserve">
+    <value>Redmine URL</value>
+  </data>
+  <data name="NewVersionTitle" xml:space="preserve">
+    <value>Новая версия</value>
+  </data>
+  <data name="RestoreToolStrip_Hide" xml:space="preserve">
+    <value>&amp;Спрятать</value>
+  </data>
+  <data name="RestoreToolStrip_Minimize" xml:space="preserve">
+    <value>У&amp;меньшить</value>
+  </data>
+  <data name="RestoreToolStrip_Restore" xml:space="preserve">
+    <value>&amp;Восстановить</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Предупреждение</value>
+  </data>
+  <data name="BtnCancelButton" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="BtnSaveButton" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="CheckForUpdatesCheckBox" xml:space="preserve">
+    <value>Проверять обновления при запуске</value>
+  </data>
+  <data name="DlgSettingsTitle" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Error_CreateIssueFailed" xml:space="preserve">
+    <value>При создании задачи возникла ошибка; Ответ сервера: {0}</value>
+    <comment>{0} exception message</comment>
+  </data>
+  <data name="Error_InvalidUrl" xml:space="preserve">
+    <value>Неверный URL до инсталяции Redmine</value>
+  </data>
+  <data name="labelPercentDone" xml:space="preserve">
+    <value>% выполнено</value>
+  </data>
+  <data name="labelPriority" xml:space="preserve">
+    <value>Приоритет</value>
+  </data>
+  <data name="labelStatus" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="RedmineClientTitle_NoUser" xml:space="preserve">
+    <value>Redmine Клиент</value>
+  </data>
+  <data name="RedmineClientTitle_User" xml:space="preserve">
+    <value>Redmine Клиент - {0} {1}</value>
+    <comment>{0} First name; {1} Last name</comment>
+  </data>
+  <data name="BgWork_CheckUpdates" xml:space="preserve">
+    <value>Проверка наличия обновлений</value>
+  </data>
+  <data name="CommitCancelSaveCommentQuestion" xml:space="preserve">
+    <value>Сохранить новый комментарий?</value>
+  </data>
+  <data name="ExitToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Закрыть</value>
+  </data>
+  <data name="labelCommitComment" xml:space="preserve">
+    <value>Комментарий:</value>
+  </data>
+  <data name="labelCommitIssue" xml:space="preserve">
+    <value>Задача:</value>
+  </data>
+  <data name="labelCommitProject" xml:space="preserve">
+    <value>Проект:</value>
+  </data>
+  <data name="labelCommitTime" xml:space="preserve">
+    <value>Время (Ч):</value>
+  </data>
+  <data name="ApiVersion_V10x" xml:space="preserve">
+    <value>V1.0.x</value>
+  </data>
+  <data name="ApiVersion_V11x" xml:space="preserve">
+    <value>V1.1.x</value>
+  </data>
+  <data name="ApiVersion_V13x" xml:space="preserve">
+    <value>V1.3.x</value>
+  </data>
+  <data name="ApiVersion_V14x" xml:space="preserve">
+    <value>V1.4.x</value>
+  </data>
+  <data name="ApiVersion_V21x" xml:space="preserve">
+    <value>V2.1.x</value>
+  </data>
+  <data name="labelRedmineVersion" xml:space="preserve">
+    <value>Версия Redmine</value>
+  </data>
+  <data name="BtnOKButton" xml:space="preserve">
+    <value>OK</value>
   </data>
 </root>

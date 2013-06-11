@@ -170,6 +170,7 @@
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.ru.resx" />
     <EmbeddedResource Include="RedmineClientForm.resx">
       <DependentUpon>RedmineClientForm.cs</DependentUpon>
     </EmbeddedResource>
