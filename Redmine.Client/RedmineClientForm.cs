@@ -1160,28 +1160,30 @@ namespace Redmine.Client
         private bool UpdateIssueState(Issue issue, int idState)
         {
             Issue originalIssue = redmine.GetObject<Issue>(issue.Id.ToString(), null);
-            if (issue.Status.Id == idState)
+            if (originalIssue.Status.Id == idState)
                 return false;
+
+            Issue newIssue = (Issue)originalIssue.Clone();
 
             Dictionary<int, IssueStatus> statusDict = MainFormData.ToDictionaryName<IssueStatus>(redmine.GetObjectList<IssueStatus>(null));
             IssueStatus newStatus;
             if (!statusDict.TryGetValue(idState, out newStatus))
                 throw new Exception(Lang.Error_ClosedStatusUnknown);
 
-            issue.Status = new IdentifiableName { Id = newStatus.Id, Name = newStatus.Name };
+            newIssue.Status = new IdentifiableName { Id = newStatus.Id, Name = newStatus.Name };
             if (Settings.Default.AddNoteOnChangeStatus)
             {
-                UpdateIssueNoteForm dlg = new UpdateIssueNoteForm(originalIssue, issue);
+                UpdateIssueNoteForm dlg = new UpdateIssueNoteForm(originalIssue, newIssue);
                 if (dlg.ShowDialog(this) == DialogResult.OK)
                 {
-                    issue.Notes = dlg.Note;
-                    RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+                    newIssue.Notes = dlg.Note;
+                    RedmineClientForm.redmine.UpdateObject<Issue>(originalIssue.Id.ToString(), newIssue);
                 }
                 else
                     return false;
             }
             else
-                RedmineClientForm.redmine.UpdateObject<Issue>(issue.Id.ToString(), issue);
+                RedmineClientForm.redmine.UpdateObject<Issue>(originalIssue.Id.ToString(), newIssue);
             return true;
         }
 
