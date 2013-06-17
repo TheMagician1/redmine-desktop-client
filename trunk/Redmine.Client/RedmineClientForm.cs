@@ -216,7 +216,9 @@ namespace Redmine.Client
             updating = true;
             this.projectId = GetProjectIdCheckExists(Projects, this.projectId);
 
-            this.BtnSettingsButton.Enabled = true;
+            BtnSettingsButton.Enabled = true;
+            BtnRefreshButton.Enabled = true;
+            BtnOpenIssueButton.Enabled = true;
 
             if (data.Projects.Count == 0 || data.Issues.Count == 0)
             {
@@ -230,14 +232,13 @@ namespace Redmine.Client
                     BtnNewIssueButton.Enabled = false;
                 }
                 
-                BtnRefreshButton.Enabled = true;
             }
             else
             {
                 BtnCommitButton.Enabled = true;
-                BtnRefreshButton.Enabled = true;
                 BtnNewIssueButton.Enabled = projectId != -1;
             }
+
             ComboBoxProject.DataSource = data.Projects;
             ComboBoxProject.ValueMember = "Id";
             ComboBoxProject.DisplayMember = "DisplayName";
@@ -638,28 +639,31 @@ namespace Redmine.Client
             UpdateTime();
         }
 
-        private void TextBoxSeconds_TextChanged(object sender, EventArgs e)
+        private void TextBoxHours_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!CheckNumericValue(TextBoxSeconds.Text, 0, 60))
-            {
-                MessageBox.Show(Lang.Error_ValueOutOfRange, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                UpdateTime();
-            }
-            else
-            {
-                if (!updating)
-                {
-                    UpdateTicks();   
-                }
-            }
+            if (!RedmineClientForm.CheckNumericValue(new string(e.KeyChar, 1), 0, 9) && e.KeyChar != '\b')
+                e.Handled = true;
         }
 
-        private void TextBoxMinutes_TextChanged(object sender, EventArgs e)
+        private void TextBoxMinutes_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!CheckNumericValue(TextBoxMinutes.Text, 0, 60))
+            if (!RedmineClientForm.CheckNumericValue(new string(e.KeyChar, 1), 0, 9) && e.KeyChar != '\b')
+                e.Handled = true;
+        }
+
+        private void TextBoxSeconds_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!RedmineClientForm.CheckNumericValue(new string(e.KeyChar, 1), 0, 9) && e.KeyChar != '\b')
+                e.Handled = true;
+        }
+
+        private void TimeControl_Leave(TextBox control, int maxValue)
+        {
+            if (!CheckNumericValue(control.Text, 0, maxValue))
             {
                 MessageBox.Show(Lang.Error_ValueOutOfRange, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 UpdateTime();
+                control.Focus();
             }
             else
             {
@@ -670,20 +674,19 @@ namespace Redmine.Client
             }
         }
 
-        private void TextBoxHours_TextChanged(object sender, EventArgs e)
+        private void TextBoxSeconds_Leave(object sender, EventArgs e)
         {
-            if (!CheckNumericValue(TextBoxHours.Text, 0, 999))
-            {
-                MessageBox.Show(Lang.Error_ValueOutOfRange, Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                UpdateTime();
-            }
-            else
-            {
-                if (!updating)
-                {
-                    UpdateTicks();
-                }
-            }
+            TimeControl_Leave(TextBoxSeconds, 59);
+        }
+
+        private void TextBoxMinutes_Leave(object sender, EventArgs e)
+        {
+            TimeControl_Leave(TextBoxMinutes, 59);
+        }
+
+        private void TextBoxHours_Leave(object sender, EventArgs e)
+        {
+            TimeControl_Leave(TextBoxHours, 999);
         }
 
         /// <summary>
@@ -693,7 +696,7 @@ namespace Redmine.Client
         /// <param name="min">minumum value</param>
         /// <param name="max">maximum value</param>
         /// <returns></returns>
-        private static bool CheckNumericValue(string val, int min, int max)
+        public static bool CheckNumericValue(string val, int min, int max)
         {
             int myval;
             bool succ = Int32.TryParse(val, out myval);
@@ -964,6 +967,7 @@ namespace Redmine.Client
 
             this.BtnCommitButton.Enabled = false;
             this.BtnRefreshButton.Enabled = false;
+            this.BtnOpenIssueButton.Enabled = false;
             this.BtnNewIssueButton.Enabled = false;
             this.BtnSettingsButton.Enabled = false;
 
@@ -1554,5 +1558,16 @@ namespace Redmine.Client
             ComboBoxCategory.SelectedValue = 0;
         }
         #endregion //FilterFunctions
+
+        private void BtnOpenIssueButton_Click(object sender, EventArgs e)
+        {
+            OpenSpecificIssueForm dlg = new OpenSpecificIssueForm();
+            if (dlg.ShowDialog(this) == DialogResult.OK)
+            {
+                Issue issue = new Issue { Id = dlg.IssueNumber };
+                ShowIssue(issue);
+            }
+        }
+
     }
 }
