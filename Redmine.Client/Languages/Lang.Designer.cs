@@ -367,6 +367,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Issue.
+        /// </summary>
+        internal static string BtnOpenIssueButton {
+            get {
+                return ResourceManager.GetString("BtnOpenIssueButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refresh.
         /// </summary>
         internal static string BtnRefreshButton {
