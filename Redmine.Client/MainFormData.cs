@@ -112,7 +112,9 @@ namespace Redmine.Client
                 Trackers.Insert(0, new ProjectTracker { Id = 0, Name = "" });
 
                 Statuses = new List<IssueStatus>(RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters));
-                Statuses.Insert(0, new IssueStatus { Id = 0, Name = "" });
+                Statuses.Insert(0, new IssueStatus { Id = 0, Name = Languages.Lang.AllOpenIssues });
+                Statuses.Add(new IssueStatus { Id = -1, Name = Languages.Lang.AllClosedIssues });
+                Statuses.Add(new IssueStatus { Id = -2, Name = Languages.Lang.AllOpenAndClosedIssues });
 
                 try
                 {
@@ -157,6 +159,18 @@ namespace Redmine.Client
 
             if (filter.StatusId > 0)
                 parameters.Add("status_id", filter.StatusId.ToString());
+            else if (filter.StatusId < 0)
+            {
+                switch (filter.StatusId)
+                {
+                    case -1: // all closed issues
+                        parameters.Add("status_id", "closed");
+                        break;
+                    case -2: // all open and closed issues
+                        parameters.Add("status_id", "*");
+                        break;
+                }
+            }
 
             if (filter.PriorityId > 0)
                 parameters.Add("priority_id", filter.PriorityId.ToString());

@@ -707,4 +707,13 @@ or Request attention every
   <data name="labelCommunicationType" xml:space="preserve">
     <value>Communicate using</value>
   </data>
+  <data name="AllClosedIssues" xml:space="preserve">
+    <value>All Closed Issues</value>
+  </data>
+  <data name="AllOpenAndClosedIssues" xml:space="preserve">
+    <value>All Open and Closed Issues</value>
+  </data>
+  <data name="AllOpenIssues" xml:space="preserve">
+    <value>All Open Issues</value>
+  </data>
 </root>
