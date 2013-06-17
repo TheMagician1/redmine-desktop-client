@@ -79,6 +79,33 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Closed Issues.
+        /// </summary>
+        internal static string AllClosedIssues {
+            get {
+                return ResourceManager.GetString("AllClosedIssues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Open and Closed Issues.
+        /// </summary>
+        internal static string AllOpenAndClosedIssues {
+            get {
+                return ResourceManager.GetString("AllOpenAndClosedIssues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Open Issues.
+        /// </summary>
+        internal static string AllOpenIssues {
+            get {
+                return ResourceManager.GetString("AllOpenIssues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to V1.0.x.
         /// </summary>
         internal static string ApiVersion_V10x {
