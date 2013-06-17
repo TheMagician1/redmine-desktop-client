@@ -673,6 +673,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open a specific issue.
+        /// </summary>
+        internal static string DlgOpenSpecificIssueTitle {
+            get {
+                return ResourceManager.GetString("DlgOpenSpecificIssueTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string DlgSettingsTitle {
@@ -1299,6 +1308,15 @@ namespace Redmine.Client.Languages {
         internal static string labelExplClosingIssueStatus {
             get {
                 return ResourceManager.GetString("labelExplClosingIssueStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Issuenumber to open.
+        /// </summary>
+        internal static string labelIssueNumberToOpen {
+            get {
+                return ResourceManager.GetString("labelIssueNumberToOpen", resourceCulture);
             }
         }
         

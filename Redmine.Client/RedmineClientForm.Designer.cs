@@ -81,6 +81,7 @@ namespace Redmine.Client
             this.openIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openIssueInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editVisibleColumnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnOpenIssueButton = new System.Windows.Forms.Button();
             this.NotifyIconMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).BeginInit();
             this.groupBoxFilter.SuspendLayout();
@@ -92,31 +93,37 @@ namespace Redmine.Client
             // 
             this.TextBoxHours.Location = new System.Drawing.Point(9, 10);
             this.TextBoxHours.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxHours.MaxLength = 3;
             this.TextBoxHours.Name = "TextBoxHours";
             this.TextBoxHours.Size = new System.Drawing.Size(26, 20);
             this.TextBoxHours.TabIndex = 15;
             this.TextBoxHours.Text = "0";
-            this.TextBoxHours.TextChanged += new System.EventHandler(this.TextBoxHours_TextChanged);
+            this.TextBoxHours.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxHours_KeyPress);
+            this.TextBoxHours.Leave += new System.EventHandler(this.TextBoxHours_Leave);
             // 
             // TextBoxMinutes
             // 
             this.TextBoxMinutes.Location = new System.Drawing.Point(39, 10);
             this.TextBoxMinutes.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxMinutes.MaxLength = 2;
             this.TextBoxMinutes.Name = "TextBoxMinutes";
             this.TextBoxMinutes.Size = new System.Drawing.Size(26, 20);
             this.TextBoxMinutes.TabIndex = 16;
             this.TextBoxMinutes.Text = "0";
-            this.TextBoxMinutes.TextChanged += new System.EventHandler(this.TextBoxMinutes_TextChanged);
+            this.TextBoxMinutes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxMinutes_KeyPress);
+            this.TextBoxMinutes.Leave += new System.EventHandler(this.TextBoxMinutes_Leave);
             // 
             // TextBoxSeconds
             // 
             this.TextBoxSeconds.Location = new System.Drawing.Point(69, 10);
             this.TextBoxSeconds.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxSeconds.MaxLength = 2;
             this.TextBoxSeconds.Name = "TextBoxSeconds";
             this.TextBoxSeconds.Size = new System.Drawing.Size(26, 20);
             this.TextBoxSeconds.TabIndex = 17;
             this.TextBoxSeconds.Text = "0";
-            this.TextBoxSeconds.TextChanged += new System.EventHandler(this.TextBoxSeconds_TextChanged);
+            this.TextBoxSeconds.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxSeconds_KeyPress);
+            this.TextBoxSeconds.Leave += new System.EventHandler(this.TextBoxSeconds_Leave);
             // 
             // BtnStartButton
             // 
@@ -349,7 +356,7 @@ namespace Redmine.Client
             // BtnNewIssueButton
             // 
             this.BtnNewIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNewIssueButton.Location = new System.Drawing.Point(521, 76);
+            this.BtnNewIssueButton.Location = new System.Drawing.Point(424, 75);
             this.BtnNewIssueButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnNewIssueButton.Name = "BtnNewIssueButton";
             this.BtnNewIssueButton.Size = new System.Drawing.Size(82, 24);
@@ -599,6 +606,18 @@ namespace Redmine.Client
             this.editVisibleColumnsToolStripMenuItem.Text = "Edit Visible Columns";
             this.editVisibleColumnsToolStripMenuItem.Click += new System.EventHandler(this.editVisibleColumnsToolStripMenuItem_Click);
             // 
+            // BtnOpenIssueButton
+            // 
+            this.BtnOpenIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnOpenIssueButton.Location = new System.Drawing.Point(521, 75);
+            this.BtnOpenIssueButton.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnOpenIssueButton.Name = "BtnOpenIssueButton";
+            this.BtnOpenIssueButton.Size = new System.Drawing.Size(82, 24);
+            this.BtnOpenIssueButton.TabIndex = 11;
+            this.BtnOpenIssueButton.Text = "Open Issue";
+            this.BtnOpenIssueButton.UseVisualStyleBackColor = true;
+            this.BtnOpenIssueButton.Click += new System.EventHandler(this.BtnOpenIssueButton_Click);
+            // 
             // RedmineClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -607,6 +626,7 @@ namespace Redmine.Client
             this.Controls.Add(this.groupBoxFilter);
             this.Controls.Add(this.BtnSettingsButton);
             this.Controls.Add(this.CheckBoxOnlyMe);
+            this.Controls.Add(this.BtnOpenIssueButton);
             this.Controls.Add(this.BtnNewIssueButton);
             this.Controls.Add(this.BtnResetButton);
             this.Controls.Add(this.BtnAboutButton);
@@ -694,6 +714,7 @@ namespace Redmine.Client
         private ToolStripMenuItem openIssueInBrowserToolStripMenuItem;
         private ToolStripMenuItem editVisibleColumnsToolStripMenuItem;
         private Button BtnClearButton;
+        private Button BtnOpenIssueButton;
     }
 }
 
