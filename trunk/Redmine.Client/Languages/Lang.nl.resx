@@ -704,4 +704,25 @@ of Vraag aandacht elke
   <data name="openIssueToolStripMenuItem" xml:space="preserve">
     <value>&amp;Open incident</value>
   </data>
+  <data name="labelCommunicationType" xml:space="preserve">
+    <value>Communiceer met</value>
+  </data>
+  <data name="AllClosedIssues" xml:space="preserve">
+    <value>Alle gesloten incidenten</value>
+  </data>
+  <data name="AllOpenAndClosedIssues" xml:space="preserve">
+    <value>Alle open en gesloten incidenten</value>
+  </data>
+  <data name="AllOpenIssues" xml:space="preserve">
+    <value>Alle open incidenten</value>
+  </data>
+  <data name="BtnOpenIssueButton" xml:space="preserve">
+    <value>Open Incident</value>
+  </data>
+  <data name="DlgOpenSpecificIssueTitle" xml:space="preserve">
+    <value>Open een specifiek incident</value>
+  </data>
+  <data name="labelIssueNumberToOpen" xml:space="preserve">
+    <value>Incidentnummer om te openen</value>
+  </data>
 </root>

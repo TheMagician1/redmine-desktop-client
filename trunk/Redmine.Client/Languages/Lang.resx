@@ -716,6 +716,9 @@ or Request attention every
   <data name="AllOpenIssues" xml:space="preserve">
     <value>All Open Issues</value>
   </data>
+  <data name="BtnOpenIssueButton" xml:space="preserve">
+    <value>Open Issue</value>
+  </data>
   <data name="DlgOpenSpecificIssueTitle" xml:space="preserve">
     <value>Open a specific issue</value>
   </data>
