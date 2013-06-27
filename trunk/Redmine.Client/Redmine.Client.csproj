@@ -157,6 +157,7 @@
     <EmbeddedResource Include="EditEnumListForm.resx">
       <DependentUpon>EditEnumListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.es-MX.resx" />
     <EmbeddedResource Include="OpenSpecificIssueForm.resx">
       <DependentUpon>OpenSpecificIssueForm.cs</DependentUpon>
     </EmbeddedResource>
