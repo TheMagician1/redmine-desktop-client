@@ -268,9 +268,6 @@
   <data name="labelSelectAttachment" xml:space="preserve">
     <value>Ficheiro anexo</value>
   </data>
-  <data name="IssueField_assigned_to" xml:space="preserve">
-    <value>Asignado a</value>
-  </data>
   <data name="IssueField_author" xml:space="preserve">
     <value>Autor</value>
   </data>
@@ -285,9 +282,6 @@
   </data>
   <data name="IssueField_project" xml:space="preserve">
     <value>Proxecto</value>
-  </data>
-  <data name="IssueField_start_date" xml:space="preserve">
-    <value>Hora de inicio</value>
   </data>
   <data name="IssueField_status" xml:space="preserve">
     <value>Estado</value>

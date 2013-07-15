@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,11 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AuthenticationCheckBox" xml:space="preserve">
+    <value>Authentification requise</value>
+  </data>
+  <data name="BtnAboutButton" xml:space="preserve">
+    <value>A propos</value>
+  </data>
   <data name="BtnExitButton" xml:space="preserve">
     <value>Quitter</value>
   </data>
   <data name="BtnNewIssueButton" xml:space="preserve">
     <value>Nouveau</value>
+  </data>
+  <data name="BtnRefreshButton" xml:space="preserve">
+    <value>Rafraîchir</value>
+  </data>
+  <data name="BtnSettingsButton" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="BtnStartButton" xml:space="preserve">
+    <value>Démarrer</value>
+  </data>
+  <data name="BtnStartButton_Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="CommitNoActivitySelected" xml:space="preserve">
+    <value>Aucune activité sélectionnée.</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
@@ -129,6 +150,20 @@
   <data name="Error_Exception" xml:space="preserve">
     <value>Exception: {0}</value>
     <comment>{0} exception message</comment>
+  </data>
+  <data name="Error_NoProjectsFound" xml:space="preserve">
+    <value>Aucun projet trouvé dans Redmine.</value>
+  </data>
+  <data name="Error_Startup" xml:space="preserve">
+    <value>Erreur de démarrage. Vérifiez la configuration.</value>
+    <comment>The settings dialog will be started after this message</comment>
+  </data>
+  <data name="Error_ValueOutOfRange" xml:space="preserve">
+    <value>Valeur hors des limites</value>
+  </data>
+  <data name="labelActivity" xml:space="preserve">
+    <value>Activité</value>
+    <comment>Choose the Activity for the time commit</comment>
   </data>
   <data name="labelComment" xml:space="preserve">
     <value>Commentaire</value>
@@ -145,7 +180,10 @@
     <value>URL Redmine</value>
   </data>
   <data name="labelRedmineUsername" xml:space="preserve">
-    <value>Nom d&apos;utilisateur Redmine</value>
+    <value>Nom d'utilisateur Redmine</value>
+  </data>
+  <data name="NewVersionText" xml:space="preserve">
+    <value>Une nouvelle version est disponible. Voulez-vous que je vous montre l'endroit où la télécharger ?</value>
   </data>
   <data name="NewVersionTitle" xml:space="preserve">
     <value>Nouvelle version</value>
@@ -162,11 +200,26 @@
   <data name="BtnSaveButton" xml:space="preserve">
     <value>Sauvegarder</value>
   </data>
+  <data name="CheckForUpdatesCheckBox" xml:space="preserve">
+    <value>Vérifier les mises à jour au démarrage</value>
+  </data>
+  <data name="labelAssignedTo" xml:space="preserve">
+    <value>Assigné à</value>
+  </data>
   <data name="labelDescription" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="labelEstimatedTime" xml:space="preserve">
+    <value>Temps estimé</value>
+  </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>Langage</value>
+  </data>
+  <data name="labelPercentDone" xml:space="preserve">
+    <value>% Accompli</value>
+  </data>
+  <data name="labelPriority" xml:space="preserve">
+    <value>Priorité</value>
   </data>
   <data name="labelStatus" xml:space="preserve">
     <value>Statut</value>
@@ -181,17 +234,26 @@
     <value>Client Redmine - {0} {1}</value>
     <comment>{0} First name; {1} Last name</comment>
   </data>
+  <data name="BgWork_CheckUpdates" xml:space="preserve">
+    <value>Recherche des mises à jour</value>
+  </data>
   <data name="CommitCancelSaveCommentQuestion" xml:space="preserve">
     <value>Sauvegarder le nouveau commentaire?</value>
   </data>
   <data name="ExitToolStripMenuItem" xml:space="preserve">
     <value>&amp;Fermer</value>
   </data>
+  <data name="labelCommitActivity" xml:space="preserve">
+    <value>Activité:</value>
+  </data>
   <data name="labelCommitComment" xml:space="preserve">
     <value>Commentaire:</value>
   </data>
   <data name="labelCommitProject" xml:space="preserve">
     <value>Projet:</value>
+  </data>
+  <data name="labelCommitTime" xml:space="preserve">
+    <value>Temps (H) : </value>
   </data>
   <data name="ApiVersion_V10x" xml:space="preserve">
     <value>V1.0.x</value>
@@ -211,11 +273,20 @@
   <data name="labelRedmineVersion" xml:space="preserve">
     <value>Version de Redmine</value>
   </data>
+  <data name="BtnEditActivitiesButton" xml:space="preserve">
+    <value>Activités</value>
+  </data>
   <data name="BtnEditDocumentCategories" xml:space="preserve">
     <value>Doc. Cat.</value>
   </data>
+  <data name="BtnEditIssuePriorities" xml:space="preserve">
+    <value>Priorités</value>
+  </data>
   <data name="BtnOKButton" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="EnumName_Activities" xml:space="preserve">
+    <value>Activités</value>
   </data>
   <data name="labelEnumId" xml:space="preserve">
     <value>Id</value>
@@ -235,10 +306,80 @@
   <data name="BtnTestConnection" xml:space="preserve">
     <value>Test de Connexion</value>
   </data>
+  <data name="GrpApplicationSettings" xml:space="preserve">
+    <value>Paramètres de l'application</value>
+  </data>
+  <data name="GrpRedmineServerSettings" xml:space="preserve">
+    <value>Paramètres du serveur Redmine</value>
+  </data>
   <data name="Question" xml:space="preserve">
     <value>Question</value>
   </data>
   <data name="Message" xml:space="preserve">
     <value>Message</value>
+  </data>
+  <data name="ApiVersion_V12x" xml:space="preserve">
+    <value>V1.2.x</value>
+  </data>
+  <data name="ApiVersion_V20x" xml:space="preserve">
+    <value>V2.0.x</value>
+  </data>
+  <data name="ApiVersion_V22x" xml:space="preserve">
+    <value>V2.2.x</value>
+  </data>
+  <data name="labelByUser" xml:space="preserve">
+    <value>Par Utilisateur</value>
+  </data>
+  <data name="labelSpentHours" xml:space="preserve">
+    <value>Heures passées</value>
+  </data>
+  <data name="LabelParent" xml:space="preserve">
+    <value>Parent: {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="addNewToolStripMenuItem" xml:space="preserve">
+    <value>Ajouter un nouveau</value>
+  </data>
+  <data name="downloadOpenToolStripMenuItem" xml:space="preserve">
+    <value>Télécharger / Ouvrir</value>
+  </data>
+  <data name="groupBoxAttachments" xml:space="preserve">
+    <value>Pièces jointes</value>
+  </data>
+  <data name="labelAttachmentDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="LabelRelations" xml:space="preserve">
+    <value>Relations</value>
+  </data>
+  <data name="IssueField_author" xml:space="preserve">
+    <value>Auteur</value>
+  </data>
+  <data name="IssueField_category" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="IssueField_description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="IssueField_doneratio" xml:space="preserve">
+    <value>Ratio d'accomplissement</value>
+  </data>
+  <data name="IssueField_priority" xml:space="preserve">
+    <value>Priorité</value>
+  </data>
+  <data name="IssueField_project" xml:space="preserve">
+    <value>Projet</value>
+  </data>
+  <data name="IssueField_status" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="IssueField_subject" xml:space="preserve">
+    <value>Sujet</value>
+  </data>
+  <data name="labelCategory" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="IssueField_id" xml:space="preserve">
+    <value>Id</value>
   </data>
 </root>
