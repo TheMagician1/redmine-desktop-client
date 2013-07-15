@@ -238,6 +238,11 @@ namespace Redmine.Client
             else
                 newIssue.Category = issue.Category;
 
+            // workaround for clone-issue in API
+            newIssue.ParentIssue = issue.ParentIssue;
+            newIssue.UpdatedOn = issue.UpdatedOn;
+            newIssue.CreatedOn = issue.CreatedOn;
+
             try
             {
                 if (type == DialogType.New)
@@ -471,6 +476,7 @@ namespace Redmine.Client
                         ComboBoxTargetVersion.SelectedItem = issue.FixedVersion;
                     }
                 }
+
                 if (issue.CustomFields != null && issue.CustomFields.Count != 0)
                 {
                     List<ClientCustomField> customFields = new List<ClientCustomField>();
@@ -478,12 +484,15 @@ namespace Redmine.Client
                     {
                         ClientCustomField field = new ClientCustomField();
                         field.Name = cf.Name;
-                        foreach (CustomFieldValue cfv in cf.Values)
+                        if (cf.Values != null && cf.Values.Count != 0)
                         {
-                            if (field.Value == null)
-                                field.Value = cfv.Info;
-                            else
-                                field.Value += ", " + cfv.Info;
+                            foreach (CustomFieldValue cfv in cf.Values)
+                            {
+                                if (field.Value == null)
+                                    field.Value = cfv.Info;
+                                else
+                                    field.Value += ", " + cfv.Info;
+                            }
                         }
                         customFields.Add(field);
                     }
@@ -506,6 +515,7 @@ namespace Redmine.Client
                     dataGridViewAttachments.ColumnHeadersVisible = false;
                     AttachAttachements(issue.Attachments);
                 }
+
                 // if the issue has children, show them.
                 if (issue.Children != null && issue.Children.Count > 0)
                 {
@@ -564,6 +574,7 @@ namespace Redmine.Client
                     BtnSaveButton.MoveControl(0, ChildrenHeight);
                     ResumeLayout(false);
                 }
+
                 if (issue.ParentIssue != null && issue.ParentIssue.Id != 0)
                 {
                     LabelParent = new Label();
@@ -592,6 +603,7 @@ namespace Redmine.Client
                     if (MinimumSize.Width < LabelParent.Width + 30)
                         MinimumSize = new System.Drawing.Size(LabelParent.Width + 30, MinimumSize.Height);
                 }
+
                 // if the issue has relations, show them.
                 if (issue.Relations != null && issue.Relations.Count > 0)
                 {
