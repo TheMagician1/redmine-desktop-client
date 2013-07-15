@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,7 +124,7 @@
     <value>O...</value>
   </data>
   <data name="BtnCommitButton" xml:space="preserve">
-    <value>Zatwierdź</value>
+    <value>Wyślij/Zatwierdź</value>
   </data>
   <data name="BtnExitButton" xml:space="preserve">
     <value>Wyjdź</value>
@@ -161,7 +161,7 @@
     <value>Nie wybrałeś żadnego zagadnienia.</value>
   </data>
   <data name="CommitNoTime" xml:space="preserve">
-    <value>Nie wprowadziłeś czasu do zarejestrowania...</value>
+    <value>Nie wprowadziłeś ilości czasu do zarejestrowania...</value>
   </data>
   <data name="CommitSuccessfullText" xml:space="preserve">
     <value>Czas pracy został poprawnie zarejestrowany.</value>
@@ -339,7 +339,7 @@ lub zażądaj reakcji co
     <value>Zapisać nowy komentarz?</value>
   </data>
   <data name="CommitCancelSaveCommentText" xml:space="preserve">
-    <value>Anulowałeś zatwierdzanie wykorzystanego czasu, ale zmieniłeś komentarz.{0}Czy chcesz użyć nowego komentarza?</value>
+    <value>Anulowałeś przesyłanie raportu przepracowanego czasu, ale zmieniłeś komentarz.{0}Czy chcesz użyć nowego komentarza?</value>
     <comment>{0} newline</comment>
   </data>
   <data name="ExitToolStripMenuItem" xml:space="preserve">
@@ -361,7 +361,7 @@ lub zażądaj reakcji co
     <value>Projekt:</value>
   </data>
   <data name="labelCommitQuestion" xml:space="preserve">
-    <value>Czy chcesz zatwierdzić następujący wpis?</value>
+    <value>Czy chcesz przesłać następujący wpis?</value>
   </data>
   <data name="labelCommitTime" xml:space="preserve">
     <value>Czas (h):</value>
@@ -425,7 +425,7 @@ lub zażądaj reakcji co
     <comment>{0} Fieldname</comment>
   </data>
   <data name="Error_EnumMustBeUnique" xml:space="preserve">
-    <value>Id i nazwa muszą być unikalne.</value>
+    <value>Id oraz nazwa muszą być unikalne.</value>
   </data>
   <data name="GrpEditEnumerations" xml:space="preserve">
     <value>Edytuj dozwolone wartości</value>
@@ -480,19 +480,19 @@ lub zażądaj reakcji co
     <value>Aby odblokować pola przeprowadź test połączenia z Redmine w wersji 1.3.x lub wyższej</value>
   </data>
   <data name="labelSelectCloseStatus" xml:space="preserve">
-    <value>Podczas zamykania zagadnienia, ustaw na</value>
+    <value>Podczas zamykania zagadnienia, ustaw status na</value>
   </data>
   <data name="Question" xml:space="preserve">
     <value>Pytanie</value>
   </data>
   <data name="Timer_WasTickingWhenClosed" xml:space="preserve">
-    <value>Licznik czasu był włączony gdy wyłączyłeś aplikację. Czy chcesz aby odliczanie było kontynowane?</value>
+    <value>Licznik czasu był włączony gdy wyłączyłeś aplikację. Czy chcesz kontynuować pomiar czasu pracy?</value>
   </data>
   <data name="PauseTimerOnLockCheckBox" xml:space="preserve">
-    <value>Wstrzymaj licznik przy zablokowanym ekranie i przy wylogowaniu</value>
+    <value>Wstrzymuj licznik po zablokowaniu ekranu i przy wylogowaniu</value>
   </data>
   <data name="UpdateIssueIfStateCheckBox" xml:space="preserve">
-    <value>Gdy startujesz licznik a zagadnienie ma status</value>
+    <value>Gdy startujesz licznik, a zagadnienie ma ustawiony status</value>
   </data>
   <data name="UpdateIssueIfStateLabel" xml:space="preserve">
     <value>ustaw wtedy status na</value>
@@ -501,7 +501,7 @@ lub zażądaj reakcji co
     <value>Status wykorzystywany do oznaczania zagadnienia jako realizowanego jest nieznany, przejdź do ustawień aby wskazać właściwą wartość.</value>
   </data>
   <data name="IssueUpdatedToInProgress" xml:space="preserve">
-    <value>Wybrane zagadnienie {0} jest oznaczane jako &quot;W realizacji&quot;. (StatusId = {1})</value>
+    <value>Wybrane zagadnienie {0} jest oznaczane jako "W realizacji". (StatusId = {1})</value>
     <comment>{0} Issue name; {1} Id of In Progress</comment>
   </data>
   <data name="Message" xml:space="preserve">
@@ -517,7 +517,7 @@ lub zażądaj reakcji co
     <value>V2.2.x</value>
   </data>
   <data name="BtnViewTimeButton" xml:space="preserve">
-    <value>Zobacz czas</value>
+    <value>Zobacz czas pracy</value>
   </data>
   <data name="BgWork_GetTimeEntries" xml:space="preserve">
     <value>Pobieram wpisy czasu pracy</value>
@@ -534,7 +534,7 @@ lub zażądaj reakcji co
     <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
   </data>
   <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
-    <value>Nowy wpisz czasu pracy dla zagadnienia {0} {1}</value>
+    <value>Nowy wpis czasu pracy dla zagadnienia {0} {1}</value>
     <comment>{0} issue number; {1} issue subject</comment>
   </data>
   <data name="labelTimeEntryTitle_Edit" xml:space="preserve">
@@ -555,7 +555,7 @@ lub zażądaj reakcji co
     <value>Wykorzystany na</value>
   </data>
   <data name="Warning_AreYouSureDeleteTimeEntry" xml:space="preserve">
-    <value>Czy na pewno chcesz usunąć informacje o czasie pracy {0}</value>
+    <value>Czy na pewno chcesz usunąć wpis czasu pracy {0}</value>
     <comment>{0} time-entry id</comment>
   </data>
   <data name="LabelChildren" xml:space="preserve">
@@ -572,7 +572,7 @@ lub zażądaj reakcji co
     <value>&amp;Start</value>
   </data>
   <data name="addNewToolStripMenuItem" xml:space="preserve">
-    <value>Dodaj nowe</value>
+    <value>Dodaj</value>
   </data>
   <data name="BtnBrowseButton" xml:space="preserve">
     <value>Przeglądaj</value>
@@ -585,7 +585,7 @@ lub zażądaj reakcji co
     <value>Pobierz / Otwórz</value>
   </data>
   <data name="groupBoxAttachments" xml:space="preserve">
-    <value>Załącznik</value>
+    <value>Załączniki</value>
   </data>
   <data name="labelAttachmentDescription" xml:space="preserve">
     <value>Opis</value>

@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AuthenticationCheckBox" xml:space="preserve">
+    <value>Аутентификация</value>
+  </data>
   <data name="BtnAboutButton" xml:space="preserve">
     <value>О программе</value>
   </data>
+  <data name="BtnCommitButton" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
   <data name="BtnExitButton" xml:space="preserve">
     <value>Выход</value>
+  </data>
+  <data name="BtnNewIssueButton" xml:space="preserve">
+    <value>Новая задача</value>
   </data>
   <data name="BtnRefreshButton" xml:space="preserve">
     <value>Обновить</value>
@@ -138,6 +147,12 @@
   <data name="BtnStartButton_Pause" xml:space="preserve">
     <value>Пауза</value>
   </data>
+  <data name="CommitNoActivitySelected" xml:space="preserve">
+    <value>Действие не выбрано.</value>
+  </data>
+  <data name="CommitNoIssueSelected" xml:space="preserve">
+    <value>Задача не выбрана.</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Ошибка</value>
   </data>
@@ -146,11 +161,18 @@
     <comment>{0} exception message</comment>
   </data>
   <data name="Error_NoProjectsFound" xml:space="preserve">
-    <value>Проекты в Redmine не найдены.</value>
+    <value>Не создано ни одного проекта в Redmine.</value>
   </data>
   <data name="Error_Startup" xml:space="preserve">
     <value>Ошибка запуска. Проверьте конфигурацию.</value>
     <comment>The settings dialog will be started after this message</comment>
+  </data>
+  <data name="Error_ValueOutOfRange" xml:space="preserve">
+    <value>Значение больше допустимого</value>
+  </data>
+  <data name="labelActivity" xml:space="preserve">
+    <value>Деятельность</value>
+    <comment>Choose the Activity for the time commit</comment>
   </data>
   <data name="labelComment" xml:space="preserve">
     <value>Комментарий</value>
@@ -166,14 +188,20 @@
   <data name="labelRedmineURL" xml:space="preserve">
     <value>Redmine URL</value>
   </data>
+  <data name="labelRedmineUsername" xml:space="preserve">
+    <value>Имя пользователя Redmine / API Ключ</value>
+  </data>
+  <data name="NewVersionText" xml:space="preserve">
+    <value>Доступна новая версия программы. Открыть страницу загрузки?</value>
+  </data>
   <data name="NewVersionTitle" xml:space="preserve">
     <value>Новая версия</value>
   </data>
   <data name="RestoreToolStrip_Hide" xml:space="preserve">
-    <value>&amp;Спрятать</value>
+    <value>&amp;Скрыть</value>
   </data>
   <data name="RestoreToolStrip_Minimize" xml:space="preserve">
-    <value>У&amp;меньшить</value>
+    <value>С&amp;вернуть</value>
   </data>
   <data name="RestoreToolStrip_Restore" xml:space="preserve">
     <value>&amp;Восстановить</value>
@@ -184,11 +212,32 @@
   <data name="BtnCancelButton" xml:space="preserve">
     <value>Отмена</value>
   </data>
+  <data name="BtnCloseButton" xml:space="preserve">
+    <value>Закрыть задачу</value>
+  </data>
   <data name="BtnSaveButton" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="cbDueDate" xml:space="preserve">
+    <value>Дата выполнения</value>
+  </data>
+  <data name="cbStartDate" xml:space="preserve">
+    <value>Начата</value>
+  </data>
   <data name="CheckForUpdatesCheckBox" xml:space="preserve">
-    <value>Проверять обновления при запуске</value>
+    <value>Проверять наличие обновления при запуске</value>
+  </data>
+  <data name="CloseIssueText" xml:space="preserve">
+    <value>Вы действительно хотите закрыть задачу {0}?</value>
+    <comment>{0} IssueId</comment>
+  </data>
+  <data name="DlgIssueTitleEdit" xml:space="preserve">
+    <value>Редактирование задачи {0} для проекта {1}</value>
+    <comment>{0} IssueId; {1} ProjectName</comment>
+  </data>
+  <data name="DlgIssueTitleNew" xml:space="preserve">
+    <value>Создание новой задачи для проекта {0}</value>
+    <comment>{0} ProjectName</comment>
   </data>
   <data name="DlgSettingsTitle" xml:space="preserve">
     <value>Настройки</value>
@@ -198,10 +247,37 @@
     <comment>{0} exception message</comment>
   </data>
   <data name="Error_InvalidUrl" xml:space="preserve">
-    <value>Неверный URL до инсталяции Redmine</value>
+    <value>Неверный URL инсталяции Redmine.</value>
+  </data>
+  <data name="Error_IssueSubjectMandatory" xml:space="preserve">
+    <value>Необходимо указать тему задачи</value>
+  </data>
+  <data name="Error_UpdateIssueFailed" xml:space="preserve">
+    <value>При обновлении задачи возникла ошибка; Ответ сервера: {0}</value>
+    <comment>{0} exception message</comment>
+  </data>
+  <data name="labelAssignedTo" xml:space="preserve">
+    <value>Назначена</value>
+  </data>
+  <data name="labelCacheLifetime" xml:space="preserve">
+    <value>Время хранения кэша (в минутах, 0 = постоянно)</value>
+  </data>
+  <data name="labelDescription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="labelEstimatedTime" xml:space="preserve">
+    <value>Оценка времени</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>Язык</value>
   </data>
   <data name="labelPercentDone" xml:space="preserve">
-    <value>% выполнено</value>
+    <value>Готовность, %</value>
+  </data>
+  <data name="labelPopupTimout" xml:space="preserve">
+    <value>Показывать всплывающее окно⏎
+или запрашивать внимание каждые⏎
+(минут, 0 = никогда)</value>
   </data>
   <data name="labelPriority" xml:space="preserve">
     <value>Приоритет</value>
@@ -209,30 +285,67 @@
   <data name="labelStatus" xml:space="preserve">
     <value>Статус</value>
   </data>
+  <data name="labelSubject" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="labelTargetVersion" xml:space="preserve">
+    <value>Целевая версия</value>
+  </data>
+  <data name="labelTracker" xml:space="preserve">
+    <value>Трекер</value>
+  </data>
+  <data name="linkEditInRedmine" xml:space="preserve">
+    <value>Редактировать эту задачу в Redmine</value>
+  </data>
+  <data name="MinimizeOnStartTimerCheckBox" xml:space="preserve">
+    <value>Сворачивать при запуске таймера</value>
+  </data>
+  <data name="MinimizeToSystemTrayCheckBox" xml:space="preserve">
+    <value>Сворачивать в лоток</value>
+  </data>
   <data name="RedmineClientTitle_NoUser" xml:space="preserve">
-    <value>Redmine Клиент</value>
+    <value>Клиент Redmine</value>
   </data>
   <data name="RedmineClientTitle_User" xml:space="preserve">
-    <value>Redmine Клиент - {0} {1}</value>
+    <value>Клиент Redmine - {0} {1}</value>
     <comment>{0} First name; {1} Last name</comment>
   </data>
   <data name="BgWork_CheckUpdates" xml:space="preserve">
     <value>Проверка наличия обновлений</value>
   </data>
+  <data name="BgWork_GetFormData" xml:space="preserve">
+    <value>Получение данных</value>
+  </data>
+  <data name="BgWork_GetUsername" xml:space="preserve">
+    <value>Получение имени пользователя</value>
+  </data>
   <data name="CommitCancelSaveCommentQuestion" xml:space="preserve">
     <value>Сохранить новый комментарий?</value>
+  </data>
+  <data name="CommitCancelSaveCommentText" xml:space="preserve">
+    <value>Вы отменили редактирование затраченного времени, но изменили комментарий.{0}Вы желаете использовать новый комментарий?</value>
+    <comment>{0} newline</comment>
   </data>
   <data name="ExitToolStripMenuItem" xml:space="preserve">
     <value>&amp;Закрыть</value>
   </data>
+  <data name="labelCommitActivity" xml:space="preserve">
+    <value>Деятельность:</value>
+  </data>
   <data name="labelCommitComment" xml:space="preserve">
     <value>Комментарий:</value>
+  </data>
+  <data name="labelCommitDateSpent" xml:space="preserve">
+    <value>Дата:</value>
   </data>
   <data name="labelCommitIssue" xml:space="preserve">
     <value>Задача:</value>
   </data>
   <data name="labelCommitProject" xml:space="preserve">
     <value>Проект:</value>
+  </data>
+  <data name="labelCommitQuestion" xml:space="preserve">
+    <value>Вы действительно хотите создать данную запись о затраченном времени?</value>
   </data>
   <data name="labelCommitTime" xml:space="preserve">
     <value>Время (Ч):</value>
@@ -255,7 +368,302 @@
   <data name="labelRedmineVersion" xml:space="preserve">
     <value>Версия Redmine</value>
   </data>
+  <data name="BtnEditActivitiesButton" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="BtnEditDocumentCategories" xml:space="preserve">
+    <value>Кат. Док.</value>
+  </data>
+  <data name="BtnEditIssuePriorities" xml:space="preserve">
+    <value>Приоритеты</value>
+  </data>
   <data name="BtnOKButton" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="DlgEditEnumFormTitle_Edit" xml:space="preserve">
+    <value>Редактирование значения {0} для {1}</value>
+    <comment>{0} Current name of the Enumeration; {1} Name of the Enumeration set</comment>
+  </data>
+  <data name="DlgEditEnumFormTitle_New" xml:space="preserve">
+    <value>Новое значение для {0}</value>
+    <comment>{0} Name of the Enumeration set</comment>
+  </data>
+  <data name="DlgEditEnumListFormTitle" xml:space="preserve">
+    <value>Редактирование значения {0}</value>
+  </data>
+  <data name="EnumName_Activities" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="EnumName_DocumentCategories" xml:space="preserve">
+    <value>Категории документов</value>
+  </data>
+  <data name="EnumName_IssuePriorities" xml:space="preserve">
+    <value>Приоритеты задач</value>
+  </data>
+  <data name="Error_EnumFieldIsMandatory" xml:space="preserve">
+    <value>Поле {0} обязательное для заполнения</value>
+    <comment>{0} Fieldname</comment>
+  </data>
+  <data name="Error_EnumMustBeUnique" xml:space="preserve">
+    <value>Значения имени и Id должны быть уникальными.</value>
+  </data>
+  <data name="GrpEditEnumerations" xml:space="preserve">
+    <value>Редактировать списки значений</value>
+  </data>
+  <data name="labelEnumId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="labelEnumName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="BtnAddButton" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="BtnDeleteButton" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="BtnModifyButton" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="BtnTestConnection" xml:space="preserve">
+    <value>Проверить соединение</value>
+  </data>
+  <data name="CheckBoxOnlyMe" xml:space="preserve">
+    <value>Показать только задачи, назначенные мне</value>
+  </data>
+  <data name="ConnectionTestFailed_Text" xml:space="preserve">
+    <value>Не удалось установить соединение с сервером Redmine. Произошла следующая ошибка: {0}</value>
+    <comment>{0} error</comment>
+  </data>
+  <data name="ConnectionTestFailed_Title" xml:space="preserve">
+    <value>Проверка соединения закончилась неудачно</value>
+  </data>
+  <data name="ConnectionTestOK_Text" xml:space="preserve">
+    <value>Соединение с сервером Redmine успешно установлено</value>
+  </data>
+  <data name="ConnectionTestOK_Title" xml:space="preserve">
+    <value>Проверка соединения прошла успешно</value>
+  </data>
+  <data name="Error_ClosedStatusUnknown" xml:space="preserve">
+    <value>Не задан статус, устанавливаемый при закрытии задач. Пожалуйста, укажите его в настройках. </value>
+  </data>
+  <data name="GrpApplicationSettings" xml:space="preserve">
+    <value>Настройки приложения</value>
+  </data>
+  <data name="GrpRedmineServerSettings" xml:space="preserve">
+    <value>Настройки сервера Redmine</value>
+  </data>
+  <data name="labelExplClosingIssueStatus" xml:space="preserve">
+    <value>Следующие поля станут доступны только после проверки соединения (и только для V1.3.x и выше)</value>
+  </data>
+  <data name="labelSelectCloseStatus" xml:space="preserve">
+    <value>При закрытии задачи устанавливать следующий статус:</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Вопрос</value>
+  </data>
+  <data name="PauseTimerOnLockCheckBox" xml:space="preserve">
+    <value>Останавливать таймер при выходе или блокировке экрана</value>
+  </data>
+  <data name="UpdateIssueIfStateCheckBox" xml:space="preserve">
+    <value>Если таймер запущен и задача имеет статус</value>
+  </data>
+  <data name="UpdateIssueIfStateLabel" xml:space="preserve">
+    <value>то сменить её статус на</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <data name="ApiVersion_V12x" xml:space="preserve">
+    <value>V1.2.x</value>
+  </data>
+  <data name="ApiVersion_V20x" xml:space="preserve">
+    <value>V2.0.x</value>
+  </data>
+  <data name="ApiVersion_V22x" xml:space="preserve">
+    <value>V2.2.x</value>
+  </data>
+  <data name="BtnViewTimeButton" xml:space="preserve">
+    <value>Затр. время</value>
+  </data>
+  <data name="BgWork_GetTimeEntries" xml:space="preserve">
+    <value>Получение данных о затраченном времени</value>
+  </data>
+  <data name="DlgTimeEntriesTitle" xml:space="preserve">
+    <value>Затраченное время на задачу {0} {1}</value>
+    <comment>{0} issuenumber; {1} issue subject</comment>
+  </data>
+  <data name="BgWork_GetIssue" xml:space="preserve">
+    <value>Получение данных о задачах</value>
+  </data>
+  <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
+    <value>Затраченное время на задачу {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_Edit" xml:space="preserve">
+    <value>Редактировать затраченное время {0} на задачу {3}{1} {2}</value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
+  <data name="labelTimeEntryTitle_New" xml:space="preserve">
+    <value>Новая запись о затраченном времени на задачу {3}{0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelByUser" xml:space="preserve">
+    <value>Участник</value>
+  </data>
+  <data name="labelSpentHours" xml:space="preserve">
+    <value>Затрачено часов</value>
+  </data>
+  <data name="labelSpentOn" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="Warning_AreYouSureDeleteTimeEntry" xml:space="preserve">
+    <value>Вы действительно хотите удалить запись о затраченном времени {0}</value>
+    <comment>{0} time-entry id</comment>
+  </data>
+  <data name="PauseToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Пауза</value>
+  </data>
+  <data name="StartToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Запуск</value>
+  </data>
+  <data name="BtnBrowseButton" xml:space="preserve">
+    <value>Обзор</value>
+  </data>
+  <data name="DlgAttachmentTitle" xml:space="preserve">
+    <value>Добавление файла к задаче {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="downloadOpenToolStripMenuItem" xml:space="preserve">
+    <value>Скачать / Открыть</value>
+  </data>
+  <data name="groupBoxAttachments" xml:space="preserve">
+    <value>Файлы</value>
+  </data>
+  <data name="labelAttachmentDescription" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="labelSelectAttachment" xml:space="preserve">
+    <value>Добавить файл</value>
+  </data>
+  <data name="NewIssue" xml:space="preserve">
+    <value>Новая задача</value>
+  </data>
+  <data name="LabelRelations" xml:space="preserve">
+    <value>Связи</value>
+  </data>
+  <data name="DlgUpdateIssueNoteTitle" xml:space="preserve">
+    <value>Обновление задачи {0} {1}</value>
+  </data>
+  <data name="IssueField_assignedto" xml:space="preserve">
+    <value>Назначена</value>
+  </data>
+  <data name="IssueField_author" xml:space="preserve">
+    <value>Автор</value>
+  </data>
+  <data name="IssueField_category" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="IssueField_createdon" xml:space="preserve">
+    <value>Создана</value>
+  </data>
+  <data name="IssueField_description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="IssueField_doneratio" xml:space="preserve">
+    <value>Готовность</value>
+  </data>
+  <data name="IssueField_duedate" xml:space="preserve">
+    <value>Дата выполнения</value>
+  </data>
+  <data name="IssueField_estimatedhours" xml:space="preserve">
+    <value>Оценка времени</value>
+  </data>
+  <data name="IssueField_fixedversion" xml:space="preserve">
+    <value>Версия</value>
+  </data>
+  <data name="IssueField_parentissue" xml:space="preserve">
+    <value>Родительская задача</value>
+  </data>
+  <data name="IssueField_priority" xml:space="preserve">
+    <value>Приоритет</value>
+  </data>
+  <data name="IssueField_project" xml:space="preserve">
+    <value>Проект</value>
+  </data>
+  <data name="IssueField_startdate" xml:space="preserve">
+    <value>Начата</value>
+  </data>
+  <data name="IssueField_status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="IssueField_subject" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="IssueField_tracker" xml:space="preserve">
+    <value>Трекер</value>
+  </data>
+  <data name="IssueField_updatedon" xml:space="preserve">
+    <value>Обновлена</value>
+  </data>
+  <data name="labelCategory" xml:space="preserve">
+    <value>Категория</value>
+  </data>
+  <data name="labelUpdateIssueNote" xml:space="preserve">
+    <value>Дополнительные записи, поясняющие ваши изменения - для отключения оставьте поле пустым.</value>
+  </data>
+  <data name="ShowAllIssues" xml:space="preserve">
+    <value>Показать все задачи</value>
+  </data>
+  <data name="UpdatedField_Description" xml:space="preserve">
+    <value>Описание обновлено</value>
+  </data>
+  <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
+    <value>Добавлять запись при изменении статуса согласно двум предыдущим опциям</value>
+  </data>
+  <data name="BtnRefreshButton_Filter" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
+  <data name="groupBoxFilter" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
+  <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Редактировать видимые колонки</value>
+  </data>
+  <data name="IssueField_id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="BtnClearButton" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="editVisibleColumnsHeaderToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Редактировать видимые колонки</value>
+  </data>
+  <data name="openIssueInBrowserToolStripMenuItem" xml:space="preserve">
+    <value>Открыть задачу в &amp;браузере</value>
+  </data>
+  <data name="openIssueToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Открыть задачу</value>
+  </data>
+  <data name="labelCommunicationType" xml:space="preserve">
+    <value>Связаться с помощью</value>
+  </data>
+  <data name="AllClosedIssues" xml:space="preserve">
+    <value>Все закрытые задачи</value>
+  </data>
+  <data name="AllOpenAndClosedIssues" xml:space="preserve">
+    <value>Все открытые и закрытые задачи</value>
+  </data>
+  <data name="AllOpenIssues" xml:space="preserve">
+    <value>Все открытые задачи</value>
+  </data>
+  <data name="BtnOpenIssueButton" xml:space="preserve">
+    <value>Открыть задачу</value>
+  </data>
+  <data name="DlgOpenSpecificIssueTitle" xml:space="preserve">
+    <value>Открыть указанную задачу</value>
+  </data>
+  <data name="labelIssueNumberToOpen" xml:space="preserve">
+    <value>Номер задачи</value>
   </data>
 </root>
