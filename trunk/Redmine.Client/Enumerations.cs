@@ -99,7 +99,7 @@ namespace Redmine.Client
 
         public static List<IdentifiableName> Load(string listName)
         {
-            string fileName = Application.StartupPath + "\\" + listName + ".xml";
+            string fileName = Application.CommonAppDataPath + "\\" + listName + ".xml";
             FileStream f = File.OpenRead(fileName);
             using (var xmlReader = new XmlTextReader(f))
             {
@@ -132,7 +132,7 @@ namespace Redmine.Client
         public static void Save(IList<IdentifiableName> list, string listName)
         {
             var xws = new XmlWriterSettings { OmitXmlDeclaration = true };
-            string fileName = Application.StartupPath + "\\" + listName + ".xml";
+            string fileName = Application.CommonAppDataPath + "\\" + listName + ".xml";
 
             File.Delete(fileName);
             FileStream f = File.OpenWrite(fileName);
