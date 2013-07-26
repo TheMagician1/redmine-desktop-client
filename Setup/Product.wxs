@@ -11,7 +11,9 @@
 		<Package Id="*" Keywords="Installer" Description="Redmine Desktop Client Installer"
              Comments="Redmine Desktop Client V2" InstallerVersion="300" Compressed="yes" InstallPrivileges="limited" InstallScope="perUser"/>
 
-		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+    <Property Id="ALLUSERS"><![CDATA[2]]></Property>
+    
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
     <?define ResDir = ..\Redmine.Client\res ?>
     <?define BinDir = ..\Redmine.Client\bin\$(var.Configuration) ?>
