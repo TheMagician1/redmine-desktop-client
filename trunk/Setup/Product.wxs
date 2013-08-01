@@ -58,6 +58,7 @@
           <Directory Id="LANG_RU" Name="ru" />
           <Directory Id="LANG_PL" Name="pl" />
           <Directory Id="LANG_ES_MX" Name="es-MX" />
+          <Directory Id="LANG_ZH_CN" Name="zh-CN" />
         </Directory>
 			</Directory>
 
@@ -135,6 +136,12 @@
         <File Id="es_mx.RedmineClient.resources.dll" Source="$(var.BinDir)\es-MX\RedmineClient.resources.dll" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
+    <DirectoryRef Id="LANG_ZH_CN">
+      <Component Id="zh_cn.RedmineClient.resources.dll" Guid="{7DAB171D-DC36-4358-A6B5-011E97631D7D}">
+        <File Id="zh_cn.RedmineClient.resources.dll" Source="$(var.BinDir)\zh-CN\RedmineClient.resources.dll" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
 
     <!-- Check if .Net 4.0 is installed-->
     <PropertyRef Id="NETFRAMEWORK40FULL"/>
@@ -155,6 +162,7 @@
       <ComponentRef Id="ru.RedmineClient.resources.dll"/>
       <ComponentRef Id="pl.RedmineClient.resources.dll"/>
       <ComponentRef Id="es_mx.RedmineClient.resources.dll"/>
+      <ComponentRef Id="zh_cn.RedmineClient.resources.dll"/>
       <ComponentRef Id="properties.app.config"/>
       <ComponentRef Id="ProgramMenuDir"/>
     </Feature>
