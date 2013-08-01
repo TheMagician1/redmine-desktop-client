@@ -120,16 +120,11 @@
   <data name="labelCopyright.Text" xml:space="preserve">
     <value>Copyright © Pavel Kalian 2009, All rights reserved
 Copyright © Bas van Leeuwen 2012-2013
+
 Other Contributor(s): Johan 't Hart
+
 Translators:
-Blackman82 (Czech)
-jgoetze &amp;&amp; fabismailer (German)
-rafaelff1 (Portugese (Brazil))
-MademoiselleGeek &amp;&amp; xtinsive (French)
-mbouzada (Galician)
-legal90 (Russian)
-milek (Polish)
-gusanito (Spanish (Mexico))</value>
+Blackman82 (Czech); jgoetze &amp;&amp; fabismailer (German); rafaelff1 (Portugese (Brazil)); MademoiselleGeek &amp;&amp; xtinsive (French); mbouzada (Galician); legal90 (Russian); milek (Polish); gusanito (Spanish (Mexico)); mguo163 (Chinese (China))</value>
   </data>
   <data name="textBoxDescription.Text" xml:space="preserve">
     <value>Redmine Desktop Client
