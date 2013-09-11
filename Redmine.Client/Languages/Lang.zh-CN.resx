@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AuthenticationCheckBox" xml:space="preserve">
+    <value>需要认证</value>
+  </data>
+  <data name="BtnAboutButton" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="BtnCommitButton" xml:space="preserve">
+    <value>提交</value>
+  </data>
+  <data name="BtnExitButton" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="BtnNewIssueButton" xml:space="preserve">
+    <value>新建</value>
+  </data>
+  <data name="BtnRefreshButton" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="BtnResetButton" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="BtnSettingsButton" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="BtnStartButton" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="BtnStartButton_Pause" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="CommitConfirmQuestion" xml:space="preserve">
+    <value>准备提交?</value>
+  </data>
+  <data name="CommitConfirmText" xml:space="preserve">
+    <value>你真的想提交以下条目吗: {6} 项目: {0}, 活动: {1}, 问题: {2},{6}日期: {3}, 评论: {4}, 时间: {5}</value>
+    <comment>{0} ProjectName; {1} ActivityName; {2} IssueId; {3} Date; {4} Comment; {5} Time(Hours) {6} newline</comment>
+  </data>
+  <data name="CommitNoActivitySelected" xml:space="preserve">
+    <value>没有选择任何的活动.</value>
+  </data>
+  <data name="CommitNoIssueSelected" xml:space="preserve">
+    <value>没有选择任何的问题.</value>
+  </data>
+  <data name="CommitNoTime" xml:space="preserve">
+    <value>没有时间记录...</value>
+  </data>
+  <data name="CommitSuccessfullText" xml:space="preserve">
+    <value>工作记录成功.</value>
+  </data>
+  <data name="CommitSuccessfullTitle" xml:space="preserve">
+    <value>工作已记录</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="Error_Exception" xml:space="preserve">
+    <value>异常: {0}</value>
+    <comment>{0} exception message</comment>
+  </data>
+  <data name="Error_NoProjectsFound" xml:space="preserve">
+    <value>没有找到任何项目.</value>
+  </data>
+  <data name="Error_Startup" xml:space="preserve">
+    <value>启动错误.检查配置.</value>
+    <comment>The settings dialog will be started after this message</comment>
+  </data>
+  <data name="Error_ValueOutOfRange" xml:space="preserve">
+    <value>数值越界</value>
+  </data>
+  <data name="labelActivity" xml:space="preserve">
+    <value>活动</value>
+    <comment>Choose the Activity for the time commit</comment>
+  </data>
+  <data name="labelComment" xml:space="preserve">
+    <value>评论</value>
+    <comment>Comment of time commit</comment>
+  </data>
+  <data name="labelProject" xml:space="preserve">
+    <value>项目</value>
+    <comment>Choose the Project</comment>
+  </data>
+  <data name="labelRedminePassword" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="labelRedmineURL" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="labelRedmineUsername" xml:space="preserve">
+    <value>Redmine 用户名 / API 键</value>
+  </data>
+  <data name="NewVersionText" xml:space="preserve">
+    <value>新版本可用.你想让我带你去下载位置吗?</value>
+  </data>
+  <data name="NewVersionTitle" xml:space="preserve">
+    <value>新版本</value>
+  </data>
+  <data name="RestoreToolStrip_Hide" xml:space="preserve">
+    <value>隐藏</value>
+  </data>
+  <data name="RestoreToolStrip_Minimize" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="RestoreToolStrip_Restore" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="BtnCancelButton" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="BtnCloseButton" xml:space="preserve">
+    <value>关闭问题</value>
+  </data>
+  <data name="BtnSaveButton" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="cbDueDate" xml:space="preserve">
+    <value>到期日期</value>
+  </data>
+  <data name="cbStartDate" xml:space="preserve">
+    <value>开始日期</value>
+  </data>
+  <data name="CheckForUpdatesCheckBox" xml:space="preserve">
+    <value>在启动时检查更新</value>
+  </data>
+  <data name="CloseIssueText" xml:space="preserve">
+    <value>您确定要关闭问题 {0}?</value>
+    <comment>{0} IssueId</comment>
+  </data>
+  <data name="DlgIssueTitleEdit" xml:space="preserve">
+    <value>为项目 {1} 编辑问题 {0} </value>
+    <comment>{0} IssueId; {1} ProjectName</comment>
+  </data>
+  <data name="DlgIssueTitleNew" xml:space="preserve">
+    <value>为项目 {0}创建一个新的问题</value>
+    <comment>{0} ProjectName</comment>
+  </data>
+  <data name="DlgSettingsTitle" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Error_CreateIssueFailed" xml:space="preserve">
+    <value>创建问题失败了; 服务器回应: {0}</value>
+    <comment>{0} exception message</comment>
+  </data>
+  <data name="Error_InvalidUrl" xml:space="preserve">
+    <value>Redmine安装的无效的URL.</value>
+  </data>
+  <data name="Error_IssueSubjectMandatory" xml:space="preserve">
+    <value>这个问题的主题是必需的</value>
+  </data>
+  <data name="Error_UpdateIssueFailed" xml:space="preserve">
+    <value>更新问题失败; 服务器回应: {0}</value>
+    <comment>{0} exception message</comment>
+  </data>
+  <data name="labelAssignedTo" xml:space="preserve">
+    <value>指派给</value>
+  </data>
+  <data name="labelCacheLifetime" xml:space="preserve">
+    <value>缓存生命周期 (分钟, 0 = 无限)</value>
+  </data>
+  <data name="labelDescription" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="labelEstimatedTime" xml:space="preserve">
+    <value>估算时间</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="labelPercentDone" xml:space="preserve">
+    <value>% 完成</value>
+  </data>
+  <data name="labelPopupTimout" xml:space="preserve">
+    <value>最小化时弹出窗口⏎
+或者请求关注每隔⏎
+(分钟, 0 = 从不)</value>
+  </data>
+  <data name="labelPriority" xml:space="preserve">
+    <value>优先级</value>
+  </data>
+  <data name="labelStatus" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="labelSubject" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="labelTargetVersion" xml:space="preserve">
+    <value>目标版本</value>
+  </data>
+  <data name="labelTracker" xml:space="preserve">
+    <value>追踪</value>
+  </data>
+  <data name="linkEditInRedmine" xml:space="preserve">
+    <value>在Redmine中编辑这个问题</value>
+  </data>
+  <data name="MinimizeOnStartTimerCheckBox" xml:space="preserve">
+    <value>最小化启动定时器</value>
+  </data>
+  <data name="MinimizeToSystemTrayCheckBox" xml:space="preserve">
+    <value>最小化到系统托盘</value>
+  </data>
+  <data name="RedmineClientTitle_NoUser" xml:space="preserve">
+    <value>Redmine客户端</value>
+  </data>
+  <data name="RedmineClientTitle_User" xml:space="preserve">
+    <value>Redmine客户端 - {0} {1}</value>
+    <comment>{0} First name; {1} Last name</comment>
+  </data>
+  <data name="BgWork_CheckUpdates" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="BgWork_GetFormData" xml:space="preserve">
+    <value>检索表单数据</value>
+  </data>
+  <data name="BgWork_GetUsername" xml:space="preserve">
+    <value>检索用户名</value>
+  </data>
+  <data name="CommitCancelSaveCommentQuestion" xml:space="preserve">
+    <value>保存新评论?</value>
+  </data>
+  <data name="ExitToolStripMenuItem" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="labelCommitActivity" xml:space="preserve">
+    <value>活动:</value>
+  </data>
+  <data name="labelCommitComment" xml:space="preserve">
+    <value>评论:</value>
+  </data>
+  <data name="labelCommitDateSpent" xml:space="preserve">
+    <value>花在:</value>
+  </data>
+  <data name="labelCommitIssue" xml:space="preserve">
+    <value>问题:</value>
+  </data>
+  <data name="labelCommitProject" xml:space="preserve">
+    <value>项目:</value>
+  </data>
+  <data name="labelCommitQuestion" xml:space="preserve">
+    <value>你想提交以下时间条目吗?</value>
+  </data>
+  <data name="labelCommitTime" xml:space="preserve">
+    <value>时间 (H):</value>
+  </data>
+  <data name="ApiVersion_V10x" xml:space="preserve">
+    <value>V1.0.x</value>
+  </data>
+  <data name="ApiVersion_V11x" xml:space="preserve">
+    <value>V1.1.x</value>
+  </data>
+  <data name="ApiVersion_V13x" xml:space="preserve">
+    <value>V1.3.x</value>
+  </data>
+  <data name="ApiVersion_V14x" xml:space="preserve">
+    <value>V1.4.x</value>
+  </data>
+  <data name="ApiVersion_V21x" xml:space="preserve">
+    <value>V2.1.x</value>
+  </data>
+  <data name="labelRedmineVersion" xml:space="preserve">
+    <value>Redmine 版本</value>
+  </data>
+  <data name="BtnEditActivitiesButton" xml:space="preserve">
+    <value>活动</value>
+  </data>
+  <data name="BtnEditDocumentCategories" xml:space="preserve">
+    <value>文档. 类别.</value>
+  </data>
+  <data name="BtnEditIssuePriorities" xml:space="preserve">
+    <value>优先级</value>
+  </data>
+  <data name="BtnOKButton" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="DlgEditEnumFormTitle_Edit" xml:space="preserve">
+    <value>编辑枚举值 {0} for {1}</value>
+    <comment>{0} Current name of the Enumeration; {1} Name of the Enumeration set</comment>
+  </data>
+  <data name="DlgEditEnumFormTitle_New" xml:space="preserve">
+    <value>新建枚举值 for {0}</value>
+    <comment>{0} Name of the Enumeration set</comment>
+  </data>
+  <data name="DlgEditEnumListFormTitle" xml:space="preserve">
+    <value>编辑枚举值 {0}</value>
+  </data>
+  <data name="EnumName_Activities" xml:space="preserve">
+    <value>活动</value>
+  </data>
+  <data name="EnumName_DocumentCategories" xml:space="preserve">
+    <value>文档类别</value>
+  </data>
+  <data name="EnumName_IssuePriorities" xml:space="preserve">
+    <value>问题优先级 </value>
+  </data>
+  <data name="Error_EnumFieldIsMandatory" xml:space="preserve">
+    <value>{0} 是必填字段</value>
+    <comment>{0} Fieldname</comment>
+  </data>
+  <data name="Error_EnumMustBeUnique" xml:space="preserve">
+    <value>Id和名字必须是唯一的.</value>
+  </data>
+  <data name="GrpEditEnumerations" xml:space="preserve">
+    <value>编辑枚举值</value>
+  </data>
+  <data name="labelEnumId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="labelEnumName" xml:space="preserve">
+    <value>名字</value>
+  </data>
+  <data name="BtnAddButton" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="BtnDeleteButton" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="BtnModifyButton" xml:space="preserve">
+    <value>修改</value>
+  </data>
+  <data name="BtnTestConnection" xml:space="preserve">
+    <value>测试连接</value>
+  </data>
+  <data name="CheckBoxClosesIssue" xml:space="preserve">
+    <value>同时关闭问题</value>
+  </data>
+  <data name="CheckBoxOnlyMe" xml:space="preserve">
+    <value>只显示指派给我的问题</value>
+  </data>
+  <data name="ConnectionTestFailed_Text" xml:space="preserve">
+    <value>与Redmine初始化连接失败. 以下错误发生: {0}</value>
+    <comment>{0} error</comment>
+  </data>
+  <data name="ConnectionTestFailed_Title" xml:space="preserve">
+    <value>连接测试失败</value>
+  </data>
+  <data name="ConnectionTestOK_Text" xml:space="preserve">
+    <value>与Redmine的初始化连接是成功的.</value>
+  </data>
+  <data name="ConnectionTestOK_Title" xml:space="preserve">
+    <value>连接测试成功</value>
+  </data>
+  <data name="Error_ClosedStatusUnknown" xml:space="preserve">
+    <value>用于关闭一个问题的状态是未知的, 请到"设置“面板进行设置.</value>
+  </data>
+  <data name="GrpApplicationSettings" xml:space="preserve">
+    <value>应用程序设置</value>
+  </data>
+  <data name="GrpRedmineServerSettings" xml:space="preserve">
+    <value>Redmine服务器设置</value>
+  </data>
+  <data name="labelSelectCloseStatus" xml:space="preserve">
+    <value>当关闭一个问题时间,设置它</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>疑问</value>
+  </data>
+  <data name="Timer_WasTickingWhenClosed" xml:space="preserve">
+    <value>当你停止客户端时,计时器滴答作响. 你想要客户端继续滴答作响吗?</value>
+  </data>
+  <data name="PauseTimerOnLockCheckBox" xml:space="preserve">
+    <value>在屏幕锁定和退出时暂停计时器</value>
+  </data>
+  <data name="UpdateIssueIfStateCheckBox" xml:space="preserve">
+    <value>如果计时器开始和问题有状态</value>
+  </data>
+  <data name="UpdateIssueIfStateLabel" xml:space="preserve">
+    <value>然后设置状态为</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>消息</value>
+  </data>
+  <data name="ApiVersion_V12x" xml:space="preserve">
+    <value>V1.2.x</value>
+  </data>
+  <data name="ApiVersion_V20x" xml:space="preserve">
+    <value>V2.0.x</value>
+  </data>
+  <data name="ApiVersion_V22x" xml:space="preserve">
+    <value>V2.2.x</value>
+  </data>
+  <data name="BtnViewTimeButton" xml:space="preserve">
+    <value>视图时间</value>
+  </data>
+  <data name="BgWork_GetTimeEntries" xml:space="preserve">
+    <value>检索时间条目</value>
+  </data>
+  <data name="DlgTimeEntriesTitle" xml:space="preserve">
+    <value>查看问题的时间条目 {0} {1}</value>
+    <comment>{0} issuenumber; {1} issue subject</comment>
+  </data>
+  <data name="BgWork_GetIssue" xml:space="preserve">
+    <value>检索问题信息</value>
+  </data>
+  <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
+    <value>为问题 {0} {1}创建新时间条目</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="labelByUser" xml:space="preserve">
+    <value>有用户</value>
+  </data>
+  <data name="labelSpentHours" xml:space="preserve">
+    <value>花了几个小时</value>
+  </data>
+  <data name="labelSpentOn" xml:space="preserve">
+    <value>花费</value>
+  </data>
+  <data name="Warning_AreYouSureDeleteTimeEntry" xml:space="preserve">
+    <value>你确定你要删除时间条目 {0}</value>
+    <comment>{0} time-entry id</comment>
+  </data>
+  <data name="LabelChildren" xml:space="preserve">
+    <value>子:</value>
+  </data>
+  <data name="LabelParent" xml:space="preserve">
+    <value>父: {0} {1}</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="PauseToolStripMenuItem" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="StartToolStripMenuItem" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="addNewToolStripMenuItem" xml:space="preserve">
+    <value>添加新的</value>
+  </data>
+  <data name="BtnBrowseButton" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="DlgAttachmentTitle" xml:space="preserve">
+    <value>为问题 {0} {1}添加一个新的附件</value>
+    <comment>{0} issue number; {1} issue subject</comment>
+  </data>
+  <data name="downloadOpenToolStripMenuItem" xml:space="preserve">
+    <value>下载 / 打开</value>
+  </data>
+  <data name="groupBoxAttachments" xml:space="preserve">
+    <value>附件</value>
+  </data>
+  <data name="labelAttachmentDescription" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="labelSelectAttachment" xml:space="preserve">
+    <value>附件</value>
+  </data>
+  <data name="NewIssue" xml:space="preserve">
+    <value>新问题</value>
+  </data>
+  <data name="LabelRelations" xml:space="preserve">
+    <value>关系</value>
+  </data>
+  <data name="DlgUpdateIssueNoteTitle" xml:space="preserve">
+    <value>更新问题 {0} {1}</value>
+  </data>
+  <data name="IssueField_assignedto" xml:space="preserve">
+    <value>指派给</value>
+  </data>
+  <data name="IssueField_author" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="IssueField_category" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="IssueField_createdon" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="IssueField_description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="IssueField_doneratio" xml:space="preserve">
+    <value>完成比例</value>
+  </data>
+  <data name="IssueField_duedate" xml:space="preserve">
+    <value>到期日期</value>
+  </data>
+  <data name="IssueField_estimatedhours" xml:space="preserve">
+    <value>估算时间</value>
+  </data>
+  <data name="IssueField_fixedversion" xml:space="preserve">
+    <value>目标版本</value>
+  </data>
+  <data name="IssueField_parentissue" xml:space="preserve">
+    <value>父问题</value>
+  </data>
+  <data name="IssueField_priority" xml:space="preserve">
+    <value>优先级</value>
+  </data>
+  <data name="IssueField_project" xml:space="preserve">
+    <value>项目</value>
+  </data>
+  <data name="IssueField_startdate" xml:space="preserve">
+    <value>开始日期</value>
+  </data>
+  <data name="IssueField_status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="IssueField_subject" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="IssueField_tracker" xml:space="preserve">
+    <value>跟踪</value>
+  </data>
+  <data name="IssueField_updatedon" xml:space="preserve">
+    <value>更新于</value>
+  </data>
+  <data name="labelCategory" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="ShowAllIssues" xml:space="preserve">
+    <value>显示所有问题</value>
+  </data>
+  <data name="UpdatedField_Deleted" xml:space="preserve">
+    <value>{0} 已删除的 ({1})</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="UpdatedField_Description" xml:space="preserve">
+    <value>描述已经更新</value>
+  </data>
+  <data name="UpdatedField_SetTo" xml:space="preserve">
+    <value>{0} 调到 {2}</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="BtnRefreshButton_Filter" xml:space="preserve">
+    <value>过滤器</value>
+  </data>
+  <data name="groupBoxFilter" xml:space="preserve">
+    <value>过滤器</value>
+  </data>
+  <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
+    <value>编辑可见列</value>
+  </data>
+  <data name="IssueField_id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="BtnClearButton" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="editVisibleColumnsHeaderToolStripMenuItem" xml:space="preserve">
+    <value>编辑可见列</value>
+  </data>
+  <data name="openIssueInBrowserToolStripMenuItem" xml:space="preserve">
+    <value>打开问题在浏览器</value>
+  </data>
+  <data name="openIssueToolStripMenuItem" xml:space="preserve">
+    <value>打开问题</value>
+  </data>
+  <data name="labelCommunicationType" xml:space="preserve">
+    <value>沟通使用</value>
+  </data>
+  <data name="AllClosedIssues" xml:space="preserve">
+    <value>所有关闭的问题</value>
+  </data>
+  <data name="AllOpenAndClosedIssues" xml:space="preserve">
+    <value>所有打开和关闭的问题</value>
+  </data>
+  <data name="AllOpenIssues" xml:space="preserve">
+    <value>所有打开的问题</value>
+  </data>
+  <data name="BtnOpenIssueButton" xml:space="preserve">
+    <value>打开问题</value>
+  </data>
+  <data name="DlgOpenSpecificIssueTitle" xml:space="preserve">
+    <value>打开一个具体的问题</value>
+  </data>
+  <data name="labelIssueNumberToOpen" xml:space="preserve">
+    <value>打开问题号</value>
+  </data>
+</root>
