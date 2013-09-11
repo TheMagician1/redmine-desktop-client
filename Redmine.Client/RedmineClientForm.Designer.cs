@@ -646,7 +646,6 @@ namespace Redmine.Client
             this.Controls.Add(this.TextBoxHours);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(625, 536);
             this.Name = "RedmineClientForm";
             this.Text = "Redmine Client";
