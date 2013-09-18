@@ -670,9 +670,9 @@ namespace Redmine.Client
         private void UpdateTime()
         {
             this.updating = true;
-            this.TextBoxHours.Text = (ticks / 3600 % 60).ToString();
-            this.TextBoxMinutes.Text = (ticks / 60 % 60).ToString();
-            this.TextBoxSeconds.Text = (ticks % 60).ToString();
+            this.TextBoxHours.Text   = (ticks / 3600)   .ToString("D2");
+            this.TextBoxMinutes.Text = (ticks / 60 % 60).ToString("D2");
+            this.TextBoxSeconds.Text = (ticks % 60)     .ToString("D2");
             this.updating = false;
         }
 
