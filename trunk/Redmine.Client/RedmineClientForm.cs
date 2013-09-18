@@ -50,6 +50,8 @@ namespace Redmine.Client
         private Filter currentFilter = new Filter();
         public User CurrentUser { get { return currentUser; } }
 
+        private IList<Issue> currentIssues;
+
         /* ugly hack to create a singleton */
         private static readonly RedmineClientForm instance = new RedmineClientForm();
         public static RedmineClientForm Instance { get { return instance; } }
@@ -327,7 +329,47 @@ namespace Redmine.Client
             ComboBoxPriority.ValueMember = "Id";
             ComboBoxPriority.SelectedValue = filter.PriorityId;
 
-            DataGridViewIssues.DataSource = data.Issues;
+            currentIssues = data.Issues;
+
+            FilterAndFillCurrentIssues();
+        }
+
+        bool IssueHasKeyword(Issue issue, String keyword)
+        {
+            if (issue.Subject.ToLower().Contains(keyword))
+                return true;
+            if (issue.Status.ToString().ToLower().Contains(keyword))
+                return true;
+            if (issue.Id.ToString().Contains(keyword))
+                return true;
+            return false;
+        }
+
+        void FilterAndFillCurrentIssues()
+        {
+            String[] keywords = textBoxSearch.Text.ToLower().Split(' ');
+            IList<Issue> filteredIssues = new List<Issue>();
+            foreach (Issue i in currentIssues)
+            {
+                bool found = true;
+                foreach (String keyword in keywords)
+                {
+                    if (!IssueHasKeyword(i, keyword))
+                    {
+                        found = false;
+                        break;
+                    }
+                }
+                if (!found)
+                    continue;
+                filteredIssues.Add(i);
+            }
+            FillIssues(filteredIssues);
+        }
+
+        void FillIssues(IList<Issue> Issues)
+        {
+            DataGridViewIssues.DataSource = Issues;
             UpdateIssueDataColumns();
             try // Very ugly trick to fix the mono crash reported in the SF.net forum
             {
@@ -1567,6 +1609,11 @@ namespace Redmine.Client
                 Issue issue = new Issue { Id = dlg.IssueNumber };
                 ShowIssue(issue);
             }
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            FilterAndFillCurrentIssues();
         }
 
     }
