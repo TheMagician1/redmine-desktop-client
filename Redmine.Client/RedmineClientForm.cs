@@ -342,6 +342,9 @@ namespace Redmine.Client
                 return true;
             if (issue.Id.ToString().Contains(keyword))
                 return true;
+            if (projectId == -1 && // Only search project when there is no project pre-filter
+                issue.Project.Name.ToLower().Contains(keyword))
+                return true;
             return false;
         }
 
