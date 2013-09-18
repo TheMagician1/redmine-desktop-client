@@ -82,6 +82,7 @@ namespace Redmine.Client
             this.openIssueInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editVisibleColumnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnOpenIssueButton = new System.Windows.Forms.Button();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.NotifyIconMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).BeginInit();
             this.groupBoxFilter.SuspendLayout();
@@ -275,14 +276,14 @@ namespace Redmine.Client
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewIssues.Location = new System.Drawing.Point(9, 103);
+            this.DataGridViewIssues.Location = new System.Drawing.Point(9, 137);
             this.DataGridViewIssues.Margin = new System.Windows.Forms.Padding(2);
             this.DataGridViewIssues.MultiSelect = false;
             this.DataGridViewIssues.Name = "DataGridViewIssues";
             this.DataGridViewIssues.ReadOnly = true;
             this.DataGridViewIssues.RowTemplate.Height = 24;
             this.DataGridViewIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewIssues.Size = new System.Drawing.Size(408, 385);
+            this.DataGridViewIssues.Size = new System.Drawing.Size(408, 350);
             this.DataGridViewIssues.TabIndex = 0;
             this.DataGridViewIssues.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewIssues_CellDoubleClick);
             this.DataGridViewIssues.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewIssues_CellFormatting);
@@ -618,11 +619,23 @@ namespace Redmine.Client
             this.BtnOpenIssueButton.UseVisualStyleBackColor = true;
             this.BtnOpenIssueButton.Click += new System.EventHandler(this.BtnOpenIssueButton_Click);
             // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSearch.Location = new System.Drawing.Point(9, 113);
+            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(408, 20);
+            this.textBoxSearch.TabIndex = 21;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+            // 
             // RedmineClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 498);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.groupBoxFilter);
             this.Controls.Add(this.BtnSettingsButton);
             this.Controls.Add(this.CheckBoxOnlyMe);
@@ -714,6 +727,7 @@ namespace Redmine.Client
         private ToolStripMenuItem editVisibleColumnsToolStripMenuItem;
         private Button BtnClearButton;
         private Button BtnOpenIssueButton;
+        private TextBox textBoxSearch;
     }
 }
 
