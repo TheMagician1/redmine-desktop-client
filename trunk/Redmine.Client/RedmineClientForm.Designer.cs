@@ -59,7 +59,7 @@ namespace Redmine.Client
             this.BtnSettingsButton = new System.Windows.Forms.Button();
             this.BtnNewIssueButton = new System.Windows.Forms.Button();
             this.CheckBoxOnlyMe = new System.Windows.Forms.CheckBox();
-            this.groupBoxFilter = new System.Windows.Forms.GroupBox();
+            this.groupBoxSearch = new System.Windows.Forms.GroupBox();
             this.labelCategory = new System.Windows.Forms.Label();
             this.ComboBoxCategory = new System.Windows.Forms.ComboBox();
             this.labelTargetVersion = new System.Windows.Forms.Label();
@@ -83,9 +83,10 @@ namespace Redmine.Client
             this.editVisibleColumnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnOpenIssueButton = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.labelKeywordFilter = new System.Windows.Forms.Label();
             this.NotifyIconMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).BeginInit();
-            this.groupBoxFilter.SuspendLayout();
+            this.groupBoxSearch.SuspendLayout();
             this.IssueGridHeaderMenuStrip.SuspendLayout();
             this.IssueGridMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -276,14 +277,14 @@ namespace Redmine.Client
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewIssues.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewIssues.Location = new System.Drawing.Point(9, 137);
+            this.DataGridViewIssues.Location = new System.Drawing.Point(9, 148);
             this.DataGridViewIssues.Margin = new System.Windows.Forms.Padding(2);
             this.DataGridViewIssues.MultiSelect = false;
             this.DataGridViewIssues.Name = "DataGridViewIssues";
             this.DataGridViewIssues.ReadOnly = true;
             this.DataGridViewIssues.RowTemplate.Height = 24;
             this.DataGridViewIssues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewIssues.Size = new System.Drawing.Size(408, 350);
+            this.DataGridViewIssues.Size = new System.Drawing.Size(408, 339);
             this.DataGridViewIssues.TabIndex = 0;
             this.DataGridViewIssues.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewIssues_CellDoubleClick);
             this.DataGridViewIssues.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewIssues_CellFormatting);
@@ -378,31 +379,31 @@ namespace Redmine.Client
             this.CheckBoxOnlyMe.UseVisualStyleBackColor = true;
             this.CheckBoxOnlyMe.Click += new System.EventHandler(this.CheckBoxOnlyMe_Click);
             // 
-            // groupBoxFilter
+            // groupBoxSearch
             // 
-            this.groupBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxFilter.Controls.Add(this.labelCategory);
-            this.groupBoxFilter.Controls.Add(this.ComboBoxCategory);
-            this.groupBoxFilter.Controls.Add(this.labelTargetVersion);
-            this.groupBoxFilter.Controls.Add(this.ComboBoxTargetVersion);
-            this.groupBoxFilter.Controls.Add(this.labelAssignedTo);
-            this.groupBoxFilter.Controls.Add(this.ComboBoxAssignedTo);
-            this.groupBoxFilter.Controls.Add(this.labelSubject);
-            this.groupBoxFilter.Controls.Add(this.TextBoxSubject);
-            this.groupBoxFilter.Controls.Add(this.labelPriority);
-            this.groupBoxFilter.Controls.Add(this.ComboBoxPriority);
-            this.groupBoxFilter.Controls.Add(this.BtnClearButton);
-            this.groupBoxFilter.Controls.Add(this.BtnRefreshButton);
-            this.groupBoxFilter.Controls.Add(this.labelStatus);
-            this.groupBoxFilter.Controls.Add(this.ComboBoxStatus);
-            this.groupBoxFilter.Controls.Add(this.labelTracker);
-            this.groupBoxFilter.Controls.Add(this.ComboBoxTracker);
-            this.groupBoxFilter.Location = new System.Drawing.Point(422, 103);
-            this.groupBoxFilter.Name = "groupBoxFilter";
-            this.groupBoxFilter.Size = new System.Drawing.Size(180, 356);
-            this.groupBoxFilter.TabIndex = 20;
-            this.groupBoxFilter.TabStop = false;
-            this.groupBoxFilter.Text = "Filter";
+            this.groupBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxSearch.Controls.Add(this.labelCategory);
+            this.groupBoxSearch.Controls.Add(this.ComboBoxCategory);
+            this.groupBoxSearch.Controls.Add(this.labelTargetVersion);
+            this.groupBoxSearch.Controls.Add(this.ComboBoxTargetVersion);
+            this.groupBoxSearch.Controls.Add(this.labelAssignedTo);
+            this.groupBoxSearch.Controls.Add(this.ComboBoxAssignedTo);
+            this.groupBoxSearch.Controls.Add(this.labelSubject);
+            this.groupBoxSearch.Controls.Add(this.TextBoxSubject);
+            this.groupBoxSearch.Controls.Add(this.labelPriority);
+            this.groupBoxSearch.Controls.Add(this.ComboBoxPriority);
+            this.groupBoxSearch.Controls.Add(this.BtnClearButton);
+            this.groupBoxSearch.Controls.Add(this.BtnRefreshButton);
+            this.groupBoxSearch.Controls.Add(this.labelStatus);
+            this.groupBoxSearch.Controls.Add(this.ComboBoxStatus);
+            this.groupBoxSearch.Controls.Add(this.labelTracker);
+            this.groupBoxSearch.Controls.Add(this.ComboBoxTracker);
+            this.groupBoxSearch.Location = new System.Drawing.Point(422, 103);
+            this.groupBoxSearch.Name = "groupBoxSearch";
+            this.groupBoxSearch.Size = new System.Drawing.Size(180, 356);
+            this.groupBoxSearch.TabIndex = 20;
+            this.groupBoxSearch.TabStop = false;
+            this.groupBoxSearch.Text = "Search";
             // 
             // labelCategory
             // 
@@ -623,12 +624,22 @@ namespace Redmine.Client
             // 
             this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSearch.Location = new System.Drawing.Point(9, 113);
+            this.textBoxSearch.Location = new System.Drawing.Point(9, 124);
             this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(408, 20);
             this.textBoxSearch.TabIndex = 21;
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+            // 
+            // labelKeywordFilter
+            // 
+            this.labelKeywordFilter.AutoSize = true;
+            this.labelKeywordFilter.Location = new System.Drawing.Point(8, 109);
+            this.labelKeywordFilter.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelKeywordFilter.Name = "labelKeywordFilter";
+            this.labelKeywordFilter.Size = new System.Drawing.Size(73, 13);
+            this.labelKeywordFilter.TabIndex = 3;
+            this.labelKeywordFilter.Text = "Keyword Filter";
             // 
             // RedmineClientForm
             // 
@@ -636,7 +647,7 @@ namespace Redmine.Client
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 498);
             this.Controls.Add(this.textBoxSearch);
-            this.Controls.Add(this.groupBoxFilter);
+            this.Controls.Add(this.groupBoxSearch);
             this.Controls.Add(this.BtnSettingsButton);
             this.Controls.Add(this.CheckBoxOnlyMe);
             this.Controls.Add(this.BtnOpenIssueButton);
@@ -645,6 +656,7 @@ namespace Redmine.Client
             this.Controls.Add(this.BtnAboutButton);
             this.Controls.Add(this.DataGridViewIssues);
             this.Controls.Add(this.BtnExitButton);
+            this.Controls.Add(this.labelKeywordFilter);
             this.Controls.Add(this.labelActivity);
             this.Controls.Add(this.ComboBoxProject);
             this.Controls.Add(this.BtnCommitButton);
@@ -666,8 +678,8 @@ namespace Redmine.Client
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.NotifyIconMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewIssues)).EndInit();
-            this.groupBoxFilter.ResumeLayout(false);
-            this.groupBoxFilter.PerformLayout();
+            this.groupBoxSearch.ResumeLayout(false);
+            this.groupBoxSearch.PerformLayout();
             this.IssueGridHeaderMenuStrip.ResumeLayout(false);
             this.IssueGridMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -704,7 +716,7 @@ namespace Redmine.Client
         private CheckBox CheckBoxOnlyMe;
         private ToolStripMenuItem PauseToolStripMenuItem;
         private ToolStripMenuItem StartToolStripMenuItem;
-        private GroupBox groupBoxFilter;
+        private GroupBox groupBoxSearch;
         private Label labelTracker;
         private ComboBox ComboBoxTracker;
         private Label labelStatus;
@@ -728,6 +740,7 @@ namespace Redmine.Client
         private Button BtnClearButton;
         private Button BtnOpenIssueButton;
         private TextBox textBoxSearch;
+        private Label labelKeywordFilter;
     }
 }
 

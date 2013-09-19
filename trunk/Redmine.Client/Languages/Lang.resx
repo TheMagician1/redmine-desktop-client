@@ -680,11 +680,11 @@ or Request attention every
   <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
     <value>Add a note when changing the status with above options</value>
   </data>
-  <data name="BtnRefreshButton_Filter" xml:space="preserve">
-    <value>Filter</value>
+  <data name="BtnRefreshButton_Search" xml:space="preserve">
+    <value>Search</value>
   </data>
-  <data name="groupBoxFilter" xml:space="preserve">
-    <value>Filter</value>
+  <data name="groupBoxSearch" xml:space="preserve">
+    <value>Search</value>
   </data>
   <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
     <value>&amp;Edit Visible Columns</value>
@@ -724,5 +724,8 @@ or Request attention every
   </data>
   <data name="labelIssueNumberToOpen" xml:space="preserve">
     <value>Issuenumber to open</value>
+  </data>
+  <data name="labelKeywordSearch" xml:space="preserve">
+    <value>Keyword Search</value>
   </data>
 </root>

@@ -1589,7 +1589,7 @@ namespace Redmine.Client
 
         private void FilterChanged()
         {
-            BtnRefreshButton.Text = Lang.BtnRefreshButton_Filter;
+            BtnRefreshButton.Text = Lang.BtnRefreshButton_Search;
         }
 
         private void BtnClearButton_Click(object sender, EventArgs e)
