@@ -1616,9 +1616,21 @@ namespace Redmine.Client
             }
         }
 
+
+        Timer refreshIssuesTimer;
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            FilterAndFillCurrentIssues();
+            if (refreshIssuesTimer != null)
+                refreshIssuesTimer.Dispose();
+            refreshIssuesTimer = new Timer();
+            refreshIssuesTimer.Interval = 400;
+            refreshIssuesTimer.Enabled = true;
+            refreshIssuesTimer.Tick += (object s2, EventArgs e2) =>
+            {
+                FilterAndFillCurrentIssues();
+                refreshIssuesTimer.Stop();
+            };
+            refreshIssuesTimer.Start();
         }
 
     }
