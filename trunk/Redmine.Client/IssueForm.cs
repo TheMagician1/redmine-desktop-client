@@ -33,6 +33,22 @@ namespace Redmine.Client
                 this.Type = relation.Type;
                 this.issueTo = issueTo;
             }
+
+            internal static IssueRelationType InvertRelationType(IssueRelationType issueRelationType)
+            {
+                switch (issueRelationType)
+                {
+                    case IssueRelationType.precedes: return IssueRelationType.follows;
+                    case IssueRelationType.follows: return IssueRelationType.precedes;
+                    case IssueRelationType.duplicated: return IssueRelationType.duplicates;
+                    case IssueRelationType.duplicates: return IssueRelationType.duplicated;
+                    case IssueRelationType.blocks: return IssueRelationType.blocked;
+                    case IssueRelationType.blocked: return IssueRelationType.blocks;
+                    default:
+                    case IssueRelationType.relates:
+                        return issueRelationType;
+                }
+            }
         };
         private Project project;
         private int issueId = 0;
@@ -764,6 +780,7 @@ namespace Redmine.Client
                                     {
                                         r.IssueToId = r.IssueId;
                                         r.IssueId = issueId;
+                                        r.Type = ClientIssueRelation.InvertRelationType(r.Type);
                                     }
                                     Issue relatedIssue = RedmineClientForm.redmine.GetObject<Issue>(r.IssueToId.ToString(), null);
                                     currentIssueRelations.Add(new ClientIssueRelation(r, relatedIssue));
