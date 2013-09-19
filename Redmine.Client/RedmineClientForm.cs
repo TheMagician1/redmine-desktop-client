@@ -350,6 +350,8 @@ namespace Redmine.Client
 
         void FilterAndFillCurrentIssues()
         {
+            if (currentIssues == null)
+                return; // No issues yet
             String[] keywords = textBoxSearch.Text.ToLower().Split(' ');
             IList<Issue> filteredIssues = new List<Issue>();
             foreach (Issue i in currentIssues)
