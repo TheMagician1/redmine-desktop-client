@@ -232,6 +232,78 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to loading Categories.
+        /// </summary>
+        internal static string BgWork_LoadCategories {
+            get {
+                return ResourceManager.GetString("BgWork_LoadCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to loading the Issues.
+        /// </summary>
+        internal static string BgWork_LoadIssues {
+            get {
+                return ResourceManager.GetString("BgWork_LoadIssues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to loading Issue Priorities.
+        /// </summary>
+        internal static string BgWork_LoadPriorities {
+            get {
+                return ResourceManager.GetString("BgWork_LoadPriorities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to loading Project Members.
+        /// </summary>
+        internal static string BgWork_LoadProjectMembers {
+            get {
+                return ResourceManager.GetString("BgWork_LoadProjectMembers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to loading selected project Trackers.
+        /// </summary>
+        internal static string BgWork_LoadProjectTrackers {
+            get {
+                return ResourceManager.GetString("BgWork_LoadProjectTrackers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to loading Statusses.
+        /// </summary>
+        internal static string BgWork_LoadStatuses {
+            get {
+                return ResourceManager.GetString("BgWork_LoadStatuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to loading Trackers.
+        /// </summary>
+        internal static string BgWork_LoadTrackers {
+            get {
+                return ResourceManager.GetString("BgWork_LoadTrackers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to loading Versions.
+        /// </summary>
+        internal static string BgWork_LoadVersions {
+            get {
+                return ResourceManager.GetString("BgWork_LoadVersions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         internal static string BtnAboutButton {
@@ -840,6 +912,15 @@ namespace Redmine.Client.Languages {
         internal static string Error_Exception {
             get {
                 return ResourceManager.GetString("Error_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exception while {1}: {0}.
+        /// </summary>
+        internal static string Error_InitFailedException {
+            get {
+                return ResourceManager.GetString("Error_InitFailedException", resourceCulture);
             }
         }
         
