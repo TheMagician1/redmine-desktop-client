@@ -680,12 +680,6 @@ upozornit každých
   <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
     <value>Přidat poznámku při změně stavu s dříve uvedenými volbami</value>
   </data>
-  <data name="BtnRefreshButton_Filter" xml:space="preserve">
-    <value>Filtr</value>
-  </data>
-  <data name="groupBoxFilter" xml:space="preserve">
-    <value>Filtr</value>
-  </data>
   <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
     <value>&amp;Editovat viditelné sloupce</value>
   </data>
@@ -697,5 +691,32 @@ upozornit každých
   </data>
   <data name="editVisibleColumnsHeaderToolStripMenuItem" xml:space="preserve">
     <value>&amp;Editovat viditelné sloupce</value>
+  </data>
+  <data name="openIssueInBrowserToolStripMenuItem" xml:space="preserve">
+    <value>Otevřít úkol v &amp;Prohlížeči</value>
+  </data>
+  <data name="openIssueToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Otevřít úkol</value>
+  </data>
+  <data name="labelCommunicationType" xml:space="preserve">
+    <value>Komunikovat použitím</value>
+  </data>
+  <data name="AllClosedIssues" xml:space="preserve">
+    <value>Všechny uzavřené úkoly</value>
+  </data>
+  <data name="AllOpenAndClosedIssues" xml:space="preserve">
+    <value>Všechny otevřené a uzavřené úkoly</value>
+  </data>
+  <data name="AllOpenIssues" xml:space="preserve">
+    <value>Všechny otevřené úkoly</value>
+  </data>
+  <data name="BtnOpenIssueButton" xml:space="preserve">
+    <value>Otevřít úkol</value>
+  </data>
+  <data name="DlgOpenSpecificIssueTitle" xml:space="preserve">
+    <value>Otevřít určitý úkol</value>
+  </data>
+  <data name="labelIssueNumberToOpen" xml:space="preserve">
+    <value>Otevřít úkol číslo</value>
   </data>
 </root>

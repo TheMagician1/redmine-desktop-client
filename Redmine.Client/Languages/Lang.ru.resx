@@ -147,11 +147,27 @@
   <data name="BtnStartButton_Pause" xml:space="preserve">
     <value>Пауза</value>
   </data>
+  <data name="CommitConfirmQuestion" xml:space="preserve">
+    <value>Вы подтверждаете отправку данных на сервер?</value>
+  </data>
+  <data name="CommitConfirmText" xml:space="preserve">
+    <value>Подтвердите оправку следующих данных: {6} Проект: {0}, Деятельность: {1}, Задача: {2},{6}Дата: {3}, Комментарий: {4}, Время: {5}</value>
+    <comment>{0} ProjectName; {1} ActivityName; {2} IssueId; {3} Date; {4} Comment; {5} Time(Hours) {6} newline</comment>
+  </data>
   <data name="CommitNoActivitySelected" xml:space="preserve">
     <value>Действие не выбрано.</value>
   </data>
   <data name="CommitNoIssueSelected" xml:space="preserve">
     <value>Задача не выбрана.</value>
+  </data>
+  <data name="CommitNoTime" xml:space="preserve">
+    <value>Укажите затраченное время.</value>
+  </data>
+  <data name="CommitSuccessfullText" xml:space="preserve">
+    <value>Затраченное время успешно сохранено.</value>
+  </data>
+  <data name="CommitSuccessfullTitle" xml:space="preserve">
+    <value>Затраченное время учтено</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Ошибка</value>
@@ -350,6 +366,10 @@
   <data name="labelCommitTime" xml:space="preserve">
     <value>Время (Ч):</value>
   </data>
+  <data name="Warning_ClosingSaveTimes" xml:space="preserve">
+    <value>Вы пытаетесь закрыть Redmine Client, но отсчет затраченного времени продолжается.{0}Вы хотите сохранить и отправить на сервер данные о затраченном времени?</value>
+    <comment>{0} newline</comment>
+  </data>
   <data name="ApiVersion_V10x" xml:space="preserve">
     <value>V1.0.x</value>
   </data>
@@ -428,6 +448,9 @@
   <data name="BtnTestConnection" xml:space="preserve">
     <value>Проверить соединение</value>
   </data>
+  <data name="CheckBoxClosesIssue" xml:space="preserve">
+    <value>А также закрыть задачу</value>
+  </data>
   <data name="CheckBoxOnlyMe" xml:space="preserve">
     <value>Показать только задачи, назначенные мне</value>
   </data>
@@ -461,6 +484,9 @@
   </data>
   <data name="Question" xml:space="preserve">
     <value>Вопрос</value>
+  </data>
+  <data name="Timer_WasTickingWhenClosed" xml:space="preserve">
+    <value>Таймер производил отсчет времени перед тем, как вы закрыли клиент в прошлый раз. Продолжить отсчет времени?</value>
   </data>
   <data name="PauseTimerOnLockCheckBox" xml:space="preserve">
     <value>Останавливать таймер при выходе или блокировке экрана</value>
@@ -496,6 +522,10 @@
   <data name="BgWork_GetIssue" xml:space="preserve">
     <value>Получение данных о задачах</value>
   </data>
+  <data name="DlgTimeEntryFormTitle_Edit" xml:space="preserve">
+    <value>Редактировать затраченное время {0} на задачу {1} {2}</value>
+    <comment>{0} Dat spent on {1} issue number; {2} issue subject</comment>
+  </data>
   <data name="DlgTimeEntryFormTitle_New" xml:space="preserve">
     <value>Затраченное время на задачу {0} {1}</value>
     <comment>{0} issue number; {1} issue subject</comment>
@@ -526,6 +556,9 @@
   </data>
   <data name="StartToolStripMenuItem" xml:space="preserve">
     <value>&amp;Запуск</value>
+  </data>
+  <data name="addNewToolStripMenuItem" xml:space="preserve">
+    <value>Добавить</value>
   </data>
   <data name="BtnBrowseButton" xml:space="preserve">
     <value>Обзор</value>
@@ -615,17 +648,23 @@
   <data name="ShowAllIssues" xml:space="preserve">
     <value>Показать все задачи</value>
   </data>
+  <data name="UpdatedField_Deleted" xml:space="preserve">
+    <value>{0} удалено ({1})</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
   <data name="UpdatedField_Description" xml:space="preserve">
     <value>Описание обновлено</value>
   </data>
+  <data name="UpdatedField_SetTo" xml:space="preserve">
+    <value>{0} установлено в {2}</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
+  <data name="UpdatedField_UpdatedTo" xml:space="preserve">
+    <value>{0} изменено с {1} на {2}</value>
+    <comment>{0} fieldname; {1} from value; {2} to value;</comment>
+  </data>
   <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
     <value>Добавлять запись при изменении статуса согласно двум предыдущим опциям</value>
-  </data>
-  <data name="BtnRefreshButton_Filter" xml:space="preserve">
-    <value>Фильтр</value>
-  </data>
-  <data name="groupBoxFilter" xml:space="preserve">
-    <value>Фильтр</value>
   </data>
   <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
     <value>&amp;Редактировать видимые колонки</value>

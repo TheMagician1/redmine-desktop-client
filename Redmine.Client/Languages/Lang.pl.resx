@@ -680,12 +680,6 @@ lub zażądaj reakcji co
   <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
     <value>Dodaj komentarz gdy zmieniany jest status z wykorzystaniem powyższych opcji</value>
   </data>
-  <data name="BtnRefreshButton_Filter" xml:space="preserve">
-    <value>Filtr</value>
-  </data>
-  <data name="groupBoxFilter" xml:space="preserve">
-    <value>Filtr</value>
-  </data>
   <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
     <value>&amp;Edytuj widoczne kolumny</value>
   </data>

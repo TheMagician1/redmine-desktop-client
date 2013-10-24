@@ -677,12 +677,6 @@ oder Aufmerksamtkeit fordern alle
     <value>{0} geändert von {1} nach {2}</value>
     <comment>{0} fieldname; {1} from value; {2} to value;</comment>
   </data>
-  <data name="BtnRefreshButton_Filter" xml:space="preserve">
-    <value>Filter</value>
-  </data>
-  <data name="groupBoxFilter" xml:space="preserve">
-    <value>Filter</value>
-  </data>
   <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
     <value>sichtbare Spalten anpassen</value>
   </data>

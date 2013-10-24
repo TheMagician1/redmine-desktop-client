@@ -158,7 +158,7 @@
     <value>Nenhuma atividade selecionada.</value>
   </data>
   <data name="CommitNoIssueSelected" xml:space="preserve">
-    <value>Nenhum tarefa selecionado.</value>
+    <value>Nenhuma tarefa selecionada.</value>
   </data>
   <data name="CommitNoTime" xml:space="preserve">
     <value>Nenhum horário para registrar...</value>
@@ -468,7 +468,7 @@ ou requisitar atenção a cada
     <value>Sucesso no teste de conexão</value>
   </data>
   <data name="Error_ClosedStatusUnknown" xml:space="preserve">
-    <value>A situação usada para fechar uma tarefa é desconhecida. Por favor, acesso as configurações para definir isso.</value>
+    <value>A situação usada para fechar uma tarefa é desconhecida. Por favor, acesse as configurações para definir isso.</value>
   </data>
   <data name="GrpApplicationSettings" xml:space="preserve">
     <value>Configurações do aplicativo</value>
@@ -602,20 +602,44 @@ ou requisitar atenção a cada
   <data name="DlgUpdateIssueNoteTitle" xml:space="preserve">
     <value>Atualizando tarefa {0} {1}</value>
   </data>
+  <data name="IssueField_assignedto" xml:space="preserve">
+    <value>Atribuído a</value>
+  </data>
   <data name="IssueField_author" xml:space="preserve">
     <value>Autor</value>
   </data>
   <data name="IssueField_category" xml:space="preserve">
     <value>Categoria</value>
   </data>
+  <data name="IssueField_createdon" xml:space="preserve">
+    <value>Criada em</value>
+  </data>
   <data name="IssueField_description" xml:space="preserve">
     <value>Descrição</value>
+  </data>
+  <data name="IssueField_doneratio" xml:space="preserve">
+    <value>% concluída</value>
+  </data>
+  <data name="IssueField_duedate" xml:space="preserve">
+    <value>data de vencimento</value>
+  </data>
+  <data name="IssueField_estimatedhours" xml:space="preserve">
+    <value>Horas estimadas</value>
+  </data>
+  <data name="IssueField_fixedversion" xml:space="preserve">
+    <value>Versão alvo</value>
+  </data>
+  <data name="IssueField_parentissue" xml:space="preserve">
+    <value>Tarefa pai</value>
   </data>
   <data name="IssueField_priority" xml:space="preserve">
     <value>Prioridade</value>
   </data>
   <data name="IssueField_project" xml:space="preserve">
     <value>Projeto</value>
+  </data>
+  <data name="IssueField_startdate" xml:space="preserve">
+    <value>Data de início</value>
   </data>
   <data name="IssueField_status" xml:space="preserve">
     <value>Status</value>
@@ -625,6 +649,9 @@ ou requisitar atenção a cada
   </data>
   <data name="IssueField_tracker" xml:space="preserve">
     <value>Rastreador</value>
+  </data>
+  <data name="IssueField_updatedon" xml:space="preserve">
+    <value>Atualizado em</value>
   </data>
   <data name="labelCategory" xml:space="preserve">
     <value>Categoria</value>
@@ -652,5 +679,44 @@ ou requisitar atenção a cada
   </data>
   <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
     <value>Adicionar uma nota ao alterar o status com as opções acima</value>
+  </data>
+  <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Editar colunas visíveis</value>
+  </data>
+  <data name="IssueField_id" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="BtnClearButton" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="editVisibleColumnsHeaderToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Editar colunas visíveis</value>
+  </data>
+  <data name="openIssueInBrowserToolStripMenuItem" xml:space="preserve">
+    <value>Abrir tarefa no &amp;navegador</value>
+  </data>
+  <data name="openIssueToolStripMenuItem" xml:space="preserve">
+    <value>&amp;Abrir tarefa</value>
+  </data>
+  <data name="labelCommunicationType" xml:space="preserve">
+    <value>Comunicar usando</value>
+  </data>
+  <data name="AllClosedIssues" xml:space="preserve">
+    <value>Todas tarefas concluídas</value>
+  </data>
+  <data name="AllOpenAndClosedIssues" xml:space="preserve">
+    <value>Todas tarefas abertas ou fechadas</value>
+  </data>
+  <data name="AllOpenIssues" xml:space="preserve">
+    <value>Todas tarefas abertas</value>
+  </data>
+  <data name="BtnOpenIssueButton" xml:space="preserve">
+    <value>Abrir tarefa</value>
+  </data>
+  <data name="DlgOpenSpecificIssueTitle" xml:space="preserve">
+    <value>Abrir uma tarefa específica</value>
+  </data>
+  <data name="labelIssueNumberToOpen" xml:space="preserve">
+    <value>Número da tarefa para abrir</value>
   </data>
 </root>
