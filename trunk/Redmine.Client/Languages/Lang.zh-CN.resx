@@ -640,12 +640,6 @@
     <value>{0} 调到 {2}</value>
     <comment>{0} fieldname; {1} from value; {2} to value;</comment>
   </data>
-  <data name="BtnRefreshButton_Filter" xml:space="preserve">
-    <value>过滤器</value>
-  </data>
-  <data name="groupBoxFilter" xml:space="preserve">
-    <value>过滤器</value>
-  </data>
   <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
     <value>编辑可见列</value>
   </data>
