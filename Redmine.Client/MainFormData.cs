@@ -170,7 +170,8 @@ namespace Redmine.Client
                 }
                 catch (Exception e)
                 {
-                    throw new LoadException(Languages.Lang.BgWork_LoadProjectMembers, e);
+                    ProjectMembers = null;
+                    //throw new LoadException(Languages.Lang.BgWork_LoadProjectMembers, e);
                 }
 
                 try
