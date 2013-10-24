@@ -113,5 +113,8 @@
     <Setting Name="CommunicationType" Type="Redmine.Net.Api.MimeFormat" Scope="User">
       <Value Profile="(Default)">xml</Value>
     </Setting>
+    <Setting Name="OnlyMyProjects" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
