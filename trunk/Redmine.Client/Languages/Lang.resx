@@ -725,7 +725,7 @@ or Request attention every
   <data name="labelIssueNumberToOpen" xml:space="preserve">
     <value>Issuenumber to open</value>
   </data>
-  <data name="labelKeywordSearch" xml:space="preserve">
+  <data name="labelKeywordFilter" xml:space="preserve">
     <value>Keyword Search</value>
   </data>
   <data name="BgWork_LoadCategories" xml:space="preserve">
