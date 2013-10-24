@@ -214,10 +214,10 @@ namespace Redmine.Client
             // BtnCommitButton
             // 
             this.BtnCommitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCommitButton.Location = new System.Drawing.Point(521, 10);
+            this.BtnCommitButton.Location = new System.Drawing.Point(515, 10);
             this.BtnCommitButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCommitButton.Name = "BtnCommitButton";
-            this.BtnCommitButton.Size = new System.Drawing.Size(82, 24);
+            this.BtnCommitButton.Size = new System.Drawing.Size(88, 24);
             this.BtnCommitButton.TabIndex = 9;
             this.BtnCommitButton.Text = "Commit";
             this.BtnCommitButton.UseVisualStyleBackColor = true;
@@ -346,10 +346,10 @@ namespace Redmine.Client
             // BtnSettingsButton
             // 
             this.BtnSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSettingsButton.Location = new System.Drawing.Point(521, 47);
+            this.BtnSettingsButton.Location = new System.Drawing.Point(515, 47);
             this.BtnSettingsButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnSettingsButton.Name = "BtnSettingsButton";
-            this.BtnSettingsButton.Size = new System.Drawing.Size(82, 24);
+            this.BtnSettingsButton.Size = new System.Drawing.Size(88, 24);
             this.BtnSettingsButton.TabIndex = 12;
             this.BtnSettingsButton.Text = "Settings";
             this.BtnSettingsButton.UseVisualStyleBackColor = true;
@@ -611,10 +611,10 @@ namespace Redmine.Client
             // BtnOpenIssueButton
             // 
             this.BtnOpenIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnOpenIssueButton.Location = new System.Drawing.Point(521, 75);
+            this.BtnOpenIssueButton.Location = new System.Drawing.Point(515, 75);
             this.BtnOpenIssueButton.Margin = new System.Windows.Forms.Padding(2);
             this.BtnOpenIssueButton.Name = "BtnOpenIssueButton";
-            this.BtnOpenIssueButton.Size = new System.Drawing.Size(82, 24);
+            this.BtnOpenIssueButton.Size = new System.Drawing.Size(88, 24);
             this.BtnOpenIssueButton.TabIndex = 11;
             this.BtnOpenIssueButton.Text = "Open Issue";
             this.BtnOpenIssueButton.UseVisualStyleBackColor = true;

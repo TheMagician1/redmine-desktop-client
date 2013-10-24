@@ -680,11 +680,11 @@ of Vraag aandacht elke
   <data name="AddNoteOnChangeCheckBox" xml:space="preserve">
     <value>Voeg een notitie toe wanneer de status met bovenstaande opties wordt gewijzigd</value>
   </data>
-  <data name="BtnRefreshButton_Filter" xml:space="preserve">
-    <value>Filter</value>
+  <data name="BtnRefreshButton_Search" xml:space="preserve">
+    <value>Zoek</value>
   </data>
-  <data name="groupBoxFilter" xml:space="preserve">
-    <value>Filter</value>
+  <data name="groupBoxSearch" xml:space="preserve">
+    <value>Zoek</value>
   </data>
   <data name="editVisibleColumnsToolStripMenuItem" xml:space="preserve">
     <value>&amp;Wijzig zichtbare kolommen</value>
@@ -724,5 +724,35 @@ of Vraag aandacht elke
   </data>
   <data name="labelIssueNumberToOpen" xml:space="preserve">
     <value>Incidentnummer om te openen</value>
+  </data>
+  <data name="labelKeywordFilter" xml:space="preserve">
+    <value>Zoek Steekwoorden</value>
+  </data>
+  <data name="BgWork_LoadCategories" xml:space="preserve">
+    <value>het laden van Categorieën</value>
+  </data>
+  <data name="BgWork_LoadIssues" xml:space="preserve">
+    <value>het laden van Incidenten</value>
+  </data>
+  <data name="BgWork_LoadPriorities" xml:space="preserve">
+    <value>het laden van Incident Prioriteiten</value>
+  </data>
+  <data name="BgWork_LoadProjectMembers" xml:space="preserve">
+    <value>het laden van Projectleden</value>
+  </data>
+  <data name="BgWork_LoadProjectTrackers" xml:space="preserve">
+    <value>het laden van Trackers van het geselecteerde project</value>
+  </data>
+  <data name="BgWork_LoadStatuses" xml:space="preserve">
+    <value>het laden van Incident Statussen</value>
+  </data>
+  <data name="BgWork_LoadTrackers" xml:space="preserve">
+    <value>het laden van Trackers</value>
+  </data>
+  <data name="BgWork_LoadVersions" xml:space="preserve">
+    <value>het laden van Versies</value>
+  </data>
+  <data name="Error_InitFailedException" xml:space="preserve">
+    <value>Probleem tijdens {1}: {0}</value>
   </data>
 </root>

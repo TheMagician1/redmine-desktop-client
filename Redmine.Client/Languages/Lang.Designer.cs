@@ -1413,9 +1413,9 @@ namespace Redmine.Client.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Keyword Search.
         /// </summary>
-        internal static string labelKeywordSearch {
+        internal static string labelKeywordFilter {
             get {
-                return ResourceManager.GetString("labelKeywordSearch", resourceCulture);
+                return ResourceManager.GetString("labelKeywordFilter", resourceCulture);
             }
         }
         
