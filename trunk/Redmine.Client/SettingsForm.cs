@@ -33,7 +33,8 @@ namespace Redmine.Client
             new IdentifiableName { Id = (int)ApiVersion.V14x, Name = LangTools.GetTextForApiVersion(ApiVersion.V14x) },
             new IdentifiableName { Id = (int)ApiVersion.V20x, Name = LangTools.GetTextForApiVersion(ApiVersion.V20x) },
             new IdentifiableName { Id = (int)ApiVersion.V21x, Name = LangTools.GetTextForApiVersion(ApiVersion.V21x) },
-            new IdentifiableName { Id = (int)ApiVersion.V22x, Name = LangTools.GetTextForApiVersion(ApiVersion.V22x) }
+            new IdentifiableName { Id = (int)ApiVersion.V22x, Name = LangTools.GetTextForApiVersion(ApiVersion.V22x) },
+            new IdentifiableName { Id = (int)ApiVersion.V23x, Name = LangTools.GetTextForApiVersion(ApiVersion.V23x) }
         };
 
         public SettingsForm()
@@ -122,6 +123,7 @@ namespace Redmine.Client
                     }
                 }
                 Settings.Default.UpdateSetting("AddNoteOnChangeStatus", AddNoteOnChangeCheckBox.Checked);
+                Settings.Default.UpdateSetting("OnlyMyProjects", OnlyShowMyProjects.Checked);
                 Settings.Default.Save();
                 String Name = Settings.Default.LanguageCode;
                 Enumerations.SaveAll();
@@ -158,6 +160,7 @@ namespace Redmine.Client
             }
             LanguageComboBox.SelectedIndex = LanguageComboBox.FindStringExact(Languages.Lang.Culture.DisplayName);
             AddNoteOnChangeCheckBox.Checked = Settings.Default.AddNoteOnChangeStatus;
+            OnlyShowMyProjects.Checked = Settings.Default.OnlyMyProjects;
         }
 
         private Redmine.Net.Api.MimeFormat GetSelectedMimeFormat()

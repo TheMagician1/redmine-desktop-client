@@ -154,6 +154,11 @@ namespace Redmine.Client
 
                     AsyncGetFormData(projectId, issueId, activityId, CheckBoxOnlyMe.Checked);
                 }
+                catch (LoadException le)
+                {
+                    if (OnInitFailed(le.InnerException, le.Message))
+                        bRetry = true;
+                }
                 catch (Exception e)
                 {
                     if (OnInitFailed(e, null))
@@ -185,7 +190,12 @@ namespace Redmine.Client
         private MainFormData PrepareFormData(int projectId, bool onlyMe, Filter filter)
         {
             NameValueCollection parameters = new NameValueCollection();
-            IList<Project> projects = OnlyProjectsForMember(currentUser, redmine.GetTotalObjectList<Project>(parameters));
+            IList<Project> allProjects = redmine.GetTotalObjectList<Project>(parameters);
+            IList<Project> projects;
+            if (Settings.Default.OnlyMyProjects)
+                projects = OnlyProjectsForMember(currentUser, allProjects);
+            else
+                projects = allProjects;
             if (projects.Count > 0)
             {
                 Projects = MainFormData.ToDictionaryName(projects);
@@ -193,7 +203,7 @@ namespace Redmine.Client
                 projectId = GetProjectIdCheckExists(Projects, projectId);
                 return new MainFormData(projects, projectId, onlyMe, filter);
             }
-            throw new Exception(Lang.Error_NoProjectsFound);
+            throw new Exception(String.Format(Lang.Error_NoProjectsFound, allProjects.Count));
         }
 
         private IList<Project> OnlyProjectsForMember(User member, IList<Project> projects)
@@ -899,7 +909,11 @@ namespace Redmine.Client
                 Filter newFilter = (Filter)currentFilter.Clone();
                 FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked, newFilter), issueId, activityId, newFilter);
             }
-            catch(Exception ex)
+            catch (LoadException le)
+            {
+                MessageBox.Show(String.Format(Lang.Error_InitFailedException, le.InnerException.Message, le.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
@@ -977,7 +991,7 @@ namespace Redmine.Client
                 try
                 {
                     MainFormData data = PrepareFormData(projectId, onlyMe, filter);
-                    
+
                     //Let main thread fill form data...
                     return () =>
                     {
@@ -986,13 +1000,19 @@ namespace Redmine.Client
                         this.Cursor = Cursors.Default;
                     };
                 }
+                catch (LoadException le)
+                {
+                    return () =>
+                    {
+                        if (OnInitFailed(le.InnerException, le.Message))
+                            Reinit();
+                    };
+                }
                 catch (Exception e)
                 {
                     //Show the exception in the main thread
                     return () =>
                     {
-                        //this.Cursor = Cursors.Default;
-                        //MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         if (OnInitFailed(e, Lang.BgWork_GetFormData))
                             Reinit();
                     };

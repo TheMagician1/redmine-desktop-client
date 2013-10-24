@@ -52,6 +52,9 @@
             this.BtnEditDocumentCategories = new System.Windows.Forms.Button();
             this.BtnEditIssuePriorities = new System.Windows.Forms.Button();
             this.GrpRedmineServerSettings = new System.Windows.Forms.GroupBox();
+            this.radioButtonJson = new System.Windows.Forms.RadioButton();
+            this.radioButtonXml = new System.Windows.Forms.RadioButton();
+            this.labelCommunicationType = new System.Windows.Forms.Label();
             this.BtnTestConnection = new System.Windows.Forms.Button();
             this.GrpApplicationSettings = new System.Windows.Forms.GroupBox();
             this.UpdateIssueIfStateLabel = new System.Windows.Forms.Label();
@@ -64,9 +67,7 @@
             this.UpdateIssueIfStateCheckBox = new System.Windows.Forms.CheckBox();
             this.PauseTimerOnLockCheckBox = new System.Windows.Forms.CheckBox();
             this.GrpEditEnumerations = new System.Windows.Forms.GroupBox();
-            this.radioButtonXml = new System.Windows.Forms.RadioButton();
-            this.radioButtonJson = new System.Windows.Forms.RadioButton();
-            this.labelCommunicationType = new System.Windows.Forms.Label();
+            this.OnlyShowMyProjects = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).BeginInit();
             this.GrpRedmineServerSettings.SuspendLayout();
@@ -340,6 +341,7 @@
             // 
             this.GrpRedmineServerSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrpRedmineServerSettings.Controls.Add(this.OnlyShowMyProjects);
             this.GrpRedmineServerSettings.Controls.Add(this.radioButtonJson);
             this.GrpRedmineServerSettings.Controls.Add(this.radioButtonXml);
             this.GrpRedmineServerSettings.Controls.Add(this.labelCommunicationType);
@@ -359,6 +361,37 @@
             this.GrpRedmineServerSettings.TabIndex = 0;
             this.GrpRedmineServerSettings.TabStop = false;
             this.GrpRedmineServerSettings.Text = "Redmine Server Settings";
+            // 
+            // radioButtonJson
+            // 
+            this.radioButtonJson.AutoSize = true;
+            this.radioButtonJson.Location = new System.Drawing.Point(429, 117);
+            this.radioButtonJson.Name = "radioButtonJson";
+            this.radioButtonJson.Size = new System.Drawing.Size(44, 17);
+            this.radioButtonJson.TabIndex = 10;
+            this.radioButtonJson.TabStop = true;
+            this.radioButtonJson.Text = "json";
+            this.radioButtonJson.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonXml
+            // 
+            this.radioButtonXml.AutoSize = true;
+            this.radioButtonXml.Location = new System.Drawing.Point(373, 117);
+            this.radioButtonXml.Name = "radioButtonXml";
+            this.radioButtonXml.Size = new System.Drawing.Size(40, 17);
+            this.radioButtonXml.TabIndex = 10;
+            this.radioButtonXml.TabStop = true;
+            this.radioButtonXml.Text = "xml";
+            this.radioButtonXml.UseVisualStyleBackColor = true;
+            // 
+            // labelCommunicationType
+            // 
+            this.labelCommunicationType.AutoSize = true;
+            this.labelCommunicationType.Location = new System.Drawing.Point(254, 119);
+            this.labelCommunicationType.Name = "labelCommunicationType";
+            this.labelCommunicationType.Size = new System.Drawing.Size(99, 13);
+            this.labelCommunicationType.TabIndex = 11;
+            this.labelCommunicationType.Text = "Communicate using";
             // 
             // BtnTestConnection
             // 
@@ -511,36 +544,15 @@
             this.GrpEditEnumerations.TabStop = false;
             this.GrpEditEnumerations.Text = "Edit Enumerations";
             // 
-            // radioButtonXml
+            // OnlyShowMyProjects
             // 
-            this.radioButtonXml.AutoSize = true;
-            this.radioButtonXml.Location = new System.Drawing.Point(373, 117);
-            this.radioButtonXml.Name = "radioButtonXml";
-            this.radioButtonXml.Size = new System.Drawing.Size(40, 17);
-            this.radioButtonXml.TabIndex = 10;
-            this.radioButtonXml.TabStop = true;
-            this.radioButtonXml.Text = "xml";
-            this.radioButtonXml.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonJson
-            // 
-            this.radioButtonJson.AutoSize = true;
-            this.radioButtonJson.Location = new System.Drawing.Point(429, 117);
-            this.radioButtonJson.Name = "radioButtonJson";
-            this.radioButtonJson.Size = new System.Drawing.Size(44, 17);
-            this.radioButtonJson.TabIndex = 10;
-            this.radioButtonJson.TabStop = true;
-            this.radioButtonJson.Text = "json";
-            this.radioButtonJson.UseVisualStyleBackColor = true;
-            // 
-            // labelCommunicationType
-            // 
-            this.labelCommunicationType.AutoSize = true;
-            this.labelCommunicationType.Location = new System.Drawing.Point(254, 119);
-            this.labelCommunicationType.Name = "labelCommunicationType";
-            this.labelCommunicationType.Size = new System.Drawing.Size(99, 13);
-            this.labelCommunicationType.TabIndex = 11;
-            this.labelCommunicationType.Text = "Communicate using";
+            this.OnlyShowMyProjects.AutoSize = true;
+            this.OnlyShowMyProjects.Location = new System.Drawing.Point(252, 148);
+            this.OnlyShowMyProjects.Name = "OnlyShowMyProjects";
+            this.OnlyShowMyProjects.Size = new System.Drawing.Size(104, 17);
+            this.OnlyShowMyProjects.TabIndex = 12;
+            this.OnlyShowMyProjects.Text = "Only my Projects";
+            this.OnlyShowMyProjects.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -617,5 +629,6 @@
         private System.Windows.Forms.RadioButton radioButtonJson;
         private System.Windows.Forms.RadioButton radioButtonXml;
         private System.Windows.Forms.Label labelCommunicationType;
+        private System.Windows.Forms.CheckBox OnlyShowMyProjects;
     }
 }

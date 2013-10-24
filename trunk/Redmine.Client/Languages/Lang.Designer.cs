@@ -178,6 +178,15 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to V2.3.x.
+        /// </summary>
+        internal static string ApiVersion_V23x {
+            get {
+                return ResourceManager.GetString("ApiVersion_V23x", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Requires authentication.
         /// </summary>
         internal static string AuthenticationCheckBox {
@@ -952,7 +961,7 @@ namespace Redmine.Client.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No projects found in Redmine..
+        ///   Looks up a localized string similar to No projects found in Redmine for this user. ({0} projects in Redmine).
         /// </summary>
         internal static string Error_NoProjectsFound {
             get {
@@ -1679,6 +1688,15 @@ namespace Redmine.Client.Languages {
         internal static string NewVersionTitle {
             get {
                 return ResourceManager.GetString("NewVersionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only show the project that I am a member of.
+        /// </summary>
+        internal static string OnlyShowMyProjects {
+            get {
+                return ResourceManager.GetString("OnlyShowMyProjects", resourceCulture);
             }
         }
         

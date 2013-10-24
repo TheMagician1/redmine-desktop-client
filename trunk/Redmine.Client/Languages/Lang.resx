@@ -177,7 +177,7 @@
     <comment>{0} exception message</comment>
   </data>
   <data name="Error_NoProjectsFound" xml:space="preserve">
-    <value>No projects found in Redmine.</value>
+    <value>No projects found in Redmine for this user. ({0} projects in Redmine)</value>
   </data>
   <data name="Error_Startup" xml:space="preserve">
     <value>Startup error. Check Configuration.</value>
@@ -754,5 +754,11 @@ or Request attention every
   </data>
   <data name="Error_InitFailedException" xml:space="preserve">
     <value>Exception while {1}: {0}</value>
+  </data>
+  <data name="ApiVersion_V23x" xml:space="preserve">
+    <value>V2.3.x</value>
+  </data>
+  <data name="OnlyShowMyProjects" xml:space="preserve">
+    <value>Only show the project that I am a member of</value>
   </data>
 </root>
