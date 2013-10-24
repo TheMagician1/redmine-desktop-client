@@ -88,10 +88,10 @@ namespace Redmine.Client
             }
         }
 
-        bool OnInitFailed(Exception e)
+        bool OnInitFailed(Exception e, String additionalInfo)
         {
             this.Cursor = Cursors.Default;
-            if (MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error_Startup, MessageBoxButtons.OKCancel, MessageBoxIcon.Error) != DialogResult.OK)
+            if (MessageBox.Show(String.Format(String.IsNullOrEmpty(additionalInfo) ? Lang.Error_Exception : Lang.Error_InitFailedException, e.Message, additionalInfo), Lang.Error_Startup, MessageBoxButtons.OKCancel, MessageBoxIcon.Error) != DialogResult.OK)
                 return false;
             if (!ShowSettingsForm())
                 return false;
@@ -156,7 +156,7 @@ namespace Redmine.Client
                 }
                 catch (Exception e)
                 {
-                    if (OnInitFailed(e))
+                    if (OnInitFailed(e, null))
                         bRetry = true;
                 }
             } while (bRetry);
@@ -993,7 +993,7 @@ namespace Redmine.Client
                     {
                         //this.Cursor = Cursors.Default;
                         //MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        if (OnInitFailed(e))
+                        if (OnInitFailed(e, Lang.BgWork_GetFormData))
                             Reinit();
                     };
                 }
@@ -1042,7 +1042,7 @@ namespace Redmine.Client
                     {
                         currentUser = null;
                         SetTitle(Lang.RedmineClientTitle_NoUser);
-                        if (OnInitFailed(e))
+                        if (OnInitFailed(e, Lang.BgWork_GetUsername))
                             Reinit();
                         else
                             this.BtnSettingsButton.Enabled = true;

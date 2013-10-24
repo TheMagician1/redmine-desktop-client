@@ -728,4 +728,31 @@ or Request attention every
   <data name="labelKeywordSearch" xml:space="preserve">
     <value>Keyword Search</value>
   </data>
+  <data name="BgWork_LoadCategories" xml:space="preserve">
+    <value>loading Categories</value>
+  </data>
+  <data name="BgWork_LoadIssues" xml:space="preserve">
+    <value>loading the Issues</value>
+  </data>
+  <data name="BgWork_LoadPriorities" xml:space="preserve">
+    <value>loading Issue Priorities</value>
+  </data>
+  <data name="BgWork_LoadProjectMembers" xml:space="preserve">
+    <value>loading Project Members</value>
+  </data>
+  <data name="BgWork_LoadProjectTrackers" xml:space="preserve">
+    <value>loading selected project Trackers</value>
+  </data>
+  <data name="BgWork_LoadStatuses" xml:space="preserve">
+    <value>loading Statusses</value>
+  </data>
+  <data name="BgWork_LoadTrackers" xml:space="preserve">
+    <value>loading Trackers</value>
+  </data>
+  <data name="BgWork_LoadVersions" xml:space="preserve">
+    <value>loading Versions</value>
+  </data>
+  <data name="Error_InitFailedException" xml:space="preserve">
+    <value>Exception while {1}: {0}</value>
+  </data>
 </root>
