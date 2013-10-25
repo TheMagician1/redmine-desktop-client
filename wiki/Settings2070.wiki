@@ -14,6 +14,8 @@ For older versions, see [#Older_versions bottom] of this page.
 || _Redmine username_ || Your username to authenticate to redmine. ||
 || _Redmine password_ || The password corresponding to your username. ||
 || _Redmine version_ || Select the redmine version, so only available api-calls will be used. ||
+|| _Communicate Using_ || Select the communication method. Redmine supports both xml and json. In some cases xml won't work an you can choose json. ||
+|| _Only show the project that I am a member of_ || If unchecked, all known projects from Redmine will be retrieved. ||
 || _Test Connection_ || Test if the entered connection values are correct by setting up a connection.<br>If the connection is successful (and the version is high enough) you can choose the statusses used to close an issue or to set it in progress. ||
 || _Check for updates on startup_ || Check the this project if a newer version is available. ||
 || _Minimize to Systemtray_ || When the application is minimized, hide it from the taskbar. ||
@@ -24,6 +26,7 @@ For older versions, see [#Older_versions bottom] of this page.
 || _When closing an issue, set it to_ || The status used when you want to close the issue via the 'Close Issue' button in the issue dialog or when you check the 'This also closes the issue' in the submit time dialog ||
 || _If timer starts and issue has state_ || The status used when you want to automatically alter the state of an issue when the timer is started. In the combobox you select the state it must be to be changed automatically. ||
 || _then set the state to_ || The status used when you want to automatically alter the state of an issue when the timer is started. In the combobox you select the state it will be changed to automatically when the issue has the previous selected state. ||
+|| _Add a note when changing the status with above options_ || If the status of an issue is changed due to one of the options above, you also receive a dialog to add a note to explain the status change. ||
 || _Edit Enumerations_ || Here you can edit the enumerations that are not provided by the Redmine API ||
 
 == Older versions ==
