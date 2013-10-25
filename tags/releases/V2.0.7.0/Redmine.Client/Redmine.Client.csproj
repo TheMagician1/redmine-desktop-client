@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{07ABD877-B270-4054-B10E-7AA4DEBD37E0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Redmine.Client</RootNamespace>
+    <AssemblyName>RedmineClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>res\clock.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>http://localhost/RedmineClient/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttachmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttachmentForm.Designer.cs">
+      <DependentUpon>AttachmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpenSpecificIssueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenSpecificIssueForm.Designer.cs">
+      <DependentUpon>OpenSpecificIssueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IssueGridSelectColumns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IssueGridSelectColumns.Designer.cs">
+      <DependentUpon>IssueGridSelectColumns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectMember.cs" />
+    <Compile Include="BgWork.cs" />
+    <Compile Include="BgWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientExtensionMethods.cs" />
+    <Compile Include="CommitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommitForm.Designer.cs">
+      <DependentUpon>CommitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditEnumForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEnumForm.Designer.cs">
+      <DependentUpon>EditEnumForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditEnumListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEnumListForm.Designer.cs">
+      <DependentUpon>EditEnumListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enumerations.cs" />
+    <Compile Include="IssueFormData.cs" />
+    <Compile Include="Languages\Lang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lang.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Languages\LangTools.cs" />
+    <Compile Include="MainFormData.cs" />
+    <Compile Include="IssueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IssueForm.Designer.cs">
+      <DependentUpon>IssueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RedmineClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedmineClientForm.Designer.cs">
+      <DependentUpon>RedmineClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttachmentForm.resx">
+      <DependentUpon>AttachmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommitForm.resx">
+      <DependentUpon>CommitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEnumForm.resx">
+      <DependentUpon>EditEnumForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEnumListForm.resx">
+      <DependentUpon>EditEnumListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.es-MX.resx" />
+    <EmbeddedResource Include="Languages\Lang.zh-CN.resx" />
+    <EmbeddedResource Include="OpenSpecificIssueForm.resx">
+      <DependentUpon>OpenSpecificIssueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueForm.resx">
+      <DependentUpon>IssueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueGridSelectColumns.resx">
+      <DependentUpon>IssueGridSelectColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.cs-CZ.resx" />
+    <EmbeddedResource Include="Languages\Lang.de.resx" />
+    <EmbeddedResource Include="Languages\Lang.fr.resx" />
+    <EmbeddedResource Include="Languages\Lang.gl.resx" />
+    <EmbeddedResource Include="Languages\Lang.nl.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.pl.resx" />
+    <EmbeddedResource Include="Languages\Lang.pt-BR.resx" />
+    <EmbeddedResource Include="Languages\Lang.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Lang.ru.resx" />
+    <EmbeddedResource Include="RedmineClientForm.resx">
+      <DependentUpon>RedmineClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeEntriesForm.resx">
+      <DependentUpon>TimeEntriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeEntryForm.resx">
+      <DependentUpon>TimeEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateIssueNoteForm.resx">
+      <DependentUpon>UpdateIssueNoteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeEntriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeEntriesForm.Designer.cs">
+      <DependentUpon>TimeEntriesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeEntryForm.Designer.cs">
+      <DependentUpon>TimeEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateIssueNoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateIssueNoteForm.Designer.cs">
+      <DependentUpon>UpdateIssueNoteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="res\aboutclock.png" />
+    <Content Include="res\clock.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Redmine.Api\Api.csproj">
+      <Project>{F99E4720-D2A0-461B-A454-E6169BFA8C38}</Project>
+      <Name>Api</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
