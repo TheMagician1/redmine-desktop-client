@@ -270,7 +270,7 @@ namespace Redmine.Client
                         foreach (var a in issue.Attachments)
                         {
                             byte[] file = File.ReadAllBytes(a.ContentUrl);
-                            Upload uploadedFile = RedmineClientForm.redmine.UploadData(file);
+                            Upload uploadedFile = RedmineClientForm.redmine.UploadFile(file);
                             uploadedFile.FileName = a.FileName;
                             uploadedFile.Description = a.Description;
                             uploadedFile.ContentType = a.ContentType;
@@ -496,7 +496,7 @@ namespace Redmine.Client
                 if (issue.CustomFields != null && issue.CustomFields.Count != 0)
                 {
                     List<ClientCustomField> customFields = new List<ClientCustomField>();
-                    foreach (CustomField cf in issue.CustomFields)
+                    foreach (IssueCustomField cf in issue.CustomFields)
                     {
                         ClientCustomField field = new ClientCustomField();
                         field.Name = cf.Name;
