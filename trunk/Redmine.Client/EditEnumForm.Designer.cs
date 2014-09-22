@@ -34,6 +34,8 @@
             this.EnumNameTextBox = new System.Windows.Forms.TextBox();
             this.EnumIdTextBox = new System.Windows.Forms.MaskedTextBox();
             this.labelEnumName = new System.Windows.Forms.Label();
+            this.EnumIsDefaultCheckBox = new System.Windows.Forms.CheckBox();
+            this.labelEnumIsDefault = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnOKButton
@@ -91,15 +93,35 @@
             this.labelEnumName.TabIndex = 2;
             this.labelEnumName.Text = "Name";
             // 
+            // EnumIsDefaultCheckBox
+            // 
+            this.EnumIsDefaultCheckBox.AutoSize = true;
+            this.EnumIsDefaultCheckBox.Location = new System.Drawing.Point(295, 37);
+            this.EnumIsDefaultCheckBox.Name = "EnumIsDefaultCheckBox";
+            this.EnumIsDefaultCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.EnumIsDefaultCheckBox.TabIndex = 6;
+            this.EnumIsDefaultCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // labelEnumIsDefault
+            // 
+            this.labelEnumIsDefault.AutoSize = true;
+            this.labelEnumIsDefault.Location = new System.Drawing.Point(287, 13);
+            this.labelEnumIsDefault.Name = "labelEnumIsDefault";
+            this.labelEnumIsDefault.Size = new System.Drawing.Size(41, 13);
+            this.labelEnumIsDefault.TabIndex = 2;
+            this.labelEnumIsDefault.Text = "Default";
+            // 
             // EditEnumForm
             // 
             this.AcceptButton = this.BtnOKButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.BtnCancelButton;
-            this.ClientSize = new System.Drawing.Size(292, 90);
+            this.ClientSize = new System.Drawing.Size(334, 90);
+            this.Controls.Add(this.EnumIsDefaultCheckBox);
             this.Controls.Add(this.EnumIdTextBox);
             this.Controls.Add(this.EnumNameTextBox);
+            this.Controls.Add(this.labelEnumIsDefault);
             this.Controls.Add(this.labelEnumName);
             this.Controls.Add(this.labelEnumId);
             this.Controls.Add(this.BtnOKButton);
@@ -124,5 +146,7 @@
         private System.Windows.Forms.TextBox EnumNameTextBox;
         private System.Windows.Forms.MaskedTextBox EnumIdTextBox;
         private System.Windows.Forms.Label labelEnumName;
+        private System.Windows.Forms.CheckBox EnumIsDefaultCheckBox;
+        private System.Windows.Forms.Label labelEnumIsDefault;
     }
 }

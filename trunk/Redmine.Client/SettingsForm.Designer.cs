@@ -49,9 +49,9 @@
             this.labelRedmineVersion = new System.Windows.Forms.Label();
             this.RedmineVersionComboBox = new System.Windows.Forms.ComboBox();
             this.BtnEditActivitiesButton = new System.Windows.Forms.Button();
-            this.BtnEditDocumentCategories = new System.Windows.Forms.Button();
             this.BtnEditIssuePriorities = new System.Windows.Forms.Button();
             this.GrpRedmineServerSettings = new System.Windows.Forms.GroupBox();
+            this.OnlyShowMyProjects = new System.Windows.Forms.CheckBox();
             this.radioButtonJson = new System.Windows.Forms.RadioButton();
             this.radioButtonXml = new System.Windows.Forms.RadioButton();
             this.labelCommunicationType = new System.Windows.Forms.Label();
@@ -67,7 +67,6 @@
             this.UpdateIssueIfStateCheckBox = new System.Windows.Forms.CheckBox();
             this.PauseTimerOnLockCheckBox = new System.Windows.Forms.CheckBox();
             this.GrpEditEnumerations = new System.Windows.Forms.GroupBox();
-            this.OnlyShowMyProjects = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CacheLifetime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopupTimout)).BeginInit();
             this.GrpRedmineServerSettings.SuspendLayout();
@@ -317,19 +316,9 @@
             this.BtnEditActivitiesButton.UseVisualStyleBackColor = true;
             this.BtnEditActivitiesButton.Click += new System.EventHandler(this.BtnEditActivitiesButton_Click);
             // 
-            // BtnEditDocumentCategories
-            // 
-            this.BtnEditDocumentCategories.Location = new System.Drawing.Point(95, 19);
-            this.BtnEditDocumentCategories.Name = "BtnEditDocumentCategories";
-            this.BtnEditDocumentCategories.Size = new System.Drawing.Size(82, 24);
-            this.BtnEditDocumentCategories.TabIndex = 1;
-            this.BtnEditDocumentCategories.Text = "Doc. Cat.";
-            this.BtnEditDocumentCategories.UseVisualStyleBackColor = true;
-            this.BtnEditDocumentCategories.Click += new System.EventHandler(this.BtnEditDocumentCategories_Click);
-            // 
             // BtnEditIssuePriorities
             // 
-            this.BtnEditIssuePriorities.Location = new System.Drawing.Point(183, 19);
+            this.BtnEditIssuePriorities.Location = new System.Drawing.Point(95, 19);
             this.BtnEditIssuePriorities.Name = "BtnEditIssuePriorities";
             this.BtnEditIssuePriorities.Size = new System.Drawing.Size(82, 24);
             this.BtnEditIssuePriorities.TabIndex = 2;
@@ -361,6 +350,16 @@
             this.GrpRedmineServerSettings.TabIndex = 0;
             this.GrpRedmineServerSettings.TabStop = false;
             this.GrpRedmineServerSettings.Text = "Redmine Server Settings";
+            // 
+            // OnlyShowMyProjects
+            // 
+            this.OnlyShowMyProjects.AutoSize = true;
+            this.OnlyShowMyProjects.Location = new System.Drawing.Point(252, 148);
+            this.OnlyShowMyProjects.Name = "OnlyShowMyProjects";
+            this.OnlyShowMyProjects.Size = new System.Drawing.Size(104, 17);
+            this.OnlyShowMyProjects.TabIndex = 12;
+            this.OnlyShowMyProjects.Text = "Only my Projects";
+            this.OnlyShowMyProjects.UseVisualStyleBackColor = true;
             // 
             // radioButtonJson
             // 
@@ -535,7 +534,6 @@
             this.GrpEditEnumerations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GrpEditEnumerations.Controls.Add(this.BtnEditIssuePriorities);
-            this.GrpEditEnumerations.Controls.Add(this.BtnEditDocumentCategories);
             this.GrpEditEnumerations.Controls.Add(this.BtnEditActivitiesButton);
             this.GrpEditEnumerations.Location = new System.Drawing.Point(12, 456);
             this.GrpEditEnumerations.Name = "GrpEditEnumerations";
@@ -543,16 +541,6 @@
             this.GrpEditEnumerations.TabIndex = 2;
             this.GrpEditEnumerations.TabStop = false;
             this.GrpEditEnumerations.Text = "Edit Enumerations";
-            // 
-            // OnlyShowMyProjects
-            // 
-            this.OnlyShowMyProjects.AutoSize = true;
-            this.OnlyShowMyProjects.Location = new System.Drawing.Point(252, 148);
-            this.OnlyShowMyProjects.Name = "OnlyShowMyProjects";
-            this.OnlyShowMyProjects.Size = new System.Drawing.Size(104, 17);
-            this.OnlyShowMyProjects.TabIndex = 12;
-            this.OnlyShowMyProjects.Text = "Only my Projects";
-            this.OnlyShowMyProjects.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
@@ -611,7 +599,6 @@
         private System.Windows.Forms.Label labelRedmineVersion;
         private System.Windows.Forms.ComboBox RedmineVersionComboBox;
         private System.Windows.Forms.Button BtnEditActivitiesButton;
-        private System.Windows.Forms.Button BtnEditDocumentCategories;
         private System.Windows.Forms.Button BtnEditIssuePriorities;
         private System.Windows.Forms.GroupBox GrpRedmineServerSettings;
         private System.Windows.Forms.Button BtnTestConnection;
