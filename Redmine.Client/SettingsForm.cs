@@ -197,16 +197,6 @@ namespace Redmine.Client
             }
         }
 
-        private void BtnEditDocumentCategories_Click(object sender, EventArgs e)
-        {
-            EditEnumListForm dlg = new EditEnumListForm(Enumerations.DocumentCategories, Lang.EnumName_DocumentCategories);
-            if (dlg.ShowDialog(this) == DialogResult.OK)
-            {
-                Enumerations.DocumentCategories = dlg.enumeration;
-                Enumerations.SaveDocumentCategories();
-            }
-        }
-
         private void BtnEditIssuePriorities_Click(object sender, EventArgs e)
         {
             EditEnumListForm dlg = new EditEnumListForm(Enumerations.IssuePriorities, Lang.EnumName_IssuePriorities);

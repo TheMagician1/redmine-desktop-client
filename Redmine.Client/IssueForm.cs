@@ -412,9 +412,17 @@ namespace Redmine.Client
                 ComboBoxCategory.Enabled = false;
                 BtnCloseButton.Visible = false;
             }
-            this.ComboBoxPriority.DataSource = Enumerations.IssuePriorities;
-            this.ComboBoxPriority.DisplayMember = "Name";
-            this.ComboBoxPriority.ValueMember = "Id";
+            ComboBoxPriority.DataSource = Enumerations.IssuePriorities;
+            ComboBoxPriority.DisplayMember = "Name";
+            ComboBoxPriority.ValueMember = "Id";
+            foreach (Enumerations.EnumerationItem i in Enumerations.IssuePriorities)
+            {
+                if (i.IsDefault)
+                {
+                    ComboBoxPriority.SelectedValue = i.Id;
+                    break;
+                }
+            }
 
             if (this.type == DialogType.Edit)
             {

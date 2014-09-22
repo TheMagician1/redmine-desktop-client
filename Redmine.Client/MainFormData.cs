@@ -39,6 +39,8 @@ namespace Redmine.Client
         V21x,
         V22x,
         V23x,
+        V24x,
+        V25x,
     }
 
     public class Filter : ICloneable
@@ -69,14 +71,15 @@ namespace Redmine.Client
     {
         public List<ClientProject> Projects { get; private set; }
         public IList<Issue> Issues { get; set; }
-        public IList<TimeEntryActivity> Activities { get; private set; }
+        public IList<CustomField> CustomFields { get; private set; }
         // search data
         public List<ProjectTracker> Trackers { get; private set; }
         public List<IssueCategory> Categories { get; private set; }
         public List<IssueStatus> Statuses { get; private set; }
         public List<Redmine.Net.Api.Types.Version> Versions { get; private set; }
         public List<ProjectMember> ProjectMembers { get; private set; }
-        public List<IdentifiableName> IssuePriorities { get; private set; }
+        public List<Enumerations.EnumerationItem> IssuePriorities { get; private set; }
+        public List<Enumerations.EnumerationItem> Activities { get; private set; }
 
         public MainFormData(IList<Project> projects, int projectId, bool onlyMe, Filter filter)
         {
@@ -168,7 +171,7 @@ namespace Redmine.Client
                     }
                     ProjectMembers.Insert(0, new ProjectMember());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     ProjectMembers = null;
                     //throw new LoadException(Languages.Lang.BgWork_LoadProjectMembers, e);
@@ -181,14 +184,30 @@ namespace Redmine.Client
                         Enumerations.UpdateIssuePriorities(RedmineClientForm.redmine.GetTotalObjectList<IssuePriority>(null));
                         Enumerations.SaveIssuePriorities();
 
-                        Activities = RedmineClientForm.redmine.GetTotalObjectList<TimeEntryActivity>(null);
+                        Enumerations.UpdateActivities(RedmineClientForm.redmine.GetTotalObjectList<TimeEntryActivity>(null));
+                        Enumerations.SaveActivities();
                     }
-                    IssuePriorities = new List<IdentifiableName>(Enumerations.IssuePriorities);
-                    IssuePriorities.Insert(0, new IdentifiableName { Id = 0, Name = "" });
+                    IssuePriorities = new List<Enumerations.EnumerationItem>(Enumerations.IssuePriorities);
+                    IssuePriorities.Insert(0, new Enumerations.EnumerationItem { Id = 0, Name = "", IsDefault = false });
+
+                    Activities = new List<Enumerations.EnumerationItem>(Enumerations.Activities);
+                    Activities.Insert(0, new Enumerations.EnumerationItem { Id = 0, Name = "", IsDefault = false });
                 }
                 catch (Exception e)
                 {
                     throw new LoadException(Languages.Lang.BgWork_LoadPriorities, e);
+                }
+
+                try
+                {
+                    if (RedmineClientForm.RedmineVersion >= ApiVersion.V24x)
+                    {
+                        CustomFields = RedmineClientForm.redmine.GetTotalObjectList<CustomField>(null);
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new LoadException(Languages.Lang.BgWork_LoadCustomFields, e);
                 }
             }
 

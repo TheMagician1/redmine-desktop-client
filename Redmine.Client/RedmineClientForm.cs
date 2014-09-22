@@ -58,7 +58,12 @@ namespace Redmine.Client
         private RedmineClientForm()
         {
             InitializeComponent();
-            Settings.Default.Upgrade();
+            if (Settings.Default.UpgradeSettings)
+            {
+                Settings.Default.Upgrade();
+                Settings.Default.UpgradeSettings = false;
+                Settings.Default.Save();
+            }
             Settings.Default.Reload();
 
             timer1.Interval = 1000;
@@ -152,7 +157,7 @@ namespace Redmine.Client
                         redmine = new RedmineManager(RedmineURL, Settings.Default.CommunicationType);
                     this.Cursor = Cursors.AppStarting;
 
-                    AsyncGetFormData(projectId, issueId, activityId, CheckBoxOnlyMe.Checked);
+                    AsyncGetFormData(projectId, CheckBoxOnlyMe.Checked);
                 }
                 catch (LoadException le)
                 {
@@ -223,7 +228,7 @@ namespace Redmine.Client
             return memberProjects;
         }
 
-        private void FillForm(MainFormData data, int issueId, int activityId, Filter filter)
+        private void FillForm(MainFormData data, Filter filter)
         {
             updating = true;
             this.projectId = GetProjectIdCheckExists(Projects, this.projectId);
@@ -255,15 +260,18 @@ namespace Redmine.Client
             ComboBoxProject.ValueMember = "Id";
             ComboBoxProject.DisplayMember = "DisplayName";
 
-            if (RedmineVersion >= ApiVersion.V22x)
-            {
-                Enumerations.UpdateActivities(data.Activities);
-                Enumerations.SaveActivities();
-            }
-            
+            int currentActivityId = activityId;
             ComboBoxActivity.DataSource = Enumerations.Activities;
             ComboBoxActivity.DisplayMember = "Name";
             ComboBoxActivity.ValueMember = "Id";
+            if (ComboBoxActivity.Items.Count > 0)
+            {
+                if (currentActivityId != 0)
+                    ComboBoxActivity.SelectedValue = currentActivityId;
+                else
+                    ComboBoxActivity.SelectedIndex = 0;
+                activityId = (int)ComboBoxActivity.SelectedValue;
+            }
 
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
             {
@@ -418,14 +426,6 @@ namespace Redmine.Client
                 else
                     ComboBoxProject.SelectedIndex = 0;
                  projectId = (int)ComboBoxProject.SelectedValue;
-            }
-            if (ComboBoxActivity.Items.Count > 0)
-            {
-                if (activityId != 0)
-                    ComboBoxActivity.SelectedValue = activityId;
-                else
-                    ComboBoxActivity.SelectedIndex = 0;
-                activityId = (int)ComboBoxActivity.SelectedValue;
             }
             SetIssueSelectionTo(issueId);
             updating = false;
@@ -907,7 +907,7 @@ namespace Redmine.Client
             try
             {
                 Filter newFilter = (Filter)currentFilter.Clone();
-                FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked, newFilter), issueId, activityId, newFilter);
+                FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked, newFilter), newFilter);
             }
             catch (LoadException le)
             {
@@ -980,11 +980,9 @@ namespace Redmine.Client
         /// Get Projects, Issues and Activities and select the current/last selected
         /// </summary>
         /// <param name="projectId">The current/last selected project</param>
-        /// <param name="issueId">The current/last selected issue</param>
-        /// <param name="activityId">The current/last selected activity</param>
         /// <param name="onlyMe">Retrieve only issues assigned to me</param>
         /// <param name="filter">Retrieve only issues matchig the filter</param>
-        private void AsyncGetRestOfFormData(int projectId, int issueId, int activityId, bool onlyMe, Filter filter)
+        private void AsyncGetRestOfFormData(int projectId, bool onlyMe, Filter filter)
         {
             AddBgWork(Lang.BgWork_GetFormData, () =>
             {
@@ -995,7 +993,7 @@ namespace Redmine.Client
                     //Let main thread fill form data...
                     return () =>
                     {
-                        FillForm(data, issueId, activityId, (Filter)currentFilter.Clone());
+                        FillForm(data, (Filter)currentFilter.Clone());
                         BtnRefreshButton.Text = Lang.BtnRefreshButton;
                         this.Cursor = Cursors.Default;
                     };
@@ -1024,10 +1022,8 @@ namespace Redmine.Client
         /// Retrieve the form data asynchronous (first only the username)
         /// </summary>
         /// <param name="projectId">The current/last selected project</param>
-        /// <param name="issueId">The current/last selected issue</param>
-        /// <param name="activityId">The current/last selected activity</param>
         /// <param name="onlyMe">Retrieve only issues assigned to me</param>
-        private void AsyncGetFormData(int projectId, int issueId, int activityId, bool onlyMe)
+        private void AsyncGetFormData(int projectId, bool onlyMe)
         {
             this.Cursor = Cursors.WaitCursor;
             //Retrieve current user asynchroneous...
@@ -1053,7 +1049,7 @@ namespace Redmine.Client
                         else
                             SetTitle(Lang.RedmineClientTitle_NoUser);
                         //When done, get the rest of the form data...
-                        AsyncGetRestOfFormData(projectId, issueId, activityId, onlyMe, currentFilter);
+                        AsyncGetRestOfFormData(projectId, onlyMe, currentFilter);
                     };
                 }
                 catch (Exception e)

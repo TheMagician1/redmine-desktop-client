@@ -18,27 +18,23 @@ namespace Redmine.Client
             New,
             Edit,
         };
-        public IdentifiableName enumValue;
+        public Enumerations.EnumerationItem enumValue;
         private eFormType type;
         private string enumName; // the name of the enumeration set.
 
-        public EditEnumForm(string enumName)
+        public EditEnumForm(string enumName, eFormType type, Enumerations.EnumerationItem enumValue)
         {
             InitializeComponent();
-            this.type = eFormType.New;
-            this.enumName = enumName;
-            this.enumValue = new IdentifiableName();
-            LoadLanguage();
-        }
-        public EditEnumForm(string enumName, IdentifiableName enumValue)
-        {
-            InitializeComponent();
-            this.type = eFormType.Edit;
+            this.type = type;
             this.enumName = enumName;
             this.enumValue = enumValue;
 
-            EnumIdTextBox.Text = enumValue.Id.ToString();
-            EnumNameTextBox.Text = enumValue.Name;
+            if (this.type == eFormType.Edit)
+            {
+                EnumIdTextBox.Text = enumValue.Id.ToString();
+                EnumNameTextBox.Text = enumValue.Name;
+                EnumIsDefaultCheckBox.Checked = enumValue.IsDefault;
+            }
             LoadLanguage();
         }
 
@@ -65,6 +61,7 @@ namespace Redmine.Client
             }
             enumValue.Id = Convert.ToInt32(EnumIdTextBox.Text);
             enumValue.Name = EnumNameTextBox.Text;
+            enumValue.IsDefault = EnumIsDefaultCheckBox.Checked;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

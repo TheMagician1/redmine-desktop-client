@@ -761,4 +761,19 @@ or Request attention every
   <data name="OnlyShowMyProjects" xml:space="preserve">
     <value>Only show the project that I am a member of</value>
   </data>
+  <data name="ApiVersion_V24x" xml:space="preserve">
+    <value>V2.4.x</value>
+  </data>
+  <data name="ApiVersion_V25x" xml:space="preserve">
+    <value>V2.5.x</value>
+  </data>
+  <data name="BgWork_LoadCustomFields" xml:space="preserve">
+    <value>loading Custom Fields</value>
+  </data>
+  <data name="labelEnumIsDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
 </root>

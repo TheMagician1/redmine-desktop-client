@@ -58,6 +58,14 @@ namespace Redmine.Client
             comboBoxActivity.DataSource = Enumerations.Activities;
             comboBoxActivity.DisplayMember = "Name";
             comboBoxActivity.ValueMember = "Id";
+            foreach (Enumerations.EnumerationItem i in Enumerations.Activities)
+            {
+                if (i.IsDefault)
+                {
+                    comboBoxActivity.SelectedValue = i.Id;
+                    break;
+                }
+            }
             comboBoxByUser.DataSource = projectMembers;
             comboBoxByUser.DisplayMember = "Name";
             comboBoxByUser.ValueMember = "Id";

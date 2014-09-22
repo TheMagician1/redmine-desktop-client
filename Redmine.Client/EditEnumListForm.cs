@@ -14,10 +14,10 @@ namespace Redmine.Client
     public partial class EditEnumListForm : Form
     {
 
-        public List<IdentifiableName> enumeration { get; private set; }
+        public List<Enumerations.EnumerationItem> enumeration { get; private set; }
         private string enumName;
 
-        public EditEnumListForm(List<IdentifiableName> enumeration, string enumName)
+        public EditEnumListForm(List<Enumerations.EnumerationItem> enumeration, string enumName)
         {
             InitializeComponent();
             this.enumName = enumName;
@@ -25,6 +25,7 @@ namespace Redmine.Client
 
             EnumerationListView.Columns.Add("ColumnId", Lang.labelEnumId, 25);
             EnumerationListView.Columns.Add("ColumnName", Lang.labelEnumName, 150);
+            EnumerationListView.Columns.Add("ColumnIsDefault", Lang.labelEnumIsDefault, 150);
             EnumerationListView.RetrieveVirtualItem += new RetrieveVirtualItemEventHandler(EnumerationListView_RetrieveVirtualItem);
             EnumerationListView.SelectedIndexChanged += new EventHandler(EnumerationListView_SelectedIndexChanged);
             EnumerationListView.MouseDoubleClick += new MouseEventHandler(EnumerationListView_MouseDoubleClick);
@@ -54,15 +55,16 @@ namespace Redmine.Client
         {
             if (e.ItemIndex < 0 || e.ItemIndex >= enumeration.Count)
                 return;
-            IdentifiableName item = enumeration[e.ItemIndex];
+            Enumerations.EnumerationItem item = enumeration[e.ItemIndex];
             e.Item = new ListViewItem();
             e.Item.Text = item.Id.ToString();
             e.Item.SubItems.Add(item.Name);
+            e.Item.SubItems.Add(item.IsDefault.ToString());
         }
 
         private void BtnAddButton_Click(object sender, EventArgs e)
         {
-            EditEnumForm dlg = new EditEnumForm(enumName);
+            EditEnumForm dlg = new EditEnumForm(enumName, EditEnumForm.eFormType.New, new Enumerations.EnumerationItem { Id = 0, Name = "", IsDefault = false });
             do
             {
                 DialogResult result = dlg.ShowDialog(this);
@@ -79,38 +81,39 @@ namespace Redmine.Client
             while (true);
         }
 
-        private void AddItem(IdentifiableName identifiableName)
+        private void AddItem(Enumerations.EnumerationItem item)
         {
-            enumeration.Add(identifiableName);
+            enumeration.Add(item);
             EnumerationListView.VirtualListSize = enumeration.Count;
         }
 
-        private void DeleteItem(IdentifiableName identifiableName)
+        private void DeleteItem(Enumerations.EnumerationItem item)
         {
-            enumeration.Remove(identifiableName);
+            enumeration.Remove(item);
             EnumerationListView.VirtualListSize = enumeration.Count;
         }
 
-        private bool IsUnique(IdentifiableName identifiableName)
+        private bool IsUnique(Enumerations.EnumerationItem item)
         {
-            return IsUnique(identifiableName, null);
+            return IsUnique(item, null);
         }
 
-        private bool IsUnique(IdentifiableName identifiableName, IdentifiableName identifiableNameOri)
+        private bool IsUnique(Enumerations.EnumerationItem item, Enumerations.EnumerationItem itemOri)
         {
-            foreach (IdentifiableName item in enumeration)
+            foreach (Enumerations.EnumerationItem real in enumeration)
             {
-                if (identifiableNameOri != null)
-                    if (identifiableNameOri == item)
+                if (itemOri != null)
+                    if (itemOri == real)
                         continue;
-                if (item.Id == identifiableName.Id ||
-                    String.Compare(item.Name, identifiableName.Name, true) == 0)
+                if (real.Id == item.Id ||
+                    String.Compare(item.Name, item.Name, true) == 0 ||
+                    real.IsDefault == item.IsDefault)
                     return false;
             }
             return true;
         }
 
-        private IdentifiableName GetCurrentSelectedItem()
+        private Enumerations.EnumerationItem GetCurrentSelectedItem()
         {
             if (EnumerationListView.SelectedIndices.Count != 1)
                 return null;
@@ -119,7 +122,7 @@ namespace Redmine.Client
 
         private void BtnDeleteButton_Click(object sender, EventArgs e)
         {
-            IdentifiableName item = GetCurrentSelectedItem();
+            Enumerations.EnumerationItem item = GetCurrentSelectedItem();
             if (item == null)
                 return;
             DeleteItem(item);
@@ -127,10 +130,10 @@ namespace Redmine.Client
 
         private void BtnModifyButton_Click(object sender, EventArgs e)
         {
-            IdentifiableName item = GetCurrentSelectedItem();
+            Enumerations.EnumerationItem item = GetCurrentSelectedItem();
             if (item == null)
                 return;
-            EditEnumForm dlg = new EditEnumForm(enumName, item);
+            EditEnumForm dlg = new EditEnumForm(enumName, EditEnumForm.eFormType.Edit, item);
             do
             {
                 DialogResult result = dlg.ShowDialog(this);
@@ -147,14 +150,15 @@ namespace Redmine.Client
             while (true);
         }
 
-        private void UpdateItem(IdentifiableName identifiableName, IdentifiableName original)
+        private void UpdateItem(Enumerations.EnumerationItem newItem, Enumerations.EnumerationItem original)
         {
-            foreach (IdentifiableName item in enumeration)
+            foreach (Enumerations.EnumerationItem item in enumeration)
             {
                 if (original == item)
                 {
-                    item.Id = identifiableName.Id;
-                    item.Name = identifiableName.Name;
+                    item.Id = newItem.Id;
+                    item.Name = newItem.Name;
+                    item.IsDefault = newItem.IsDefault;
                     EnumerationListView.Invalidate();
                     return;
                 }
