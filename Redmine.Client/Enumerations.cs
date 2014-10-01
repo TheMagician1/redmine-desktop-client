@@ -28,6 +28,11 @@ namespace Redmine.Client
             [XmlElement("is_default")]
             public bool IsDefault { get; set; }
 
+            public IdentifiableName ToIdentifiableName()
+            {
+                return new IdentifiableName() { Id = this.Id, Name = this.Name };
+            }
+
             #region Implementation of IXmlSerializable
 
             public XmlSchema GetSchema() { return null; }

@@ -49,7 +49,7 @@ namespace Redmine.Client
 
             comboBoxByUser.SelectedValue = CurTimeEntry.User.Id;
             comboBoxActivity.SelectedValue = CurTimeEntry.Activity.Id;
-            textBoxSpentHours.Text = CurTimeEntry.Hours.ToString();
+            textBoxSpentHours.Text = CurTimeEntry.Hours.ToString(Lang.Culture);
             textBoxComment.Text = CurTimeEntry.Comments;
         }
 
@@ -95,7 +95,7 @@ namespace Redmine.Client
             CurTimeEntry.SpentOn = datePickerSpentOn.Value;
             CurTimeEntry.Issue = new IdentifiableName() { Id = issue.Id };
             CurTimeEntry.User = new IdentifiableName() { Id = ((ProjectMember)comboBoxByUser.SelectedItem).Id };
-            CurTimeEntry.Activity = (IdentifiableName)comboBoxActivity.SelectedItem;
+            CurTimeEntry.Activity = ((Enumerations.EnumerationItem)comboBoxActivity.SelectedItem).ToIdentifiableName();
             CurTimeEntry.Hours = decimal.Parse(textBoxSpentHours.Text, Lang.Culture);
             CurTimeEntry.Comments = textBoxComment.Text;
             try
