@@ -34,7 +34,9 @@ namespace Redmine.Client
             new IdentifiableName { Id = (int)ApiVersion.V20x, Name = LangTools.GetTextForApiVersion(ApiVersion.V20x) },
             new IdentifiableName { Id = (int)ApiVersion.V21x, Name = LangTools.GetTextForApiVersion(ApiVersion.V21x) },
             new IdentifiableName { Id = (int)ApiVersion.V22x, Name = LangTools.GetTextForApiVersion(ApiVersion.V22x) },
-            new IdentifiableName { Id = (int)ApiVersion.V23x, Name = LangTools.GetTextForApiVersion(ApiVersion.V23x) }
+            new IdentifiableName { Id = (int)ApiVersion.V23x, Name = LangTools.GetTextForApiVersion(ApiVersion.V23x) },
+            new IdentifiableName { Id = (int)ApiVersion.V24x, Name = LangTools.GetTextForApiVersion(ApiVersion.V24x) },
+            new IdentifiableName { Id = (int)ApiVersion.V25x, Name = LangTools.GetTextForApiVersion(ApiVersion.V25x) }
         };
 
         public SettingsForm()

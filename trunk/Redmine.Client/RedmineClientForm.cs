@@ -270,7 +270,7 @@ namespace Redmine.Client
                     ComboBoxActivity.SelectedValue = currentActivityId;
                 else
                     ComboBoxActivity.SelectedIndex = 0;
-                activityId = (int)ComboBoxActivity.SelectedValue;
+                activityId = ((Enumerations.EnumerationItem)ComboBoxActivity.SelectedItem).Id;
             }
 
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
@@ -425,7 +425,7 @@ namespace Redmine.Client
                     ComboBoxProject.SelectedValue = projectId;
                 else
                     ComboBoxProject.SelectedIndex = 0;
-                 projectId = (int)ComboBoxProject.SelectedValue;
+                 projectId = ((ClientProject)ComboBoxProject.SelectedItem).Id;
             }
             SetIssueSelectionTo(issueId);
             updating = false;
@@ -1518,7 +1518,7 @@ namespace Redmine.Client
         {
             try
             {
-                currentFilter.TrackerId = (int)ComboBoxTracker.SelectedValue;
+                currentFilter.TrackerId = ((ProjectTracker)ComboBoxTracker.SelectedItem).Id;
             }
             catch (Exception)
             {
@@ -1531,7 +1531,7 @@ namespace Redmine.Client
         {
             try
             {
-                currentFilter.StatusId = (int)ComboBoxStatus.SelectedValue;
+                currentFilter.StatusId = ((IssueStatus)ComboBoxStatus.SelectedItem).Id;
             }
             catch (Exception)
             {
@@ -1544,7 +1544,7 @@ namespace Redmine.Client
         {
             try
             {
-                currentFilter.PriorityId = (int)ComboBoxPriority.SelectedValue;
+                currentFilter.PriorityId = ((Enumerations.EnumerationItem)ComboBoxPriority.SelectedItem).Id;
             }
             catch (Exception)
             {
@@ -1557,7 +1557,7 @@ namespace Redmine.Client
         {
             try
             {
-                currentFilter.AssignedToId = (int)ComboBoxAssignedTo.SelectedValue;
+                currentFilter.AssignedToId = ((ProjectMember)ComboBoxAssignedTo.SelectedItem).Id;
             }
             catch (Exception)
             {
@@ -1570,7 +1570,7 @@ namespace Redmine.Client
         {
             try
             {
-                currentFilter.VersionId = (int)ComboBoxTargetVersion.SelectedValue;
+                currentFilter.VersionId = ((Redmine.Net.Api.Types.Version)ComboBoxTargetVersion.SelectedItem).Id;
             }
             catch (Exception)
             {
@@ -1583,7 +1583,7 @@ namespace Redmine.Client
         {
             try
             {
-                currentFilter.CategoryId = (int)ComboBoxCategory.SelectedValue;
+                currentFilter.CategoryId = ((IssueCategory)ComboBoxCategory.SelectedItem).Id;
             }
             catch (Exception)
             {

@@ -57,7 +57,7 @@ namespace Redmine.Client
         private void BtnCommitButton_Click(object sender, EventArgs e)
         {
             Comment = TextBoxComment.Text;
-            activityId = (int)ComboBoxActivity.SelectedValue;
+            activityId = ((Enumerations.EnumerationItem)ComboBoxActivity.SelectedItem).Id;
             closeIssue = CheckBoxClosesIssue.Checked;
             DialogResult = DialogResult.OK;
             Close();
