@@ -17,6 +17,12 @@ namespace Redmine.Client
             InitializeComponent();
             this.Text = Lang.DlgOpenSpecificIssueTitle;
             LangTools.UpdateControlsForLanguage(this.Controls);
+            if (labelIssueNumberToOpen.Size.Width > Size.Width - textBoxIssueNumber.Location.X - labelIssueNumberToOpen.Location.X - 15)
+            {
+                if (labelIssueNumberToOpen.Size.Width + textBoxIssueNumber.Size.Width + 15 > Size.Width - labelIssueNumberToOpen.Location.X - 15)
+                    this.Size = new Size(labelIssueNumberToOpen.Location.X + labelIssueNumberToOpen.Size.Width + textBoxIssueNumber.Size.Width + 30, this.Size.Height);
+                textBoxIssueNumber.Location = new Point(labelIssueNumberToOpen.Location.X + labelIssueNumberToOpen.Size.Width + 10, textBoxIssueNumber.Location.Y);
+            }
         }
         private int issueNumber = 0;
         public int IssueNumber { get { return issueNumber; } }
