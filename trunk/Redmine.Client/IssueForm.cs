@@ -199,7 +199,7 @@ namespace Redmine.Client
 
             // set priority
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
-                newIssue.Priority = (IdentifiableName)ComboBoxPriority.SelectedItem;
+                newIssue.Priority = ((Enumerations.EnumerationItem)ComboBoxPriority.SelectedItem).ToIdentifiableName();
             else
                 newIssue.Priority = issue.Priority;
 

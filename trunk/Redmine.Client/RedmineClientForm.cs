@@ -124,7 +124,7 @@ namespace Redmine.Client
             try
             {
                 projectId = ((Project)ComboBoxProject.SelectedItem).Id;
-                activityId = ((IdentifiableName)ComboBoxActivity.SelectedItem).Id;
+                activityId = ((Enumerations.EnumerationItem)ComboBoxActivity.SelectedItem).Id;
                 issueId = ((Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem).Id;
             }
             catch (Exception) { }
@@ -667,8 +667,7 @@ namespace Redmine.Client
                 }
                 if (ComboBoxActivity.SelectedItem != null)
                 {
-                    IdentifiableName selectedActivity = (IdentifiableName)ComboBoxActivity.SelectedItem;
-                    activityText = selectedActivity.Name;
+                    activityText = ((Enumerations.EnumerationItem)ComboBoxActivity.SelectedItem).Name;
                 }
                 string finalText = String.Format("{3} - {2}{0}{1}", Environment.NewLine, issueText, activityText, Lang.RedmineClientTitle_NoUser);
                 if (finalText.Length>63)
@@ -776,7 +775,7 @@ namespace Redmine.Client
             if (DataGridViewIssues.SelectedRows.Count == 1 && ComboBoxActivity.SelectedItem != null && ticks != 0)
             {
                 Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
-                IdentifiableName selectedActivity = (IdentifiableName)ComboBoxActivity.SelectedItem;
+                Enumerations.EnumerationItem selectedActivity = (Enumerations.EnumerationItem)ComboBoxActivity.SelectedItem;
 
                 ticking = false;
                 timer1.Stop();
