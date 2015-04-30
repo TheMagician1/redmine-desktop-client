@@ -262,9 +262,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Redmine.Api\Api.csproj">
-      <Project>{F99E4720-D2A0-461B-A454-E6169BFA8C38}</Project>
-      <Name>Api</Name>
+    <ProjectReference Include="..\Redmine.Api\redmine-net40-api\redmine-net40-api.csproj">
+      <Project>{0d9b763c-a16b-463b-bddd-0a0467dcd32e}</Project>
+      <Name>redmine-net40-api</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

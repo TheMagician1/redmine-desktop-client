@@ -1,0 +1,3 @@
+[submodule "Redmine.Api"]
+	path = Redmine.Api
+	url = https://github.com/zapadi/redmine-net-api.git

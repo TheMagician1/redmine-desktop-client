@@ -35,9 +35,9 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Redmine.Api\Api.csproj">
-      <Name>Api</Name>
-      <Project>{f99e4720-d2a0-461b-a454-e6169bfa8c38}</Project>
+    <ProjectReference Include="..\Redmine.Api\redmine-net40-api\redmine-net40-api.csproj">
+      <Name>redmine-net40-api</Name>
+      <Project>{0d9b763c-a16b-463b-bddd-0a0467dcd32e}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
@@ -63,6 +63,6 @@
 		<XmlPoke XmlInputPath="$(SolutionDir)\Installer\Bundle.wxs" Query="/Wix/Bundle/@Version" Value="1.2.3.4" />
 	</Target>
 	-->
-	<Target Name="AfterBuild">
-	</Target>
+  <Target Name="AfterBuild">
+  </Target>
 </Project>

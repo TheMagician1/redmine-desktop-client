@@ -1,23 +1,18 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redmine.Client", "Redmine.Client\Redmine.Client.csproj", "{07ABD877-B270-4054-B10E-7AA4DEBD37E0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Redmine.Api\Api.csproj", "{F99E4720-D2A0-461B-A454-E6169BFA8C38}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{CAE8E32C-D717-4ED3-A795-C5D10FDBE64E}"
 	ProjectSection(ProjectDependencies) = postProject
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38} = {F99E4720-D2A0-461B-A454-E6169BFA8C38}
 		{07ABD877-B270-4054-B10E-7AA4DEBD37E0} = {07ABD877-B270-4054-B10E-7AA4DEBD37E0}
 	EndProjectSection
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Installer", "Installer\Installer.wixproj", "{DE8A1716-DEA3-4CEA-83E5-D24D94519B45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "redmine-net40-api", "Redmine.Api\redmine-net40-api\redmine-net40-api.csproj", "{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}"
+EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -39,18 +34,6 @@ Global
 		{07ABD877-B270-4054-B10E-7AA4DEBD37E0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{07ABD877-B270-4054-B10E-7AA4DEBD37E0}.Release|x86.ActiveCfg = Release|Any CPU
 		{07ABD877-B270-4054-B10E-7AA4DEBD37E0}.Release|x86.Build.0 = Release|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Debug|x86.Build.0 = Debug|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Release|x86.ActiveCfg = Release|Any CPU
-		{F99E4720-D2A0-461B-A454-E6169BFA8C38}.Release|x86.Build.0 = Release|Any CPU
 		{CAE8E32C-D717-4ED3-A795-C5D10FDBE64E}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{CAE8E32C-D717-4ED3-A795-C5D10FDBE64E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{CAE8E32C-D717-4ED3-A795-C5D10FDBE64E}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -71,8 +54,22 @@ Global
 		{DE8A1716-DEA3-4CEA-83E5-D24D94519B45}.Release|Mixed Platforms.Build.0 = Release|x86
 		{DE8A1716-DEA3-4CEA-83E5-D24D94519B45}.Release|x86.ActiveCfg = Release|x86
 		{DE8A1716-DEA3-4CEA-83E5-D24D94519B45}.Release|x86.Build.0 = Release|x86
+		{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0D9B763C-A16B-463B-BDDD-0A0467DCD32E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal

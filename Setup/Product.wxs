@@ -81,8 +81,8 @@
         </File>
       </Component>
       <Component Id="Redmine.Net.Api.dll" Guid="{C3FA0BC5-5E42-4450-BEF9-6117134ECD65}">
-        <RemoveFile Id="Remove_Redmine_Net_Api_Dll" Name="$(var.Api.TargetFileName)" On="install"/>
-        <File Id="Redmine.Net.Api.dll" Name="$(var.Api.TargetFileName)" Source="$(var.Api.TargetPath)" KeyPath="yes"/>
+        <RemoveFile Id="Remove_Redmine_Net_Api_Dll" Name="$(var.redmine-net40-api.TargetFileName)" On="install"/>
+        <File Id="Redmine.Net.Api.dll" Name="$(var.redmine-net40-api.TargetFileName)" Source="$(var.redmine-net40-api.TargetPath)" KeyPath="yes"/>
       </Component>
       <Component Id="properties.app.config" Guid="{270DDDC8-8F70-4059-823C-3CFAEAEE83B8}">
         <File Id="properties.app.config" Source="$(var.Redmine.Client.TargetPath).config" />
