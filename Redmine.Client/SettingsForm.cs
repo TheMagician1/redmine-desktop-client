@@ -24,7 +24,9 @@ namespace Redmine.Client
             new System.Globalization.CultureInfo("es-MX"),
             new System.Globalization.CultureInfo("zh-CN")
         };
+
         /* api version lower then 1.1 does not support time-entry, so is not supported. */
+
         private List<IdentifiableName> apiVersions = new List<IdentifiableName> {
             /*new IdentifiableName { Id = (int)ApiVersion.V10x, Name = LangTools.GetTextForApiVersion(ApiVersion.V10x) },*/
             new IdentifiableName { Id = (int)ApiVersion.V11x, Name = LangTools.GetTextForApiVersion(ApiVersion.V11x) },
@@ -101,9 +103,9 @@ namespace Redmine.Client
                 Settings.Default.UpdateSetting("RedminePassword", RedminePasswordTextBox.Text);
                 Settings.Default.UpdateSetting("RedmineAuthentication", AuthenticationCheckBox.Checked);
                 if (radioButtonJson.Checked)
-                    Settings.Default.UpdateSetting("CommunicationType", Redmine.Net.Api.MimeFormat.json);
+                    Settings.Default.UpdateSetting("CommunicationType", Redmine.Net.Api.MimeFormat.Json);
                 else
-                    Settings.Default.UpdateSetting("CommunicationType", Redmine.Net.Api.MimeFormat.xml);
+                    Settings.Default.UpdateSetting("CommunicationType", Redmine.Net.Api.MimeFormat.Xml);
 
                 Settings.Default.UpdateSetting("CheckForUpdates", CheckForUpdatesCheckBox.Checked);
                 Settings.Default.UpdateSetting("MinimizeToSystemTray", MinimizeToSystemTrayCheckBox.Checked);
@@ -142,8 +144,8 @@ namespace Redmine.Client
             AuthenticationCheckBox.Checked = Settings.Default.RedmineAuthentication;
             RedmineUsernameTextBox.Text = Settings.Default.RedmineUser;
             RedminePasswordTextBox.Text = Settings.Default.RedminePassword;
-            radioButtonJson.Checked = Settings.Default.CommunicationType == Net.Api.MimeFormat.json;
-            radioButtonXml.Checked = Settings.Default.CommunicationType != Net.Api.MimeFormat.json;
+            radioButtonJson.Checked = Settings.Default.CommunicationType == Net.Api.MimeFormat.Json;
+            radioButtonXml.Checked = Settings.Default.CommunicationType != Net.Api.MimeFormat.Json;
 
             MinimizeToSystemTrayCheckBox.Checked = Settings.Default.MinimizeToSystemTray;
             MinimizeOnStartTimerCheckBox.Checked = Settings.Default.MinimizeOnStartTimer;
@@ -167,7 +169,7 @@ namespace Redmine.Client
 
         private Redmine.Net.Api.MimeFormat GetSelectedMimeFormat()
         {
-            return radioButtonXml.Checked ? Redmine.Net.Api.MimeFormat.xml : Net.Api.MimeFormat.json;
+            return radioButtonXml.Checked ? Redmine.Net.Api.MimeFormat.Xml : Net.Api.MimeFormat.Json;
         }
 
         private void AuthenticationCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -231,6 +233,7 @@ namespace Redmine.Client
         }
 
         private IList<IssueStatus> CloseStatuses;
+
         private void LoadAndEnableCloseStatus()
         {
             labelSelectCloseStatus.Enabled = false;
@@ -246,7 +249,7 @@ namespace Redmine.Client
                 else
                     manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text, GetSelectedMimeFormat());
 
-                CloseStatuses = manager.GetTotalObjectList<IssueStatus>(null);
+                CloseStatuses = manager.GetObjects<IssueStatus>();
                 ComboBoxCloseStatus.DataSource = CloseStatuses;
                 ComboBoxCloseStatus.ValueMember = "Id";
                 ComboBoxCloseStatus.DisplayMember = "Name";
@@ -270,6 +273,7 @@ namespace Redmine.Client
 
         private List<IssueStatus> NewStatuses;
         private List<IssueStatus> InProgressStatuses;
+
         private void LoadAndEnableSetToInProgressStatus()
         {
             UpdateIssueNewStateComboBox.Enabled = false;
@@ -291,7 +295,7 @@ namespace Redmine.Client
                     manager = new Redmine.Net.Api.RedmineManager(RedmineBaseUrlTextBox.Text, GetSelectedMimeFormat());
 
                 NameValueCollection parameters = new NameValueCollection { { "is_closed", "false" } };
-                foreach (IssueStatus status in manager.GetTotalObjectList<IssueStatus>(parameters))
+                foreach (IssueStatus status in manager.GetObjects<IssueStatus>(parameters))
                 {
                     if (!status.IsClosed)
                     {

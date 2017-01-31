@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Globalization;
@@ -10,6 +9,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using System.Windows.Forms;
+using Redmine.Net.Api.Extensions;
 
 namespace Redmine.Client
 {
@@ -23,8 +23,10 @@ namespace Redmine.Client
         {
             [XmlElement("id")]
             public int Id { get; set; }
+
             [XmlElement("name")]
             public string Name { get; set; }
+
             [XmlElement("is_default")]
             public bool IsDefault { get; set; }
 
@@ -35,7 +37,10 @@ namespace Redmine.Client
 
             #region Implementation of IXmlSerializable
 
-            public XmlSchema GetSchema() { return null; }
+            public XmlSchema GetSchema()
+            {
+                return null;
+            }
 
             /// <summary>
             /// Generates an object from its XML representation.
@@ -72,7 +77,7 @@ namespace Redmine.Client
                 writer.WriteAttributeString("is_default", IsDefault.ToString(CultureInfo.InvariantCulture));
             }
 
-            #endregion
+            #endregion Implementation of IXmlSerializable
 
             #region Implementation of IEquatable<EnumerationItem>
 
@@ -83,13 +88,14 @@ namespace Redmine.Client
                 return Id == other.Id && Name == other.Name && IsDefault == other.IsDefault;
             }
 
-            #endregion
+            #endregion Implementation of IEquatable<EnumerationItem>
         };
 
         /// <summary>
         /// Priorities that can be used in issues
         /// </summary>
         public static List<EnumerationItem> IssuePriorities { get; set; }
+
         /// <summary>
         /// Activities that can be used to commit time
         /// </summary>
@@ -123,6 +129,7 @@ namespace Redmine.Client
                                         };
             }
         }
+
         public static void LoadActivities()
         {
             bool loadDefault = false;
@@ -164,6 +171,7 @@ namespace Redmine.Client
         {
             Save(IssuePriorities, "IssuePriorities");
         }
+
         public static void SaveActivities()
         {
             Save(Activities, "Activities");

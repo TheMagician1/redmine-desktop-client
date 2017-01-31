@@ -13,18 +13,20 @@ namespace Redmine.Client
 {
     public partial class IssueForm : BgWorker
     {
-        class ClientCustomField
+        private class ClientCustomField
         {
             public String Name { get; set; }
             public String Value { get; set; }
         };
-        class ClientIssueRelation : IssueRelation
+
+        private class ClientIssueRelation : IssueRelation
         {
             private Issue issueTo;
             public String IssueToSubject { get { return issueTo.Subject; } }
             public IdentifiableName IssueToTracker { get { return issueTo.Tracker; } }
             public IdentifiableName IssueToStatus { get { return issueTo.Status; } }
             public IdentifiableName IssueToProject { get { return issueTo.Project; } }
+
             public ClientIssueRelation(IssueRelation relation, Issue issueTo)
             {
                 this.Id = relation.Id;
@@ -50,6 +52,7 @@ namespace Redmine.Client
                 }
             }
         };
+
         private Project project;
         private int issueId = 0;
         private Issue issue;
@@ -762,20 +765,20 @@ namespace Redmine.Client
                             NameValueCollection projectParameters = new NameValueCollection { { "include", "trackers" } };
                             Project project = RedmineClientForm.redmine.GetObject<Project>(projectId.Id.ToString(), projectParameters);
                             dataCache.Trackers = project.Trackers;
-                            dataCache.Categories = new List<IssueCategory>(RedmineClientForm.redmine.GetTotalObjectList<IssueCategory>(parameters));
+                            dataCache.Categories = new List<IssueCategory>(RedmineClientForm.redmine.GetObjects<IssueCategory>(parameters));
                             dataCache.Categories.Insert(0, new IssueCategory { Id = 0, Name = "" });
-                            dataCache.Statuses = RedmineClientForm.redmine.GetTotalObjectList<IssueStatus>(parameters);
-                            dataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetTotalObjectList<Redmine.Net.Api.Types.Version>(parameters);
+                            dataCache.Statuses = RedmineClientForm.redmine.GetObjects<IssueStatus>(parameters);
+                            dataCache.Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetObjects<Redmine.Net.Api.Types.Version>(parameters);
                             dataCache.Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
                             if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x)
                             {
-                                List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetTotalObjectList<ProjectMembership>(parameters);
+                                List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetObjects<ProjectMembership>(parameters);
                                 //RedmineClientForm.DataCache.Watchers = projectMembers.ConvertAll(new Converter<ProjectMembership, Assignee>(MemberToAssignee));
                                 dataCache.ProjectMembers = projectMembers.ConvertAll(new Converter<ProjectMembership, ProjectMember>(ProjectMember.MembershipToMember));
                                 dataCache.ProjectMembers.Insert(0, new ProjectMember(new ProjectMembership { Id = 0, User = new IdentifiableName { Id = 0, Name = "" } }));
                                 if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
                                 {
-                                    Enumerations.UpdateIssuePriorities(RedmineClientForm.redmine.GetTotalObjectList<IssuePriority>(null));
+                                    Enumerations.UpdateIssuePriorities(RedmineClientForm.redmine.GetObjects<IssuePriority>());
                                     Enumerations.SaveIssuePriorities();
                                 }
                             }
