@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Redmine.Net.Api.Types;
+using Redmine.Net.Api;
 
 namespace Redmine.Client
 {
@@ -98,7 +99,7 @@ namespace Redmine.Client
             }
             NameValueCollection parameters = new NameValueCollection();
             if (projectId != -1)
-                parameters.Add("project_id", projectId.ToString());
+                parameters.Add(RedmineKeys.PROJECT_ID, projectId.ToString());
 
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
             {
@@ -221,40 +222,40 @@ namespace Redmine.Client
             try
             {
                 if (onlyMe)
-                    parameters.Add("assigned_to_id", "me");
+                    parameters.Add(RedmineKeys.ASSIGNED_TO_ID, "me");
                 else if (filter.AssignedToId > 0)
-                    parameters.Add("assigned_to_id", filter.AssignedToId.ToString());
+                    parameters.Add(RedmineKeys.ASSIGNED_TO_ID, filter.AssignedToId.ToString());
 
                 if (filter.TrackerId > 0)
-                    parameters.Add("tracker_id", filter.TrackerId.ToString());
+                    parameters.Add(RedmineKeys.TRACKER_ID, filter.TrackerId.ToString());
 
                 if (filter.StatusId > 0)
-                    parameters.Add("status_id", filter.StatusId.ToString());
+                    parameters.Add(RedmineKeys.STATUS_ID, filter.StatusId.ToString());
                 else if (filter.StatusId < 0)
                 {
                     switch (filter.StatusId)
                     {
                         case -1: // all closed issues
-                            parameters.Add("status_id", "closed");
+                            parameters.Add(RedmineKeys.STATUS_ID, "closed");
                             break;
 
                         case -2: // all open and closed issues
-                            parameters.Add("status_id", "*");
+                            parameters.Add(RedmineKeys.STATUS_ID, " *");
                             break;
                     }
                 }
 
                 if (filter.PriorityId > 0)
-                    parameters.Add("priority_id", filter.PriorityId.ToString());
+                    parameters.Add(RedmineKeys.PRIORITY_ID, filter.PriorityId.ToString());
 
                 if (filter.VersionId > 0)
-                    parameters.Add("fixed_version_id", filter.VersionId.ToString());
+                    parameters.Add(RedmineKeys.FIXED_VERSION_ID, filter.VersionId.ToString());
 
                 if (filter.CategoryId > 0)
-                    parameters.Add("category_id", filter.CategoryId.ToString());
+                    parameters.Add(RedmineKeys.CATEGORY_ID, filter.CategoryId.ToString());
 
                 if (!String.IsNullOrEmpty(filter.Subject))
-                    parameters.Add("subject", "~" + filter.Subject);
+                    parameters.Add(RedmineKeys.SUBJECT, "~" + filter.Subject);
 
                 Issues = RedmineClientForm.redmine.GetObjects<Issue>(parameters);
                 }
