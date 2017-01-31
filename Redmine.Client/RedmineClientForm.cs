@@ -55,6 +55,7 @@ namespace Redmine.Client
         /* ugly hack to create a singleton */
         private static readonly RedmineClientForm instance = new RedmineClientForm();
         public static RedmineClientForm Instance { get { return instance; } }
+
         private RedmineClientForm()
         {
             InitializeComponent();
@@ -74,14 +75,14 @@ namespace Redmine.Client
                 this.notifyIcon1.Icon = (Icon)Resources.ResourceManager.GetObject("clock");
                 this.notifyIcon1.Visible = true;
             }
-			else 
+			else
 			{
 				this.DataGridViewIssues.Click += new System.EventHandler(this.DataGridViewIssues_SelectionChanged);
 			}
             this.FormClosing += new FormClosingEventHandler(RedmineClientForm_FormClosing);
             SystemEvents.SessionSwitch += new SessionSwitchEventHandler(SystemEvents_SessionSwitch);
             Reinit(false);
- 
+
             //At last add check-for-updates work...
             if (this.CheckForUpdates)
             {
@@ -93,7 +94,7 @@ namespace Redmine.Client
             }
         }
 
-        bool OnInitFailed(Exception e, String additionalInfo)
+        private bool OnInitFailed(Exception e, String additionalInfo)
         {
             this.Cursor = Cursors.Default;
             if (MessageBox.Show(String.Format(String.IsNullOrEmpty(additionalInfo) ? Lang.Error_Exception : Lang.Error_InitFailedException, e.Message, additionalInfo), Lang.Error_Startup, MessageBoxButtons.OKCancel, MessageBoxIcon.Error) != DialogResult.OK)
@@ -103,7 +104,7 @@ namespace Redmine.Client
             return true;
         }
 
-        void RedmineClientForm_FormClosing(Object sender, FormClosingEventArgs e)
+        private void RedmineClientForm_FormClosing(Object sender, FormClosingEventArgs e)
         {
             if (ticks != 0 && !Settings.Default.PauseTickingOnLock)
             {
@@ -112,6 +113,7 @@ namespace Redmine.Client
                     case DialogResult.Cancel:
                         e.Cancel = true;
                         return;
+
                     case DialogResult.Yes:
                         BtnCommitButton_Click(null, null);
                         break;
@@ -119,7 +121,7 @@ namespace Redmine.Client
             }
         }
 
-        void LoadLastIds()
+        private void LoadLastIds()
         {
             try
             {
@@ -130,7 +132,7 @@ namespace Redmine.Client
             catch (Exception) { }
         }
 
-        void Reinit(bool clientIsRunning = true)
+        private void Reinit(bool clientIsRunning = true)
         {
             if (clientIsRunning)
                 SaveRuntimeConfig();
@@ -172,7 +174,7 @@ namespace Redmine.Client
             } while (bRetry);
         }
 
-        int GetProjectIdCheckExists(Dictionary<int, Project> projects, int projectId)
+        private int GetProjectIdCheckExists(Dictionary<int, Project> projects, int projectId)
         {
             Project CurProject;
             if (projectId != -1 && (!projects.TryGetValue(projectId, out CurProject)
@@ -195,7 +197,7 @@ namespace Redmine.Client
         private MainFormData PrepareFormData(int projectId, bool onlyMe, Filter filter)
         {
             NameValueCollection parameters = new NameValueCollection();
-            IList<Project> allProjects = redmine.GetTotalObjectList<Project>(parameters);
+            IList<Project> allProjects = redmine.GetObjects<Project>(parameters);
             IList<Project> projects;
             if (Settings.Default.OnlyMyProjects)
                 projects = OnlyProjectsForMember(currentUser, allProjects);
@@ -242,13 +244,13 @@ namespace Redmine.Client
                 BtnCommitButton.Enabled = false;
                 if (data.Projects.Count > 0 && projectId != -1)
                 {
-                    BtnNewIssueButton.Enabled = true;   
+                    BtnNewIssueButton.Enabled = true;
                 }
                 else
                 {
                     BtnNewIssueButton.Enabled = false;
                 }
-                
+
             }
             else
             {
@@ -352,7 +354,7 @@ namespace Redmine.Client
             FilterAndFillCurrentIssues();
         }
 
-        bool IssueHasKeyword(Issue issue, String keyword)
+        private bool IssueHasKeyword(Issue issue, String keyword)
         {
             if (issue.Subject.ToLower().Contains(keyword))
                 return true;
@@ -366,7 +368,7 @@ namespace Redmine.Client
             return false;
         }
 
-        void FilterAndFillCurrentIssues()
+        private void FilterAndFillCurrentIssues()
         {
             if (currentIssues == null)
                 return; // No issues yet
@@ -390,7 +392,7 @@ namespace Redmine.Client
             FillIssues(filteredIssues);
         }
 
-        void FillIssues(IList<Issue> Issues)
+        private void FillIssues(IList<Issue> Issues)
         {
             DataGridViewIssues.DataSource = Issues;
             UpdateIssueDataColumns();
@@ -413,7 +415,7 @@ namespace Redmine.Client
                 InvertSort(ref order);
                 currentSortedColumn.HeaderCell.SortGlyphDirection = order;
             }
-            
+
             if (!DataGridViewIssues.Columns[currentSortedColumn.Name].Visible)
                 DataGridViewIssues_SortByColumn(DataGridViewIssues.Columns["Id"], SortOrder.Ascending);
             else
@@ -425,7 +427,7 @@ namespace Redmine.Client
                     ComboBoxProject.SelectedValue = projectId;
                 else
                     ComboBoxProject.SelectedIndex = 0;
-                 projectId = ((ClientProject)ComboBoxProject.SelectedItem).Id;
+                projectId = ((ClientProject)ComboBoxProject.SelectedItem).Id;
             }
             SetIssueSelectionTo(issueId);
             updating = false;
@@ -628,7 +630,7 @@ namespace Redmine.Client
                 Minimize();
         }
 
- 
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -837,7 +839,7 @@ namespace Redmine.Client
             {
                 if (ticks == 0)
                 {
-                    MessageBox.Show(Lang.CommitNoTime, Lang.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);   
+                    MessageBox.Show(Lang.CommitNoTime, Lang.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else if (DataGridViewIssues.SelectedRows.Count != 1)
 				{
@@ -1070,7 +1072,7 @@ namespace Redmine.Client
         /// Set the (new) title of this dialog
         /// </summary>
         /// <param name="title">The (new) title</param>
-        void SetTitle(String title)
+        private void SetTitle(String title)
         {
             Title = title;
             UpdateTitle();
@@ -1079,7 +1081,7 @@ namespace Redmine.Client
         /// <summary>
         /// Update the window title with the current background job (if one)
         /// </summary>
-        void UpdateTitle()
+        private void UpdateTitle()
         {
             String title = Title;
             if (!String.IsNullOrEmpty(currentWorkName))
@@ -1087,7 +1089,7 @@ namespace Redmine.Client
             this.Text = title;
         }
 
-        override protected void WorkTriggered(BgWork CurrentWork) 
+        override protected void WorkTriggered(BgWork CurrentWork)
         {
             if (CurrentWork != null)
                 SetCurrentWorkName(CurrentWork.m_name);
@@ -1104,7 +1106,7 @@ namespace Redmine.Client
         /// <summary>
         /// Check for updates and if there is an update available, send the user to the download URL.
         /// </summary>
-        void AsyncCheckForUpdates()
+        private void AsyncCheckForUpdates()
         {
             string latestVersionUrl = Utility.CheckForUpdate();
             if (latestVersionUrl != String.Empty)
@@ -1172,7 +1174,7 @@ namespace Redmine.Client
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        private void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
             if (Settings.Default.PauseTickingOnLock)
             {
@@ -1181,6 +1183,7 @@ namespace Redmine.Client
                     case SessionSwitchReason.SessionLock:
                         timer1.Stop();
                         break;
+
                     case SessionSwitchReason.SessionUnlock:
                         if (this.ticking)
                         {
@@ -1188,7 +1191,7 @@ namespace Redmine.Client
                         }
                         break;
                 }
-                
+
             }
         }
 
@@ -1231,7 +1234,7 @@ namespace Redmine.Client
 
             Issue newIssue = (Issue)originalIssue.Clone();
 
-            Dictionary<int, IssueStatus> statusDict = MainFormData.ToDictionaryName<IssueStatus>(redmine.GetObjectList<IssueStatus>(null));
+            Dictionary<int, IssueStatus> statusDict = MainFormData.ToDictionaryName<IssueStatus>(redmine.GetObjects<IssueStatus>());
             IssueStatus newStatus;
             if (!statusDict.TryGetValue(idState, out newStatus))
                 throw new Exception(Lang.Error_ClosedStatusUnknown);
@@ -1255,6 +1258,7 @@ namespace Redmine.Client
 
 
         #region DataGridViewIssues Functions
+
         /// <summary>
         /// A new Issue has been selected; update the systemtray
         /// </summary>
@@ -1341,13 +1345,14 @@ namespace Redmine.Client
                 e.Value = currentIssue.FixedVersion != null ? currentIssue.FixedVersion.Name : "";
         }
 
-        class CompareIssue : IComparer<Issue>
+        private class CompareIssue : IComparer<Issue>
         {
             public CompareIssue(string column, SortOrder sortOrder)
             {
                 this.column = column;
                 this.sortOrder = sortOrder;
             }
+
             private string column;
             private SortOrder sortOrder;
 
@@ -1397,17 +1402,21 @@ namespace Redmine.Client
                 return 0;
             }
 
-            #endregion
+            #endregion IComparer<Issue> Members
+
             #region Get Property Values
+
             private T GetPropertyValue<T>(object o, string p) where T : class
             {
                 return (T)o.GetType().GetProperty(p).GetValue(o, null);
             }
+
             private Type GetPropertyType(object o, string p)
             {
                 return o.GetType().GetProperty(p).GetValue(o, null).GetType();
             }
-            #endregion
+
+            #endregion Get Property Values
         }
 
         private void DataGridViewIssues_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -1466,9 +1475,10 @@ namespace Redmine.Client
             DataGridViewIssues_SelectionChanged(null, null);
         }
 
-        #endregion //DataGridViewIssues Functions
+        #endregion DataGridViewIssues Functions
 
         #region DataGridViewIssues Context Menu's
+
         private void editVisibleColumnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IssueGridSelectColumns dlg = new IssueGridSelectColumns();
@@ -1499,9 +1509,11 @@ namespace Redmine.Client
             {
             }
         }
-        #endregion //DataGridViewIssues Context Menu's
+
+        #endregion DataGridViewIssues Context Menu's
 
         #region FilterFunctions
+
         /// <summary>
         /// if the 'Show Issues only assigned to me' checkbox is clicked, refresh the issues.
         /// this way it will respect the setting of the checkbox
@@ -1591,6 +1603,7 @@ namespace Redmine.Client
             }
             FilterChanged();
         }
+
         private void TextBoxSubject_TextChanged(object sender, EventArgs e)
         {
             try
@@ -1619,7 +1632,8 @@ namespace Redmine.Client
             ComboBoxTargetVersion.SelectedValue = 0;
             ComboBoxCategory.SelectedValue = 0;
         }
-        #endregion //FilterFunctions
+
+        #endregion FilterFunctions
 
         private void BtnOpenIssueButton_Click(object sender, EventArgs e)
         {
@@ -1632,7 +1646,8 @@ namespace Redmine.Client
         }
 
 
-        Timer refreshIssuesTimer;
+        private Timer refreshIssuesTimer;
+
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
             if (refreshIssuesTimer != null)

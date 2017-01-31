@@ -40,7 +40,7 @@ namespace Redmine.Client
                     try
                     {
                         NameValueCollection parameters = new NameValueCollection { { "issue_id", issue.Id.ToString() } };
-                        IList<TimeEntry> entries = RedmineClientForm.redmine.GetTotalObjectList<TimeEntry>(parameters);
+                        IList<TimeEntry> entries = RedmineClientForm.redmine.GetObjects<TimeEntry>(parameters);
 
                         //Let main thread fill form data...
                         return () =>
