@@ -874,7 +874,7 @@ namespace Redmine.Client
         /// <param name="e"></param>
         private void ComboBoxActivity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(ComboBoxActivity.SelectedValue.ToString(), out activityId))
+            if (ComboBoxActivity.SelectedValue == null || !Int32.TryParse(ComboBoxActivity.SelectedValue.ToString(), out activityId))
             {
                 activityId = 0;
             }
