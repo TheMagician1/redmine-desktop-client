@@ -19,7 +19,19 @@ namespace Redmine.Client
     {
         private string Title = Lang.RedmineClientTitle_NoUser;
 
-        private int ticks = 0;
+        private DateTime ticksStartedTime;
+        private int ticksBegin;
+
+        private int Ticks
+        {
+            get
+            {
+                if (!ticking)
+                    return ticksBegin;
+                return ticksBegin + (int)(DateTime.Now - ticksStartedTime).TotalSeconds;
+            }
+        }
+
         private bool ticking = false;
         private int issueId = 0;
         private int projectId = 0;
@@ -106,7 +118,7 @@ namespace Redmine.Client
 
         private void RedmineClientForm_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            if (ticks != 0 && !Settings.Default.PauseTickingOnLock)
+            if (Ticks != 0 && !Settings.Default.PauseTickingOnLock)
             {
                 switch (MessageBox.Show(String.Format(Lang.Warning_ClosingSaveTimes, Environment.NewLine), Lang.Warning, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                 {
@@ -144,7 +156,7 @@ namespace Redmine.Client
                     LoadConfig();
                     if (!clientIsRunning)
                     {
-                        this.ticks = Settings.Default.TickingTicks;
+                        this.ticksBegin = Settings.Default.TickingTicks;
                         this.UpdateTime();
                         if (Settings.Default.IsTicking)
                         {
@@ -606,22 +618,25 @@ namespace Redmine.Client
         private void BtnStartButton_Click(object sender, EventArgs e)
         {
             if (ticking)
-            {
-                timer1.Stop();
-                BtnStartButton.Text = Lang.BtnStartButton;
-                ticking = false;
-            }
+                PauzeTimer();
             else
-            {
                 StartTimer();
-            }
-            Settings.Default.SetTickingTick(this.ticking, this.ticks);
+            Settings.Default.SetTickingTick(this.ticking, Ticks);
             UpdateNotifyIconText();
             UpdateToolStripMenuItemsStartPause();
         }
 
+        private void PauzeTimer()
+        {
+            timer1.Stop();
+            BtnStartButton.Text = Lang.BtnStartButton;
+            ticksBegin = Ticks;
+            ticking = false;
+        }
+
         private void StartTimer()
         {
+            ticksStartedTime = DateTime.Now;
             timer1.Start();
             BtnStartButton.Text = Lang.BtnStartButton_Pause;
             ticking = true;
@@ -634,9 +649,8 @@ namespace Redmine.Client
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.ticks++;
             this.UpdateTime();
-            Settings.Default.SetTickingTick(this.ticking, this.ticks);
+            Settings.Default.SetTickingTick(this.ticking, Ticks);
             AlertIfMinimized();
         }
 
@@ -649,9 +663,11 @@ namespace Redmine.Client
 
         private void ResetForm()
         {
-            this.ticks = 0;
+            PauzeTimer();
+
+            this.ticksBegin = 0;
             this.UpdateTime();
-            Settings.Default.SetTickingTick(this.ticking, this.ticks);
+            Settings.Default.SetTickingTick(this.ticking, this.Ticks);
             this.dateTimePicker1.Value = DateTime.Now;
             this.TextBoxComment.Text = String.Empty;
         }
@@ -683,6 +699,7 @@ namespace Redmine.Client
         private void UpdateTime()
         {
             this.updating = true;
+            int ticks = Ticks;
             this.TextBoxHours.Text   = (ticks / 3600)   .ToString("D2");
             this.TextBoxMinutes.Text = (ticks / 60 % 60).ToString("D2");
             this.TextBoxSeconds.Text = (ticks % 60)     .ToString("D2");
@@ -691,9 +708,11 @@ namespace Redmine.Client
 
         private void UpdateTicks()
         {
-            ticks = Convert.ToInt32(TextBoxHours.Text)*3600 + Convert.ToInt32(TextBoxMinutes.Text)*60 +
-                    Convert.ToInt32(TextBoxSeconds.Text);
-            Properties.Settings.Default.SetTickingTick(ticking, ticks);
+            if (ticking)
+                return; //Cannot update right now...
+            ticksBegin = Convert.ToInt32(TextBoxHours.Text)*3600 + Convert.ToInt32(TextBoxMinutes.Text)*60 +
+                         Convert.ToInt32(TextBoxSeconds.Text);
+            Properties.Settings.Default.SetTickingTick(ticking, Ticks);
             UpdateTime();
         }
 
@@ -774,21 +793,19 @@ namespace Redmine.Client
         {
             bool shouldIRestart = ticking;
 
-            if (DataGridViewIssues.SelectedRows.Count == 1 && ComboBoxActivity.SelectedItem != null && ticks != 0)
+            if (DataGridViewIssues.SelectedRows.Count == 1 && ComboBoxActivity.SelectedItem != null && Ticks != 0)
             {
                 Issue selectedIssue = (Issue)DataGridViewIssues.SelectedRows[0].DataBoundItem;
                 Enumerations.EnumerationItem selectedActivity = (Enumerations.EnumerationItem)ComboBoxActivity.SelectedItem;
 
-                ticking = false;
-                timer1.Stop();
-                BtnStartButton.Text = Lang.BtnStartButton;
-                CommitForm commitDlg = new CommitForm(selectedIssue, ticks, TextBoxComment.Text, selectedActivity.Id, dateTimePicker1.Value);
+                PauzeTimer();
+                CommitForm commitDlg = new CommitForm(selectedIssue, Ticks, TextBoxComment.Text, selectedActivity.Id, dateTimePicker1.Value);
                 if (commitDlg.ShowDialog(this) == DialogResult.OK)
                 {
                     TimeEntry entry = new TimeEntry();
                     entry.Activity = new IdentifiableName { Id = commitDlg.activityId };
                     entry.Comments = commitDlg.Comment;
-                    entry.Hours = (decimal)ticks / 3600;
+                    entry.Hours = (decimal)Ticks / 3600;
                     entry.Issue = new IdentifiableName { Id = selectedIssue.Id };
                     entry.Project = new IdentifiableName { Id = selectedIssue.Project.Id };
                     entry.SpentOn = dateTimePicker1.Value;
@@ -828,16 +845,14 @@ namespace Redmine.Client
                 else if (shouldIRestart)
                 {
                     TextBoxComment.Text = commitDlg.Comment;
-                    ticking = true;
-                    timer1.Start();
-                    BtnStartButton.Text = Lang.BtnStartButton_Pause;
+                    StartTimer();
                 }
                 else
                     TextBoxComment.Text = commitDlg.Comment;
             }
             else
             {
-                if (ticks == 0)
+                if (Ticks == 0)
                 {
                     MessageBox.Show(Lang.CommitNoTime, Lang.Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -859,7 +874,7 @@ namespace Redmine.Client
         /// <param name="e"></param>
         private void ComboBoxActivity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!Int32.TryParse(ComboBoxActivity.SelectedValue.ToString(), out activityId))
+            if (ComboBoxActivity.SelectedValue == null || !Int32.TryParse(ComboBoxActivity.SelectedValue.ToString(), out activityId))
             {
                 activityId = 0;
             }

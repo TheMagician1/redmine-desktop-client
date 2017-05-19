@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Redmine.Net.Api.Types;
+using Redmine.Net.Api;
 
 namespace Redmine.Client
 {
@@ -87,19 +88,17 @@ namespace Redmine.Client
         public List<ProjectMember> ProjectMembers { get; private set; }
         public List<Enumerations.EnumerationItem> IssuePriorities { get; private set; }
         public List<Enumerations.EnumerationItem> Activities { get; private set; }
+        public int ProjectId { get; }
 
         public MainFormData(IList<Project> projects, int projectId, bool onlyMe, Filter filter)
         {
+            ProjectId = projectId;
             Projects = new List<ClientProject>();
             Projects.Add(new ClientProject(new Project { Id = -1, Name = Languages.Lang.ShowAllIssues }));
             foreach(Project p in projects)
             {
                 Projects.Add(new ClientProject(p));
             }
-            NameValueCollection parameters = new NameValueCollection();
-            if (projectId != -1)
-                parameters.Add("project_id", projectId.ToString());
-
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
             {
                 if (projectId < 0)
@@ -131,7 +130,7 @@ namespace Redmine.Client
 
                     try
                     {
-                        Categories = new List<IssueCategory>(RedmineClientForm.redmine.GetObjects<IssueCategory>(parameters));
+                        Categories = new List<IssueCategory>(RedmineClientForm.redmine.GetObjects<IssueCategory>(InitParameters()));
                         Categories.Insert(0, new IssueCategory { Id = 0, Name = "" });
                     }
                     catch (Exception e)
@@ -141,7 +140,7 @@ namespace Redmine.Client
 
                     try
                     {
-                        Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetObjects<Redmine.Net.Api.Types.Version>(parameters);
+                        Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetObjects<Redmine.Net.Api.Types.Version>(InitParameters());
                         Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
                     }
                     catch (Exception e)
@@ -153,7 +152,7 @@ namespace Redmine.Client
 
                 try
                 {
-                    Statuses = new List<IssueStatus>(RedmineClientForm.redmine.GetObjects<IssueStatus>(parameters));
+                    Statuses = new List<IssueStatus>(RedmineClientForm.redmine.GetObjects<IssueStatus>(InitParameters()));
                     Statuses.Insert(0, new IssueStatus { Id = 0, Name = Languages.Lang.AllOpenIssues });
                     Statuses.Add(new IssueStatus { Id = -1, Name = Languages.Lang.AllClosedIssues });
                     Statuses.Add(new IssueStatus { Id = -2, Name = Languages.Lang.AllOpenAndClosedIssues });
@@ -168,7 +167,7 @@ namespace Redmine.Client
                     if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x
                         && projectId > 0)
                     {
-                        List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetObjects<ProjectMembership>(parameters);
+                        List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetObjects<ProjectMembership>(InitParameters());
                         ProjectMembers = projectMembers.ConvertAll(new Converter<ProjectMembership, ProjectMember>(ProjectMember.MembershipToMember));
                     }
                     else
@@ -220,41 +219,42 @@ namespace Redmine.Client
 
             try
             {
+                NameValueCollection parameters = InitParameters();
                 if (onlyMe)
-                    parameters.Add("assigned_to_id", "me");
+                    parameters.Add(RedmineKeys.ASSIGNED_TO_ID, "me");
                 else if (filter.AssignedToId > 0)
-                    parameters.Add("assigned_to_id", filter.AssignedToId.ToString());
+                    parameters.Add(RedmineKeys.ASSIGNED_TO_ID, filter.AssignedToId.ToString());
 
                 if (filter.TrackerId > 0)
-                    parameters.Add("tracker_id", filter.TrackerId.ToString());
+                    parameters.Add(RedmineKeys.TRACKER_ID, filter.TrackerId.ToString());
 
                 if (filter.StatusId > 0)
-                    parameters.Add("status_id", filter.StatusId.ToString());
+                    parameters.Add(RedmineKeys.STATUS_ID, filter.StatusId.ToString());
                 else if (filter.StatusId < 0)
                 {
                     switch (filter.StatusId)
                     {
                         case -1: // all closed issues
-                            parameters.Add("status_id", "closed");
+                            parameters.Add(RedmineKeys.STATUS_ID, "closed");
                             break;
 
                         case -2: // all open and closed issues
-                            parameters.Add("status_id", "*");
+                            parameters.Add(RedmineKeys.STATUS_ID, " *");
                             break;
                     }
                 }
 
                 if (filter.PriorityId > 0)
-                    parameters.Add("priority_id", filter.PriorityId.ToString());
+                    parameters.Add(RedmineKeys.PRIORITY_ID, filter.PriorityId.ToString());
 
                 if (filter.VersionId > 0)
-                    parameters.Add("fixed_version_id", filter.VersionId.ToString());
+                    parameters.Add(RedmineKeys.FIXED_VERSION_ID, filter.VersionId.ToString());
 
                 if (filter.CategoryId > 0)
-                    parameters.Add("category_id", filter.CategoryId.ToString());
+                    parameters.Add(RedmineKeys.CATEGORY_ID, filter.CategoryId.ToString());
 
                 if (!String.IsNullOrEmpty(filter.Subject))
-                    parameters.Add("subject", "~" + filter.Subject);
+                    parameters.Add(RedmineKeys.SUBJECT, "~" + filter.Subject);
 
                 Issues = RedmineClientForm.redmine.GetObjects<Issue>(parameters);
                 }
@@ -262,6 +262,14 @@ namespace Redmine.Client
             {
                 throw new LoadException(Languages.Lang.BgWork_LoadIssues, e);
             }
+        }
+
+        private NameValueCollection InitParameters()
+        {
+            NameValueCollection parameters = new NameValueCollection();
+            if (ProjectId != -1)
+                parameters.Add(RedmineKeys.PROJECT_ID, ProjectId.ToString());
+            return parameters;
         }
 
         private static ProjectTracker TrackerToProjectTracker(Tracker tracker)
