@@ -99,13 +99,7 @@ namespace Redmine.Client
 
             //At last add check-for-updates work...
             if (this.CheckForUpdates)
-            {
-                AddBgWork(Lang.BgWork_CheckUpdates, () =>
-                {
-                    AsyncCheckForUpdates();
-                    return null;
-                });
-            }
+                DoCheckForUpdates();
         }
 
         private bool OnInitFailed(Exception e, String additionalInfo)
@@ -888,10 +882,10 @@ namespace Redmine.Client
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ComboBoxProject_SelectedIndexChanged(object sender, EventArgs e)
+        private async void ComboBoxProject_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!updating)
-                RefreshFormData();
+                await RefreshFormData();
         }
 
         /// <summary>
@@ -1000,42 +994,25 @@ namespace Redmine.Client
         /// <param name="projectId">The current/last selected project</param>
         /// <param name="onlyMe">Retrieve only issues assigned to me</param>
         /// <param name="filter">Retrieve only issues matchig the filter</param>
-        private void AsyncGetRestOfFormData(int projectId, bool onlyMe, Filter filter)
+        private async void AsyncGetRestOfFormData(int projectId, bool onlyMe, Filter filter)
         {
-            AddBgWork(Lang.BgWork_GetFormData, () =>
+            try
             {
-                try
-                {
-                    var task = PrepareFormData(projectId, onlyMe, filter);
-                    task.Wait();
-                    MainFormData data = task.Result;
-
-                    //Let main thread fill form data...
-                    return () =>
-                    {
-                        FillForm(data, (Filter)currentFilter.Clone());
-                        BtnRefreshButton.Text = Lang.BtnRefreshButton;
-                        this.Cursor = Cursors.Default;
-                    };
-                }
-                catch (LoadException le)
-                {
-                    return () =>
-                    {
-                        if (OnInitFailed(le.InnerException, le.Message))
-                            Reinit();
-                    };
-                }
-                catch (Exception e)
-                {
-                    //Show the exception in the main thread
-                    return () =>
-                    {
-                        if (OnInitFailed(e, Lang.BgWork_GetFormData))
-                            Reinit();
-                    };
-                }
-            });
+                MainFormData data = await PrepareFormData(projectId, onlyMe, filter);
+                FillForm(data, (Filter)currentFilter.Clone());
+                BtnRefreshButton.Text = Lang.BtnRefreshButton;
+            }
+            catch (LoadException le)
+            {
+                if (OnInitFailed(le.InnerException, le.Message))
+                    Reinit();
+            }
+            catch (Exception e)
+            {
+                if (OnInitFailed(e, Lang.BgWork_GetFormData))
+                    Reinit();
+            }
+            this.Cursor = Cursors.Default;
         }
 
         /// <summary>
@@ -1043,7 +1020,7 @@ namespace Redmine.Client
         /// </summary>
         /// <param name="projectId">The current/last selected project</param>
         /// <param name="onlyMe">Retrieve only issues assigned to me</param>
-        private void AsyncGetFormData(int projectId, bool onlyMe)
+        private async void AsyncGetFormData(int projectId, bool onlyMe)
         {
             this.Cursor = Cursors.WaitCursor;
             //Retrieve current user asynchroneous...
@@ -1054,37 +1031,28 @@ namespace Redmine.Client
             this.BtnNewIssueButton.Enabled = false;
             this.BtnSettingsButton.Enabled = false;
 
-            AddBgWork(Lang.BgWork_GetUsername, () =>
+            try
             {
-                try
-                {
-                    NameValueCollection parameters = new NameValueCollection();
-                    parameters.Add("include", "memberships");
-                    User newCurrentUser = redmine.GetCurrentUser(parameters);
-                    return () =>
-                    {
-                        currentUser = newCurrentUser;
-                        if (currentUser != null)
-                            SetTitle(String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName));
-                        else
-                            SetTitle(Lang.RedmineClientTitle_NoUser);
-                        //When done, get the rest of the form data...
-                        AsyncGetRestOfFormData(projectId, onlyMe, currentFilter);
-                    };
-                }
-                catch (Exception e)
-                {
-                    return () =>
-                    {
-                        currentUser = null;
-                        SetTitle(Lang.RedmineClientTitle_NoUser);
-                        if (OnInitFailed(e, Lang.BgWork_GetUsername))
-                            Reinit();
-                        else
-                            this.BtnSettingsButton.Enabled = true;
-                    };
-                }
-            });
+                NameValueCollection parameters = new NameValueCollection();
+                parameters.Add("include", "memberships");
+                User newCurrentUser = await AddBgWork(Lang.BgWork_GetUsername, () => redmine.GetCurrentUser(parameters));
+                currentUser = newCurrentUser;
+                if (currentUser != null)
+                    SetTitle(String.Format(Lang.RedmineClientTitle_User, currentUser.FirstName, currentUser.LastName));
+                else
+                    SetTitle(Lang.RedmineClientTitle_NoUser);
+                //When done, get the rest of the form data...
+                AsyncGetRestOfFormData(projectId, onlyMe, currentFilter);
+            }
+            catch (Exception e)
+            {
+                currentUser = null;
+                SetTitle(Lang.RedmineClientTitle_NoUser);
+                if (OnInitFailed(e, Lang.BgWork_GetUsername))
+                    Reinit();
+                else
+                    this.BtnSettingsButton.Enabled = true;
+            }
         }
 
         /// <summary>
@@ -1125,10 +1093,11 @@ namespace Redmine.Client
         /// <summary>
         /// Check for updates and if there is an update available, send the user to the download URL.
         /// </summary>
-        private void AsyncCheckForUpdates()
+        private async void DoCheckForUpdates()
         {
-            string latestVersionUrl = Utility.CheckForUpdate();
-            if (latestVersionUrl != String.Empty)
+            string latestVersionUrl = await AddBgWork(Lang.BgWork_CheckUpdates, () => Utility.CheckForUpdate());
+
+            if (!string.IsNullOrEmpty(latestVersionUrl))
             {
                 if (MessageBox.Show(Lang.NewVersionText,
                                     Lang.NewVersionTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==

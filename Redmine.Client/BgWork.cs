@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Redmine.Client
 {
@@ -15,12 +13,12 @@ namespace Redmine.Client
         /// </summary>
         /// <param name="name">a descriptive name for the job</param>
         /// <param name="work">the actual function to call</param>
-        public BgWork(String name, RunAsync work)
+        public BgWork(String name, Task work)
         {
             m_name = name;
-            m_work = work;
+            m_task = work;
         }
         public String m_name;
-        public RunAsync m_work;
+        public Task m_task;
     };
 }
