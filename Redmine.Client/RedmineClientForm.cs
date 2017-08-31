@@ -7,9 +7,11 @@ using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 using Redmine.Net.Api;
+using Redmine.Net.Api.Async;
 using Redmine.Net.Api.Types;
 using Redmine.Client.Languages;
 using Redmine.Client.Properties;
+using System.Threading.Tasks;
 
 namespace Redmine.Client
 {
@@ -206,10 +208,10 @@ namespace Redmine.Client
             return projectId;
         }
 
-        private MainFormData PrepareFormData(int projectId, bool onlyMe, Filter filter)
+        private async Task<MainFormData> PrepareFormData(int projectId, bool onlyMe, Filter filter)
         {
             NameValueCollection parameters = new NameValueCollection();
-            IList<Project> allProjects = redmine.GetObjects<Project>(parameters);
+            IList<Project> allProjects = await redmine.GetObjectsAsync<Project>(parameters);
             IList<Project> projects;
             if (Settings.Default.OnlyMyProjects)
                 projects = OnlyProjectsForMember(currentUser, allProjects);
@@ -220,7 +222,7 @@ namespace Redmine.Client
                 Projects = MainFormData.ToDictionaryName(projects);
 
                 projectId = GetProjectIdCheckExists(Projects, projectId);
-                return new MainFormData(projects, projectId, onlyMe, filter);
+                return await MainFormData.Init(projects, projectId, onlyMe, filter);
             }
             throw new Exception(String.Format(Lang.Error_NoProjectsFound, allProjects.Count));
         }
@@ -906,15 +908,15 @@ namespace Redmine.Client
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnRefreshButton_Click(object sender, EventArgs e)
+        private async void BtnRefreshButton_Click(object sender, EventArgs e)
         {
-            RefreshFormData();
+            await RefreshFormData();
         }
 
         /// <summary>
         /// Refresh de form data synchronous
         /// </summary>
-        private void RefreshFormData()
+        private async Task RefreshFormData()
         {
             LoadLastIds();
 
@@ -923,7 +925,7 @@ namespace Redmine.Client
             try
             {
                 Filter newFilter = (Filter)currentFilter.Clone();
-                FillForm(PrepareFormData(projectId, CheckBoxOnlyMe.Checked, newFilter), newFilter);
+                FillForm(await PrepareFormData(projectId, CheckBoxOnlyMe.Checked, newFilter), newFilter);
             }
             catch (LoadException le)
             {
@@ -1004,7 +1006,9 @@ namespace Redmine.Client
             {
                 try
                 {
-                    MainFormData data = PrepareFormData(projectId, onlyMe, filter);
+                    var task = PrepareFormData(projectId, onlyMe, filter);
+                    task.Wait();
+                    MainFormData data = task.Result;
 
                     //Let main thread fill form data...
                     return () =>
