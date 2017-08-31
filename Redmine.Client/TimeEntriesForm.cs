@@ -32,33 +32,21 @@ namespace Redmine.Client
             AsyncLoadTimeEntries();
         }
 
-        private void AsyncLoadTimeEntries()
+        private async void AsyncLoadTimeEntries()
         {
             this.Cursor = Cursors.AppStarting;
-            AddBgWork(Lang.BgWork_GetTimeEntries, () =>
-                {
-                    try
-                    {
-                        NameValueCollection parameters = new NameValueCollection { { "issue_id", issue.Id.ToString() } };
-                        IList<TimeEntry> entries = RedmineClientForm.redmine.GetObjects<TimeEntry>(parameters);
-
-                        //Let main thread fill form data...
-                        return () =>
-                        {
-                            FillForm(entries);
-                            this.Cursor = Cursors.Default;
-                        };
-                    }
-                    catch (Exception e)
-                    {
-                        //Show the exception in the main thread
-                        return () =>
-                        {
-                            this.Cursor = Cursors.Default;
-                            MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        };
-                    }
-                });
+            NameValueCollection parameters = new NameValueCollection { { "issue_id", issue.Id.ToString() } };
+            try
+            {
+                FillForm(await AddBgWork(Lang.BgWork_GetTimeEntries, () => RedmineClientForm.redmine.GetObjects<TimeEntry>(parameters)));
+            }
+            catch (Exception e)
+            {
+                //Show the exception in the main thread
+                this.Cursor = Cursors.Default;
+                MessageBox.Show(String.Format(Lang.Error_Exception, e.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            this.Cursor = Cursors.Default;
         }
 
         private void FillForm(IList<TimeEntry> entries)
@@ -164,7 +152,7 @@ namespace Redmine.Client
             }
         }
 
-        private void BtnDeleteButton_Click(object sender, EventArgs e)
+        private async void BtnDeleteButton_Click(object sender, EventArgs e)
         {
             if (DataGridViewTimeEntries.SelectedRows.Count <= 0)
                 return;
@@ -175,25 +163,8 @@ namespace Redmine.Client
                 if (MessageBox.Show(String.Format(Lang.Warning_AreYouSureDeleteTimeEntry, timeEntry.Id), Lang.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.No)
                     return;
 
-                AddBgWork("Delete TimeEntry", () =>
-                    {
-                        try
-                        {
-                            RedmineClientForm.redmine.DeleteObject<TimeEntry>(timeEntry.Id.ToString(), null);
-                            return () =>
-                                {
-                                    AsyncLoadTimeEntries();
-                                    //MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                };
-                        }
-                        catch (Exception ex)
-                        {
-                            return () =>
-                                {
-                                    MessageBox.Show(String.Format(Lang.Error_Exception, ex.Message), Lang.Error, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                };
-                        }
-                    });
+                await AddBgWork("Delete TimeEntry", () => RedmineClientForm.redmine.DeleteObject<TimeEntry>(timeEntry.Id.ToString(), null));
+                AsyncLoadTimeEntries();
             }
             catch (Exception ex)
             {

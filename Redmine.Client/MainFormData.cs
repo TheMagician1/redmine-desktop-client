@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using Redmine.Net.Api.Types;
 using Redmine.Net.Api;
+using Redmine.Net.Api.Async;
+using System.Threading.Tasks;
 
 namespace Redmine.Client
 {
@@ -68,13 +70,14 @@ namespace Redmine.Client
     internal class LoadException : Exception
     {
         public LoadException(String action, Exception innerException) : base(action, innerException)
-{
-
-}
+        {
+        }
     }
 
     internal class MainFormData
     {
+        private List<ProjectTracker> trackers1;
+
         public List<ClientProject> Projects { get; private set; }
         public IList<Issue> Issues { get; set; }
         public IList<CustomField> CustomFields { get; private set; }
@@ -90,38 +93,42 @@ namespace Redmine.Client
         public List<Enumerations.EnumerationItem> Activities { get; private set; }
         public int ProjectId { get; }
 
-        public MainFormData(IList<Project> projects, int projectId, bool onlyMe, Filter filter)
+        public static async Task<MainFormData> Init(IList<Project> projects, int projectId, bool onlyMe, Filter filter)
         {
-            ProjectId = projectId;
-            Projects = new List<ClientProject>();
-            Projects.Add(new ClientProject(new Project { Id = -1, Name = Languages.Lang.ShowAllIssues }));
-            foreach(Project p in projects)
+            Func<NameValueCollection> InitParameters = () =>
             {
-                Projects.Add(new ClientProject(p));
-            }
+                NameValueCollection parameters = new NameValueCollection();
+                if (projectId != -1)
+                    parameters.Add(RedmineKeys.PROJECT_ID, projectId.ToString());
+                return parameters;
+            };
+
+            List<Tracker> allTrackers = null;
+            List<IssueCategory> categories = null;
+            List<Net.Api.Types.Version> versions = null;
+            List<ProjectTracker> trackers = null;
+            List<IssueStatus> statuses = null;
+            List<ProjectMember> projectMembers = null;
+            List<Enumerations.EnumerationItem> issuePriorities = null;
+            List<Enumerations.EnumerationItem> activities = null;
+            List<CustomField> customFields = null;
             if (RedmineClientForm.RedmineVersion >= ApiVersion.V13x)
             {
-                if (projectId < 0)
+                try
                 {
-                    try
-                    {
-                        List<Tracker> allTrackers = (List<Tracker>)RedmineClientForm.redmine.GetObjects<Tracker>();
-                        Trackers = allTrackers.ConvertAll(new Converter<Tracker, ProjectTracker>(TrackerToProjectTracker));
-                    }
-                    catch (Exception e)
-                    {
-                        throw new LoadException(Languages.Lang.BgWork_LoadTrackers, e);
-                    }
-                    Categories = null;
-                    Versions = null;
+                    allTrackers = await RedmineClientForm.redmine.GetObjectsAsync<Tracker>(InitParameters());
                 }
-                else
+                catch (Exception e)
+                {
+                    throw new LoadException(Languages.Lang.BgWork_LoadTrackers, e);
+                }
+                if (projectId >= 0)
                 {
                     try
                     {
                         NameValueCollection projectParameters = new NameValueCollection { { "include", "trackers" } };
-                        Project project = RedmineClientForm.redmine.GetObject<Project>(projectId.ToString(), projectParameters);
-                        Trackers = new List<ProjectTracker>(project.Trackers);
+                        Project project = await RedmineClientForm.redmine.GetObjectAsync<Project>(projectId.ToString(), projectParameters);
+                        trackers = new List<ProjectTracker>(project.Trackers);
                     }
                     catch (Exception e)
                     {
@@ -130,8 +137,8 @@ namespace Redmine.Client
 
                     try
                     {
-                        Categories = new List<IssueCategory>(RedmineClientForm.redmine.GetObjects<IssueCategory>(InitParameters()));
-                        Categories.Insert(0, new IssueCategory { Id = 0, Name = "" });
+                        categories = new List<IssueCategory>(await RedmineClientForm.redmine.GetObjectsAsync<IssueCategory>(InitParameters()));
+                        categories.Insert(0, new IssueCategory { Id = 0, Name = "" });
                     }
                     catch (Exception e)
                     {
@@ -140,22 +147,22 @@ namespace Redmine.Client
 
                     try
                     {
-                        Versions = (List<Redmine.Net.Api.Types.Version>)RedmineClientForm.redmine.GetObjects<Redmine.Net.Api.Types.Version>(InitParameters());
-                        Versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
+                        versions = await RedmineClientForm.redmine.GetObjectsAsync<Redmine.Net.Api.Types.Version>(InitParameters());
+                        versions.Insert(0, new Redmine.Net.Api.Types.Version { Id = 0, Name = "" });
                     }
                     catch (Exception e)
                     {
                         throw new LoadException(Languages.Lang.BgWork_LoadVersions, e);
                     }
                 }
-                Trackers.Insert(0, new ProjectTracker { Id = 0, Name = "" });
+                trackers.Insert(0, new ProjectTracker { Id = 0, Name = "" });
 
                 try
                 {
-                    Statuses = new List<IssueStatus>(RedmineClientForm.redmine.GetObjects<IssueStatus>(InitParameters()));
-                    Statuses.Insert(0, new IssueStatus { Id = 0, Name = Languages.Lang.AllOpenIssues });
-                    Statuses.Add(new IssueStatus { Id = -1, Name = Languages.Lang.AllClosedIssues });
-                    Statuses.Add(new IssueStatus { Id = -2, Name = Languages.Lang.AllOpenAndClosedIssues });
+                    statuses = await RedmineClientForm.redmine.GetObjectsAsync<IssueStatus>(InitParameters());
+                    statuses.Insert(0, new IssueStatus { Id = 0, Name = Languages.Lang.AllOpenIssues });
+                    statuses.Add(new IssueStatus { Id = -1, Name = Languages.Lang.AllClosedIssues });
+                    statuses.Add(new IssueStatus { Id = -2, Name = Languages.Lang.AllOpenAndClosedIssues });
                 }
                 catch (Exception e)
                 {
@@ -167,19 +174,19 @@ namespace Redmine.Client
                     if (RedmineClientForm.RedmineVersion >= ApiVersion.V14x
                         && projectId > 0)
                     {
-                        List<ProjectMembership> projectMembers = (List<ProjectMembership>)RedmineClientForm.redmine.GetObjects<ProjectMembership>(InitParameters());
-                        ProjectMembers = projectMembers.ConvertAll(new Converter<ProjectMembership, ProjectMember>(ProjectMember.MembershipToMember));
+                        List<ProjectMembership> projectMembership = await RedmineClientForm.redmine.GetObjectsAsync<ProjectMembership>(InitParameters());
+                        projectMembers = projectMembership.ConvertAll(new Converter<ProjectMembership, ProjectMember>(ProjectMember.MembershipToMember));
                     }
                     else
                     {
-                        List<User> allUsers = (List<User>)RedmineClientForm.redmine.GetObjects<User>();
-                        ProjectMembers = allUsers.ConvertAll(new Converter<User, ProjectMember>(UserToProjectMember));
+                        List<User> allUsers = await RedmineClientForm.redmine.GetObjectsAsync<User>(InitParameters());
+                        projectMembers = allUsers.ConvertAll(new Converter<User, ProjectMember>(UserToProjectMember));
                     }
-                    ProjectMembers.Insert(0, new ProjectMember());
+                    projectMembers.Insert(0, new ProjectMember());
                 }
                 catch (Exception)
                 {
-                    ProjectMembers = null;
+                    projectMembers = null;
                     //throw new LoadException(Languages.Lang.BgWork_LoadProjectMembers, e);
                 }
 
@@ -187,17 +194,17 @@ namespace Redmine.Client
                 {
                     if (RedmineClientForm.RedmineVersion >= ApiVersion.V22x)
                     {
-                        Enumerations.UpdateIssuePriorities(RedmineClientForm.redmine.GetObjects<IssuePriority>());
+                        Enumerations.UpdateIssuePriorities(await RedmineClientForm.redmine.GetObjectsAsync<IssuePriority>(InitParameters()));
                         Enumerations.SaveIssuePriorities();
 
-                        Enumerations.UpdateActivities(RedmineClientForm.redmine.GetObjects<TimeEntryActivity>());
+                        Enumerations.UpdateActivities(await RedmineClientForm.redmine.GetObjectsAsync<TimeEntryActivity>(InitParameters()));
                         Enumerations.SaveActivities();
                     }
-                    IssuePriorities = new List<Enumerations.EnumerationItem>(Enumerations.IssuePriorities);
-                    IssuePriorities.Insert(0, new Enumerations.EnumerationItem { Id = 0, Name = "", IsDefault = false });
+                    issuePriorities = new List<Enumerations.EnumerationItem>(Enumerations.IssuePriorities);
+                    issuePriorities.Insert(0, new Enumerations.EnumerationItem { Id = 0, Name = "", IsDefault = false });
 
-                    Activities = new List<Enumerations.EnumerationItem>(Enumerations.Activities);
-                    Activities.Insert(0, new Enumerations.EnumerationItem { Id = 0, Name = "", IsDefault = false });
+                    activities = new List<Enumerations.EnumerationItem>(Enumerations.Activities);
+                    activities.Insert(0, new Enumerations.EnumerationItem { Id = 0, Name = "", IsDefault = false });
                 }
                 catch (Exception e)
                 {
@@ -208,7 +215,7 @@ namespace Redmine.Client
                 {
                     if (RedmineClientForm.RedmineVersion >= ApiVersion.V24x)
                     {
-                        CustomFields = RedmineClientForm.redmine.GetObjects<CustomField>();
+                        customFields = await RedmineClientForm.redmine.GetObjectsAsync<CustomField>(InitParameters());
                     }
                 }
                 catch (Exception e)
@@ -256,20 +263,35 @@ namespace Redmine.Client
                 if (!String.IsNullOrEmpty(filter.Subject))
                     parameters.Add(RedmineKeys.SUBJECT, "~" + filter.Subject);
 
-                Issues = RedmineClientForm.redmine.GetObjects<Issue>(parameters);
-                }
+                var issues = await RedmineClientForm.redmine.GetObjectsAsync<Issue>(parameters);
+                return new MainFormData(projects, projectId, issues, allTrackers, categories,
+                    versions, trackers, statuses, projectMembers, issuePriorities,
+                    activities, customFields);
+            }
             catch (Exception e)
             {
                 throw new LoadException(Languages.Lang.BgWork_LoadIssues, e);
             }
         }
 
-        private NameValueCollection InitParameters()
+        private MainFormData(IList<Project> projects, int projectId, IList<Issue> issues, List<Tracker> trackers, List<IssueCategory> categories, List<Net.Api.Types.Version> versions, List<ProjectTracker> trackers1, List<IssueStatus> statuses, List<ProjectMember> projectMembers, List<Enumerations.EnumerationItem> issuePriorities, List<Enumerations.EnumerationItem> activities, List<CustomField> customFields)
         {
-            NameValueCollection parameters = new NameValueCollection();
-            if (ProjectId != -1)
-                parameters.Add(RedmineKeys.PROJECT_ID, ProjectId.ToString());
-            return parameters;
+            ProjectId = projectId;
+            Projects = new List<ClientProject>();
+            Projects.Add(new ClientProject(new Project { Id = -1, Name = Languages.Lang.ShowAllIssues }));
+            foreach (Project p in projects)
+            {
+                Projects.Add(new ClientProject(p));
+            }
+            Issues = issues;
+            Trackers = trackers.ConvertAll(new Converter<Tracker, ProjectTracker>(TrackerToProjectTracker));
+            Categories = categories;
+            Versions = versions;
+            Statuses = statuses;
+            ProjectMembers = projectMembers;
+            IssuePriorities = issuePriorities;
+            Activities = activities;
+            CustomFields = customFields;
         }
 
         private static ProjectTracker TrackerToProjectTracker(Tracker tracker)

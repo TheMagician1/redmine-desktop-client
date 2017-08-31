@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Redmine.Client
 {
-    public delegate void OnDone();
-    public delegate OnDone RunAsync();
-
     public class BgWorker : Form
     {
         private System.ComponentModel.BackgroundWorker worker = new System.ComponentModel.BackgroundWorker();
@@ -23,7 +21,21 @@ namespace Redmine.Client
         /// </summary>
         /// <param name="name">The name used to display in the statusbar when executing this item</param>
         /// <param name="work">The function to execute in the background</param>
-        public void AddBgWork(String name, RunAsync work)
+        public Task AddBgWork(String name, Action work)
+        {
+            var task = new Task(work);
+            AddBgWork_(name, task);
+            return task;
+        }
+
+        public Task<T_Result> AddBgWork<T_Result>(String name, Func<T_Result> work)
+        {
+            var task = new Task<T_Result>(work);
+            AddBgWork_(name, task);
+            return task;
+        }
+
+        private void AddBgWork_(String name, Task work)
         {
             m_WorkQueue.Enqueue(new BgWork(name, work));
             TriggerWork();
@@ -40,7 +52,7 @@ namespace Redmine.Client
             if (!bForce && m_WorkQueue.Count != 1)
                 return; //Already busy...
 
-            worker.RunWorkerAsync(m_WorkQueue.Peek().m_work);
+            worker.RunWorkerAsync(m_WorkQueue.Peek().m_task);
             WorkTriggered(m_WorkQueue.Peek());
         }
 
@@ -54,7 +66,7 @@ namespace Redmine.Client
         private void worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             if (e.Argument != null)
-                e.Result = ((RunAsync)e.Argument)();
+                ((Task)e.Argument).RunSynchronously();
         }
 
         /// <summary>
@@ -64,8 +76,6 @@ namespace Redmine.Client
         /// <param name="e"></param>
         private void worker_Complete(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-            if (e.Result != null)
-                ((OnDone)e.Result)();
             m_WorkQueue.Dequeue();
             WorkTriggered(null);
             TriggerWork(true);
